@@ -1,0 +1,4625 @@
+vim:shiftwidth=2:syntax=python:
+set shiftwidth=2 | set syntax=python | colors molokai_dark
+
+
+[MAYBE SOME MISSING LINES|BLOCKS]
+    evince -p 1 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+How to Use Jupyter Notebook: A Beginner's Tutorial '
+
+Jupyter Notebook is an incredibly
+powerful tool for interactively
+developing and presenting data
+science projects. It combines code,
+visualizations, narrative text, and
+other rich media into a single
+document, creating a cohesive and
+expressive workflow.
+
+This guide will give you a
+step-by-step walkthrough on
+installing Jupyter Notebook locally
+and creating your first project. If
+you are a beginner, we recommed you
+follow our split screen interactive
+Learn and Install Jupyter Notebook
+project to learn the basics quickly.
+
+    evince -p 2 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+N@At its core, a notebook is a
+document that blends code and its
+output seamlessly. It allows you to
+run code, display the results, and
+add explanations, formulas, and
+charts all in one place. This makes
+your work more transparent,
+understandable, and reproducible.
+
+Jupyter Notebooks have become an
+essential part of the data science
+workflow in companies and
+organizations worldwide. They
+enable data scientists to explore
+data, test hypotheses, and share
+insights efficiently.
+
+As an open-source project, Jupyter
+Notebooks are completely free. You
+can download the software directly
+from the Project Jupyter website
+n@N@or as part of the Anaconda data
+science toolkit.
+
+While Jupyter Notebooks support
+multiple programming languages, this
+article will focus on using Python,
+as it is the most common language
+used in data science. However, it's
+worth noting that other languages
+like R, Julia, and Scala are
+
+    evince -p 3 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+How to Follow This Tutorial '
+
+To get the most out of this
+tutorial, familiarity with
+programming, particularly Python and
+pandas, is recommended. However,
+even if you have experience with
+another language, the Python code in
+this article should be accessible.
+
+Jupyter Notebooks can also serve as
+a flexible platform for learning
+pandas and Python. In addition to
+the core functionality, we'll
+explore some exciting features: '
+
+- Cover the basics of installing
+Jupyter and creating your first
+notebook
+- Delve deeper into important
+terminology and concepts
+- Explore how notebooks can be
+shared and published online
+- Demonstrate the use of Jupyter
+Widgets, Jupyter AI, and discuss
+security considerations
+
+By the end of this tutorial, you'll
+have a solid understanding of how to
+set up and utilize Jupyter Notebooks
+effectively, along with exposure to
+powerful features like Jupyter AI,
+while keeping security in mind. '
+
+  N@Note: This article was written as
+  a Jupyter Notebook and published
+  in read-only form, showcasing the
+  versatility of
+
+    evince -p 4 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Notebook
+
+First, we will walk through setup
+and a sample analysis to answer a
+real-life question. This will
+demonstrate how the flow of a
+notebook makes data science tasks
+more intuitive for us as we work,
+and for others once it's time to
+share our work.
+
+So, let's say you're a data analyst
+and you've been tasked with finding
+out how the profits of the largest
+companies in the US changed
+historically. You find a data set of
+Fortune 500 companies spanning over
+50 years since the list's first
+publication in 1955, put together
+from Fortune's public archive.
+N@We've gone ahead and created a CSV
+of the data you can use here.
+
+As we shall demonstrate, Jupyter
+Notebooks are perfectly suited for
+this investigation. First, let's go
+ahead and install Jupyter.
+
+    evince -p 5 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Installation
+
+N@The easiest way for a beginner to
+get started with Jupyter Notebooks
+is by installing Anaconda.
+
+Anaconda is the most widely used
+Python distribution for data science
+and comes pre-loaded with all the
+most popular libraries and tools.
+
+Some of the biggest Python libraries
+included in Anaconda are Numpy,
+pandas, and Matplotlib, though
+the full 1000+ list is exhaustive.
+
+Anaconda thus lets us hit the ground
+running with a fully stocked data
+science workshop without the hassle
+of managing countless installations
+or worrying about dependencies and
+OSspecific installation issues
+(read: Installing on Windows).
+
+To get Anaconda, simply:
+
+- Download the latest version of
+Anaconda for Python.
+- Install Anaconda by following the
+instructions on the download page
+and/or in the executable.
+
+    evince -p 6 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Creating Your First Notebook
+
+In this section, we're going to
+learn to run and save notebooks,
+familiarize ourselves with their
+structure, and understand the
+interface. We'll define some core
+terminology that will steer you
+towards a practical understanding of
+how to use Jupyter Notebooks by
+yourself and set us up for the next
+section, which walks through an
+example data analysis and brings
+everything
+
+    evince -p 7 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+On Windows, you can run Jupyter via the shortcut Anaconda
+
+adds to your start menu, which will open a new tab in your
+default web browser that should look something like the
+following screenshot:
+
+
+This isn't a notebook just yet, but
+don't panic! There's not much to it.
+This is the Notebook Dashboard,
+specifically designed for managing
+your Jupyter Notebooks. Think of it
+as the launchpad for exploring,
+editing and creating your notebooks.
+
+Be aware that the dashboard will
+give you access only to the files
+and sub-folders contained within
+Jupyter's start-up directory (i.e.,
+where Jupyter or Anaconda is
+installed). N@However, the start-up
+directory can be changed.
+
+n@It is also possible to start the
+dashboard on any system via the
+command prompt (or terminal on Unix
+systems) by entering the command
+jupyter notebook; in this case, the
+current working
+
+    evince -p 8 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+With Jupyter Notebook open in your
+browser, you noticed that the URL
+for the dashboard is something like
+https://localhost:8888/tree.
+n@Localhost is not a website, but
+indicates that the content is being
+served from your local machine: your
+own computer.
+
+N@Jupyter's Notebooks and dashboard
+are web apps, and Jupyter starts up
+a local Python server to serve these
+apps to your web browser, making it
+essentially platform-independent and
+opening the door to easier sharing
+on the web.
+
+(If you don't understand this yet,
+don't worry - the important point is
+just that although Jupyter Notebooks
+opens in your browser, it's being
+hosted and run on your local
+machine. N@Your notebooks aren't
+actually on the web until you decide
+to share them.)
+
+The dashboard's interface is mostly
+self-explanatory - though we will
+come back to it briefly later. So
+what are we waiting for? Browse to
+the folder in which you would like
+to create your first notebook, click
+the "New" drop-down button in the
+top-right and select N@"Python
+3(ipykernel)":
+
+    evince -p 9 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Hey presto, here we are! Your first
+Jupyter Notebook will open in new
+tab - each notebook uses its own tab
+because you can open multiple
+notebooks simultaneously.
+
+If you switch back to the dashboard,
+you will see the new file
+Untitled.ipynb and you should see
+some green text that tells you your
+notebook is running.
+
+
+What is an ipynb File?
+
+The short answer: each .ipynb file
+is one notebook, so each time you
+create a new notebook, a new .ipynb
+file will be created.
+
+    evince -p 10 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+The longer answer: Each .ipynb file
+is a text file that t@describes the
+contents of your notebook in a
+format called JSON. Each cell and
+its contents, including image
+attachments that have been converted
+into strings of text, is listed
+therein n@along with some metadata.
+
+You can edit this yourself - if you
+know what you are doing! T@T@- by
+selecting "Edit > Edit Notebook
+Metadata" from the menu bar in the
+notebook. n@You can also view the
+contents of your notebook files by
+selecting "Edit" from the controls
+on the dashboard
+
+However, the key word there is can.
+In most cases, there's no reason you
+should ever need to edit your
+notebook metadata manually. '
+
+
+The Notebook Interface
+
+Now that you have an open notebook
+in front of you, its interface will
+hopefully not look entirely alien.
+After all, Jupyter is essentially
+just an advanced word processor.
+
+Why not take a look around? Check
+out the menus to get a feel for it,
+especially take a few moments to
+scroll down the list of commands in
+T@N@N@the command palette, which is
+the small button with the keyboard
+icon (or cs-p).
+
+There are two key terms that you
+should notice in the menu bar, which
+are probably new to you: Cell and
+Kernel. These are key terms for
+understanding how Jupyter works, and
+what makes more than just a word
+processor. Here's a basic definition
+of each:
+
+    evince -p 11 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+- The kernel in a Jupyter Notebook
+is like the brain of the notebook.
+It's the "computational engine" that
+runs your code. When you write code
+in a notebook and ask it to run, the
+kernel is what takes that code,
+processes it, and gives you the
+results. Each notebook is connected
+to a specific kernel that knows how
+to run code in a particular
+programming language, like Python.
+N@- A cell in a Jupyter Notebook is
+like a block or a section where you
+write your code or text (notes). You
+can write a piece of code or some
+explanatory text in a cell, and when
+you run it, the code will be
+executed, or the text will be
+rendered (displayed). Cells help you
+organize your work in a notebook,
+making it easier to test small
+chunks of code and explain what's
+happening as you go along.
+
+
+Cells
+
+We'll return to kernels a little
+later, but first let's come to grips
+with cells. Cells form the body of a
+notebook. In the screenshot of a new
+notebook in the section above, that
+box with the green outline is an
+empty cell. There are two main cell
+types that we will cover: '
+
+    evince -p 12 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+- A code cell contains code to be
+executed in the kernel. When the
+code is run, the notebook displays
+the output below the code cell that
+generated it.
+- A Markdown cell contains text
+formatted using Markdown and
+displays its output in-place when
+the Markdown cell is run.
+
+The first cell in a new notebook
+defaults to a code cell. Let's test
+it out with a classic "Hello World!"
+example. '
+
+Type print('Hello World!') into that
+first cell and click the Run button
+in the toolbar above or n@T@N@press
+Ctrl + Enter on your keyboard.
+
+The result should look like this:
+
+In [1]: print('Hello World!')
+        Hello World!
+
+In [ ]:
+
+print('Hello World!')" width="1156" height="161"
+class="aligncenter size-full wp-image-51145" />
+
+When we run the cell, its output is
+displayed directly below the code
+cell, and the label to its left will
+have changed from In [ ] to In [1].
+"
+
+Like the contents of a cell, the
+output of a code cell also becomes
+part of the document. n@T@You can
+always tell the difference between a
+code cell and a Markdown cell
+because code cells have that special
+In [ ] label on their left and
+Markdown cells do not.
+
+    evince -p 13 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+The "In" part of the label is simply
+short for "Input," while N@the label
+number inside [ ] indicates when the
+cell was executed on the kernel - in
+this case the cell was executed Run
+the cell again and the label will
+change to In [2] because now the
+cell was the second to be run on the
+kernel. Why this is so useful will
+become clearer later on when we take
+a closer look at kernels.
+
+From the menu bar, click Insert and
+select Insert Cell Below to create a
+new code cell underneath your first
+one and try executing the code below
+to see what happens. Do you notice
+anything different compared to
+executing that first code cell?
+
+import time
+time.sleep(3)
+
+This code doesn't produce any
+output, but it does take three
+seconds to execute. n@T@Notice how
+Jupyter signifies when the cell is
+currently running by changing its
+label to In [*]. '
+
+In [1]: print('Hello World!')
+        Hello World!
+
+In [*]: import time
+        time.sleep(3)
+
+time.sleep(3)" width="1156" height="180" class="aligncenter
+size-full wp-image-51146" />
+
+    evince -p 14 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+In general, the output of a cell
+comes from any text data
+specifically printed during the
+cell's execution, T@as well as the
+value of the last line in the cell,
+be it a lone variable, a function
+call, or something else. For
+example, if we define a function
+that outputs text and then call it,
+like so:Catalog "
+
+def say_hello(recipient):
+return 'Hello, {}!'.format(recipient)
+say_hello('Tim')
+
+We will get the following output
+below the cell:
+
+'Hello, Tim!'
+
+N@You'll find yourself using this
+feature a lot in your own projects,
+and we'll see more of its usefulness
+later on.
+
+In [1]: print('Hello World!')
+        Hello World!
+
+In [2] import time
+       time.sleep(3)
+
+In [3]: def say_hello(recipient):
+          return 'Hello, {}!'.format(recipient)
+        say_hello('Tim')
+
+Out[3]: 'Hello, Tim!'
+
+    evince -p 15 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Keyboard Shortcuts
+
+n@N@One final thing you may have
+noticed when running your cells is
+that their border turns blue after
+it's been executed, whereas it was
+green while you were editing it. In
+a Jupyter Notebook, there is always
+one "active" cell highlighted with a
+border whose color denotes its
+current mode:
+
+- Green outline - cell is in "edit
+mode"
+- Blue outline - cell is in "command
+mode"
+
+So what can we do to a cell when
+it's in command mode? So far, we
+have seen how to run a cell with
+Ctrl + Enter, but there are plenty
+of other commands we can use. The
+best way to use them is with
+keyboard shortcuts.
+
+Keyboard shortcuts are a very
+popular aspect of the Jupyter
+environment because they facilitate
+a speedy cell-based workflow. N@Many
+of these are actions you can carry
+out on the active cell when it's in
+command mode.
+
+n@N@N@T@Below, you'll find a list of
+some of Jupyter's keyboard
+shortcuts. You don't need to
+memorize them all immediately, but
+this list should give you a good
+idea of what's possible. '
+
+- n@N@Toggle between command mode
+  (blue) and edit mode (green) with
+  Esc and Enter, respectively.
+- While in command mode:
+
+  - Scroll up and down your cells
+  with your Up and Down keys.
+  - N@T@T@Press a or b to insert a
+  new cell above or below the active
+  cell.
+  - m will transform the active cell
+  to a Markdown cell.
+  - y will set the active cell to a
+  code cell.
+  - dd will delete the
+  active cell.
+  - z will undo cell deletion.
+
+- Hold Shift and press Up or Down to
+select multiple cells at once. With
+multiple cells selected, s-m
+will merge your selection. You can
+also click and s-Click in the
+margin to the left of your cells to
+select a range of them.
+
+    evince -p 16 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+- While in edit mode:
+
+- c-Enter to run the current cell.
+- s-Enter to run the current cell
+and move to the next cell (or create
+a new one if there isn't a next
+cell) '
+- a-Enter to run the current cell
+and insert a new cell below.
+- cs_+ - will split the active cell
+at the cursor.
+- c-Click to create multiple cursors
+within a cell.
+
+Go ahead and try these out in your
+own notebook. Once you're ready,
+create a new Markdown cell and we'll
+learn how to format the text in our
+notebooks.
+
+
+Markdown
+
+Markdown is a lightweight, easy to
+learn markup language for formatting
+plain text. Its syntax has a
+one-to-one correspondence with HTML
+tags, so some prior knowledge here
+would be helpful but is definitely
+not a prerequisite.
+
+Remember that this article was
+written in a Jupyter notebook, so
+all of the narrative text and images
+you have seen so far were achieved
+writing in Markdown. Let's cover the
+basics with a quick example: '
+
+    evince -p 17 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+# This is a level 1 heading
+## This is a level 2 heading
+
+is some plain text that forms a
+paragraph. Add emphasis via **bold**
+or __bold__, This Paragraphs must be
+separated by an empty line.
+
+* Sometimes we want to include lists.
+* Which can be bulleted using asterisks.
+
+- 1. Lists can also be numbered.
+- 2. If we want an ordered list.
+
+[It is possible to include hyperlinks](https://www.dataquest.io)
+
+Inline code uses single backticks:
+`foo()`, and code blocks use triple
+backticks:
+
+```
+bar()
+```
+Or can be indented by 4 spaces:
+
+```
+    foo()
+```
+
+And finally, adding images is easy:
+
+![Alt text](https://www.dataquest.io/wp-content/upl
+
+Here's how that Markdown would look
+once you run the cell to render it:
+'
+
+    evince -p 18 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+n@N@N@When attaching images, you
+have three options:
+
+- Use a URL to an image on the web.
+- Use a local URL to an image that
+you will be keeping alongside your
+notebook, such as in the same git
+repo.
+
+- Add an attachment via Edit >
+Insert Image; this will convert the
+image into a string and store it
+inside your notebook .ipynb file.
+Note that this will make your
+.ipynb file much larger!
+
+There is plenty more to Markdown,
+especially around hyperlinking,
+N@and it's also possible to simply
+include plain HTML. Once you find
+yourself pushing the limits of the
+basics above, you can refer to the
+official guide from Markdown's
+creator, John Gruber, on his
+website.
+
+    evince -p 19 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Kernels
+
+Behind every notebook runs a kernel.
+When you run a code cell, that code
+is executed within the kernel.
+
+Any output is returned back to the
+cell to be displayed. T@The kernel's
+state persists over time and between
+cells - it pertains to the document
+as a whole and not just to
+individual cells. '
+
+n@For example, if you import
+libraries or declare variables in
+one cell, they will be available in
+another. Let's try this out to get
+a feel for it. First, we'll import a
+Python package and define a function
+in a new code cell:
+
+import numpy as np
+def square(x):
+  return x * x
+
+Once we've executed the cell above,
+we can reference np and square in
+any other cell. '
+
+x = np.random.randint(1, 10)
+y = square(x)
+print('%d squared is %d' % (x, y))
+
+7 squared is 49
+
+    evince -p 20 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+This will work regardless of the
+order of the cells in your notebook.
+As long as a cell has been run, any
+variables you declared or libraries
+you imported will be available in
+other cells.
+
+You can try it yourself. Let's print
+out our variables again in a new
+cell: '
+
+print('%d squared is %d' % (x, y))
+
+7 squared is 49
+
+No surprises here! But what happens
+if we specifically change the value
+of y?
+
+    evince -p 21 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+y = 10
+print('%d squared is %d' % (x, y))
+
+If we run the cell above, what do
+you think would happen?
+
+squared
+
+Will we get an output like: 7
+squared is 49 or 7 10? Let's think
+about this step-by-step. Since we
+didn't run x = np.random.randint(1,
+10) again, x is still equal to 7 in
+the kernel. And once we've run the y
+= 10 code cell, y is no longer equal
+to the square of x in the kernel; it
+will be equal to 10 and so our
+output will look like this:
+
+7squared is 10
+
+Most of the time when you create a
+notebook, the flow will be
+top-to-bottom. But it's common to go
+back to make changes. N@N@When we do
+need to make changes to an earlier
+cell, the order of execution we can
+see on the left of each cell, such
+as In [6], can help us diagnose
+problems by seeing what order the
+cells have run in.
+
+T@And if we ever wish to reset
+things, there are several incredibly
+useful options from the Kernel menu:
+
+    evince -p 22 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+- Restart: restarts the kernel, thus
+clearing all the variables etc that
+were defined.
+- Restart & Clear Output: same as
+above but will also wipe the output
+displayed below your code cells.
+
+Catalogbut willResources
+
+- Restart & Run All: same as above
+also run all your cells in order
+from first to last.
+
+n@If your kernel is ever stuck on a
+computation and you wish to stop it,
+you can choose the Interrupt option.
+
+
+Choosing a Kernel
+
+You may have noticed that Jupyter
+gives you the option to change
+kernel, and in fact there are many
+different options to choose from.
+Back when you created a new notebook
+from the dashboard by selecting a
+Python version, you were actually
+choosing which kernel to use.
+
+N@T@There are kernels for different
+versions of Python, and also for
+over 100 languages including Java,
+C, and even Fortran. Data scientists
+may be particularly interested in
+the kernels for R and Julia, as well
+as both imatlab and the Calysto
+MATLAB Kernel for Matlab.
+
+N@N@TT@The SoS kernel provides
+multi-language support within a
+single notebook.
+
+Each kernel has its own installation
+instructions, but will likely
+require you to run some commands on
+your computer.
+
+    evince -p 23 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Example Analysis
+
+Now that we've looked at what a
+Jupyter Notebook is, it's time to
+look at how they're used in
+practice, which should give us
+clearer understanding of why they
+are so popular. It's finally time
+to get started with that Fortune 500
+dataset mentioned earlier. Remember,
+our goal is to find out how the
+profits of the largest companies in
+the US changed historically. '
+
+It's worth noting that everyone will
+develop their own preferences and
+style, but the general principles
+still apply. You can follow along
+with this section in your own
+notebook if you wish, or use this as
+a guide to creating your own
+approach.
+
+
+Naming Your Notebooks
+
+Before you start writing your
+project, you'll probably want to
+give it a meaningful name. Click the
+file name Untitled in the top part
+of your screen screen to enter a new
+file name, and then hit the Save
+icon - a floppy disk, which looks
+like a rectangle with the
+upper-right corner removed.
+
+Note that closing the notebook tab
+in your browser will not "close"
+your notebook in the way closing a
+document in a traditional
+application will. n@The notebook's
+kernel will continue to run in the
+background and needs to be shut down
+before it is truly "closed" - though
+this is pretty handy if you
+accidentally close your tab or
+browser!
+
+If the kernel is shut down, you can
+close the tab without worrying about
+whether it is still running or not.
+
+N@The easiest way to do this is to
+select File > Close and Halt from
+the notebook menu.
+
+    evince -p 24 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+However, you can also shutdown the
+kernel either by going to Kernel >
+Shutdown from within the notebook
+app or by selecting the notebook in
+the dashboard and clicking Shutdown
+(see image below).
+
+
+Setup
+
+t@N@N@It's common to start off with
+a code cell specifically for imports
+and setup, so that if you choose to
+add or change anything, you can
+simply edit and re-run the cell
+without causing any sideeffects.
+
+n@T@T@We'll import pandas to work
+with our data, Matplotlib to plot
+our charts, and Seaborn to make our
+charts prettier. It's also common to
+import NumPy but in this case,
+pandas imports it for us. '
+
+%matplotlib inline
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set(style="darkgrid")
+
+    evince -p 25 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+t@N@N@That first line of code
+(%matplotlib inline) isn't actually
+a Python command, but uses something
+called a line magic to instruct
+Jupyter to capture Matplotlib plots
+and render them in the cell output.
+We'll talk a bit more about line
+magics N@they're also covered in our
+advanced Jupyter Notebooks tutorial.
+
+t@N@N@For now, let's go ahead and
+load our fortune 500 data.
+
+df = pd.read_csv('fortune500.csv')
+
+N@N@It's sensible to also do this in
+a single cell, in case we need to
+reload it at any point. '
+
+
+Save and Checkpoint
+
+Now that we're started, it's best
+practice to save regularly.
+Pressing c-s will save our notebook
+by calling the Save and Checkpoint
+command, but what is this
+"checkpoint" thing all about?
+
+N@N@Every time we create a new
+notebook, a checkpoint file is
+created along with the notebook
+file. It is located within a hidden
+subdirectory of your save location
+called .ipynb_checkpoints and is
+also a .ipynb file.
+
+N@By default, Jupyter will autosave
+your notebook every 120 seconds to
+this checkpoint file without
+altering your primary notebook file.
+When you "Save and Checkpoint," both
+the notebook and checkpoint files
+are updated. Hence, the checkpoint
+enables you to recover your unsaved
+work in the event of an unexpected
+issue.
+
+    evince -p 26 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+n@You can revert to the checkpoint
+from the menu via File > Revert to
+Checkpoint.
+
+
+Investigating our Dataset
+
+Now we're really rolling! Our
+notebook is safely saved and we've
+loaded our data set df into the
+most-used pandas data structure,
+which is called a DataFrame and
+basically looks like a table. What
+does ours look like?
+
+t@T@df.head()
+
+Year Rank
+Company
+Revenue (in
+millions)
+Profit (in
+millions)
+0 1955 1
+General
+Motors
+9823.5
+806
+1 1955 2
+Exxon Mobil
+5661.4
+584.8
+2 1955 3
+U.S. Steel
+3250.4
+195.4
+3 1955 4
+General
+Electric
+2959.1
+212.6
+4 1955 5
+Esmark
+2510.8
+19.1
+df.tail()
+
+    evince -p 27 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Year Rank
+Company
+Revenue (in 60%
+Profit
+OFF(in
+millions)
+millions)
+25495 2005 496
+Wm. Wrigley Jr. 3648.6
+25496 2005 497
+Peabody EnergyCatalog
+3631.6
+25497 2005 498
+Wendy's
+International
+3630.4
+57.8
+Kindred
+Healthcare
+3616.6
+70.6
+Cincinnati
+Financial
+3614.0
+584
+25498 2005 499
+25499 2005 500
+493
+175.4
+Resources
+For Teams
+
+Looking good. We have the columns we
+need, and each row corresponds to a
+single company in a single year.
+
+n@N@Let's just rename those columns
+so we can more easily refer to them
+later.
+
+N@df.columns = ['year', 'rank', 'company', 'revenue', 'profit']
+
+Next, we need to explore our
+dataset. Is it complete? Did pandas
+read it as expected? Are any values
+missing?
+
+len(df)
+
+25500
+
+    evince -p 28 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Okay, that looks good - that's 500
+rows for every year from 1955 to
+2005, inclusive.
+
+Let's check whether our data set has
+been imported as we would expect. A
+simple check is to see if the data
+types (or dtypes) have been
+correctly interpreted.
+
+n@N@df.dtypes
+
+year       int64
+rank       int64
+company   object
+revenue  float64
+profit    object
+dtype: object
+
+Uh oh! It looks like there's
+something wrong with the profits
+column - we would expect it to be a
+float64 like the revenue column.
+This indicates that it probably
+contains some noninteger values, so
+let's take a look.
+
+T@non_numberic_profits = df.profit.str.contains('[^0-9.-]')
+df.loc[non_numberic_profits].head()
+
+    evince -p 29 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+year
+228 1955 229
+Norton
+revenue
+profit
+60% OFF
+135.0
+N.A.
+in
+290 1955 291
+Schlitz Brewing
+100.0
+294 1955 295
+Pacific VegetableCatalog
+Oil
+ResourcesN.A. For Teams
+97.9
+296 1955 297
+Liebmann Breweries
+96.0
+N.A.
+Minneapolis-Moline
+77.4
+N.A.
+rank
+352 1955 353
+company
+N.A.
+
+Just as we suspected! Some of the
+values are strings, which has been
+used to indicate missing data. Are
+there any other have values that
+have crept in?
+
+set(df.profit[non_numberic_profits])
+
+{'N.A.'}
+
+That makes it easy to know that
+we're only dealing with one type of
+missing value, but what should we do
+about it? Well, that depends how
+many values are missing. '
+
+len(df.profit[non_numberic_profits])
+
+369
+
+    evince -p 30 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+It's a small fraction of our data
+set, though not completely
+inconsequential as it's still around
+1.5%.
+
+If rows containing N.A. are roughly
+uniformly distributed over the
+years, the easiest solution would
+just be to remove them. So let's
+have a quick look at the
+distribution. '
+
+bin_sizes, _, _ = plt.hist(df.year[non_numberic_profits], bins=range
+bin_sizes, _, _ = plt.hist(df.year[non_numberic_profits], bins=range
+
+At a glance, we can see that the
+most invalid values in a single year
+is fewer than 25, and as there are
+500 data points per year, removing
+these values would account for less
+than 4% of the data for the worst
+years. Indeed, other than a surge
+around the 90s, most years have
+fewer than half the missing values
+of the peak.
+
+    evince -p 31 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+For our purposes, let's say this is
+acceptable and go ahead and remove
+these rows. '
+
+df = df.loc[~non_numberic_profits]
+
+df.profit = df.profit.apply(pd.to_numeric)
+
+We should check that worked.
+
+len(df)
+
+25131
+
+df.dtypes
+
+year int64
+rank int64
+company object
+revenue float64
+profit float64
+dtype: object
+
+    evince -p 32 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Great! We have finished our data set
+setup.
+
+If we were going to present your
+notebook as a report, we could get
+rid of the investigatory cells we
+created, which are included here as
+a demonstration of the flow of
+working with notebooks, and merge
+relevant cells (see the N@Advanced
+Functionality set section below for
+more on this) to create a single
+data setup cell.
+
+This would mean that if we ever mess
+up our data set elsewhere, we can
+just rerun the setup cell to restore
+it.
+
+
+Plotting with matplotlib
+
+Next, we can get to addressing the
+question at hand by plotting the
+average profit by year. We might as
+well plot the revenue as well, so
+first we can define some variables
+and a method to reduce our code.
+
+N@T@T@group_by_year = df.loc[:, ['year', 'revenue', 'profit']].groupby('year'
+avgs = group_by_year.mean()
+x = avgs.index
+y1 = avgs.profit
+def plot(x, y, ax, title, y_label):
+  ax.set_title(title)
+  ax.set_ylabel(y_label)
+  ax.plot(x, y)
+  ax.margins(x=0, y=0)
+N@
+Now let's plot!
+
+fig, ax = plt.subplots()
+plot(x, y1, ax, 'Increase in mean Fortune 500 company profits from 1955 to 2005'
+
+    evince -p 33 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Wow, that looks like an exponential,
+but it's got some huge dips. '
+
+They must correspond to the early
+1990s recession and the dotcom
+bubble. It's pretty interesting to
+see that in the data. But how come
+profits recovered to even higher
+levels post each recession?
+
+Maybe the revenues can tell us more.
+
+y2 = avgs.revenue
+fig, ax = plt.subplots()
+plot(x, y2, ax, 'Increase in mean Fortune 500 company revenues from 1955 to 2005'
+
+    evince -p 34 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+That adds another side to the story.
+Revenues were not as badly hit -
+that's some great accounting work
+from the finance departments. '
+
+With a little help from Stack
+Overflow, we can superimpose these
+plots with +/- their standard
+deviations.
+
+def plot_with_std(x, y, stds, ax, title, y_label):
+  ax.fill_between(x, y - stds, y + stds, alpha=0.2)
+  plot(x, y, ax, title, y_label)
+fig, (ax1, ax2) = plt.subplots(ncols=2)
+title = 'Increase in mean and std Fortune 500 company %s from 1955 to 2005'
+stds1 = group_by_year.std().profit.values
+stds2 = group_by_year.std().revenue.values
+plot_with_std(x, y1.values, stds1, ax1, title % 'profits', 'Profit (millions)'
+plot_with_std(x, y2.values, stds2, ax2, title % 'revenues', 'Revenue (millions)'
+fig.set_size_inches(14, 4)
+fig.tight_layout()
+
+    evince -p 35 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+staggering, the standard deviations
+are huge! Some Fortune 500 companies
+make billions while others lose
+billions, and the risk has increased
+along with rising profits over the
+years.
+
+Perhaps some companies perform
+better than others; are the profits
+of the top 10% more or less volatile
+than the bottom 10%?
+
+There are plenty of questions that
+we could look into next, and it's
+easy to see how the flow of working
+in a notebook can match one's own
+thought process. For the purposes of
+this tutorial, we'll stop our
+analysis here, but feel free to
+continue digging into the data on
+your own! '
+
+This flow helped us to easily
+investigate our data set in one
+place without context switching
+between applications, and our work
+is immediately shareable and
+reproducible. n@N@If we wished to
+create a more concise report for a
+particular audience, we could
+quickly refactor our work by merging
+cells and removing intermediary
+code.
+
+    evince -p 36 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Jupyter Widgets
+
+T@T@Jupyter Widgets are interactive
+components that you can add to your
+notebooks to create a more engaging
+and dynamic experience. They allow
+you to build interactive GUIs
+directly within your notebooks,
+making it easier to explore and
+visualize data, adjust parameters,
+and showcase your results.
+
+To get started with Jupyter Widgets,
+you'll need to install the
+ipywidgets package. You can do this
+by running the following command in
+your Jupter terminal or command
+prompt: '
+
+t@T@T@pip3 install ipywidgets
+
+Once installed, you can import the
+ipywidgets module in your notebook
+and start creating interactive
+widgets. Here's an example that
+demonstrates how to create an
+interactive plot with a slider
+widget to select the year range: '
+
+    evince -p 37 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+import ipywidgets as widgets
+
+from IPython.display import display
+
+def update_plot(year_range):
+  start_year, end_year = year_range
+  mask = (x >= start_year) & (x <= end_year)
+  fig, ax = plt.subplots(figsize=(10, 6))
+  plot(x[mask], y1[mask], ax, f'Increase in mean Fortune 500 company profits from {st
+  plt.show()
+
+year_range_slider = widgets.IntRangeSlider(
+  value=[1955, 2005],
+  min=1955,
+  max=2005,
+  step=1,
+  description='Year range:',
+  continuous_update=False
+)
+
+'
+
+widgets.interact(update_plot, year_range=year_range_slider)
+
+Below is the output:
+
+    evince -p 38 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+T@In this example, we create an
+IntRangeSlider widget to allow the
+user to select a year range. The
+update_plot function is called
+whenever the widget value changes,
+updating the plot with the selected
+year range.
+
+T@Jupyter Widgets offer a wide range
+of controls, such as buttons, text
+boxes, dropdown menus, and more.
+N@N@You can also create custom
+widgets by combining existing
+widgets or building your own from
+scratch.
+
+
+Jupyter Terminal
+
+Jupyter Notebook also offers a
+powerful terminal interface that
+allows you to interact with your
+notebooks and the underlying system
+using command-line tools. t@T@The
+Jupyter terminal provides a
+convenient way to execute system
+commands, manage files, and perform
+various tasks without leaving the
+notebook environment.
+
+    evince -p 39 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+To access the Jupyter terminal, you
+can click on the "New" button in the
+Jupyter Notebook interface and
+select "Terminal" from the dropdown
+menu. This will open a new terminal
+session within the notebook
+interface.
+
+the Jupyter terminal, you can:
+
+- Navigate through directories and
+  manage files using common
+  command-line tools like cd, ls,
+  mkdir, cp, and mv.
+- n@N@Install packages and libraries
+  using package managers such as
+  pip or conda.
+- t@Run system commands and scripts
+  to automate tasks or perform
+  advanced operations.
+- Access and modify files in your
+  notebook's working directory.
+- N@Interact with version control
+  systems like Git to manage your
+  notebook projects.
+
+To make the most out of the Jupyter
+terminal, it's beneficial to have a
+basic understanding of command-line
+tools and syntax. Familiarizing
+yourself with common commands and
+their usage will allow you to
+leverage the full potential of the
+Jupyter terminal in your notebook
+workflow.
+
+
+Using terminal to add password:
+
+t@T@The Jupyter terminal provides a
+convenient way to add password
+protection to your notebooks. By
+running the command jupyter notebook
+password in the terminal, you can
+set up a password that will be
+required to access your notebook
+server.
+
+    evince -p 40 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+This extra layer of security ensures
+that only authorized users with the
+correct password can view and
+interact with your notebooks,
+safeguarding your sensitive data and
+intellectual property.
+Incorporating password protection
+through the Jupyter terminal is a
+simple yet effective measure to
+enhance the security of your
+notebook environment.
+
+
+Sharing Your Notebook
+
+When people talk about sharing their
+notebooks, there are generally two
+paradigms they may be considering.
+
+Most often, individuals share the
+end-result of their work, much like
+this article itself, which means
+sharing non-interactive, prerendered
+versions of their notebooks.
+However, it is also possible to
+collaborate on notebooks with the
+aid of version control systems such
+as Git or online platforms like
+N@Google Colab.
+
+
+Before You Share
+
+A shared notebook will appear
+exactly in the state it was in when
+you export or save it, including the
+output of any code cells. Therefore,
+to ensure that your notebook is
+share-ready, so to speak, there are
+a few steps you should take before
+sharing:
+
+- T@T@Click "Cell > All Output >
+Clear"
+- Click "Kernel > Restart & Run All"
+- Wait for your code cells to finish
+executing and check ran as expected
+
+    evince -p 41 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+T@This will ensure your notebooks
+don't contain intermediary output,
+have a stale state, and execute in
+order at the time of sharing.
+
+
+Exporting Your Notebooks
+
+T@Jupyter has built-in support for
+exporting to HTML and PDF as as
+several other formats, which you can
+find from the menu well under File >
+Download As.
+
+If you wish to share your notebooks
+with a small private group, this
+functionality may well be all you
+need. Indeed, as many researchers in
+academic institutions are given some
+public or internal webspace, and
+because you can export a notebook to
+an HTML file, Jupyter Notebooks can
+be an especially convenient way for
+researchers to share their results
+with their peers.
+
+t@But if sharing exported files
+doesn't cut it for you, there are
+also some immensely popular methods
+of sharing .ipynb files more
+directly on the web.
+
+
+GitHub
+
+t@With the number of public
+notebooks on GitHub exceeding 1.8
+million by early 2018, it is surely
+the most popular independent
+platform for sharing Jupyter
+projects with the world. t@T@GitHub
+has integrated support for rendering
+.ipynb files directly both in
+repositories and gists on its
+website. If you aren't already
+aware, GitHub is a code hosting
+platform for version control and
+collaboration for repositories
+created with Git. You'll need an
+account to use their services, but
+standard accounts are free.
+
+    evince -p 42 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Once you have a GitHub account, the
+easiest way to share a notebook on
+GitHub doesn't actually require Git
+at all. N@Since and 2008, GitHub has
+provided its Gist service for
+hosting sharing code snippets, which
+each get their own repository. To
+share a notebook using Gists: '
+
+- N@N@Sign in and navigate to
+  gist.github.com.
+- Open your .ipynb file in a text
+  editor, select all and copy the
+  JSON inside.
+- Paste the notebook JSON into the
+  gist.
+- Give your Gist a filename,
+  remembering to add .iypnb or this
+  will not work.
+- Click either "Create secret gist"
+  or "Create public gist."
+
+This should look something like the
+following:
+
+
+If you created a public Gist, you
+will now be able to share its URL
+with anyone, and others will be able
+to fork and clone your work.
+
+    evince -p 43 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Creating your own Git repository and
+sharing this on GitHub is beyond the
+scope of this tutorial, but GitHub
+provides plenty of guides for you to
+get started on your own.
+
+N@N@An extra tip for those using git
+is to add an exception to your
+.gitignore for those hidden
+.ipynb_checkpoints directories
+Jupyter creates, so as not to commit
+checkpoint files unnecessarily to
+your repo.
+
+
+Nbviewer
+
+T@N@Having grown to render hundreds
+of thousands of notebooks every week
+by 2015, NBViewer is the most
+popular notebook renderer on the
+web. If you already have somewhere
+to host your Jupyter Notebooks
+online, be it GitHub or elsewhere,
+NBViewer will render your notebook
+N@and provide a shareable URL along
+with it. N@Provided as a free service
+as part of Project Jupyter, it is
+available at nbviewer.jupyter.org.
+
+n@Initially developed before
+GitHub's Jupyter Notebook
+integration, NBViewer allows anyone
+to enter a URL, Gist ID, or GitHub
+username/repo/file and it will
+render the notebook as a webpage.
+N@A Gist's ID is the unique number
+at the end of its URL; for example,
+the string of characters after the
+last backslash in
+https://gist.github.com/username/50896401c23e0bf417e89cd57e89e1de.
+If you enter a GitHub username or
+username/repo, you will see a
+minimal file browser that lets you
+explore a user's repos and their
+contents.
+
+The URL NBViewer displays when
+displaying a notebook is a constant
+based on the URL of the notebook it
+is rendering, so you can share this
+with anyone and it will work as long
+as the original files remain online
+- NBViewer doesn't cache files for
+very long.
+
+    evince -p 44 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+- If you don't like Nbviewer, there
+are other similar options here's a
+thread with a few to consider from
+our community.
+
+
+Extras: Jupyter Notebook Extensions
+
+We've already covered everything you
+need to get rolling in Jupyter
+Notebooks, but here are a few extras
+worth knowing about.
+
+
+What Are Extensions?
+
+Extensions are precisely what they
+sound like - additional features
+that extend Jupyter Notebooks's
+functionality. While a base Jupyter
+Notebook can do an awful lot,
+extensions offer some additional
+features that may help with specific
+workflows, or that simply improve
+the user experience.
+
+n@For example, one extension called
+"Table of Contents" generates a
+table of contents for your notebook,
+to make large notebooks easier to
+visualize and navigate around.
+
+N@Another one, called "Variable
+Inspector", will show you the value,
+type, size, and shape of every
+variable in your notebook for easy
+quick reference and debugging.
+
+N@Another, called "ExecuteTime" lets
+you know when and for how long each
+cell ran - this can be particularly
+convenient if you're trying to speed
+up a snippet of your code. '
+
+These are just the tip of the
+iceberg; there are many extensions
+available.
+
+    evince -p 45 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Where Can You Get Extensions?
+
+T@N@To get the extensions, you need
+to install Nbextensions. N@You can
+do this using pip and the command
+line. N@N@If you have Anaconda, it
+may be better to do this through
+Anaconda Prompt rather than the
+regular command line.
+
+Close Jupyter Notebooks, open
+Anaconda Prompt, and run the
+following command:
+
+N@N@T@pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install
+
+N@Once you've done that, start up a
+notebook and you should seen an
+Nbextensions tab. Clicking this tab
+will show you a list of available
+extensions. Simply tick the boxes
+for the extensions you want to
+enable, and you're off to the races!
+
+
+Installing Extensions
+
+Once Nbextensions itself has been
+installed, there's no need for
+additional installation of each
+extension. n@However, if you've
+already installed Nbextensons but
+aren't seeing the tab, you're not
+alone. This thread on Github details
+some common issues and solutions.
+
+
+T@T@T@Extras: Line Magics in Jupyter
+
+We mentioned magic commands earlier
+when we used
+%matplotlib inline n@N@N@to make
+Matplotlib charts render right in
+our notebook. There are many other
+magics we can use, too.
+
+    evince -p 46 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+How to Use Magics in Jupyter
+
+N@A good first step is to open a
+Jupyter Notebook, type
+%lsmagic
+into a cell, and run the cell. This
+will output a list of the available
+line magics and cell magics, and it
+will also tell you whether
+"automagic" is turned on.
+
+- N@N@Line magics operate on a single
+line of a code cell
+- Cell magics operate on the entire
+code cell in which they are called
+
+T@T@If automagic is on, you can run
+a magic simply by typing it on its
+own line in a code cell, and running
+the cell. T@N@If it is off, you will
+need to put % before line magics and
+%% before cell magics to use them.
+
+N@Many magics require additional
+input (much like a function requires
+an argument) to tell them how to
+operate. We'll look at an example in
+the next section, N@N@but you can see
+the documentation for any magic by
+running it with a question mark,
+like so:%matplotlib? '
+
+When you run the above cell in a
+notebook, a lengthy docstring will
+pop up onscreen with details about
+how you can use the magic.
+
+
+A Few Useful Magic Commands
+
+We cover more in the advanced
+Jupyter tutorial, but here are a few
+to get you started:
+
+    evince -p 47 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+T@N@N@N@Magic Command
+
+%run
+
+  N@N@Runs an external script file
+  as part of the cell being
+  executed.
+
+  For example, if %run myscript.py
+  appears in a code cell,
+  myscript.py will be executed by
+  the kernel as part of that cell.
+
+%timeit
+
+  N@Counts loops, measures and
+  reports how long a code cell
+  takes to execute.
+
+%writefile
+
+  N@Save the contents of a cell to a
+  file.
+
+  For example, %savefile
+  myscript.py would save the code
+  cell as an external file called
+  myscript.py.
+
+%store
+
+  T@Save a variable for use in a
+  different notebook.
+
+%pwd
+
+  T@Print the directory path you're
+  currently working in.
+
+%%javascript
+
+  Runs the cell as JavaScript code.
+
+There's plenty more where that came
+from. t@T@Hop into Jupyter Notebooks
+and start exploring using %lsmagic!
+
+    evince -p 48 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+Final Thoughts
+
+Starting from scratch, we have come
+to grips with the natural workflow
+of Jupyter Notebooks, delved into
+IPython's more advanced features,
+and finally learned how to share our
+work with friends, colleagues, and
+the world. And we accomplished all
+this from a notebook itself!
+
+It should be clear how notebooks
+promote a productive working
+experience by reducing context
+switching and emulating a natural
+development of thoughts during a
+project. The power of using Jupyter
+Notebooks should also be evident,
+and we covered plenty of leads to
+get you started exploring more
+advanced features in your own
+projects.
+
+If you'd like further inspiration
+for your own Notebooks, Jupyter has
+put together a gallery of
+interesting Jupyter Notebooks that
+you may find helpful N@N@and the
+Nbviewer homepage links to some
+really fancy examples of quality
+notebooks.
+
+T@N@If you'd like to learn more about
+this topic, check out Dataquest's
+interactive Python Functions and
+Learn Jupyter Notebook course, and
+our Data Analyst in Python, and Data
+Scientist in Python paths that will
+help you become job-ready in around
+6 months.
+
+    evince -p 49 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-begtut_2024.pdf &
+
+More Great Jupyter Notebooks Resources
+
+- T@N@Advanced Jupyter Notebooks
+Tutorial - Now that you've mastered
+the basics, become a Jupyter
+Notebooks pro with this advanced
+tutorial!
+- 28 Jupyter Notebooks Tips, Tricks,
+and Shortcuts
+- Make yourself into a power user
+and increase your efficiency with
+these tips and tricks!
+- Guided Project - Install and Learn
+Jupyter Notebooks - Give yourself a
+great foundation working with
+Jupyter Notebooks by working through
+this interactive guided project
+that'll get you set up and teach you
+the ropes.
+
+
+
+___Latex
+    evince -p 1 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+  "All code and no heading makes
+  Jupyter a dull read."
+
+You may have heard the above
+proverb, but if not, then well, I
+have just made it up! But it does
+hold some weight, especially given
+that if you have glanced at
+notebooks published by others, you
+might also have noticed that the
+authors have helpfully described
+their code by incorporating text,
+links, and images between code
+cells. n@T@T@To do that, you can use
+a Markdown cell. Markdown writing
+skills are essential to portray your
+work in the Jupyter notebook to
+offer the reader a sufficient
+explanation of both the code and the
+concept.
+
+But first...
+
+    evince -p 2 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+What's Markdown? '
+
+Markdown is a lightweight Markup
+language with a plain text syntax.
+John Gruber developed the Markdown
+language in 2004 in a collaborative
+effort with Aaron Swartz, intending
+to enable people to "write with
+easy-to-read and easy-to-write
+plain text format and potentially
+convert it to structurally correct
+XHTML (or HTML)." Markdown is
+designed to be as easy-to-read and
+easy-to-write as possible.
+Readability, however, is emphasized
+above all else.
+
+Nevertheless, Markdown is not a
+substitute for, or even close to,
+HTML. Its syntax is minimal,
+correlating only to a tiny
+proportion of HTML tags. Markdown's
+idea is to make reading, writing,
+and editing prose easy without the
+intention to create a syntax that's
+just for quickly adding HTML tags.
+N@HTML is a format for publishing,
+while Markdown is a format for
+reading. Therefore, the formatting
+syntax of Markdown tackles just
+issues that can be expressed in
+plain text. T@You simply use HTML for
+any Markup that is not covered by
+the Markdown syntax. N@You don't need
+to preface it or delimit it to
+indicate that you are switching
+from Markdown to HTML - you just
+use the tags. '
+
+Among the data enthusiasts, Jupyter
+notebook is in trend. It is simple
+to use and helps you to create and
+share documents that include code,
+visualizations, and narration.
+Recall that a Jupyter Notebook is a
+series of cells that can store text
+or code. Cells shape a notebook's
+core. Markdown Cells allows you to
+write and render Markdown syntax.
+Here's where you can explain and
+document the processes. On the
+other hand, code cells allow you to
+write and run program code like
+Python.
+
+Figure: Jupyter Notebook - Types of Cells
+
+  Hm@Note: The Markdown formatting
+  syntax is not processed within
+  block-level HTML tags but is
+  processed within span-level tags.
+
+    evince -p 3 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Now that we have some background
+knowledge about Markdown, without
+any further ado, let's dive into
+the syntax! '
+
+
+Markdown Syntax Collections
+
+Headings ----
+
+Markdown Syntax
+
+# Header 1
+## Header 2
+### Header 3
+#### Header 4
+##### Header 5
+###### Header 6
+
+Equivalent HTML Syntax
+
+<h1>Header 1</h1>
+<h2>Header 2</h2>
+<h3>Header 3</h3>
+<h4>Header 4</h4>
+<h5>Header 5</h5>
+<h6>Header 6</h6>
+
+    evince -p 4 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Rendered Output
+
+
+Text Emphasis ----
+
+Bold
+
+Markdown Syntax
+
+**This is bold text**
+__This is bold text__
+
+Equivalent HTML Syntax
+
+<strong>This is bold text</strong>
+
+Rendered Output
+
+
+Italic
+
+Markdown Syntax
+
+*This is italic text*
+_This is italic text_
+
+    evince -p 5 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Equivalent HTML Syntax
+
+<em>This is italic text</em>
+
+Rendered Output
+
+
+Bold & Italic ----
+
+Markdown Syntax
+
+***Bold and Italic***
+___Bold and Italic___
+
+Equivalent HTML Syntax
+
+<strong><em> Bold and Italic </em></strong>
+
+Rendered Output
+
+
+Strikethrough
+
+Markdown Syntax
+
+~~Scratch this~~
+
+Equivalent HTML Syntax
+
+<del>Scratch this</del>
+
+    evince -p 6 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Rendered Output
+
+
+Backslash Escape
+
+Backslash Escape prevents Markdown
+from interpreting a character as an
+instruction, rather than as the
+character itself.
+
+Markdown Syntax
+
+\# Not a header
+
+Equivalent HTML Syntax
+
+# Not a header
+
+Rendered Output
+
+
+Paragraphs
+
+A paragraph is simply one or more
+consecutive lines of text,
+separated by one or more blank
+lines.
+
+Markdown Syntax
+
+Hello World!
+We are learning Markdown.
+
+    evince -p 7 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Equivalent HTML Syntax
+
+<p>Hello World!</p>
+
+<p>We are learning Markdown.</p>
+
+
+Line Break
+
+A line break is the termination of
+the previous line and the beginning
+of a new line.
+
+Markdown Syntax
+
+To force a line return, place two
+or more empty spaces at the end of
+a line and press the Enter key.
+
+Some text
+
+Some more text
+
+Equivalent HTML Syntax
+
+The line break tag starts with <br>
+tag with no closing tag which
+breaks the line, and the remaining
+contents begin with a new line.
+
+Some text <br>
+Some more text
+
+Rendered Output
+
+
+Blockquotes
+
+Blockquotes can hold the large
+chunk of text and are generally
+indented.
+
+    evince -p 8 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Markdown Syntax
+
+> This is a blockquote
+
+Equivalent HTML Syntax
+
+<blockquote>This is a blockquote</blockquote>
+
+Rendered Output
+
+
+NESTED BLOCK QUOTING
+
+Markdown Syntax
+
+t@T@> some text
+>> and then some more text
+>>> and then some more
+
+Equivalent HTML Syntax
+
+<blockquote>
+  <p>some text</p>
+  <blockquote>
+    <p>and then some more text</p>
+    <blockquote>
+      <p>and then some more</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+    evince -p 9 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Rendered Output
+
+
+Horizontal Line
+
+Markdown Syntax
+
+---
+***
+
+Equivalent HTML Syntax
+
+<hr>
+
+Rendered Output
+
+
+Ordered List
+
+The Ordered List is a numbered list.
+
+    evince -p 10 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Markdown Syntax
+
+- 1. Cheese
+- 2. Carrot
+- 3. Coconut
+
+Note: Numbering is irrelevant
+
+Equivalent HTML Syntax
+
+<ol>
+  <li>Cheese</li>
+  <li>Carrot</li>
+  <li>Coconut</li>
+</ol>
+
+Rendered Output
+
+
+Unordered List
+
+The Unordered list is a bullet
+list.
+
+Markdown Syntax
+
+- Cheese
+- Carrot
+- Coconut
+
+Equivalent HTML Syntax
+
+<ul>
+  <li>Cheese</li>
+  <li>Carrot</li>
+  <li>Coconut</li>
+</ul>
+
+    evince -p 11 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Rendered Output
+
+
+Graphics
+
+You can attach graphics (such as
+images) to a notebook in Markdown
+cells.
+
+  N@Note1: You can also Drag and Drop
+  your images to the Markdown cell
+  to attach it to the notebook.
+
+  N@T@Note2: Below I have used links
+  to images on the web but you can
+  very well use an offline image by
+  adding the complete filename (plus
+  the file path if it is in a
+  different directory other then
+  the Jupyter Notebook).
+
+
+Markdown Syntax
+
+One simple way of adding an image
+to a Markdown cell is through the
+following syntax:
+
+![](https://www.python.org/static/community_logos/python-logomaster-v3-TM.png)
+
+If you want to add a hover title to
+the image then you can simply
+modify the syntax like below:
+
+![](https://www.python.org/static/community_logos/python-logomaster-v3-TM.png "Python Logo")
+
+You can also use the
+reference-style format for the
+images:
+
+![][some-id]
+
+    evince -p 12 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+[some-id]: https://www.python.org/static/community_logos/python-logo-master-v3-TM.png "Python Logo"
+
+Equivalent HTML Syntax
+
+<img src="https://www.python.org/static/community_logos/pythonlogo-master-v3-TM.png" title="Python Logo"/>
+
+Rendered Output
+
+
+Hyperlinks
+
+AUTOMATIC LINKS
+
+Markdown Syntax
+
+https://en.wikipedia.org
+
+Equivalent HTML Syntax
+
+<a href="https://en.wikipedia.org">https://en.wikipedia.org</a>
+
+    evince -p 13 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Standard Links
+
+Markdown Syntax
+
+[click me](https://en.wikipedia.org)
+
+Equivalent HTML Syntax
+
+<a href="https://en.wikipedia.org">click me</a>
+
+
+Standard Links (With Mouse-Over Titles)
+
+Markdown Syntax
+
+[click me](https://en.wikipedia.org "Wikipedia")
+
+Equivalent HTML Syntax
+
+<a href="https://en.wikipedia.org" title="Wikipedia">click me</a>
+
+
+Reference-Style Links
+
+Markdown Syntax
+
+This is [a reference][id]
+[id]: https://en.wikipedia.org "Wikipedia"
+
+  Note: Link IDs are not
+  case-sensitive.
+
+You don't really have to give your
+link an ID. T@If you use the words in
+the first set of brackets to later
+define the link, Markdown will
+understand it. This works as
+follows: '
+
+This is [a reference][]
+[a reference]: https://en.wikipedia.org "Wikipedia"
+
+    evince -p 14 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Equivalent HTML Syntax
+
+This is <a href="https://en.wikipedia.org" title="Wikipedia">a
+reference</a>
+
+Rendered Output
+
+
+Anchor Links
+
+An anchor link is a link on a page
+that brings you to a specific place
+on that page. N@T@In a Jupyter
+Notebook, it can be used to link to
+any section of the notebook for
+easy navigation.
+
+  n@Note: The ID used for the linking
+  should be unique to avoid
+  misdirection.
+
+
+Technique 1
+
+Create a new cell above the section
+you want to link to and add the
+following line of code:
+
+<a id="id"></a>
+
+To create an anchor link that links
+to the above section, simply add
+the following line of code:
+
+[Section title](#id)
+
+    evince -p 15 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Technique 2
+
+If you have a section with the
+heading - My Great Heading then to
+add an anchor link to this section,
+simply add a hyphen in place of the
+blank space like below:
+
+[Section title](#My-Great-Heading)
+
+Rendered Output
+
+
+Task Lists
+
+T@T@Markdown Syntax
+
+- [x] Some task
+- [ ] Some more task
+
+Equivalent HTML Syntax
+
+<input type="checkbox" disabled checked> Some task
+<input type="checkbox" disabled> Some more task
+
+Rendered Output
+
+    evince -p 16 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Code Section
+
+Markdown Syntax
+
+Inline Code:
+
+`some piece of inline code`
+```
+some piece of block code
+```
+
+You can also perform syntax
+highlighting like below:
+
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
+```python
+s = "Python syntax highlighting"
+print s
+```
+
+Equivalent HTML Syntax
+
+n@N@You can use the <code> tags in
+HTML to get similar results. For
+syntax highlighting, appropriate
+classes have to be utilized for the
+different elements.
+
+Rendered Output
+
+    evince -p 17 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+The Ultimate Markdown Guide (for Jupyter Notebook) ...
+
+Table
+
+A table can be constructed using |
+(pipe symbol) and - (dash) to mark
+columns and rows.
+
+Markdown Syntax
+
+|Header|Header|Header|
+|------|------|------|
+|A |B |C |
+|X |Y |Z |
+
+  Note: It is not important to add
+  spaces after each text, roughly
+  aligning with the columns will do
+  just fine. Also, the number of
+  dashes is irrelevant and is just
+  cosmetic.
+
+The text in each header and cell of
+a table will by default justify to
+the right.
+
+N@N@For manually changing the
+justification, you can use:
+
+- Use :-: for centered
+- Use - for right centered
+- Use :- for left centered
+
+Equivalent HTML Syntax
+
+<table>
+  <thead>
+    <tr><th>Header</th><th>Header</th><th>Header</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>A</td><td>B</td><td>C</td></tr>
+    <tr><td>X</td><td>Y</td><td>Z</td></tr>
+  </tbody>
+</table>
+
+Rendered Output
+
+    evince -p 18 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Inline HTML
+
+Text Color
+
+<span style="color:color">Text</span>
+
+Where color = blue|red|green|pink|yellow
+
+For a list of all the supported
+color names, checkout HTML Color
+Names.
+
+You can use also use the HEX color
+codes for customizing the text
+color.
+
+Rendered Output
+
+
+Text Font Family
+
+<span style="font-family:Comic Sans MS">This is a text</span>
+
+For a list of some commonly used
+fonts, checkout CSS Font Family
+List.
+
+Rendered Output
+
+    evince -p 19 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Colored Note Boxes
+
+Use one of the following <div> tags
+to display text in a colored box.
+The color of the box is determined
+by the alert type that is
+specified.
+
+Blue boxes (alert-info)
+
+  <div class="alert alert-block alert-info">
+  <b>Tip:</b> Use blue boxes (alert-info) for tips and notes.</div>
+
+Yellow boxes (alert-warning)
+
+  <div class="alert alert-block alert-warning">
+
+  <b>Example:</b> Use yellow boxes for examples that are not inside code cells, or use for mathematical formulas if needed. Typically also used to display warning messages.
+
+  </div>
+
+Green boxes (alert-success)
+
+  <div class="alert alert-block alert-success">
+  <b>Success:</b> This alert box indicates a successful or positive action.
+  </div>
+
+Red boxes (alert-danger)
+
+  <div class="alert alert-block alert-danger">
+  <b>Danger:</b> This alert box indicates a dangerous or potentially negative action.
+  </div>
+
+Rendered Output
+
+    evince -p 20 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Cell Background Color
+
+<code style="background:yellow;color:black">Useful for highlighting to grab the attention of the reader towards certain points.</code>
+
+Rendered Output
+
+I also tend to use the following
+color style when adding a piece of
+terminal code to a Markdown cell:
+
+<p style="background:black">
+<code style="background:black;color:white">C:\Users\YOUR_USERNAME>
+pip3 install roughviz
+</code>
+</p>
+
+By the way, roughviz is a Python
+visualization library that I have
+created for creating
+sketchy/hand-drawn styled charts.
+N@Do check it out on Github and PyPI.
+
+    evince -p 21 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+HTML Mark Tag
+
+Highlight parts of a text:
+
+Do not forget to buy <mark>milk</mark> today.
+
+Rendered Output
+
+
+Definition Lists
+
+<dl>
+  <dt>First Term</dt>
+  <dd>This is the definition of the first term.</dd>
+  <dt>Second Term</dt>
+  <dd>This is one definition of the second term. </dd>
+  <dd>This is another definition of the second term.</dd>
+</dl>
+
+Rendered Output
+
+    evince -p 22 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+Navigation Menu
+
+It defines a set of navigation
+links.
+
+<nav>
+  <a href="https://www.google.com">LinkedIn</a> |
+  <a href="/css/">Github</a> |
+  <a href="/js/">Medium</a> |
+</nav>
+
+Rendered Output
+
+
+___Latex
+LaTeX Math
+
+t@N@N@N@Jupyter Notebooks' Markdown
+cells support LateX for formatting
+mathematical equations. To tell
+Markdown to interpret your text as
+LaTex, surround your input with
+dollar signs like this: '
+
+$\sqrt{k}$
+
+Rendered Output
+
+
+Geometric Shapes
+
+N@N@Use this code with a decimal or
+hex reference number from here:
+UTF-8 Geometric shapes
+
+&#reference_number;
+
+    evince -p 23 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnotebmarkdown-ultimguide.pdf &
+
+If you found this article useful,
+then make sure to hit that clap
+button like crazy! Also, follow me
+on medium to get more awesome
+articles directly in your feed.
+
+
+    evince -p 7 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-realpython.pdf &
+
+https://realpython.com/jupyter-notebook-introduction/
+
+This tutorial has a related video
+course created by the Real Python
+team. Watch it together with the
+written tutorial to deepen your
+understanding: Using Jupyter
+Notebooks
+
+The Jupyter Notebook is an open
+source web application that you can
+use to create and share documents
+that contain live code, equations,
+visualizations, and text. Jupyter
+Notebook is maintained by the
+people at Project Jupyter.
+
+Jupyter Notebooks are a spin-off
+project from the IPython project,
+which used to have an IPython
+Notebook project itself. The name,
+Jupyter, comes from the core
+supported programming languages
+that it supports: Julia, Python,
+and R. Jupyter ships with the
+IPython kernel, which allows you to
+write your programs in Python, but
+there are currently over 100 other
+kernels that you can also use.
+
+Free Bonus: 5 Thoughts On Python
+Mastery, a free course for Python
+developers that shows you the
+roadmap and the mindset you'll
+need to take your Python skills
+to the next level. '
+
+    evince -p 8 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-realpython.pdf &
+
+Getting Up and Running With Jupyter Notebook
+
+The Jupyter Notebook is not
+included with Python, so if you
+want to try it out, you will need
+to install Jupyter.
+
+There are many distributions of the
+Python language. This article will
+focus on just two of them for the
+purposes of installing Jupyter
+Notebook. The most popular is
+CPython, which is the reference
+version of Python that you can get
+from their website. It is also
+assumed that you are using Python
+3.
+
+
+Installation
+
+If so, then you can use a handy
+tool that comes with Python called
+pip to install Jupyter Notebook
+like this:
+
+Shell
+
+$ pip install jupyter
+
+The next most popular distribution
+of Python is Anaconda. N@N@Anaconda
+has its own installer tool called
+conda that you could use for
+installing a third-party package.
+However, Anaconda comes with many
+scientific libraries preinstalled,
+including the Jupyter Notebook, so
+you don't actually need to do
+anything other than install Anaconda
+itself.
+
+
+Starting the Jupyter Notebook Server
+
+Now that you have Jupyter
+installed, let's learn how to use
+it. To get started, all you need to
+do is open up your terminal
+application and go to a folder of
+your choice. I recommend using
+something like your Documents
+folder to start out with and create
+a subfolder there called Notebooks
+or something else that is easy to
+remember.
+
+Then just go to that location in
+your terminal and run the following
+command:
+
+T@T@$ jupyter notebook
+
+This will start up Jupyter and your
+default browser should start (or
+open a new tab) to the following
+URL: http://localhost:8888/tree
+
+Your browser should now look
+something like this:
+
+Note that right now you are not
+actually running a Notebook, but
+instead you are just running the
+Notebook server. Let's actually
+create a Notebook now! '
+
+
+Creating a Notebook
+
+Now that you know how to start a
+Notebook server, you should
+probably learn how to create an
+actual Notebook document.
+
+All you need to do is click on the
+New button (upper right), and it
+will open up a list of choices. On
+my machine, I happen to have Python
+2 and Python 3 installed, so I can
+create a Notebook that uses either
+of these. For simplicity's sake,
+let's choose Python 3.
+
+    evince -p 9 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-realpython.pdf &
+
+Your web page should now look like this:
+
+In [ ]: |                      |
+
+
+Naming
+
+You will notice that at the top of
+the page is the word Untitled. This
+is the title for the page and the
+name of your Notebook. Since that
+isn't a very descriptive name,
+let's change it!
+
+Just move your mouse over the word
+Untitled and click on the text. You
+should now see an in-browser dialog
+titled Rename Notebook. Let's
+rename this one to Hello Jupyter:
+
+
+Running Cells
+
+A Notebook's cell defaults to using
+code whenever you first create one,
+and that cell uses the kernel that
+you chose when you started your
+Notebook.
+
+In this case, you started yours
+with Python 3 as your kernel, so
+that means you can write Python
+code in your code cells. Since your
+initial Notebook has only one empty
+cell in it, the Notebook can't
+really do anything.
+
+Thus, to verify that everything is
+working as it should, you can add
+some Python code to the cell and
+try running its contents.
+
+Let's try adding the following code
+to that cell:
+
+print('Hello Jupyter!')
+
+Running a cell means that you will
+execute the cell's contents. To
+execute a cell, you can just select
+the cell and click the Run button
+that is in the row of buttons along
+the top. It's towards the middle.
+N@If you prefer using your keyboard,
+you can just press s-Enter.
+
+    evince -p 10 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-realpython.pdf &
+
+When I ran the code above, the
+output looked like this:
+
+In [2]: print('Hello Jupyter')
+    Hello Jupyter
+
+In [ ]:
+
+If you have multiple cells in your
+Notebook, and you run the cells in
+order, you can share your variables
+and imports across cells. This
+makes it easy to separate out your
+code into logical chunks without
+needing to reimport libraries or
+recreate variables or functions in
+every cell.
+
+When you run a cell, you will
+notice that there are some square
+braces next to the word In to the
+left of the cell. The square braces
+will auto fill with a number that
+indicates the order that you ran
+the cells. For example, if you open
+a fresh Notebook and run the first
+cell at the top of the Notebook,
+the square braces will fill with
+the number 1.
+
+
+The Menus
+
+The Jupyter Notebook has several
+menus that you can use to interact
+with your Notebook. The menu runs
+along the top of the Notebook just
+like menus do in other
+applications. Here is a list of the
+current menus:
+
+- File
+- Edit
+- View
+- Insert
+- Cell
+- Kernel
+- Widgets
+- Help
+
+Let's go over the menus one by one.
+This article won't go into detail
+for every single option in every
+menu, but it will focus on the
+items that are unique to the
+Notebook application.
+
+The first menu is the File menu. In
+it, you can create a new Notebook
+or open a preexisting one. This is
+also where you would go to rename a
+Notebook. I think the most
+interesting menu item is the Save
+and Checkpoint option. N@This allows
+you to create checkpoints that you
+can roll back to if you need to.
+
+Next is the Edit menu. Here you can
+cut, copy, and paste cells. T@This
+is also where you would go if you
+wanted to delete, split, or merge a
+cell. T@You can reorder cells here
+too.
+
+Note that some of the items in this
+menu are greyed out. The reason for
+this is that they do not apply to
+the currently selected cell. For
+example, a code cell cannot have an
+image inserted into it, but a
+Markdown cell can. If you see a
+greyed out menu item, try changing
+the cell's type and see if the item
+becomes available to use.
+
+The View menu is useful for
+toggling the visibility of the
+header and toolbar. You can also
+toggle Line Numbers within cells on
+or off. This is also where you
+would go if you want to mess about
+with the cell's toolbar.
+
+    evince -p 11 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-realpython.pdf &
+
+The Insert menu is just for
+inserting cells above or below the
+currently selected cell.
+
+The Cell menu allows you to run one
+cell, a group of cells, or all the
+cells. N@You can also go here to
+change a cell's type, although I
+personally find the toolbar to be
+more intuitive for that.
+
+T@The other handy feature in this
+menu is the ability to clear a
+cell's output. T@If you are planning
+to share your Notebook with others,
+you will probably want to clear the
+output first so that the next
+person can run the cells
+themselves.
+
+The Kernel cell is for working with
+the kernel that is running in the
+background. T@Here you can restart
+the kernel, reconnect to it, shut it
+down, or even change which kernel
+your Notebook is using. N@ You
+probably won't be working with the
+Kernel all that often, but there are
+times when you are debugging a
+Notebook that you will find you need
+to restart the Kernel. When that
+happens, this is where you would go.
+'
+
+n@T@The Widgets menu is for saving
+and clearing widget state. Widgets
+are basically JavaScript widgets
+that you can add to your cells to
+make dynamic content using Python
+(or another Kernel).
+
+N@Finally you have the Help menu,
+which is where you go to learn
+about the Notebook's keyboard
+shortcuts, a user interface tour,
+and lots of reference material. '
+
+
+Starting Terminals and Other Things
+
+Jupyter Notebook also allows you to
+start more than just Notebooks. You
+can also create a text file, a
+folder, or a Terminal in your
+browser. Go back to the home page
+that opened when you first started
+the Jupyter server at
+http://localhost:8888/ tree. Go to
+the New button and choose one of
+the other options.
+
+T@The Terminal is probably the most
+interesting of the bunch, as it is
+running your operating systems
+terminal in the browser. This
+allows you to run bash, Powershell,
+and so on in your browser and run
+any shell command that you might
+need to there.
+
+
+Viewing What's Running '
+
+Also on the home page of your
+Jupyter server
+(http://localhost:8888/tree) are
+two other tabs: Running and
+Clusters.
+
+T@The Running tab will tell you which
+Notebooks and Terminals you are
+currently running. This is useful
+for when you want to shut down your
+server but you need to make sure
+that you have saved all your data.
+Fortunately, Notebooks auto-save
+pretty frequently, so you rarely
+lose data. n@But it's good to be able
+to see what's running when you need
+to.
+
+The other nice thing about this tab
+is that you can go through your
+running applications and shut them
+down there.
+
+
+Adding Rich Content
+
+Jupyter Notebook supports adding
+rich content to its cells. In this
+section, you will get an overview
+of just some of the things you can
+do with your cells using Markup and
+Code.
+
+
+Cell Types
+
+T@There are technically four cell
+types: Code, Markdown, Raw
+NBConvert, and Heading.
+
+    evince -p 12 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-realpython.pdf &
+
+The Heading cell type is no longer
+supported and will display a dialog
+that says as much. T@T@Instead, you
+are supposed to use Markdown for
+your Headings.
+
+T@The Raw NBConvert cell type is only
+intended for special use cases when
+using the nbconvert command line
+tool. Basically it allows you to
+control the formatting in a very
+specific way when converting from a
+Notebook to another format.
+
+n@The primary cell types that you
+will use are the Code and Markdown
+cell types. You have already
+learned how code cells work, so
+let's learn how to style your text
+with Markdown. '
+
+
+Styling Your Text
+
+Jupyter Notebook supports Markdown,
+which is a markup language that is
+a superset of HTML. This tutorial
+will cover some of the basics of
+what you can do with Markdown.
+
+Set a new cell to Markdown and then
+add the following text to the cell:
+
+User single _underscores_ or single *asterisks' to get italics '
+
+When you run the cell, the output
+should look like this:
+
+If you would prefer to bold your
+text, use a double underscore or
+double asterisk.
+
+
+Headers
+
+Creating headers in Markdown is
+also quite simple. You just have to
+use the humble pound sign. The more
+pound signs you use, the smaller
+the header. Jupyter Notebook even
+kind of previews it for you:
+
+
+Then when you run the cell, you
+will end up with a nicely formatted
+header:
+
+
+    evince -p 13 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-realpython.pdf &
+
+Creating Lists
+
+t@You can create a list (bullet
+points) by using dashes, plus
+signs, or asterisks. Here is an
+example:
+
+
+Code and Syntax Highlighting
+
+n@T@If you want to insert a code
+example that you don't want your
+end user to actually run, you can
+use Markdown to insert it. For
+inline code highlighting, just
+surround the code with backticks.
+If you want to insert a block of
+code, you can use triple backticks
+and also specify the programming
+language: '
+
+```python
+s = "Syntax highlighting for Python"
+print(x)
+```
+
+
+Exporting Notebooks
+
+When you are working with Jupyter
+Notebooks, you will find that you
+need to share your results with
+non-technical people. T@When that
+happens, you can use the nbconvert
+tool which comes with Jupyter
+Notebook to convert or export your
+Notebook into one of the following
+formats:
+
+- HTML
+- LaTeX
+- PDF
+- RevealJS
+- Markdown
+- ReStructured Text
+- Executable script
+
+t@The nbconvert tool uses Jinja
+templates under the covers to
+convert your Notebook files
+(.ipynb) into these other formats.
+
+Jinja is a template engine that was
+made for Python. n@Also note that
+nbconvert also depends on Pandoc
+and TeX to be able to export to all
+the formats above. If you don't
+have one or more of these, some of
+the export types may not work. For
+more information, you should check
+out the documentation. '
+
+
+How to Use nbconvert
+
+The nbconvert command does not take
+very many parameters, which makes
+learning how to use it easier. Open
+up a terminal and navigate to the
+folder that contains the Notebook
+you wish to convert. The basic
+conversion command looks like this:
+
+    evince -p 14 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-realpython.pdf &
+
+T@$ jupyter nbconvert <input notebook> --to <output format>
+
+
+Example Usage
+
+Let's pretend that you have a
+Notebook named py_examples.ipynb
+and you want to convert it to PDF.
+Here is the command you would use
+to do that: '
+
+$ jupyter nbconvert py_examples.ipynb --to pdf
+
+When you run this command, you
+should see some output that tells
+you about the conversion process.
+nbconvert will display warnings and
+errors if there are any. Assuming
+everything goes according to plan,
+you will now have a py_examples.pdf
+file in your folder.
+
+The conversion process for the
+other file types is quite similar.
+You just have to tell nbconvert
+what type to convert to (PDF,
+Markdown, HTML, and so on).
+
+
+Use the Menu
+
+You can also export your currently
+running Notebook by going to the
+File menu and choosing the
+n@Download as option.
+
+This option allows you to download
+in all the formats that nbconvert
+supports. The benefit of using the
+menu is that you don't need to
+learn the nbconvert at all if you
+don't want to. N@However I recommend
+doing so as you can use nbconvert
+to export multiple Notebooks at
+once, which is something that the
+menu does not support.
+
+
+Notebook Extensions
+
+While Jupyter Notebooks have lots
+of functionality built in, you can
+add new functionality through
+extensions. t@N@Jupyter actually
+supports four types of extensions:
+
+- Kernel
+- IPython kernel
+- Notebook
+- Notebook server
+
+This tutorial will focus on
+Notebook extensions.
+
+
+What Are Extensions?
+
+A Notebook extension (nbextension)
+is a JavaScript module that you
+load in most of the views in the
+Notebook's frontend. If you are
+handy with JavaScript, you can even
+write your own extension. An
+extension can access the page's DOM
+and the Jupyter JavaScript API.
+
+
+Where Do I Get Extensions?
+
+You can use Google or search for
+Jupyter Notebook extensions. There
+are actually quite a few out there.
+t@One of the most popular extension
+sets is called
+jupyter_contrib_nbextensions, which
+you can get from GitHub. This is
+actually a collection of extensions
+that is provided by the Jupyter
+community and installed with pip.
+
+    evince -p 15 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/jupnoteb-realpython.pdf &
+
+How Do I Install Them?
+
+Most Jupyter Notebook extensions
+can be installed using Python's pip
+tool. N@If you find an extension that
+can't be installed with pip, then
+you will likely have to use the
+following command:
+
+$ jupyter nbextension install EXTENSION_NAME
+
+This only installs the extension
+but does not make it active. n@You
+will need to enable an extension
+after installing it by running the
+following:
+
+$ jupyter nbextension enable EXTENSION_NAME
+
+You may need to restart your
+Jupyter Notebook kernel to see the
+extension.
+
+There is a nice meta extension
+called Jupyter NbExtensions
+Configurator that is worth getting
+for managing other extensions. n@It
+allows you to enable and disable
+your extensions from within the
+Jupyter Notebook's user interface
+and also shows all the currently
+installed extensions. '
+
+
+Conclusion
+
+The Jupyter Notebook is quite useful
+not only for learning and teaching a
+programming language such as Python
+but also for sharing your data.
+
+n@T@You can turn your Notebook into
+a slideshow or share it online with
+GitHub. T@T@If you want to share a
+Notebook without requiring your
+users to install anything, you can
+use binder for that.
+
+Google and Microsoft both have
+their own version of the Notebook
+that you can use to create and
+share your Notebooks at t@Google
+Colaboratory and Microsoft Azure
+Notebooks respectively. T@You can
+browse really interesting Notebooks
+there as well.
+
+Project Jupyter recently launched
+their latest product, JupyterLab.
+n@T@JupyterLab incorporates Jupyter
+Notebook into an Integrated
+Development type Editor that you run
+in your browser. You can kind of
+think of JupyterLab as an advanced
+version of Jupyter Notebook.
+T@T@JupyterLab allows you to run
+terminals, text editors and code
+consoles in your browser in addition
+to Notebooks.
+
+As always, it is best to try out a
+new piece of software yourself to
+see if it suits you and is worth
+using. I encourage you to give
+Jupyter Notebook or JupyterLab a
+spin and see what you think!
+
+
+Further Reading
+
+If you want to learn more about
+Jupyter Notebook, you can take a
+moment and read their excellent
+documentation.
+
+For more information on Integrated
+Development Environments, you might
+want to check out the following
+articles:
+
+- t@Python IDEs and Code Editors
+(Guide)
+- Thonny: The Beginner-Friendly
+Python Editor
+
+
+
+    evince -p 2 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/JupNoteb-UltimGuide.pdf &
+
+How to Use Jupyter Notebooks: The Ultimate Guide
+
+Jupyter notebooks are documents for
+technical and data science content.
+This tutorial provides an overview
+of Jupyter notebooks, their
+components, and how to use them.
+
+T@We will explore notebooks using
+DataLab, a hosted notebook service
+that provides all the functionality
+of Jupyter notebooks, along with
+functionality for connecting to
+databases, real-time collaboration,
+and publishing your work.
+
+This tutorial assumes that you have
+used a data science programming
+language before, such as Python,
+SQL, R, or Julia.
+
+
+Overview of notebooks
+
+T@T@Notebooks combine computer code
+(such as Python, SQL, or R), the
+output from running the code, and
+rich text elements (formatting,
+tables, figures, equations, links,
+etc.) in a single document.
+
+The key benefit of notebooks is the
+ability to include commentary with
+your code. That means that you can
+avoid the error-prone process of
+copying and pasting analysis results
+into a separate report. Instead, you
+simply mix your analysis with the
+report text in the notebook.
+
+
+Who should use Jupyter Notebooks?
+
+Jupyter Notebooks are primarily used
+by data professionals, particularly
+data analysts and data scientists.
+According to the Kaggle Survey 2022
+results, Jupyter Notebooks are the
+most popular data science IDE, used
+by over 80% of respondents.
+
+
+Types of Jupyter Notebook
+
+There are two main types of Jupyter
+Notebook; hosted and local
+notebooks. DataCamp provides
+DataLab, a hosted Jupyter Notebook
+that we will use for the majority of
+this tutorial. DataLab is an
+excellent option for learners and
+professionals who do not want to set
+up a local environment.
+
+Except where noted, the
+functionality described in this
+tutorial will work on other Jupyter
+notebook versions. If you prefer to
+use a local environment, you can
+install Jupyter Notebook on your
+machine using our Installing Jupyter
+Notebook tutorial. Marcus Schanta
+maintains a list of other hosted
+notebook platforms.
+
+    evince -p 3 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/JupNoteb-UltimGuide.pdf &
+
+Components of a notebook
+
+A Jupyter Notebook consists of three
+main components: cells, a runtime
+environment, and N@a file system.
+
+Cells are the individual units of
+the notebook, and they can contain
+either text or code:
+
+- Text cells are used to write
+  narrative text and include
+  images, links, and equations.
+  - Text cells are written in
+    Markdown, a simple markup
+    language.
+
+- Code cells are used to write and
+  execute code.
+  - The output from code cells will
+    be displayed directly below the
+    code cell.
+
+- n@SQL cells (DataLab only) are used
+  to execute SQL queries, which
+  means you can easily retrieve
+  data from a database.
+- N@Chart cells (DataLab only) can be
+  used to create visualizations and
+  quickly visualize Pandas
+  dataframes.
+
+N@The runtime environment is
+responsible for executing the code
+in the notebook. The runtime
+environment can be configured to
+support different languages,
+including Python, R or SQL.
+
+n@n@The filesystem allows you to
+upload, store, and download data
+files, code files, and outputs from
+your analysis.
+
+
+Command mode and edit mode
+
+Jupyter notebooks have two different
+modes of interaction: command mode
+and edit mode. In command mode, you
+can navigate between cells, add and
+delete cells, and change the cell
+type. In edit mode, you can edit the
+contents of a cell.
+
+N@N@In order to enter command mode,
+you can either press Escape or click
+outside a cell. N@N@To enter edit
+mode, you can press Enter or click
+inside a cell.
+
+In DataLab, you can click the 'Add
+Text' or 'Add Code' buttons to add a
+new cell.
+
+
+    evince -p 4 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/JupNoteb-UltimGuide.pdf &
+
+Getting help
+
+For Jupyter notebook, you can get
+help using the documentation or
+using the option in the menu. In
+DataLab, help and keyboard shortcuts
+can be quickly accessed by pressing
+the help button in the menu.
+
+
+Writing text
+
+Text cells are written in the
+Markdown markup language, allowing
+you to easily write and format text.
+While in edit mode, you can use
+syntax such as ** ** for bold, or
+use the buttons, to format your
+text.
+
+Here are a few different options:
+
+
+Pressing shift + enter or the 'View' button will run the cell, giving the following result.
+
+
+- Lines beginning # are a top-level
+  header. Start with ## for a
+  second-level header, ### for a
+  third-level header, and so on.
+- Surround text in ** to make it
+  bold, __ to make it italic, and `
+  to make it code formatted.
+- Start consecutive lines with - to
+  make them into a bulleted list.
+- Start lines with numbers followed
+  by a period to make them into a
+  numbered list.
+- N@Hyperlinks are written in two
+  parts. The text to display is
+  surrounded by square brackets,
+  then the url is surrounded by
+  parentheses.
+
+    evince -p 5 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/JupNoteb-UltimGuide.pdf &
+
+Writing and running code
+
+n@T@T@Pressing 'Add Code' or
+entering a command with (escape) and
+pressing 'B' will add a new code
+block.
+
+
+Write code in the cell just as you
+would in a script.
+
+# This is a code cell
+x = 5
+y = 10
+z = x + y
+print(z)
+
+t@N@Pressing Run or CTRL/CMD+Enter
+runs the code and displays its
+output.
+
+# This is a code cell
+x = 5
+y = 10
+z = x + y
+print(z)
+
+15
+
+
+Reading and writing files
+
+Pressing 'Browse and upload files'
+on the left-hand menu brings up the
+file system, and pressing the 'plus'
+will allow you to upload a file from
+your local machine. Below, we have
+uploaded a simple text file called
+hello_world.txt.
+
+
+    evince -p 6 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/JupNoteb-UltimGuide.pdf &
+
+
+We can use the following code to
+open the file, add some text, then
+save a new file.
+
+with open('hello_world.txt') as file:
+  my_file = file.read()
+
+print(my_file)
+
+Hello World!
+
+my_file = my_file + ' Goodbye World!'
+print(my_file)
+
+Hello World! Goodbye World!
+
+n@T@with open('hello_world.txt', 'w') as file:
+  file.write(my_file)
+
+You'll now see the new file in the
+file system, and it will contain our
+updates. '
+
+
+    evince -p 7 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/JupNoteb-UltimGuide.pdf &
+
+Working with the File System
+
+We have shown how to upload, update
+and create a new file. To download
+the new file, press the three dots
+in the file system and hit download.
+
+
+The plus button used to create new
+files can also be used to create
+fresh notebooks, which will have no
+cells or output.
+
+
+Commanding cells
+
+You can quickly reorder cells with
+the move up and move down buttons,
+as shown in the image below.
+
+    evince -p 8 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/JupNoteb-UltimGuide.pdf &
+
+with open('hello_world.txt', 'w') as file:
+  file.write(my_file)
+
+This will reorder your code. (Note
+that your code may break if you try
+and run it in the wrong order!)
+
+The Hide Code button will collapse
+and hide the code; this is useful
+for very long code blocks that you
+aren't currently working on. n@It is
+also useful if the readers of your
+analysis don't care about the
+technical details and only want to
+see the results.
+
+
+Similarly, the Hide Output button
+allows you to hide long outputs.
+
+
+N@These buttons can also be used
+together to hide both code and
+output.
+
+
+Publishing reports (DataLab only)
+
+DataLab allows you to publish your
+notebooks as publications. This is a
+great way to showcase your excellent
+work and collaborate with other data
+scientists.
+
+You can publish your notebook by
+pressing the 'Publish' button on the
+side menu. From there, hit publish
+to share your notebook. T@It is a
+good idea to run the notebook from
+top to bottom before publishing.
+This helps to check your code and
+ensures it is readable, as most
+people will read from top to bottom.
+
+    evince -p 9 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/JupNoteb-UltimGuide.pdf &
+
+N@Once your notebook has been
+published, other users can view the
+publication and comment on
+individual cells. You can also do
+the same to others. This is a great
+way to open up discussion or
+understand a complex piece of code.
+Here's a Workplace example: '
+
+
+t@Sharing Jupyter Notebooks (DataLab only)
+
+Sharing workbooks is another useful
+DataLab-only function. t@Because the
+notebook is hosted, you can share a
+public or private, access-controlled
+link that the receiver can run
+themselves.
+
+This is a fantastic way to
+collaborate. Data Science is a deep
+and wide field, meaning no single
+person is expected to know
+everything. Data scientists must
+collaborate to get the best results,
+whether it's n@efficient code,
+compelling visualizations, or an
+accurate model. DataLab allows
+real-time collaboration, where
+multiple people can edit a notebook
+at once. '
+
+To share your notebook, press the
+share button on the top right. Here
+you can copy the link, make the
+notebook private/public, and set who
+can access the notebook (if
+private).
+
+
+Take it to the next level
+
+Start your data science journey
+today by signing up for DataLab for
+free. If you get stuck, the DataLab
+Documentation is a great place for
+more information.
+
+
+
+    evince -p 1 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+    (https://vscode.dev/github/microsoft/vscode-docs/blob/main/docs/datascience/jupyter-notebooks.md)
+
+Jupyter Notebooks in VS Code
+
+Jupyter
+(https://jupyter-notebook.readthedocs.io/en/latest/)
+(formerly IPython Notebook) is an
+open-source project that lets you
+easily combine Markdown text and
+executable Python source code on one
+canvas called a notebook. Visual
+Studio Code supports working with
+Jupyter Notebooks natively, and
+through Python code files
+(/docs/python/jupyter-support-py).
+This topic covers the native support
+available for Jupyter Notebooks and
+demonstrates how to:
+
+- Create, open, and save Jupyter
+  Notebooks
+- Work with Jupyter code cells
+- N@View, inspect, and filter
+  variables using the Variable
+  Explorer and Data Viewer
+- Connect to a remote Jupyter
+  server
+- Debug a Jupyter Notebook
+
+  [Video: Getting Started with
+  Jupyter Notebooks in VS Code]
+
+    evince -p 2 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+Setting up your environment
+
+To work with Python in Jupyter
+Notebooks, you must activate an
+Anaconda environment in VS Code, or
+another Python environment in which
+you've installed the Jupyter package
+(https://pypi.org/project/jupyter/).
+To select an environment, use the
+Python: Select n@N@Interpreter
+command from the Command Palette
+(cs-p).
+
+Once the appropriate environment is
+activated, you can create and open
+a Jupyter Notebook, connect to a
+remote Jupyter server for running
+code cells, and export a Jupyter
+Notebook as a Python file.
+
+
+Workspace Trust
+
+When getting started with Jupyter
+Notebooks, you'll want to make sure
+that you are working in a trusted
+workspace. Harmful code can be
+embedded in notebooks, n@N@and the
+Workspace Trust
+(/docs/editor/workspace-trust)
+feature allows you to indicate which
+folders and their contents should
+allow or restrict automatic code
+execution.
+
+If you attempt to open a notebook
+when VS Code is in an untrusted
+workspace running Restricted Mode (/
+docs/editor/workspace-trust#_restricted-mode),
+you will not be able to execute
+cells and rich outputs will be
+hidden.
+
+
+Create or open a Jupyter Notebook
+
+T@You can create a Jupyter Notebook
+by running the Create: New Jupyter
+Notebook command from the Command
+Palette (Ctrl+Shift+P) or by
+creating a new.ipynb file in your
+workspace.
+
+
+Next, select a kernel using the
+kernel picker in the top right.
+
+
+    evince -p 3 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+After selecting a kernel, the
+language picker located in the
+bottom right of each code cell will
+automatically update to the language
+supported by the kernel.
+
+
+If you have an existing Jupyter
+Notebook, you can open it by
+right-clicking on the file and
+opening with VS Code, or through the
+VS Code File Explorer.
+
+
+Running cells
+
+Run a single code cell
+
+Once your code is added, you can run
+a cell using the Run icon to the
+left of the cell and the output will
+be displayed below the code cell.
+
+
+T@To run a selected code cell, you
+can also use keyboard shortcuts in
+both command and edit mode. TT@TT@
+T@T@Ctrl+Enter runs the currently
+selected cell. T@T@Shift+Enter runs
+the currently selected cell and
+inserts a new cell immediately below
+(focus moves to new cell).
+T@T@Alt+Enter runs the currently
+selected cell and inserts a new cell
+immediately below (focus remains on
+current cell).
+
+
+Run multiple code cells
+
+Running multiple code cells can be
+accomplished in many ways. N@You can
+use the double arrow in the main
+toolbar of the Notebook Editor to
+run all cells within the Notebook
+N@or by selecting Run All, Run All
+Above, or Run All Below above or
+below the current code cell.
+
+
+    evince -p 4 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+Run cells in section
+
+t@T@To more easily run related cells
+in a notebook, you can run cells
+that are grouped together by a
+markdown section header with the Run
+Cells in Section action. This action
+is available on the notebook Outline
+view and for Sticky Scroll elements.
+
+N@Within Sticky Scroll elements,
+right-click the header of your
+choice, and run the section via the
+action in the context menu. Within
+the Outline view, select the toolbar
+icon that appears on hover or
+selection, and then run a single
+cell or a section of cells via the
+presented actions.
+
+import time
+import math
+import os
+
+if True:
+  print("other indent")
+
+for i in range(10):
+  print(i)
+  time.sleep(0.5)  # Sleep for 0.5 second
+
+
+Save your Jupyter Notebook
+
+You can save your Jupyter Notebook
+using the keyboard shortcut Ctrl+S
+or File > Save.
+
+    evince -p 5 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+Export your Jupyter Notebook
+
+You can export a Jupyter Notebook as
+a Python file (.py), a PDF, or an
+HTML file. To export, select... >
+Export on the main toolbar. You're
+then presented with a dropdown of
+file format options.
+
+
+  T@T@Note: For PDF export, you must
+  have TeX installed
+  (https://nbconvert.readthedocs.io/en/latest/install.html#installing-tex).
+  If you don't, you will be notified
+  that you need to install it when
+  you select the PDF option. Also,
+  be aware that if you have SVG-only
+  output in your Notebook, they
+  will not be displayed in the
+  PDF. To have SVG graphics in a
+  PDF, either ensure that your
+  output includes a non-SVG image
+  format or else you can first
+  export to HTML and then save as
+  PDF using your browser.
+
+
+Work with code cells in the Notebook Editor
+
+The Notebook Editor makes it easy
+to create, edit, and run code cells
+within your Jupyter Notebook.
+
+
+Create a code cell
+
+By default, a blank notebook will
+have an empty code cell for you to
+start with and an existing notebook
+will place one at the bottom. Add
+your code to the empty code cell to
+get started.
+
+msg = "Hello world"
+print(msg)
+
+    evince -p 6 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+Code cell modes
+
+While working with code cells, a
+cell can be in three states:
+N@unselected, command mode, and edit
+mode. N@A vertical bar to the left
+of a code cell and editor border
+shows the current state of a cell.
+N@When no bar is visible, the cell
+is unselected. When a cell is
+selected, it can be in command mode
+or in edit mode.
+
+
+In command mode, a solid vertical
+bar will appear to the left of the
+cell. The cell can be operated on
+and accepts keyboard commands.
+
+[edit mode] ___hm_eng
+N@In edit mode, a solid vertical bar
+is joined by a border around the
+cell editor. The cell's contents
+(code or Markdown) can be modified.
+'
+
+
+N@To switch modes, you can use your
+keyboard or mouse. On your keyboard,
+press the Enter key to move to edit
+mode or the Esc key to move to
+command mode. With your mouse, click
+the vertical bar to the left of the
+cell or out of the code/Markdown
+region in the code cell.
+
+
+Add additional code cells
+
+You can add code cells using the
+main toolbar, a cell's add cell
+toolbar (visible with hover), and
+through keyboard commands.
+
+    evince -p 7 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+To add a new cell below the
+currently selected cell, use the
+plus icon in the main toolbar or a
+cell's hover toolbar.
+
+N@T@When a code cell is in command
+mode, use the A key to add a cell
+above and the B key to add a cell
+below the selected cell.
+
+
+Select a code cell
+
+You can change a selected code cell
+using the mouse or the up/down arrow
+keys on the keyboard. T@T@When a code
+cell is in command mode, you can
+also use the J key (down) and K key
+(up).
+
+
+Select multiple code cells
+
+T@To select multiple cells, start
+with one cell in selected mode. A
+filled background indicates selected
+cells. To select consecutive cells,
+hold down the Shift key and click
+the last cell you want to select.
+To select any group of cells, hold
+down the Ctrl key and click the
+cells you'd like to add to your
+selection. '
+
+
+Move a code cell
+
+You can move cells up or down within
+a notebook via dragging and
+dropping. For code cells, the drag
+and drop area is to the left of the
+cell editor as indicated below. For
+rendered Markdown cells, you may
+click anywhere to drag and drop
+cells.
+
+
+    evince -p 8 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+To move multiple cells, you can use
+the same drag and drop areas in any
+cell included in the selection.
+
+t@T@The keyboard shortcut Alt+Arrow
+also moves one or multiple selected
+cells.
+
+
+Delete a code cell
+
+To delete code, you can use the
+Delete icon in the code cell
+toolbar. n@T@When the selected code
+cell is in command mode, you can use
+the keyboard shortcut dd.
+
+
+Undo your last change
+
+N@You can use the z key to undo your
+previous change, for example, if
+you've made an accidental edit, you
+can undo it to the previous correct
+state, or if you've deleted a cell
+accidentally, you can recover it.
+
+
+Switch between code and Markdown
+
+The Notebook Editor allows you to
+easily change code cells between
+Markdown and code. N@Selecting the
+language picker in the bottom right
+of a cell will allow you to switch
+between Markdown and, if applicable,
+any other language supported by the
+selected kernel.
+
+
+You can also use the keyboard to
+change the cell type. n@T@T@When a
+cell is selected and in command
+mode, the M key switches the cell
+type to Markdown and the Y key
+switches the cell type to code.
+
+    evince -p 9 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+Once Markdown is set, you can enter
+Markdown formatted content to the
+code cell.
+
+
+T@T@To render Markdown cells, you
+can select the check mark in the
+cell toolbar, or use the keyboard
+shortcuts Ctrl+Enter and
+Shift+Enter.
+
+
+Clear output or restart/interrupt the kernel
+
+If you'd like to clear all code cell
+outputs or restart/interrupt the
+kernel, N@you can accomplish that
+using the main Notebook Editor
+toolbar. '
+
+    evince -p 10 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+Enable/disable line numbers
+
+n@N@When you are in command mode,
+you can enable or disable line
+numbering within a single code cell
+by using the L key.
+
+
+n@N@To toggle line numbering for the
+entire notebook, use Shift+L when in
+command mode on any cell.
+
+
+Table of Contents
+
+T@To navigate through your notebook,
+open the File Explorer in the
+Activity Bar. n@N@Then open the
+Outline tab in the Side Bar.
+
+    evince -p 11 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+t@T@import matplotlib.pyplot as plt
+import numpy as np
+
+Histogram with 5 bins
+
+x = [21,22,23 ... ,100]
+num_bins = 5
+plt.hist(x, num_bins)
+plt.show()
+
+Histogram with 10 bins
+
+x = [21,22,23 ... ,100]
+num_bins = 10
+plt.hist(x, num_bins)
+plt.show()
+
+t@T@You can use the filter control
+in the Outline view to include
+Markdown headers, code cells, and
+code cell symbols. The filters
+correspond to the following
+settings:
+
+- N@N@notebook.outline.showMarkdownHeadersOnly
+- notebook.outline.showCodeCells
+- notebook.outline.showCodeCellSymbols
+
+# count the correctly guessed first letters
+first_guess_correct = []
+for i, d in df_tweets.dropna(subset=['answer').iterrows():
+  example_text = d['guess']
+  example_solution = d['answer']
+  results = [x.span()[0] for x in re.finditer('pink', example_text)]
+  first_guess_letters = [example_solution[i] for i in results]
+  first_guess_correct += first_guess_letters
+
+pd.Series(first_guess_correct).value_counts(ascending=True) \
+  .plot(kind='barh', figsize=(10, 5), color='green',
+        title='Most Common Correct Guessed Letters on First Try')
+
+
+color_pal = ['#2ca02c', '#fcd53f', '#000000']
+
+fig, axs = plt.subplots(1, 3, figsize=(12, 5), sharex=True)
+
+for i, x in enumerated(['_correct','_wrong_spot','_incorrect']):
+  col_subset = [c for c in df_tweets.columns if x in c]
+  guess_avg = df_tweets[col_subset].mean()
+  guess_avg.index = [f'Guess {i+1}' for i in range(6)]  # type: ignore
+  guess_avg.sort_index(ascending=False).plot(kind='barh',
+            title=f'{x.strip("_".replace("_"," ").title()}',
+            ax=axs[i], color=color_pal[i])
+  axs[i].set_xlabel('Average Number of Letters')
+fig.suptitle('Wordle Average Results by Guess Number', fontsize=18)
+plt.tight_layout()
+plt.show()
+
+
+guess1.split .....
+
+
+  Note: By default, the outline
+  will only show Markdown. To show
+  code cells, enable the following
+  setting:
+  Notebook > Outline: Show Code Cells.
+
+    evince -p 12 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+IntelliSense support in the Jupyter Notebook Editor
+
+n@T@N@The Python Jupyter Notebook
+Editor window has full IntelliSense
+- code completions, member lists,
+quick info for methods, and
+parameter hints. You can be just as
+productive typing in the Notebook
+Editor window as you are in the code
+editor.
+
+
+Variable Explorer and Data Viewer
+
+N@Within a Python Notebook, it's
+possible to view, inspect, sort,
+and filter the variables within
+your current Jupyter session. By
+selecting the Variables icon in the
+main toolbar after running code and
+cells, you'll see a list of the
+current variables, which will
+automatically update as variables
+are used in code. The variables
+pane will open at the bottom of the
+notebook.
+
+N@import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+    evince -p 13 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+Data Viewer
+
+For additional information about
+your variables, you can also
+double-click a row or use the Show
+variable in data viewer button next
+to the variable N@for a more detailed
+view of a variable in the Data
+Viewer.
+
+    evince -p 14 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+N@Alternatively, you can use the data
+viewing experience offered by other
+extensions like Data Wrangler
+(https://marketplace.visualstudio.com/items?itemName=ms-toolsai.datawrangler).
+The Data Wrangler extension offers a
+rich user interface to show insights
+about your data and helps you
+perform data profiling, quality
+checks, transformations, and more.
+Learn more about the Data Wrangler
+extension in our docs
+(/docs/datascience/data-wrangler).
+
+
+Filtering rows
+
+Filtering rows in the data viewer
+can be done by typing in the textbox
+at the top of each column. Type a
+string you want to search for and
+any row that has that string in the
+column will be found:
+
+
+n@N@If you want to find an exact
+match, prefix your filter with '=':
+
+
+m@T@More complex filtering can be
+done by typing a regular expression
+(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions):
+
+    evince -p 15 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+Saving plots
+
+To save a plot from your notebook,
+simply hover over the output and
+select the Save icon in the top
+right.
+
+
+  Note: There is support for
+  rendering plots created with
+  matplotlib
+  (https://matplotlib.org/) and
+  Altair
+  (https://altair-viz.github.io/index.html).
+
+
+Custom notebook diffing
+
+n@Under the hood, Jupyter Notebooks
+are JSON files. The segments in a
+JSON file are rendered as cells that
+are comprised of three components:
+N@input, output, and metadata.
+Comparing changes made in a notebook
+using lined-based diffing is
+difficult and hard to parse. n@N@The
+rich diffing editor for notebooks
+allows you to easily see changes for
+each component of a cell.
+
+n@You can even customize what types
+of changes you want displayed within
+your diffing view. t@In the top
+right, select the overflow menu item
+in the toolbar to customize what
+cell components you want included.
+Input differences will always be
+shown.
+
+
+    evince -p 16 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+To learn more about Git integration
+within VS Code, visit Source Control
+in VS Code (/docs/sourcecontrol/
+overview).
+
+
+Debug a Jupyter Notebook
+
+N@N@There are two different ways to
+debug a Jupyter notebook: a simpler
+mode called "Run by Line", and full
+debugging mode.
+
+  Note: Both of these features
+  require ipykernel 6+. See this
+  wiki page
+  (https://github.com/microsoft/vscode-jupyter/wiki/Setting-Up-Run-by-Line-and-Debugging-for-Notebooks)
+  for details about installing or
+  upgrading ipykernel.
+
+
+Run by Line
+
+Run by Line lets you execute a cell
+one line at a time, without being
+distracted by other VS Code debug
+features. To start, select the Run
+by Line button in the cell toolbar:
+
+
+    evince -p 17 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+N@Use the same button to advance by
+one statement. You can select the
+cell Stop button to stop early, or
+the n@Continue button in the toolbar
+to continue running to the end of
+the cell.
+
+
+Debug Cell
+
+If you want to use the full set of
+debugging features supported in VS
+Code, such as breakpoints and the
+ability to step in to other cells
+and modules, you can use the full VS
+Code debugger.
+
+- 1 Start by setting any
+  breakpoints you need by clicking
+  in the left margin of a notebook
+  cell.
+- 2 Then select the Debug Cell
+  button in the menu next to the
+  Run button. This will run the
+  cell in a debug session, and will
+  pause on your breakpoints in any
+  code that runs, even if it is in
+  a different cell or a .py file.
+- n@3 You can use the Debug view,
+  Debug Console, and all the
+  buttons in the Debug Toolbar as
+  you normally would in VS Code.
+
+Note that debugging cells in a
+jupyter notebook does not use any of
+the debug configurations in
+launch.json. n@It can be customized
+instead via settings such as
+jupyter.debugJustMyCode.
+
+N@N@N@Debug Cell
+  csa-Enter
+
+
+Search through notebook
+
+You can search through a notebook
+(or parts of it by filtering the
+search options) by using the
+keyboard shortcut Ctrl/Cmd + F.
+N@Click the Filter option (funnel
+icon) to search across:
+
+- Markdown cell input (Markdown
+  Source)
+- Markdown cell output (Rendered
+  Markdown)
+- Code cell input (Code Cell
+  Source)
+- Code cell output (Cell Output)
+
+Notebook searches are filtered cell
+inputs only by default.
+
+    evince -p 18 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+Connect to a remote Jupyter server
+
+N@You can offload intensive
+computation in a Jupyter Notebook to
+other computers by connecting to a
+remote Jupyter server. Once
+connected, code cells run on the
+remote server rather than the local
+computer.
+
+To connect to a remote Jupyter
+server:
+
+- 1 Open the Kernel Picker button
+  on the top right-hand side of the
+  notebook (or run the Notebook:
+  Select Notebook Kernel command
+  from the Command Palette).
+
+
+- 2 Select the Existing Jupyter
+  Server option to connect to an
+  existing Jupyter server.
+
+
+    evince -p 19 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+
+- 3 To connect to an existing
+  server for the first time, select
+  Enter the URL of the running
+  Jupyter server. '
+
+
+- N@4 When prompted to Enter the URL
+  of the running Jupyter server,
+  provide the server's URI
+  (hostname) with the
+  authentication token included
+  with a ?token= URL parameter. (If
+  you start the server in the VS
+  Code terminal with an
+  authentication token enabled, the
+  URL with the token typically
+  appears in the terminal output
+  from where you can copy it.)
+  Alternatively, you can specify a
+  username and password after
+  providing the URI.
+
+
+  n@T@Note: For added security,
+  Microsoft recommends configuring
+  your Jupyter server with security
+  precautions such as SSL and token
+  support. This helps ensure that
+  requests sent to the Jupyter
+  server are authenticated and
+  connections to the remote server
+  are encrypted. For guidance about
+  securing a notebook server, refer
+  to the Jupyter documentation
+  (https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#securing-a-notebook-server).
+
+
+Data Science profile template
+
+n@N@N@Profiles
+(https://code.visualstudio.com/docs/editor/profiles)
+let you quickly switch your
+extensions, settings, and UI layout
+depending on your current project or
+task. To help you get started with
+Jupyter Notebooks, you can use the
+Data Science profile template
+(/docs/editor/profiles#_data-science-profiletemplate),
+which is a curated profile with
+useful extensions, settings, and
+snippets. You can use a profile
+template as is or use it as a
+starting point to customize further
+for you own workflows.
+
+You select a profile template
+through the Profiles > Create
+Profile... dropdown:
+
+
+    evince -p 20 ~/Empire/Doks/Comp/lang/py/datasci/jup/jupytermarkdown-latest/VsCode-JupNoteb.pdf &
+
+Once you select a profile template,
+you can review the settings and
+extensions, and remove individual
+items if you don't want to include
+them in your new profile. After
+creating the new profile based on
+the template, changes made to
+settings, extensions, or UI are
+persisted in your profile.
+

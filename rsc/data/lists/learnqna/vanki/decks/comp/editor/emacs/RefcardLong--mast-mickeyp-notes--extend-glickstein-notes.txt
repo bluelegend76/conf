@@ -1,0 +1,7503 @@
+=WHERE????
+em-mastext1.txt
+
+___
+
+
+snabbsammanställn. overview 'best of' jan-feb 2021 (='mastering' + 'glickstein') ****
+
+@f(ill)
+    :'<,'>s/\v(.{-})\ze ; (.*)/\1\r\{\{\{\r\t\2 \}\}\}/ggv:'<,'>s/\v\}\}\}\zs.*//g
+
+
+ny blank(!) pverktl(*)  400 st ca
+
+hyperlinks
+
+
+
+___
+mastering emacs (mickey peterson): {{{
+
+    ----
+(file)format for IDE-refactoring etc ; json-rpc  #=progr.lang servers (***!) p95
+em. implementations of IDE (w. code completion etc) ; LSP mode, EG lot
+em. proj. manager ; (? =see more)
+crossref. tool (*) ; xref
+ im.viewer, pdf dok viewer ; (see more)
+Code Completer (**) ; FIDO (*)
+file searcher ; ripgrep
+jump to identifiers (*) ; dumb jump (*)
+builtin srceensaver / games ; a-x zone  a-x tetris  (a-x doctor)
+latest version of em. (2020) ; 27.1
+ draw ascii-art ; EXWM
+em. e-pub reader (**) ; see more
+    ----
+
+    ----
+(**) alter em. var.s, call em. functions, query em. system of curr. state ; =done from within the editor/buffer  (+Notes ab. elisp debugger / elisp Code completion)  *
+ emacspeak ; see more
+shells in emacs ; em. term. emulator, bash wrapper, eshell  (*)
+(em. music player) ; emms
+    ----
+
+    ----
+(**) alter em. var.s, call em. functions, query em. system of curr. state ; =done from within the editor/buffer  (+Notes ab. elisp debugger / elisp Code completion)  *
+scratch buffers etc (*) ; 'if y. want a throw-away area'  (=for testing, text, code etc (=see  buffers - 'more than text editing')
+'mimic editing y. do by hand' =from code (*!) ; =normal editing keys are commands  just (etc)
+teterm: window (in vim etc) ; a 'frame'
+teterm: buffers/splits/viewport (in vim etc) ; 'windows'
+** modeline ; ='status-bar' (eg. info ab. filename, mode etc), searching for strings/patterns etc (?/)**
+** minibuffer ; below the modeline  =errors + general information (+ the command line)
+teterm: the 'extended command' functionality  * ; the a-x cline
+(tip: editing commands in the minibuffer/cline) ; (almost identical to normal buffer)
+(?) pos. of the 'echo area' ; shares area w. the minibuffer
+    ----
+
+    ----
+teterm: 'the point' ; =y. curr. pos. in the buffer (=marked by the cursor)
+teterm: current buffer ; buffer w. the point / programatically activated w. elisp
+**  teterm: highlight(=not necess. visual) / selection ; 'a region'
+*  what represents boundaries of 'a region' ; 'point' and 'mark'
+**  mode that highlights 'region' ; transient mark mode (TMM)  (=on by default, but can be useful to turn off)
+*  teterm: cut, copy, paste ; kill(=cut), save to kill ring(/informally 'copy'), yank (back =paste)
+  origin of cut/copy/paste terminology ; CUA (common user interface)  (ibm/apple)
+(( set normal CUA in em. ; selection compatibility mode ))
+**  initialization file in em.  **  ; ~/.emacs.d/init.el  ~/.config/emacs/init.el  ( ~/.emacs )
+the ~/.config/x/x.conf standard (of storing conf) is called ____ ; the XDG convention
+    ----
+
+    ----
+( easy way of rereading the init-file ; close + restart em. )
+the 'customize interface' ; =for saving changes to init.el
+teterm: syntax highlighting ; 'font locking'
+what Maj. modes do ; =controls how buffers behave  (=a bit like vims 'filetype')
+teterm: font + properties (=col, size etc) ; 'faces' (eg. "my foreground face color is orange")  p64
+em. decides default maj.modes for files by ___ ; =looking through centralized register (=maps file extensions to maj.modes)
+files w.out f.extensions: how does em. decide maj.mode? ; scans first part of file + tries to infer maj.mode  (=most often correctly)  *
+*  minor modes (+example) ; optional addons ((=only one maj.mode can be active))  flyspell mode (=spell check while writing)
+(  get unix-like capabilities for em. on win (*) ; cygwin )
+(  run/use linux in win 10 ; 'windows subsystem for linux' )
+Ub**: install em. dependencies (=if want to compile em. y.self) ; apt-get build-dep emacsNN  #eg. NN = 27
+( installing compiled software on lin (**) ; configure, make, make install )
+    ----
+
+    ----
+*  run terminal emacs ; emacs -nw
+emacs q.help ; emacs --help
+**  Start em. w.out reading init-file (eg. if em. gives errors) ; emacs -q
+* start em. w.out reading init-files (eg. local and(!) global) ; emacs -Q  #the 'site-wide file'
+em. client/server // server mode (?) ; p44  (=persistent sessions etc)
+start em. server-mode ; a-x server-start  // emacs --daemon   emacsclient  (??)
+(*)  switch to next buffer (eg. wh. editing through a client) ; c-x #
+( 'useful for exploring files // have files "permanently" open in em. ) ; -n
+tip: things to disable in em. interface (on start) ; splash, scroll bars, menu, tool bar
+Access em. menu (eg.(?) in terminal emacs) ; f10
+    ----
+
+    ----
+keybinding tip (=some meta keys) ; bind s(uper)- and H(yper)-  to Win / List keys  (=in op.system / win.manager)
+** teterm: seq. of keyb./mouse actions ; 'key sequence'
+** teterm: one (or more) 'key seq.s' that invoce a command ; a 'complete key'
+** teterm: 'key seq.' that is not a 'complete key' ; a 'prefix key' (eg. c-x)
+*** teterm: sets of keys that belong to cert. prefix keys (like c-x ...) ; 'key maps'  eg. c-f  #"key for ¶-char. is s.where in the c-x 8 key map"
+ change capslock to ctrl ; SharpKeys (win) / xmodmap (lin)
+** important feature of normal user-runnable ax-commands is ___ ; they are interactive =has additional prop.s assoc. w. it, making it usable through a-x_interface and keybindings (**)  #pack.authors have to chose if funct. is i.active (=can be run with a-x_line)
+    ----
+
+    ----
+** teterm: give number arg. w. c-u ; the 'universal argument' / prefix argument  p55
+more ways (than u-arg) to prefix num.s to commands ; a-0 (--9)  c-0  ca-0   c_- a_- ca_-   #concerning 'tempo' etc
+** kill prev. word fr. point ** ; a_- a-d   **
+tip: =use of neg. args (**) ; upcase last input word  **
+*** Check key to input ¶-char. (="somewh. in c-x 8 -keymap) *** ; prefix key + c-h  (eg. c-x 8 c-h)  ***
+* meaning of  c-x 8 c-h  binding =prefix cmd ; =c-x 8 "  is also keymap (=contains list of subcommands for complete key sequence)
+** "setting syntax highl./diff. col.scheme/theme" ; 'font lock faces'
+    ----
+
+    ----
+groups(/sub-groups) in the customize interface represents ___ ; one package / mode / functionality
+toplevel group in the customize interface ; Emacs
+* open Customize interface (=fr. cline) ** ; a-x customize
+** search for things by name (in the Cust.interface) ; search bar at top (=em.24 +)
+Cust.interface is made up of 2 things: faces and OPTIONS ; o =everything except faces (!)
+* list available font colors (in em.) ; a-x list-colors-display  (??)
+* search for post concerning "Colors on a TTY" (in info) * ; a-x info-apropos Colors on a TTY
+setting selected customizations (=in cust.interf.) ; choose apply + save (=writes changes to init.el, so persists between sessions)
+Some useful sub-commands for Customize (*) ; a-x customize- (+ -customized -changed -face -group -mode -saved -themes)  p66-67  (see more **)
+( tip/idea: organizing/managing too big/messy initfile ) ; split into files/sections
+    ----
+
+    ----
+*** Evaluating elisp code (=in buffer, init file (etc?)) ; restart em, a-x eval-buffer, a-x eval-region, ca-x (eval-dufun) +in every defvar/defcustom form,  c-x c-e (eval-last-sexp), c-j, sa-.  a-x ielm (**)  (+auto-complete ??)
+**(*) repos: include both elpa and melpa(!) into init ; p70 **  (setq package-archives  ....   (+eval-buffer)  ***
+** show/list (em. repo) packages ; a-x package-list-packages
+install package (=that y. know name of) ; a-x package-install
+refresh packages (eg. in long-running em. session) ; a-x package-refresh-contents
+** Set color themes in Em. ** ; a-x customize-themes
+    ----
+
+    ----
+Open Info ** ; a-x info // c-h i
+**  info navigation commands ; prev/next node  [ // ], info (browse)hist back/forw  l // r, sibling node next/prev  n // p, up to parent node  u, scroll one screen  space, cycle through xrefs/links  tab, open link  Ent, search for name (=menu)  m
+open the em. manual ; c-h i m Emacs  #+ c-h i m Emacs Lisp Intro  (etc)
+doks for a command (=function) (*) ; c-h F
+*  regex-search for command (=not(!) function)  working on words ; apropos-command -word$ // c-h a -word$
+(**) set sort by relevance for apropos ; (setq apropos-sort-by-scores t)
+***(*) The manual/info Describe-system ** ; c-h m  mode, c-h f  function, c-h v  variable, c-h k/c  char/key binding (**)
+    ----
+
+the theory of movement
+
+    ----
+*(*) movement types/classes ; local(=near the point), regional(=whole functs/class defs//chapters (etc)), global(=from one buf/win. to another)
+'a syntactic unit' ; =group of chars w. movement meaning (eg. sentence, paragraph, balanced expression etc)
+( set menu bar, if not showing ) ; ( a-x menu-bar-mode )
+(( tip major modes )) ; each maj.mode has its own menus =use to explore/discover features  *
+    ----
+
+    ----
+open(='find/visit') file ; c-x c-f  #both existing and new (**!)
+save file ; c-x c-s
+switch buffer(s) ; c-x b
+close(='kill') buffer ; c-x k
+display all open buffers ; c-x c-b
+exit emacs ; c-x c-c
+(exit prompts, regions, prefix arguments (etc.)) ; esc esc esc
+undo ; c-_  c-u u  c-/ (cs-7)
+* Mechanism for setting info about requested mode (etc) inside file *** ; file-local variables  (=as headers)  -*- mode: mode-name; my-var: val -*-  (or footers)  Local Variables: .....   (+will look at maj.mode-style comments(??))  p87
+'program loader directives' ; = #!/bin/bash  (etc.)
+(magic mode detection for files etc) ; (=recognize magic numbers etc in files (+reacting on))
+'see coding system in use for curr. buffer' (eg. files + unicode (??) ; c-h C Ent
+    ----
+
+    ---- ****
+Save as ** ; c-x c-w
+Save all files ; c-x s
+exit emacs ; c-x c-c  (+ Y, N/del, q/Ent, c-g,  ! =save all remaining, d =diff file on filesystem w. the one in buffer)  p91
+switch buffer ** ; c-x b
+like a-tab, for curr. + last buffer (**) ; c-x b  (+repeat)
+t: transient buffers (=like b.s interacting w. shell, holding transient info generated by em. etc) ; *bufname*
+Listing buffers ** ; c-x c-b
+ completion for buf.names (=wh. buf.switching) ; ido (to em. 26) // fido (from em. 27) **  a-x ido-mode
+ set ido/fido-mode (+flex-matching) permanently (=via customize) ; a-x customize-option Ent ido-mode Ent  a-x customize-option Ent ido-enable-flex-matching Ent
+ customize many more ido-features (*) ; a-x customize-group ido  #++read about ido/fido mode
+Customize extra Completion options for Fido (**!) ; a-x customize-group icomplete  #=icomplete is parent compl.mech. fido is built on
+Other Compl.frameworks (***) than ido/fido ; Helm, ivy, Selectrum, Icicles, Icomplete
+    ----
+
+    ----
+close buffer (=kill) ; c-x k
+teterm: Em.s 'Undo-theory' (!!) ; sealing w. ret/bs/move // rep. undos + redos  p96  #+'one cannot(!) lose undo history by "branching"'
+'Em. never loses undo-history_posts' =Example ** ; p97
+teterm: head of undo-ring ; see more
+alternative undo implementation (=plugin) ; Undo Tree
+    ----
+
+    ----
+win-cmd: switch to other win. ** ; c-x o
+win-cmd: del. active win. * ; c-x 0
+win-cmd: split win. below (=vim 'slit') * ; c-x 2
+win-cmd: del. all Other win.s ** ; c-x 1
+win-cmd: vsplit **(*) ; c-x 3
+(saving +) returning to past win.configuration (**/?) ; winner-mode (+ c-c vä//hö)  p100
+Set(=bind) keyb.shortc: a-o ==>> c-x o  ****!! ; (global-set-key (kbd "M-o") 'other-window)
+s + arrows =shift splits (=em. 'windows') ; (windmove-default-keybindings)
+    ----
+
+    ----
+the Other Win-commands *(****) ; c-x 4:  open f.  c-f, dired  d, show other win  c-o, switch buf.  b, kill buf+win  0, run proj.cmd  p   p105
+Frame Managem. (=open new Windows) ; c-x 5:  new 'frame'(=vim-win)  2, switch buf. in o. frame  b, del. active frame  0, del. o. 'frames'  1, find file in o. frame  c-f, run proj. cmd in o. frame  p, open a-x dired in o. frame  d, display a buf. in o. frame  c-o
+customize color themes etc. for tab bar * ; a-x customize-apropos-faces-tab  p104
+em. teterm: window configuration ** ; =other progr.s "workspace/proj."  =a collection of window (="splits") that represents a layout of y. em. frame(="window")  (can be saved to disk (=to a 'register'))  p105
+window conf. examples ; ='switching between entire workflows'  (eg. org-mode+mail+planner, etc)
+enable Tab Bar mode * ; a-x customize-option Ent tab-bar-mode // a-x tab-bar-mode /// 'tab bar commands' = c-x t ....  ***  p106
+Tab (Bar) Commands *** ; c-x t:  new tab  2, close curr. tab  0, sel. tab by name  Ent, next tab  o  (or just c-tab), rename t.  r, move tab to right  m, run proj. cmd in o. tab  p, exec. cmd in o. tab  t, close all o. tabs  1, find file in o. tab  c-f | f, switch to buf. in o. tab  b, open dired in o. tab  d
+Tab Bar Managem. (=like Frame / Win. / Buf. Managem. keybindings): Side effect of actions that affect Other tabs ; =akin to creating a new tab (*)  p106
+naming of new tabs created ; =named according to the buf. that triggered their creation (+from the active buffer thereafter)  (+=one can rename + move tabs around in tab)
+hide visib. of tab bar (but still have active =for use) ** ; a-x customize-option Ent tab-bar-show
+tab cmd: Show interactive tab list ; a-x tab-list
+tab cmd: undo a closed tab for each invoc. ; a-x tab-undo
+tab cmd: switch to the last visited tab ** ; a-x tab-recent
+(Using tab bar w. winner-mode (=switch betw. diff. 'tab-confs')) ; a-x tab-bar-history-mode  +  a-x customize-option Ent tab-bar-history-mode
+tip: Configuring key-bindings for 'Stepping through tab-bar winner-confs') ****!! ; (global-set-key (kbd "M-[") 'tab-bar-history-back)  (global-set-key (kbd "M-]") 'tab-bar-history-forward)  
+    ----
+
+}}}
+
+
+
+
+___=????
+registers
+
+    ----
+save region(=between point and mark) in register
+{{{
+    c-x r s }}}
+insert register contents into buffer
+{{{
+    c-x r i }}}
+save value of point in register
+{{{
+    c-x r space }}}
+jump to point saved in register
+{{{
+    c-x r j }}}
+ copy rectangle to register
+{{{
+    c-x r r }}}
+    ----
+
+
+keyregisters
+shell
+
+
+buildprogr
+
+    ----
+compile code in active window
+{{{
+    a-x compile }}}
+go to next compile error (compile window)
+{{{
+    c-c c-c }}}
+go to next compile error (source code win)
+{{{
+    c-x '(?) }}}
+    ----
+
+
+gitcvs
+diff
+
+
+dired  ~/Dropbox/emacsrefcard26_dired.pdf
+
+starta dired
+{{{
+    c-x d  (+se mer survival + refcard26_dired) }}}
+
+mail
+
+starta mail-läget emacs
+{{{
+    a-x rmail  (+se mer survival26) }}}
+
+debug
+egcmd
+pickout
+
+
+teoriterm
+
+    ----
+teterm: öppna fil
+{{{
+    visit file }}}
+teterm: markörens position
+{{{
+    point }}}
+teterm: området mellan 'point o mark' (=sel.)
+{{{
+    region }}}
+teterm: vim mm:s 'window'(?)
+{{{
+    frame (??)  ='holds/shows a buffer' }}}
+teterm: info-raden m. filnamn, pos. i filen just nu (=bufferinfo)
+{{{
+    =mode line (??) }}}
+teterm: cut
+{{{
+    kill }}}
+teterm: emacs kommandorad (*)
+{{{
+    the minibuffer }}}
+teterm: kortkommando/shortcut
+{{{
+    key binding  (global =för hela em, local =för maj.modes, min.mode =för min.modes)  +keymaps?? }}}
+teterm: komb. tryck flera tangenter samtidigt
+{{{
+    chord }}}
+teterm: line wrap
+{{{
+    =filling (autofill mode mm) }}}
+teterm: syntax highlighting
+{{{
+    ?? }}}
+teterm: område för infomeddel. till anv. (=delas m. 'the mini buffer')
+{{{
+    the echo area (??) }}}
+
+
+.(ev(?) meta om alt upptagen)
+{{{
+    esc + c-v }}}
+
+Leaving Emacs
+suspend Emacs (or iconify it under X)
+{{{
+    c-z }}}
+exit Emacs permanently
+{{{
+    c-x c-c }}}
+
+GIT-LFS
+
+
+Files   filhanter session startaladdaspara 
+
+    ----
+read a file into Emacs
+{{{
+    c-x c-f }}}
+save a file back to disk
+{{{
+    c-x c-s }}}
+save all files
+{{{
+    c-x s }}}
+go to a given line number
+{{{
+    a-g a-g  #survival.pdf }}}
+insert contents of another file into this buffer
+{{{
+    c-x i }}}
+replace this file with the file you really want (?)
+{{{
+    c-x c-v }}}
+write buffer to a specified file ((?))
+{{{
+    c-x c-w }}}
+ version control checkin/checkout
+{{{
+    c-x c-q }}}
+öppna fil (visit)
+{{{
+    c-x c-f }}}
+spara fil
+{{{
+    c-x c-s }}}
+spara för flera redig. buffrar
+{{{
+    c-x s  +y/n när tillfr. }}}
+skapa ny fil
+{{{
+    c-x c-f filnamn + spara när redig. }}}
+stäng/avsl. emacs
+{{{
+    c-x c-c  **** }}}
+suspend em.
+{{{
+    c-x c-z }}}
+
+
+Getting Help  (+SEMER SURVIVAL.PDF)
+
+    ----
+(remove help window)
+{{{
+    c-x 1 }}}
+(scroll help window)
+{{{
+    ca-v }}}
+apropos: show commands matching a string
+{{{
+    c-h a }}}
+show the function a key runs
+{{{
+    c-h c }}}
+describe a function
+{{{
+    c-h f }}}
+get mode-specific information
+{{{
+    c-h m }}}
+help om help
+{{{
+    c-h ? }}}
+visa help-lista i em.
+{{{
+    a-x help }}}
+sök kommando m. 'ord' i lång-namn **
+{{{
+    c-h a }}}
+kommando för ch./tecken-komb 'x'
+{{{
+    c-h k }}}
+info *
+{{{
+    c-h i }}}
+ tutorial/help i info **
+{{{
+    ? }}}
+sök emacs-paket
+{{{
+    c-h p }}}
+Öppna emacs-manualen **
+{{{
+    c-h r }}}
+ emacs-tutorial
+{{{
+    c-h t }}}
+sök cmd c-p i help (ger kortfattat svar)
+{{{
+    c-h c c-p }}}
+sök cmd c-p i help (ger mer utförligt svar)
+{{{
+    c-h k c-p }}}
+sök emacs-funktion
+{{{
+    c-h f funkt-namn }}}
+till emacs-manualen från info
+{{{
+    m emacs Ent }}}
+    ----
+
+
+Info
+
+    ----
+enter the Info documentation reader
+{{{
+    c-h i }}}
+find specified function or variable in Info
+{{{
+    c-h c-i }}}
+move within node: scroll forward / back
+{{{
+    space / del }}}
+beginning of node
+{{{
+    . }}}
+next node
+{{{
+    n }}}
+previous node
+{{{
+    p }}}
+move up node
+{{{
+    u }}}
+select node(=menu item) by name
+{{{
+    m }}}
+select nth menu item by number (1–9)
+{{{
+    n }}}
+follow cross reference (return with l)
+{{{
+    f }}}
+return to last node you saw
+{{{
+    l }}}
+return to directory node
+{{{
+    d }}}
+go to any node by name
+{{{
+    g }}}
+run Info tutorial
+{{{
+    h }}}
+quit Info
+{{{
+    q }}}
+search nodes for regexp
+{{{
+    a-s }}}
+    ----
+
+
+Error Recovery
+
+    ----
+abort partially typed or executing command
+{{{
+    c-g }}}
+gå ur 'recursive ed. levels' mm (=the GET OUT-command)
+{{{
+    a-x esc esc (esc) }}}
+recover a file lost by a system crash
+{{{
+    a-x recover-file }}}
+undo an unwanted change
+{{{
+    c-x u // cs_- }}}
+undo
+{{{
+    cs_- / cs-7 / c-x u }}}
+restore a buffer to its original contents
+{{{
+    a-x revert-buffer }}}
+redraw garbaged screen
+{{{
+    c-l }}}
+format filnamn autospar i emacs
+{{{
+    (ev ~) + #fil.txt# }}}
+Återskapa krashad osparad fil **
+{{{
+    Öppna filen/grundfilen + kör a-x recover-file }}}
+    ----
+
+
+Incremental Search
+
+    ----
+search forward
+{{{
+    c-s }}}
+increm. search framåt/bakåt ***
+{{{
+    c-s/c-r }}}
+search backward
+{{{
+    c-r }}}
+"non-increm. sök
+{{{
+    c-s Ent, {söktext} Ent }}}
+regular expression search
+{{{
+    ca-s }}}
+reverse regular expression search
+{{{
+    ca-r }}}
+hoppa tillbaks om påb. inc-search (=som hoppat iväg nånstans tempor.)
+{{{
+    del }}}
+sök igen/nästa **
+{{{
+    c-s(/c-r) igen ** }}}
+sök ett/flera ord, oavsett vad mellan ****
+{{{
+    c-s Ent c-w, ord1 ord2 ord3 Ent *** }}}
+sök m Regex i Emacs
+{{{
+    se vidare andra tutorials/manualer mm * }}}
+select previous search string
+{{{
+    a-p }}}
+select next later search string
+{{{
+    a-n }}}
+exit incremental search
+{{{
+    Ent }}}
+undo effect of last character
+{{{
+    del }}}
+abort current search
+{{{
+    c-g }}}
+    ----
+
+    
+Motion (backward/forward)
+
+    ----
+character
+{{{
+    c-b / c-f }}}
+word
+{{{
+    a-b / a-f }}}
+line
+{{{
+    c-p / c-n }}}
+go to line beginning (or end)
+{{{
+    c-a / c-e }}}
+sentence
+{{{
+    a-a / a-e }}}
+paragraph
+{{{
+    a-{ / a-} }}}
+page
+{{{
+    c-x [ / c-x ] }}}
+sexp
+{{{
+    ca-b / ca-f }}}
+function
+{{{
+    ca-a / ca-e }}}
+go to buffer beginning (or end)
+{{{
+    a-< / a-> }}}
+scroll to next screen
+{{{
+    c-v }}}
+scroll to previous screen
+{{{
+    a-v }}}
+scroll left
+{{{
+    c-x < }}}
+scroll right
+{{{
+    c-x > }}}
+scroll current line to center of screen
+{{{
+    c-u c-l }}}
+rulla framåt/bakåt
+{{{
+    c-v / a-v }}}
+rulla text i andra fönstret
+{{{
+    ca-v }}}
+bö./slut av nuv. sida/text
+{{{
+    c-x [ / c-x ] }}}
+nä./förra tecken//rad
+{{{
+    c-f/b // c-n/p }}}
+rad till mitt skärmen (+rensa)
+{{{
+    c-l }}}
+aktiv rad till topp ****
+{{{
+    c-l c-l }}}
+till blank framåt/bö. ord bakåt
+{{{
+    a-f / a-b }}}
+(till bö./slut av rad)
+{{{
+    c-a / c-e }}}
+till bö./slut av mening ***
+{{{
+    a-a / a-e }}}
+till bö./slut av hela buf. ***
+{{{
+    a-< / a-> }}}
+    ----
+
+
+Killing and Deleting (backward/forward)
+
+    ----
+character (delete, not kill)
+{{{
+    del | c-d }}}
+word
+{{{
+    a-del | a-d }}}
+backward-kil (=till början ord +beakta punkt.)
+{{{
+    a-bsp (el. del) }}}
+line (to end of)
+{{{
+    a-0 ck | c-k }}}
+kill-line(spec): sudda till bö. raden
+{{{
+    c-u 0 c-k }}}
+kill-line (=sudda till slut raden)
+{{{
+    c-k }}}
+sudda rad* (=dd i vim)
+{{{
+    till bö. rad  + c-k x2 }}}
+sudda till bö. nuv. rad(!!)
+{{{
+    c-u -1 c-k }}}
+sentence
+{{{
+    c-x del | a-k }}}
+kill-sentence (=till slut på nuv. mening)
+{{{
+    a-k }}}
+sudda bakåt mening (=till bö. nuv. mening??)
+{{{
+    c-u -1 a-k }}}
+sexp
+{{{
+    a_- ca-k | ca-k }}}
+kill region
+{{{
+    c-w }}}
+copy region to kill ring
+{{{
+    a-w }}}
+kill through next occurrence of char
+{{{
+    a-z tecken }}}
+yank back last thing killed (*)
+{{{
+    c-y }}}
+replace last yank with previous kill (*)
+{{{
+    a-y }}}
+cutpaste region (hamnar på kill ring)
+{{{
+    c-w }}}
+kop. region **
+{{{
+    a-w / c-w c-y }}}
+cutpaste (till slut av) ord
+{{{
+    a-d }}}
+cutpaste bakåt (=ord??)
+{{{
+    a-del }}}
+cutpaste till slut av rad **
+{{{
+    c-k }}}
+cutpaste hel rad **
+{{{
+    c-a + c-k x2 }}}
+cutpaste till bö. på nuv. rad
+{{{
+    c-u 0 c-k }}}
+cutpaste 6 rader **
+{{{
+    c-u 6 c-k }}}
+c-k flera gånger
+{{{
+    alla föregående klistras in som klump }}}
+cutpaste till slut/bö nuv. mening (=inkl. newl.)
+{{{
+    a-k / c-u -1 a-k }}}
+klistra in suddad text
+{{{
+    c-y }}}
+klistra in näst senast suddad text *
+{{{
+    c-y a-y (+fler a-y) }}}
+klipp/klistra mellan buffrar
+{{{
+    gemensam killring för alla buffrar }}}
+cutpaste tecken bakåt
+{{{
+    c-d }}}
+cutpaste ordet innan/efter pekaren **
+{{{
+    a-del/a-bsp // a-d }}}
+kill-word (=sudda ord/till slut av ord)
+{{{
+    a-d }}}
+cutpaste till slut av nuv. mening ***
+{{{
+    a-k }}}
+cutpaste stycke text framåt/bakåt
+{{{
+    kör kommandona(eller bind) forward-kill-paragraph / backward-kill-paragraph }}}
+    ----
+
+
+numarg (***(*))
+
+ange num. arg, t.ex. 6 ch. framåt
+{{{
+    c-u 6 c-f }}}
+mata in 20 '*'-ch. **
+{{{
+    c-u 20 * }}}
+sätta margin(=radlängd) till 70(=std)
+{{{
+    c-u 70 c-x f }}}
+
+
+Marking
+
+    ----
+set mark here
+{{{
+    c-@ (cg-q) / c-space }}}
+exchange point and mark
+{{{
+    c-x c-x }}}
+set mark arg words away
+{{{
+    a-@ (ag-q) }}}
+mark paragraph
+{{{
+    a-h }}}
+mark page
+{{{
+    c-x c-p }}}
+mark sexp
+{{{
+    ca-@ (cag-q) }}}
+mark function
+{{{
+    ca-h }}}
+mark entire buffer
+{{{
+    c-x h }}}
+    ----
+
+
+mark [region] visblock 
+
+    ----
+när skapas marks?
+{{{
+    många kommandon som flyttar point lämnar mark }}}
+sätt märke/mark ***
+{{{
+    c-@  (+går också att göra markering m musen) }}}
+gör region temp. synlig **
+{{{
+    m-x (transient-mark-mode)  (+ev c-c c-c) }}}
+sätt två märken + cutpaste text mellan **
+{{{
+    c-space, flytta, c-space +c-w (=basmetod) }}}
+sätt region runt nästa ord(, el till slutet av ordet om point mitt i ordet)
+{{{
+    a-@ }}}
+mark: markera(region) runt nuvarande stycke
+{{{
+    a-h }}}
+mark: sexp till markering/region (=sexp som ca-f skulle flytta till)
+{{{
+    ca-@ }}}
+mark: markera defun
+{{{
+    ca-h }}}
+mark: markera nuv. sida
+{{{
+    c-x c-p }}}
+mark: markera hela buffern ***
+{{{
+    c-x h }}}
+hoppa mellan markör och märke **
+{{{
+    c-x c-x }}}
+    ----
+
+
+Query Replace
+
+    ----
+interactively replace a text string
+{{{
+    a-% (sa-5) }}}
+using regular expressions
+{{{
+    ca-% (csa-5) // a-x query-replace-regexp }}}
+replace this one, go on to next
+{{{
+    space }}}
+replace this one, don't move
+{{{
+    , }}}
+skip to next without replacing
+{{{
+    del }}}
+replace all remaining matches
+{{{
+    ! }}}
+back up to the previous match
+{{{
+    ^ }}}
+exit query-replace
+{{{
+    Ent }}}
+enter recursive edit (ca-c to exit)
+{{{
+    c-r     #(?/*) }}}
+SÖK + ERSÄTT I EMACS **
+{{{
+    a-% }}}
+search + repl: utför akt. ersättn.
+{{{
+    space }}}
+search + repl: utför inte akt. ersättn.
+{{{
+    del }}}
+search + repl: quit replacements
+{{{
+    Ent / Esc }}}
+search + repl: utför akt. ersättn. + avsl. repl.
+{{{
+    . }}}
+search + repl: utför alla ers.
+{{{
+    ! }}}
+fler intress. sök+ersätt-k
+{{{
+    replace-string (simple unconditional replacement), replace-regexp och query-replace-regexp }}}
+not ang. emacs search+replace
+{{{
+    ersätter oftast smart *** }}}
+    ----
+
+
+Multiple Windows  splits
+    'When two commands are shown, the second is for "other frame."'(?)
+
+    ----
+delete all other windows
+{{{
+    c-x 1 }}}
+split window, above and below
+{{{
+    c-x 2 | c-x 5 2 }}}
+delete this window
+{{{
+    c-x 0 | c-x 5 0 }}}
+split window, side by side
+{{{
+    c-x 3 }}}
+scroll other window
+{{{
+    ca-v }}}
+switch cursor to another window
+{{{
+    c-x o | c-x 5 o }}}
+select buffer in other window
+{{{
+    c-x 4 b | c-x 5 b }}}
+display buffer in other window
+{{{
+    c-x 4 c-o | c-x 5 c-o }}}
+find file in other window
+{{{
+    c-x 4 f | c-x 5 f }}}
+find file read-only in other window
+{{{
+    c-x 4 r | c-x 5 r }}}
+run Dired in other window
+{{{
+    c-x 4 d | c-x 5 d }}}
+find tag in other window
+{{{
+    c-x 4 . | c-x 5 . }}}
+grow window taller
+{{{
+    c-x ^ }}}
+shrink window narrower
+{{{
+    c-x { }}}
+grow window wider
+{{{
+    c-x } }}}
+byt fönster
+{{{
+    c-x o }}}
+stäng fö., utom nuv.(ej buf)
+{{{
+    c-x 1 }}}
+stäng nuv. fönster **
+{{{
+    c-x 0 }}}
+vsplit *
+{{{
+    c-x 2 }}}
+hsplit
+{{{
+    c-x 3 }}}
+öppna annan fil i split ***
+{{{
+    c-x 4 c-f filnamn }}}
+öppna nytt fönster (=på samma fil)
+{{{
+    a-x make-frame  #+a-x delete-frame för att stänga }}}
+    ----
+
+
+Formatting
+
+    ----
+indent current line (mode-dependent)
+{{{
+    tab }}}
+indent region (mode-dependent)
+{{{
+    ca-\ (cag-å) }}}
+indent sexp (mode-dependent)
+{{{
+    ca-q }}}
+indent region rigidly arg columns
+{{{
+    c-x tab }}}
+indentera 'rigidly'(=??) (n antal kolumner)
+{{{
+    c-x c-i  (indent-rigidly) }}}
+om indentering i emacs
+{{{
+    går att ställa om precis som i vim }}}
+insert newline after point
+{{{
+    c-o }}}
+move rest of line vertically down
+{{{
+    ca-o }}}
+delete blank lines around point
+{{{
+    c-x c-o }}}
+join line with previous (with arg, next)
+{{{
+    a-^ }}}
+delete all white space around point
+{{{
+    a-\ (ag-å) }}}
+put exactly one space at point
+{{{
+    a-space }}}
+fill paragraph
+{{{
+    a-q }}}
+.formatera text (t.ex. stycken)
+{{{
+    a-q }}}
+set fill column
+{{{
+    c-x f }}}
+set prefix each line starts with
+{{{
+    c-x . }}}
+set face
+{{{
+    a-g }}}
+    ----
+
+
+Case Change
+
+uppercase word
+{{{
+    a-u }}}
+lowercase word
+{{{
+    a-l }}}
+capitalize word
+{{{
+    a-c }}}
+till gemener / versaler
+{{{
+    c-x c-l / c-x c-u }}}
+uppercase region
+{{{
+    c-x c-u }}}
+lowercase region
+{{{
+    c-x c-l }}}
+
+
+The Minibuffer  kommrad complet 
+
+    ----
+kör komm. med långnamnet ****
+{{{
+    a-x kommandots-lång-namn }}}
+complete as much as possible
+{{{
+    tab }}}
+complete up to one word
+{{{
+    space }}}
+complete and execute
+{{{
+    Ent }}}
+show possible completions
+{{{
+    ? }}}
+ SLUTFÖR ORD FÖR KOMM, T.EX. LÅNGNAMN
+{{{
+    Space och Tab ***** }}}
+fetch previous minibuffer input
+{{{
+    a-p }}}
+fetch later minibuffer input or default
+{{{
+    a-n }}}
+regexp search backward through history
+{{{
+    a-r }}}
+regexp search forward through history
+{{{
+    a-s }}}
+abort command
+{{{
+    c-g }}}
+AVBRYT CMD (esc i vim) ***
+{{{
+    c-g }}}
+Edit + repeat last cmd that used the minibuffer (*!)
+{{{
+    Type c-x ESC ESC }}}
+activate the menu bar using the minibuffer
+{{{
+    F10  (?) }}}
+    ----
+
+
+Buffers
+
+    ----
+select another buffer
+{{{
+    c-x b }}}
+list all buffers
+{{{
+    c-x c-b }}}
+kill a buffer
+{{{
+    c-x k }}}
+lista öppna buffrar **
+{{{
+    c-x c-b }}}
+byt till buffer 'x'
+{{{
+    c-x b +bufnamn (=när tillfr.) }}}
+    ----
+
+
+Transposing
+
+transpose characters
+{{{
+    c-t }}}
+transpose words
+{{{
+    a-t }}}
+transpose lines
+{{{
+    c-x c-t }}}
+transpose sexps
+{{{
+    ca-t }}}
+
+
+inställn 
+
+sätt mörk bakgrund (dark)
+{{{
+    a-x invert-face <Ret> default }}}
+fyll ut skärm-rader(=wrap? %) ) i region
+{{{
+    a-x (fill-region) }}}
+sätta margin(=radlängd) till 70(=standard) *
+{{{
+    c-u 70 c-x f }}}
+
+
+Spelling Check
+
+check spelling of current word
+{{{
+    a-$ (ag-4) }}}
+check spelling of all words in region
+{{{
+    a-x ispell-region }}}
+check spelling of entire buffer
+{{{
+    a-x ispell-buffer }}}
+
+
+majmodes 
+
+    ----
+not: ang. maj/min-modes i em.
+{{{
+    speciallägena för redigering av text, programmeringskod mm (t.ex. C Mode, Tcl Mode) }}}
+lista maj. modes **
+{{{
+    Fundamental Mode, Text Mode (stavning, centrering mm), Outline Mode (folding mm), Lisp Mode (har interaktiv länk till CLisp interpretator i annan buffer, mm), Tcl Mode, C Mode (har speciell indentering mm mm), + mail, usenet, dired, webläsare mm }}}
+visa info om akt. maj-mode ****
+{{{
+    c-h m }}}
+byt till fundamental(maj) mode
+{{{
+    a-x fundamental-mode }}}
+byt till text mode ***
+{{{
+    a-x text-mode }}}
+minor modes **:
+{{{
+    små moduler m 'kryssrutor', för/som komplement-inställn. i major modes (ex. på ett minormode är Auto Fill-mode) }}}
+slå på/av auto fill-mode (=minor mode)
+{{{
+    a-x auto-fill-mode }}}
+    ----
+
+
+Tags (SEMER 'SURVIVAL.PDF' (***!))
+
+    ----
+find a tag (a definition)
+{{{
+    a-. }}}
+find next occurrence of tag/definition
+{{{
+    c-u a-. }}}
+specify a new tags file
+{{{
+    a-x visit-tags-table }}}
+regexp search on all files in tags table
+{{{
+    a-x tags-search }}}
+run query-replace on all the files (=recorded in tags table)
+{{{
+    a-x tags-query-replace }}}
+continue last tags search or query-replace
+{{{
+    a-, }}}
+ersätt alla 'identifiers' i källkod
+{{{
+    tags-query-replace }}}
+pop back to where a-. was last invoked
+{{{
+    a-* (sa-') }}}
+    ----
+
+
+Shells  shellfilter
+
+    ----
+execute a shell command
+{{{
+    a-! (sa-1) }}}
+run a shell command on the region
+{{{
+    a-| (ag-<) }}}
+filter region through a shell command
+{{{
+    c-u ag-< }}}
+start a shell in window *shell*/within emacs
+{{{
+    a-x shell }}}
+    ----
+
+
+Rectangles
+
+    ----
+copy rectangle to register
+{{{
+    c-x r r }}}
+kill rectangle
+{{{
+    c-x r k }}}
+yank rectangle
+{{{
+    c-x r y }}}
+open rectangle, shifting text right
+{{{
+    c-x r o }}}
+blank out rectangle
+{{{
+    c-x r c }}}
+prefix each line with a string
+{{{
+    c-x r t }}}
+    ----
+
+
+Abbrevs
+
+    ----
+add global abbrev
+{{{
+    c-x a g }}}
+add mode-local abbrev
+{{{
+    c-x a l }}}
+add global expansion for this abbrev
+{{{
+    c-x a i g }}}
+add mode-local expansion for this abbrev
+{{{
+    c-x a i l }}}
+explicitly expand abbrev
+{{{
+    c-x a e }}}
+expand previous word dynamically
+{{{
+    a-/ (sa-7) }}}
+    ----
+
+
+Regular Expressions
+
+any single character except a newline
+{{{
+    . }}}
+zero or more repeats
+{{{
+    * }}}
+one or more repeats
+{{{
+    + }}}
+zero or one repeat
+{{{
+    ? }}}
+quote regular expression special character c
+{{{
+    \c }}}
+alternative ("or")
+{{{
+    \| }}}
+grouping
+{{{
+    \( ... \) }}}
+same text as 1st(2nd etc) group
+{{{
+    \1 \2 ... }}}
+at word break
+{{{
+    \b }}}
+not at word break
+{{{
+    \B }}}
+word-syntax character
+{{{
+    \w  #survival.pdf }}}
+
+.... match start/end
+
+line
+{{{
+    ^  $ }}}
+word
+{{{
+    \<  \> }}}
+buffer
+{{{
+    (WTF =\FORWARD/BACKWARD QUOTE(=??!??)) }}}
+
+.... teckenklasser
+
+explicit set
+{{{
+    [ ]   [^ ] }}}
+word-syntax character
+{{{
+    \w  \W }}}
+character with syntax c
+{{{
+    \sc(????)  \Sc(????) }}}
+
+
+International Character Sets
+
+    ----
+select and activate input method for the current buffer
+{{{
+    c-x Ent c-\ (cg-å)  #survival.pdf }}}
+specify principal language
+{{{
+    a-x set-language-environment }}}
+show all input methods
+{{{
+    a-x list-input-methods }}}
+enable or disable input method
+{{{
+    c-\ (cg-å) }}}
+set coding system for next command
+{{{
+    a-x Ent c }}}
+show all coding systems
+{{{
+    a-x list-coding-systems }}}
+choose preferred coding system
+{{{
+    a-x prefer-coding-systems }}}
+visit file with no conversion of any kind
+{{{
+    a-x find-file-literally  #survival.pdf }}}
+    ----
+
+
+Registers
+
+    ----
+save region in register
+{{{
+    c-x r s }}}
+insert register contents into buffer
+{{{
+    c-x r i }}}
+save value of point in register
+{{{
+    c-x r space }}}
+jump to point saved in register
+{{{
+    c-x r j }}}
+    ----
+
+
+Keyboard Macros  tangmakro
+
+    ----
+start defining a keyboard macro
+{{{
+    c-x ( }}}
+end keyboard macro definition
+{{{
+    c-x ) }}}
+execute last-defined keyboard macro
+{{{
+    c-x e }}}
+append to last keyboard macro
+{{{
+    c-u c-x ( }}}
+name last keyboard macro
+{{{
+    a-x name-last-kbd-macro }}}
+insert Lisp definition in buffer
+{{{
+    a-x insert-kbd-macro }}}
+    ----
+
+
+redigprogrkod 
+
+    ----
+gå bak/fram nästa 'sexp'(bal. lisp expr. (o.likn.?))
+{{{
+    ca-b/f }}}
+ut/bak//in/fram en parentes-nivå
+{{{
+    ca-u/d }}}
+till bö./slutet av nuv. funct-def.(defun) **
+{{{
+    ca-a/e (//ca-d????) }}}
+cutpaste sexp efter/innan point
+{{{
+    ca-k / c-u -1 ca-k }}}
+cutpaste sexp bakåt (=cmd-var)
+{{{
+    sätt backward-kill-sexp till tecken-komb. ** }}}
+backward-up-list. Move backward up one level of parens (+ignore bal. sexp)
+{{{
+    ca-u }}}
+down-list. (=down level of parens? (se förra))
+{{{
+    ca-d }}}
+beginning-of-defun. Move to the beg. of the curr. defun.
+{{{
+    ca-a }}}
+end-of-defun =to end of curr. defun
+{{{
+    ca-e }}}
+Kill Sexp after/before Cursor (***)
+{{{
+    ca-k / c-u -1 ca-k }}}
+    ----
+
+
+Commands Dealing with Emacs Lisp
+
+    ----
+eval sexp before point
+{{{
+    c-x c-e }}}
+eval current defun
+{{{
+    ca-x }}}
+eval region
+{{{
+    a-x eval-region }}}
+read and eval minibuffer
+{{{
+    a-: (sa-.) }}}
+load from standard system directory
+{{{
+    a-x load-library }}}
+    ----
+
+
+Simple Customization
+
+customize variables and faces
+{{{
+    a-x customize }}}
+Making global key bindings in Emacs Lisp (examples)
+{{{
+    (global-set-key "\c-cg" 'goto-line)    (global-set-key "\a-#" 'query-replace-regexp) }}}
+Writing Commands (example)
+{{{
+    (defun command-name (args)    "documentation" (interactive "template")    body) }}}
+
+
+
+The interactive spec says how to read arguments interactively.
+Type c-h f interactive for more details.
+
+An example:
+(defun this-line-to-top-of-window (line)
+"Reposition line point is on to top of window.
+With ARG, put point on line ARG."
+(interactive "P")
+(recenter (if (null line)
+              0
+            (prefix-numeric-value line))))
+
+
+
+
+
+
+
+
+
+
+
+
+___
+
+**** EMACSREFCARD 2 =LONG (=ca 1800 poster)  =plocka o sortera in under pverktl *** (+inkl. rubrikerna ******)
+
+    @i: ^>>/[ca]-F s        
+    @n: }dd
+
+    @c: <<:s/\v\t+/ ; /     #clean =unindent + tabs2' ; '
+
+~/Dropbox/emacs-refcard_long.pdf
+
+Long Emacs Reference Card
+
+
+
+
+
+
+open
+
+    ----
+or click a graphical icon
+{{{
+    emacs& Ret }}}
+start in terminal, not in a windowing system
+{{{
+    emacs -nw Ret }}}
+information about Emacs
+{{{
+    c-h c-a }}}
+show version in echo area
+{{{
+    a-x emacs-version }}}
+show time since started
+{{{
+    a-x emacs-uptime }}}
+    ----
+
+
+exit
+
+    ----
+save buffers and quit
+{{{
+    c-x c-c }}}
+force save buffers and quit
+{{{
+    c-u c-x c-c }}}
+recursive edit (see "recursive edit" below)
+{{{
+    c-] }}}
+force quit
+{{{
+    a-x kill-emacs }}}
+    ----
+
+
+cancel
+
+cancel a command
+{{{
+    c-g }}}
+
+
+recursive edit
+
+exit recursive edit
+{{{
+    c-] }}}
+cancel recursive edit
+{{{
+    ca-c  c-[ c-c }}}
+cancel all
+{{{
+    a-x top-level }}}
+
+
+customize
+
+    ----
+open Emacs initialization file
+{{{
+    c-x c-f ~/.emacs Ret }}}
+run time of loading user init file
+{{{
+    a-x emacs-init-time }}}
+main menu for customize
+{{{
+    a-x customize }}}
+customize variable
+{{{
+    a-x customize-variable }}}
+customize search(?)
+{{{
+    a-x customize-apropos }}}
+customize mode(??)
+{{{
+    a-x customize-mode }}}
+define key binding (see "key" below)
+{{{
+    a-x global-set-key }}}
+define key binding for current buffer
+{{{
+    a-x local-set-key }}}
+reread settings in file local variables(??)
+{{{
+    a-x normal-mode }}}
+show clock, system load and email flag in mode line
+{{{
+    a-x display-time }}}
+turn off show system time
+{{{
+    a-x display-time-mode }}}
+show times around the world
+{{{
+    a-x display-time-world }}}
+show system power
+{{{
+    a-x display-battery-mode }}}
+show size in mode line
+{{{
+    a-x size-indication-mode }}}
+show column number in mode line
+{{{
+    a-x column-number-mode }}}
+show end of file in fringe
+{{{
+    a-x toggle-indicate-empty-lines }}}
+add a ruler to the current buffer's window
+{{{
+    a-x ruler-mode }}}
+toggle existence of drop-down menu
+{{{
+    a-x menu-bar-mode }}}
+toggle existence of clickable tool bar
+{{{
+    a-x tool-bar-mode }}}
+toggle scroll bar
+{{{
+    a-x scroll-bar-mode }}}
+toggle scroll bar in current frame
+{{{
+    a-x toggle-scroll-bar }}}
+toggle blinking of cursor
+{{{
+    a-x blink-cursor-mode }}}
+fix delete and backspace keys
+{{{
+    a-x normal-erase~is~backspace-mode }}}
+    ----
+
+
+menu
+
+    ----
+text interaction with drop-down menu
+{{{
+    a-'  #el. ev engelskt runt enkelcitat (=wtf?) }}}
+same as previous
+{{{
+    F10 }}}
+toggle existence of drop-down menu
+{{{
+    a-x menu-bar-mode }}}
+toggle existence of clickable tool bar
+{{{
+    a-x tool-bar-mode }}}
+    ----
+
+
+help
+
+    ----
+menu
+{{{
+    c-h ? }}}
+menu
+{{{
+    c-h c-h }}}
+scroll down menu
+{{{
+    Space }}}
+scroll up menu
+{{{
+    Del }}}
+close menu
+{{{
+    q }}}
+tutorial
+{{{
+    c-h t }}}
+Emacs info manual (see info" below)
+{{{
+    c-h r }}}
+Emacs FAQ
+{{{
+    c-h F }}}
+what is command for KEY
+{{{
+    c-h c <KEY> }}}
+describe command for KEY
+{{{
+    c-h k <KEY> }}}
+where is key binding for COMMAND
+{{{
+    c-h w <COMMAND> Ret }}}
+show current modes
+{{{
+    c-h m }}}
+show current key bindings
+{{{
+    c-h b }}}
+list bindings starting with c-x (see "key" below)
+{{{
+    c-x c-h }}}
+list bindings starting with c-c (see "key" below)
+{{{
+    c-c c-h }}}
+list commands matching search
+{{{
+    c-h a }}}
+list commands and functions matching search
+{{{
+    c-u c-h a }}}
+describe FUNCTION
+{{{
+    c-h f <FUNCTION> Ret }}}
+describe last command executed with a-x
+{{{
+    a-x a-p c-h f Ret }}}
+describe and show values for VARIABLE
+{{{
+    c-h v <VARIABLE> Ret }}}
+    ----
+
+
+    ----
+list user variable matching search
+{{{
+    a-x apropos-variable }}}
+list all variables matching search
+{{{
+    c-u a-x apropos-variable }}}
+list user variables with values matching search
+{{{
+    a-x apropos~value }}}
+list all variables with values matching search
+{{{
+    c-u a-x apropos-value }}}
+list all with values matching search
+{{{
+    c-u a-x apropos-documentation }}}
+forward to cross-reference link
+{{{
+    Tab }}}
+backward cross-reference link
+{{{
+    s-tab, a-tab, ca-i, c-[ c-i }}}
+follow cross-reference
+{{{
+    Ret, c-c c-c }}}
+go back
+{{{
+    c-c c-b }}}
+quit
+{{{
+    q }}}
+    ----
+
+
+info help
+
+    ----
+open directory of manuals
+{{{
+    c-h i }}}
+open Emacs manual
+{{{
+    c-h r }}}
+find description of symbol in manual
+{{{
+    c-h S }}}
+close
+{{{
+    t }}}
+table of contents (menu)
+{{{
+    t }}}
+back to directory
+{{{
+    d }}}
+visit menu ENTRY in table of contents
+{{{
+    m <ENTRY> }}}
+forward to cross-reference link
+{{{
+    Tab }}}
+backward cross-reference link
+{{{
+    s-tab, a-tab, ca-i, c-[ c-i }}}
+follow link
+{{{
+    Ret }}}
+back to last visited page
+{{{
+    l }}}
+forward to last visited page
+{{{
+    r }}}
+scroll down/up
+{{{
+    c-v / Space  //  a-v / del }}}
+next prev./node
+{{{
+    n / p }}}
+search current manual's index
+{{{
+    i }}}
+go to index node
+{{{
+    i + Ret }}}
+search all indices
+{{{
+    a-x info-apropos }}}
+search forward for regular expression PATTERN
+{{{
+    s PATT }}}
+case-insensitive search for regular expression PATTERN
+{{{
+    S <PATTERN> }}}
+forward to SEARCH (see "search" below)
+{{{
+    c-s <SEARCH> }}}
+reverse to SEARCH
+{{{
+    c-r <SEARCH> }}}
+make a duplicate buffer in other window (see " window" below)
+{{{
+    a-n  //  a-x clone-buffer }}}
+kill current node name as copy
+{{{
+    c / w }}}
+kill current node name as Lisp expression
+{{{
+    a-0 c  //  a-0 w }}}
+    ----
+
+
+minibuffer
+
+    ----
+previous input
+{{{
+    a-p }}}
+recent input
+{{{
+    a-n }}}
+complete name of buffer, file, symbol (see "completion" below)
+{{{
+    Tab // c-i }}}
+search previous input backward with REGEXP
+{{{
+    a-r REGEX Ret }}}
+search for previous input forward with REGEXP
+{{{
+    a-s REGEX Ret }}}
+search for previous input again
+{{{
+    a-s Ret }}}
+show recently echoed messages
+{{{
+    c-h e }}}
+exit
+{{{
+    c-g }}}
+    ----
+
+
+completion
+
+    ----
+complete name of buffer, file, function, variable, ...
+{{{
+    tab }}}
+completion, unless a file
+{{{
+    Space }}}
+insert space without completion **
+{{{
+    c-q Space }}}
+list completions
+{{{
+    ? }}}
+go to "completions" buffer
+{{{
+    a-v }}}
+next/prev. completion
+{{{
+    hö / vä }}}
+select completion
+{{{
+    Ret }}}
+exit back to minibuffer
+{{{
+    ESC ESC ESC  /  c-[ c-[ c-[ }}}
+    ----
+
+
+mode
+
+    ----
+help with current mode (see "help" above)
+{{{
+    c-h m }}}
+mode for writing
+{{{
+    a-x text-mode }}}
+a simple default mode
+{{{
+    a-x fundamental-mode }}}
+change back to what (=mode?) Emacs thought it was
+{{{
+    a-x normal-mode }}}
+customize current mode (see "customize" above)
+{{{
+    a-x customize-mode }}}
+add (mode?) to top of file
+{{{
+    a-x add-file-local-variable-prop-line Ret mode Ret }}}
+    ----
+
+
+file
+
+    ----
+open file
+{{{
+    c-x c-f }}}
+new file
+{{{
+    c-x c-f }}}
+open file in parent directory
+{{{
+    c-x c-f .. <file> Ret }}}
+open file from root directory
+{{{
+    c-x c-f / <file> Ret }}}
+open all C sources in current directory
+{{{
+    c-x c-f *.c Ret }}}
+including parent directories
+{{{
+    a-x make-directory Ret Ret }}}
+close current file and open another
+{{{
+    c-x c-v }}}
+save file
+{{{
+    c-x c-s }}}
+save file even if buffer is unchanged (+ see a-~ below)
+{{{
+    c-x c-w Ret  //  c-u a-~ c-x c-s }}}
+prompt to save any buffer that has been modified
+{{{
+    c-x s }}}
+save any buffer that has been modified with no questions
+{{{
+    c-u c-x s }}}
+open previously saved or opened (file?)
+{{{
+    c-x c-f a-p Ret }}}
+save current file to PATH
+{{{
+    c-x c-w <PATH> Ret }}}
+save to DIRECTORY using file or buffer name
+{{{
+    c-x c-w <DIRECTORY> Ret }}}
+mark buffer as unmodified
+{{{
+    a-~ }}}
+mark buffer as modified
+{{{
+    c-u a-~ }}}
+toggle as read only
+{{{
+    c-x c-q }}}
+list contents of archive
+{{{
+    c-x c-f archive.tar Ret }}}
+open compressed Gzip
+{{{
+    c-x c-f file.gz Ret }}}
+list contents of ZIP
+{{{
+    c-x c-f file.zip Ret }}}
+rename current
+{{{
+    a-x rename-file Ret <FILE> Ret <NEW> }}}
+rename current (file?) to NAME
+{{{
+    a-x rename-file Ret Ret <NAME> Ret }}}
+delete NAME
+{{{
+    a-x delete-file Ret <NAME> Ret }}}
+(see "read only" below)
+{{{
+    a-x view-file }}}
+open in basic mode with no conversions
+{{{
+    a-x find-file-literally }}}
+    ----
+
+    ----
+toggle between overwrite mode and insert mode
+{{{
+    Ins // a-x overwrite-mode }}}
+edit as literal bytes
+{{{
+    a-x binary-overwrite-mode }}}
+rename previously saved or opened
+{{{
+    c-x d a-p Ret R }}}
+insert other into current buffer
+{{{
+    c-x i }}}
+save region (see "region" below)
+{{{
+    a-x write-region }}}
+save buffer once to alternate
+{{{
+    c-x h a-x write-region }}}
+save region to other file (see "region" below)
+{{{
+    a-x append-to-file }}}
+set buffer to alternate file
+{{{
+    a-x set-visited-file-name }}}
+set permissions of current file
+{{{
+    a-x set-file-modes }}}
+open file name at point
+{{{
+    a-x find-file-at-point }}}
+restore buffer from disk
+{{{
+    a-x revert-buffer  //  c-x c-v Ret  //  c-x c-f a-n Ret }}}
+open backup
+{{{
+    c-x c-f a-n ~Ret }}}
+save file and make it the next backup
+{{{
+    c-u c-x c-s }}}
+save file without making a backup
+{{{
+    c-0 c-x c-s }}}
+backup previous file then save
+{{{
+    c-u c-u c-x c-s }}}
+backup previous file, save, make it the next backup
+{{{
+    c-u c-u c-u c-x c-s }}}
+recover file auto-save data after a crash
+{{{
+    a-x recover-file }}}
+recover file using auto-save data
+{{{
+    a-x recover-session }}}
+show file size in mode line
+{{{
+    a-x size-indication-mode }}}
+update file with changes on disk
+{{{
+    a-x auto-revert-mode }}}
+update file with changes for any buffer
+{{{
+    a-x global-auto-revert-mode }}}
+update end of buffer with changes on disk
+{{{
+    a-x auto-revert-tail-mode }}}
+use color overlays for tracking file edits
+{{{
+    a-x highlight-changes-mode }}}
+make (file?) link
+{{{
+    a-x add-name-to-file }}}
+make symbolic link
+{{{
+    a-x make~symbolic-link }}}
+flush changes in file system to disk
+{{{
+    a-x unix-sync }}}
+    ----
+
+
+buffer
+
+    ----
+beginning/end of buffer *
+{{{
+    a-<  //  a-> }}}
+go to half way of buffer
+{{{
+    a-5 a-< }}}
+go to 10 percent of buffer
+{{{
+    a-1 a-< }}}
+go to 90 percent of buffer
+{{{
+    a-9 a-< }}}
+go back (see "mark" below)
+{{{
+    c-u c-Space }}}
+mark
+{{{
+    c-x h  //  a-> a-< }}}
+kill BUFFER
+{{{
+    c-x k <BUFFER> Ret }}}
+kill current buffer
+{{{
+    c-x k Ret }}}
+ask to kill each and all buffers
+{{{
+    a-x kill-some-buffers }}}
+automatically kill old buffers
+{{{
+    a-x clean-buffer-list }}}
+schedule daily cleanup (of buffers??)
+{{{
+    a-x customize-group Ret midnight Ret }}}
+switch to last buffer
+{{{
+    c-x b Ret }}}
+switch to BUFFER or make new BUFFER
+{{{
+    c-x b <BUFFER> Ret }}}
+switch to a buffer in other window (see "window" below)
+{{{
+    c-x 4 b }}}
+show a buffer in other window (see "window" below)
+{{{
+    c-x 4 c-o }}}
+kill current buffer and close window (see "window" below)
+{{{
+    c-x 4 0  //  c-u a-x quit-window }}}
+list all buffers (see "buffer menu" below) in other window
+{{{
+    c-x c-b }}}
+list buffer(s) in current window
+{{{
+    a-x buffer-menu }}}
+list buffer(s) in other window and select it
+{{{
+    a-x buffer-menu-other-window }}}
+    ----
+
+    ----
+avoid switching to current buffer and switch to last
+{{{
+    a-x bury-buffer }}}
+undo last bury
+{{{
+    a-x unbury-buffer }}}
+switch to previously switched buffer
+{{{
+    c-x b a-p a-p Ret }}}
+bury buffer and switch to next buffer
+{{{
+    c-x c-hö }}}
+switch to previously buried buffer
+{{{
+    c-x c-vä }}}
+save current buffer contents to file on disk
+{{{
+    c-x c-s }}}
+rename current buffer to NAME
+{{{
+    a-x rename-buffer Ret <NAME> }}}
+remove "|X;," suffix from buffer name if possible
+{{{
+    a-x rename-uniquely }}}
+restore contents with file on disk (see "undo" below)
+{{{
+    a-x revert~buffer  //  c-x c-v Ret }}}
+copy all of another buffer to point in current
+{{{
+    a-x insert-buffer }}}
+copy region to other buffer (see "region" below)
+{{{
+    a-x append-to-buffer }}}
+overwrite BUFFER with region (see "region" below)
+{{{
+    a-x copy-to-buffer }}}
+permanently enable buffer
+{{{
+    a-x enable-command Ret erase-buffer Ret }}}
+delete everything buffer (see "delete" below)
+{{{
+    a-x erase-buffer }}}
+open an indirect buffer based on current
+{{{
+    a-x clone-indirect-buffer }}}
+open an indirect buffer but in another window
+{{{
+    c-x 4 c }}}
+compare two functions (??/***)
+{{{
+    c-h f car Ret c-x o a-x clone-buffer Ret c-h f cdr Ret }}}
+show differences with color
+{{{
+    a-x highlight-compare-buffers }}}
+    ----
+
+
+read only
+
+    ----
+open FILE as read only
+{{{
+    c-x c-r <FILE> Ret }}}
+toggle write status
+{{{
+    c-x c-q }}}
+view mode for current buffer
+{{{
+    a-x view-mode }}}
+view mode for other buffer
+{{{
+    a-x view-buffer Ret Ret }}}
+open FILE in view mode
+{{{
+    a-x view-file <FILE> Ret }}}
+view mode for BUFFER
+{{{
+    a-x view-buffer Ret <BUFFER> Ret }}}
+scroll down/up
+{{{
+    Space / Del }}}
+view mode help
+{{{
+    h }}}
+turn off view mode
+{{{
+    q // a-x normal-mode }}}
+    ----
+
+
+window
+
+    ----
+scroll down / up
+{{{
+    c-v / a-v }}}
+scroll down / up one line
+{{{
+    c-1 c-v // a-1 a-v }}}
+scroll other window down
+{{{
+    ca-v // c-[ c-v }}}
+beginning / end of buffer
+{{{
+    a-< // a-> }}}
+beginning of other buffer
+{{{
+    a-x beginning-of-buffer-other-window }}}
+end of other buffer
+{{{
+    a-x end-of-buffer-other-window }}}
+move to first column of center line in display
+{{{
+    a-r }}}
+move to first column of first displayed line
+{{{
+    a-O a-r }}}
+move to first column of last displayed line
+{{{
+    a_- a-r }}}
+move to first column of fourth displayed line
+{{{
+    a-4 a-r }}}
+move to first column of third to last displayed line
+{{{
+    c-u - 3 a-r }}}
+split window vertically in two
+{{{
+    c-x 2 }}}
+switch between windows
+{{{
+    c-x o }}}
+switch to a buffer in other window
+{{{
+    c-x 4 b }}}
+show a buffer in other window
+{{{
+    c-x 4 c-o }}}
+close current
+{{{
+    c-x 0 }}}
+    ----
+
+    ----
+close all other windows leaving current
+{{{
+    c-x 1  //  Esc Esc Esc }}}
+open file in other window
+{{{
+    c-x 4 c-f  //  c-x 4 f }}}
+shrink window to fit text
+{{{
+    c-x - }}}
+equalize window heights
+{{{
+    c-x + }}}
+list all commands starting with c-x 4 (**!)
+{{{
+    c-x 4 c-h }}}
+enlarge window by 1 line
+{{{
+    c-x ^ }}}
+enlarge window 5 lines
+{{{
+    c-u 5 c-x ^ }}}
+shrink window 5 lines
+{{{
+    a_- 5 c-x ^ }}}
+split window horizontally
+{{{
+    c-x 3 }}}
+enlarge window 5 columns wider
+{{{
+    c-u 5 c-x } }}}
+shrink window 5 columns narrower
+{{{
+    c-5 c-x { }}}
+scroll horizontally right / left
+{{{
+    c-x <  //  c-x > }}}
+change if long lines fold or are truncated
+{{{
+    a-x toggle-truncate-lines }}}
+compare buffers starting at point of both
+{{{
+    a-x compare-windows }}}
+continue comparing
+{{{
+    c-x z }}}
+continue comparing more (see "diff" below)
+{{{
+    z }}}
+use color to show all differences (=when comparing windows)
+{{{
+    a-x highlight-compare-buffers }}}
+    ----
+
+
+buffer menu
+
+    ----
+list buffers
+{{{
+    c-x c-b }}}
+list in current window
+{{{
+    a-x buffer-menu }}}
+list buffers in other window and select it
+{{{
+    a-x buffer-menu-other-window }}}
+list only buffers associated with files
+{{{
+    c-u c-x c-b }}}
+move down / up (in buf.list)
+{{{
+    Space / n / c-n  //  p / c-p }}}
+toggle current buffer as read only (see "read only" above)
+{{{
+    % }}}
+show modes for current buffer
+{{{
+    ? }}}
+update list
+{{{
+    g }}}
+automatically update list every 5 seconds
+{{{
+    a-x auto-revert~mode }}}
+toggle list to buffers associated with files
+{{{
+    T }}}
+view current buffer in other window (see " window" above)
+{{{
+    c-o }}}
+view current buffer (from list) in this window
+{{{
+    Ret }}}
+go to current buffer (from list) in this window
+{{{
+    e / f }}}
+go to current buffer (from list) in only 1 window 1
+{{{
+    1 / 2 }}}
+open current buffer in View mode (see "read only" above)
+{{{
+    V }}}
+bury current (see "buffer" above)
+{{{
+    b }}}
+mark current and move down
+{{{
+    m }}}
+mark to delete current buffer (in buf.list(?)) and move up
+{{{
+    c-d }}}
+mark to delete current buffer (in buf.list(?)) and move down
+{{{
+    d / k / c-k }}}
+execute marks
+{{{
+    x }}}
+sort buffers (in list?) by name
+{{{
+    a-2 a-x Buffer-menu-sort }}}
+sort buffers (in list?) by size (ascending)
+{{{
+    a-3 a-x Buffer-menu-sort }}}
+sort buffers (in list?) by mode
+{{{
+    a-4 a-x Buffer-menu-sort }}}
+sort buffers (in list?) by file name
+{{{
+    a-5 a-x Buffer-menu-sort }}}
+sort buffers (in list?) by display time
+{{{
+    a-x Buffer-menu-sort }}}
+quit buffer list
+{{{
+    q }}}
+    ----
+
+
+redisplay
+
+    ----
+redisplay with line at center of window
+{{{
+    c-1 }}}
+redisplay with current line at top of window
+{{{
+    c-0 c-1 }}}
+redisplay with current line at bottom of window
+{{{
+    c_- c-1 // M_- c-1 // c-u -1 c-1 }}}
+try to make the top of the current function visible in the window
+{{{
+    ca-1 // c-[ c-1 }}}
+(try to make the top of the current function visible in the window/redisplay) with current line at top of window
+{{{
+    ca-1 ca-1 }}}
+    ----
+
+
+command
+
+    ----
+execute command
+{{{
+    a-x }}}
+M-x (=Meta x)
+{{{
+    Esc x  //  c-[ x  //  a-x execute-extended-command }}}
+previously / next executed command
+{{{
+    a-x a-p  //  a-x a-n }}}
+complete name of command (see "completion" above)
+{{{
+    a-x Tab }}}
+list command completions in other window
+{{{
+    a-x ? }}}
+list command completions starting with "forward"
+{{{
+    a-x forward Tab }}}
+list command completions containing "line"
+{{{
+    a-x *line Tab }}}
+search backward (in command history)
+{{{
+    a-x a-r <REGEXP> }}}
+search for previously executed command
+{{{
+    a-x a-s <REGEXP> }}}
+show recently typed keys (on command line?)
+{{{
+    c-h 1 }}}
+show recently echoed (command) messages
+{{{
+    c-h e }}}
+repeat last command (*)
+{{{
+    c-x z }}}
+edit and re-evaluate last (command?) as Emacs Lisp
+{{{
+    c-x M-ESC  //  c-x Esc Esc  //  c-x c-[ c-[  //  c-x a-: }}}
+ask before running command
+{{{
+    a-x disable-command }}}
+run command without asking
+{{{
+    a-x enable-command }}}
+show recently run commands
+{{{
+    a-x command-history }}}
+execute command at line in history
+{{{
+    x }}}
+    ----
+
+
+iterative command
+
+    ----
+repeat next command 4 times
+{{{
+    c-u }}}
+next command once in opposite direction
+{{{
+    a_- }}}
+next command once in opposite direction
+{{{
+    c_- }}}
+repeat next command 8 times
+{{{
+    c-u 8  //  a-8  //  c-8  //  c-u 8 c-u }}}
+repeat next command 13 times
+{{{
+    c-u 13  //  a-1 a-3  //  a-1 3  //  c-1 c-3  //  c-1 3 }}}
+insert 13 ones
+{{{
+    c-u 13 c-u 1 }}}
+repeat next command 3 times in opposite direction
+{{{
+    a_- 3  //  c_- 3 }}}
+repeat next command 3 times in opposite direction
+{{{
+    c-u -3 }}}
+repeat next command 16 times
+{{{
+    c-u c-u }}}
+repeat next command 64 times
+{{{
+    c-u c-u c-u }}}
+insert 369 zeros
+{{{
+    c-u 369 c-u 0  //  a-3 a-6 a-9 c-u 0  //  a-3 6 9 c-u O }}}
+    ----
+
+
+non-iterative command
+
+toggle behavior of next command
+{{{
+    c-u }}}
+toggle behavior of next command with negative value
+{{{
+    a_- }}}
+
+
+macro
+
+    ----
+start recording macro
+{{{
+    c-x (  //  F3 }}}
+finish recording macro
+{{{
+    c-x )  //  F4 }}}
+finish recording macro and run what was just recorded
+{{{
+    c-x e }}}
+run last macro again
+{{{
+    c-x e }}}
+run last macro twice
+{{{
+    c-x ee }}}
+run last macro 3 times
+{{{
+    a-3 c-x e }}}
+run last macro infinite times until error
+{{{
+    c-0 c-x e  //  a-0 c-x e }}}
+go to each line in region and run last macro iteratively
+{{{
+    c-x c-k r }}}
+insert counter and increment
+{{{
+    c-x c-k c-i }}}
+set counter
+{{{
+    c-x c-k c-c }}}
+insert numbers 0 through 3 one-per-line
+{{{
+    F3 F3 Ret F4 F4 F4 F4  //  c-x ( c-x c-k c-i Ret c-x e e e }}}
+insert evens 0 through 6 one-per-line
+{{{
+    F3 c-u 2 F3 Ret F4 F4 F4 F4  //  c-x ( c-2 c-x c-k c-i Ret c-x e e e  //  c-x ( c-2 c-x c-k c-i Ret c-x e e e }}}
+insert numbers 1 through 3
+{{{
+    c-x c-k c-c 1 Ret F3 F3 Ret F4 F4 F4 F4  //  c-x c-k c-c 1 Ret c-x ( c-x c-k c-i Ret c-x e e e  //  (=rectangle)  c-a c-SpC c-3 c-n c-x r N }}}
+duplicate line 9 times
+{{{
+    cs-Del F3 c-y c-9 F4 }}}
+duplicate line 10 times
+{{{
+    cs-Del c-x ( c-y c-9 c-x e }}}
+run last macro and append more commands
+{{{
+    c-u c-x e  //  c-u F3 }}}
+delete current macro from ring
+{{{
+    c-k c-k c-d }}}
+switch to previous macro in ring
+{{{
+    c-k c-k c-p }}}
+switch to next macro in ring
+{{{
+    c-k c-k c-n }}}
+edit current macro
+{{{
+    c-x c-k e c-x e  //  c-x c-k c-e }}}
+give current (macro) NAME
+{{{
+    c-x c-k n <NAME> }}}
+run (macro?) NAME
+{{{
+    a-x <NAME> }}}
+bind current (macro) to c-x c-k 1 (**)
+{{{
+    c-x c-k 1 }}}
+bind current (macro) to c-x c-k A
+{{{
+    c-x c-k A }}}
+bind current (macro) to c-c 1
+{{{
+    c-x c-k b c-c 1 }}}
+    ----
+
+    ----
+bind current (macro) to c-c a
+{{{
+    c-x c-k b c-c a }}}
+run (macro) NAME
+{{{
+    a-x <NAME> }}}
+edit (macro) NAME
+{{{
+    c-x c-k e a-x <NAME> }}}
+make (macro??) recently typed keys and edit
+{{{
+    c-x c-k e c-h 1  //  c-x c-k 1 }}}
+insert key in editor
+{{{
+    c-c c-q <KEY> }}}
+insert c-x in editor
+{{{
+    ^X }}}
+insert a-x COMMAND in editor
+{{{
+    <<COMMAND>> }}}
+insert 3 newlines in editor
+{{{
+    3 * R E T  //  3* ^ M  //  3 * <<newline>>  //  3 * L F D }}}
+delete line in editor
+{{{
+    c-a ;;  //  c-a REM  //  c-a c-k }}}
+comment line in editor
+{{{
+    c-a ;;; }}}
+save (macro?) edits
+{{{
+    c-c c-c }}}
+save (macro?) NAME
+{{{
+    c-x c-f ~/.emacs Ret a-x insert-kbd-macro Ret <NAME> Ret }}}
+save last (macro?)
+{{{
+    c-x c-f ~/.emacs Ret a-x insert-kbd-macro Ret Ret }}}
+run one step at a time
+{{{
+    c-x c-k Space }}}
+run current command
+{{{
+    Space  //  y }}}
+run current and consecutive similar commands
+{{{
+    Tab }}}
+skip command
+{{{
+    f }}}
+skip and delete from macro
+{{{
+    n // d // del }}}
+skip current and delete rest of macro
+{{{
+    c-k }}}
+quit
+{{{
+    q // c-g }}}
+insert one key
+{{{
+    I }}}
+insert series of keys
+{{{
+    i }}}
+replace current key
+{{{
+    R }}}
+replace current key with series of keys
+{{{
+    r }}}
+append to end of macro
+{{{
+    A }}}
+append after current key
+{{{
+    a }}}
+    ----
+
+
+key (=bindings)
+
+    ----
+show recently typed keys
+{{{
+    c-h 1 }}}
+set for all buffers
+{{{
+    a-x global-set-key }}}
+remove binding for all buffers
+{{{
+    a-x global-unset~key }}}
+define binding for current buffer
+{{{
+    a-x local-set-key }}}
+remove binding for current buffer
+{{{
+    a-x local-unset-key }}}
+insert next character literally
+{{{
+    c-q }}}
+insert literal tab character
+{{{
+    c-q Tab }}}
+insert literal newline
+{{{
+    c-q c-j }}}
+insert literal carriage return
+{{{
+    c-q c-m }}}
+insert literal form feed (page delimiter)
+{{{
+    c-q c-l }}}
+modify next key with Control
+{{{
+    c-x @ c }}}
+modify next key with Meta
+{{{
+    c-x @ m }}}
+modify next key with Shift
+{{{
+    c-x @ S }}}
+modify next key with Hyper
+{{{
+    c-x @ h }}}
+    ----
+
+    ----
+modify next key with Super
+{{{
+    c-x @ s }}}
+modify next key with Alt
+{{{
+    c-x @ a }}}
+list bindings starting with c-x @
+{{{
+    c-x @ c-h }}}
+modify next key with Control and Meta
+{{{
+    c-x @ c c-x @ m }}}
+modify with Control, Meta and Hyper
+{{{
+    c-x @ c c-x @ m c-x @ h }}}
+list bindings starting with c-x
+{{{
+    c-x c-h }}}
+list bindings starting with c-c
+{{{
+    c-c c-h }}}
+list bindings starting with c-x 4
+{{{
+    c-x 4 c-h }}}
+list bindings starting with c-x 5
+{{{
+    c-x 5 c-h }}}
+list bindings starting with c-x 8
+{{{
+    c-x 8 c-h }}}
+list bindings starting with c-h 4
+{{{
+    c-h 4 c-h }}}
+list bindings starting with c-x M-
+{{{
+    c-x ESC c-h  //  c-x c-[ c-h }}}
+list bindings starting with ESC
+{{{
+    a-: (describe-bindings "\e") Ret  //  a-x global-unset-key ESC c-h ESC c-h }}}
+list bindings starting with a-ESC
+{{{
+    ESC ESC c-h  //  c-[ c-[ c-h }}}
+list bindings starting with a-g
+{{{
+    a-g c-h }}}
+list bindings starting with a-o
+{{{
+    a-o c-h }}}
+    ----
+
+
+undo
+
+    ----
+undo, repeat to further undo
+{{{
+    c-x u  //  c-_  //  c-/ }}}
+undo, then redo
+{{{
+    c-/ c-g c-/ }}}
+undo, undo, then redo, redo
+{{{
+    c-/ c-/ c-g c-/ c-/ }}}
+restore buffer with file on disk
+{{{
+    a-x revert-buffer  //  c-x c-v Ret }}}
+turn off for current buffer (??)
+{{{
+    a-x buffer-disable-undo }}}
+turn on for current buffer (??)
+{{{
+    a-x buffer-enable-undo }}}
+    ----
+
+
+search
+
+    ----
+forward to end of search MATCH
+{{{
+    c-s <MATCH> }}}
+reverse to front of search MATCH
+{{{
+    c-r <MATCH> }}}
+searchhelp
+{{{
+    c-h k c-s  //  c-s c-h m }}}
+show key bindings
+{{{
+    c-s c-h b }}}
+forward to end of MATCH
+{{{
+    c-r c-s <MATCH> }}}
+reverse to front of MATCH
+{{{
+    c-s c-r <MATCH> }}}
+forward to end of second MATCH
+{{{
+    c-s <MATCH> c-s }}}
+reverse to front of second MATCH
+{{{
+    c-r <MATCH> c-r }}}
+if not at first match, go to previous match
+{{{
+    Del }}}
+if at first match, delete character from search string
+{{{
+    Del }}}
+always delete character from search string
+{{{
+    ca-w }}}
+same as previous
+{{{
+    c-[ c-w }}}
+forward to start of second MATCH
+{{{
+    c-s <MATCH> c-s c-r }}}
+reverse to end of second MATCH
+{{{
+    c-r <MATCH> c-r c-s }}}
+forward to end of second MATCH
+{{{
+    c-s <MATCH> c-s c-s Del }}}
+reverse to start of second MATCH
+{{{
+    C-r <MATCH> C-r C-r Del }}}
+finish search
+{{{
+    Ret }}}
+cancel search if current search is successful
+{{{
+    c-g }}}
+undo search to last successful search
+{{{
+    c-g }}}
+    ----
+
+    ----
+search for newline
+{{{
+    c-s c-j }}}
+search for carriage return
+{{{
+    c-s c-q c-m }}}
+search for current character
+{{{
+    c-s ca-y  //  c-s c-[ c-y }}}
+search for next two characters
+{{{
+    c-s ca-y ca-y }}}
+search for current character
+{{{
+    c-s ca-y ca-y Del }}}
+search for rest of current word
+{{{
+    c-s c-w }}}
+search for next two words
+{{{
+    c-s c-w c-w }}}
+search for rest of current word
+{{{
+    c-s c-w c-w Del }}}
+search for rest of current line
+{{{
+    c-s a-s c-e }}}
+undo search for rest of current line
+{{{
+    c-s a-s c-e Del }}}
+search for last killed text (see "kill" below)
+{{{
+    c-s c-y }}}
+search for second to last killed text (see kill" below)
+{{{
+    c-s a-y }}}
+show previous search
+{{{
+    c-s a-p }}}
+show oldest stored search
+{{{
+    c-s a-n }}}
+complete for BEGINNING of stored searches
+{{{
+    c-s a-Tab <BEGINNING>  //  c-s ca-i  //  c-s c-[ c-i }}}
+resume last search backward
+{{{
+    c-s c-s }}}
+resume last search forward
+{{{
+    c-r c-r }}}
+edit search
+{{{
+    a-e }}}
+toggle regular expression search (see "regular expression" below)
+{{{
+    a-r }}}
+toggle case-sensitivity of search
+{{{
+    a-c }}}
+toggle word-based search
+{{{
+    a-s w }}}
+search, query, and replace (see "replace" below)
+{{{
+    a-% }}}
+interactive query SEARCH and REPLACE
+{{{
+    c-s <SEARCH> a-% <REPLACE> }}}
+query replace by word
+{{{
+    c-u a-% }}}
+change case-sensitivity of all searches
+{{{
+    a-x isearch-toggle-case-fold }}}
+    ----
+
+
+non-interactive search
+
+forward case-sensitive
+{{{
+    c-s Ret }}}
+backward case-sensitive
+{{{
+    c-r Ret }}}
+ignoring punctuation and whitespace
+{{{
+    a-x word-search-forward }}}
+ignoring punctuation and whitespace
+{{{
+    a-x word-search-backward }}}
+
+
+regular expression (=search)
+
+    ----
+search forward
+{{{
+    ca-s  //  c-[ c-s  //  c-u c-s  //  c-s a-r }}}
+search reverse
+{{{
+    ca-r }}}
+same as previous
+{{{
+    c-( c-r }}}
+toggle off regular expression syntax
+{{{
+    a-r }}}
+repeat last regular expression forward
+{{{
+    ca-s c-s }}}
+repeat last regular expression backward
+{{{
+    ca-r c-s }}}
+suspend replacement and editing buffer (see "recursive edit" above)
+{{{
+    c-r }}}
+resume query and replace
+{{{
+    ca-c  //  c-[ c-c }}}
+regular expression replace
+{{{
+    ca-% }}}
+interactive query replace (see "replace" below)
+{{{
+    ca-s <SEARCH> a-% <REPLACE> }}}
+show matches in buffer (see "occur" below)
+{{{
+    a-x occur  //  a-s o  //  a-s o }}}
+count matches after point
+{{{
+    a-x how-many  //  a-x count-matches }}}
+delete matching lines to end of buffer
+{{{
+    a-x flush-lines }}}
+keep matching lines delete the rest to end of buffer
+{{{
+    a-x keep-lines }}}
+highlight all matches in buffer
+{{{
+    a-shr }}}
+highlight all lines matching
+{{{
+    a-s h 1 }}}
+highlight phrase
+{{{
+    a-s h p }}}
+un-highlight
+{{{
+    a-s hu }}}
+    ----
+
+
+replace
+
+    ----
+search, query, and replace
+{{{
+    a-% }}}
+search regular expression, query, and replace
+{{{
+    ca-%  //  c-[ c-% }}}
+resume last
+{{{
+    a-% Ret }}}
+resume last as regular expression
+{{{
+    ca-% Ret }}}
+interactive replace
+{{{
+    c-s <SEARCH> a-% <REPLACE> }}}
+interactive replace with regular expression
+{{{
+    ca-s <SEARCH> a-% <REPLACE> }}}
+replace one and go to next
+{{{
+    y // Space }}}
+replace but don't move
+{{{
+    , }}}
+skip
+{{{
+    n // del }}}
+previous
+{{{
+    ^ }}}
+replace all
+{{{
+    ! }}}
+edit replacement
+{{{
+    e }}}
+suspend to edit buffer (see "recursive edit" above)
+{{{
+    c-r }}}
+delete match and suspend to edit buffer
+{{{
+    c-w }}}
+finish edit and resume
+{{{
+    ca-c  //  c-[ c-c }}}
+stop
+{{{
+    Ret // q }}}
+replace "long" for "int" in .c files (****!)
+{{{
+    c-x d *.c Ret Q int Ret long }}}
+    ----
+
+
+delete
+
+delete current character
+{{{
+    c-d }}}
+next 4 characters
+{{{
+    c-u c-d }}}
+next 8 characters
+{{{
+    c-u 8 c-d }}}
+next 16 characters
+{{{
+    c-u c-u c-d }}}
+character backwards (backspace)
+{{{
+    Del  //  a_- c-d }}}
+delete previous 64 characters
+{{{
+    c-u c-u c-u Del }}}
+delete previous 5 characters
+{{{
+    c-5 Del  //  a-1 0 Del }}}
+delete region
+{{{
+    a-x delete-region }}}
+permanently enable
+{{{
+    a-x enable-command Ret erase-buffer Ret }}}
+delete entire buffer
+{{{
+    a-x erase-buffer }}}
+delete all lines including current to end of buffer
+{{{
+    a-x flush-lines Ret Ret }}}
+
+
+kill (cut)
+
+    ----
+kill character (see "character" below)
+{{{
+    c-Space c-f c-w  //  c-1 c-d }}}
+kill character backwards
+{{{
+    c-1 Del  //  c_- c-d }}}
+kill word (see "word" below)
+{{{
+    a-d }}}
+kill to end of line (see 'line" below)
+{{{
+    c-k }}}
+kill to beginning of line
+{{{
+    c-0 c-k }}}
+kill entire line
+{{{
+    c-S-Del }}}
+kill line including newline
+{{{
+    c-1 c-k }}}
+kill to beginning of previous line
+{{{
+    a-- c-k }}}
+kill next 4 lines
+{{{
+    c-u c-k }}}
+kill sentence (see 'sentence" below)
+{{{
+    a-k }}}
+kill region (see "region" below)
+{{{
+    c-w }}}
+kill region but don't delete (copy)
+{{{
+    a-w }}}
+kill word (see "word" below)
+{{{
+    a-d }}}
+kill word backwards
+{{{
+    c-Del }}}
+kill word backwards
+{{{
+    a-Del }}}
+kill sexp (see "sexp" below)
+{{{
+    ca-k  //  c-[ c-k }}}
+kill sexp backwards
+{{{
+    ca-Del  //  c-( c-Del }}}
+kill sentence backwards (see "sentence" below)
+{{{
+    c-x Del }}}
+kill paragraph (see paragraph" below)
+{{{
+    a-x kill-paragraph }}}
+kill paragraph backwards (see " paragraph" below)
+{{{
+    a-x backward-kill-paragraph }}}
+append to next (kill?)
+{{{
+    ca-w  //  c-( c-w }}}
+kill region appending to previous
+{{{
+    ca-w c-w }}}
+kill region appending to previous, but don't delete (copy)
+{{{
+    ca-w a-w }}}
+kill line appending to previous
+{{{
+    ca-w c-k }}}
+kill word appending to previous
+{{{
+    ca-w a-d }}}
+kill sentence appending to previous
+{{{
+    ca-w a-k }}}
+kill paragraph appending to previous
+{{{
+    ca-w a-x kill-paragraph }}}
+kill sexp appending to previous
+{{{
+    ca-w ca-k }}}
+kill sexp backward appending to previous
+{{{
+    ca-w ca-Del }}}
+delete everything to a character
+{{{
+    a-z  //  a-1 a-z }}}
+delete everything to a character backwards
+{{{
+    a_- a-z  //  c-u -1 a-z }}}
+delete everything to 3rd occurrence of a character
+{{{
+    c-u 3 a-z }}}
+    ----
+
+
+yank (paste)
+
+    ----
+yank the last kill sequence
+{{{
+    c-y }}}
+yank the 2nd to last kill sequence
+{{{
+    c-y a-y }}}
+same as previous
+{{{
+    c-2 c-y }}}
+replace region with last kill
+{{{
+    c-w c-y a-y }}}
+yank the last kill sequence with point at beginning
+{{{
+    c-u c-y }}}
+    ----
+
+
+mark
+
+    ----
+set mark at current point
+{{{
+    c-Space }}}
+set mark at current point
+{{{
+    c-@ }}}
+toggle between current point and mark
+{{{
+    c-x c-x }}}
+move to last set mark in current buffer
+{{{
+    c-u c-Space }}}
+move to last set mark in current buffer
+{{{
+    c-u c-@ }}}
+move to last set mark in any buffer
+{{{
+    c-x c-Space }}}
+move to last set mark in any buffer
+{{{
+    c-x c-@ }}}
+mark buffer
+{{{
+    c-x h  //  a-> a-< }}}
+mark word
+{{{
+    a-@ }}}
+mark paragraph
+{{{
+    a-h }}}
+mark sentence
+{{{
+    a-x mark-end-of-sentence }}}
+mark function
+{{{
+    ca-h  //  c-[ c-h }}}
+mark page separated by form feed
+{{{
+    c-x c-p }}}
+mark sexp (see "sexp" below)
+{{{
+    ca-@  //  c-[ c-@ }}}
+mark sexp
+{{{
+    ca-Space  //  c-[ c-Space }}}
+    ----
+
+
+region
+
+    ----
+set end-point of region (see "mark" above)
+{{{
+    c-Space  //  c-@ }}}
+kill region (see "kill" above)
+{{{
+    c-w }}}
+kill but don't delete (copy) region
+{{{
+    a-w }}}
+count lines, words and characters of region
+{{{
+    a-= }}}
+permanently enable (region?)
+{{{
+    a-x enable~command Ret narrow-to-region Ret }}}
+narrow region
+{{{
+    c-x n n }}}
+widen region
+{{{
+    c-x n w }}}
+delete region
+{{{
+    a-x delete-region }}}
+save region to FILE
+{{{
+    a-x write-region Ret <FILE> }}}
+copy region to point in BUFFER
+{{{
+    a-x append-to-buffer Ret <BUFFER> }}}
+save to end of FILE
+{{{
+    a-x append-to-file Ret <FILE> }}}
+copy and overwrite BUFFER
+{{{
+    a-x copy-to-buffer Ret <BUFFER> Ret }}}
+    ----
+
+
+text register
+
+    ----
+store region to "a" key text register(?)
+{{{
+    c-x r s a }}}
+kill region to "a" key text register(?)
+{{{
+    c-u c-x r s a }}}
+insert region stored to "a" key
+{{{
+    c-x r i a }}}
+store rectangle to "a" key text reg. (see "rectangle" below)
+{{{
+    c-x r r a }}}
+    ----
+
+
+point register
+
+store current to "a" key
+{{{
+    c-x r Space a }}}
+move to point to "a" key
+{{{
+    c-x r j a }}}
+
+
+window register
+
+store configuration of windows in frame
+{{{
+    c-x r w a }}}
+restore window configurations
+{{{
+    c-x r j a }}}
+
+
+number register
+
+store 1 to "a" key
+{{{
+    c-u 1 c-x r n a }}}
+add 1 to number to "a" key
+{{{
+    c-u 1 c-x r + a }}}
+insert number to "a" key
+{{{
+    c-x r i a }}}
+
+
+bookmark register
+
+save default
+{{{
+    c-x r m Ret }}}
+save as NAME
+{{{
+    c-x r m <NAME> Ret }}}
+move to default
+{{{
+    c-x r b Ret }}}
+move to NAME
+{{{
+    c-x r b <NAME> Ret }}}
+list (bookmarks?)
+{{{
+    c-x r l }}}
+save (bookmarks?) all to file
+{{{
+    a-x bookmark-save }}}
+
+
+whitespace
+
+    ----
+insert space
+{{{
+    Space }}}
+indent or insert tab (see "indent" below)
+{{{
+    Tab }}}
+insert literal tab character
+{{{
+    c-q Tab }}}
+insert page separator
+{{{
+    c-q c-1 }}}
+insert null
+{{{
+    c-q 0 Ret }}}
+remove all whitespace at point except one space
+{{{
+    a-Space }}}
+remove all whitespace around point
+{{{
+    a-\ }}}
+remove whitespace before point
+{{{
+    c-u a-\ }}}
+remove whitespace after point
+{{{
+    c-Space a-m c-w }}}
+remove whitespace at end of all lines in buffer
+{{{
+    a-x delete-trailing-whitespace }}}
+remove leading spaces for all lines in region
+{{{
+    c-a c-0 ca-\ }}}
+remove all leading in lines buffer
+{{{
+    c-x h c-0 ca-\ }}}
+display whitespace visually
+{{{
+    a-x whitespace-mode }}}
+configure Whitespace Mode
+{{{
+    a-x whitespace-toggle-options }}}
+    ----
+
+
+indent
+
+    ----
+indent line with mode-specific rules
+{{{
+    Tab  //  c-i }}}
+indent line and (for supported modes) expression on subsequent lines
+{{{
+    c-u Tab  //  c-u c-i }}}
+go to indentation at beginning of line
+{{{
+    a-m }}}
+center line
+{{{
+    a-o a-s }}}
+indent region with mode-specific rules
+{{{
+    ca-\  //  c-[ c-\ }}}
+(indent?) buffer
+{{{
+    c-x h ca-\ c-u c-Space }}}
+(indent?) paragraph
+{{{
+    a-h ca-\ c-u c-Space }}}
+indent defun
+{{{
+    ca-h ca-\ c-u c-Space }}}
+indent page
+{{{
+    c-x c-p ca-\ c-u c-Space }}}
+indent sexp
+{{{
+    ca-Space ca-\ c-u c-Space }}}
+indent region to 4 columns
+{{{
+    c-u ca-\ }}}
+indent line to 4 columns
+{{{
+    c-Space c-a c-u ca-\ }}}
+indent buffer to 4 columns
+{{{
+    c-x h c-u ca-\ }}}
+indent region by one column more
+{{{
+    c-x Tab }}}
+    ----
+
+    ----
+indent line by one column more
+{{{
+    c-Space c-a c-x Tab }}}
+indent same as previous
+{{{
+    c-a Space }}}
+indent region by 4 columns more
+{{{
+    c-u c-x Tab }}}
+indent region by 8 columns more
+{{{
+    c-u 8 c-x Tab }}}
+indent region by 2 columns less
+{{{
+    c-u - 2 c-x Tab }}}
+insert 4 columns for all lines in buffer
+{{{
+    c-x h c-u c-x Tab }}}
+remove indent from all in lines buffer
+{{{
+    c-x h c-0 ca-\ }}}
+convert spaces in region to tabs
+{{{
+    a-x tabify }}}
+convert tabs in region to spaces
+{{{
+    a-x untabify }}}
+always insert spaces
+{{{
+    a-x set-variable Ret indent-tabs-mode Ret nil Ret }}}
+indent to tab stop
+{{{
+    a-i }}}
+configure stops
+{{{
+    a-x edit-tab-stops }}}
+insert a stop
+{{{
+    : }}}
+remove a stop
+{{{
+    Space }}}
+save stops
+{{{
+    c-c c-c }}}
+remove and merge line with previous
+{{{
+    a-^ }}}
+indent line to 4th column
+{{{
+    c-a c-u a-x indent-to }}}
+    ----
+
+
+newline
+
+    ----
+one newline
+{{{
+    Ret  //  c-m }}}
+one newline and indent
+{{{
+    c-j }}}
+one newline below current and indent
+{{{
+    c-o }}}
+indent current and indent next
+{{{
+    a-x reindent-then-newline-and-indent }}}
+literal newline
+{{{
+    c-q c-j }}}
+insert literal carriage return
+{{{
+    c-q c-m }}}
+keep text following point at same column
+{{{
+    ca-o  //  c-[ c-o }}}
+three newlines
+{{{
+    c-u 3 Ret  //  c-u 3 c-m }}}
+three newlines and indent
+{{{
+    c-u 3 c-j }}}
+three newlines below current and indent
+{{{
+    c-u 3 c-o }}}
+move text following point at same column without fill prefix
+{{{
+    c-u ca-o }}}
+    ----
+
+
+line
+
+    ----
+next / previous line
+{{{
+    c-n  //  c-p }}}
+beginning / end of line
+{{{
+    c-a  //  c-e }}}
+go to line (**)
+{{{
+    a-g g  //  a-g a-g }}}
+line in last buffer go to
+{{{
+    c-u a-g g  //  c-u a-g a-g }}}
+kill to end of line
+{{{
+    c-k }}}
+kill to beginning of line
+{{{
+    c-0 c-k }}}
+kill from beginning to end of line
+{{{
+    c-a c-k }}}
+kill from beginning to end of line, including newline
+{{{
+    cs-Del  //  c-a c-k c-k }}}
+kill to end of line, including newline
+{{{
+    c-1 c-k }}}
+kill next 4 lines
+{{{
+    c-u c-k }}}
+kill next 2
+{{{
+    lines ; c-2 c-k }}}
+{{{
+    c-2 c-k }}}
+kill to beginning of previous line a_-
+{{{
+    c-k }}}
+merge current line with previous
+{{{
+    a-^ }}}
+merge next line with current
+{{{
+    c-u a-^  //  c-n a-^ }}}
+insert new line after current and indent (see "newline" above)
+{{{
+    c-o }}}
+keep text following point at same column (see ' newline" above)
+{{{
+    ca-o  //  c-[ c-o }}}
+when not empty line, remove all empty lines below current
+{{{
+    c-x c-o }}}
+when only empty line, remove all empty lines
+{{{
+    c-x c-o }}}
+when empty line, remove all but one empty lines
+{{{
+    c-x c-o }}}
+    ----
+
+    ----
+count lines in region
+{{{
+    a-= }}}
+count lines in page
+{{{
+    c-x 1 }}}
+count lines in buffer
+{{{
+    c-x h a-= c-u c-Space }}}
+count lines from point forward
+{{{
+    c-Space a-> c-x c-x a-= }}}
+same as previous
+{{{
+    a-> c-x c-x a-= }}}
+display number for line
+{{{
+    a-x what-line }}}
+transpose line with previous
+{{{
+    c-x c-t }}}
+swap with line of mark (see "mark" above)
+{{{
+    c-0 c-x c-t }}}
+alphabetically sort lines (see 'sort" below)
+{{{
+    a-x sort-lines }}}
+reverse line order in region
+{{{
+    a-x reverse-region }}}
+show lines matches in buffer (see "occur" below)
+{{{
+    a-x occur }}}
+count matches (of lines?)
+{{{
+    a-x how-many }}}
+delete (line) matches to end of buffer
+{{{
+    a-x flush-lines }}}
+delete all lines after point
+{{{
+    a-x flush-lines Ret Ret }}}
+keep matches to end of buffer, delete the rest
+{{{
+    a-x keep-lines }}}
+keep matches in region, delete rest
+{{{
+    c-Space c-Space c-2 c-Space a-x keep-lines }}}
+narrow (line?)
+{{{
+    c-a c-Space c-e c-x nn }}}
+change file to UNIX style line endings
+{{{
+    c-x Ret f unix Ret }}}
+change file to DOS
+{{{
+    c-x Ret f dos Ret }}}
+change file to Mac
+{{{
+    c-x Ret f dos(mac??) Ret }}}
+change file to UTF-8
+{{{
+    c-x Ret f utf-8 Ret }}}
+show line number in mode line
+{{{
+    a-x line-number-mode }}}
+change if long lines fold or are truncated
+{{{
+    a-x toggle-truncate-lines }}}
+change if long lines are wrapped at word boundary
+{{{
+    a-x toggle-word-wrap }}}
+    ----
+
+
+character
+
+    ----
+forward / backward character
+{{{
+    c-f  //  c-b }}}
+delete character (see "delete" above)
+{{{
+    c-d }}}
+kill character (see 'kill" above)
+{{{
+    c-1 c-d }}}
+transpose character
+{{{
+    c-t }}}
+information of current character
+{{{
+    c-x = }}}
+list properties of current in Help buffer
+{{{
+    c-u c-x =  //  a-x describe~char }}}
+visit Nth character in buffer
+{{{
+    a-x goto-char Ret <N> Ret }}}
+list names of charsets
+{{{
+    a-x list-characters-sets }}}
+insert null
+{{{
+    c-q 0 Ret }}}
+insert space
+{{{
+    c-q Space }}}
+insert space using octal value 40
+{{{
+    c-q 40 Ret }}}
+use hex for
+{{{
+    c-q a-x set-variable Ret read-quoted-char-radix 16 }}}
+insert space using hex value 20
+{{{
+    c-q 20 Ret }}}
+use decimal for c-q
+{{{
+    a-x set-variable Ret read-quoted-char-radix 10 }}}
+insert space using decimal value 32
+{{{
+    c-q 32 Ret }}}
+insert 8 null characters
+{{{
+    c-u 8 c-q 0 Ret }}}
+insert 8 zeros
+{{{
+    c-u 8 c-u O Ret }}}
+    ----
+
+
+word
+
+    ----
+forward / backward word
+{{{
+    a-f  //  a-b   # a-hö / c-hö (**) }}}
+kill forward word
+{{{
+    a-d }}}
+kill backward word
+{{{
+    c-Del  //  a-Del }}}
+transpose words
+{{{
+    a-t }}}
+mark word
+{{{
+    a-@ }}}
+mark next 100 words
+{{{
+    c-u 100 a-@ }}}
+mark previous 3 words
+{{{
+    a_- 3 a-@ }}}
+word count for buffer
+{{{
+    a-< a-x how-many Ret \w+ Ret  //  c-x h a-= }}}
+make hyphens word character
+{{{
+    a-x modify-syntax-entry Ret - w Ret }}}
+make underscores a word character
+{{{
+    a-x modify-syntax-entry Ret _ w Ret }}}
+    ----
+
+
+capitalization
+
+    ----
+lowercase / uppercase next word
+{{{
+    a-l  //  a-u }}}
+lowercase previous word
+{{{
+    a_- a-1 }}}
+lowercase next 4 words
+{{{
+    c-u a-1 }}}
+uppercase previous word
+{{{
+    a_- a-u }}}
+uppercase next 2 (words?)
+{{{
+    c-u 2 a-1 }}}
+capitalize next word
+{{{
+    a-c }}}
+capitalize previous word
+{{{
+    a-- a-c }}}
+capitalize next 2 words
+{{{
+    c-u 2 a-c }}}
+permanently enable (capitalization?)
+{{{
+    a-x enable-command Ret downcase-region Ret }}}
+lowercase region (**)
+{{{
+    c-x c-l }}}
+permanently enable (
+{{{
+    a-x enable-command Ret upcase-region Ret }}}
+uppercase region
+{{{
+    c-x c-u }}}
+capitalize region
+{{{
+    a-x capitalize-region }}}
+    ----
+
+
+sentence
+
+to beginning / end of sentence
+{{{
+    a-a  //  a-e }}}
+mark sentence
+{{{
+    a-x mark-end-of-sentence }}}
+kill forwards to end of sentence
+{{{
+    a-k }}}
+kill backwards to beginning of sentence
+{{{
+    c-x Del }}}
+transpose sentences
+{{{
+    a-x transpose-sentences }}}
+fix (sentence?) spaces forward with query and replace
+{{{
+    a-x repunctuate~sentences }}}
+
+
+paragraph
+
+    ----
+forward / backward paragraph
+{{{
+    a-}  //  a-{ }}}
+mark paragraph
+{{{
+    a-h }}}
+fill paragraph
+{{{
+    a-q }}}
+fill paragraph and full justify
+{{{
+    c-u a-q }}}
+fill (paragraph?) all in region
+{{{
+    a-x fill-region }}}
+fill all region together as one
+{{{
+    a-x fill-region-as-paragraph }}}
+fill region as separate
+{{{
+    a-x fill-individual-paragraphs }}}
+set fill column to current point
+{{{
+    c-x f Ret }}}
+set fill column to 72
+{{{
+    c-x f 72 Ret  //  c-u 72 c-x f }}}
+kill to beginning of paragraph
+{{{
+    a-x backward-kill-paragraph }}}
+kill to end of paragraph
+{{{
+    a-x kill-paragraph }}}
+kill entire paragraph
+{{{
+    a-{ a-x kill-paragraph  //  a-h c-w }}}
+kill entire paragraph but don't delete (copy)
+{{{
+    a-h a-w }}}
+transpose paragraphs
+{{{
+    a-x transpose-paragraphs }}}
+center paragraph
+{{{
+    a-o a-S }}}
+    ----
+
+    ----
+justify region to the left
+{{{
+    a-x set-justification-left }}}
+justify region to the right
+{{{
+    a-x set-justification-right }}}
+justify region to full width
+{{{
+    a-x set-justification-full }}}
+justify region to the center
+{{{
+    a-x set-justification-center }}}
+unjustify region
+{{{
+    a-x set-justification-none }}}
+unjustify region alphabetically
+{{{
+    a-x sort-paragraphs }}}
+unjustify region in reverse
+{{{
+    c-u a-x sort-paragraphs }}}
+expect leading space rather than empty lines
+{{{
+    a-x paragraph-indent-text-mode }}}
+automatically fill at the end of the line
+{{{
+    a-x auto-fill-mode }}}
+automatically fill entire paragraph after each edit
+{{{
+    a-x refill-mode }}}
+distinguish intentional newlines from filling
+{{{
+    a-x use~hard-newlines }}}
+increase left margin of region by one column
+{{{
+    c-x Tab }}}
+increase left margin of region by 4 columns
+{{{
+    c-u c-x Tab }}}
+increase left margin of region by 8 columns
+{{{
+    c-u 8 c-x Tab }}}
+decrease left margin of region by 2 columns less
+{{{
+    c-u - 2 c-x Tab }}}
+add 4 columns to current paragraph
+{{{
+    a-x increase-left-margin }}}
+remove 4 columns to current paragraph
+{{{
+    a-x decrease-left-margin }}}
+set text to beginning of line as fill prefix
+{{{
+    c-x . }}}
+add the fill prefix in region
+{{{
+    ca-\  //  c-[ c-\ }}}
+set indentation as fill prefix
+{{{
+    a-m c-x . }}}
+reset fill prefix
+{{{
+    c-a c-x . }}}
+    ----
+
+
+page
+
+    ----
+insert (page?) separator
+{{{
+    c-q c-l }}}
+forward / backward page
+{{{
+    c-x ]  //  c-x [ }}}
+count (page?) lines
+{{{
+    c-x l }}}
+mark page
+{{{
+    c-x c-p }}}
+narrow page
+{{{
+    c-x np }}}
+widen page
+{{{
+    c-x nw }}}
+alphabetically (sort pages)
+{{{
+    a-x sort-pages }}}
+display number of page
+{{{
+    a-x what-page }}}
+    ----
+
+
+sexp (parenthetical expressions)
+
+    ----
+insert opening and closing parentheses
+{{{
+    a-( }}}
+reindent current and start new line past closing parenthesis
+{{{
+    a-) }}}
+move to the next / backward to sexp **(*)
+{{{
+    ca-f  //  ca-b   #+  c-[ c-f // ca-hö }}}
+move down into the expression **
+{{{
+    ca-d  //  c-[ c-d  //  ca-ner }}}
+move up from current and to beginning of outside (sexp?)
+{{{
+    ca-u  //  c-[ c-u  //  ca-upp }}}
+move up from current and to end of outside (sexp)
+{{{
+    a-x up-list  //  M_- ca-u }}}
+kill sexp
+{{{
+    ca-k  //  c-[ c-k }}}
+kill backward sexp
+{{{
+    ca-Del  //  c-[ c-Del }}}
+mark sexp
+{{{
+    ca-@  //  c-[ c-@ }}}
+transpose sexp
+{{{
+    ca-t  //  c-[ c-t }}}
+match all open and closed parentheses in buffer
+{{{
+    a-x check-parens }}}
+    ----
+
+
+function
+
+    ----
+go to beginning of function
+{{{
+    ca-a  //  c-[ c-a }}}
+go to end of function
+{{{
+    ca-e  //  c-[ c-e }}}
+mark current function
+{{{
+    ca-h  //  c-( c-h }}}
+indent current function
+{{{
+    ca-h ca-\ c-u c-Space }}}
+evaluate current (see "emacs lisp" below)
+{{{
+    ca-x  //  c-[ c-x }}}
+narrow function
+{{{
+    c-x n d }}}
+widen function
+{{{
+    c-x n w }}}
+    ----
+
+
+comment
+
+    ----
+new comment
+{{{
+    a-; }}}
+indent comment
+{{{
+    a-; }}}
+kill current comment
+{{{
+    c-u a-; }}}
+kill current comment
+{{{
+    c- a-; }}}
+set end point of region (comment?)
+{{{
+    c-Space }}}
+region comment
+{{{
+    a-x comment-region }}}
+remove comment characters in region
+{{{
+    a-x uncomment-region }}}
+comment region, or uncomment if already
+{{{
+    c-x c-x a-; }}}
+set comment to start at point
+{{{
+    c-x ; }}}
+kill comment on this line
+{{{
+    a_- c-x ; }}}
+insert and align comment or just align to column on previous line
+{{{
+    c-u c-x ; }}}
+if within a comment, continue on next line and indent
+{{{
+    a-j  //  ca-j  //  c-[ c-j }}}
+surround region with comment
+{{{
+    a-x comment-box }}}
+merge current line with previous (comment?)
+{{{
+    a-^ }}}
+merge next line with current (comment?)
+{{{
+    c-u a-^  //  c-n a-^ }}}
+    ----
+
+
+occur
+
+    ----
+list matching lines for regular expression
+{{{
+    a-x occur  //  a-s o }}}
+show matches in region (see "region" above)
+{{{
+    c-x n n a-x occur }}}
+show matches with 3 lines of context
+{{{
+    c-u 3 a-x occur }}}
+show matches with 3 lines before match
+{{{
+    c-u - 3 a-x occur }}}
+help on 'count occurances'
+{{{
+    ?  //  h }}}
+go to current match
+{{{
+    Ret  //  c-c c-c  //  o }}}
+show current match in other window
+{{{
+    c-o }}}
+next / previous match
+{{{
+    n  //  p }}}
+update list of matching lines
+{{{
+    g }}}
+keep Occur buffer around by cloning
+{{{
+    c }}}
+keep Occur buffer around by renaming
+{{{
+    r }}}
+quit occur buffer
+{{{
+    q }}}
+quit and kill occur buffer
+{{{
+    z }}}
+edit buffer from Occur buffer
+{{{
+    e }}}
+    ----
+
+
+transpose
+
+    ----
+transpose characters (see "character" above)
+{{{
+    c-t }}}
+transpose previous (character?) with its previous
+{{{
+    a_- c-t }}}
+transpose forward 3 characters
+{{{
+    c-u 3 c-t }}}
+transpose forward 4 characters
+{{{
+    c-u c-t }}}
+transpose backward 3 characters
+{{{
+    a_- 3 c-t }}}
+transpose backward 4 characters
+{{{
+    c-u c-t }}}
+transpose words (see "word" above)
+{{{
+    a-t }}}
+transpose lines (see "line" above)
+{{{
+    c-x c-t }}}
+transpose paragraphs (see "paragraph" above)
+{{{
+    a-x transpose-paragraphs }}}
+sentences (see "sentence" above)
+{{{
+    a-x transpose-sentences }}}
+parenthetical expressions (see "sexp" above)
+{{{
+    ca-t }}}
+    ----
+
+
+column
+
+    ----
+move to first column
+{{{
+    a-0 a-x move-to-column }}}
+move to second column
+{{{
+    a-x move-to-column }}}
+move to column 8
+{{{
+    a-7 a-x move-to-column }}}
+show column number in mode line
+{{{
+    a-x column-number-mode }}}
+permanently enable (column number)
+{{{
+    a-x enable-command Ret set-goal-column Ret }}}
+move to beginning of center line of window (see window" above)
+{{{
+    a-r }}}
+set column for line motion commands
+{{{
+    c-x c-n }}}
+unset goal column for line motion commands
+{{{
+    c-u c-x c-n }}}
+add a ruler to the current buffer's window
+{{{
+    a-x ruler-mode }}}
+    ----
+
+
+rectangle
+
+    ----
+delete rectangle, no kill
+{{{
+    c-x r d }}}
+kill rectangle
+{{{
+    c-x r k }}}
+yank rectangle
+{{{
+    c-x r y }}}
+convert rectangle to whitespace
+{{{
+    c-x r c }}}
+insert whitespace
+{{{
+    c-x r o }}}
+replace each line of rectangle with STRING
+{{{
+    c-x r t <STRING> }}}
+insert STRING at each line of rectangle
+{{{
+    a-x string-insert-rectangle }}}
+remove leading whitespace of rectangle
+{{{
+    a-x delete-whitespace-rectangle }}}
+store rectangle to register "a"
+{{{
+    c-x r r a }}}
+number region starting at 1
+{{{
+    c-x r N }}}
+number region starting with 010
+{{{
+    c-u c-x r N 10 Ret %03d Space Ret }}}
+    ----
+
+
+table
+
+    ----
+insert
+{{{
+    a-x table-insert }}}
+activate mode at point
+{{{
+    a-x table-recognize-table }}}
+deactivate mode at point
+{{{
+    a-x table-unrecognize-table }}}
+forward cell
+{{{
+    Tab }}}
+backward cell
+{{{
+    s-Tab }}}
+inactivate table at point
+{{{
+    c-u a-x table-recognize-table }}}
+insert 3 columns
+{{{
+    c-u 3 a-x table-insert-column }}}
+delete 3 columns
+{{{
+    c-u 3 a-x table-delete-column }}}
+insert 3 rows
+{{{
+    c-u 3 a-x table-insert-row }}}
+delete 3 rows
+{{{
+    c-u 3 a-x table-delete-row }}}
+widen / narrow column at point
+{{{
+    c->  //  c-< }}}
+heighten / shorten row at point
+{{{
+    c-}  //  c-{ }}}
+justify text in cell
+{{{
+    c-: }}}
+split cell
+{{{
+    c-| }}}
+merge cell
+{{{
+    c-c c-c * }}}
+insert sequence of characters or numbers
+{{{
+    a-x table-sequence }}}
+convert tab delimited region
+{{{
+    a-x table-capture Ret c-q c-i Ret c-q c-j Ret Ret Ret }}}
+convert to HTML or LaTeX
+{{{
+    a-x table-generate-source }}}
+activate mode for all
+{{{
+    a-x table-recognize }}}
+deactivate mode for all
+{{{
+    a-x table-unrecognize }}}
+    ----
+
+
+delimited text
+
+change settings
+{{{
+    a-x delimit-columns-customize }}}
+format rectangle (see "rectangle" above)
+{{{
+    a-x delimit-columns-rectangle }}}
+format region
+{{{
+    a-x delimit-columns-region }}}
+
+
+align
+
+align by guessing separator
+{{{
+    c-u a-x align }}}
+align on entire " section"
+{{{
+    a-x align-current }}}
+align based on regular expression
+{{{
+    a-x align-regexp }}}
+align =ask for grouping, number of spaces and repeating
+{{{
+    c-u a-x align-regexp }}}
+
+
+sort
+
+    ----
+sort lines alphabetically in region
+{{{
+    a-x sort-lines }}}
+sort in reverse
+{{{
+    c-u a-x sort-lines }}}
+sort region alphabetically by 3rd word in each line
+{{{
+    c-3 a-x sort-fields }}}
+sort region numerically by 3rd number in each line
+{{{
+    a-x sort-numeric-fields }}}
+sort lines alphabetically for column between point and mark
+{{{
+    a-x sort-columns }}}
+sort in reverse
+{{{
+    c-u a-x sort-columns }}}
+sort paragraphs alphabetically (see "paragraph" above)
+{{{
+    a-x sort-paragraphs }}}
+sort in reverse
+{{{
+    c-u a-x sort-paragraphs }}}
+sort pages alphabetically (see "page" above)
+{{{
+    a-x sort-pages }}}
+sort records alphabetically by key in region
+{{{
+    a-x sort-regexp-fields }}}
+    ----
+
+
+directory (folder)
+
+    ----
+change working directory
+{{{
+    a-x cd }}}
+make PATH including any missing parents
+{{{
+    a-x make-directory Ret <PATH> Ret }}}
+delete directory NAME
+{{{
+    a-x delete-directory Ret <NAME> Ret }}}
+delete directory NAME
+{{{
+    a-x copy-directory Ret <NAME> Ret }}}
+rename current dir to NAME
+{{{
+    a-x rename-file Ret Ret <NAME> Ret }}}
+list current dir
+{{{
+    c-x d Ret  //  c-x c-f Ret }}}
+list current dir in other window (see " window" above)
+{{{
+    c-x 4 d Ret }}}
+list parent dir
+{{{
+    c-x d.. Ret  //  c-x c-f .. Ret  //  c-x c-d Ret ~  //  c-x c-d Ret c-x c-j }}}
+list PATH
+{{{
+    c-x d <PATH> Ret  //   c-x c-f <PATH> Ret }}}
+help
+{{{
+    ? }}}
+show recent errors
+{{{
+    ? }}}
+go to listing (=dir?) of current file
+{{{
+    a-x dired-jump Ret Ret }}}
+go to next / previous dir
+{{{
+    >  //  < }}}
+next / prev. file
+{{{
+    n  //  p }}}
+move to file in listing
+{{{
+    j }}}
+reread the listing (of dirs/files)
+{{{
+    g }}}
+toggle sort by date
+{{{
+    s }}}
+list parent
+{{{
+    ^  //  a-x dired-jump }}}
+edit the command switches for the file list command
+{{{
+    c-u s }}}
+automatically update dir list every 5 seconds
+{{{
+    a-x auto-revert-mode }}}
+    ----
+
+    ----
+search dir listings (see "search" above)
+{{{
+    c-s }}}
+open file or directory
+{{{
+    Ret  //  :   //  e }}}
+open in other window
+{{{
+    o }}}
+display in other window
+{{{
+    c-o }}}
+show file type
+{{{
+    y }}}
+add new (file?)
+{{{
+    + }}}
+show listing of current subdirectory
+{{{
+    i }}}
+show listings of all subdirectories, 'fully recursive"
+{{{
+    c-u s R Ret }}}
+hide listing of current subdirectory
+{{{
+    $ }}}
+hide listing of all subdirectories
+{{{
+    a-$ }}}
+go to next subdirectory listings
+{{{
+    ca-n }}}
+go to previous subdirectory listings
+{{{
+    ca-p }}}
+visit FILE (see "file" above)
+{{{
+    c-x c-f <FILE> Ret }}}
+run command on current file
+{{{
+    ! }}}
+make current file world-readable
+{{{
+    M otr Ret }}}
+change current file to OWNER
+{{{
+    O <OWNER> Ret }}}
+change current file to GROUP
+{{{
+    G <GROUP> Ret }}}
+move current file to FILE
+{{{
+    R <FILE> Ret }}}
+add ~ to the end of current file's name
+{{{
+    R a-n ~Ret }}}
+copy current file to file
+{{{
+    C <FILE> Ret }}}
+make a tilde copy the current file
+{{{
+    C a-n "Ret }}}
+    ----
+
+    ----
+send current file to default printer
+{{{
+    P Ret }}}
+print current file in Postscript
+{{{
+    P Ret a-Del a2ps }}}
+send current file to ;PRINTER;
+{{{
+    P Space -P Space <PRINTER> }}}
+touch current file
+{{{
+    T }}}
+compress current file
+{{{
+    Z }}}
+hardlink current file to FILE
+{{{
+    H <FILE> Ret }}}
+symlink current file to FILE
+{{{
+    S <FILE> Ret }}}
+mark current file
+{{{
+    m }}}
+unmark current file
+{{{
+    u }}}
+unmark current file and go to previous
+{{{
+    Del }}}
+toggle marks
+{{{
+    t }}}
+unmark all files
+{{{
+    U  //  * ! }}}
+search marked
+{{{
+    A  //  a-s a c-s }}}
+search marked with regular expression
+{{{
+    a-s a ca-s }}}
+find next match
+{{{
+    a-, }}}
+kill marked file but don't delete
+{{{
+    w }}}
+hide marked files
+{{{
+    k }}}
+copy marked files to another directory
+{{{
+    C }}}
+move marked files to another directory
+{{{
+    R }}}
+mark current file for deletion
+{{{
+    d }}}
+mark files containing PATTERN for deletion
+{{{
+    % d <PATTERN> }}}
+    ----
+
+    ----
+mark garbage files for deletion
+{{{
+    % & }}}
+mark auto-save files for deletion (see "file" above)
+{{{
+    # }}}
+delete numerical backups
+{{{
+    . }}}
+delete marked files
+{{{
+    D }}}
+manually edit listing with WDired
+{{{
+    a-x wdired-change-to-wdired-mode }}}
+quit WDired and commit the edits made to the listing
+{{{
+    c-c c-c }}}
+cancel WDired
+{{{
+    c-c ESC  //  c-c c-[ }}}
+list file names matching PATTERN
+{{{
+    a-x find-name-dired Ret <PATTERN> Ret }}}
+list files containing grep PATTERN
+{{{
+    a-x find-grep-dired Ret <PATTERN> Ret }}}
+list files containing REGEXP
+{{{
+    a-x find-lisp-find-dired Ret <REGEXP> Ret }}}
+mark files containing PATTERN
+{{{
+    % g <PATTERN> mark file names matching PATTERN % m <PATTERN>  //  * % }}}
+go to next marked file
+{{{
+    a-}  //  * c-n }}}
+go to previous marked file
+{{{
+    a-{  //  * C-p }}}
+mark executables
+{{{
+    * * }}}
+    p10
+mark symlinks
+{{{
+    * @ }}}
+mark directories
+{{{
+    * / }}}
+quit
+{{{
+    q }}}
+    ----
+
+
+dired-x
+
+    ----
+load extra Dired (='dired-x') functionality
+{{{
+    a-x load-library Ret dired-x Ret }}}
+mark extension
+{{{
+    * . }}}
+list parent
+{{{
+    c-x c-j }}}
+smart shell command
+{{{
+    a-! }}}
+relative symlink current file to FILE
+{{{
+    a-x dired-do-relsymlink <FILE> Ret }}}
+relative symlink current file to FILE
+{{{
+    Y <FILE> Ret }}}
+relative symlink files matching REGEXP to current file
+{{{
+    %Y <REGEXP> Ret }}}
+open marked files
+{{{
+    F }}}
+send file by email
+{{{
+    V }}}
+hide uninteresting files
+{{{
+    a-o }}}
+go to subdirectory listing in buffer
+{{{
+    a-G }}}
+    ----
+
+
+tramp
+
+    ----
+open FILE in DIR on remote HOST
+{{{
+    c-x c-f /HOST:DIR/FILE }}}
+same but use secure copy (SCP)
+{{{
+    c-x c-f /scp:HOST:DIR/FILE }}}
+same but demand the use of SSH
+{{{
+    c-x c-f /ssh:HOST:DIR/FILE }}}
+same but demand version 1 of SSH
+{{{
+    c-x c-f /sshi1:HOST:DIR/FILE }}}
+list contents of DIR on remote HOST
+{{{
+    c-x c-f /HOST:DIR  //  c-x d /HOST:DIR }}}
+start a remote shell at HOST
+{{{
+    a-x shell }}}
+    ----
+
+
+spell check
+
+    ----
+spell check word
+{{{
+    a-$ }}}
+spell check buffer
+{{{
+    a-x ispell-buffer }}}
+spell check region
+{{{
+    a-x ispell-region }}}
+spell check words and comments in source file
+{{{
+    a-x ispell-comments~and-strings }}}
+quit
+{{{
+    q }}}
+resume suspended session
+{{{
+    a-x ispell-continue }}}
+edit word at point in buffer (see "recursive edit" above)
+{{{
+    a-r }}}
+return to spell check by exiting recursive edit
+{{{
+    ca-c }}}
+same as previous
+{{{
+    c-[ c-c }}}
+use third suggested choice
+{{{
+    4 }}}
+use first suggested choice
+{{{
+    0 }}}
+quick help
+{{{
+    ? }}}
+continue
+{{{
+    Space }}}
+accept for this session
+{{{
+    a }}}
+add to buffer local dictionary
+{{{
+    A }}}
+replace word with typed version
+{{{
+    r }}}
+replace every occurrence of word with typed version
+{{{
+    R }}}
+suspend
+{{{
+    X }}}
+change default dictionary
+{{{
+    a-x ispell-change-dictionary }}}
+highlight misspellings as you type
+{{{
+    a-x flyspell-mode }}}
+highlight misspellings in source code
+{{{
+    a-x flyspell-prog-mode }}}
+highlight existing misspellings
+{{{
+    a-x flyspell-buffer }}}
+next misspelling in buffer
+{{{
+    c-, }}}
+insert correction for current word from dictionary
+{{{
+    c-. }}}
+choose second proposed correction for correct word
+{{{
+    c-. c-. }}}
+propose correction for previous word from dictionary
+{{{
+    c-; }}}
+use second proposed correction for previous word
+{{{
+    c-; c-; }}}
+select correct word at or before point from a pop up menu
+{{{
+    c-c $ }}}
+    ----
+
+
+abbreviations
+
+    ----
+define "cpu" as "computer"
+{{{
+    cpu c-x a i g computer Ret  //  c-3 c-x a g cpu Ret }}}
+expand "cpu" to "computer"
+{{{
+    cpu c-x a e  //  cpu c-x a '  //  cpu c-x ' }}}
+automatically expand abbrev
+{{{
+    a-x abbrev-mode }}}
+undo expansion
+{{{
+    c-/ }}}
+undo last expand
+{{{
+    c-x au }}}
+insert "supercomputer"
+{{{
+    super a-' cpu c-x ' }}}
+define new mode-specific abbrev
+{{{
+    c-x a i l }}}
+list all abbrevs
+{{{
+    c-x a c-1 }}}
+edit all abbrevs
+{{{
+    c-x a c-e }}}
+expand abbrev in region
+{{{
+    a-x expand-region-abbrevs }}}
+save abbrev
+{{{
+    a-x write-abbrev-file }}}
+open abbrev
+{{{
+    a-x read-abbrev-file }}}
+delete all abbrevs
+{{{
+    a-x kill-all-abbrevs }}}
+    ----
+
+
+composition
+
+    ----
+set to French characters
+{{{
+    c-\ french-postfix Ret }}}
+disable input method, subsequent re-enables
+{{{
+    c-\ }}}
+help with current input method
+{{{
+    c-h c-\ Ret }}}
+insert an open quotation mark
+{{{
+    < < }}}
+insert a closed quotation mark
+{{{
+    > > }}}
+change to Spanish characters
+{{{
+    c-x Ret c-\ spanish-prefix Ret }}}
+change to German characters
+{{{
+    c-x Ret c-\ german-postfix Ret }}}
+insert a letter A umlaut
+{{{
+    a e }}}
+insert the letters A and E, no umlaut
+{{{
+    a e e }}}
+insert a letter O umlaut
+{{{
+    o e }}}
+insert the letters O and E, no umlaut
+{{{
+    o e e }}}
+insert a letter U umlaut
+{{{
+    u e }}}
+insert the letters U and E, no umlaut
+{{{
+    u e e }}}
+insert the letters S and Z
+{{{
+    s z z }}}
+    ----
+
+
+coding
+
+describe SYSTEM
+{{{
+    c-h C <SYSTEM> Ret }}}
+describe current system
+{{{
+    c-h C Ret }}}
+display coding systems
+{{{
+    a-x list-coding-systems }}}
+
+
+environment
+
+    ----
+set VAR to VALUE in Emacs
+{{{
+    a-x setenv <VAR> Ret <VALUE> Ret }}}
+edit current value of VAR
+{{{
+    a-x setenv <VAR> Ret a-p }}}
+unset VAR
+{{{
+    c-u a-x setenv <VAR> Ret }}}
+show value of VAR
+{{{
+    a-x getenv <VAR> Ret }}}
+show current variables
+{{{
+    a-x getenv Tab }}}
+list running processes in Emacs
+{{{
+    a-x list-processes }}}
+send SIGNAL to any PROCESS
+{{{
+    a-x signal-process <PROCESS> Ret <SIGNAL> }}}
+    ----
+
+
+shell
+
+    ----
+run command
+{{{
+    a-! }}}
+insert output of command
+{{{
+    c-u a-! }}}
+set end point of region
+{{{
+    c-Space }}}
+send region to command
+{{{
+    a-| }}}
+replace region with output of command
+{{{
+    c-u a-| }}}
+run command in the background asynchronously
+{{{
+    a-& }}}
+new window
+{{{
+    a-x shell }}}
+new buffer
+{{{
+    c-u a-x shell Ret Ret }}}
+new buffer with NAME.
+{{{
+    c-u a-x shell Ret <NAME> Ret }}}
+beginning of command line
+{{{
+    c-c c-a }}}
+go to command prompt and to the end of command
+{{{
+    c-c c-e }}}
+redisplay buffer so prompt is at bottom (see "redisplay" above)
+{{{
+    c-c c-e }}}
+forward command when looking at multi-command
+{{{
+    c-c c-f }}}
+backwards command when looking at multi-command
+{{{
+    c-c c-b }}}
+kill word backward (see "word" above)
+{{{
+    c-c c-w  //  a-Del }}}
+    p11
+send "end of file" to the process
+{{{
+    c-c c-d }}}
+send process interrupt
+{{{
+    c-c c-c }}}
+stop the process
+{{{
+    c-c c-z }}}
+quit the process
+{{{
+    c-c c-\ }}}
+add newline to command
+{{{
+    c-c Space  //  c-q c-j }}}
+list command history
+{{{
+    c-c c-l }}}
+previous / next command
+{{{
+    a-p  //  a-n }}}
+search history backward
+{{{
+    a-r }}}
+next history match backward
+{{{
+    c-c a-r }}}
+history match forward
+{{{
+    c-c a-s }}}
+show beginning of output for last command
+{{{
+    c-c c-r }}}
+save session transcript to FILE
+{{{
+    c-x c-w <FILE> Ret }}}
+write output of last command to FILE
+{{{
+    c-c c-s <FILE> Ret }}}
+append output of last command to FILE
+{{{
+    c-u c-c c-s <FILE> Ret }}}
+    ----
+
+
+shell script
+
+    ----
+start a script named file.sh
+{{{
+    c-x c-f file.sh Ret }}}
+use shell script mode for current buffer
+{{{
+    a-x shell-script-mode  //  a-x sh-mode }}}
+specify shell and insert header
+{{{
+    c-c : }}}
+run the script
+{{{
+    c-c c-x }}}
+execute region
+{{{
+    ca-x  //  c-[ c-x }}}
+beginning / end of command
+{{{
+    a-a  //  a-e }}}
+beginning of function
+{{{
+    ca-a  //  c-[ c-a }}}
+end of function
+{{{
+    ca-e  //  c-[ c-e }}}
+indent
+{{{
+    Tab }}}
+newline and indent
+{{{
+    c-j }}}
+use indentation level of current line
+{{{
+    c-c < }}}
+analyze buffer's indentation and show inconsistencies
+{{{
+    c-c > }}}
+set indentation level for syntactic type at point
+{{{
+    c-c = }}}
+show indentation level at point
+{{{
+    c-c ? }}}
+insert if statement
+{{{
+    c-c Tab }}}
+insert for statement
+{{{
+    c-c c-f }}}
+insert case statement
+{{{
+    c-c c-c }}}
+insert syntax for temporary file
+{{{
+    c-c c-t }}}
+insert syntax for function
+{{{
+    c-c ( }}}
+    ----
+
+
+executable
+
+set interpreter command and arguments
+{{{
+    a-x executable-set-magic }}}
+make file a command to display itself
+{{{
+    a-x executable-self-display }}}
+interpret current file
+{{{
+    a-x executable-interpret }}}
+go to next error
+{{{
+    c-x }}}
+find path for COMMAND
+{{{
+    a-: a-( executable-find "COMMAND" Ret }}}
+
+
+lisp
+
+    ----
+beginning of defun
+{{{
+    ca-a  //  c-[ c-a }}}
+end of defun
+{{{
+    ca-e  //  c-[ c-e }}}
+forward list
+{{{
+    ca-n  //  c-[ c-n }}}
+backward list
+{{{
+    ca-p  //  c-[ c-p }}}
+down sexp (see "sexp" above)
+{{{
+    ca-d  //  c-[ c-d }}}
+upward sexp
+{{{
+    ca-u  //  c-[ c-u }}}
+upward sexp and forward
+{{{
+    a-x up-list }}}
+insert parens for sexp
+{{{
+    a-( }}}
+transpose sexp
+{{{
+    ca-t }}}
+mark sexp
+{{{
+    ca-Space  //  c-[ c-Space }}}
+run interpreter
+{{{
+    c-c c-z }}}
+eval expression at point
+{{{
+    ca-x  //  c-[ c-x }}}
+insert new comment
+{{{
+    a-; }}}
+kill current comment
+{{{
+    c-u a-; }}}
+narrow / widen to current defun
+{{{
+    c-x n d  //  c-x n w }}}
+    ----
+
+
+emacs lisp
+
+    ----
+evaluate expression before point
+{{{
+    c-x c-e }}}
+evaluate expression and insert result at point
+{{{
+    c-u c-x c-e }}}
+evaluate current defun
+{{{
+    ca-x  //  c-[ c-x }}}
+prompt for expression then evaluate
+{{{
+    a-: }}}
+eval expression and insert result at point
+{{{
+    c-u a-: }}}
+indent (see "indent" above)
+{{{
+    Tab }}}
+same as previous
+{{{
+    c-i }}}
+indent line and expression for subsequent lines
+{{{
+    c-u Tab }}}
+same as previous
+{{{
+    c-u c-i }}}
+indent expression after point
+{{{
+    ca-q  //  c-[ c-q }}}
+pretty print expression after point
+{{{
+    c-u ca-q }}}
+complete symbol at point
+{{{
+    a-Tab  //  ca-i  //  c-[ c-i }}}
+evaluate expressions in region
+{{{
+    a-x eval-region }}}
+evaluate buffer
+{{{
+    a-x eval-buffer }}}
+load FILE
+{{{
+    a-x load-file Ret <FILE> Ret }}}
+load current file
+{{{
+    a-x load-file Ret Ret }}}
+load library
+{{{
+    a-x load-libary }}}
+path of library
+{{{
+    a-x locate-library }}}
+go to LIBRARY
+{{{
+    a-x find-library <LIBRARY> }}}
+show all libraries on load-path
+{{{
+    a-x locate-library Ret Tab }}}
+list definitions in library
+{{{
+    a-x apropos-libary Ret <LIBRARY> Ret }}}
+    ----
+
+    ----
+show library conflicts in load-path
+{{{
+    a-x list-load-path-shadows }}}
+describe library
+{{{
+    c-h P }}}
+find packages (see "finder" below)
+{{{
+    c-h p }}}
+permanently set a variable
+{{{
+    a-x customize-set-variable }}}
+temporarily set VAR to VALUE
+{{{
+    a-x set-variable Ret <VAR> Ret <VALUE> Ret }}}
+scope VAR to current buffer
+{{{
+    a-x make-local-variable Ret <VAR> Ret }}}
+make VAR global for current buffer
+{{{
+    a-x kill-local-variable Ret <VAR> Ret }}}
+byte compile current FILE
+{{{
+    a-x byte-compile-file Ret <FILE> Ret }}}
+same as previous
+{{{
+    a-x byte-compile-file Ret Ret }}}
+byte compile every file, recursively
+{{{
+    a-x byte-recompile-directory  //  a-O a-x byte-recompile-directory }}}
+byte compile defun
+{{{
+    a-x compile-defun }}}
+go to source code for compile error (see "compile" below)
+{{{
+    c-x ‘  #ev. hö/vä-' !"#¤"#¤ }}}
+go to definition of FUNCTION
+{{{
+    a-x find-function Ret <FUNCTION> Ret }}}
+go to definition of function at point
+{{{
+    a-x find-function Ret Ret }}}
+go to definition of VARIABLE
+{{{
+    a-x find-variable Ret <VARIABLE> Ret }}}
+go to definition of variable at point
+{{{
+    a-x find-variable Ret Ret }}}
+start Emacs Lisp mode if not started
+{{{
+    a-x emacs-lisp-mode }}}
+validate coding style
+{{{
+    a-x checkdoc }}}
+validate coding style and spell check comments and documentation strings
+{{{
+    a-x checkdoc~ispell }}}
+enable debugger on error
+{{{
+    a-x toggle-debug-on-error }}}
+enable debugger on quit
+{{{
+    a-x toggle-debug-on-quit }}}
+    ----
+
+
+elisp interaction
+
+evaluate expressions interactively
+{{{
+    a-x lisp-interaction-mode }}}
+evaluate sexp before point and insert results on next line
+{{{
+    c-j }}}
+evaluate current defun (see "emacs lisp" above)
+{{{
+    ca-x }}}
+same as previous
+{{{
+    c-[ c-x }}}
+
+
+debug elisp
+
+    ----
+change whether to start session on error
+{{{
+    a-x toggle-debug-on-error }}}
+change whether c-g starts session
+{{{
+    a-x toggle-debug-on-quit }}}
+debug FUNCTION
+{{{
+    a-x debug-on-entry Ret <FUNCTION> Ret }}}
+    p12
+help debug
+{{{
+    h }}}
+move down
+{{{
+    Space  //  c-n }}}
+move 5 down
+{{{
+    5 Space }}}
+move 2 up
+{{{
+    2 Space }}}
+move up
+{{{
+    c-p }}}
+backward 2 lines
+{{{
+    2 c-p }}}
+go up level in expression
+{{{
+    Tab }}}
+go down lower level
+{{{
+    s-Tab }}}
+visit help or source location for thing at point
+{{{
+    Ret }}}
+complete evaluation level at current point
+{{{
+    c }}}
+quit
+{{{
+    q }}}
+step into
+{{{
+    d }}}
+set breakpoint
+{{{
+    b }}}
+unset breakpoint
+{{{
+    u }}}
+set breakpoint and continue
+{{{
+    j }}}
+prompt for return value then continue
+{{{
+    r }}}
+prompt for expression then evaluate
+{{{
+    e }}}
+prompt for expression then evaluate and record it
+{{{
+    R }}}
+list functions debugged on entry
+{{{
+    l }}}
+don't debug FUNCTION
+{{{
+    a-x cancel-debug-on-entry <FUNCTION> Ret }}}
+don't debug for any function
+{{{
+    a-x cancel-debug-on-entry Ret Ret }}}
+    ----
+
+
+source-level debugger
+
+    ----
+turn on instrumentation for current function definition
+{{{
+    a-x edebug-defun  //  c-u ca-x }}}
+turn off instrumentation for current function definition
+{{{
+    ca-x }}}
+step expression in source
+{{{
+    Space }}}
+from any buffer, step into expression in source
+{{{
+    c-x X Space }}}
+slowly step
+{{{
+    t }}}
+step fast
+{{{
+    T }}}
+stop stepping
+{{{
+    s }}}
+step to next expression
+{{{
+    n }}}
+step in
+{{{
+    i }}}
+step out
+{{{
+    o }}}
+step forward
+{{{
+    f }}}
+show last result again in minibuffer
+{{{
+    r }}}
+set breakpoint
+{{{
+    b }}}
+unset breakpoint
+{{{
+    u }}}
+unset breakpoint
+{{{
+    c-c c-d }}}
+set conditional break on result of EXPRESSION
+{{{
+    x <EXPRESSION> Ret }}}
+    ----
+
+    ----
+move to next breakpoint
+{{{
+    B }}}
+continue until next breakpoint
+{{{
+    g }}}
+continue to next breakpoint
+{{{
+    B }}}
+continue to breakpoints slowly
+{{{
+    c }}}
+continue to breakpoints fast
+{{{
+    C }}}
+stop continuing
+{{{
+    S }}}
+stop debugging and finish
+{{{
+    G }}}
+visit buffer before running Edebug
+{{{
+    P }}}
+visit buffer before running Edebug
+{{{
+    v }}}
+momentarily visit buffer before running Edebug
+{{{
+    P }}}
+move back to current point in source
+{{{
+    w }}}
+move back to current point in source
+{{{
+    c-c c-l }}}
+from any buffer, move back to current point in source
+{{{
+    c-x X w }}}
+help
+{{{
+    ? }}}
+list bindings starting with c-x X
+{{{
+    c-x X c-h }}}
+prompt for expression then evaluate
+{{{
+    e }}}
+show backtrace
+{{{
+    d }}}
+display frequencies in comments for each line for current function
+{{{
+    = }}}
+abort
+{{{
+    a }}}
+abort
+{{{
+    c-] }}}
+quit
+{{{
+    q  //  c-x X q }}}
+quit
+{{{
+    Q }}}
+    ----
+
+
+finder
+
+    ----
+list keywords
+{{{
+    c-h p }}}
+describe LIBRARY
+{{{
+    a-x finder-commentary Ret <LIBRARY> Ret }}}
+help
+{{{
+    ? }}}
+move down / up
+{{{
+    n // p }}}
+for keyword at point, list Emacs Lisp libraries
+{{{
+    Ret }}}
+for package at point, show commentary for Emacs
+{{{
+    Ret  //  f  //  Space }}}
+back to beginning of package directory
+{{{
+    d }}}
+quit
+{{{
+    q }}}
+    ----
+
+
+C
+
+    ----
+help
+{{{
+    c-h m }}}
+version of mode
+{{{
+    a-x c-version }}}
+show syntax information of current point
+{{{
+    c-c c-s }}}
+use gnu coding style
+{{{
+    c-c . gnu Ret }}}
+use Kernighan and Ritchie coding style
+{{{
+    c-c . k&r Ret }}}
+use Linux kernel coding style
+{{{
+    c-c . linux Ret }}}
+use BSD coding style
+{{{
+    c-c . bsd Ret }}}
+add index menu to menu bar for current file
+{{{
+    a-x imenu-~add-menubar-index }}}
+run compiler (see "compile" below)
+{{{
+    a-x compile }}}
+rerun compiler
+{{{
+    a-x recompile }}}
+highlight problematic syntax in current file
+{{{
+    a-x cwarn-mode }}}
+highlight problematic syntax for all source files
+{{{
+    a-x global-cwarn-mode }}}
+highlight preprocessor conditionals
+{{{
+    a-x cpp-highlight-buffer }}}
+fold conditional preprocessor blocks
+{{{
+    a-x hide-ifdef-mode }}}
+indent
+{{{
+    Tab  //  c-i }}}
+go to indentation at beginning of line
+{{{
+    a-m }}}
+newline and indent
+{{{
+    c-j }}}
+toggle automatic indentation with "electric" characters
+{{{
+    c-c c-l }}}
+toggle automatic newlines
+{{{
+    c-c c-a }}}
+comment region
+{{{
+    c-c c-c }}}
+uncomment region
+{{{
+    c-u c-c c-c }}}
+    ----
+
+    ----
+comment region with 3 asterisks
+{{{
+    c-u 3 c-c c-c }}}
+comment region
+{{{
+    c-l c-c c-c }}}
+remove 1 asterisks from comments in region
+{{{
+    a_- c-c c-c }}}
+remove 3 asterisks from comments in region
+{{{
+    a_- 3 c-c c-c }}}
+fill comment or string literal
+{{{
+    a-q }}}
+move to end of current or next word of identifier or field
+{{{
+    a-f }}}
+move to beginning of current or next word of identifier or field
+{{{
+    a-b }}}
+mark to end of current word or next word of identifier or field
+{{{
+    a-@ }}}
+toggle whether word motion understands mixed-case identifiers
+{{{
+    c-c c-w }}}
+move to end of operator, ident, string, paren, brace
+{{{
+    ca-f }}}
+move to beginning of operator, ident, string, paren, brace
+{{{
+    ca-b }}}
+beginning of statement
+{{{
+    a-a }}}
+end of statement
+{{{
+    a-e }}}
+beginning of function definition
+{{{
+    ca-a }}}
+end of function definition
+{{{
+    ca-e }}}
+beginning of next function
+{{{
+    a_- ca-a }}}
+end of previous function
+{{{
+    a_- ca-e }}}
+narrow to function definition
+{{{
+    c-x nd }}}
+widen
+{{{
+    c-x nw }}}
+mark current function
+{{{
+    ca-h }}}
+mark to end of operator, ident, string, paren, brace
+{{{
+    ca-@ }}}
+    ----
+
+    ----
+indent lines in region properly
+{{{
+    c-x c-x Tab  //  ca-\ }}}
+indent buffer properly
+{{{
+    c-x h ca-\ c-u c-Space }}}
+indent current function properly
+{{{
+    c-c c-q }}}
+align backslash characters in region
+{{{
+    c-c c-\ }}}
+delete backslash characters in region
+{{{
+    c-u c-c c-\ }}}
+set backslash column to 48
+{{{
+    a-x set-variable Ret c-backslash-column 48 Ret }}}
+beginning of next preprocessor conditional
+{{{
+    c-c c-n }}}
+beginning of previous preprocessor conditional
+{{{
+    c-c c-p }}}
+beginning of current preprocessor conditional
+{{{
+    c-c c-u }}}
+    p13
+end of preprocessor conditional
+{{{
+    a_- c-c c-u }}}
+hungrily delete all whitespace including newlines backwards
+{{{
+    c-c Del  //  c-c c-Del }}}
+merge current line with previous
+{{{
+    a-^ }}}
+merge next line with current (see 'line" above)
+{{{
+    c-u a-^ }}}
+same as previous
+{{{
+    c-n a-^ }}}
+hungrily delete all whitespace including newlines forwards
+{{{
+    c-c c-d }}}
+always hungrily delete whitespace
+{{{
+    a-x c-toggle-hungry-state }}}
+show expansion of macros for region in other window
+{{{
+    c-c c-e }}}
+don't indent mid-line
+{{{
+    a-x set-variable Ret c-tab-always-indent Ret nil }}}
+    ----
+
+
+compile
+
+    ----
+execute a compilation command
+{{{
+    a-x compile }}}
+execute last compilation command
+{{{
+    a-x recompile }}}
+kill (??)
+{{{
+    c-c c-k }}}
+go to source code for next error
+{{{
+    c-x ‘  #???? }}}
+go to source code for previous error
+{{{
+    a_- c-x ‘  #???? }}}
+visit compilation buffer
+{{{
+    c-x o }}}
+next / previous error
+{{{
+    a-n  //  a-p }}}
+errors for next / previous file
+{{{
+    a-}  //  a-{ }}}
+go to source code for error specified at point
+{{{
+    Ret }}}
+same as previous
+{{{
+    c-c c-c }}}
+recompile
+{{{
+    g }}}
+prompt for command then recompile
+{{{
+    c-u g }}}
+    ----
+
+
+hide
+
+    ----
+start Hide Show minor mode if not started already
+{{{
+    a-x hs-minor-mode }}}
+toggle current block
+{{{
+    c-c @ c-c }}}
+hide current block
+{{{
+    c-c @ c-h }}}
+show current block
+{{{
+    c-c @ c-s }}}
+hide all
+{{{
+    c-c @ ca-h }}}
+show all
+{{{
+    c-c @ ca-s }}}
+show blocks should VAR be defined
+{{{
+    c-c @ d <VAR> }}}
+hide blocks should VAR be undefined
+{{{
+    c-c @ u <VAR> }}}
+    ----
+
+
+tag
+
+    ----
+index .c and .h files in current directory
+{{{
+    a-! etags *. [ch] }}}
+set index file for current buffer
+{{{
+    c-u a-x visit-tags-table }}}
+globally set index file
+{{{
+    a-x visit-tags-table }}}
+go to definition of symbol in index
+{{{
+    a-. }}}
+go to definition for a regular expression in index
+{{{
+    ca-. }}}
+go to next definition
+{{{
+    c-u a-. }}}
+go to previous definition
+{{{
+    a_- a-. }}}
+return back to before you started
+{{{
+    a-* }}}
+go to entry for regular expression in index
+{{{
+    a-x tags-search }}}
+go to next entry in index
+{{{
+    a-, }}}
+search and replace for regular expression
+{{{
+    a-x tags-query-replace }}}
+complete tag at point
+{{{
+    a-Tab  //  ca-i  //  c-[ c-i }}}
+complete language symbol, avoid tags, at point
+{{{
+    c-u a-Tab }}}
+complete language symbol, avoid tags, at point (=for a source file)
+{{{
+    a-x list-tags }}}
+lists tags matching PATTERN
+{{{
+    a-x tags-apropos Ret <PATTERN> Ret }}}
+forget all previous
+{{{
+    a-x tags-reset-tags-tables }}}
+choose tags file to use
+{{{
+    a-x select-tags-table }}}
+    ----
+
+
+make
+
+    ----
+new make
+{{{
+    c-x c-f Makefile Ret  //  c-x c-f foo.mk Ret }}}
+next / previous make-target
+{{{
+    a-n  //  a-p }}}
+backslash region
+{{{
+    c-c c-\ }}}
+comment region
+{{{
+    c-c c-c }}}
+list macros and targets
+{{{
+    c-c c-b }}}
+list up-to-date status for targets
+{{{
+    c-c c-u }}}
+    ----
+
+
+diff
+
+    ----
+compare OLD file with NEW file
+{{{
+    a-x diff Ret <OLD> Ret <NEW> Ret }}}
+compare files but prompt for Diff switches
+{{{
+    c-u a-x diff }}}
+compare buffer with file on disk
+{{{
+    a-x diff-buffer-with-file }}}
+compare current file with backup on disk
+{{{
+    a-x diff-backup  //  a-x diff Ret Ret }}}
+start Diff Mode if not already started for a file
+{{{
+    a-x diff-mode }}}
+go to corresponding location in target (new) file
+{{{
+    c-c c-c }}}
+go to corresponding location in source (old) file
+{{{
+    c-u c-c c-c }}}
+always go to corresponding location in source file
+{{{
+    c-u c-u c-c c-c }}}
+apply current hunk
+{{{
+    c-c c-a }}}
+revert current hunk
+{{{
+    c-u c-c c-a }}}
+test current hunk
+{{{
+    c-c c-t }}}
+test current hunk in reverse
+{{{
+    c-c c-t }}}
+move start of next hunk
+{{{
+    a-n }}}
+move to start of previous hunk
+{{{
+    a-p }}}
+move to start of next file in multiple file patch
+{{{
+    a-} }}}
+move to start of previous file in multiple file patch
+{{{
+    a-{ }}}
+    ----
+
+    ----
+narrow to hunk
+{{{
+    c-c c-n }}}
+widen
+{{{
+    c-x n w }}}
+narrow to file of multiple file patch
+{{{
+    c-u c-c c-n }}}
+kill the current hunk
+{{{
+    a-k }}}
+kill the current file in multiple file patch
+{{{
+    a-K }}}
+split the hunk in two
+{{{
+    c-c c-s }}}
+reverse direction of entire patch
+{{{
+    c-c c-r }}}
+reverse direction of patch in region
+{{{
+    c-u c-c c-r }}}
+new change log entry using context of current location
+{{{
+    c-x 4 a }}}
+convert the entire buffer from unified to context format
+{{{
+    c-c c-u }}}
+convert the entire buffer from context to unified format
+{{{
+    c-u c-c c-u }}}
+convert the entire buffer
+{{{
+    c-c c-u }}}
+start ediff session
+{{{
+    c-c c-e }}}
+    ----
+
+
+version control (vc)
+
+    ----
+list bindings for prefix
+{{{
+    c-x v c-h }}}
+register file
+{{{
+    c-x v i }}}
+check in or out, depending on the current state
+{{{
+    c-x v v }}}
+finish editing log for check in
+{{{
+    c-c c-c }}}
+check in or out a specific revision
+{{{
+    c-u c-x v v }}}
+open past revision in new window
+{{{
+    c-x v ~ }}}
+diff with current revision
+{{{
+    c-x v = }}}
+diff with specific revision
+{{{
+    c-u c-x v = }}}
+show log
+{{{
+    c-x v l }}}
+undo checkout
+{{{
+    c-x v u }}}
+delete the latest revision
+{{{
+    c-x v c }}}
+annotate file by each line showing when added and by whom
+{{{
+    c-x v g }}}
+show checked out files
+{{{
+    c-x vd }}}
+tag all the files in directory with NAME
+{{{
+    c-x v s Ret <NAME> Ret }}}
+tag files and create branch
+{{{
+    c-u c-x v s Ret <NAME> Ret }}}
+recursively checkout files for a snapshot
+{{{
+    c-x v r <NAME> }}}
+update ChangeLog (see "changelog" below)
+{{{
+    c-x v a }}}
+merge two revisions
+{{{
+    c-x v m }}}
+insert revision header keyword
+{{{
+    c-x v h }}}
+start ediff (see 'ediff" below) on file
+{{{
+    a-x vc-resolve-conflicts }}}
+    ----
+
+
+changelog
+
+    ----
+start new entry using context of current file
+{{{
+    c-x 4 a }}}
+start new entry in current log file
+{{{
+    c-x 4 a }}}
+insert previous log from version control
+{{{
+    c-c c-p }}}
+fill paragraph following syntax rules
+{{{
+    a-q }}}
+merge current with log FILE
+{{{
+    a-x change-log-merge Ret <FILE> Ret }}}
+generate entries from version control
+{{{
+    c-x v a }}}
+    p14
+merge conflict
+start Smerge Mode if not started
+{{{
+    a-x smerge-mode }}}
+move to next
+{{{
+    c-c ^ n }}}
+move to previous
+{{{
+    c-c ^ p }}}
+keep base
+{{{
+    c-c ^ b }}}
+keep mine
+{{{
+    c-c ^ m }}}
+keep other
+{{{
+    c-c ^ o }}}
+keep what is under point
+{{{
+    c-c ^ Ret }}}
+keep all
+{{{
+    c-c ^ a }}}
+combine current with next
+{{{
+    c-c ^ c }}}
+auto resolve
+{{{
+    c-c ^ r }}}
+auto resolve entire buffer
+{{{
+    a-x smerge-resolve-all }}}
+    ----
+
+
+grep
+
+    ----
+show matches in FILES for REGEXP
+{{{
+    a-x grep Ret <REGEXP> Space <FILES> Ret  //  a-x lgrep Ret <REGEXP> Ret <FILES> Ret }}}
+show matches in all C files
+{{{
+    a-x lgrep Ret <REGEXP> Ret Ret  // same as previous a-x lgrep Ret <REGEXP> Ret ch Ret }}}
+show matches in C source files
+{{{
+    a-x lgrep Ret <REGEXP> Ret c Ret }}}
+show matches in header files
+{{{
+    a-x lgrep Ret <REGEXP> Ret h Ret }}}
+show matches in ChangeLog files
+{{{
+    a-x lgrep Ret <REGEXP> Ret 1 Ret }}}
+show matches in Make files
+{{{
+    a-x lgrep Ret <REGEXP> Ret m Ret }}}
+show matches in TeX files
+{{{
+    a-x lgrep Ret <REGEXP> Ret tex Ret }}}
+show matches in HTML files
+{{{
+    a-x lgrep Ret <REGEXP> Ret *.html Ret }}}
+extended regular expressions
+{{{
+    a-x egrep Ret <REGEXP> Ret <FILES> Ret }}}
+case insensitive matching
+{{{
+    a-x igrep Ret <REGEXP> Ret <FILES> Ret }}}
+show matches in entire directory tree
+{{{
+    a-x grep-find Ret <REGEXP> Ret }}}
+show matches in entire directory tree, but HTML files
+{{{
+    a-x rgrep Ret <REGEXP> Ret *.html Ret Ret }}}
+show matches in entire directory tree, but C files
+{{{
+    a-x rgrep Ret <REGEXP> Ret Ret Ret }}}
+show matches in entire directory tree, but Emacs Lisp files
+{{{
+    a-x rgrep Ret <REGEXP> Ret el Ret Ret }}}
+visit next match
+{{{
+    c-x ‘  #!"#¤  //  a-g a-n  //  a-g n }}}
+visit the previous match
+{{{
+    a_- c-x ‘  #!"#¤¤ }}}
+visit the second next match
+{{{
+    c-u 2 c-x ‘  #!"#¤¤ }}}
+visit the fifth next match
+{{{
+    c-u 5 c-x ‘  #!"#¤¤ }}}
+    ----
+
+    ----
+visit the first match
+{{{
+    c-u c-x ‘  #!"#¤¤ }}}
+visit previous match
+{{{
+    a-g p }}}
+visit previous match
+{{{
+    a-g a-p }}}
+move to buffer with listed matches
+{{{
+    c-x o }}}
+stop
+{{{
+    c-c c-k }}}
+move to next / prev. match
+{{{
+    Tab // s-Tab }}}
+go to match in file
+{{{
+    Ret  //  c-c c-c }}}
+show next match in other window
+{{{
+    a-n  //  n }}}
+show previous match in other window
+{{{
+    a-p  //  p }}}
+scroll down
+{{{
+    Space  //  Del }}}
+move to start of matches in next file
+{{{
+    a-}  //  } }}}
+move to end of matches in previous file
+{{{
+    a-{  //  { }}}
+automatically show match in other window with follow mode
+{{{
+    c-c c-f }}}
+disable follow mode
+{{{
+    c-c c-f }}}
+(see "directory" above) (??)
+{{{
+    a-x find-grep-dired }}}
+    ----
+
+
+locate
+
+    ----
+show files matching PATTERN
+{{{
+    a-x locate Ret <PATTERN> Ret }}}
+same, but also match REGEXP
+{{{
+    a-x locate-with-filter Ret <PATTERN> Ret <REGEXP> }}}
+show
+{{{
+    a-x locate-with-filter }}}
+locate: next / prev. matched file
+{{{
+    c-n  //  c-p }}}
+visit current file at
+{{{
+    Ret }}}
+open file in other window
+{{{
+    c-o }}}
+open current file in dired (see "directory" above)
+{{{
+    V }}}
+    ----
+
+
+calendar
+
+    ----
+view previous, current and next months
+{{{
+    a-x calendar }}}
+help
+{{{
+    c-h m }}}
+user manual calendar
+{{{
+    ? }}}
+one day forward
+{{{
+    c-f }}}
+one day backward
+{{{
+    c-b }}}
+seven days forward 7
+{{{
+    c-f }}}
+same as previous
+{{{
+    c-7 c-f }}}
+one week forward / backward
+{{{
+    c-n  //  c-p }}}
+fifty-two weeks forward 52
+{{{
+    c-n  //  c-5 c-2 c-n }}}
+one month forward / backward
+{{{
+    a-}  //  a-{ }}}
+twelve months forward 12
+{{{
+    a-} }}}
+same as previous
+{{{
+    a-1 a-2 a-} }}}
+one year forward / backward
+{{{
+    c-x ]  //  c-x [ }}}
+four years forward
+{{{
+    4 c-x ]  //  c-u c-x ] }}}
+beginning / end of week
+{{{
+    c-a  //  c-e }}}
+beginning / end of the month
+{{{
+    a-a  //  a-e }}}
+beginning / end of year
+{{{
+    a-<  //  a-> }}}
+scroll month backward / forward
+{{{
+    <  //  > }}}
+scroll forward / backward 3 months
+{{{
+    c-v  //  a-v }}}
+how many days three months from now?
+{{{
+    c-Space 3 a-} a-= }}}
+go to February 29 of current year
+{{{
+    g d Ret Feb Ret 29 Ret }}}
+    ----
+
+    ----
+go to May
+{{{
+    o Ret May Ret }}}
+go to sixtieth day of current year
+{{{
+    g D Ret 60 Ret }}}
+go to fifth week of current year
+{{{
+    g w Ret 5 Ret }}}
+back to today
+{{{
+    . }}}
+print day of year
+{{{
+    p d }}}
+print week of year
+{{{
+    p c }}}
+holidays on day
+{{{
+    h }}}
+holidays in next 3 months
+{{{
+    a }}}
+mark holidays
+{{{
+    x }}}
+unmark holidays
+{{{
+    u }}}
+sunrise/sunset
+{{{
+    s }}}
+lunar phases
+{{{
+    M }}}
+mark all diary entries (see "diary" later)
+{{{
+    m }}}
+unmark diary entries
+{{{
+    u }}}
+diary entries for day
+{{{
+    d }}}
+insert single diary entry
+{{{
+    i d }}}
+insert weekly entry
+{{{
+    i w }}}
+insert monthly entry
+{{{
+    i m }}}
+insert annual entry
+{{{
+    i y }}}
+insert anniversary
+{{{
+    i a }}}
+repeat entry every ten days
+{{{
+    i c 10 Ret }}}
+    ----
+
+    ----
+making a two-day diary entry
+{{{
+    c-Space c-f i b }}}
+making a week-long diary entry
+{{{
+    c-Space c-n i b }}}
+making a two week-long diary entry
+{{{
+    c-Space 2 c-n i b }}}
+open diary
+{{{
+    s }}}
+Export month to an HTML file
+{{{
+    H m }}}
+Export all months in year to HTML files
+{{{
+    H y }}}
+Export month to TeX file
+{{{
+    t m }}}
+Export month in landscape display to TeX file
+{{{
+    t M }}}
+Export week in to TeX file
+{{{
+    t w i }}}
+Export year to TeX file
+{{{
+    t y }}}
+quit
+{{{
+    q }}}
+    ----
+
+
+ediff
+
+    ----
+compare two files
+{{{
+    a-x ediff }}}
+compare two buffers
+{{{
+    a-x ediff-buffers }}}
+compare regions by lines in two buffers
+{{{
+    a-x ediff-regions-linewise }}}
+compare regions by word in two buffers
+{{{
+    a-x ediff-regions-wordwise }}}
+compare with backup file
+{{{
+    a-x ediff-backup }}}
+compare buffer with file
+{{{
+    a-x ediff-current-file }}}
+compare in version control (see version control" above)
+{{{
+    a-x ediff-revision }}}
+help
+{{{
+    ? }}}
+    p15
+toggle vertical and horizontal display
+{{{
+    | }}}
+toggle highlighting mode
+{{{
+    h }}}
+next difference
+{{{
+    n  //  Space }}}
+previous difference
+{{{
+    p }}}
+use a
+{{{
+    a }}}
+use b
+{{{
+    b }}}
+undo in a
+{{{
+    r a }}}
+undo in b
+{{{
+    r b }}}
+quit
+{{{
+    q }}}
+    ----
+
+
+browse-url
+
+browse-url
+{{{
+    a-x browse-url  //  a-x ffap }}}
+visit URL at point in Web browser
+{{{
+    a-x browse-url-at-point  //  a-x browse-url Ret Ret }}}
+
+
+HTML
+
+    ----
+help
+{{{
+    c-h m }}}
+view current file in Web browser
+{{{
+    c-c c-v }}}
+toggle to view in Web browser on each save
+{{{
+    c-c c-s }}}
+toggle inserting of non-ASCII characters as entities
+{{{
+    c-c 8 }}}
+toggle invisibility of tags
+{{{
+    c-c Tab }}}
+add index menu to menu bar for current file
+{{{
+    a-x html-imenu-index }}}
+turn on XHTML tags
+{{{
+    a-x set-variable Ret sgml-xml-mode Ret t Ret }}}
+use uppercase tags
+{{{
+    a-x set-variable Ret skeleton-transformation Ret upcase Ret }}}
+delete current tag
+{{{
+    c-c c-d }}}
+delete current tag
+{{{
+    c-c Del }}}
+delete next 4 tags
+{{{
+    c-u c-c c-d }}}
+skip forward tag
+{{{
+    c-c c-f }}}
+skip forward 5 tags
+{{{
+    c-u 5 c-c c-f }}}
+skip backward tag
+{{{
+    c-c c-f }}}
+skip backward 4 tags
+{{{
+    c-u c-c c-f }}}
+start file with TITLE
+{{{
+    c-c c-t html Ret <TITLE> Ret }}}
+same as previous
+{{{
+    a-x auto-insert Ret <TITLE> Ret }}}
+insert level one heading
+{{{
+    c-c 1 }}}
+insert level two heading
+{{{
+    c-c 2 }}}
+insert level six heading
+{{{
+    c-c 6 }}}
+insert paragraph tag
+{{{
+    c-c Ret }}}
+    ----
+
+    ----
+close paragraph tag
+{{{
+    c-c / }}}
+insert line break tag
+{{{
+    c-c c-j }}}
+insert horizontal rule
+{{{
+    c-c c-c - }}}
+insert link
+{{{
+    c-c c-c h }}}
+insert page anchor
+{{{
+    c-c c-c n }}}
+insert image
+{{{
+    c-c c-c i }}}
+insert radio buttons
+{{{
+    c-c c-c r }}}
+insert ordered list
+{{{
+    c-c c-c o }}}
+insert unordered list
+{{{
+    c-c c-c u }}}
+insert list item
+{{{
+    c-c c-c i }}}
+close list item
+{{{
+    c-c / }}}
+insert bold tag
+{{{
+    c-u a-o b }}}
+insert italic tag
+{{{
+    c-u a-o i }}}
+insert bold tag
+{{{
+    c-u a-o b }}}
+insert underline tag
+{{{
+    c-u a-o i }}}
+insert attributes to current tag
+{{{
+    c-c c-a }}}
+insert emphasis tag
+{{{
+    c-c c-t em Ret }}}
+insert strong emphasis tag
+{{{
+    c-c c-t strong Ret }}}
+insert source code tag
+{{{
+    c-c c-t code Ret }}}
+insert definition tag
+{{{
+    c-c c-t dfn Ret }}}
+insert keyboard text tag
+{{{
+    c-c c-t kbd Ret }}}
+    ----
+
+    ----
+insert sample text tag
+{{{
+    c-c c-t samp Ret }}}
+insert variable text tag
+{{{
+    c-c c-t var Ret }}}
+insert preformatted text tag
+{{{
+    c-c c-t pre Ret }}}
+insert span tag for text of CLASS
+{{{
+    c-c c-t span Ret class Ret <CLASS> Ret }}}
+insert definition list with TERM
+{{{
+    c-c c-t dl Ret <TERM> Ret Ret }}}
+insert 1-by-1 table
+{{{
+    c-c c-t table Ret h Ret d Ret Del Ret }}}
+prompt for tag name and possible attributes, then insert
+{{{
+    c-c c-t }}}
+prompt for tag, and surround next 3 words with tag
+{{{
+    c-u 3 c-c c-t }}}
+prompt for tag, and surround next word with tag
+{{{
+    c-1 c-c c-t }}}
+prompt for tag, and surround region with tag
+{{{
+    a_- c-c c-t }}}
+describe current tag
+{{{
+    c-c ? Ret }}}
+insert non-breaking space entity
+{{{
+    c-c c-n a-Space }}}
+insert a quoted ampersand
+{{{
+    c-c c-n & }}}
+insert a quoted less than character
+{{{
+    c-c c-n < }}}
+insert a quoted greater than character
+{{{
+    c-c c-n > }}}
+insert comment
+{{{
+    a-; }}}
+kill comment
+{{{
+    c-u a-; }}}
+display hierarchy of tags for point
+{{{
+    a-x sgml-show-context }}}
+check markup with external tool
+{{{
+    a-x sgml-validate }}}
+    ----
+
+
+outline
+
+    ----
+set major mode
+{{{
+    a-x outline-mode }}}
+set minor mode
+{{{
+    a-x outline-minor-mode }}}
+help
+{{{
+    c-h f outline-mode }}}
+insert heading of current level
+{{{
+    c-c Ret }}}
+show all
+{{{
+    c-c c-a }}}
+hide all
+{{{
+    c-c c-t }}}
+show body
+{{{
+    c-c c-e }}}
+hide body
+{{{
+    c-c c-c }}}
+show all under current heading
+{{{
+    c-c c-s }}}
+hide all under current heading
+{{{
+    c-c c-d }}}
+show headings under current heading
+{{{
+    c-c c-i  //  c-c Tab }}}
+show all headings under current heading
+{{{
+    c-c c-k }}}
+hide all headings under current heading
+{{{
+    c-c c-q }}}
+hide leaves
+{{{
+    c-c c-1 }}}
+hide all others except current
+{{{
+    c-c c-o }}}
+forward heading
+{{{
+    c-c c-n }}}
+backward heading
+{{{
+    c-c c-p }}}
+forward 4 headings
+{{{
+    c-u c-c c-n }}}
+forward to same level heading
+{{{
+    c-c c-f }}}
+backward to same level heading
+{{{
+    c-c c-b }}}
+forward 4 headings at same level
+{{{
+    c-u c-c c-f }}}
+up to parent heading
+{{{
+    c-c c-u }}}
+up 4 parent headings 4
+{{{
+    c-u 4 c-c c-u }}}
+move current subtree down
+{{{
+    c-c c-v }}}
+move current subtree up
+{{{
+    c-c c-^ }}}
+mark current subtree
+{{{
+    c-c @ }}}
+increase heading level in current subtree
+{{{
+    c-c c-< }}}
+decrease heading level in current subtree
+{{{
+    c-c c-> }}}
+    ----
+
+
+SQL
+
+    ----
+help
+{{{
+    a-x sql-help }}}
+open DB2 interactive buffer
+{{{
+    a-x sql-db2 }}}
+open DB2 interactive buffer
+{{{
+    a-x sql-informix }}}
+open Informix interactive buffer
+{{{
+    a-x sql-ingres }}}
+open InterBase interactive buffer
+{{{
+    a-x sql-interbase }}}
+open RELEX Linter interactive buffer
+{{{
+    a-x sql-linter }}}
+open Microsoft SQL interactive buffer
+{{{
+    a-x sql-ms }}}
+open MySQL interactive buffer
+{{{
+    a-x sql-mysql }}}
+open Oracle interactive buffer
+{{{
+    a-x sql-oracle }}}
+open PostgreSQL interactive buffer
+{{{
+    a-x sql-postgres }}}
+open SOLID interactive buffer
+{{{
+    a-x sql-solid }}}
+open SQLite interactive buffer
+{{{
+    a-x sql-sqlite }}}
+open Sybase interactive buffer
+{{{
+    a-x sql-sybase }}}
+switch to current interactive
+{{{
+    a-x sql-product-interactive }}}
+turn on SQL mode if not already started
+{{{
+    a-x sql-mode }}}
+set text buffer's interactive buffer
+{{{
+    a-x sql-set-sqli-buffer Ret *SQL* Ret }}}
+send region to interactive buffer
+{{{
+    c-c c-r }}}
+send paragraph to interactive buffer
+{{{
+    c-c c-c }}}
+send buffer contents to interactive buffer
+{{{
+    c-c c-b }}}
+    ----
+
+
+calc
+
+    ----
+start/stop calc
+{{{
+    c-x * c  //  a-x calc }}}
+quit calc
+{{{
+    q }}}
+start/stop
+{{{
+    c-x * * }}}
+other window
+{{{
+    c-x * o }}}
+help for help
+{{{
+    h ? }}}
+help shown in minibuffer
+{{{
+    ?  ? }}}
+all help shown in buffer
+{{{
+    h h }}}
+tutorial
+{{{
+    h t }}}
+info manual
+{{{
+    h i }}}
+command name
+{{{
+    h c }}}
+command description
+{{{
+    h k }}}
+command summary
+{{{
+    h s }}}
+put on stack
+{{{
+    Ret  //  Space }}}
+swap top stack items
+{{{
+    Tab }}}
+cycle all stack items
+{{{
+    a-Tab }}}
+    ----
+
+
+
+___
+
+emacs-terminologi (=hela listan) {{{
+
+    See also Emacs' official Glossary.
+
+        atom – a Lisp entity that is not a cons. This includes symbols and strings.
+        alist – a list whose elements are conses.
+        bookmark – just what it sounds like: a saved location in a file or buffer
+        bound variable – a variable that has a symbol value
+        buffer – editing happens in buffers (workspaces)
+        car – see cons
+        cdr – see cons
+        character property – "a named attribute of a character that specifies how the character behaves and how it should be handled during text processing and display" as the elisp manual says.
+        chord – a key sequence with keys pressed simultaneously
+        command – an InteractiveFunction
+        completion – completing input in the minibuffer or text in another buffer
+        cons (aka cons cell) – A Lisp object that is composed of a pair of Lisp objects of any kind. The first is called the car; the second is called the cdr. See also atom.
+        cursor (text cursor) – how it differs from the pointer (mouse pointer); its relation with point
+        custom file – file, other than your init file (~/.emacs), where customizations from Customize are saved. It is the value of variable ‘custom-file'.
+        Customize – Emacs user interface for changing and saving preferences (settings)
+        default directory – directory assumed for the current buffer; it is the value of variable ‘default-directory'
+        device – Under XEmacs, frames are shown on devices (TTY, X, MS Windows, GTK)
+        display – Under GNU Emacs, frames are shown on displays (TTY, X)
+        doc string – self-documentation for functions and variables
+        DWIM – DoWhatIMean: sophisticated user-interface design that sometimes doesn't do what you intend or expect ;-)
+        dynamic scoping – variable binding (value) behavior that means the last binding of a given variable wins – lexical context does not govern binding
+        echo area – Occupies the same frame space as the minibuffer. Used to display messages.
+        Electricity – extra or sophisticated behavior (see also DWIM)
+        Emacsen – different Emacs implementations
+        Emacs Lisp – the Lisp dialect that Emacs uses. Much of Emacs is written in Emacs Lisp, and you can use Emacs Lisp to customize or extend Emacs.
+        extensible – the ‘E' in "Emacs"
+        face – Is it a font? Is it a color? No, it is a face!
+        font – ???????? FIXME
+        frame – Emacs windows are shown in frames (called "windows" outside of Emacs)
+        fringe – thin strips at the left and right edges of a window, with glyphs that indicate various things
+        function cell – the function associated with a symbol; aka symbol function
+        GPL – GNU General Public License: publishing license used for free software
+        header line – at the top of a window, used by some modes
+        Info – Emacs's on-board help system: hypertext manuals (see InfoMode)
+        init file – your personal startup file, loaded when Emacs starts up: ~/.emacs or ~/_emacs
+        InteractiveFunction – command
+        key binding – a mapping (relation) between an Emacs command and a key sequence. A key binding can be a global key binding, a local key binding (enabled only for a given major mode), or a minor-mode key binding (enabled only for a given minor mode)
+        isearch – incremental search, which interactively searches for the search string character-by-character as you type it
+        keyboard macro – a recording of key sequences that you can replay
+        keymap – a collection of key bindings, that is, a mapping (relation) between Emacs commands and key sequences. A keymap can be a global keymap, a local keymap (applicable only to a given major mode), or a minor-mode keymap (applicable only to a given minor mode)
+        key sequence – a key sequence can be bound to a command, to execute it
+        kill – cut, that is, delete and copy to the kill ring
+        kill ring – ring of previously killed (cut) or copied text snippets; the value of variable ‘kill-ring'
+        lambda expression – a function representation that is a sexp that evaluates to a cons whose car is the symbol ‘lambda'. (See WikiPedia:Lambda calculus.)
+        line – a line of text. See also line ending.
+        line ending – one or more characters at the end of a line
+        line wrap – how lines that are wider than a window are displayed (unless they are truncated at the right edge)
+        list – A list is the symbol ‘nil' or a cons whose cdr is a list.
+        macro – An EmacsLisp form that, when evaluated, translates a sexp that is a list into another such, which is then evaluated and its result is returned. IOW, it rewrites (without evaluating) one sexp as another and then evaluates the latter. It is typically defined using ‘defmacro'. It can be expanded without evaluating the result, using ‘macroexpand'. See macros.
+        major mode – each buffer is in one major mode
+        mark – a buffer location that you can change, return to…
+        marker – a Lisp object that contains information about a position in a buffer that is updated to track the same location should edits insert or delete text around it
+        mark ring – ring of marks. Variable ‘mark-ring' holds the marks of the current buffer; variable ‘global-mark-ring' holds the global marks (across all buffers).
+        menu bar – menus at the top of an Emacs frame
+        Meta key (written ‘a-') – a logical modifier key that is usually realized as the Alt keyboard key
+        minibuffer – special buffer at the bottom of a frame, which you use to enter commands
+        minor mode – several minor modes can be active at the same time
+        mode line – at the bottom of a window, it describes the current buffer status
+        modifier key – (1) a keyboard key that, when pressed, modifies the behavior of another keyboard key pressed at the same time (e.g. Control, Shift, Alt); (2) a soft key that does the same thing (e.g. Control, Shift, Meta, Hyper, Super)
+        mule – multilingual environment
+        narrowing – limiting buffer scope temporarily
+        obarray – a symbol table implemented as a special kind of vector. Think of it as a hash table for looking up symbols. The value of variable ‘obarray' is the obarray used by default by ‘intern' and ‘read'. See Creating Symbols.
+        overlay – a property list that is similar to a text property list, but which is associated with buffer positions, not with characters. Typically used to highlight text.
+        page – A block of text delimited by form feed (aka page break) characters or the beginning or end of the buffer. See Pages
+        plist (aka property list) – A list with an even number of elements that are treated alternately as keys and their values. Both keys and values can be any Lisp objects. A plist can be part of a symbol or disembodied (independent of any symbol).
+        point – where text insertion occurs (sometimes called "cursor position" outside Emacs).
+        pointer (mouse pointer) – how it differs from the cursor (text cursor)
+        prefix argument – a simple way to provide arguments to some commands: ‘c-u', `c-+', ‘c--', c-N (N a digit)
+        prefix key – a key that is bound to a keymap, which is called a prefix keymap
+        rectangle – characters between a pair of columns on the screen.
+        regexp – a regular expression
+        regexp search ring – ring of previously used regexp search strings; the value of variable ‘regexp-search-ring' (see also search ring)
+        region – the area between point and mark, sometimes active, sometimes inactive
+        register – a location for temporarily saving text (a string), a rectangle, a buffer position, a frame or window configuration
+        regular expression (aka regexp) – a symbolic expression with wildcards often used as a search pattern
+        RequiredFeature – when Lisp code ‘require's a Lisp library, or feature, the requirement can be hard or soft
+        ring – a data structure that acts as if it is circular (no end)
+        scroll bar – just what you think, controlled by command and variable ‘scroll-bar-mode'
+        search ring – ring of previously used search strings; the value of variable ‘search-ring' (see also regexp search ring)
+        secondary selection – like an additional region, but less ephemeral
+        sexp – a symbolic expression in Lisp
+        special display buffer (aka special buffer) – a buffer that is always displayed in its own, dedicated frame
+        symbol (aka variable) – a Lisp object that has a name, a value cell, a function cell, and a plist (property list)
+        tag – a name indexed in a tags file so you can quickly look up its definition
+        text property – a property attached to a character that affects its display or behavior
+        TtyFrames – Teletype (TTY), or terminal, screens
+        universal argument – the command bound to ‘c-u'
+        user option (aka user variable, aka option) – a variable that can be customized using Customize or set using ‘a-x set-variable'
+        value cell – the value of a symbol (variable); aka symbol value
+        variable – a symbol, whether bound or not
+        window – a frame pane; it shows a buffer
+        yank – paste
+
+}}}
+        learnemacslisp
+        elisprefman
+      https://www.emacswiki.org/emacs/EmacsJargon
+    https://www.gnu.org/software/emacs/manual/html_node/emacs/Glossary.html#Glossary
+    https://www.emacswiki.org/emacs/EmacsSymbolNotation
+
+
+___
+    EMACS LISP
+emacslisp intro1(=thoughtbot) {{{
+
+evaluate el(isp) expressions (**!) ; (=in emacs lisp mode)  point after(!) expression + c-x c-e
+area where messages/returns (eg. for evaluations) are printed ; mini buffer (or echo area)
+simplest things in elisp (*) ; atoms (eg. numbers)  #=evaluates to themselves (in the repl)
+example of builtin var. (**) ; path-separator  #=evaluates to ';'
+set elisp mode in emacs ; a-x emacs-lisp-mode / edit .el-file(**)  #(+scratch-buffers are often in elisp-mode)
+call function in elisp (***!) ; (fname arg1 arg2 ... )
+(compiling elisp(?) ; =is possible  (=for speed etc(??)))
+2 * 3 + 8 / 4  i (e)lisp (**) ; (+ (* 2 3),,   (/ 8 4))
+print a text message in the mini buffer(*) ; (message "hello, minibuffer")  #='function that has the side effect of adding specified message to echo area'
+(mode that acts like interact. lisp interpr (?) ; a-x ielm  #=no redirection etc (=use emacsshell for that) (?)
+teterm: functions that take variable number of args (=like sum) (*) ; variatic functions
+function that inserts text " TEXT" into buffer (**!) ; (insert " TEXT")  #=at point of cursor
+quote list (1 2 3)  [2 ways] ; (quote (1 2 3))  //  '(1 2 3)  # ' ="stop evaluating from this point"(**!)
+(teterm: single apostrophe when quoting list (eg. instead of (quote .... ; =syntactic sugar for (quote . . . .)) *
+nested lists possible? ; yes, eg. '(1 2 (3 4 5) (6 (7)))
+
+return head / first post of list (**!) ; (car '(1 2 3))  #'contents of address register'
+return rest of list (=after head/first post) ; (cdr '(1 2 3))  #'contents of decrement register'
+ [clojure version of car/cdr ; first / rest]
+empty list in elisp ; '()
+elisp none / false ; nil / ()
+elisp true ; t  #=symbol for true (=used as otherwise in cond)**
+true o false i elisp ; nil = false ,,  allt annat är truthy
+build lists in elisp: build list (1 2 3)  from 1 and (2 3) ; (cons 1 '(2 3))  #"construct" =like pushing
+ (recursive cons  (=for 1, 2, 3) ; thoughtbot elisp-intro  ca 18.15)
+add items in list to "list1" (**) (=not as one sublist, as with cons) ** ; (append '(1 2) '(3 4))  #=argument 1 is a list
+assign value (=list (1 2 3)) to global var (=symbol(!)) "some-list" (***!) ; (set 'some-list '(1 2 3))  (setq some-list '(1 2 3))
+assign local var "a" to 1 (**) ; (let (a 1))  #+see more elisp-thoughtbot(**)_20:45ca(**)  #='let opens a new scope'
+printf in elisp ; format  [ (let ((a 1) (b 5)) (format "a is %d and b is %d" a b)) ]
+Define var b =Depending on var a (****!!) ; let*  (**)   (let* ((a 1) (b (+ a 5))) (format "a is  (OSV...)
+paraphrase of let vs let* ; let defines vars in parallel (=cannot depend on eachother's values) ,, let* lets one define vars sequentially (**!)
+
+define function say-hello (that prints "hello!") (***!!) ; (defun say-hello () (message "hello!"))
+call defined function "say-hello" (=has no args) (**) ; (say-hello)
+function with arg: define function square (=squares number) (**) ; (defun square (x) (* x x))  #+call: (square 2)
+ex. of some predefined functions in elisp (*) ; square, sqrt
+explain keyword 'when' in elisp (*/!!) ; =like if w.out else
+
+Conditional: if(!?) 2+2=4, print "yes!"  (***!!) ; (when (= (+ 2 2) 4) (message "yes!"))
+Conditional: def. funct. evens-or-odds (**!) ; (defun evens-or-odds (n) (if (= 0 (% n 2)),, "even!",, "odd!"))  #=no 'else' keyword (***)  (tbot-elisp_30:00)
+variable number of args when defining elisp function (*!) ; &rest  #(or something)
+Conditional: like case (**!!) ; (defun pick-a-word (n)  (cond  ((= 1) "a")  ((= 2) "b")  (t "blast!"))   (tbot-elisp_33:30)  (+kör med  (pick-a-word 2)  )
+Recursion/"Calling itself"**: FACTORIAL W. ELISP (**!!) ; (defun factorial (n)  (if (< n 1)  1  [else](* n (factorial (- n 1))))    (tbot-elisp_37:50)
+function literal/anon. funct.  (in elisp) ; =lambdas  ((lambda (x) (* x x x) 5)
+
+Bind lambda-function to name =var (****!!) ; (fset 'cube (lambda (x) (* x x x)))  (tbot-elisp_45 ******!!!!)
+'Apply function on Obj.s in List' (=eg. Upcase) (**(**)!!) ; (mapcar 'upcase '("foo" "bar" "baz"))
+filtering with 'remove-if-not' ; eg. 'remove if not odd number'  (=oddp(redicate))
+reduce in elisp ; (=??)
+'THE qs-FUNCTION' (=implem. of quicksort) (**!) ;  (tbot-elisp_47:15+)
+SET SHORTCUT KEY: a-# = call sort-lines(!!) (**!) ; (global-set-key (kbd "M-#") 'sort-lines)  #=in all(!) modes
+Set local key-binding (*) ; local-set-key (??)
+Add certain command runs ev. time entering C-mode (**!!) ; (add-hook 'c-mode-common-hook  (lambda ()  (local-set-key (kbd "<f5>") 'recompile)))
+
+
+(tbot_55:00 ************* SEE MORE(!!))
+Help about M-mode currently in (**!!) ; c-h m  #describe-mode  =hooks, enabled minor modes etc etc (**)  (tbot-elisp_54:30)
+Help for keycommand c-c c-c ; c-h k / c-h c(??)  c-c c-c   (describe-key (kbd "C-h k"))
+Search for commands w. "word" in name(or docstring) ; c-h a name   (apropos-command "region")
+Show description of function "qs" ; c-h f qs(??)  (describe-function 'qs)
+HELP ABOUT THE HELP COMMAND ; c-h c-h (**!)
+
+
+MACROS (='Are Awesome(!!)') (=See More) ?????
+
+}}}
+            https://www.emacswiki.org/emacs/EmacsLisp
+            https://www.emacswiki.org/emacs/LearnEmacsLisp
+
+
+___
+https://www.gnu.org/software/emacs/manual/html_mono/eintr.html  (****!!) {{{
+
+    ----
+find tag(?/*) ; a-. (xref-find-definition)
+optional extens. file (=Adds many clisp features to Elisp) ** ; cl.el
+ change shortc.keys(=key chords) (eg. ac-\ =indent) ; =called rebinding
+teterm: c-u is called __ (+def. nr) ; the universal argum. (+4)
+Read 'ELisp Intro Dok' inside info (*!) ; see more(!)
+teterm: apostr. ; (single-)quote
+((atoms in lisp ; eg. words (=cannot be divided further and mean same thing)))
+s(ymbolic-)expression ; 'the printed repres. of both atoms and lists
+(common lisp-synonym for 'expression' ; form *)
+most common types of atoms ; numbers and symbols(1 or more char-'words')** + strings (*)
+indent lists/sublists (=for readability) ; tab  ca-\ (=cag-å)
+teterm: run list(=progr.) in lisp (*) ; evaluate
+quote says __  * ; take list as written =do not evaluate (as function name)
+teterm: first item of a list (=if not quoted) ; =a function
+    ----
+
+    ----
+(exit emacs debugger (*) ; q)
+((spec. case: debugger ; =when debugger does not open ,, only short err.mess. line)
+((how does emacs+the computer find funct. def. (=when running funct.)? ; the symbol (eg. 'function') tells the comp. wh. to find the instructions for the function  ('the name is not me, but it can be used to refer to me')))
+(way in elisp of organizing functions: eg. read mail-functions ; rmail-.....)
+(symbol spec. case: not quoted + no parentheses around ; =a variable (??))
+(some special functions (*!) ; special form =have special functions, like defining functions)
+(lisp macros (**) ; 'translates a lisp expr. into another expr. (that is to be evaluated in place of the orig. expression))
+(special forms or macros: if, when, defun (?); if ,, when, defun)
+(specials etc: how does elisp eval. nested lists? ; eval.s innermost list first  +otherwise, simply form left to right(**!))
+Byte Compiling (**) ; .elc  +  byte-compile-file
+    ----
+
+    ----
+teterm: run an expression ; evaluation
+name of c-x c-e command (**) ; eval-last-sexp  #evaluate last symbolic expression
+TIP: Evaluate Parts of Expression (eg. Inner Lists) **(*) ; place cursor directly after expression + c-x c-e (**)
+Eval. express. + Place result in (Active) Buffer (**!) ; c-u c-x c-e  **(*)
+'the value of a symbol in elisp can be __' ; any lisp expr (=symbol, number, list, string)
+teterm(!): definition of variable in elisp(!) ; a symbol that holds a value (*)
+NOTE: Symbols can hold both __ values ; =a value, and(!) a function definition (=the two are separate) (??/*)
+teterm: Function Definition (*) ; 'a set of instructions that a computer will obey'
+Show/Find value of Variable (like fill-column) ***(*) ; point after + c-x c-e
+funct: concatenate(=link together) strings (***!) ; (concat "abc" "def")
+funct: return part of a string (**!) ; (substring "The quick brown fox jumped." 16 19)  #string beg(inclus.) end(exclus.) [0-indexed]
+(Example of) "using 'symbol that returns value' as argument" (***!) ; (+ 2 fill column)
+(Elabor. Example: Nested Lists (=as Function Arguments) **** ; (concat "The " (number-to-string (+ 2 fill-column)) " red foxes.")
+(funct: convert number to string (**) ; number-to-string / int-to-string
+(The '->' in elisp1-text can be read as __ (*) ; 'evaluates to' )
+    ----
+
+    ----
+How to Read Error Messages (**!) ; 'As usual, the error message...' **(*)
+'p' in number-or-marker-p (*) ; (=from early lisp:) 'predicate' (=function that determ. whether s.th. is true | false
+predic: test whether arg. is zero ; zerop
+predic: test whether arg. is a list (*) ; listp
+print: echo message (=to echo area) ** ; (message "This message appears in the echo area!")
+Printf: echo Var.s/Message (+string formatting) (**(*!)) ; (message "The name of this buffer is: %s." (buffer-name))
+printf: print "Value is " + val of fill-column (**(*!)) ; (message "The value of fill-column is %d." fill-column)
+(printf: print/show name/type of buffer (**!) ; (message "The name of this buffer is: %s." (buffer-name))  #eg. *info*
+(printf w. more than one format-string (**!) ; (message "There are %d %s in the office!",,     (- fill-column 14) "pink elephants")
+teterm: %s etc are called ___ (*) ; control sequence (??)
+TIP CONSTRUCTING COMPLEX COMPOUND EXPRESSIONS ****! ; ="He saw (+generates 'q.b.fox'): Put on Several Lines (+indent.)  #=Also Lisp-Scheme_Examples (**!)
+    ----
+
+    ----
+Set Var. 'flowers' to list (rose violet daisy) (****!!!!) ; (set 'flowers '(rose violet daisy buttercup))  #=returns val. + as side eff. sets val. of symb. to list(**!)  #!! both need to be quoted to not be eval.d(****/!!!!)
+Check Val. of Var. 'flowers' (***!!) ; flowers, point after + c-x c-e
+Easily Set One/Sever. Variables ***** ; (setq trees '(pine fir oak),,     herbivores '(antelope zebra))
+Teterm: Altern./More Corr. term for Assign Var(**) ; 'set symbol to point to list'(=or other val.)
+Set Index/Counter Variable|Function *****!!!!! ; (setq counter 0) #initializer   (setq counter (+ counter 1)) #incrementer   counter #the counter    #+SEE MORE DETAILED EXPLANATION OF THE STEPS(**)
+    ----
+
+    ----
+function that gets eval.d when typing char.s in emacs (*) ; self-insert-command
+Teterm: Functions that are eval.d by Typing Keystrokes (***!!) ; =are called 'interactive functions'/'commands' **  #see more 'Making functions interactive'
+Show/return Filename(incl. Path) / Buffername (**(*)) ; (buffer-name)   (buffer-file-name)
+Return buffer itself (=not name of) (**) ; (current-buffer)   #eg. returns  #<buffer *info*> for info  (spec. format indic. buffer itself is returned, not just its name
+Return (vim-style) Alt-buffer (*) ; (other-buffer)
+Switch to Alt-buffer w. Functions (=like c-x b) ****!(!) ; (switch-to-buffer (other-buffer))
+FUNCTION THAT c-x b CALLS (=check more****) ** ; switch-to-buffer
+Function called by shortcuts c-f // a-e (**) ; forward-char ,, forward-sentence
+quick-back to alt-buffer (??) ; c-x b ent
+Switch to buffer x, 'in the background' (**) ; set-buffer  #=switch to for emacs, but not on screen(!)
+Size (=num. of char.s) in buffer (*) ; (buffer-size)
+get Pos. of Pointer (**!) ; (point)  #=num. of char.s from beg. of file(*)
+(funct.s point-min / point-max ; =see more 'narrowing and widening')
+Emacs Funct. Eval. (**) ; =when eval.s a list: checks forst word (=symbol has a funct. def/points to a function def.?)  #=the def. is the funct. + the s. points to it)
+    ----
+
+    ----
+Parts of a Funct. Def. ****!! ; f-name (symbol to attach def. to), args-list, "documentation", interactive (=a-x f-name or keychord)**, THE CODE (=instructs comp. what to do (**)
+Funct.Example: multiply-by-seven ****!! ; (defun multiply-by-seven (number),,   "Multiply NUM. by seven.",,   (* 7 number))
+'INSTALL' FUNCTION DEFINITION (***!) ; Write code in Buffer + Eval. with c-x c-e
+Emacs Comments ** ;   [sk] This is a comment
+PASS NUM. 3 TO INTERACTIVE VERSION OF multiply-by-seven *****!!! ; c-u 3 a-x multiply-by-seven   #=number to commandline function (**)
+p in (interactive "p") stands for ___  *** ; prefix  (=use c-u_numvalue (etc?) as arg. for c-line(etc) function) ***
+Options for 'interactive' (****!!) ;  3.4 Different Options for interactive    "p\ncZap to char: "    (=see more (!!))
+    interactive functions w.out arguments (**)
+    (you can pass your own arguments to i.active as a list)
+Install Elisp Functions Permanently (****) ; .emacs file, (load /path/to/file(.el)), site-init.el (=loaded when emacs is built (??))
+    ----
+
+    ----
+Create local Var.s in Funct.Defs. with let (****) ;   #let =a 'special form'
+Value of let (*) ; val. var. is bound to, or 'nil'  (**)
+Using let Expression (***/??(????)) ; see more  3.6.2 Sample let Expression   (+see An Overview of append-to-buffer )
+    ----
+
+
+    3.7 if
+        (if (> 5 4)  ....
+        [multiline Funct description] **
+        (equal characteristic "fierce")
+    3.8 If–then–else
+        =comes after then
+        'First, it means the empty list.'
+        t  #true
+    3.10  The save-excursion function is the final special form that we will discuss in this chapter. 
+        C-x C-x (exchange-point-and-mark)
+        The part of the buffer between point and mark is called the region.
+    save-excursion Expression
+        In Emacs Lisp code, a save-excursion expression often occurs within the body of a let expression.
+    review
+        eval-last-sexp
+        Declare to the interpreter that ....
+        =  equal  eq
+         defalias
+        string<  ....
+     4 A Few Buffer-Related Functions
+    4.1 Finding More Information
+        any Emacs Lisp function at any time by typing C-h f
+        for a variable by typing C-h v
+        describe-function will tell you the location of the function definition.    +point on name + Enter
+                +Doc-string(*)
+            c-h f Ent  #point on name
+        you can use the xref-find-definitions function to jump to it
+            = a-. (****)
+        back to your current buffer, type M-, or C-x b RET.
+    4.2 A Simplified beginning-of-buffer Definition
+        let’s consider what the function definition has to contain
+        it sets a mark at the current position of the cursor
+    ....
+        written in upper case
+        The let* function is different.
+    ....
+    ....
+        let + save-excursion
+    5 A Few More Complex Functions
+    5.2 The Definition of insert-buffer
+    ....
+        Using a predicate called bufferp that tells us whether we have a buffer (rather than its name), we can write the code like this:
+        (or (bufferp buffer)
+        ' ALL THESE FUNCTIONS ARE BUILDING BLOCKS THAT WE WILL FIND AND USE AGAIN AND AGAIN. '  (****)
+    5.3.1 Optional Arguments
+         The keyword is &optional. 
+         consp
+    ....
+        (See Narrowing and Widening, for more information on focusing attention to an accessible part.) 
+    6 Narrowing and Widening
+        The key binding for narrow-to-region is C-x n n.
+        save-restriction
+        [what-line]
+    7 car, cdr, cons: Fundamental Functions
+        If you are building a list, you need to provide at least an empty list at the beginning.
+    ....
+        (length '(buttercup))
+          (cdr (cdr '(pine fir oak maple)))
+        (nthcdr 2 '(pine fir oak maple))
+        (nth 1 '("one" "two" "three"))
+    7.5 / 7.6 setcar / setcdr
+        (setcar animals 'hippopotamus)
+    8 Cutting and Storing Text
+        (cons "another piece" '("a piece of text" "previous piece"))
+          aref
+          progn
+    8.1.4 The progn Special Form
+    8.2 kill-region
+    8.2.1 condition-case
+        (condition-case
+          var
+          bodyform
+          error-handler…)
+    8.2.2 Lisp macro
+        when is a Lisp macro
+     8.3 copy-region-as-kill
+     ....
+     last-command and this-command
+    The kill-append function
+        concat
+        (concat "abc" "def")
+          x-select-text
+    ||||
+    8.5 Initializing a Variable with defvar
+        it only sets the value of the variable if the variable does not already have a value. If the variable already has a value, defvar does not override the existing value. Second, defvar has a documentation string.
+         defcustom
+    (8.5.1 defvar and an asterisk)
+        set-variable     Fortunately, you can press TAB after calling the M-x set-variable command to see the list of variables.  ****
+    ....
+        re-search-forward
+    9 How Lists are Implemented
+        (( A list is kept using a series of pairs of pointers. In the series, the first pointer in each pair points to an atom or to another list, and the second pointer in each pair points to the next pair, or to the symbol nil, which marks the end of the list. ))
+        A pair of address-boxes is called a cons cell or dotted pair.
+    10 Yanking Text Back (??)
+        Three functions are used for bringing text back from the kill ring: yank, which is usually bound to C-y; yank-pop, which is usually bound to M-y; and rotate-yank-pointer
+        The kill-ring-yank-pointer on the other hand, serves to indicate—that is, to point to—that part of the kill ring of which the first element (the CAR) will be inserted. 
+        Using C-h v (describe-variable), look at the value of your kill ring.
+    11 Loops and Recursion      #while
+        A common way to control a while loop is to test whether a list has any elements.   **
+        A simple way to test whether a list has elements is to evaluate the list:  ****
+        An oft-used technique is to have one of the subsequent forms in the while expression set the value of the list to be the CDR of the list.  ****
+            (setq animals (cdr animals))
+    11.1.2 An Example: print-elements-of-list
+    11.1.3 A Loop with an Incrementing Counter
+        a common way of stopping a loop is to write the first argument as a test that returns false when the correct number of repetitions are complete. 
+        (The expression (1+ count) has the same result as (+ count 1), but is easier for a human to read.) 
+        Because both mechanisms illustrate common ways of writing while loops, we will create two examples, one counting up and the other counting down.
+    The parts of the function definition
+        Both total and row-number are used only inside the function, so they can be declared as local variables with let and given initial values. 
+        (let (varlist) (while (true-or-false-test) body-of-while… ) total)
+    11.1.4 Loop with a Decrementing Counter
+        Another common way to write a while loop is to write the test so that it determines whether a counter is greater than zero. 
+        This is a very useful characteristic of Lisp;
+        In brief, a properly written while loop will consist of three parts:   **
+    11.2 Save your time: dolist and dotimes
+        Suppose, for example, you want to reverse a list  (reduces + loops spec. num. of times)
+    11.3 Recursion  ****
+        In the jargon, it is a different “instance”. 
+          A function definition provides the blueprints for a robot. 
+        What we mean is that the instructions in a recursive function cause the Lisp interpreter to run a different function that has the same name and does the same job as the first, but with different arguments.  (**!)
+    11.3.2 The Parts of a Recursive Definition
+        A recursive function typically contains a conditional expression which has three parts: 
+        There are several different common recursive patterns. 
+         The do-again-test is sometimes called the stop condition,
+    11.3.3 Recursion with a List
+        print (??(?))
+    11.3.4 Recursion in Place of a Counter
+        The triangle function described in a previous section can also be written recursively. It looks like this: 
+            (  Recursion without Deferments. ) **
+    11.3.5 Recursion Example Using cond   ****
+        Written using cond, the triangle function looks like this: 
+    11.3.6 Recursive Patterns
+        Here are three common recursive patterns.  ***(*)
+    Recursive Pattern: every **
+    Recursive Pattern: accumulate
+            ( See Making a List of Files, )
+    Recursive Pattern: keep
+            It goes without saying that you need not use nil as the test for when to stop; and you can, of course, combine these patterns. 
+    11.3.7 Recursion without Deferments (***/???)
+    11.3.8 No Deferment Solution  *****
+        This requires writing to a different pattern, often one that involves writing two function definitions, an initialization function and a helper function.
+      12 Regular Expression Searches
+    12.1 The Regular Expression for sentence-end
+        \\|  (??)
+    12.2 The re-search-forward Function
+    12.3 forward-sentence  (=Definition(**))
+    ....
+    12.4 forward-paragraph: a Goldmine of Functions
+    Shortened forward-paragraph function definition
+    The let* expression
+        This is an expression whose first element is the and special form. 
+        parsep
+    The forward motion while loop  (***!)
+        an unless macro.
+        It returns a number specifying the location of the start of the text that was matched by the last search. 
+        If you are reading this inside of GNU Emacs and you want to see the whole function, you can type C-h f (describe-function) and the name of the function. This gives you the function documentation and the name of the library containing the function’s source. Place point over the name of the library and press the RET key; you will be taken directly to the source. (Be sure to install your sources! Without them, you are like a person who tries to drive a car with his eyes shut!) 
+    ....
+        while:   (The expression is evaluated only for its side effects.) 
+     13 Counting via Repetition and Regexps
+    13.1 The count-words-example Function
+    Designing count-words-example
+        (re-search-forward "\\w+\\W*")
+        (setq count (1+ count))
+        This means that the cond special form is appropriate. 
+    13.1.1 The Whitespace Bug in count-words-example
+        If you wish, you can also install this keybinding by evaluating it:   ********
+        (In Emacs, you can see a function’s documentation by typing C-h f, the name of the function, and then RET.)   (***)
+        (  (and (< (point) end) (re-search-forward "\\w+\\W*" end t))  )
+    13.2 Count Words Recursively  (***/???)
+        ((?   A little thought suggests that this can be done by making use of a let expression: we can bind a variable in the varlist of a let expression to the number of words in the region, as returned by the recursive call; and then the cond expression, using binding, can display the value to the user.   ))
+        Thus, the do-again-test should look like this:   (**!)
+    14 Counting Words in a defun
+
+            Elisp_02 (57%)
+
+}}}
+
+emacsextend (=se separata vankifiler)
+
+    ~/Dropbox/elisp_refman.pdf
+    ~/Dropbox/elisp_refman.txt
+            (CODEREF: = EMACSEXTEND, ELISPTIPS/COOKB. ETC(**), (MASTERINGEMACS*) ELISPINTRO()
+
+
+@c:  Vipl  #return/show current paragr. (=count lines)
+
+vim: set fdm=marker
+

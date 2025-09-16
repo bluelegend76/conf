@@ -1,0 +1,401 @@
+
+§ = 
+1 = 
+2 = 
+3 = 
+4 = 
+5 = 
+6 = 
+7 = 
+8 = 
+9 = 
+0 = 
++ = 
+´ = 
+----
+q = å
+w = ä
+e = ö
+r = p
+t = y
+y = f
+u = g
+i = c
+o = r
+p = l
+å = ,
+¨ =
+----
+a = a 
+s = o
+d = e
+f = u
+g = i
+h = d
+j = h
+k = t
+l = n
+ö = s
+ä = -
+' =
+----
+< =
+z = .
+x = q
+c = j
+v = k
+b = x
+n = b
+m = m
+, = w
+. = v
+- = z
+
+s-§ = ½ 
+s-1 = !
+s-2 = "
+s-3 = #
+s-4 = ¤
+s-5 = %
+s-6 = &
+s-7 = /
+s-8 = (
+s-9 = )
+s-0 = =
+s-+ = ?
+s-´ = `
+----
+s-q = Å
+s-w = Ä
+s-e = Ö
+s-r = P
+s-t = Y
+s-y = F
+s-u = G
+s-i = C
+s-o = R
+s-p = L
+s-å = ;
+s-¨ = ^
+----
+s-a = A
+s-s = O
+s-d = E
+s-f = U
+s-g = I
+s-h = D
+s-j = H
+s-k = T
+s-l = N
+s-ö = S
+s-ä = _
+s-' = *
+----
+s-< = >
+s-z = :
+s-x = Q
+s-c = J
+s-v = K
+s-b = X
+s-n = B
+s-m = M
+s-, = W
+s-. = V
+s-- = Z
+
+g-§ = ¶
+g-1 = ¡
+g-2 = @
+g-3 = £
+g-4 = $
+g-5 = €
+g-6 = ¥
+g-7 = {
+g-8 = [
+g-9 = ]
+g-0 = }
+g-+ = \
+g-´ = ±
+----
+g-q = \
+g-w = {
+g-e = }
+g-r = þ
+g-t = ←
+g-y = đ
+g-u = ŋ
+g-i = ©
+g-o = ®
+g-p = ł
+g-å = ¸
+g-¨ = ~
+----
+g-a = æ
+g-s = œ
+g-d = €
+g-f = ↓
+g-g = →
+g-h = ð
+g-j = ħ
+g-k = ŧ
+g-l = ł
+g-ö = ß
+g-ä = ̣
+g-' = ´
+----
+g-< = |
+g-z = ·
+g-x = @
+g-c = ©
+g-v = ĸ
+g-b = »
+g-n = ”
+g-m = µ
+g-, = ł
+g-. = “
+g-- = «
+
+sg-§ = ¾
+sg-1 = ¹
+sg-2 = ²
+sg-3 = ³
+sg-4 = ¼
+sg-5 = ¢
+sg-6 = ⅝
+sg-7 = ÷
+sg-8 = «
+sg-9 = »
+sg-0 = °
+sg-+ = ¿
+sg-´ = ¬
+----
+sg-q = Ω
+sg-w = [
+sg-e = ]
+sg-r = Þ
+sg-t = ¥
+sg-y = ª
+sg-u = Ŋ
+sg-i = ©
+sg-o = ®
+sg-p = Ł
+sg-å = ˛
+sg-¨ = ^
+----
+sg-a = Æ
+sg-s = Œ
+sg-d = ¢
+sg-f = ↑
+sg-g = ı
+sg-h = Ð
+sg-j = Ħ
+sg-k = Ŧ
+sg-l = Ł
+sg-ö = §
+sg-ä = ˙
+sg-' = ×
+----
+sg-< = ¦
+sg-z = ˙
+sg-x = Ω
+sg-c = ©
+sg-v = &
+sg-b = >
+sg-n = '
+sg-m = º
+sg-, = Ł
+sg-. = `
+sg-- = <
+
+
+
+a-§ = §
+a-1 = ±
+a-2 = ²
+a-3 = ³
+a-4 = ´
+a-5 = µ
+a-6 = ¶
+a-7 = ·
+a-8 = ¸
+a-9 = ¹
+a-0 = °
+a-+ = «
+a-´
+----
+a-q = å
+a-w = ä
+a-e = ö
+a-r = ð
+a-t = ù
+a-y = 
+a-u = ç
+a-i = ã
+a-o = ò
+a-p = ì
+a-å = ¬
+a-¨
+----
+a-a = á
+a-s = ï
+a-d
+a-f = é
+a-g = é
+a-h = ä
+a-j =
+a-k = 
+a-l = 
+a-ö = 
+a-ä = 
+a-' = 
+----
+a-< = 
+a-z = 
+a-x = 
+a-c = 
+a-v = 
+a-b = 
+a-n = 
+a-m = 
+a-, = 
+a-. = 
+a-- = 
+
+sa-§ = 
+sa-1 = 
+sa-2 = 
+sa-3 = 
+sa-4 = 
+sa-5 = 
+sa-6 = 
+sa-7 = 
+sa-8 = 
+sa-9 = 
+sa-0 = 
+sa-+ = 
+sa-´ = 
+----
+sa-q = 
+sa-w = 
+sa-e = 
+sa-r = 
+sa-t = 
+sa-y = 
+sa-u = 
+sa-i = 
+sa-o = 
+sa-p = 
+sa-å = 
+sa-¨ = 
+----
+sa-a = 
+sa-s = 
+sa-d = 
+sa-f = 
+sa-g = 
+sa-h = 
+sa-j = 
+sa-k = 
+sa-l = 
+sa-ö = 
+sa-ä = 
+sa-' = 
+----
+sa-< = 
+sa-z = 
+sa-x = 
+sa-c = 
+sa-v = 
+sa-b = 
+sa-n = 
+sa-m = 
+sa-, = 
+sa-. = 
+sa-- = 
+
+sga-§ = 
+sga-1 = 
+sga-2 = 
+sga-3 = 
+sga-4 = 
+sga-5 = 
+sga-6 = 
+sga-7 = 
+sga-8 = 
+sga-9 = 
+sga-0 = 
+sga-+ = 
+sga-´ = 
+----
+sga-q = 
+sga-w = 
+sga-e = 
+sga-r = 
+sga-t = 
+sga-y = 
+sga-u = 
+sga-i = 
+sga-o = 
+sga-p = 
+sga-å = 
+sga-¨ = 
+----
+sga-a = 
+sga-s = 
+sga-d = 
+sga-f = 
+sga-g = 
+sga-h = 
+sga-j = 
+sga-k = 
+sga-l = 
+sga-ö = 
+sga-ä = 
+sga-' = 
+----
+sga-< = 
+sga-z = 
+sga-x = 
+sga-c = 
+sga-v = 
+sga-b = 
+sga-n = 
+sga-m = 
+sga-, = 
+sga-. = 
+sga-- = 
+
+
+----
+s-q = Å
+s-w = Ä
+----
+g-2 = @
+g-3 = £
+----
+sg-1 = ¹
+sg-2 = ²
+----
+sg-w = [
+sg-e = ]
+----
+a-e = ö
+a-r = ð
+----
+sa-1 = ¡
+sa-2 = ¢
+----
+sga-1 = ¹
+sga-2 = ²
+
+c-k = 
+c-s = 
+----
+cs-k = 
+
+cg-k = ŧ
+csg-k = Ŧ
+csa-k = NONE
+csga-k = NONE
+cga-k = NONE
+

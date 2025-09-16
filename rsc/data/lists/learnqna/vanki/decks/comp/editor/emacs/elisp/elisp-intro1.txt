@@ -1,0 +1,272 @@
+
+https://www.gnu.org/software/emacs/manual/html_mono/eintr.html  (****!!)
+
+@f(ill)
+	:'<,'>s/\v(.{-})\ze ; (.*)/\1\r\{\{\{\r\t\2 \}\}\}/ggv:'<,'>s/\v\}\}\}\zs.*//g
+
+
+	----
+find tag(?/*)
+{{{
+	a-. (xref-find-definition) }}}
+optional extens. file (=Adds many clisp features to Elisp) **
+{{{
+	cl.el }}}
+ change shortc.keys(=key chords) (eg. ac-\ =indent)
+{{{
+	=called rebinding }}}
+teterm: c-u is called __ (+def. nr)
+{{{
+	the universal argum. (+4) }}}
+Read 'ELisp Intro Dok' inside info (*!)
+{{{
+	see more(!) }}}
+teterm: apostr.
+{{{
+	(single-)quote }}}
+((atoms in lisp
+{{{
+	eg. words (=cannot be divided further and mean same thing))) }}}
+s(ymbolic-)expression
+{{{
+	'the printed repres. of both atoms and lists }}}
+(common lisp-synonym for 'expression'
+{{{
+	form *) }}}
+most common types of atoms
+{{{
+	numbers and symbols(1 or more char-'words')** + strings (*) }}}
+indent lists/sublists (=for readability)
+{{{
+	tab  ca-\ (=cag-å) }}}
+teterm: run list(=progr.) in lisp (*)
+{{{
+	evaluate }}}
+quote says __  *
+{{{
+	take list as written =do not evaluate (as function name) }}}
+teterm: first item of a list (=if not quoted)
+{{{
+	=a function }}}
+	----
+
+	----
+(exit emacs debugger (*)
+{{{
+	q) }}}
+((spec. case: debugger
+{{{
+	=when debugger does not open ,, only short err.mess. line) }}}
+((how does emacs+the computer find funct. def. (=when running funct.)?
+{{{
+	the symbol (eg. 'function') tells the comp. wh. to find the instructions for the function  ('the name is not me, but it can be used to refer to me'))) }}}
+(way in elisp of organizing functions: eg. read mail-functions
+{{{
+	rmail-.....) }}}
+(symbol spec. case: not quoted + no parentheses around
+{{{
+	=a variable (??)) }}}
+(some special functions (*!)
+{{{
+	special form =have special functions, like defining functions) }}}
+(lisp macros (**)
+{{{
+	'translates a lisp expr. into another expr. (that is to be evaluated in place of the orig. expression)) }}}
+(special forms or macros: if, when, defun (?); if ,, when, defun)
+(specials etc: how does elisp eval. nested lists?
+{{{
+	eval.s innermost list first  +otherwise, simply form left to right(**!)) }}}
+Byte Compiling (**)
+{{{
+	.elc  +  byte-compile-file }}}
+	----
+
+	----
+teterm: run an expression
+{{{
+	evaluation }}}
+name of c-x c-e command (**)
+{{{
+	eval-last-sexp  #evaluate last symbolic expression }}}
+TIP: Evaluate Parts of Expression (eg. Inner Lists) **(*)
+{{{
+	place cursor directly after expression + c-x c-e (**) }}}
+Eval. express. + Place result in (Active) Buffer (**!)
+{{{
+	c-u c-x c-e  **(*) }}}
+'the value of a symbol in elisp can be __'
+{{{
+	any lisp expr (=symbol, number, list, string) }}}
+teterm(!): definition of variable in elisp(!)
+{{{
+	a symbol that holds a value (*) }}}
+NOTE: Symbols can hold both __ values
+{{{
+	=a value, and(!) a function definition (=the two are separate) (??/*) }}}
+teterm: Function Definition (*)
+{{{
+	'a set of instructions that a computer will obey' }}}
+Show/Find value of Variable (like fill-column) ***(*)
+{{{
+	point after + c-x c-e }}}
+funct: concatenate(=link together) strings (***!)
+{{{
+	(concat "abc" "def") }}}
+funct: return part of a string (**!)
+{{{
+	(substring "The quick brown fox jumped." 16 19)  #string beg(inclus.) end(exclus.) [0-indexed] }}}
+(Example of) "using 'symbol that returns value' as argument" (***!)
+{{{
+	(+ 2 fill column) }}}
+(Elabor. Example: Nested Lists (=as Function Arguments) ****
+{{{
+	(concat "The " (number-to-string (+ 2 fill-column)) " red foxes.") }}}
+(funct: convert number to string (**)
+{{{
+	number-to-string / int-to-string }}}
+(The '->' in elisp1-text can be read as __ (*)
+{{{
+	'evaluates to' ) }}}
+	----
+
+	----
+How to Read Error Messages (**!)
+{{{
+	'As usual, the error message...' **(*) }}}
+'p' in number-or-marker-p (*)
+{{{
+	(=from early lisp:) 'predicate' (=function that determ. whether s.th. is true | false }}}
+predic: test whether arg. is zero
+{{{
+	zerop }}}
+predic: test whether arg. is a list (*)
+{{{
+	listp }}}
+print: echo message (=to echo area) **
+{{{
+	(message "This message appears in the echo area!") }}}
+Printf: echo Var.s/Message (+string formatting) (**(*!))
+{{{
+	(message "The name of this buffer is: %s." (buffer-name)) }}}
+printf: print "Value is " + val of fill-column (**(*!))
+{{{
+	(message "The value of fill-column is %d." fill-column) }}}
+(printf: print/show name/type of buffer (**!)
+{{{
+	(message "The name of this buffer is: %s." (buffer-name))  #eg. *info* }}}
+(printf w. more than one format-string (**!)
+{{{
+	(message "There are %d %s in the office!",,     (- fill-column 14) "pink elephants") }}}
+teterm: %s etc are called ___ (*)
+{{{
+	control sequence (??) }}}
+TIP CONSTRUCTING COMPLEX COMPOUND EXPRESSIONS ****!
+{{{
+	="He saw (+generates 'q.b.fox'): Put on Several Lines (+indent.)  #=Also Lisp-Scheme_Examples (**!) }}}
+	----
+
+	----
+Set Var. 'flowers' to list (rose violet daisy) (****!!!!)
+{{{
+	(set 'flowers '(rose violet daisy buttercup))  #=returns val. + as side eff. sets val. of symb. to list(**!)  #!! both need to be quoted to not be eval.d(****/!!!!) }}}
+Check Val. of Var. 'flowers' (***!!)
+{{{
+	flowers, point after + c-x c-e }}}
+Easily Set One/Sever. Variables *****
+{{{
+	(setq trees '(pine fir oak),,     herbivores '(antelope zebra)) }}}
+Teterm: Altern./More Corr. term for Assign Var(**)
+{{{
+	'set symbol to point to list'(=or other val.) }}}
+Set Index/Counter Variable|Function *****!!!!!
+{{{
+	(setq counter 0) #initializer   (setq counter (+ counter 1)) #incrementer   counter #the counter    #+SEE MORE DETAILED EXPLANATION OF THE STEPS(**) }}}
+	----
+
+	----
+function that gets eval.d when typing char.s in emacs (*)
+{{{
+	self-insert-command }}}
+Teterm: Functions that are eval.d by Typing Keystrokes (***!!)
+{{{
+	=are called 'interactive functions'/'commands' **  #see more 'Making functions interactive' }}}
+Show/return Filename(incl. Path) / Buffername (**(*))
+{{{
+	(buffer-name)   (buffer-file-name) }}}
+Return buffer itself (=not name of) (**)
+{{{
+	(current-buffer)   #eg. returns  #<buffer *info*> for info  (spec. format indic. buffer itself is returned, not just its name }}}
+Return (vim-style) Alt-buffer (*)
+{{{
+	(other-buffer) }}}
+Switch to Alt-buffer w. Functions (=like c-x b) ****!(!)
+{{{
+	(switch-to-buffer (other-buffer)) }}}
+FUNCTION THAT c-x b CALLS (=check more****) **
+{{{
+	switch-to-buffer }}}
+Function called by shortcuts c-f // a-e (**)
+{{{
+	forward-char ,, forward-sentence }}}
+quick-back to alt-buffer (??)
+{{{
+	c-x b ent }}}
+Switch to buffer x, 'in the background' (**)
+{{{
+	set-buffer  #=switch to for emacs, but not on screen(!) }}}
+Size (=num. of char.s) in buffer (*)
+{{{
+	(buffer-size) }}}
+get Pos. of Pointer (**!)
+{{{
+	(point)  #=num. of char.s from beg. of file(*) }}}
+(funct.s point-min / point-max
+{{{
+	=see more 'narrowing and widening') }}}
+Emacs Funct. Eval. (**)
+{{{
+	=when eval.s a list: checks forst word (=symbol has a funct. def/points to a function def.?)  #=the def. is the funct. + the s. points to it) }}}
+	----
+
+	----
+Parts of a Funct. Def. ****!!
+{{{
+	f-name (symbol to attach def. to), args-list, "documentation", interactive (=a-x f-name or keychord)**, THE CODE (=instructs comp. what to do (**) }}}
+Funct.Example: multiply-by-seven ****!!
+{{{
+	(defun multiply-by-seven (number),,   "Multiply NUM. by seven.",,   (* 7 number)) }}}
+'INSTALL' FUNCTION DEFINITION (***!)
+{{{
+	Write code in Buffer + Eval. with c-x c-e }}}
+Emacs Comments **
+{{{
+	  [sk] This is a comment }}}
+PASS NUM. 3 TO INTERACTIVE VERSION OF multiply-by-seven *****!!!
+{{{
+	c-u 3 a-x multiply-by-seven   #=number to commandline function (**) }}}
+p in (interactive "p") stands for ___  ***
+{{{
+	prefix  (=use c-u_numvalue (etc?) as arg. for c-line(etc) function) *** }}}
+Options for 'interactive' (****!!)
+{{{
+	 3.4 Different Options for interactive    "p\ncZap to char: "    (=see more (!!)) }}}
+	interactive functions w.out arguments (**)
+	(you can pass your own arguments to i.active as a list)
+Install Elisp Functions Permanently (****)
+{{{
+	.emacs file, (load /path/to/file(.el)), site-init.el (=loaded when emacs is built (??)) }}}
+	----
+
+	----
+Create local Var.s in Funct.Defs. with let (****)
+{{{
+	  #let =a 'special form' }}}
+Value of let (*)
+{{{
+	val. var. is bound to, or 'nil'  (**) }}}
+Using let Expression (***/??(????))
+{{{
+	see more  3.6.2 Sample let Expression   (+see An Overview of append-to-buffer ) }}}
+	----
+
+

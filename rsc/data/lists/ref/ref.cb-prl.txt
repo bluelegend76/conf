@@ -1,0 +1,2790 @@
+vim:fdm=marker:
+set fdm=marker guifont=* | colors ron
+____
+__
+ScratchArea:General {{{
+
+Linux to Windows terminology-___  ___Gemini
+
+Linux
+  Windows
+
+Daemon
+  Service
+Super User
+  System Account / System User
+-F
+  /F
+Environment
+  Environment Variables
+${VIM-RUNTIME}/file.x
+  %AppData%/file.x
+
+}}}
+kfil {{{
+  Ska vi köpa den här produkten?
+      when should we buy this product/should we buy this product (at this point)?
+    [vilka/hur många saker accepterar vi genom vårt (vardagliga) beteende/utan att vi tänker på det]
+  Indicators and Predictors
+  'Personal/Subjective Validation'
+  verification (and theorizing) vs testing/falsification
+      Baserat på 'mina fältundersökningar genom åren'
+  P.N: Jag har träffat och interagerat med många(!) andliga/hippie-typer genom åren, och jag skulle faktiskt säga (baserat på de omfattande fältundersökningarna) att det är mer typiskt än inte = Det räcker med att säga 'Hm, jag undrar om det kan stämma/Har det replikerats?' så blir det/för att det ska bli riktigt(!) dålig stämning. ;) ;) ;)
+  Det är regel snarare än undantag.
+
+  Några av mina favoritämnen/_/personer att studera:
+  - Feminister (och liknande aktivister)
+  - Sociologer
+  - Andliga/New Age-personer
+  - Religiösa (+Teologer)
+  - "Vanliga" människor
+
+}}}
+colschemes {{{
+  blue dolphin
+  chalk
+    chill
+}}}
+ScratchArea LIA 2/TruckCom Updater {{{
+
+= Parallel: TruckCom Linter
+
+MSAL, Graph, Sharepoint = Examples + Code {{{
+
+- Great great. So the first step
+  included (and you're free to show
+  at least the outline of some code
+  to clarify, that would be very
+  helpful) is getting a Microsoft
+  Identity (or MSAL) ID token, to
+  be used to see if the user is
+  authorized to access a Sharepoint
+  (via MS Graph) to retrieve some
+  information.
+
+Okay, getting an access token using
+the Microsoft Authentication
+Library (MSAL) is the crucial first
+step for authenticating with
+Microsoft Graph and accessing
+SharePoint data.
+
+Here's a basic outline of how you
+can acquire an access token using
+MSAL in a C# application:
+
+- 1. Install the MSAL.NET NuGet Package:
+
+dotnet add package Microsoft.Identity.Client
+
+- 2. Acquire an Access Token:
+
+using Microsoft.Identity.Client;
+
+public async Task<string> GetAccessTokenAsync() {
+  // Configure your application
+  string[] scopes = new string[] { "https://graph.microsoft.com/.default" };
+    // Request the necessary permissions
+  string clientId = "YOUR_CLIENT_ID";
+    // Replace with your application's client ID
+  string tenantId = "YOUR_TENANT_ID";
+    // Replace with your tenant ID (e.g., your organization's Azure AD tenant ID)
+
+  // Create an instance of the IConfidentialClientApplication
+  IConfidentialClientApplication app = ConfidentialClientApplicationBuilder
+    .Create(clientId)
+    .WithClientSecret("YOUR_CLIENT_SECRET")
+      // Replace with your client secret
+    .WithAuthority(new Uri($"https://login.microsoftonline.com/{tenantId}"))
+    .Build();
+
+  // Acquire an access token
+  AuthenticationResult result = await app.AcquireTokenForClient(scopes)
+    .ExecuteAsync();
+
+  return result.AccessToken;
+}
+
+Explanation:
+
+- IConfidentialClientApplication:
+  This class represents your
+  application and is the main entry
+  point for authentication
+  operations.
+- clientId and clientSecret: These
+  are application credentials that
+  you register in the Azure portal.
+- tenantId: This identifies your
+  Azure AD tenant.
+- scopes: The requested
+  permissions. In this case,
+  https://graph.microsoft.com/.default
+  requests the default set of
+  permissions for Microsoft Graph.
+
+Important Notes:
+
+- Replace placeholders: Replace the
+  placeholders (YOUR_CLIENT_ID,
+  YOUR_CLIENT_SECRET,
+  YOUR_TENANT_ID) with your actual
+  application credentials.
+- Error Handling: Implement proper
+  error handling (e.g., handle
+  exceptions like
+  MsalServiceException) to
+  gracefully handle authentication
+  failures.
+- Security: Store your client
+  secret securely. Avoid hardcoding
+  it directly in your application.
+  Consider using Azure Key Vault or
+  other secure storage mechanisms.
+
+This code provides a basic
+framework for acquiring an access
+token. You can then use this token
+to make authenticated requests to
+the Microsoft Graph API.
+
+In the next step, we can explore
+how to use this access token to
+interact with SharePoint data.
+
+Do you have any questions about
+this initial code snippet or would
+you like to proceed to the next
+step?
+
+
+- Yes, I think that's a good
+  exposition as far as that goes,
+  and we should go on to looking at
+  how to retrieve information from
+  the Sharepoint using MS Graph now
+
+Okay, let's dive into retrieving
+information from SharePoint using
+Microsoft Graph and the access
+token we obtained.
+
+1. Install the Microsoft Graph
+Client Library:
+
+dotnet add package Microsoft.Graph
+
+2. Make a GraphServiceClient instance:
+
+using Microsoft.Graph;
+
+// ... (GetAccessTokenAsync method as shown previously) ...
+
+public async Task<IGraphServiceClient> GetGraphServiceClientAsync() {
+  string accessToken = await GetAccessTokenAsync();
+  return new GraphServiceClient(new DelegateAuthenticationProvider(
+    requestMessage => {
+      requestMessage.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+      return Task.CompletedTask;
+    }));
+}
+
+3. Retrieve SharePoint List Items:
+
+public async Task<IList<ListItem>> GetSharePointListItemsAsync(string listId) {
+  IGraphServiceClient graphClient = await GetGraphServiceClientAsync();
+
+  var listItems = await graphClient.Sites["<your_site_id>"].Lists[listId].Items
+    .Request()
+    .GetAsync();
+
+  return listItems.ToList(); 
+}
+
+Replace placeholders:
+
+- Replace <your_site_id> with the
+  ID of your SharePoint site.
+- You can find the site ID in the
+  SharePoint site URL.
+
+
+Explanation:
+
+- GraphServiceClient: This class
+  provides methods for interacting
+  with the Microsoft Graph API.
+- DelegateAuthenticationProvider:
+  This allows you to provide a
+  custom authentication handler. We
+  use it to attach the access token
+  to the HTTP requests.
+- Sites["<your_site_id>"].Lists[listId].Items:
+  This represents the endpoint for
+  retrieving list items from a
+  specific list within a SharePoint
+  site.
+- Request(): This method allows you
+  to configure the request (e.g.,
+  filtering, sorting, expanding).
+- GetAsync(): This method executes
+  the request and returns a
+  collection of ListItem objects.
+
+
+Further Considerations:
+
+- Error Handling: Implement robust
+  error handling to gracefully
+  handle potential issues such as
+  network errors, invalid access
+  tokens, or API rate limits.
+- Pagination: If a list contains a
+  large number of items, use the
+  skip and top parameters in the
+  Request() method to paginate
+  through the results.
+- Filtering and Sorting: Use the
+  $filter, $orderby, and $expand
+  query parameters to filter, sort,
+  and expand related data in your
+  requests.
+
+This example demonstrates a basic
+approach to retrieving SharePoint
+list items using the Microsoft
+Graph API and MSAL.NET. You can
+adapt and extend this code to
+perform various operations on
+SharePoint data, such as creating
+new items, updating existing items,
+and working with files.
+
+Do you have any specific questions
+about this code or would you like
+to explore other SharePoint
+operations?
+
+
+- Maybe you could show me (and list
+  the names of) some common MS
+  Graph and Sharepoint operations
+  (with at least small snippets of
+  code) so I can get the feel for
+  it and an overview?
+
+Certainly! Here are some common
+Microsoft Graph operations for
+interacting with SharePoint, along
+with code snippets to illustrate
+each:
+
+- 1. Create a new list item
+
+// Assuming you have the GraphServiceClient (as shown in the previous example)
+var newItem = new ListItem {
+  Title = "New Item Title"
+};
+
+var createdItem = await graphClient.Sites["<your_site_id>"].Lists[listId].Items
+  .Request()
+  .AddAsync(newItem);
+
+- 2. Update an existing list item
+
+// Assuming you have the list item ID
+string itemId = "1"; 
+
+var updatedItem = new ListItem {
+  Title = "Updated Item Title"
+};
+
+await graphClient.Sites["<your_site_id>"].Lists[listId].Items[itemId]
+  .Request()
+  .UpdateAsync(updatedItem);
+
+- 3. Delete a list item
+
+await graphClient.Sites["<your_site_id>"].Lists[listId].Items[itemId]
+  .Request()
+  .DeleteAsync();
+
+- 4. Upload a file to a document
+  library
+
+// Assuming you have the file path and library ID
+string filePath = @"C:\path\to\your\file.docx";
+string libraryId = "your_library_id";
+
+using (var stream = new FileStream(filePath, FileMode.Open)) {
+  await graphClient.Sites["<your_site_id>"].Drive.Root
+    .ItemWithPath($"/{libraryId}/{Path.GetFileName(filePath)}")
+    .Content
+    .Request()
+    .PutAsync<DriveItem>(stream);
+}
+
+- 5. Download a file from a
+  document library
+
+// Assuming you have the file path in SharePoint
+string filePathInSharePoint = "/Documents/your_file.docx";
+
+using (var stream = new MemoryStream()) {
+  await graphClient.Sites["<your_site_id>"].Drive.Root
+    .ItemWithPath(filePathInSharePoint)
+    .Content
+    .Request()
+    .GetAsync(stream);
+
+  // Save the downloaded file to your local disk
+  using (var fileStream = new FileStream(@"C:\path\to\save\file.docx", FileMode.Create, FileAccess.Write)) {
+    stream.Position = 0;
+    await stream.CopyToAsync(fileStream);
+  }
+}
+
+- 6. Get list properties
+
+var list = await graphClient.Sites["<your_site_id>"].Lists[listId]
+  .Request()
+  .GetAsync();
+
+Console.WriteLine($"List Title: {list.Title}");
+Console.WriteLine($"List Description: {list.Description}");
+// ... other list properties
+
+These examples provide a basic
+overview of some common SharePoint
+operations using the Microsoft
+Graph API. You can further explore
+and customize these operations
+based on your specific
+requirements.
+
+I hope these code snippets give you
+a better understanding of how to
+interact with SharePoint using
+Microsoft Graph and C#.
+
+Do you have any specific scenarios
+in mind that you'd like to explore
+further? I'm happy to provide more
+tailored examples and guidance.
+
+
+- I think I'll come back to it when
+  I have digested and properly
+  looked at what you have showed me
+  so far. One question I would
+  maybe like to ask is if I would
+  like to send a Teams message to a
+  certain user that their
+  installation has been completed
+  or something like that.
+
+You're right, sending a Teams
+message using the Microsoft Graph
+API requires a few more steps and
+considerations.
+
+Here's a basic outline of how you
+can send a message to a user in
+Teams:
+
+- 1. Acquire an Access Token (with
+  appropriate permissions):
+
+- You'll need to acquire an access token with the ChatMessage.Send permission.
+- Important: Ensure that the user
+  granting the permissions has the
+  necessary permissions within
+  their organization to send
+  messages in Teams.
+
+2. Identify the Recipient:
+
+    You'll need to identify the recipient of the message. This could be:
+        A user's ID
+        A group ID
+        A channel ID
+
+3. Construct the Message Payload:
+
+    Create a JSON object representing the chat message, including the message content, recipient information, and any other desired properties (e.g., importance).
+
+4. Send the Message:
+
+    Use the GraphServiceClient to make a POST request to the appropriate Teams API endpoint to send the message.
+
+Example Code Snippet (Conceptual):
+Code snippet
+
+using Microsoft.Graph;
+
+// ... (Acquire Access Token with ChatMessage.Send permission) ...
+
+// Example: Send a message to a user 
+string userId = "user_id";
+  // Replace with the user's ID
+string messageContent = "Hello from your C# application!";
+
+var chatMessage = new ChatMessage {
+  Body = new ItemBody {
+    Content = messageContent,
+    ContentType = BodyType.Text 
+  }
+};
+
+await graphClient.Users[userId].Chats 
+  .Request()
+  .PostAsync(chatMessage); 
+
+Important Notes:
+
+    Permissions: Ensure that your application has the necessary permissions to send messages in Teams. This typically requires user consent.
+    Error Handling: Implement robust error handling to catch potential issues (e.g., invalid user ID, insufficient permissions, network errors).
+    Rate Limits: Be mindful of Microsoft Graph API rate limits to avoid throttling.
+    Teams API Documentation: Refer to the official Microsoft Graph documentation for the latest information on Teams APIs, including detailed information on message properties, available endpoints, and best practices.
+
+This provides a basic framework for sending Teams messages using the Microsoft Graph API.
+
+I recommend exploring the Microsoft Graph documentation thoroughly to understand the available options and customize the message content and delivery according to your specific requirements.
+
+Do you have any further questions about sending Teams messages or would you like to explore other aspects of Microsoft Graph and SharePoint?
+
+One quick follow-up: Could Rx.Net or some library like that be used to good effect in these kind of applications and simplify some code and workflow?
+
+You're absolutely right! Rx.NET can be incredibly beneficial when working with asynchronous operations and streams of data, like those often encountered when interacting with APIs like Microsoft Graph.  
+
+Here are some potential use cases for Rx.NET in your SharePoint integration:
+
+    Handling asynchronous API calls: Rx.NET provides operators like FromAsync and ObserveOn that can help you manage asynchronous operations efficiently, such as making multiple API calls concurrently or handling potential delays.
+    Processing streams of data: If you're dealing with large datasets from SharePoint (e.g., retrieving a large number of list items), Rx.NET can help you process the data stream in a more efficient and reactive manner. You can use operators like Buffer, Window, and Scan to process data in chunks or perform aggregations.   
+
+    Handling events: If you need to react to changes in SharePoint data (e.g., new items added to a list), Rx.NET can be used to create event streams and subscribe to notifications.
+    Error handling and retries: Rx.NET provides powerful operators for handling errors, such as Retry, RetryWhen, and Catch. This can be invaluable when dealing with potential network issues or transient errors when interacting with the Microsoft Graph API.
+
+Example (Conceptual - Handling a stream of list items):
+Code snippet
+
+// Assuming you have a method to fetch pages of list items asynchronously
+public async Task<IEnumerable<ListItem>> GetListItemsAsync(string listId, int skip = 0, int top = 100) { 
+  // ... (Your existing logic to fetch a page of list items) ... 
+}
+
+// Create an observable sequence to fetch all list items
+IObservable<ListItem> listItemsObservable = Observable.Create<ListItem>(async observer => {
+  int skip = 0;
+  const int pageSize = 100;
+
+  while (true) {
+    var page = await GetListItemsAsync(listId, skip, pageSize); 
+    foreach (var item in page) {
+      observer.OnNext(item); 
+    }
+
+    if (page.Count < pageSize) { 
+      break; 
+    }
+
+    skip += pageSize; 
+  }
+
+  observer.OnCompleted(); 
+  return Disposable.Empty; 
+});
+
+// Subscribe to the observable and process the list items
+listItemsObservable
+  .SubscribeOn(Scheduler.Default) 
+  .ObserveOn(SynchronizationContext.Current) 
+  .Subscribe(item => {
+    // Process each list item 
+  });
+
+This example demonstrates how to create an observable sequence to fetch all list items from a SharePoint list, allowing you to process the items asynchronously and handle the stream of data more effectively.
+
+I encourage you to explore the Rx.NET library and experiment with its operators to see how it can improve the efficiency, maintainability, and responsiveness of your SharePoint integration applications.
+
+Do you have any specific scenarios in mind where you think Rx.NET could be particularly beneficial for your SharePoint integration? I'd be happy to discuss those in more detail.
+
+}}}
+SharePoint: Add A New Column {{{
+
+- Question: A colleague gave me a
+  task to construct an app that
+  obtains information from a
+  Microsoft Sharepoint, and I was
+  instructed to 'add a new column
+  in the Sharepoint, to select
+  application-type' (i.e. for the
+  file I'm supposed to download
+  from/using Sharepoint). Could you
+  explain a bit what he might mean,
+  especially when it comes to
+  'adding a new column in the
+  Sharepoint'? My suspicion is that
+  it might be somewhat analogous to
+  adding one more column in a
+  database-table. Am I on the right
+  track?
+
+Yes, you are absolutely on the
+right track! Your colleague's
+request to "add a new column" in
+SharePoint is indeed very analogous
+to adding a new column in a
+database table.
+
+Here's a breakdown of what that
+means in the context of SharePoint:
+
+
+SharePoint Lists and Libraries:
+
+- SharePoint uses lists and
+  libraries to store data.
+  - Lists are used for structured
+    data, like tasks, contacts, or
+    custom data.
+  - Libraries are used for storing
+    files, like documents, images,
+    or videos.
+- Both lists and libraries are
+  essentially tabular structures,
+  similar to database tables.
+- Each row in a list or library
+  represents an item (in a list) or
+  a file (in a library).
+- Each column represents a piece of
+  metadata associated with the item
+  or file.
+
+
+Adding a New Column:
+
+- When your colleague asks you to
+  add a new column, they mean
+  adding a new metadata field to
+  the SharePoint list or library.
+- This new column will allow you to
+  store additional information
+  about each item or file.
+- In your case, the new column will
+  be used to store the
+  "application-type" of the files
+  you're downloading.
+- Sharepoint has a lot of different
+  column types, such as:
+  - Text
+  - Number
+  - Date and Time
+  - Choice (drop-down list)
+  - Yes/No
+  - Lookup (referencing another
+    list or library)
+  - And many more...
+
+
+"Application-Type" Column:
+
+- For your "application-type"
+  column, a "Choice" column would
+  likely be the most appropriate.
+- This would allow you to create a
+  drop-down list of predefined
+  application types (e.g., "Word
+  Document," "Excel Spreadsheet,"
+  "PDF," "CustomApp1", etc.).
+- This will provide a consistent
+  and controlled way to categorize
+  your files.
+
+
+How to Add a Column in SharePoint:
+
+The exact steps might vary slightly
+depending on your SharePoint
+version, but here's a general
+outline:
+
+- 1. Navigate to the List or Library:
+
+- Open the SharePoint site and go
+  to the list or library where
+  you want to add the column.
+
+- 2. Access List/Library Settings:
+
+- Look for a "Settings" or "Gear"
+  icon.
+- Select "List settings" or
+  "Library settings."
+
+- 3. Create a Column:
+
+- Find the "Columns" section.
+- Click "Create column."
+
+- 4. Configure the Column:
+
+- Enter a column name (e.g.,
+  "Application Type").
+- Select the column type (e.g.,
+  "Choice").
+- Enter the choices for the
+  drop-down list.
+- Configure any other settings as
+  needed (e.g., whether the
+  column is required).
+- Click "OK" or "Save."
+
+
+Why This Is Useful:
+
+- Filtering and Sorting: The
+  "application-type" column will
+  allow you to easily filter and
+  sort the files in the library
+  based on their type.
+- Automation: You can use the
+  column in your app to automate
+  the download process. For
+  example, you could filter the
+  library to download only files of
+  a specific application type.
+- Data Integrity: A "Choice" column
+  helps ensure data consistency and
+  prevents users from entering
+  arbitrary values.
+- Searching: Sharepoint search can
+  use the content of the column to
+  find files.
+
+
+In Summary:
+
+Your colleague's instruction to
+"add a new column" is about adding
+a new metadata field to your
+SharePoint library, much like
+adding a column to a database
+table. Using a "Choice" column for
+"application-type" will provide a
+structured and efficient way to
+manage your files.
+
+}}}
+
+- Own exception-type for Updater (=same as in TCCore)  // Förslag|För framtida =från Erik J.
+- error-code handling
+
+[Note: When running in Debug-mode through Rider, the program is not System-User - I.e. create/use dummy-exe for testing purposes]
+
+SignalR  #for polling/direct feedback(=without the need for polling) during install/download-process {{{
+
+Let's illustrate the difference between polling and SignalR with a simplified example of updating a counter on a webpage.
+
+1. Polling (Traditional Approach):
+JavaScript
+
+// Client-side (JavaScript)
+function updateCounter() {
+  fetch('/counter') // Make a request to the server
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('counter').innerText = data.count;
+    });
+}
+
+setInterval(updateCounter, 5000); // Poll every 5 seconds
+
+// Server-side (C# - Example using ASP.NET Core)
+[HttpGet("/counter")]
+public IActionResult GetCounter()
+{
+    return Json(new { count = _counterValue }); // _counterValue is your counter variable
+}
+
+In this approach, the client repeatedly asks the server for the counter value every 5 seconds.  This is inefficient because the server might not have any updates to provide most of the time.
+
+2. SignalR (Real-time Approach):
+JavaScript
+
+// Client-side (JavaScript)
+const connection = new signalR.HubConnectionBuilder()
+  .withUrl("/counterHub") // URL of your SignalR Hub
+  .build();
+
+connection.on("CounterUpdated", (count) => { // Listen for updates
+  document.getElementById('counter').innerText = count;
+});
+
+connection.start().then(() => {
+    // Optionally, you could send a request to the hub to get the initial value
+    connection.invoke("GetCurrentCount").then(count => {
+        document.getElementById('counter').innerText = count;
+    });
+}).catch(err => console.error(err));
+
+
+// Server-side (C# - ASP.NET Core)
+public class CounterHub : Hub
+{
+    private int _counterValue = 0;
+
+    public async Task UpdateCounter()
+    {
+        _counterValue++;
+        await Clients.All.SendAsync("CounterUpdated", _counterValue); // Push update to all clients
+    }
+
+    public int GetCurrentCount() {
+        return _counterValue;
+    }
+}
+
+// In Startup.cs (ASP.NET Core):
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<CounterHub>("/counterHub");
+    // ... other endpoints
+});
+
+With SignalR, the server pushes the updated counter value to all connected clients as soon as it changes.  The client doesn't need to constantly poll.  This is much more efficient and provides a real-time experience.
+
+Key Differences and Improvements:
+
+    Reduced Network Traffic: SignalR sends only the necessary updates, while polling sends requests even when there's no change.
+    Improved Responsiveness: Updates are displayed instantly with SignalR, whereas polling introduces a delay.
+    Simplified Code: The client-side code is cleaner and easier to understand with SignalR.
+
+This is a very basic example, but it illustrates the core concept of how SignalR simplifies real-time communication.  Remember that this is a simplified example and error handling and more complex scenarios would add further code.  However, this should give you a good starting point to feel the difference.
+
+}}}
+- Testing/Using RxDotnet to simplify event-handling
+.   - TC LinterUtil (inline interactive wiki) {{{
+
+Nice. I have another little interesting task for us: We are discussing in our team about how many cores to use when running parallel tasks and the solution the team came up with (a bit reluctantly) was that the best temporary solution was to put a note about it in the team's wiki.
+
+I'm thinking a better solution would be to construct some small sort of 'linter' utility that in a similar way to StyleCop could flag up the code with some highlight or color if one sets the options wrong or not in the preferred way, and gives a message with a recommendation if one hovers over the highlight. Would that be a very involved or difficult task do you think? By the way, the most used language and framework in the team is C# and DotNet Core, but the linter could as far as I'm concerned be written in a language like F# or the like.
+
+Creating a "linter" utility to enforce coding standards related to parallel task core usage is a very interesting and valuable idea! It's definitely a better approach than relying on wiki notes.  While it's not a trivial task, it's also not overwhelmingly difficult, especially if you focus on a specific set of rules and integrate it appropriately.
+
+Here's a breakdown of the challenges and potential approaches:
+
+Challenges:
+
+    Static Analysis Limitations:  Determining the optimal number of cores for parallel tasks is often highly context-dependent.  It depends on factors like the nature of the tasks, the hardware, and the overall system load.  A static analysis tool (like a linter) can only provide guidelines and flag potential issues, not definitively say "this is wrong."
+
+    Language/Framework Integration: Integrating the linter seamlessly into your development workflow is important.  You'd want it to run during development (perhaps as part of the build process) and ideally provide feedback directly in the IDE (Visual Studio).
+
+    Rule Definition:  You'll need to carefully define the rules your linter will enforce.  What constitutes a "bad" or "suboptimal" core usage?  Some examples:
+        Using a fixed number of cores that's too high for most scenarios.
+        Not considering the number of available cores.
+        Using hardcoded magic numbers instead of configuration.
+        Not providing a way to configure the number of cores (making it hard to override in specific cases).
+
+    False Positives:  Any linter will inevitably produce some false positives (flagging code that's actually okay).  You need to design the rules and the output messages to minimize these and provide ways to suppress warnings when necessary.
+
+Potential Approaches:
+
+    Roslyn Analyzer (C#):  Since you're using C# and .NET Core, a Roslyn analyzer is the most natural and powerful approach.  Roslyn analyzers are integrated directly into Visual Studio and can provide real-time feedback as you write code.  This is the best option for tight integration.
+
+    Custom Code Analysis Tool: You could create a separate tool (perhaps in F# or another language) that performs static analysis on your C# code.  This would be more complex to integrate into the development process but could be more flexible if you need to analyze other languages or file types.
+
+    Regular Expressions/Text Parsing (Simplest, but Limited):  For very basic rules (e.g., just checking for specific keywords or patterns), you could use regular expressions or simple text parsing.  This would be the quickest to implement but also the most limited.
+
+Example Roslyn Analyzer Concept (C#):
+C#
+
+// Example (Conceptual) Roslyn Analyzer
+[DiagnosticAnalyzer(LanguageNames.CSharp)]
+public class ParallelCoreUsageAnalyzer : DiagnosticAnalyzer
+{
+    // ... Rule definition (DiagnosticDescriptor) ...
+
+    public override void Analyze(AnalysisContext context)
+    {
+        // ... Syntax analysis to find parallel code ...
+
+        // ... Check core usage (e.g., number of cores used) ...
+
+        if (/* Core usage is not optimal */)
+        {
+            // ... Report a diagnostic (warning or error) with a message ...
+        }
+    }
+}
+
+Implementation Steps (Roslyn Analyzer):
+
+    Create a Roslyn Analyzer Project:  Visual Studio has templates for creating Roslyn analyzers.
+
+    Define Rules:  Create DiagnosticDescriptor objects to define the rules your analyzer will enforce, including the severity (warning, error), message, and help link.
+
+    Implement Analysis Logic:  Use the Roslyn API to analyze the code's syntax tree and identify places where the rules are violated.
+
+    Report Diagnostics:  Use the AnalysisContext to report diagnostics (warnings or errors) with informative messages and code highlights.
+
+    Test and Refine:  Test your analyzer thoroughly and refine the rules and messages to minimize false positives and provide helpful guidance.
+
+Recommendation:
+
+For your situation, I strongly recommend going with a Roslyn analyzer. While it requires some learning, it's the best way to achieve tight integration with Visual Studio and provide real-time feedback to your team.  Start with a small set of well-defined rules and gradually expand the analyzer as you gain experience.  This will give your team a much more effective way to manage parallel core usage than wiki notes.
+
+What I'm thinking is that Roslyn would be a valuable tool to make use of, and the rules and suggestions do not necessarily have to be overly complex, but more based on a few rules that the team comes up with for suggestions; In that way the suggestions when hovering over highlight would be more like a builtin tooltip-version of the Wiki, and would contain suggestions from the team 'inline' rather than having to browse around in the Wiki to find the correct page and such overhead. Also (as a short side-note), if it's not overkill I would like to use F# in some part of the process as it tends to shorten down code and it's a language I'm eager to learn more of.
+
+You're on the right track! Focusing on a few well-defined rules and using Roslyn to provide inline suggestions (like a built-in tooltip version of your wiki) is an excellent strategy. It makes the linter practical, manageable, and directly addresses your team's needs. And yes, incorporating F# where it makes sense is a great way to leverage its strengths and learn more.
+
+Here's a refined approach, combining Roslyn for the core analysis and potentially F# for parts of the process:
+
+1. Define the Rules (Team Effort):
+
+    This is the most crucial step. Get your team together and brainstorm the most important guidelines for parallel task core usage. Focus on common mistakes or areas where you've seen issues.
+    Keep the initial set of rules small and specific. You can always add more later.
+    Examples:
+        "Avoid hardcoding the number of cores. Use Environment.ProcessorCount or a configurable setting."
+        "For I/O-bound tasks, consider using fewer cores or asynchronous operations instead of parallel loops."
+        "When using Parallel.For, ensure the workload is sufficiently CPU-intensive to justify the overhead."
+        "If the degree of parallelism needs to be configurable, use a settings file or environment variable rather than a magic number."
+
+2. Roslyn Analyzer (C#):
+
+    This is where the core analysis happens. You'll use C# and the Roslyn API to examine the code's syntax tree and identify violations of your rules.
+    The Roslyn analyzer will generate diagnostics (warnings or errors) with helpful messages that appear directly in Visual Studio. These messages are the "inline tooltips" you envisioned.
+    Example Roslyn Diagnostic Message: "Consider using Environment.ProcessorCount instead of hardcoding the number of cores. This makes your code more adaptable to different environments."
+
+3. F# (Optional, but Potentially Useful):
+
+    Rule Definition/Management: You could use F# to define or manage your rules. F#'s type system and functional approach might be well-suited for representing complex rules or creating a domain-specific language (DSL) for defining them. The Roslyn analyzer itself would still be in C#, but the rules could be stored and managed in F#. This is probably only worth it if you anticipate your rules becoming quite complex.
+    Testing: F# can be great for writing unit tests for your Roslyn analyzer. Its functional nature can make it easier to write concise and expressive tests.
+    External Tooling: If you decide to create a separate code analysis tool (in addition to the Roslyn analyzer), F# would be a good choice for that tool.
+
+4. Integration:
+
+    The Roslyn analyzer integrates directly into Visual Studio. As developers write code, the analyzer runs in the background and provides real-time feedback.
+    If you create a separate tool, you'll need to integrate it into your build process (e.g., as a pre-build step) or provide a way for developers to run it manually.
+
+Example Workflow:
+
+    Team defines a rule: "Avoid hardcoding core counts."
+
+    You implement this rule in a Roslyn analyzer (C#).
+
+    A developer writes code: Parallel.For(0, 8, i => { ... }); (8 is hardcoded).
+
+    The Roslyn analyzer detects this and displays a warning in Visual Studio: "Consider using Environment.ProcessorCount instead of hardcoding '8' as the number of cores."
+
+    The developer hovers over the warning and sees a more detailed explanation (from your rule description) with a link to your team's wiki page (if you have one) for more information.
+
+Key Advantages of this Approach:
+
+    Direct Feedback: Developers get immediate feedback in their IDE, making it easy to correct issues.
+    Consistent Enforcement: The linter ensures that the rules are consistently applied across the codebase.
+    Centralized Knowledge: The rules and suggestions are stored in code, making them easier to update and maintain than wiki pages.
+    Improved Code Quality: By enforcing best practices, the linter helps improve the overall quality and maintainability of your code.
+
+Starting with a small set of rules and gradually expanding your linter will make the project more manageable and allow you to get quick wins.  The combination of Roslyn's power and F#'s expressiveness (if you choose to use it) will provide a very effective solution for your team.
+
+}}}
+Installing an msi (Microsoft Installer) file {{{
+
+Could you tell me a bit about the
+.msi file format, i.e. mostly
+focusing on how I install it
+programmatically from a program
+written in C#?
+
+Absolutely. The .msi (Microsoft
+Installer) file format is a
+database-driven package format used
+by Windows Installer for
+installing, maintaining, and
+removing software. It's a
+fundamental part of Windows
+software deployment.
+
+Key Characteristics of MSI Files:
+
+- Database-Driven: MSI files
+  contain a relational database
+  that describes the software
+  components, installation process,
+  and dependencies.   
+- Transactional: Windows Installer
+  uses a transactional approach,
+  meaning that if an installation
+  fails, it can roll back changes
+  to the system.  
+- Declarative: The installation
+  process is defined declaratively,
+  specifying what should be
+  installed rather than how.
+- Component-Based: Software is
+  divided into components, which
+  are the smallest units of
+  installation.
+- Features: MSI supports features,
+  which are logical groupings of
+  components.  
+- Properties: MSI uses properties
+  to store information about the
+  installation.  
+
+
+Programmatic Installation from C#:
+
+To install an MSI file
+programmatically from a C# program,
+you can use the Process class to
+execute the msiexec.exe
+command-line utility.
+
+Here's a breakdown of the process
+and some code examples:
+
+- 1. Using msiexec.exe:
+
+msiexec.exe is the command-line
+installer for MSI files. It
+provides various command-line
+options for controlling the
+installation process.  
+
+- 2. Basic Installation:
+
+using System.Diagnostics;
+
+public static void InstallMsi(string msiFilePath)
+{
+    Process process = new Process();
+    process.StartInfo.FileName = "msiexec.exe";
+    process.StartInfo.Arguments = $"/i \"{msiFilePath}\" /qn"; // /i for install, /qn for quiet (no UI)
+    process.StartInfo.UseShellExecute = false;
+    process.StartInfo.CreateNoWindow = true; // Prevents a console window from appearing
+    process.Start();
+    process.WaitForExit();
+
+    if (process.ExitCode == 0)
+    {
+        Console.WriteLine("MSI installation successful.");
+    }
+    else
+    {
+        Console.WriteLine($"MSI installation failed with exit code: {process.ExitCode}");
+    }
+}
+
+Explanation:
+
+- /i: Specifies that an
+  installation should be performed.
+- /qn: Runs the installation in
+  quiet mode, with no user
+  interface.
+- \"{msiFilePath}\": The path to
+  the MSI file, enclosed in quotes
+  to handle paths with spaces.
+- process.WaitForExit(): Waits for
+  the msiexec.exe process to
+  finish.
+- process.ExitCode: Gets the exit
+  code of the process, which
+  indicates success or failure.
+
+3. Common msiexec.exe Options:
+
+- /i: Install an MSI package.
+- /x: Uninstall an MSI package.
+- /f: Repair an MSI package.
+- /p: Apply a patch (MSP file).
+- /qn: Quiet mode (no UI).
+- /qb: Basic UI.
+- /qb!: Basic UI with no cancel
+  button.
+- /qr: Reduced UI.
+- /qf: Full UI.
+- /l*v <log_file>: Log installation
+  details to a file.
+- PROPERTY=VALUE: Set MSI
+  properties.
+
+- 4. Setting MSI Properties:
+
+You can pass properties to the MSI
+installer using the PROPERTY=VALUE
+syntax.
+
+public static void InstallMsiWithProperties(string msiFilePath, string properties)
+{
+    Process process = new Process();
+    process.StartInfo.FileName = "msiexec.exe";
+    process.StartInfo.Arguments = $"/i \"{msiFilePath}\" {properties} /qn";
+    process.StartInfo.UseShellExecute = false;
+    process.StartInfo.CreateNoWindow = true;
+    process.Start();
+    process.WaitForExit();
+}
+
+Example usage:
+
+InstallMsiWithProperties("MyInstaller.msi", "INSTALLDIR=\"C:\\MyProgram\" LICENSEKEY=\"12345\"");
+
+- 5. Logging:
+
+Logging is crucial for debugging
+installation issues.  
+
+public static void InstallMsiWithLogging(string msiFilePath, string logFilePath)
+{
+    Process process = new Process();
+    process.StartInfo.FileName = "msiexec.exe";
+    process.StartInfo.Arguments = $"/i \"{msiFilePath}\" /qn /l*v \"{logFilePath}\"";
+    process.StartInfo.UseShellExecute = false;
+    process.StartInfo.CreateNoWindow = true;
+    process.Start();
+    process.WaitForExit();
+}
+
+6. Elevated Privileges:
+
+If the MSI requires administrator
+privileges, you'll need to run your
+C# program with elevated
+privileges.
+
+Important Considerations:
+
+- Error Handling: Always check the process.ExitCode to handle installation failures.
+- Logging: Use logging to diagnose
+  problems.   
+- Security: Be cautious when
+  running external processes,
+  especially with elevated
+  privileges.
+
+By using the Process class and
+msiexec.exe, you can effectively
+install MSI files from your C#
+applications.
+
+}}}
+Find file-info through reflection {{{
+
+Question: I was told by a colleague that there several, but especially one simple way of getting information about a file using C#. Specifically what I was looking for is if there's a standard way of getting the version number or name for a program. He mentioned something about 'using System.Assembly' or something like that. Could you give me some help on that one?
+
+Yes, your colleague was on the right track!  The System.Reflection namespace (which is part of the System namespace, so you'd use using System; and using System.Reflection;) provides the tools you need to get information about a file, including version numbers and other metadata.  Here's how you can do it, along with explanations and best practices:
+C#
+
+using System;
+using System.Diagnostics;
+using System.Reflection;
+
+public class FileInfoExample
+{
+    public static void Main(string[] args)
+    {
+        string filePath = @"C:\Path\To\Your\Executable.exe"; // Replace with your file path
+
+        try
+        {
+            // 1. Using FileVersionInfo (Recommended for executables):
+            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(filePath);
+
+            // Get version information
+            string version = fileVersionInfo.FileVersion; // Or fileVersionInfo.ProductVersion
+            string productName = fileVersionInfo.ProductName;
+            string companyName = fileVersionInfo.CompanyName;
+            string fileDescription = fileVersionInfo.FileDescription;
+
+            Console.WriteLine($"File Version: {version}");
+            Console.WriteLine($"Product Name: {productName}");
+            Console.WriteLine($"Company Name: {companyName}");
+            Console.WriteLine($"File Description: {fileDescription}");
+
+
+            // 2. Using Assembly (More general, for DLLs and EXEs):
+            Assembly assembly = Assembly.LoadFrom(filePath); // Or Assembly.LoadFile for more control
+            AssemblyName assemblyName = assembly.GetName();
+
+            //Get version information
+            Version assemblyVersion = assemblyName.Version;
+            string assemblyFullName = assembly.FullName;
+
+            Console.WriteLine($"Assembly Version: {assemblyVersion}");
+            Console.WriteLine($"Assembly Full Name: {assemblyFullName}");
+
+
+            // 3. Alternative: Using Assembly with GetEntryAssembly (for your *own* executable):
+            // If you want to get the version of the currently running application:
+            Assembly entryAssembly = Assembly.GetEntryAssembly();  // Only works for your own EXE
+            if (entryAssembly != null) // Check if it's not null (e.g., in a DLL loaded by another process, it would be null)
+            {
+                Version entryAssemblyVersion = entryAssembly.GetName().Version;
+                Console.WriteLine($"Entry Assembly Version: {entryAssemblyVersion}");
+            }
+
+
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+}
+
+Explanation and Key Improvements:
+
+    FileVersionInfo (Recommended): For executable files (.exe), the FileVersionInfo class is the most reliable way to get version information. It reads the version resources embedded in the EXE. The FileVersion property is usually what you want, but ProductVersion might be more user-friendly in some cases.
+    Assembly (More General): The Assembly class is more general and can be used for both executables (.exe) and libraries (.dll). It loads the assembly (which contains the compiled code and metadata). You get version information from the AssemblyName property.
+    Assembly.LoadFrom vs. Assembly.LoadFile: LoadFrom is usually sufficient. LoadFile gives you more control over the loading context (useful in more complex scenarios).
+    Assembly.GetEntryAssembly(): This is a shortcut if you want the version of the currently running application. It won't work if your code is in a DLL loaded by another application. The example includes a check for null to handle this.
+    Error Handling: The try-catch block is crucial. File access can fail (file not found, permissions issues, etc.), and you should handle those gracefully.
+    Clearer Variable Names: Using names like fileVersionInfo and assemblyVersion makes the code more readable.
+    Using using statements: The using statements at the top make the code cleaner and avoid the need to fully qualify class names (e.g., System.Reflection.Assembly).
+
+Which method should you use?
+
+    For executables (.exe files), always prefer FileVersionInfo. It's designed specifically for this purpose and is more likely to give you the correct version information embedded in the file.
+    If you need to work with DLLs (.dll files) or if you need other assembly metadata (like the full name, public key, etc.), use the Assembly class.
+    If you need the version of your own running executable, Assembly.GetEntryAssembly() is convenient, but remember to check for null.
+
+This improved example provides a robust and clear way to get file information in C#.  Remember to replace the placeholder file path with the actual path to your file.
+
+}}}
+Avalonia {{{
+
+Absolutely. Let's contrast WinUI 3 with Avalonia, focusing on code snippets, using statements, NuGet packages, and .NET CLI commands.
+
+Avalonia Example:
+
+1. Code-Behind (C#):
+C#
+
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
+
+namespace MyAvaloniaApp
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+#if DEBUG
+            this.AttachDevTools();
+#endif
+            MyButton.Click += MyButton_Click; // Register click event
+        }
+
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
+
+        private void MyButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            MyTextBlock.Text = "Button clicked!";
+        }
+
+        // Example of data binding (in your code-behind or a ViewModel)
+        public string MyText { get; set; } = "Initial Text";
+    }
+}
+
+2. XAML (Avalonia XAML):
+XML
+
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.avaloniaui.net/design/2019/10"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MyAvaloniaApp.MainWindow"
+        Title="MyAvaloniaApp">
+
+    <StackPanel>
+        <Button x:Name="MyButton" Content="Click Me" />
+        <TextBlock x:Name="MyTextBlock" Text="{Binding MyText}" />
+    </StackPanel>
+</Window>
+
+3. NuGet Packages:
+
+    Avalonia: The core Avalonia package.
+    Avalonia.Desktop: For desktop support (Windows, macOS, Linux).
+    Avalonia.Diagnostics: For debugging tools (optional).
+    Avalonia.ReactiveUI (if you are using ReactiveUI)
+
+4. .NET CLI Commands:
+
+    Create a new Avalonia project:
+    Bash
+
+dotnet new avalonia.app --name MyAvaloniaApp --output MyAvaloniaApp
+
+Build the project:
+Bash
+
+dotnet build MyAvaloniaApp.sln
+dotnet build MyAvaloniaApp.csproj
+
+Clean the project:
+Bash
+
+dotnet clean MyAvaloniaApp.sln
+
+Run the project:
+Bash
+
+dotnet run --project MyAvaloniaApp
+
+Add a NuGet package:
+Bash
+
+dotnet add package Avalonia.ReactiveUI
+
+List installed NuGet packages:
+Bash
+
+dotnet list package
+
+Update NuGet packages:
+Bash
+
+dotnet update package
+
+Restore NuGet packages:
+Bash
+
+    dotnet restore MyAvaloniaApp.sln
+
+Comparison:
+
+    Cross-Platform:
+        Avalonia: Truly cross-platform, targeting Windows, macOS, Linux, and even web (via WebAssembly).
+        WinUI 3: Primarily Windows-focused, with some experimental support for other platforms.
+    XAML:
+        Avalonia: Uses its own XAML dialect, which is similar to WPF/UWP XAML but with some differences.
+        WinUI 3: Uses a more direct evolution of UWP XAML.
+    Development Experience:
+        Avalonia: Has a growing ecosystem and community. Hot reload and preview support are generally good.
+        WinUI 3: Heavily reliant on Visual Studio for the best development experience.
+    Performance:
+        Avalonia: Very performant, using a retained mode rendering engine.
+        WinUI 3: Native Windows performance, very fast on Windows.
+    NuGet Packages:
+        Avalonia: Uses standard NuGet packages.
+        WinUI 3: Uses standard NuGet packages, but also relies heavily on the Windows App SDK.
+    .NET CLI: Both use the standard .NET CLI commands.
+    Community:
+        Avalonia: Smaller but active community.
+        WinUI 3: Backed by Microsoft, with a large existing .NET community.
+    Learning Curve:
+        Avalonia: Relatively easy to learn for WPF/UWP developers.
+        WinUI 3: Also relatively easy for WPF/UWP developers, but requires familiarity with the Windows App SDK.
+
+Key Takeaways:
+
+    If cross-platform is your priority, Avalonia is a strong contender.
+    If you're exclusively targeting Windows and want native performance and tight integration with the Windows ecosystem, WinUI 3 is the better choice.
+    Avalonia is a good choice if you want to avoid heavy reliance on Visual Studio, while WinUI 3 is best developed inside of Visual Studio.
+    Avalonia's XAML is very similar to WPF/UWP XAML, so the transition is smooth.
+
+}}}
+'run as a service' {{{
+Could you explain to me 'run as a service' particularly when it comes to a Windows context? I think it may refer to having a program I create be run as a service, but I'm not completely sure on that last one. I would be pretty happy for you to add if there are any certain steps I would need to take to be able to run a program/utility I create (using C# and DotNet Core) to be run as a service on Windows?
+
+You're absolutely right! "Run as a service" in a Windows context means running a program in the background, independent of any user interaction or logged-in user session. This is essential for applications that need to perform tasks continuously or at scheduled intervals, without requiring a user to manually start them.
+
+Here's a breakdown:
+
+What "Run as a Service" Means:
+
+    Background Execution: Services run in the background, even when no user is logged in.
+    Automatic Startup: Services can be configured to start automatically when the operating system boots.
+    User Independence: Services operate independently of user sessions.
+    Privileged Access: Services can be configured to run with specific user accounts and permissions, allowing them to access system resources.
+    Service Control Manager (SCM): Windows manages services through the Service Control Manager. This system allows you to start, stop, pause, and configure services.
+
+Why Run a Program as a Service?
+
+    Continuous Tasks: Applications that need to monitor systems, process data, or perform other ongoing tasks.
+    Scheduled Tasks: Applications that need to execute tasks at specific times or intervals.
+    Server Applications: Web servers, database servers, and other server applications.
+    System Utilities: Applications that provide system-level functionality, such as logging, monitoring, or network management.
+
+Running a C# .NET Core Application as a Windows Service:
+
+Here's how you can create and run a C# .NET Core application as a Windows service:
+
+1. Create a Worker Service Project:
+
+    Use the .NET CLI or Visual Studio to create a Worker Service project.
+        .NET CLI:
+    Bash
+
+    dotnet new worker --name MyService
+
+        Visual Studio: Create a new project, select "Worker Service," and choose your desired options.
+
+2. Modify the Program.cs File:
+
+    The Program.cs file is where you configure the service.
+    Make sure you have the Microsoft.Extensions.Hosting.WindowsServices NuGet package installed.
+
+C#
+
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+namespace MyService
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .UseWindowsService() // Enables running as a Windows service
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddHostedService<Worker>(); // Registers your worker class
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.AddEventLog(); // adds event log logging.
+                });
+    }
+}
+
+3. Implement the Worker Class:
+
+    The Worker class contains the logic that your service will execute.
+
+C#
+
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+namespace MyService
+{
+    public class Worker : BackgroundService
+    {
+        private readonly ILogger<Worker> _logger;
+
+        public Worker(ILogger<Worker> logger)
+        {
+            _logger = logger;
+        }
+
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            while (!stoppingToken.IsCancellationRequested)
+            {
+                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                // Your service logic goes here.
+                await Task.Delay(1000, stoppingToken); // Example: Delay for 1 second
+            }
+        }
+    }
+}
+
+4. Publish and Install the Service:
+
+    Publish your application.
+        dotnet publish -c Release -r win-x64
+    Open an administrator command prompt.
+    Use the sc.exe command to create the service.
+        sc.exe create MyServiceName binPath="C:\path\to\MyService.exe"
+        Replace MyServiceName with your desired service name and C:\path\to\MyService.exe with the path to your published executable.
+    Start the service:
+        sc.exe start MyServiceName
+    Stop the service:
+        sc.exe stop MyServiceName
+    Delete the service:
+        sc.exe delete MyServiceName
+
+Key Points:
+
+    The UseWindowsService() method in Program.cs is crucial for enabling Windows service functionality.
+    The BackgroundService class provides a base class for long-running background tasks.
+    Use the ILogger interface for logging messages to the Windows Event Log or other logging providers.
+    Always test your service thoroughly in a development environment before deploying it to production.
+    Consider using installers like WiX for a better deployment experience.
+
+By following these steps, you can create and run your C# .NET Core applications as Windows services.
+}}}
+Verify files (C#) with Checksums {{{
+
+If I want/need to work with validating and/or generating checksums for files, and (as we have talked about before, in a C# environment, what libraries, classes and methods would be most apt or pertinent for this?
+
+You're right, let's delve into checksum validation and generation in C#. The .NET framework provides excellent built-in support for this, and you also have options for external libraries if needed.
+
+Built-in .NET Framework Options:
+
+The System.Security.Cryptography namespace is your primary resource for checksum operations.
+
+    Hash Algorithms:
+        The core of checksum generation is hash algorithms. These algorithms take input data and produce a fixed-size "hash" (the checksum).
+        Commonly used algorithms include:
+            MD5: MD5CryptoServiceProvider (Though considered cryptographically weak, it's still used for non-security-critical checksums).
+            SHA1: SHA1CryptoServiceProvider (Also considered weak for security, but may be used for legacy systems).
+            SHA256: SHA256CryptoServiceProvider or SHA256.Create() (Recommended for most cases).
+            SHA384: SHA384CryptoServiceProvider or SHA384.Create().
+            SHA512: SHA512CryptoServiceProvider or SHA512.Create().
+
+    Classes and Methods:
+        Each hash algorithm has a corresponding class (e.g., SHA256CryptoServiceProvider).
+        The general pattern is:
+            Create an instance of the hash algorithm class.
+            Use the ComputeHash() method to generate the hash from a byte array or stream.
+            Convert the resulting byte array to a hexadecimal string for easy representation.
+
+Example (SHA256 Checksum):
+C#
+
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+
+public class ChecksumHelper
+{
+    public static string CalculateSHA256(string filePath)
+    {
+        using (var sha256 = SHA256.Create())
+        {
+            using (var fileStream = File.OpenRead(filePath))
+            {
+                byte[] hashBytes = sha256.ComputeHash(fileStream);
+                return ByteArrayToHexString(hashBytes);
+            }
+        }
+    }
+
+    private static string ByteArrayToHexString(byte[] bytes)
+    {
+        StringBuilder stringBuilder = new StringBuilder(bytes.Length * 2);
+        foreach (byte b in bytes)
+        {
+            stringBuilder.AppendFormat("{0:x2}", b);
+        }
+        return stringBuilder.ToString();
+    }
+
+    public static bool ValidateSHA256(string filePath, string expectedChecksum)
+    {
+        string actualChecksum = CalculateSHA256(filePath);
+        return actualChecksum.Equals(expectedChecksum, StringComparison.OrdinalIgnoreCase);
+    }
+}
+
+Explanation:
+
+    CalculateSHA256(string filePath):
+        Creates an SHA256 instance.
+        Opens the file as a FileStream.
+        Computes the hash using sha256.ComputeHash(fileStream).
+        Converts the byte array hash to a hexadecimal string.
+    ByteArrayToHexString(byte[] bytes):
+        Helper method to format the byte array as a hexadecimal string.
+    ValidateSHA256(string filePath, string expectedChecksum):
+        Calculates the checksum of the file.
+        Compares the calculated checksum to the expected checksum.
+
+External Libraries (Less Common, but Useful in Specific Cases):
+
+    Bouncy Castle:
+        A powerful cryptography library that provides a wide range of algorithms, including those not available in the .NET framework.
+        Useful if you need specific or less common hash algorithms.
+    HashLibPlus:
+        Another external library that extends the hashing capabilities of .Net. It contains many different hashing algorithms.
+
+Choosing the Right Algorithm:
+
+    For general file integrity checks, SHA256 is a good balance of security and performance.
+    If you're dealing with very large files and performance is critical, consider SHA512.
+    If you are working with legacy systems, you may encounter MD5 or SHA1. But for new systems, avoid these.
+
+Important Considerations:
+
+    File Size: For very large files, consider reading the file in chunks to avoid loading the entire file into memory.
+    Error Handling: Implement robust error handling to handle file I/O exceptions and other potential issues.
+    Hexadecimal Representation: Always use a consistent hexadecimal representation for checksums (e.g., lowercase or uppercase).
+    Security: If you're using checksums for security purposes (e.g., verifying software downloads), ensure that you're using a strong hash algorithm and that the checksums are stored and transmitted securely.
+
+}}}
+
+Graph [hämta en fil-url] + Hämta 
+    /me  #Graph
+
+Identity/Graph+Sharepoint--inspiration: TCCore klasss: SharePointHandler
+    create BatchRequest-Object
+    får url
+    + skickar in url 
+    SharePoint-client (+GetFileStream)
+      (och då kör vi en http-client)
+
+SharePoint
+Batch (generalla graph-anrop + slå ihop dem)
+PackageSync  ___hm
+
+Setup HttpClient
+Setup Talk to Sharepoint
+Core: Services (ServiceCollectionExtension.cs)
+TruckComCoreWindowsService
+TruckComCoreWebAPI
+
+TODO:PROGR
+.    Te: 'General/More specific programming/CS-terms' {{{
+guid
+  telematics
+}}}
+'handler'
+
+Controllers often corresponds 1-to-1 to ___ {{{
+    a set/collection of data related to a specific topic of interest
+        an endpoint(??)
+
+    e.g. WeatherForecastController
+        +innehåller ofta olika metoder (GetWeatherForecast)
+}}}
+controllers brukar delas upp så att ____ {{{
+    de har ett begränsat ansvarsområde
+        t.ex. för en klass user => user-controller
+    en egen controller för en entitet i en databas
+    gruppera + validera indata (mm)
+}}}
+man anropar aldrig en controller från en annan controller, utan istället från/via ___ {{{
+    en service (som plockar ut + omformaterar data för att sen kunna användas av en controller)
+}}}
+controllers utför ofta ___ {{{
+  validering (mm)
+}}}
+services är ansvariga för att ____ {{{
+    hämta data (=från databaser och andra källor)
+    leverera data till en controller
+}}}
+services kan läggas till 'automatiskt'/laddas till controllers genom att ___ (=anges hur) {{{
+    injiceras (dependency injection)
+
+    specificeras/läggs till i konstruktorn
+}}}
+en endpoint är egentligen ___ {{{
+    en metod + controllern (=hela pathen)
+
+    en unik URL på en server  # 'sett från utsidan'
+    ung.= varje unik publik metod i controllers är en endpoint
+}}}
+
+Index|Install|Download--endpoints  =3 metoder i en controller / ...
+    vad är indata + vad ska returneras (obs: i omvänd ordning när skapar metoden)  +definiera t.ex. HttpGet("index")
+
+Alla controllers ärver (som standard) från ___ {{{
+    ControllerBase
+
+    exempel ...<ActionBase>
+                  ^
+                  +---------
+    skicka ut sträng, ActionBase (=standard, Ok är standard)
+}}}
+HTTP status codes are easily used/included with ____ {{{
+    named methods, e.g. this.Ok(@"hejsan")
+    BadRequest(), NotFound(), ...
+}}}
+Using templates for WebAPI, Controllers etc (in Rider)
+tips on breakpoints (when/how to use) {{{
+    vet inte hur en metod funkar
+        =sätt en breakpoint i början av metoden
+
+    step over vs step into
+        oftast step over, om inte t.ex. 
+}}}
+fördelen med unit testing {{{
+    =du kan speca upp och köra precis en grej i koden
+
+    [Fact]
+    public void newmethod() {
+*     var s = this.sut.ToString();
+    }
+}}}
+
+Exempel C# 'INLINE TESTING': Testa och se hur Math.Pow funkar {{{
+    [Fact]
+    public void newmethod() {
+*     var pow = Math.Pow(3,5);
+    }
+
+    [+run debug + step over]
+    I så fall: Se till att referens till testramverket är inkluderat/angivet (+ta bort innan pushar upp)
+}}}
+
+}}}
+install + use C#/F# in Jupyter(++)/Polyglot Notebooks {{{
+
+- Great! I have asked the same question before, but it was in a different thread or conversation so I'll have to ask it again (the answer was very good by the way, but I didn't have a chance to write it down that time):
+
+- What if I wanted the interactive experience of a Jupyter Notebook (i.e. being able to mix markup, text and documentation, and code) but I wanted to use F# (and sometimes maybe also C#). I think Notebook is such a good experience for testing out programming code. How could I accomplish that in Jupyter Notebook or something giving me a Notebook-like experience?
+
+You're right, using Jupyter Notebooks with F# is a fantastic way to experiment, learn, and document your code.
+
+Here's how you can achieve this:
+
+1. Install Necessary Components:
+
+    Install .NET SDK: Ensure you have the .NET SDK installed on your system. You can download it from the official .NET website.
+
+    Install Jupyter:
+        You can install Jupyter using pip:
+        Bash
+
+pip install jupyter
+
+Or through Anaconda (if you have it installed):
+Bash
+
+    conda install -c conda-forge jupyter
+
+Install the F# kernel for Jupyter:
+
+    Install the dotnet-interactive package:
+    Bash
+
+dotnet tool install -g dotnet-interactive 
+
+Register the F# kernel with Jupyter:
+Bash
+
+        dotnet try jupyter install 
+
+2. Launch Jupyter Notebook:
+
+    Open a terminal or command prompt and run:
+    Bash
+
+    jupyter notebook
+
+3. Create a new F# notebook:
+
+    In the Jupyter Notebook interface, click "New" and select "F#".
+
+4. Start coding!
+
+    You can now start writing and executing F# code within the notebook cells.
+    Jupyter Notebook provides a rich environment for interactive coding, including:
+        Code execution and output display
+        Markdown cells for documentation, notes, and explanations
+        Rich output formatting (e.g., tables, plots)
+        Code completion and other helpful features
+
+Key Advantages:
+
+    Interactive Environment: The Jupyter Notebook environment is highly interactive, allowing you to experiment with code, see immediate results, and easily modify and rerun code cells.
+    Documentation and Visualization: You can seamlessly integrate code with Markdown cells to document your work, add explanations, and include visualizations.
+    Code Organization: Notebooks provide a structured way to organize your code, making it easier to read, understand, and share.
+
+I hope this guide helps you get started with using F# in Jupyter Notebooks. If you have any further questions or encounter any issues during the setup or usage, feel free to ask!
+
+I'm ready for your next question. 😊
+
+Great. A quick follow-up: I remember from the answer I got when I asked the question previously also mentioned a community-driven version of Notebook, but I cannot quite remember the name of it. Do you know which one I'm talking about?
+----
+Great. A quick follow-up (concerning using F# in Notebooks): I remember from the answer I got when I asked the question previously also mentioned a community-driven version of Notebook, but I cannot quite remember the name of it. Do you know which one I'm talking about? Also there is something called 'Multilang Notebooks' or something similar for the DotNet platform, am I correct?
+
+You're right, there is a community-driven alternative to Jupyter Notebooks called nteract.
+
+    nteract is a cross-platform, open-source interactive computing environment that supports multiple languages, including F#.
+    It focuses on a more user-friendly and modern interface compared to the classic Jupyter Notebook.
+
+Regarding "Multilang Notebooks" or similar concepts:
+
+    .NET Interactive: This is a core component within the .NET ecosystem. It allows you to create interactive notebooks and scripts that can execute .NET code (including C# and F#) within various environments, including Jupyter Notebooks.   
+
+Visual Studio Code with the Jupyter extension: VS Code provides excellent support for Jupyter Notebooks, including the ability to run and debug F# code within the notebook environment.
+
+}}}
+../weblinks.txt
+
+gvim -p ../at/PROGR.cm.txt comp/lang/PROGRLANG.DB.ref.txt
+
+
+
+Multimedia, MuRec {{{
+    gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/{graf/pr/MultiMedia,comp/mu/MuRec}.txt
+      MultiMedia: Scribus, Inkscape, Gimp, imagick, fontforge, Blender, ... ffmpeg
+    gvim -p ../ref/graf/pr/MultiMedia.txt ../ref/comp/mu/MuRec.txt
+      gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/{graf/pr/MultiMedia,comp/mu/MuRec}.txt
+
+}}}
+TODO: Add ffmpeg from at.Blender (etc)
+____
+Browsers (File, Web, Media, Web) {{{
+media ----
+    gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/{sysadm/browse/file,hardw/hardw-devices,sysadm/browse/media,sysadm/browse/web,sysadm/browse/mail,sysadm/browse/remote}.txt
+cd at
+    gvim -p ../ref/comp/sysadm/browse/file.txt ../ref/comp/hardw/hardw-devices.txt ../ref/comp/sysadm/browse/media.txt ../ref/comp/sysadm/browse/web.txt ../ref/comp/sysadm/browse/mail.txt ../ref/comp/sysadm/browse/remote.txt
+      gvim -c '/.*@.*' -p ~/Dropbox/rsc/Doks/phone/comp/sysadm/browse/{file,media,web,mail,remote}.txt
+
+    ## at.pr.mplayer.bash
+tmp:mpv
+    PLAYLIST WITH LUA-SCRIPTING **** {{{
+        https://duckduckgo.com/?t=ffab&q=mpv+playlist&ia=web
+        https://smarttech101.com/how-to-configure-use-mpv-video-player/
+        https://duckduckgo.com/?t=ffab&q=mpv+lua&ia=web
+    https://github.com/mpvnet-player/mpv.net/wiki/Extending-mpv-and-mpv.net-via-Lua-scripting
+      https://mpv.io/manual/master/#lua-scripting
+    https://github.com/mpv-player/mpv/wiki/User-Scripts
+https://github.com/jonniek/mpv-playlistmanager
+    https://github.com/drogers141/mpv-playlist-navigator
+      https://github.com/422658476/MPV-EASY-Player/blob/master/portable-data/scripts/playlistnoplayback.lua
+      https://github.com/occivink/mpv-gallery-view
+    }}}
+Mpv-Mplayer SectionLoop+Cropping[!!] {{{
+
+Quick question concerning mpv and mplayer - I have the documentation for it set in a file somewhere, but it might be easier to submit the question here: Let's say I wanted to play a video file with looping between two time-points, and also crop the video to a certain geometry specification. I know I can do this with vlc and set it interactively (via the Gui), but if I wanted to do that using either mpv or player, I suspect that could be specified as a directive directly from the command-line. Could you help me out on that?
+expand_more
+volume_up
+
+Absolutely! Both mpv and mplayer offer command-line options to achieve looping and cropping for your video playback. Here's how to accomplish it:
+
+Looping a Video between Time Points
+
+mpv:
+Use the -loop option along with the and end times (in seconds) to specify the loop range.
+
+Bash
+mpv -loop start_time-end_time video_file.mp4
+Use code with caution.
+content_copy
+Replace start_time and end_time with the actual starting and ending seconds of your desired loop.
+
+mplayer:
+Mplayer doesn't have a built-in looping option. However, you can achieve a similar effect using the -ao null option to mute the audio and loop the video playback with external tools. Here's an example using the sleep command:
+
+Bash
+mplayer -ao null -loop 0 video_file.mp4 & sleep ((end_time - start_time)) ; kill %1
+Use code with caution.
+content_copy
+This command first plays the muted video in a loop (-loop 0) using mplayer. The sleep command pauses for the duration of your loop ((end_time - start_time)) and then kills the mplayer process using its process ID (%1).
+
+Cropping the Video
+
+mpv:
+Use the --crop option followed by a colon (:) separated width and height specification (e.g., width:height).
+
+Bash
+mpv --crop width:height video_file.mp4
+Use code with caution.
+content_copy
+Replace width and height with the desired cropped dimensions.
+
+mplayer:
+Mplayer doesn't have a direct cropping option. However, you can achieve a similar effect by combining scaling and positioning with the -vf option. This requires some experimentation to get the exact crop you desire. Here's a basic example:
+
+Bash
+mplayer -vf scale=width:height video_file.mp4
+Use code with caution.
+content_copy
+This scales the video to the specified width and height. You might need to adjust positioning further using options like -af for horizontal and vertical adjustments.
+
+Combining Looping and Cropping:
+
+You can combine these options in your command line to achieve both looping and cropping simultaneously:
+
+Bash
+# mpv example
+mpv --crop width:height -loop start_time-end_time video_file.mp4
+
+# mplayer example (with sleep for looping)
+mplayer -vf scale=width:height -ao null -loop 0 video_file.mp4 & sleep ((end_time - start_time)) ; kill %1
+Use code with caution.
+content_copy
+Remember to replace placeholders with your specific values and adjust the scaling/positioning options in mplayer for the desired crop. While mplayer requires some workarounds, mpv offers a more straightforward approach for both looping and cropping using command-line options.
+
+}}}
+browse:web-text ----
+    TextbasedWebbrowsers(, Reveal|Impress.js)
+    ---- consolidation-list: lynx, links, Nyxt/Vimium(+?), w3m, qutebrowser ----  xterm
+    ~/Dropbox/rsc/data/lists/learnqna/vanki/lynx.txt
+    ~/RiderProjects/bluelegend76/rsc/data/lists/learnqna/vanki/lynx.txt
+browse:(file, web, im, mail) ----
+    Firefox/chrome(+Devtools), Evince, Okular, Thunar/Dolphin, Mutt, Shotwell,   exwm/im-viewer/pdftools-em
+}}}
+  gvim ../ref/comp/Editors.txt
+Sysadm(+wm) Redhat, nushell {{{
+  https://www.nushell.sh/cookbook/
+
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/{cb/bcb.index,sysadm/cmdl-fu.shell,cb/RegexCb,cb/regex-vim,cb/pshell}.txt
+  gvim -p ../ref/comp/cb/bcb.index.txt ../ref/comp/sysadm/cmdl-fu.shell.txt ../ref/comp/cb/RegexCb.txt ../ref/comp/cb/regex-vim.txt ../ref/comp/cb/pshell.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/{cb/bcb.index,sysadm/cmdl-fu.shell,cb/RegexCb,cb/regex-vim,cb/pshell}.txt
+
+  regex: (vim, emacs, python/js, grep-posix, find, ag|perl)  + C#
+
+
+  ¤¤ gvim -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{ssh,vnc-deskt,vbox,vera,termux,tasker}.txt
+  ¤¤ gvim -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{ssh,vnc-deskt,vbox,vera,termux,tasker}.txt
+  ¤¤ gvim -p comp/cb/{ssh,vnc-deskt,vbox,vera,termux,tasker}.txt
+}}}
+m/loffice (excel/calc + basic  +/base etc) {{{
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{moffice,loffice,latexcb}.txt
+                                                                   |
+                                                                =set to include impress.js, reveal.js (etc) =??(|**(!!))
+  gvim -p ../ref/comp/cb/moffice.txt ../ref/comp/cb/loffice.txt ../ref/comp/cb/latexcb.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{moffice,loffice,latexcb}.txt
+
+}}}
+.   ^-- markup: md, wiki, github-md, x-markd {{{
+    TODO: ADD INDEX-FILE[**]  Temp-Solution: Start off list in Loffice.Latex
+    org
+    Markdown
+      markdown extra
+    wiki markup
+    latex, mermaid
+    context, texinfo
+      plantuml
+    xml
+    docbook
+      json, yaml
+
+  gvim ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/xml/xml.txt
+  gvim comp/lang/xml/xml.txt
+  gvim ~/Dropbox/rsc/data/lists/ref/comp/lang/xml/xml.txt
+  gvim comp/lang/xml/xml.txt
+}}}
+--
+Git + Compile/Build, Deploy/Devops / CI, Testing (, disassembly) {{{
+  TODO/ADD: Compile/Build
+TODO: ADD MGIT + PTOOLS (FROM AT.GIT)
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{git,compile-build,Testing,deploy-devops,math-progr,algos,probltask-leetrosetta,disassembly}.txt
+  gvim -p ../ref/comp/cb/git.txt ../ref/comp/cb/compile-build.txt ../ref/comp/cb/Testing.txt ../ref/comp/cb/deploy-devops.txt ../ref/comp/cb/math-progr.txt ../ref/comp/cb/algos.txt ../ref/comp/cb/probltask-leetrosetta.txt ../ref/comp/cb/disassembly.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{git,compile-build,Testing,deploy-devops,math-progr,algos,probltask-leetrosetta,disassembly}.txt
+
+}}}
+
+@@ system {{{
+  __
+  ada/spark
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{asm,cppcb,dlangcb,rustcb,jcb,cscb,go-v}.txt
+                                                                      +including: go-v
+  gvim -p ../ref/comp/cb/asm.txt ../ref/comp/cb/cppcb.txt ../ref/comp/cb/dlangcb.txt ../ref/comp/cb/rustcb.txt ../ref/comp/cb/jcb.txt ../ref/comp/cb/cscb.txt ../ref/comp/cb/go-v.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{asm,cppcb,dlangcb,rustcb,jcb,cscb,go-v}.txt
+
+  --
+  ~/Dropbox/rsc/data/lists/ref/comp/cb/go-handson.txt
+  ~/Dropbox/rsc/data/lists/ref/comp/lang/vlang/vlang-man.check.txt
+  ~/Dropbox/rsc/data/lists/ref/comp/lang/vlang/vlang-methods.scratch.txt
+}}}
+@@ Funct + Lisp {{{
+  ____
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{clispcb,schemecb,clojure,haskell,sml-ocaml,fs}.txt
+                                                  +lfe(??)
+  gvim -p ../ref/comp/cb/clispcb.txt ../ref/comp/cb/schemecb.txt ../ref/comp/cb/clojure.txt ../ref/comp/cb/haskell.txt ../ref/comp/cb/sml-ocaml.txt ../ref/comp/cb/fs.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{clispcb,schemecb,clojure,haskell,sml-ocaml,fs}.txt
+
+elisp  / newlisp {{{
+  https://www.emacswiki.org/emacs/ElispCookbook
+}}}
+}}}
+
+
+
+.     asm, wasm {{{
+}}}
+@@ Db mongo, sql, nosql, graph {{{
+  __
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{Db.sql,db.graph,db.nosql}.txt
+  gvim -p ../ref/comp/cb/Db.sql.txt ../ref/comp/cb/db.graph.txt ../ref/comp/cb/db.nosql.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{Db.sql,db.graph,db.nosql}.txt
+
+}}}
+
+multimedia + media {{{
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{svganim,h5multimedia_canvas,imagickcb,ffmpegcb}.txt
+  gvim -p ../ref/comp/cb/svganim.txt ../ref/comp/cb/h5multimedia_canvas.txt ../ref/comp/cb/imagickcb.txt ../ref/comp/cb/ffmpegcb.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{svganim,h5multimedia_canvas,imagickcb,ffmpegcb}.txt
+
+  TODO  =CANVAS CHEATSHEETS(??)
+  gamedev
+    ~/Dropbox/rsc/data/lists/ref/comp/gamedev/levelup-gamedevbig.txt
+    --
+    ~/Dropbox/rsc/data/lists/ref/comp/gamedev/threejs03-gamedev.txt
+      ~/Empire/curr-desktop/gameprogr-gems1.pdf
+      ~/Empire/curr-desktop/gameprogr-gems6.pdf
+    ~/Empire/Doks/Comp/lang/webdev/js/mmedia/threejs/
+
+. {{{
+        svg
+        canvas
+    lilypond (!)
+    ## ~/legacy/empire-lasttransfer2022/empire-lasttransfer_2022-06/internals.pdf
+    ## ~/legacy/empire-lasttransfer2022/empire-lasttransfer_2022-06/internals.txt
+    #
+
+    aux = programs, media (etc)
+    audacity
+    vlc
+    mplayer
+    blender *
+    inkscape
+}}}
+}}}
+stat datasci || mlearn-ai {{{
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{stat-datasci,mlearn-ai}.txt
+  gvim -p ../ref/comp/cb/stat-datasci.txt ../ref/comp/cb/mlearn-ai.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{stat-datasci,mlearn-ai}.txt
+
+  gvim -p comp/cb/
+  comp/cb/stat-datasci.txt
+  comp/cb/mlearn-ai.txt
+  R gnuplot Datasci(!) {{{
+  . {{{
+  ~/Empire/curr-desktop/gnuplotcb.pdf
+      R
+  https://www.scribd.com/book/290055884/Python-Data-Science-Cookbook
+    https://www.scribd.com/book/272080010/Practical-Data-Science-Cookbook
+    https://www.scribd.com/book/253053167/Practical-Data-Analysis
+  }}}
+  }}}
+}}}
+  ../../../JupNoteb.binder.Tags1.txt
+--
+@@ scripting / web {{{
+. {{{
+h5, c3  Todo (=at top of scripting**(??))
+~/Empire/Doks/Comp/lang/webdev/h5/h5cb.pdf
+~/Empire/Doks/Comp/lang/webdev/c3/c3cb.pdf
+}}}
+  ____
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{jscb,h5c3,jqcb,phpcb,luacb,elixir}.txt
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{python,jscb,h5c3,jqcb,phpcb,luacb,elixir}.txt
+  gvim -p ../ref/comp/cb/jscb.txt ../ref/comp/cb/h5c3.txt ../ref/comp/cb/jqcb.txt ../ref/comp/cb/phpcb.txt ../ref/comp/cb/luacb.txt ../ref/comp/cb/elixir.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{jscb,h5c3,jqcb,phpcb,luacb,elixir}.txt
+
+    ## ~/Dropbox/rsc/data/lists/ref/comp/lang/erlang-elixir/elixir.txt
+    ## ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/erlang-elixir/elixir.txt
+    ## ~/Dropbox/rsc/data/lists/ref/comp/lang/erlang-elixir/elixir.txt
+  elixir / erlang (=Put into Webdev/Handheld) {{{
+      --
+      https://devhints.io/elixir
+        https://elixir-lang.org/getting-started/introduction.html#interactive-mode
+      https://github.com/vnegrisolo/cheat-sheet-elixir
+      https://www.programming-idioms.org/cheatsheet/Elixir
+      https://elixir-lang.org/docs.html
+      https://hexdocs.pm/elixir/Kernel.html
+      https://hexdocs.pm/elixir/File.html
+  }}}
+
+  ~/Empire/Doks/Comp/lang/lua/lua-game-development-cookbook.txt
+  ~/Empire/Doks/Comp/lang/lua/Gamedev-Lua.txt
+  ~/Empire/Doks/Comp/lang/lua/corona-webappwith.txt
+  ~/Empire/Doks/Comp/lang/lua/luaprogr-gems.txt
+    --
+    ~/Empire/Doks/Comp/Gamedev/webmob/lua-iosgamedev.pdf
+    ~/Empire/Doks/Comp/Gamedev/love-solar-corona/luagame-coronasdk.epub
+    ## ~/Empire/Doks/Comp/Gamedev/love-solar-corona/luagame-coronasdk.txt
+    ~/Empire/Doks/Comp/lang/lua/corona-buildgames.txt
+    ~/Empire/Doks/Comp/lang/lua/corona-sdk.txt
+    ~/Empire/Doks/Comp/lang/lua/corona-tutorial.txt
+    --
+    ~/Empire/Doks/Comp/lang/lua/corona-buildgames.pdf
+    ~/Empire/Doks/Comp/lang/lua/corona-sdk.pdf
+    ~/Empire/Doks/Comp/lang/lua/corona-tutorial.pdf
+. {{{
+TODO !!!! ~/Empire/curr-desktop/laravel5cb.pdf
+TODO   ~/Empire/curr-desktop/js-goodpractice.pptx
+              ~/Empire/curr-desktop/js-cleancode.pdf
+              ~/Empire/curr-desktop/js-cleanrobust.pdf
+                --
+              ~/Empire/curr-desktop/js-professional.pdf
+TODO !!   ~/Empire/curr-desktop/jsjsoncb.pdf
+
+--
+    lua
+    https://www.scribd.com/document/22065348/Lua-Programming-Gems
+    https://github.com/lua-cookbook/lua-cookbook/tree/master/src/book/en_US
+    https://github.com/lua-cookbook/lua-cookbook/wiki/The-table-of-contents
+    https://simion.com/info/lua_cookbook.html
+    https://www.lua.org/gems/ **(!**)
+    https://www.lua.org/gems/front.pdf
+
+        --
+    ~/Dropbox/rsc/data/lists/ref/comp/cb/go-handson.pdf
+    ~/Dropbox/rsc/data/lists/ref/comp/cb/go-handson.txt
+    ~/Dropbox/rsc/Doks/phone/gocb.txt
+    ~/Empire/Doks/Comp/lang/go-v/gocb.pdf
+    ~/Empire/curr-desktop/go-designpatt.pdf
+--
+    ~/Dropbox/rsc/Doks/phone/Comp/lang/elixcb.txt
+}}}
+}}}
+handheld / mobile (=android, ios, etc) {{{
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{androidcb-java,androidcb-kotlin,dart-flutter,ios}.txt
+  gvim -p ../ref/comp/cb/androidcb-java.txt ../ref/comp/cb/androidcb-kotlin.txt ../ref/comp/cb/dart-flutter.txt ../ref/comp/cb/ios.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{androidcb-java,androidcb-kotlin,dart-flutter,ios}.txt
+
+. {{{
+  ~/Dropbox/rsc/Doks/phone/Comp/lang/java/kotlin/kotlin-androiddevs.txt  #google-devs
+  ~/Dropbox/rsc/Doks/phone/Comp/lang/java/kotlin/kotlin-androiddev.txt
+  
+  --
+  dart+flutter  (=FLUTTER COOKBOOK)
+}}}
+}}}
+
+@@ nyq muHask csound scoll  pd chuck [!!!!] {{{
+  __
+  gvim -c '/.*@.*' -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{nyq,csound,scoll,hask-euterp,pd,chuck}.txt
+  gvim -p ../ref/comp/cb/nyq.txt ../ref/comp/cb/csound.txt ../ref/comp/cb/scoll.txt ../ref/comp/cb/hask-euterp.txt ../ref/comp/cb/pd.txt ../ref/comp/cb/chuck.txt
+    gvim -c '/.*@.*' -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{nyq,csound,scoll,hask-euterp,pd,chuck}.txt
+
+}}}
+-- fsharp / fstar / coq  agda
+  gvim -p ~/Dropbox/rsc/data/lists/ref/comp/cb/{fsharp,fstar,coq}.txt
+  gvim -p ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/cb/{fsharp,fstar,coq}.txt
+  gvim -p comp/cb/{fsharp,fstar,coq}.txt
+https://docs.scala-lang.org/cheatsheets/
+    prolog/mercury {{{
+
+        https://mercurylang.org/about/comparison_with_haskell.html
+        https://mercurylang.org/information/doc-release/faq.pdf
+        https://mercury-in.space/crash.html
+        https://mercurylang.org/documentation/papers/book.pdf
+        https://github.com/Mercury-Language/mercury/wiki/Tutorial
+        https://mercurylang.org/information/doc-release/reference_manual.pdf
+        https://mercurylang.org/information/doc-release/library.pdf
+        https://mercurylang.org/information/doc-release/transition_guide.pdf
+    }}}
+
+
+ps
+  gvim ~/Dropbox/rsc/data/lists/ref/comp/lang/ps/ps.txt
+  gvim ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/ps/ps.txt
+  gvim comp/lang/ps/ps.txt
+tj
+  gvim ~/Dropbox/rsc/data/lists/ref/comp/lang/tj/tj.txt
+  gvim ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/tj/tj.txt
+  gvim comp/lang/tj/tj.txt
+
+anki
+    vimscript
+solidity etc {{{
+  ~/Empire/curr-desktop/blockchain-byex.pdf
+}}}
+
+
+TODO (Etc) ----
+Files to create: [Or, Maybe create/move majority to Sysadm]
+    rsc/data/lists/ref/comp/cb/disassembly.txt  # Maybe move to System
+    rsc/data/lists/ref/comp/cb/h5c3,jqcb.txt
+
+https://overapi.com/  #php, python, java etc 'all cheatsheet collected'
+
+Clojure vs Elixir {{{
+___cloj
+___elix
+
+
+___cloj
+Clojure Data Structures: Code Examples
+Sure, here are some code examples demonstrating the syntax for different Clojure data structures:
+
+Vectors:
+
+(def fruit-basket ["apple" "banana" "orange"])
+(get fruit-basket 1) ;; => "banana"
+(conj fruit-basket "mango") ;; => ["apple" "banana" "orange" "mango"]
+
+Lists:
+
+(def shopping-list '(milk eggs bread))
+(first shopping-list) ;; => "milk"
+(rest shopping-list) ;; => '(eggs bread)
+(conj shopping-list "cheese") ;; => '(milk eggs bread cheese)
+
+Sets:
+
+(def unique-ids #{1 2 3 2 4})
+(contains? unique-ids 3) ;; => true
+(count unique-ids) ;; => 3
+(conj unique-ids 5) ;; => #{1 2 3 4 5}
+
+Maps:
+
+(def person-info {:name "Alice" :age 30 :city "New York"})
+(get person-info :name) ;; => "Alice"
+(keys person-info) ;; => [:name :age :city]
+(assoc person-info :occupation "software engineer") ;; => {:name "Alice" :age 30 :city "New York" :occupation "software engineer"}
+
+Keywords:
+
+(def my-keyword :my-unique-key)
+(keyword? my-keyword) ;; => true
+(:name {:name "Bob" :age 40}) ;; => "Bob"
+
+Atoms and Refs:
+
+(def counter (atom 0))
+(swap! counter inc) ;; => increments counter to 1
+@counter ;; => 1
+
+(def score (ref 0))
+(dosync (ref-set score 10)) ;; thread-safe way to set score to 10
+@score ;; => 10
+
+Sequences:
+
+(map inc [1 2 3]) ;; => (2 3 4)
+(filter even? [1 2 3 4]) ;; => (2 4)
+(range 5) ;; => (0 1 2 3 4)
+
+Lazy Sequences:
+
+(defn infinite-naturals [] (cons 1 (lazy infinite-naturals)))
+(take 5 (infinite-naturals)) ;; => (1 2 3 4 5)
+
+
+___elix
+List: Ordered, indexed collections similar to Clojure lists.
+
+fruits = ["apple", "banana", "orange"]
+
+# Access by index:
+head = fruits[0]  # "apple"
+
+# Add to the beginning:
+new_fruits = ["mango" | fruits]  # ["mango", "apple", "banana", "orange"]
+Use code with caution.
+Map: Unordered collections of key-value pairs similar to Clojure maps.
+
+person = %{ name: "Alice", age: 30, city: "New York" }
+
+# Access by key:
+name = person[:name]  # "Alice"
+
+# Add a new key-value pair:
+updated_person = Map.put(person, :occupation, "software engineer")
+
+Enum: Lazy sequences similar to Clojure lazy sequences.
+
+numbers = 1..10  # Creates an Enum from 1 to 10
+
+# Convert to a list:
+list_of_numbers = Enum.to_list(numbers)  # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Iterate over the Enum:
+Enum.each(numbers, &IO.puts/1)  # Prints each number on a new line
+
+Specialized Collections:
+
+Keyword: Represents unique, case-insensitive keys similar to Clojure keywords.
+
+:my_unique_key    # Defines a keyword
+Keyword.atom?(:my_unique_key)   # => true
+Use code with caution.
+Atom: Mutable single-value cell similar to Clojure atoms.
+
+counter = Atom.new(0)
+Process.sleep(1000)  # Simulate some delay
+Atom.get(counter)   # => 0 (initial value)
+Atom.update!(counter, &(&1 + 1))  # Increments counter to 1
+Atom.get(counter)   # => 1 (updated value)
+
+Process: Represents a running Erlang process (unique to Elixir).
+
+spawn fn ->
+  IO.puts "Hello from a separate process!"
+end
+
+# Processes run concurrently, so the output might not appear immediately
+
+Note: This is just a small sample of Elixir data structures. I encourage you to explore their documentation and experiment further to gain a deeper understanding of their capabilities and how to use them effectively in your projects.
+
+Remember, while syntax might differ slightly between languages, the core concepts of data structures often translate well. Use this overview as a stepping stone to further exploration and practical application!
+
+}}}
+
+
+ahotkey: smiley-codes (e.g. in Teams) {{{
+
+Quick question about Teams-chats: Is there a way (similarly as in Discord) to be able to write Emojis with shortcodes as in :smile: or the like, i.e. instead of having to click on the emoji-icon and selecting the emoji by hand?
+
+Unfortunately, Microsoft Teams doesn't natively support emoji shortcodes like :smile: in the same way Discord does.  You have to use the emoji picker (clicking the emoji icon) or copy and paste emojis.
+
+There's no built-in setting or configuration to enable shortcodes.  It's a frequently requested feature, but Microsoft hasn't implemented it yet.
+
+Workarounds (Not Ideal):
+
+    Copy and Paste: You can copy emojis from other sources (like a website or emoji keyboard) and paste them into Teams. This isn't as convenient as shortcodes but is a workaround.
+
+    Third-party Apps (Use with Caution):  There might be some third-party apps or bots that claim to add this functionality. However, exercise extreme caution when using third-party apps with Teams, especially those that interact with your messages. Ensure they are reputable and from a trusted source, as they could potentially pose a security risk.  I can't recommend any specific ones as their availability and reliability can change.
+
+    Auto-correct (Limited): Teams' auto-correct feature might sometimes replace certain text combinations with emojis. For example, typing :) often turns into a smiley face.  However, this is very limited and doesn't cover a wide range of emojis.
+
+In short:  While shortcodes are a popular request, they are not currently a standard feature in Microsoft Teams.  The workarounds are not ideal, and using third-party apps should be done with caution.
+
+Is there a website or small service I can use for writing the shortcode/name for an emoji-character and get it translated to the emoji which can then be pasted into Teams? I.e. I could have an instance of Discord open, but that would mean I would receive notifications in the background.
+
+You're looking for a simple emoji shortcode-to-emoji translator that you can use without the overhead of a full application like Discord.  Here are a few options and approaches you could take:
+
+    Online Emoji Keyboard with Search: Many websites provide searchable emoji keyboards.  You can type in a keyword (like "smile" or "thumbs up") and find the emoji you want.  Then, just copy and paste it into Teams.  A quick search for "emoji keyboard" will give you lots of options.  This is probably the quickest and easiest approach.
+
+    Text Replacement Tool/Script (Advanced): If you're comfortable with a little bit of setup, you could create a simple text replacement tool or script.  This would allow you to type shortcodes and have them automatically replaced with emojis.  Here's a basic idea:
+
+        JavaScript (Browser-based): You could create a small HTML page with a text area.  As you type, JavaScript could listen for specific shortcodes and replace them with the corresponding emoji.  This would only work in the browser where you have the page open.
+
+        AutoHotkey (Windows): If you're on Windows, AutoHotkey is a powerful scripting tool that can automate text replacement.  You could define hotkeys or text triggers that would replace your shortcodes with emojis system-wide.
+
+        Other scripting languages: Similar tools exist for other operating systems.
+
+    Dedicated Emoji Shortcode Website (Ideal but Rare):  While I couldn't find a readily available, dedicated website specifically for emoji shortcode translation, this would be the ideal solution.  It would be a simple webpage with a text input where you type the shortcode and it instantly displays the emoji.  If you have some web development skills, this could be a fun little project to create!
+
+Example (Conceptual JavaScript):
+JavaScript
+
+const shortcodes = {
+  ":smile:": "😊",
+  ":thumbsup:": "👍",
+  ":heart:": "❤️"
+};
+
+const textarea = document.getElementById("myTextarea");
+
+textarea.addEventListener("input", function() {
+  let text = textarea.value;
+  for (const code in shortcodes) {
+    text = text.replace(code, shortcodes[code]);
+  }
+  textarea.value = text;
+});
+
+This is a very basic example, but it shows the general idea.  You would need to expand it to handle more shortcodes and potentially improve the replacement logic.
+
+For most users, using an online emoji keyboard with search will probably be the most practical solution.  If you need something more automated, a text replacement tool or script might be worth exploring.
+
+The autohotkey solution seems attractive to me, especially if it can replace the shortcode names for me system-wide with the emoji, i.e. if I had that script running or installed, it seems like (at least from your description) that I could actually use that to simulate that Teams had a emoji shortcodes-parser installed.
+
+You're absolutely right. AutoHotkey is a great choice for this because it can work system-wide.  With a well-crafted AutoHotkey script, you can indeed simulate emoji shortcodes in almost any application, including Microsoft Teams.
+
+Here's a basic AutoHotkey script to get you started:
+AutoHotkey
+
+::smile::😊
+::thumbsup::👍
+::heart::❤️
+::joy::😂
+::winking::😉
+::blush::😊
+::unamused::😒
+::angry::😠
+::cry::😢
+::sleepy::😴
+; Add more shortcodes as needed
+
+How to Use:
+
+    Install AutoHotkey: If you don't have it already, download and install AutoHotkey from https://www.autohotkey.com/.
+
+    Create a Script: Save the code above as a .ahk file (e.g., emoji_shortcodes.ahk).
+
+    Run the Script: Double-click the .ahk file to run the script.  You should see a small green "H" icon in your system tray (notification area).
+
+    Test: Open Microsoft Teams (or any other application) and type :smile:.  As soon as you type the closing colon, AutoHotkey should replace it with the 😊 emoji.
+
+Explanation:
+
+    ::shortcode::emoji: This is the basic syntax for AutoHotkey's text replacement.  When you type the shortcode (e.g., :smile:), AutoHotkey automatically replaces it with the emoji.
+
+    Adding More Emojis: Just add more lines to the script following the same format.  You can find lists of emoji shortcodes online or create your own.  Make sure the shortcodes don't conflict with anything else you type regularly.
+
+    Unicode Support: AutoHotkey handles Unicode characters well, so you can directly use emojis in your script.
+
+    Running on Startup: To have the script run automatically when you start your computer, you can create a shortcut to the .ahk file and place it in your Startup folder.
+
+Important Considerations:
+
+    Shortcode Collisions: Be mindful of potential conflicts.  If you use a shortcode that's also used in regular text, it will be replaced with the emoji.  Using longer or more unique shortcodes (e.g., ::my_smile:: instead of ::smile::) can help avoid this.
+
+    Finding Emoji Unicode: You can find the Unicode for emojis on websites like https://emojipedia.org/. Copy the emoji and paste it directly into your AutoHotkey script.
+
+    Script Organization: As your list of shortcodes grows, consider organizing your script into sections or using a more structured approach for easier management.
+
+This AutoHotkey solution is probably the closest you'll get to having native emoji shortcode support in Teams without relying on external services or risky third-party apps.  It's a powerful and flexible way to customize your typing experience.
+
+Would there also be a way of only running or starting that autohotkey-script only for certain apps like Teams, thereby obviating the need to be constantly vigilant about using the particular hotcodes in other apps?
+
+Yes, absolutely! You can configure your AutoHotkey script to only activate in specific applications, like Microsoft Teams. This is a crucial step to avoid unintended emoji replacements in other programs. Here's how you can do it:
+AutoHotkey
+
+#IfWinActive ahk_exe Teams.exe  ; Or the window title, see below
+
+::smile::😊
+::thumbsup::👍
+::heart::❤️
+; ... other shortcodes
+
+#IfWinNotActive ahk_exe Teams.exe ; Deactivates the above hotkeys when Teams is not active
+
+; You can have other hotkeys that are always active here
+
+^+n:: ; Example: Ctrl+Shift+N always opens a new note
+    SendInput, ^n
+return
+
+Explanation:
+
+    #IfWinActive ahk_exe Teams.exe: This directive tells AutoHotkey to only apply the subsequent hotkeys (the emoji shortcodes) when a window with the executable name Teams.exe is active.  This is the most reliable way to target a specific application.
+
+    #IfWinNotActive ahk_exe Teams.exe: This deactivates the hotkeys when the specified window is not active.  It's very important to include this, otherwise your shortcodes will work everywhere.
+
+    Finding the Executable Name (Teams.exe): The easiest way to find the executable name is:
+        Run the application (Teams in this case).
+        Right-click the AutoHotkey icon in the system tray (the green "H").
+        Select "Window Spy".
+        The Window Spy tool will show you information about the active window, including the "ahk_exe" value. This is what you need to put in the #IfWinActive directive.
+
+    Alternative: Using Window Title:  If for some reason the ahk_exe method doesn't work reliably, you can use the window title.  However, window titles can change, so this is generally less reliable.  You would use #IfWinActive Microsoft Teams (or whatever the exact window title is).  Use Window Spy to get the exact title.
+
+    Hotkeys outside the conditional block: Hotkeys defined outside the #IfWinActive block will be always active.  This is useful for general hotkeys that you want to work in all applications.  The example above shows Ctrl+Shift+N opening a new note regardless of which window is active.
+
+How it Works:
+
+AutoHotkey constantly monitors the active window. When it detects that the specified application (Teams.exe) is active, it enables the hotkeys defined within the #IfWinActive block.  When a different window becomes active, it disables those hotkeys.
+
+Example with Window Title (Less Reliable):
+AutoHotkey
+
+#IfWinActive Microsoft Teams ; Less reliable, as window titles can change
+
+::smile::😊
+; ... other shortcodes
+
+#IfWinNotActive Microsoft Teams
+
+; Always active hotkeys
+
+By using the #IfWinActive directive with the correct executable name, you can ensure that your emoji shortcodes only work within Microsoft Teams, preventing them from interfering with other applications.  This is a much cleaner and more practical solution.
+
+Is there a simple way to run the script from the PShell command-line, i.e. instead of having to click on it to activate it, and, is there also a way to shut the script down from PShell?
+
+Yes, you can absolutely control your AutoHotkey scripts from the PowerShell command line. This allows you to start and stop them programmatically, which is very useful for automation or integration with other scripts.
+
+Starting the Script from PowerShell:
+PowerShell
+
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" "C:\path\to\your\script.ahk"
+
+    Replace "C:\Program Files\AutoHotkey\AutoHotkey.exe" with the actual path to your AutoHotkey executable if it's different.
+    Replace "C:\path\to\your\script.ahk" with the full path to your AutoHotkey script file.
+
+Example:
+PowerShell
+
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" "C:\Users\YourName\Documents\emoji_shortcodes.ahk"
+
+Stopping the Script from PowerShell:
+
+This is a little more involved because you need to identify the process ID (PID) of the running AutoHotkey script.  Here's how you can do it:
+PowerShell
+
+# Get the PID of the AutoHotkey script
+$pid = Get-Process -Name "AutoHotkey" | Where-Object {$_.MainWindowTitle -like "*emoji_shortcodes.ahk*"} | Select-Object -ExpandProperty Id
+
+# Stop the process
+if ($pid) {
+  Stop-Process -Id $pid -Force
+  Write-Host "AutoHotkey script stopped."
+} else {
+  Write-Host "AutoHotkey script not found."
+}
+
+Explanation:
+
+    Get-Process -Name "AutoHotkey": This gets all running processes with the name "AutoHotkey".
+
+    Where-Object {$_.MainWindowTitle -like "*emoji_shortcodes.ahk*"}: This filters the processes to find the one whose window title contains the name of your script file.  This is how we identify the specific script we want to stop.  Important: Make sure your script's file name is unique enough to avoid accidentally stopping other AutoHotkey scripts.
+
+    Select-Object -ExpandProperty Id: This extracts the process ID (PID) of the matching process.
+
+    Stop-Process -Id $pid -Force: This stops the process with the given PID. The -Force parameter ensures the process is stopped even if it's unresponsive.
+
+    Error Handling: The if ($pid) block ensures that the script only tries to stop the process if it was found.  This prevents errors if the script is not running.
+
+Combining Start and Stop:
+
+You can easily combine these commands into a PowerShell script to start and stop your AutoHotkey script as needed.
+
+Example PowerShell Script (start_stop_emoji.ps1):
+PowerShell
+
+# Start the script
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" "C:\Users\YourName\Documents\emoji_shortcodes.ahk"
+
+# ... do something ...
+
+# Stop the script (later in your PowerShell script)
+$pid = Get-Process -Name "AutoHotkey" | Where-Object {$_.MainWindowTitle -like "*emoji_shortcodes.ahk*"} | Select-Object -ExpandProperty Id
+if ($pid) {
+  Stop-Process -Id $pid -Force
+  Write-Host "AutoHotkey script stopped."
+} else {
+  Write-Host "AutoHotkey script not found."
+}
+
+Now you can run this PowerShell script to start and stop your AutoHotkey script without manually clicking on the .ahk file.  This is much more flexible and allows you to integrate your emoji shortcodes into automated workflows.
+
+}}}
+Browserextension Search: blinking highlight {{{
+
+Quick question for an interesting little task I'd like to solve: Some times when I search on a web-page (using c-f, and possibly thereafter using c-g / cs-g to go to the next/previous match) the highlight can sometimes be tricky to see. The task that I would like to accomplish is to be able to push some other key-combination or running a script or something that makes the highlighted part blink, thereby making it easier to find. Are you with me so far?
+
+Yes, I understand perfectly! You want to create a way to make the currently highlighted search result on a webpage blink, to make it more visually prominent. This is a clever idea for improving the visibility of search results.
+
+Here's a breakdown of how you could approach this, along with potential solutions:
+
+Conceptual Approaches:
+
+    Browser Extension (Most Powerful and Flexible):
+        A browser extension would have the most direct access to the page's DOM (Document Object Model) and CSS.
+        You could listen for a specific key combination (e.g., Ctrl+Shift+B) and then:
+            Identify the currently highlighted element (this can be a bit tricky, as the exact method depends on the browser's search implementation).
+            Add a CSS class to the highlighted element that makes it blink (e.g., by toggling its opacity or background-color rapidly).
+            Remove the blinking class after a short period.
+
+    User Script (Tampermonkey/Greasemonkey):
+        Similar to a browser extension, user scripts can modify the behavior of webpages.
+        They are generally easier to create than full browser extensions but have slightly more limited access.
+        You could use a user script to inject JavaScript into the page that listens for your key combination and performs the blinking effect.
+
+    AutoHotkey (Windows-Specific, Less Direct):
+        AutoHotkey can automate keyboard and mouse actions, but it has limited direct access to the webpage's DOM.
+        You could potentially use AutoHotkey to:
+            Simulate pressing Ctrl+F to activate the browser's search.
+            Use image recognition or coordinate-based mouse clicks to try to identify the highlighted element (this is very unreliable and fragile).
+            Simulate pressing Tab or other keys to try to move the focus to the highlighted element.
+            Then try and change the color of the element with an external tool.
+        This approach is the most difficult and least reliable, but it might be possible for very specific scenarios.
+
+    External Javascript Injection (Developer tools):
+        If you have the dev tools open, you can paste javascript directly into the console, and then run it. This would be a very temporary solution, and not very user friendly.
+
+Implementation Details (Browser Extension/User Script):
+
+    Identifying the Highlighted Element:
+        This is the trickiest part. Browsers don't have a standard API for accessing the currently highlighted search result.
+        You might need to use heuristics or inspect the DOM to find elements that have a specific CSS class or style applied by the browser's search.
+        For example, you could try to find elements with a background-color that's different from the default page background or that have a specific class name.
+
+    Creating the Blinking Effect:
+        Use CSS animation or JavaScript's setInterval to toggle the element's opacity or background-color rapidly.
+        Example CSS:
+    CSS
+
+    .blinking {
+        animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+        to {
+            visibility: hidden;
+        }
+    }
+
+    Key Combination Handling:
+        Use JavaScript's addEventListener to listen for your key combination (e.g., Ctrl+Shift+B).
+        When the key combination is pressed, trigger the blinking effect.
+
+Recommendation:
+
+For the best results, I recommend creating a browser extension or a user script. These approaches provide the necessary access to the webpage's DOM and allow you to implement the blinking effect reliably.
+
+If you are not comfortable with creating a browser extension, then using the developer tools to inject some javascript that does the blinking effect would be the next best option.
+
+Remember that identifying the highlighted element is the most challenging part, and you might need to experiment with different approaches depending on the browser and the website you're working with.
+Your saved info
+Info you asked Gemini to save
+
+A browser extension sounds like a really fun and neat project, although I'd be happy to explore the greasemonkey/tampermonkey frameworks as well, at least further down the line. I've been keen to look at those, and I know they can do some quite interesting things when it comes to automation and such.
+
+Excellent! A browser extension is indeed a fun and rewarding project. Let's focus on that for now, and we can definitely explore Tampermonkey/Greasemonkey later.
+
+Here's a step-by-step guide to get you started with creating a simple browser extension that implements the blinking highlight feature:
+
+1. Set up your Development Environment:
+
+    Choose a Browser: Chrome, Firefox, or Edge are good choices. For this example, I'll use Chrome, but the concepts are similar for other browsers.
+    Create a Project Folder: Create a new folder on your computer to store your extension files (e.g., blinking-highlight-extension).
+
+2. Create the Manifest File (manifest.json):
+
+    Inside your project folder, create a file named manifest.json.
+    Paste the following code into manifest.json:
+
+JSON
+
+{
+  "manifest_version": 3,
+  "name": "Blinking Highlight",
+  "version": "1.0",
+  "description": "Makes the current search highlight blink.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "toggle-blink": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+B"
+      },
+      "description": "Toggle blinking highlight"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
+
+    Explanation:
+        manifest_version: Specifies the version of the manifest format.
+        name, version, description: Basic information about your extension.
+        permissions: Declares the permissions your extension needs. activeTab allows the extension to access the currently active tab, and scripting allows injecting JavaScript.
+        action: Specifies the popup HTML file (we'll create this later).
+        commands: Defines the keyboard shortcut (Ctrl+Shift+B) to trigger the blinking.
+        background: specifies the background worker.
+
+3. Create the Background Script (background.js):
+
+    Inside your project folder, create a file named background.js.
+    Paste the following code into background.js:
+
+JavaScript
+
+chrome.commands.onCommand.addListener((command, tab) => {
+  if (command === "toggle-blink") {
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      function: toggleBlink
+    });
+  }
+});
+
+function toggleBlink() {
+  let highlightedElement = document.querySelector(".highlighted"); // You might need to change this selector
+
+  if (!highlightedElement) {
+    // Attempt to find the highlighted element using other methods if the above fails
+    const searchResultElements = document.querySelectorAll('*:not(script):not(style):not(link)');
+    for(const element of searchResultElements){
+        const bgColor = window.getComputedStyle(element).backgroundColor;
+        if(bgColor === 'rgb(255, 255, 0)'){ // common highlight color
+            highlightedElement = element;
+            highlightedElement.classList.add('highlighted');
+            break;
+        }
+    }
+  }
+
+  if (highlightedElement) {
+    highlightedElement.classList.toggle("blinking");
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = `
+      .blinking {
+        animation: blink 1s steps(2, start) infinite;
+      }
+
+      @keyframes blink {
+        to {
+          visibility: hidden;
+        }
+      }
+    `;
+    document.head.appendChild(styleSheet);
+  } else {
+    alert("No highlighted element found.");
+  }
+}
+
+    Explanation:
+        chrome.commands.onCommand: Listens for the keyboard shortcut.
+        chrome.scripting.executeScript: Injects the toggleBlink function into the active tab.
+        toggleBlink:
+            Tries to find the highlighted element (you might need to adjust the CSS selector).
+            Adds or removes the blinking class.
+            Adds the CSS animation to the page.
+            Displays an alert if no highlighted element is found.
+
+4. Load the Extension:
+
+    Open Chrome and go to chrome://extensions/.
+    Enable "Developer mode" (toggle switch in the top right corner).
+    Click "Load unpacked".
+    Select your project folder.
+
+5. Test the Extension:
+
+    Open a webpage and perform a search (Ctrl+F).
+    Press Ctrl+Shift+B.
+    The highlighted element should start blinking.
+
+Important Notes:
+
+    Finding the Highlighted Element: The code uses .highlighted as a class name, and also tries to find a yellow background color. Browsers and websites use different methods for highlighting search results. You might need to inspect the DOM of the websites you use to find the correct CSS selector or attributes.
+    Error Handling: The code includes basic error handling (alert if no element is found). You can improve this further.
+    Popup (Optional): The manifest.json includes popup.html, but you can remove that if you don't need a popup.
+
+This is a basic implementation to get you started. You can enhance it with more features and refine the logic to work on more websites.
+
+Superb. A follow-up question: Would there be a way of making some extensions, amendments, or maybe use something like code-generation and conditional compilation with languages like Dlang (that I'm at least superficially versed in, and know some people in the community really well)?
+
+Yes, absolutely! You can definitely explore ways to enhance your browser extension using techniques like code generation and conditional compilation. Dlang, with its powerful metaprogramming capabilities, could play a significant role in this. Here's how you can approach it:
+
+1. Code Generation (Dlang):
+
+    Generating CSS Selectors: As we discussed, finding the highlighted element is the most challenging part. You could create a Dlang script that generates a configuration file (e.g., JSON or a Dlang module) containing CSS selectors for different websites. This script could:
+        Read website-specific configurations from a file or database.
+        Use Dlang's string manipulation and templating features to generate the appropriate CSS selectors.
+        Output the generated configuration in a format that your JavaScript extension can use.
+    Generating JavaScript Code: You could also use Dlang to generate parts of your JavaScript code, especially if you have repetitive patterns or logic.
+        For example, you could generate code to handle different highlighting styles or to adapt to variations in website layouts.
+    Generating Manifest Data: For more complex extensions, you could generate parts of the manifest file based on configuration or build settings.
+
+2. Conditional Compilation (Dlang):
+
+    Platform-Specific Code: If you plan to support multiple browsers (Chrome, Firefox, Edge), you can use Dlang's conditional compilation features to generate platform-specific code.
+        For example, you might need to use different APIs or CSS selectors for different browsers.
+    Feature Flags: You can use conditional compilation to enable or disable features based on build settings or user preferences.
+        For example, you could have a "debug mode" that enables extra logging or visualization.
+    Generating Different Extension Versions: If you plan to distribute different versions of your extension (e.g., a free version with limited features and a paid version with more features), you can use conditional compilation to generate the different versions from a single codebase.
+
+3. Integration with JavaScript Extension:
+
+    Build Process: You'll need to set up a build process that:
+        Runs your Dlang code generation scripts.
+        Compiles your Dlang code (if necessary).
+        Copies the generated files (JavaScript, CSS, configuration) into your extension's project folder.
+        Packages the extension for distribution.
+    Communication: Your Dlang-generated code (e.g., configuration files) will need to be accessible to your JavaScript extension.
+        You can use JSON files, Dlang modules, or other data formats to exchange information.
+
+Example (Conceptual Dlang Code Generation):
+Code snippet
+
+import std.stdio;
+import std.json;
+import std.string;
+
+void main() {
+    // Example website configurations
+    auto websites = [
+        ["www.example.com", ".example-highlight"],
+        ["www.another.com", "#search-result"]
+    ];
+
+    // Generate JSON configuration
+    auto config = JSONValue.object;
+    foreach (website; websites) {
+        config[website[0]] = JSONValue(website[1]);
+    }
+
+    // Write to file
+    File("website_selectors.json", "w").writeln(config.toString());
+}
+
+Example (Conceptual JavaScript Extension):
+JavaScript
+
+// Load the generated configuration
+fetch("website_selectors.json")
+    .then(response => response.json())
+    .then(selectors => {
+        // Use the selectors to find the highlighted element
+        const selector = selectors[window.location.hostname];
+        if (selector) {
+            const highlightedElement = document.querySelector(selector);
+            // ... rest of the blinking logic ...
+        }
+    });
+
+Benefits of Using Dlang:
+
+    Metaprogramming: Dlang's metaprogramming features allow you to generate code at compile time, reducing runtime overhead and improving performance.
+    String Manipulation: Dlang has excellent string manipulation capabilities, which are useful for generating code and configuration files.
+    Cross-Platform: Dlang can be compiled to run on multiple platforms, making it suitable for generating code for different browsers.
+    Performance: Dlang is a compiled language, which can provide better performance than interpreted languages like JavaScript for complex code generation tasks.
+
+By combining Dlang's metaprogramming capabilities with JavaScript's browser integration, you can create powerful and flexible browser extensions that adapt to different websites and platforms.
+
+Even though this is a very small example, would I be able to explore and use languages like ReasonML and PureScript? I.e. I know that it might be overkill for this type of simple tasks, but I'm really keen on exploring and learning about them, and small projects would be great to start with. Or (just maybe) one (or even both) of these languages might contain features that can be beneficial, even for a small task like this.
+
+Yes, absolutely! You can definitely explore and use languages like ReasonML and PureScript for your browser extension project, even though it might seem like overkill for a simple task. In fact, using them for smaller projects is a fantastic way to learn and get comfortable with their unique features.
+
+Here's how you can approach using ReasonML and PureScript in your browser extension, along with potential benefits:
+
+1. ReasonML (Now Rescript):
+
+    Benefits:
+        Strong Type System: ReasonML (now Rescript) has a robust type system that can help you catch errors early in development. This is especially useful for ensuring that your code correctly manipulates the DOM and handles different website structures.
+        JavaScript Interoperability: ReasonML compiles to clean, readable JavaScript, making it easy to integrate with your extension's logic.
+        React Integration (Optional): If you plan to add a more complex UI to your extension (e.g., a popup with settings), ReasonML's React bindings can be very helpful.
+        Performance: ReasonML's compiled JavaScript is often performant.
+
+    How to Use:
+        You can use the ReasonML compiler (Rescript compiler) to compile your ReasonML code to JavaScript.
+        Integrate the generated JavaScript files into your extension's project.
+        Use ReasonML to implement the logic for finding the highlighted element and applying the blinking effect.
+
+2. PureScript:
+
+    Benefits:
+        Functional Programming: PureScript is a purely functional language, which can lead to more predictable and maintainable code.
+        Strong Type System: PureScript's type system is even more powerful than ReasonML's, providing advanced features like type classes and higher-kinded types.
+        JavaScript Interoperability: PureScript compiles to clean, readable JavaScript.
+        Excellent Libraries: PureScript has a growing ecosystem of libraries for common tasks, including DOM manipulation.
+
+    How to Use:
+        Use the PureScript compiler (pulp) to compile your PureScript code to JavaScript.
+        Integrate the generated JavaScript files into your extension's project.
+        Use PureScript to implement the logic for your extension.
+
+Potential Benefits for a Small Task:
+
+    Learning Experience: Using these languages for a small project provides a low-pressure environment to learn their syntax, features, and tooling.
+    Type Safety: Even for a simple task, type safety can help prevent subtle errors that might be difficult to catch with JavaScript alone.
+    Code Maintainability: Functional programming and strong type systems can lead to more maintainable code, even for small projects.
+    Exploration of Advanced Features: You can explore advanced features like type classes (PureScript) or React bindings (ReasonML) even in a small project.
+
+Integration:
+
+    For both languages, you will compile the code to javascript, and then include the javascript in your extension.
+    You will need to setup a build process, that can compile your code to javascript. This can be done with npm scripts, or other build tools.
+
+Considerations:
+
+    Learning Curve: ReasonML and PureScript have steeper learning curves than JavaScript.
+    Tooling: You'll need to set up the necessary tooling for compiling and integrating your code.
+    Bundle Size: Depending on the libraries you use, the generated JavaScript code might be slightly larger than hand-written JavaScript.
+
+Recommendation:
+
+If you're eager to learn functional programming and strong type systems, using ReasonML or PureScript for your browser extension is a great idea. Start with a small part of the extension's logic and gradually expand your use of these languages.
+
+Even though it might be considered overkill, the experience you gain from using these languages will be invaluable for future projects.
+
+}}}
+
+

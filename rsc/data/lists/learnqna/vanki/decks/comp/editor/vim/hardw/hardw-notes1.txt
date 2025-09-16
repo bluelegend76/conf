@@ -1,0 +1,315 @@
+
+	----
+find the location and name of the (rc-)file (on your system)
+{{{
+    :echo $MYVIMRC
+	--
+	vscrhardw-p_
+	}}}
+read help for echo and echom
+{{{
+    :help echo
+    :help echom
+      (tip: actually do(!) this)
+	--
+	vscrhardw-p1(+19=p20)
+	}}}
+Persistent Echoing (+Listing|Checking the Echoes afterwards) (*!)
+{{{
+    :echom "Hello again, world!"
+    :messages
+      (= are good for debug-printouts(!))
+	--
+	vscrhardw-p1
+	}}}
+[idea for use of echoing etc fr. vimrc]
+{{{
+    display a welcome-message
+    display top fr. | all of vanki-dailies(!)
+	--
+	vscrhardw-p2
+	}}}
+setting options (!)
+{{{
+    :set number / nonumber
+    :set number!
+     --
+    :set tw=35
+     -- --
+    :set number numberwidth=6
+	--
+	vscrhardw-p3,,p4
+	}}}
+Checking Options
+{{{
+    :set number?
+     --
+    :set tw?
+    :set tw= +Tab|c-d
+    :set tw
+	--
+	vscrhardw-p3,p4
+	}}}
+    ----
+
+-- mapping ! --
+
+    ----
+Special Characters (=for mapping)
+{{{
+    = <Space>, <CR>, <Bar>  etc
+      (=+ for mousewheel etc>
+	--
+	vscrhardw-p6
+	}}}
+spec.char: Ctrl-D  *
+{{{
+    <c-d>
+	--
+	vscrhardw-p6
+	}}}
+((comments in vim mappings  T ))
+{{{
+    Mapping keys is one of the places where Vim comments don't work.  (!!)
+	--
+	vscrhardw-p6,p7
+	}}}
+[reset a mapped key // reset all(!) mapped keys] (!)
+{{{
+    unmap, iunmap (etc) // mapclear!
+	--
+	vscrhardw-p7
+	}}}
+5
+{{{
+    
+	--
+	vscrhardw-p8
+	}}}
+
+
+Note!! magnificat.vim  =To be done by end of Book
+[+Note as going through the book(!) =Areas to use in new Vankiscripts 1.0(!!)]
+
+
+
+  -- p8
+    map = nmode + vmode
+     :unmap X
+     :unmap dd
+  -- p9
+    (( i_to upper ))
+  -- p10
+    'non-recursive' mappings
+    -nore- = strict mapping
+  -- p12
+    [[ read  :h unmap ]]
+  -- p13
+    mappable keys  (+'follow my leader')
+    ((+seqs))
+    :let mapleader = "-"
+  -- p14
+    let maplocalleader = "\\"
+  -- p15
+    ,ev (or the like) = edit rc
+    ,sv
+  -- p16
+    :h myvimrc
+  -- p17
+    abbrevs = ins, cmd, replace(-modes)
+    iabbrev 1 one  (+type space, '.', etc(!!))
+        ((+query iskeyword (!!)))
+  -- p18
+        (=not num, char or '_') (*)
+    (+custom email, copyright, etc)
+  -- p19
+    [+some pieces of text you write|insert often](!)
+  -- p21
+    (noremap H / L  ??)
+  -- p22
+    c-c  =Esc
+  -- p23
+    <nop>
+  -- p24
+    Buflocal Opts + Maps
+     ** <buffer> <localleader>
+  -- p25
+    :setlocal wrap
+        (+checking :h = 'if can be set locally')
+    (:lcd)
+  -- p26
+    [[ buffer-maps shadowing general maps ]]
+        (+3 reading-assignments(!))
+  -- p27
+    AUCOMMANDS
+      'write file each time starts new one'
+    autocmd BufNewFile * :write   [='no <cr> etc.'(??)]
+            event      patt
+                         cmd|actions
+    ((+ some "#%# ex.s)
+  -- p28
+    --- --- *.txt ---
+  -- p29
+    BufWritePre
+    gg=G
+    12.3 Multiple Events   event1,event2
+      'A common idiom '(in Vim scripts)  (+ex.s)
+    12.4 FileType Events (**)
+  -- p31
+    Snippets System (=bufloc. abbrevs + FileType)  **
+  -- p32
+    AuCmdGroups ** + clearing a group
+      autocmd!
+      (:h autocmd-groups)
+  -- p35
+    O-maps ***  [=provide movem. definition  to a pending operator]
+      :onoremap p i(
+    'think\nof it like this'
+      :h omap-info
+    + '15.2' + 15.3 **  in(  il(
+  -- p39
+    Execute *  (+p73)
+  -- p42
+        [[status lines]]
+  -- p45
+    Responsib. Coding (= commenting, grouping etc)
+  ---------------------
+  ---------------------
+    VIML *
+  -- p48  vars  (let vs set, l:var
+  -- p51  var scoping  (b:hello, 
+    
+    evince -p 2 ~/Dropbox/rsc/Doks/vimscrhardw-quickreviewindex2021-2022.pdf &
+
+  -- p52  if  *  else, elseif
+            endif
+  -- p55  Comparison
+          if 10 > 1
+              if 1 == "1"
+         ==# ==?
+  -- p58  FUNCTIONS
+       function Crap(arg)
+         ...
+     :call
+     :echom
+        return
+        --------->> (...)
+     let a:foo = "Nope"
+  -- p64  Numbers  (=incl. 0xff
+            e+3  [=exponent]
+            e-2
+       coercion
+       division
+  -- p67  Strings
+     echom "Hello, " . "world"
+       \n
+          '    '
+  -- p70  str functs
+      strlen(
+      len(
+      split(
+      join(
+      tolower(
+      toupper(
+  -- p73  Execute, part 2 **
+      [+ with normal **  p75+
+          normal!
+  -- p78  Execute Normal! ****
+            \\+   \<cr>
+      'part 1' . "part 2"
+     :exe "__" . '__' . "__"
+---- p83  Grep Operator, Part 1 ----------
+       sketch
+            <cword>
+            <cWORD>
+       shellescape()
+     :echom expand("%")  (++)(!!)
+  -- p88  Grep Operator, Part 2
+      .
+    =separate scriptfile *********
+     nnoremap ****
+       .
+    function! GrepOperator(type)
+       echom "Test"
+    endfunction
+            |
+        [+A map to Add this skeleton**(*)]
+  -- p83  Grep Operator, Part 3 *****!!!
+     saving registers
+     namespacing w. <SID>
+        + s:GrepOperator   *****
+------------------------------------------
+  -- p96  lists *
+      [1,2,3]
+     indexing
+     slicing
+        l1 + l2 =concat
+     len(
+     get(
+     index(
+     join(
+     reverse(
+  -- p100 (?)  for / while  (=looping)
+    (=sim. to in python
+                    + endfor / endwhile
+  -- p102  dicts *
+     {'a': 1, 100: 'foo'}
+       (+100 will be coerced to '100' =keys are coerced to strings)
+    indexing, adding,
+    let
+    unlet(=rm)
+    remove
+
+    evince -p 3 ~/Dropbox/rsc/Doks/vimscrhardw-quickreviewindex2021-2022.pdf &
+
+    get(
+    items(
+    has_key(
+    keys(
+    values(
+  -- p105  Toggling Options  ((= qf-toggle*))
+    echom &foldcolumn
+          |
+          = value of (=an option *)
+    g:name_of_var  (=a global option)
+( -- p110  funct. programming
+     deepcopy(
+     remove(
+     OwnFunct(
+        ((functs as vars))
+  -- p115  echo a path (!!!!)
+    expand(             ***
+    fnamemodify
+    split(
+    globpath(
+    simplify(
+    resolve(  (??)
+
+
+  ---- p117  THE POTION PLUGIN *!
+    (+create for own custom markup format(!))
+
+  -- p122  pathogen / plug
+
+  -- p127 Syntax Highl.
+      + advanc. = comments
+     strings
+
+  -- p135 Folding (=expression folding) !!
+
+  -- p154 Section Movement ***!
+
+  -- p166 external commands (=compiling)
+       :echom system("ls -l")
+
+  -- p173 Autoloading **!
+
+  -- p179 Documentation *
+      (+ 4 examples)
+
+  -- p186 hosting
+      + p 180 =Color schemes
+   Omnicomplete
+   Other Languages *!
+   Vims Documentation
+

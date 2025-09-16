@@ -1,0 +1,2029 @@
+~/bin/scripts/at/at.charALFA.bash
+___dvoraksvorak
+doks init {{{
+    ~/dropbox-legacy/scripts/ALLTODOIST/s_ALFAB.bash
+    --
+    ~/dropbox-legacy/checklist_alfabet.txt
+}}}
+Refs {{{
+  https://unicode-table.com/en/sets/arrow-symbols/
+
+~/Dropbox/rsc/data/lists/ref/lang/drsarabish-drsryhandwr.pdf
+  ~/Empire/Doks/Lang/.rsc/IPA.pdf
+  ~/Empire/Doks/Lang/.rsc/språkalfab_ipa2-total.pdf
+  ~/Empire/Doks/Lang/.rsc/språkalfab_ipa1.pdf
+    ~/Dropbox/rsc/data/lists/ref/lang/aux/ipa.list.txt
+}}}
+https://www.youtube.com/results?search_query=write+thai+letters
+.  learn to write: hebrew, devanagari, tamil, sinhala ... {{{
+    +Thai
+    https://www.youtube.com/results?search_query=writing+hebrew+letters
+    https://www.youtube.com/results?search_query=writing+devanagari
+    https://www.youtube.com/results?search_query=writing+tamil+letters
+    https://www.youtube.com/results?search_query=writing+sinhala+letters
+}}}
+
+====== TODO TODO: EXPORTERA GRUNDL. TECKENKARTAN TILL CHECKBAR REF-LISTA ======
+CHARALFA.LEGACY (=TO SORT + INCLUDE) {{{
+___0000
+
+    Teckenkarta/Uppsättning Svorak/Sweden Dvorak(**(*)) (=EXPORTERA TILL PDF O LÄGG PÅ DRIVE****(*)) {{{
+
+        grund
+            1234 56 7890 +´
+            ----
+            åäöp yf gcrl ,¨
+            aoeu id htns -'
+           <.qjk xb mwvz
+        s-
+            !"#¤ %& /()= ?`
+            ----
+            ÅÄÖP YF GCRL ;^
+            AOEU ID HTNS _*
+           >:QJK XB MWVZ
+        g-
+            ¡@£$ €¥ {[]} \±
+            ----
+            \{}þ ←đ ŋ©®ł
+            æœ€↓ →ð ħŧłß
+           |·@©ĸ »” µł“«
+        sg-
+            ¹²³¼ ¢⅝ ÷«»° ¿¬
+            ----
+            Ω[]Þ ¥ª Ŋ©®Ł
+            ÆŒ¢↑ ıÐ ĦŦŁ§ ˙×
+           ¦˙Ω©& >' ºŁ`<
+                                ------
+        a-
+            ±²³´ µ¶ ·¸¹° «
+            ----
+            åäöð ù  çãòì
+            áï õ éä   î
+           ¼®ñêë ø  í öú
+
+
+            sa-
+                ¡¢£¤ ¥¦ ¯¨©½ ¿
+                ----
+                ÅÄÖÐ Ù  ÇÃÒÌ »
+                ÁÏ Õ ÉÄ   Î  ßª
+               ¾®ñêë ø  í öú
+            sga-
+                ¹²³¼ ¢⅝ ÷«»° ¿¬
+                ----
+                ΩÛÝÞ ¥ª Ŋ©®Ł  Þ
+                ÆŒ¢↑    ĦŦŁ§  ×
+                 Ω©¦    ºŁà
+
+    }}}
+    SPECIALTECKEN MED ALTGR O S-ALTGR (UBUNTU SVORAK) **** {{{
+
+        ___keyb_lin__SPECTECKEN
+
+        ( https://en.wikipedia.org/wiki/AltGr_key#Swedish_key_map )
+
+        Ω[]Þ ¥ª Ŋ©®Łą       #s-altgr
+        \{}þ ←đ ŋ©®ł        #altgr
+        åäöp yf gcrl,
+           ð ù  çãòì¬       #alt
+        ÅÄÖÐ Ù  ÇÃÒÌ        #s-alt
+
+        ÆŒ¢↑ ıÐ ĦŦŁ§ȧ
+        æœ€↓ →ð ħŧłßạ
+        aoeu id htns-
+        áï õ éä   î         #EV MAPPA IN ‘ och ’
+        ÁÏ Õ ÉÄ   Î ß
+
+        ȧΩ©& >' ºŁ`<
+        ·@©ĸ »” µł“«
+        .qjk xb mwvz
+        ®ñêë ø  í öú
+        ºÑÊË Ø  Í ÖÚ
+
+        ½ ¡ £$ €¥           #altgr
+        § 1234 56 7890 +
+          ±²³´ µ¶ ·¸¹°      #alt ****
+            
+
+         []
+        \{}
+    æÆ  aoeu    htns
+         @ &  '   `
+
+
+         @       q
+        \       å
+        '       B
+
+        &       K
+        `       V
+
+        { }     ä ö
+        [ ]     Ä Ö
+        ----
+        æ Æ     a A
+
+
+        KLADD/UTKAST FÖR OMKOPPLING A/AGR+TANG TILL PLUS, = M.FL. ****
+        Ω[]Þ ¥ª Ŋ©®Łą       #s-altgr        Ω
+        \{}þ ←đ ŋ©®ł        #altgr
+        åäöp yf gcrl,
+           ð ù  çãòì¬       #alt                    rl,  p
+        ÅÄÖÐ Ù  ÇÃÒÌ        #s-alt                  rl,  (åäöp)
+
+        ÆŒ¢↑ ıÐ ĦŦŁ§ȧ                       e  ht(l)
+        æœ€↓ →ð ħŧłßạ                       e  t
+        aoeu id htns-
+        áï õ éä   î 
+        ÁÏ Õ ÉÄ   Î ß
+
+        ȧΩ©& >' ºŁ`<                        (.)q
+        ·@©ĸ »” µł“«                        .k
+        .qjk xb mwvz
+        ®ñêë ø  í öú                                v
+        ºÑÊË Ø  Í ÖÚ                                v
+
+
+        LISTA UNICODE-TECKENKODER MM (=siffror, exotiska tecken mm) ******
+
+            sub/super-scripted numbers ****     #skansholms jdir: binärsifferkoder-förkl.
+            p
+            2070    0
+            2071    1
+            00B2    2
+            207B    -
+            ---------
+            b
+            2080    0
+            2081    1
+            2082    2
+            208B    -
+            2098    m
+            2099    n
+
+
+    }}}
+
+    https://en.wikipedia.org/wiki/List_of_Unicode_characters
+
+http://unicode.org/charts/
+Nya svenska fonetiska alfabetet*****: aAbdeEfghiIjklmnoprstuUvyYåÅäÄöÖ DTNSH
+
+    https://www.lexilogos.com/keyboard/index.htm
+
+    Ersätt tecken i sträng (=t.ex. från Dictionary) till t.ex. Copt (**(*)) med Sed (***(*))
+
+        Just use that syntax:
+            sed 's/馑//g' file1
+        Or in the escaped form:
+            sed "s/$(echo -ne '\u9991')//g" file1
+
+        echo -ne '\u03a3'  (=Σ)
+
+ryska {{{
+
+    sök+markera alla cyrill. tecken: *************
+        [\u0401\u0410-\u044f\u0451]
+
+    http://www.lexilogos.com/keyboard/russian.htm
+     https://en.wikipedia.org/wiki/Cyrillic_script_in_Unicode
+        red minidictionary
+        handskriven lapp 1 *
+     +FLER/MÅNGA TEXTER/BILDEXEMPEL PÅ HANDSKRIVEN RYSKA ****
+
+    ´       q       #=betonings-accent (**)     #v=handstil approx./hint
+
+    Аа
+    Бб                                          d
+    Вв      (v)                                 ??
+    Гг                                          (i)
+    Дд                                          g
+    Ее
+    Ёё          ë                               --
+    Жж      zh
+    Зз      z                                   Z
+    Ии                                          u
+    Йй                                          'û'
+    Кк
+    Лл                                          
+    Мм
+    Нн                                          и
+    Оо
+    Пп                                          n(??*)
+    Рр                                          p/µ
+    Сс
+    Тт                                          m
+    Уу      u                                   y
+    Фф
+    Хх      h
+    Цц      c                                   u+(??)
+    Чч          ch
+    Шш      sh                                  w??
+    Щщ          ŝ
+    (Ъъ)                    ???                 --
+    Ыы          y
+    Ьь      '
+    Ээ      è
+
+    Юю      (ju)
+    Яя      (ja)
+
+
+    'alex e:s tips/inlärningslista 2019++' ** {{{
+
+        Аа
+        Ее(!)
+        Кк
+        Мм
+        Оо
+        Тт
+        ----
+        Ээ      è
+        Зз      z
+
+        Юю      (ju)
+        Яя      (ja)
+
+        Сс
+        Рр
+
+        Бб
+        Вв      (v)
+        Гг
+        Дд
+        Ёё          ë
+        Жж      zh
+
+        Фф
+
+        Ии
+        Йй
+        Лл
+        Нн
+        Пп
+        Уу      u
+
+        Хх      h
+        Цц      c
+        Чч          ch
+        Шш      sh
+        Щщ          ŝ
+        (Ъъ)                    ???
+
+        Ыы          y
+        Ьь      '
+
+    }}}
+
+
+}}}
+koptiska {{{
+___0000
+    http://www.lexilogos.com/keyboard/coptic.htm
+CopteAmaj.png   CopteAmin.png   Ⲁ   ⲁ   1   Alpha   Α, α    a [a, ʔ, ʕ]
+CopteBmaj.png   CopteBmin.png   Ⲃ   ⲃ   2   Bēta    Β, β    b, v [β~v]
+CopteCmaj.png   CopteCmin.png   Ⲅ   ⲅ   3   Gamma   Γ, γ    g [ɡ]
+CopteDmaj.png   CopteDmin.png   Ⲇ   ⲇ   4   Delta   Δ, δ    d [d]
+CopteEmaj.png   CopteEmin.png   Ⲉ   ⲉ   5   Ei  Ε, ε    e [i, e][note 1]
+Copte6.png  Copte6.png  Ⲋ   ⲋ   6   So  Ϛ, ϛ (stigma)   –
+CopteZmaj.png   CopteZmin.png   Ⲍ   ⲍ   7   Zēta    Ζ, ζ    z [z]
+CopteYmaj.png   CopteYmin.png   Ⲏ   ⲏ   8   Ēta     Η, η    ē / e [eː]
+CopteTHmaj.png  CopteTHmin.png  Ⲑ   ⲑ   9   Thēta   Θ, θ    th / t' [tʰ]
+CopteImaj.png   CopteImin.png   Ⲓ   ⲓ   10  Yota    Ι, ι    i [iː~j]
+CopteKmaj.png   CopteKmin.png   Ⲕ   ⲕ   20  Kabba   Κ, κ    k [k]
+CopteLmaj.png   CopteLmin.png   Ⲗ   ⲗ   30  Lola    Λ, λ    l [l]
+CopteMmaj.png   CopteMmin.png   Ⲙ   ⲙ   40  Me  Μ, μ    m [m]
+CopteNmaj.png   CopteNmin.png   Ⲛ   ⲛ   50  Ne  Ν, ν    n [n]
+CopteKSmaj.png  CopteKSmin.png  Ⲝ   ⲝ   60  Eksi    Ξ, ξ    ks
+CopteOmaj.png   CopteOmin.png   Ⲟ   ⲟ   70  O   Ο, ο    o [o]
+CoptePmaj.png   CoptePmin.png   Ⲡ   ⲡ   80  Pi  Π, π    p [p]
+CopteRmaj.png   CopteRmin.png   Ⲣ   ⲣ   100     Ro  Ρ, ρ    r [r]
+CopteCCmaj.png  CopteCCmin.png  Ⲥ   ⲥ   200     Sima    Σ, σ, ς     s [s]
+CopteTmaj.png   CopteTmin.png   Ⲧ   ⲧ   300     Taw     Τ, τ    t [t]
+CopteUmaj.png   CopteUmin.png   Ⲩ   ⲩ   400     Epsilon     Υ, υ    u / ou [uː][note 2]
+CopteVmaj.png   CopteVmin.png   Ⲫ   ⲫ   500     Fi  Φ, φ    ph / p' [pʰ]
+CopteXmaj.png   CopteXmin.png   Ⲭ   ⲭ   600     Khe     Χ, χ    kh [kʰ]
+CoptePSmaj.png  CoptePSmin.png  Ⲯ   ⲯ   700     Epsi    Ψ, ψ    ps
+CopteWmaj.png   CopteWmin.png   Ⲱ   ⲱ   800     Ōu  Ω, ω    ō / o [oː]
+CopteSmaj.png   CopteSmin.png   Ϣ   ϣ       Shay    (none)  sh / š [ʃ]
+CopteFmaj.png   CopteFmin.png   Ϥ   ϥ   90  Fay     Ϙ, ϙ (koppa)
+(form, number)  f [f]
+CopteKHmaj.png  CopteKHmin.png  Ϧ (Ⳉ)   ϧ (ⳉ)[note 3]       Khay    (none)  x [x]
+CopteHmaj.png   CopteHmin.png   Ϩ   ϩ       Hōri    (none)  h [h, ħ]
+CopteJmaj.png   CopteJmin.png   Ϫ   ϫ       Janja   (none)  j / dzh [dʒ]
+CopteTSHmaj.png     CopteTSHmin.png     Ϭ   ϭ       Tshēma  Ϙ, ϙ (koppa)
+(function)  q / tsh [kʲ, tʃ][note 4]
+CopteTImaj.png  CopteTImin.png  Ϯ   ϯ       Ti / De     (none)  ti / de [ti, de][note 5]
+Copte r barre.png   Copte r barre.png   Ⳁ   ⳁ   900
+}}}
+grekiska {{{
+    http://www.lexilogos.com/keyboard/greek_modern.htm
+    http://www.lexilogos.com/keyboard/greek_ancient.htm
+
+Α α
+Β β
+Γ γ
+Δ δ
+Ε ε
+Ζ ζ
+Η η
+Θ θ
+Ι ι
+Κ κ
+Λ λ
+Μ μ
+Ν ν
+Ξ ξ
+Ο ο
+Π π
+Ρ ρ
+Σ σ/ς
+Τ τ
+Υ υ
+Φ φ
+Χ χ
+Ψ ψ
+Ω ω
+}}}
+japanska/kinesiska {{{
+    http://www.lexilogos.com/keyboard/japanese.php
+    http://www.lexilogos.com/keyboard/chinese.php
+___0000 =?
+}}}
+http://askubuntu.com/questions/59356/how-do-i-get-chinese-input-to-work
+
+copt {{{
+
+    https://en.wikipedia.org/wiki/Coptic_alphabet
+     https://en.wikipedia.org/wiki/Coptic_(Unicode_block)
+     https://en.wikipedia.org/wiki/Greek_and_Coptic
+     https://en.wikipedia.org/wiki/Coptic_alphabet#Unicode
+
+        c g j q w y  å ä ö      EG.ALFAB
+    ⲁ       a                   a
+    ⲃ       b                   b
+    ⲅ       _g                  g
+    ⲇ       d                   d
+    ⲉ       e                   e
+     ⲋ      _
+    ⲍ       z                   z
+    ⲏ       _E                  E
+    ⲑ       _th                 T,O
+    ⲓ       i                   i
+    ⲕ       k                   k
+    ⲗ       l                   l
+    ⲙ       m                   m
+    ⲛ       n                   n
+    ⲝ       x                   x
+    ⲟ       o                   o
+    ⲡ       p                   p
+    ⲣ       r                   r
+    ⲥ       s                   s
+    ⲧ       t                   t
+    ⲩ       u                   u,y v
+    ⲫ       _ph                 P,F
+    ⲭ       _kh                 K
+    ⲯ       _ps                  y
+    ⲱ       _O                  O,w
+    ϣ       _sh                 S
+    ϥ       f                   f
+    ϧ       _H                  H
+    ϩ       h                   h
+    ϫ       _                   j,J  X
+    ϭ       _                   ö(?)
+    ϯ       _ti                 T,y(?)
+
+}}}
+arab {{{
+    http://www.lexilogos.com/keyboard/arabic.htm
+    .{{{
+    ٠١٢٣٤٥  ٦٧٨٩
+    }}}
+    tecknens namn + hur namnen skrivs (+alternativa uttal) {{{
+        alif
+        bä
+        tä
+        thä    s
+        jim
+        Ha
+        Kha
+        dal
+        dhal   z
+        ra
+        za
+        sin
+        shin
+        Sad
+        Dad
+        Ta
+        Za     ?
+        Ayn
+        Ghayn
+        fa
+        qaf
+        kaf, käf
+        lam, läm
+        mim
+        num
+        ha
+        waw
+        yä
+        Hamza
+    }}}
+    -----
+    SKRIVSÄTT LEXILOGOS (ordnade efter relevans) {{{
+
+        أ       -a
+        خ kh    K
+        ى       Y
+        ئ       y--
+        إ       A     , a--
+        -----
+        ع ‘     g
+        ء       -
+        ة       h'
+        آ       aa
+        ي y     i     , y
+        =====
+        ؤ       w--
+
+        ذ dh    d'
+        ش sh    s'
+        ث th    t'
+        غ gh    g'
+
+        . {{{
+        س s     
+        ص ṣ     S
+        ر r     
+        ز z     
+        د d     
+        ض ḍ     D
+        ت t     
+        ط ṭ     T
+        ظ ẓ     Z
+        ل l     
+        ن n     
+        -----
+        qamara
+        ق q     
+        ف f     
+        م m     
+        ك k     
+        ح ḥ      H
+        و w     
+        ه h     
+        ج j     
+        ب b     
+        ا ā     a
+
+        For the character,      type on the keyboard
+        لا       la
+
+
+        The letters with the sound g, p, v don't exist in Arabic. These characters are used for words of European origin:
+
+        Algeria, Tunisia   Algeria, Tunisia
+        For the character,  type on the keyboard
+        g       ڨ   q'
+        g   ڭ   Morocco     k'
+        p   پ       p or b'
+        v   ڢ   v
+        v   ڤ   Morocco     f'
+        ch  چ       c or j' 
+}}}
+
+    }}}
+    (grundlista skrivsätt lexilogos) - inkl. klassificering (shams/qamar) {{{
+        shams  (r s/z d/t  +ln)
+        س s     sin
+        ص ṣ     S
+        ش sh    s'
+        ر r     
+        ز z     
+        د d     
+        ذ dh    d'
+        ض ḍ     D
+        ت t     
+        ث th    t'
+        ط ṭ     T
+        ظ ẓ     Z
+        ل l     
+        ن n     
+        -----
+        qamara
+        غ gh    g'
+        خ kh    H'
+        ق q     
+        ف f     
+        ع ‘     g
+        م m     
+        ك k     
+        ي y     y
+        ح ḥ      H
+        و w     
+        ه h     
+        ج j     
+        ب b     
+        ا ā     a
+
+        For the character,      type on the keyboard
+        ء   (hamza)     -   (dash)
+        ئ       y--
+        ؤ       w--
+        إ       a--
+        أ       -a
+        آ       aa
+        ى   (alif maqsura)  Y
+        ة   (ta marbouta)   h'  ****
+        لا       la
+
+
+                https://en.wikipedia.org/wiki/Arabic_chat_alphabet
+
+        letter  sound   lexilog     drs-vankiarabish(=2020+)
+        ا       ā       a           |
+        ب       b                   b
+        ت       t                   t
+        ث       th      t'          € (g-5)
+        ج       j                   j
+        ح       ḥ       H           H
+        خ       kh      H'          K
+        د       d                   d
+        ذ       dh      d'            D, >,í (a-m)
+        ر       r                   r
+        ز       z                   z
+        س       s       sin         s
+        ش       sh      s'          S
+        ص       ṣ       S           ß (g-s)
+        ض       ḍ       D           §
+        ط       ṭ       T           T
+        ظ       ẓ       Z           Z
+        ع       ‘       g           3
+        غ       gh      g'          G
+        ف       f                   f
+        ق       q                   q
+        ك       k                   k
+        ل       l                   l
+        م       m                   m
+        ن       n                   n
+        ه       h                   h
+        و       w                   w
+        لا       la                  |l
+        ء       (hamza) -           ` (gs-v)
+        ي       y       y           y
+        أ       -a                  `|
+        إ       a--                 ,|
+        آ       aa                  ~|
+        ؤ       w--                 _`w
+        ى       Y                   &-
+        ة       h'                  ö-
+        ئ       y--                 `&-
+
+            long vowels(**)
+                                    |a      #=aa
+                                    yi      #=ii
+                                    wo      #=oo
+
+
+        The letters with the sound g, p, v don't exist in Arabic. These characters are used for words of European origin:
+
+        Algeria, Tunisia   Algeria, Tunisia
+        For the character,  type on the keyboard
+        g       ڨ   q'
+        g   ڭ   Morocco     k'
+        p   پ       p or b'
+        v   ڢ   v
+        v   ڤ   Morocco     f'
+        ch  چ       c or j' 
+    }}}
+}}}
+. lak {{{
+    aŋ
+    č
+    č’
+    ğ
+    ȟ
+    ȟ’
+}}}
+@hebrew {{{
+___0000
+    http://www.lexilogos.com/keyboard/hebrew.htm
+            TODO/NY: APPROXIM. OF HANDWRITTEN (=PRACTICE-STRINGS FOR DRS VANKI(**!))
+    א
+    ב
+    ג
+    ד
+    ה
+    ו
+    ז
+    ח
+    ט
+    י
+    כ
+    ך
+    ל
+    מ
+    נ
+    ס
+    ע
+    פ
+    צ
+    ק
+    ר
+    ש
+    ת
+    ם
+    ן
+    ף
+    ץ
+
+
+
+
+
+
+Alef    
+Bet
+    Gimel   Dalet   
+He
+    
+Vav
+    Zayin   Het     Tet     Yod     Kaf
+א   ב   ג   ד   ה   ו   ז   ח   ט   י   כ
+ך
+Lamed   Mem     
+Nun
+    Samekh  Ayin    
+Pe
+    Tsadi   Qof     Resh    
+Shin
+    Tav
+ל   מ   נ   ס   ע   פ   צ   ק   ר   ש   ת
+ם   ן   ף   ץ
+
+
+
+
+
+
+    a, A
+    e, ä
+    Ä
+    Ö, ö
+    å
+    i
+    o
+    oo
+    -----
+    '   ʾ   /ʔ/     
+    b           
+    v           
+    g   g       
+    ḡ
+    ǧ[B1][10]       /d͡ʒ/    
+    d   d       
+    ḏ
+    h           
+    v   w       
+    u           
+    o
+    z           
+    ž[B2][10]       /ʒ/     
+    ẖ[C1]   ḥ   /x/ or /χ/  [χ]
+    [ħ]     
+    t   ṭ       
+    י
+    y       /j/     
+    י
+    part of hirik male
+    (/i/ vowel)
+    i           
+    י
+    (/e/ vowel or
+    /ei/ diphthong)
+    e   é   /e/ or /ej/     [e̞] or [e̞j]/
+    [11]    k           
+    kh[C2]  ḵ   /x/ or /χ/  [χ]
+    l           
+    m           
+    n           
+    s           
+    p           
+    f           
+    ts  ẓ   /t͡s/    
+    č[B3][10]       /t͡ʃ/    
+    k   q       
+    r           [ʀ] or [ʁ]
+    or [ɾ]
+    sh  š   /ʃ/     
+    s   ś       
+    t   t       
+    ṯ
+}}}
+@armen {{{
+___0000
+Ա ա
+Բ բ
+Գ գ
+Դ դ
+Ե ե
+Զ զ
+Է է
+Ը ը
+Թ թ
+Ժ ժ
+Ի ի
+Լ լ
+Խ խ
+Ծ ծ
+Կ կ
+Հ հ
+Ձ ձ
+Ղ ղ
+Ճ ճ
+Մ մ
+Յ յ
+Ն ն
+Շ շ
+Ո ո
+Չ չ
+Պ պ
+Ջ ջ
+Ռ ռ
+Ս ս
+Վ վ
+Տ տ
+Ր ր
+Ց ց
+Ւ ւ
+Փ փ
+Ք ք
+և և
+Օ օ 
+Ֆ ֆ
+
+
+
+Ա ա     այբ ayb     /ajb/   /ajpʰ/  /ɑ/     a   1
+Բ բ     բեն ben     /bɛn/   /pʰɛn/  /b/     /pʰ/    b   2
+Գ գ     գիմ gim     /ɡim/   /kʰim/  /ɡ/     /kʰ/    g   3
+Դ դ     դա da   /dɑ/    /tʰɑ/   /d/     /tʰ/    d   4
+Ե ե     եչ yeč  /jɛtʃʰ/     /ɛ/, word-initially /jɛ/6   e   5
+Զ զ     զա za   /zɑ/    /z/     z   6
+Է է     է ē1    /ɛː/    /ɛ/     /ɛː/    /ɛ/     ē   7
+Ը ը7    ըթ ët'  /ətʰ/   /ə/     ə   ë   8
+Թ թ     թօ t'ò[4]   թո t'o  /tʰo/   /tʰ/    tʿ  t’  9
+Ժ ժ     ժէ žē   ժե že   /ʒɛː/   /ʒɛ/    /ʒ/     ž   10
+Ի ի     ինի ini     /ini/   /i/     i   20
+Լ լ     լիւն liwn   լյուն lyown     /lʏn/   /ljun/  /lʏn/   /l/     l   30
+Խ խ     խէ xē   խե xe   /χɛː/   /χɛ/    /χ/     x   40
+Ծ ծ     ծա ça   /tsɑ/   /dzɑ/   /ts/    /dz/    c   ç   50
+Կ կ     կեն ken     /kɛn/   /ɡɛn/   /k/     /ɡ/     k   60
+Հ հ     հօ hò[4]    հո ho   /ho/    /h/     h   70
+Ձ ձ     ձա ja   /dzɑ/   /tsʰɑ/  /dz/    /tsʰ/   j   80
+Ղ ղ     ղատ ġat     /ɫɑt/   /ʁɑt/   /ʁɑd/   /ɫ/     /ʁ/     ł   ġ   90
+Ճ ճ     ճէ č̣ē   ճե č̣e   /tʃɛː/  /tʃɛ/   /dʒɛ/   /tʃ/    /dʒ/    č   č̣   100
+Մ մ     մեն men     /mɛn/   /m/     m   200
+Յ յ     յի yi   հի hi   /ji/    /hi/    /j/     /h/1, /j/   y   300
+Ն ն     նու now     /nu/    /n/, /ŋ/    n   400
+Շ շ     շա ša   /ʃɑ/    /ʃ/     š   500
+Ո ո     ո vo    /o/     /vo/    /o/, word-initially /vo/2   o   600
+Չ չ     չա ča   /tʃʰɑ/  /tʃʰ/   čʿ  č   700
+Պ պ     պէ pē   պե pe   /pɛː/   /pɛ/    /bɛ/    /p/     /b/     p   800
+Ջ ջ     ջէ ǰē   ջե ǰe   /dʒɛː/  /dʒɛ/   /tʃʰɛ/  /dʒ/    /tʃʰ/   ǰ   900
+Ռ ռ     ռա ṙa   /rɑ/    /ɾɑ/    /r/     /ɾ/     ṙ   1000
+Ս ս     սէ sē   սե se   /sɛː/   /sɛ/    /s/     s   2000
+Վ վ     վեւ vew     վեվ vev     /vɛv/   /v/     v   3000
+Տ տ     տիւն tiwn   տյուն tyown     /tʏn/   /tjun/  /dʏn/   /t/     /d/     t   4000
+Ր ր     րէ rē   րե re   /ɹɛː/   /ɾɛ/3   /ɹ/     /ɾ/3    r   5000
+Ց ց     ցօ c'ò[4]   ցո c'o  /tsʰo/  /tsʰ/   cʿ  c’  6000
+Ւ ւ     հիւն[citation needed] hiwn  վյուն vyun5     /hʏn/   /w/     /v/5    w   7000
+Փ փ     փիւր p'iwr  փյուր p'yowr    /pʰʏɹ/  /pʰjuɾ/     /pʰʏɾ/  /pʰ/    pʿ  p’  8000
+Ք ք     քէ k'ē  քե k'e  /kʰɛː/  /kʰɛ/   /kʰ/    kʿ  k’  9000
+և   և4 jew  N/A     /jev/   N/A     /ev/, word-initially /jev/  ew  N/A
+Օ օ     օ ò1    N/A     /o/     N/A     /o/     ō   ò   N/A
+Ֆ ֆ     ֆէ fē   ֆե fe   N/A     /fɛ/    N/A     /f/     f   N/A
+
+
+
+    http://www.lexilogos.com/keyboard/armenian.htm
+    /ɑ/     a   1
+    /b/     /pʰ/    b   2
+    /ɡ/     /kʰ/    g   3
+    /tʰ/    d   4
+    e   5
+    z   6
+    /ɛː/    /ɛ/     ē   7
+    ë   8
+    tʿ  t’  9
+    /ʒ/     ž   10
+    i   20
+    /ljun/  /lʏn/   /l/     l   30
+    /χ/     x   40
+    /dz/    c   ç   50
+    /k/     /ɡ/     k   60
+    h   70
+    /tsʰ/   j   80
+    /ʁɑd/   /ɫ/     /ʁ/     ł   ġ   90
+    /dʒɛ/   /tʃ/    /dʒ/    č   č̣   100
+    m   200
+    /j/     /h/1, /j/   y   300
+    n   400
+    š   500
+    /o/, word-initially /vo/2   o   600
+    č   700
+    /bɛ/    /p/     /b/     p   800
+    /tʃʰɛ/  /dʒ/    /tʃʰ/   ǰ   900
+    /ɾ/     ṙ   1000
+    /s/     s   2000
+    /vɛv/   /v/     v   3000
+    /tjun/  /dʏn/   /t/     /d/     t   4000
+    /ɹ/     /ɾ/3    r   5000
+    cʿ  c’  6000
+    /w/     /v/5    w   7000
+    /pʰʏɾ/  /pʰ/    pʿ  p’  8000
+    /kʰ/    kʿ  k’  9000
+    /ev/, word-initially /jev/  ew  N/A
+    N/A     /o/     ō   ò   N/A
+    /fɛ/    N/A     /f/     f   N/A
+}}}
+?@hindi devanagari {{{
+    https://en.wiktionary.org/wiki/%E0%A4%B8        #streckordning för devanagaribokstäverna***
+    
+    http://www.lexilogos.com/keyboard/devanagari.htm        #DRA UPP I MIDORI***
+    skriv/streckordning tecken  {{{
+        tang.komb.  streck-ordn.
+    अ   a               vä, lilla, lodstr., ö-str
+    प   pa
+    आ   aa              vä, lilla, 2 lodstr., ö-str
+    पा   
+    इ   
+    पि   
+    ई   
+    पी   
+    उ   
+    पु   
+    ऊ   
+    पू   
+    ऋ   
+    पृ   
+    ॠ   
+    पॄ   
+    ऌ   
+    पॢ   
+    ॡ   
+    पॣ   
+    ए   e(,ä)
+    पे   
+    ऐ   
+    पै   
+    ओ   
+    पो   
+    औ   åå
+    पौ   
+    अं   
+    पं   
+    अ   
+    प   
+    -------
+    क   ka              !! mittstreck, kroken från vä!!, ö-str
+    ख   kha             vä, ring o lodstreck, ö-str
+    ग   ga              vä (uppifrån), hö, ö-str
+    घ   
+    ङ   
+    ह   ha              's under', vänsterkrok under, ö-str
+    च   (ca=tsha)       
+    छ   (cha=tshHa)     '3an o 9an', lillstr, ö-str
+    ज   ja
+    झ   djha            's med knorrcirkeln', lillstr, hö, ö-str
+    ञ   
+    य   ya              (vä, lodstr, ö-str)
+    श   sha             
+    ट   
+    ठ   
+    ड   dda(=d-flap =liknar r-flap/tap i uttalet)   
+    ढ   
+    ण   
+    र   ra              kroken nere, ö-str
+    ष   
+    त   ta              vä-krok fr höger, lodstrecket, ö-str
+    थ   tha             knorr och vä-krok uppifr., lodstrecket, lilla uppe
+    द   da              hela knorren nere, ö-str
+    ध   dha             vä(ev m ring överst), hö, ö-str
+    न   na              vä-kroken, lodstr, ö-str
+    ल   la              liggande 3an fr vä, lodstr, ö-str
+    स   sa              vänster, mitten, höger, ö-str
+    प   pa
+    फ   pha             
+    ब   ba              (ringen, lodstrecket), kryssstrecket fr. vä, ö-str
+    भ   
+    म   ma              vä-knorren uppifrån, str. uppifr., ö-str
+    व   va              cirkeln uppifr., strecket uppifr., ö-str
+
+    lilla kroken under      u
+    'backquoten över'       e
+    stora kroken över       i
+    stolpe efter(/innan)    lång vokal
+    }}}
+    ljud/sv-->deva  {{{
+     'vokalerna' {{{
+    अ   a               vä, lilla, lodstr., ö-str
+    प   pa
+    आ   aa              vä, lilla, 2 lodstr., ö-str
+    पा   
+    इ   
+    पि   
+    ई   
+    पी   
+    उ   
+    पु   
+    ऊ   
+    पू   
+    ऋ   
+    पृ   
+    ॠ   
+    पॄ   
+    ऌ   
+    पॢ   
+    ॡ   
+    पॣ   
+    ए   e(,ä)
+    पे   
+    ऐ   
+    पै   
+    ओ   
+    पो   
+    औ   åå
+    पौ   
+    अं   
+    पं   
+    अ   
+    प   
+    ------- }}}
+    क ख ग
+    घ   
+    ङ   
+    ह       ha
+    ट   
+    ठ   
+    ढ   
+    ण   
+    ज झ     ja djha 
+    ञ   
+    य       ya
+    च छ     (ca=tsha) (cha=tshHa)
+    स श     sa sha              
+    र ड     ra dda(=d-flap =liknar r-flap/tap i utt.)   
+    ष   
+    न   na  
+    ल   la  
+    म   ma
+    व   va  
+    त थ     ta tha
+    द ध     da dha
+    प फ     pa pha              
+    ब भ     ba
+        
+
+    lilla kroken under      u
+    'backquoten över'       e
+    stora kroken över       i
+    stolpe efter(/innan)    lång vokal
+    }}}
+    
+    originaltext-hold {{{
+        http://www.lexilogos.com/keyboard/devanagari.htm
+    अ   a   प   आ   ā   पा
+    tālavya
+    (Palatal)   इ   i   पि   ई   ī   पी
+    oṣṭhya
+    (Labial)    उ   u   पु   ऊ   ū   पू
+    mūrdhanya
+    (Retroflex)     ऋ   ṛ   पृ   ॠ   ṝ   पॄ
+    dantya
+    (Dental)    ऌ   ḷ   पॢ   ॡ   ḹ   पॣ
+    kaṇṭhatālavya
+    (Palato-Guttural)   ए   e   पे   ऐ   ai  पै
+    kaṇṭhoṣṭhya
+    (Labio-Guttural)    ओ   o   पो   औ   au  पौ
+        अं   am  पं       अ:  āh  प:
+    -------
+    क   ka
+    /k/     ख   kha
+    /kʰ/    ग   ga
+    /ɡ/     घ   gha
+    /ɡʱ/    ङ   ṅa
+    /ŋ/         ह   ha
+    /ɦ/
+    tālavya
+    (Palatal)   च   ca
+    /c, t͡ʃ/     छ   cha
+    /cʰ, t͡ʃʰ/   ज   ja
+    /ɟ, d͡ʒ/     झ   jha
+    /ɟʱ, d͡ʒʱ/   ञ   ña
+    /ɲ/     य   ya
+    /j/     श   śa
+    /ɕ, ʃ/  
+    mūrdhanya
+    (Retroflex)     ट   ṭa
+    /ʈ/     ठ   ṭha
+    /ʈʰ/    ड   ḍa
+    /ɖ/     ढ   ḍha
+    /ɖʱ/    ण   ṇa
+    /ɳ/     र   ra
+    /r/     ष   ṣa
+    /ʂ/
+    dantya
+    (Dental)    त   ta
+    /t̪/     थ   tha
+    /t̪ʰ/    द   da
+    /d̪/     ध   dha
+    /d̪ʱ/    न   na
+    /n/     ल   la
+    /l/     स   sa
+    /s/
+    oṣṭhya
+    (Labial)    प   pa
+    /p/     फ   pha
+    /pʰ/    ब   ba
+    /b/     भ   bha
+    /bʱ/    म   ma
+    /m/     व   va
+    /w, ʋ/  
+
+    }}}
+}}}
+@georg(mkhedruli) {{{
+___0000
+skrivriktning bokstäver:  https://en.wikipedia.org/wiki/Georgian_scripts#/media/File:Mkhedruli.svg
+
+    ა
+    ბ
+    გ
+    დ
+    ე
+    ვ
+    ზ
+    თ
+    ი
+    კ
+    ლ
+    მ
+    ნ
+    ო
+    პ
+    ჟ
+    რ
+    ს
+    ტ
+    უ
+    ფ
+    ქ
+    ღ
+    ყ
+    შ
+    ჩ
+    ც
+    ძ
+    წ
+    ჭ
+    ხ
+    ჯ
+    ჰ
+
+
+
+
+    ა   ani
+    ბ   bani
+    გ   gani
+    დ   doni
+    ე   eni
+    ვ   vini
+    ზ   zeni
+    თ   tani
+    ი   ini
+    კ   k'ani
+    ლ   lasi
+    მ   mani
+    ნ   nari
+    ო   oni
+    პ   p'ari
+            ჟ   zhani
+    რ   rae
+    ს   sani
+    ტ   t'ari
+    უ   uni
+    ფ   pari
+    ქ   kani
+    ღ   ghani
+    ყ   q'ari
+    შ   shini
+    ჩ   chini
+    ც   tsani
+    ძ   dzili
+    წ   ts'ili
+            ჭ   ch'ari
+    ხ   khani
+            ჯ   jani
+            ჰ
+
+
+    http://www.lexilogos.com/keyboard/georgian.htm
+    A a     
+    B b     
+    G g     
+    D d     
+    E e     
+    V v     
+    Z z     
+    eː/     
+    T t     
+    I i     
+    K' k'   
+    L l     
+    M m     
+    N n     
+    J j     Y y     60
+    n /ɔ, œ/  O o       70
+    P' p'   
+    Zh zh   
+    R r     0
+    S s     0
+    T' t'   0
+    an /w/  ]
+    n /u, y/  U u       400[70]
+    relian &  —
+    P p     0
+    K k     0
+    Gh gh   0
+    Q' q'   0
+    an & Sva
+    Sh sh   0
+    Ch ch   Č' č'   Ch' ch'     Ç ç     1000
+    Ts ts   C' c'   Ts' ts'     Ts ts   2000
+    Dz dz   J j     Dz dz   Ž ž     3000
+    Ts' ts'     C c     Ts ts   Ts’ ts’     4000
+    Ch' ch'     Č č     Ch ch   Ç̌ ç̌     5000
+    Kh kh   X x     Kh kh   X x     6000
+    ⁾/, Svan /q⁽ʰ⁾/     —   H̠ ẖ     q'  —   7000
+    J j     J̌ ǰ     J j     C c     8000
+    H h     H h     H h     H h     9000
+    Ō ō     —   —   1___0000
+    F f     —   F f     —
+
+    
+
+}}}
+?(=testa)tibetan {{{
+    http://www.lexilogos.com/keyboard/tibetan.htm
+        klar  tang.komb.(lexilogos)  streckordn.
+    ཀ
+    ཁ
+    ག
+    ང
+    ཅ
+    ཆ
+    ཇ
+    ཉ
+    ཏ
+    ཐ
+    ད
+    ན
+    པ
+    ཕ
+    བ
+    མ
+    ཙ
+    ཚ
+    ཛ
+    ཝ
+    ཞ
+    ཟ
+    འ
+    ཡ
+    ར
+    ལ
+    ཤ
+    ས
+    ཧ
+    ཨ
+
+    ཨ
+    ཀ
+    ཨཱ
+    ཀཱ
+    ཨི
+    ཀི
+    ཨཱི
+    ཀཱི
+    ཨུ
+    ཀུ
+    ཨཱུ
+    ཀཱུ
+    ཨེ
+    ཀེ
+    ཨཻ
+    ཀཻ
+    ཨོ
+    ཀོ
+    ཨཽ
+    ཀཽ
+    རྀ
+    ཀྲྀ
+    རཱྀ
+    ཀཷ
+    ལྀ
+    ཀླྀ
+    ལཱྀ
+    ཀླཱྀ
+}}}
+farsi {{{
+http://www.lexilogos.com/keyboard/persian.htm
+
+http://www.omniglot.com/writing/persian.htm
+
+    #   Name    Name in Persian script  DIN 31635   IPA     Contextual forms
+Final   Medial  Initial     Isolated
+0   hamza[3]    همزه    ʾ   [ʔ]     ـئ ـأ ـؤ    ـئـ     ئـ  ء أ
+1   ʾalef   الف     ā   [ɒ]     ﺎ   آ / ا
+2   be  بِ   b   [b]     ـب  ـﺒ  ﺑ   ب
+3   pe  پِ   p   [p]     ـپ  ـﭙ  ﭘ   پ
+4   te  تِ   t   [t]     ـت  ـﺘ  ﺗ   ت
+5   s̱e  ثِ   s̱   [s]     ـث  ـﺜ  ﺛ   ث
+6   jim     جیم     j   [d͡ʒ]    ﺞ   ـﺠ  ﺟ   ج
+7   che     چِ   č   [t͡ʃ]    ﭻ   ـﭽ  ﭼ   چ
+8   ḥe(-ye jimi)    حِ   ḥ   [h]     ﺢ   ـﺤ  ﺣ   ح
+9   khe     خِ   x   [x]     ﺦ   ـﺨ  ﺧ   خ
+10  dāl     دال     d   [d]     ـد  د
+11  ẕāl     ذال     ẕ   [z]     ـذ  ذ
+12  re  رِ   r   [ɾ]     ـر  ر
+13  ze  زِ   z   [z]     ـز  ز
+14  že  ژِ   ž   [ʒ]     ـژ  ژ
+15  sin     سین     s   [s]     ـس  ـﺴ  ﺳ   س
+16  šin     شین     š   [ʃ]     ـش  ـﺸ  ﺷ   ش
+17  ṣād     صاد     ṣ   [s]     ـص  ـﺼ  ﺻ   ص
+18  z̤ād     ضاد     z̤   [z]     ـض  ـﻀ  ﺿ   ض
+19  ṭā, ṭoy (in Dari)   طی, طا  ṭ   [t]     ـط  ـﻄـ     ﻃ   ط
+20  ẓā, ẓoy (in Dari)   ظی, ظا  ẓ   [z]     ـظ  ـﻈـ     ﻇ   ظ
+21  ʿeyn    عین     ʿ   [ʔ]     ﻊ   ﻌ   ﻋ   ع
+22  ġeyn    غین     ġ   [ɣ]     ﻎ   ﻐ   ﻏ   غ
+23  fe  فِ   f   [f]     ـف  ـﻔ  ﻓ   ف
+24  qāf     قاف     q   [ɢ]     ـق  ـﻘ  ﻗ   ق
+25  kāf     کاف     k   [k]     ـک  ـﻜ  ﻛ   ک
+26  gāf     گاف     g   [ɡ]     ـگ  ـﮕ  ﮔ   گ
+27  lām     لام  l   [l]     ـل  ـﻠ  ﻟ   ل
+28  mim     میم     m   [m]     ـم  ـﻤ  ﻣ   م
+29  nun     نون     n   [n]     ـن  ـﻨ  ﻧ   ن
+30  vāv     واو     v / ū / ow / (w / aw / ō in Dari)   [v] / [uː] / [o] / [ow] / ([w] / [aw] / [oː] in Dari)   ـو  و
+31  he(-ye do-češm)     هِ   h   [h]     ﻪ   ﻬ   ﻫ   ه
+32  ye  یِ   y / ī / á / (ay / ē in Dari)    [j] / [i] / [ɒː] / ([aj] / [eː] in Dari)    ﯽ   ـﯿ  ﯾ   ی
+}}}
+tamil {{{
+    
+}}}
+@vietnam {{{
+    http://www.lexilogos.com/keyboard/vietnamese.htm
+}}}
+@cherokee {{{
+        klar  tang.komb.(lexilogos)  streckordn.
+    Ꭰ
+    Ꭱ
+    Ꭲ
+    Ꭳ
+    Ꭴ
+     Ꭵ
+     v
+    Ꭶ
+    Ꭷ
+    Ꭸ
+    Ꭹ
+    Ꭺ
+    Ꭻ
+    Ꭼ
+    Ꭽ
+    Ꭾ
+    Ꭿ
+    Ꮀ
+    Ꮁ
+    Ꮂ
+    Ꮃ
+    Ꮄ
+    Ꮅ
+    Ꮆ
+    Ꮇ
+    Ꮈ
+    Ꮉ
+    Ꮊ
+    Ꮋ
+    Ꮌ
+    Ꮍ
+    Ᏽ
+    Ꮎ
+    Ꮏ
+    Ꮐ
+    Ꮑ
+    Ꮒ
+    Ꮓ
+    Ꮔ
+    Ꮕ
+    Ꮖ
+    Ꮗ
+    Ꮘ
+    Ꮙ
+    Ꮚ
+    Ꮛ
+    Ꮝ
+    Ꮜ
+    Ꮞ
+    Ꮟ
+    Ꮠ
+    Ꮡ
+    Ꮢ
+    Ꮣ
+    Ꮤ
+    Ꮥ
+    Ꮦ
+    Ꮧ
+    Ꮨ
+    Ꮩ
+    Ꮪ
+    Ꮫ
+    Ꮬ   
+    Ꮭ   
+    Ꮮ
+    Ꮯ
+    Ꮰ
+    Ꮱ
+    Ꮲ
+    Ꮳ
+    Ꮴ
+    Ꮵ
+    Ꮶ
+    Ꮷ
+    Ꮸ
+    Ꮹ
+    Ꮺ
+    Ꮻ
+    Ꮼ
+    Ꮽ
+    Ꮾ
+    Ꮿ
+    Ᏸ
+    Ᏹ
+    Ᏺ
+    Ᏻ
+    Ᏼ
+}}}
+thai: {{{
+    ก
+    ข
+    ค
+    ฆ
+    ง
+    จ
+    ฉ
+    ช
+    ฌ
+    ญ
+    ฎ*
+    ฐ
+    ฑ
+    ฒ
+    ณ
+    ด*
+    ถ
+    ท
+    ธ
+    น
+    บ*
+    ผ
+    พ
+    ภ
+    ม
+    ย
+    ร
+    ล
+    ฬ
+    ว
+    ศ
+    ษ
+    ส
+    ห
+}}}
+cree {{{
+ᐊ   ᐁ   ᐃ   ᐅ
+ᐸ   ᐯ   ᐱ   ᐳ
+ᑕ   ᑌ   ᑎ   ᑐ
+ᑲ   ᑫ   ᑭ   ᑯ
+ᒐ   ᒉ   ᒋ   ᒍ
+ᒪ   ᒣ   ᒥ   ᒧ
+ᓇ   ᓀ   ᓂ   ᓄ
+ᓴ   ᓭ   ᓯ   ᓱ
+ᔭ   ᔦ   ᔨ   ᔪ
+
+
+
+ᐊ   ᐁ   ᐃ   ᐅ
+p   ᐸ   ᐯ   ᐱ   ᐳ
+t   ᑕ   ᑌ   ᑎ   ᑐ
+k   ᑲ   ᑫ   ᑭ   ᑯ
+ch  ᒐ   ᒉ   ᒋ   ᒍ
+m   ᒪ   ᒣ   ᒥ   ᒧ
+n   ᓇ   ᓀ   ᓂ   ᓄ
+s   ᓴ   ᓭ   ᓯ   ᓱ
+y   ᔭ   ᔦ   ᔨ   ᔪ
+}}}
+abkhaz:: {{{
+
+            https://en.wikipedia.org/wiki/Abkhaz_alphabet
+
+        [\u0401\u0410-\u044f\u0451]     #+=FRÅN RYSKA =LÄGG TILL ABKHAZISKA SPECIALTECKNEN *****
+
+А а
+[a]     Б б
+[b]     В в
+[v]     Г г
+[ɡ]     Гь гь
+[ɡʲ]    Гә гә
+[ɡʷ]    Ҕ ҕ
+[ʁ/ɣ]   Ҕь ҕь
+[ʁʲ/ɣʲ]
+Ҕә ҕә
+[ʁʷ/ɣʷ]     Д д
+[d]     Дә дә
+[dʷ]    Е е
+[ɛ]     Ж ж
+[ʐ]     Жь жь
+[ʒ]     Жә жә
+[ʒʷ]    З з
+[z]
+Ӡ ӡ
+[d͡z]    Ӡә ӡә
+[d͡ʑʷ]   И и
+[j/jɨ/ɨj/i]     К к
+[kʼ]    Кь кь
+[kʼʲ]   Кә кә
+[kʼʷ]   Қ қ
+[kʰ]    Қь қь
+[kʲʰ]
+Қә қә
+[kʷʰ]   Ҟ ҟ
+[qʼ]    Ҟь ҟь
+[qʼʲ]   Ҟә ҟә
+[qʼʷ]   Л л
+[l]     М м
+[m]     Н н
+[n]     О о
+[ɔ]
+П п
+[pʼ]    Ԥ ԥ
+[pʰ]    Р р
+[r]     С с
+[s]     Т т
+[tʼ]    Тә тә
+[tʼʷ]   Ҭ ҭ
+[tʰ]    Ҭә ҭә
+[tʷʰ]
+У у
+[w/wɨ/ɨw/u]     Ф ф
+[f]     Х х
+[x/χ]   Хь хь
+[xʲ/χʲ]     Хә хә
+[xʷ/χʷ]     Ҳ ҳ
+[ħ]     Ҳә ҳә
+[ħʷ]    Ц ц
+[t͡sʰ]
+Цә цә
+[t͡ɕʷʰ]  Ҵ ҵ
+[t͡sʼ]   Ҵә ҵә
+[t͡ɕʼʷ]  Ч ч
+[t͡ʃʰ]   Ҷ ҷ
+[t͡ʃʼ]   Ҽ ҽ
+[t͡ʂʰ]   Ҿ ҿ
+[t͡ʂʼ]   Ш ш
+[ʂʃ]
+Шь шь
+[ʃ]     Шә шә
+[ʃʷ]    Ы ы
+[ɨ]     Ҩ ҩ
+[ɥ/ɥˤ]  Џ џ
+[d͡ʐ]    Џь џь
+[d͡ʒ]    Ь ь
+[ʲ]     Ә ә
+[ʷ]
+}}}
+egypt
+cuneiform
+navajo
+------
+@ IPA *************     ___TODO {{{
+
+    https://en.wikipedia.org/wiki/IPA_Extensions  *******           #+plocka in komplett lista m. alla tecknen hit =för att kunna beta av inlärningen mm(**)
+    https://en.wikipedia.org/wiki/Phonetic_symbols_in_Unicode
+
+    -----
+        https://unicode-table.com/en/alphabets/international-phonetic-alphabet/
+            https://www.internationalphoneticalphabet.org/ipa-charts/ipa-symbols-with-unicode-decimal-and-hex-codes/
+        https://westonruter.github.io/ipa-chart/keyboard/
+    
+
+        shenzhen        ʂə́n.ʈʂə̂n
+
+    ipa-tecknen =rak enkel lista avbockn. (****) {{{
+
+        https://en.wikipedia.org/wiki/IPA_Extensions
+         https://en.wikipedia.org/wiki/Phonetic_symbols_in_Unicode
+    
+    (för full överblick: =sätt font till size 20(!) + 4 kolumner i vim(!!))
+
+            ʂ
+            ə́
+            n
+            ʈ
+
+
+            ɐ
+            ɑ
+            ɒ
+            ɓ
+            ɔ
+            ɕ
+            ɖ
+            ɗ
+            ɘ
+            ə
+            ɚ
+            ɛ
+            ɜ
+            ɝ
+            ɞ
+            ɟ
+            ɠ
+            ɡ
+            ɢ
+            ɣ
+            ɤ
+            ɥ
+            ɦ
+            ɧ
+            ɨ
+            ɩ
+            ɪ
+            ɫ
+            ɬ
+            ɭ
+            ɮ
+            ɯ
+            ɰ
+            ɱ
+            ɲ
+            ɳ
+            ɴ
+            ɵ
+            ɶ
+            ɷ
+            ɸ
+            ɹ
+            ɺ
+            ɻ
+            ɼ
+            ɽ
+            ɾ
+            ɿ
+            ʀ
+            ʁ
+            ʂ
+            ʃ
+            ʄ
+            ʅ
+            ʆ
+            ʇ
+            ʈ
+            ʉ
+            ʊ
+            ʋ
+            ʌ
+            ʍ
+            ʎ
+            ʏ
+            ʐ
+            ʑ
+            ʒ
+            ʓ
+            ʔ
+            ʕ
+            ʖ
+            ʗ
+            ʘ
+            ʙ
+            ʚ
+            ʛ
+            ʜ
+            ʝ
+            ʞ
+            ʟ
+            ʠ
+            ʡ
+            ʢ
+            ʣ
+            ʤ
+            ʥ
+            ʦ
+            ʧ
+            ʨ
+            ʩ
+            ʪ
+            ʫ
+            ʬ
+            ʭ
+            ʮ
+            ʯ
+
+    }}}
+
+}}}
+
+?@?ithkuil.pdf
+    https://github.com/madmansnest/oltartkhica
+
+https://en.wikipedia.org/wiki/Brahmic_scripts  #devanagari, tibetan mm
+
+språkalfab_amharPROVTEXT.odt {{{
+    ä
+[ə] or [a]  u   i   a   e   ə
+[ɨ]     o   wa  yä
+[jə]
+Hoy     h   ሀ   ሁ   ሂ   ሃ   ሄ   ህ   ሆ    
+Läwe    l   ለ   ሉ   ሊ   ላ   ሌ   ል   ሎ   ሏ    
+Ḥäwt    ḥ   ሐ   ሑ   ሒ   ሓ   ሔ   ሕ   ሖ   ሗ    
+May     m   መ   ሙ   ሚ   ማ   ሜ   ም   ሞ   ሟ   ፙ
+Śäwt    ś   ሠ   ሡ   ሢ   ሣ   ሤ   ሥ   ሦ   ሧ    
+Rəʾs    r   ረ   ሩ   ሪ   ራ   ሬ   ር   ሮ   ሯ   ፘ
+Sat     s   ሰ   ሱ   ሲ   ሳ   ሴ   ስ   ሶ   ሷ    
+Ḳaf     ḳ   ቀ   ቁ   ቂ   ቃ   ቄ   ቅ   ቆ   ቋ    
+Bet     b   በ   ቡ   ቢ   ባ   ቤ   ብ   ቦ   ቧ    
+Täwe    t   ተ   ቱ   ቲ   ታ   ቴ   ት   ቶ   ቷ    
+Ḫarm    ḫ   ኀ   ኁ   ኂ   ኃ   ኄ   ኅ   ኆ   ኋ    
+Nähas   n   ነ   ኑ   ኒ   ና   ኔ   ን   ኖ   ኗ    
+ʾÄlf    ʾ   አ   ኡ   ኢ   ኣ   ኤ   እ   ኦ   ኧ   
+Kaf     k   ከ   ኩ   ኪ   ካ   ኬ   ክ   ኮ   ኳ   
+Wäwe    w   ወ   ዉ   ዊ   ዋ   ዌ   ው   ዎ    
+ʿÄyn    ʿ   ዐ   ዑ   ዒ   ዓ   ዔ   ዕ   ዖ    
+Zäy     z   ዘ   ዙ   ዚ   ዛ   ዜ   ዝ   ዞ   ዟ   
+Yämän   y   የ   ዩ   ዪ   ያ   ዬ   ይ   ዮ    
+Dänt    d   ደ   ዱ   ዲ   ዳ   ዴ   ድ   ዶ   ዷ   
+Gäml    g   ገ   ጉ   ጊ   ጋ   ጌ   ግ   ጎ   ጓ   
+Ṭäyt    ṭ   ጠ   ጡ   ጢ   ጣ   ጤ   ጥ   ጦ   ጧ   
+P̣äyt    p̣   ጰ   ጱ   ጲ   ጳ   ጴ   ጵ   ጶ   ጷ   
+Ṣädäy   ṣ   ጸ   ጹ   ጺ   ጻ   ጼ   ጽ   ጾ   ጿ   
+Ṣ́äppä   ṣ́   ፀ   ፁ   ፂ   ፃ   ፄ   ፅ   ፆ    
+Äf  f   ፈ   ፉ   ፊ   ፋ   ፌ   ፍ   ፎ   ፏ   ፚ
+Psa     p   ፐ   ፑ   ፒ   ፓ   ፔ   ፕ   ፖ   ፗ   
+Labiovelar variants
+
+The letters for the labialized velar consonants are variants of the non-labialized velar consonants:
+Consonant   ḳ   ḫ   k   g
+ቀ   ኀ   ከ   ገ
+Labialized variant  ḳʷ  ḫʷ  kʷ  gʷ
+ቈ   ኈ   ኰ   ጐ
+
+Unlike the other consonants, these labiovelar ones can only be combined with 5 different vowels:
+    ä   i   a   e   ə
+ḳʷ  ቈ   ቊ   ቋ   ቌ   ቍ
+ḫʷ  ኈ   ኊ   ኋ   ኌ   ኍ
+    ä   i   a   e   ə
+kʷ  ኰ   ኲ   ኳ   ኴ   ኵ
+gʷ  ጐ   ጒ   ጓ   ጔ   ጕ
+Adaptations to other languages
+The Ge'ez abugida has been adapted to several modern languages of Ethiopia. 
+}}}
+språkalfab_creePROVTEXT.odt
+språkalfab_koreanPROVTEXT.odt
+språkalfab_tamilPROVTEXT.odt {{{
+க               ங   ச       ஜ       ஞ   ட               ண   த               ந   ன   ப               ம   ய   ர   ற   ல   ள   ழ   வ   ஶ   ஷ   ஸ   ஹ
+அ   க   ஆ   கா                   இ   கி   ஈ   கீ   உ   கு   ஊ   கூ   எ   கெ   ஏ   கே   ஐ   கை   ஒ   கொ   ஓ   கோ   ஔ   கௌ                                                   க்
+}}}
+
+språkalfab_thaiPROVTEXT.odt
+ sinhala*
+
+språkalfab_armenPROVTEXT.odt
+språkalfab_cherokeePROVTEXT.odt
+språkalfab_coptPROVTEXT.odt
+språkalfab_devanagariPROVTEXT.odt
+språkalfab_hebrewPROVTEXT.odt
+språkalfab_mkhedruliPROVTEXT.odt
+   språkalfab_tibetanPROVTEXT.odt
+språkalfab_tibetanPROVTEXT.pdf
+språkalfab_vietPROVTEXT.odt
+
+
+I Y T E
+ O F 
+      V A P.
+index(???) {{{
+    språkalfab_arabalphabchart.pdf
+    språkalfab_armen.pdf
+    språkalfab_cherokee.pdf
+    språkalfab_DEVANAGARI2.pdf
+    språkalfab_devanagari.pdf
+    språkalfab_hebrew.pdf
+    språkalfab_ipa1.pdf
+    språkalfab_ipa2-total.pdf
+    språkalfab_ithkuil.pdf
+    språkalfab_mkhedruli.pdf
+    språkalfab_tibetan.pdf
+    språkalfab_vietnames.pdf
+}}}
+
+}}}
+
+
+___dvoraksvorak
+Teckenkarta/Uppsättning Svorak/Sweden Dvorak(**(*)) (=EXPORTERA TILL PDF O LÄGG PÅ DRIVE****(*)) {{{
+
+    grund
+        1234 56 7890 +´
+        ----
+        åäöp yf gcrl ,¨
+        aoeu id htns -'
+       <.qjk xb mwvz
+
+    s-
+        !"#¤ %& /()= ?`
+        ----
+        ÅÄÖP YF GCRL ;^
+        AOEU ID HTNS _*
+       >:QJK XB MWVZ
+
+    g-
+        ¡@£$ €¥ {[]} \±
+        ----
+        \{}þ ←đ ŋ©®ł
+        æœ€↓ →ð ħŧłß
+       |·@©ĸ »” µł“«
+
+    sg-
+        ¹²³¼ ¢⅝ ÷«»° ¿¬
+        ----
+        Ω[]Þ ¥ª Ŋ©®Ł
+        ÆŒ¢↑ ıÐ ĦŦŁ§ ˙×
+       ¦˙Ω©& >' ºŁ`<
+
+    a-
+        ±²³´ µ¶ ·¸¹° «
+        ----
+        åäöð ù  çãòì
+        áï õ éä   î
+       ¼®ñêë ø  í öú
+
+
+        sa-
+            ¡¢£¤ ¥¦ ¯¨©½ ¿
+            ----
+            ÅÄÖÐ Ù  ÇÃÒÌ »
+            ÁÏ Õ ÉÄ   Î  ßª
+           ¾®ñêë ø  í öú
+
+        sga-
+            ¹²³¼ ¢⅝ ÷«»° ¿¬
+            ----
+            ΩÛÝÞ ¥ª Ŋ©®Ł  Þ
+            ÆŒ¢↑    ĦŦŁ§  ×
+             Ω©¦    ºŁà
+
+}}}
+SPECIALTECKEN MED ALTGR O S-ALTGR (UBUNTU SVORAK) **** {{{
+
+    ___keyb_lin__SPECTECKEN
+
+    ( https://en.wikipedia.org/wiki/AltGr_key#Swedish_key_map )
+
+    Ω[]Þ ¥ª Ŋ©®Łą       #s-altgr
+    \{}þ ←đ ŋ©®ł        #altgr
+    åäöp yf gcrl,
+       ð ù  çãòì¬       #alt
+    ÅÄÖÐ Ù  ÇÃÒÌ        #s-alt
+
+    ÆŒ¢↑ ıÐ ĦŦŁ§ȧ
+    æœ€↓ →ð ħŧłßạ
+    aoeu id htns-
+    áï õ éä   î         #EV MAPPA IN ‘ och ’
+    ÁÏ Õ ÉÄ   Î ß
+
+    ȧΩ©& >' ºŁ`<
+    ·@©ĸ »” µł“«
+    .qjk xb mwvz
+    ®ñêë ø  í öú
+    ºÑÊË Ø  Í ÖÚ
+
+    ½ ¡ £$ €¥           #altgr
+    § 1234 56 7890 +
+      ±²³´ µ¶ ·¸¹°      #alt ****
+        
+
+     []
+    \{}
+æÆ  aoeu    htns
+     @ &  '   `
+
+
+     @       q
+    \       å
+    '       B
+
+    &       K
+    `       V
+
+    { }     ä ö
+    [ ]     Ä Ö
+    ----
+    æ Æ     a A
+
+
+    KLADD/UTKAST FÖR OMKOPPLING A/AGR+TANG TILL PLUS, = M.FL. ****
+    Ω[]Þ ¥ª Ŋ©®Łą       #s-altgr        Ω
+    \{}þ ←đ ŋ©®ł        #altgr
+    åäöp yf gcrl,
+       ð ù  çãòì¬       #alt                    rl,  p
+    ÅÄÖÐ Ù  ÇÃÒÌ        #s-alt                  rl,  (åäöp)
+
+    ÆŒ¢↑ ıÐ ĦŦŁ§ȧ                       e  ht(l)
+    æœ€↓ →ð ħŧłßạ                       e  t
+    aoeu id htns-
+    áï õ éä   î 
+    ÁÏ Õ ÉÄ   Î ß
+
+    ȧΩ©& >' ºŁ`<                        (.)q
+    ·@©ĸ »” µł“«                        .k
+    .qjk xb mwvz
+    ®ñêë ø  í öú                                v
+    ºÑÊË Ø  Í ÖÚ                                v
+
+
+    LISTA UNICODE-TECKENKODER MM (=siffror, exotiska tecken mm) ******
+
+        sub/super-scripted numbers ****     #skansholms jdir: binärsifferkoder-förkl.
+        p
+        2070    0
+        2071    1
+        00B2    2
+        207B    -
+        ---------
+        b
+        2080    0
+        2081    1
+        2082    2
+        208B    -
+        2098    m
+        2099    n
+
+
+}}}
+Write Foreign Language Characters in Vim {{{
+
+Function that loads special characterset for i-Mode ****[!!]
+    inoremap y ы
+     ...
+    --
+Function that runs iunmap for all the run characters for Russian, Arabic, etc etc [!!!!]
+
+
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;fisvabcdeghjklmnopqrtuwxyz
+
+___list
+    Russian
+    Arabic
+    Greek
+    Hebrew
+    armenian
+    georgian
+    Coptic
+
+}}}
+
+'substitution-alphabets' (=eg. drs-arabish)
+  - drs-sångalfabet|phonetics-ipa ****
+  - drs-arabish
+  - russ. handwriting
+  - coptic  #TRY|TEST: Remake drs-coptish--list to mimic 'english tesseract-ocr' of the coptic words
+                        (?? (=can relatively quickly ocr coptic (etc) by ocr-ing + tr(anslating)=the 
+                                resulting char.s(!!))
+  --
+  =for
+    - vankilists|decks
+    - easier /-searching **(*!)
+
+analysis (=review system + look to delete system inconsistancies (=which makes the system unintuitive and unpredictable)) {{{
+
+    letter      drs-vankiarabish(=2020+)
+
+      -- straight fr. the sound --
+    ب           b
+    ت           t
+    د           d
+    ر           r
+    س           s
+    ف           f
+    ك           k
+    ل           l
+    م           m
+    ن           n
+    ه           h
+    --
+    ي           y
+    ق           q               sometimes dropped in spoken arabic
+    ز           z
+    ط           T
+    ظ           Z
+    ض           D
+    --
+    ج           j
+    ح           H
+    ش           S
+    خ           K (!!)
+    غ           G
+
+      -- simile --  #=drawinginstructions | what the sign "looks" like
+                        (=classic 'arabish'-like)
+    ا           |                   an-  (='an' på slut av ord)
+    ص           ß       (g-s)
+    ث           €       (g-5)       t(colloq)  th(MSA)
+    ع           3
+    ذ           >  ,í   (a-m)       d  z(colloq)  th(MSA)
+
+
+      -- breaking char.s --
+    و           _w
+    لا           _|l     #ORDER(??)      (='&' (='mirror|reverse'))
+    ء           `(`)    (gs-v)          (=ev. 'förstora' fristående stort hamza(!!))
+                el. `_
+    أ           |`
+    إ           |,
+    آ           ~|      #ORDER(??)
+    ؤ           _`w
+
+      -- ''end special'' --
+    ى           &-(-)                           aa-
+    ة           ö-(-)  [=h med ö-prickar]       a- (uttalas a på slut av ord)
+    ئ           `&-(-)
+
+    long vowels(**)
+    |a      #=aa
+    yi      #=ii
+    wo      #=oo
+
+}}}
+.orig of the list {{{
+
+        letter      drs-vankiarabish(=2020+)
+        ا           |
+        ب           b
+        ت           t
+        ث           € (g-5)
+        ج           j
+        ح           H
+        خ           K
+        د           d
+        ذ             D, >,í (a-m)
+        ر           r
+        ز           z
+        س           s
+        ش           S
+        ص           ß (g-s)
+        ض           §
+        ط           T
+        ظ           Z
+        ع           3
+        غ           G
+        ف           f
+        ق           q
+        ك           k
+        ل           l
+        م           m
+        ن           n
+        ه           h
+        و           w
+        لا           |l
+        ء           ` (gs-v)
+        ي           y
+        أ           `|
+        إ           ,|
+        آ           ~|
+        ؤ           _`w
+        ى           &-
+        ة           ö-
+        ئ           `&-
+
+        long vowels(**)
+        |a      #=aa
+        yi      #=ii
+        wo      #=oo
+
+}}}
+
+https://unicode-table.com/en/#basic-latin
+https://unicode-table.com/en/blocks/mathematical-operators/
+

@@ -1,0 +1,1776 @@
+
+orgman-emacs.vdeck.txt
+
+	----
+1
+{{{
+    
+	--
+	orgman-p11
+	}}}
+
+
+TOC(!! =pick up as separators for the deckblocks(*)) {{{
+
+  1 Introduction  p1
+1.1 Summary  p1
+1.2 Installation  p1
+1.3 Activation  p2
+1.4 Feedback  p3
+1.5 Typesetting Conventions Used in this Manual  p4
+  2 Document Structure  p6
+2.1 Headlines  p6
+2.2 Visibility Cycling  p6
+2.2.1 Global and local cycling  p6
+2.2.2 Initial visibility  p8
+2.2.3 Catching invisible edits  p8
+2.3 Motion  p8
+2.4 Structure Editing  p9
+2.5 Sparse Trees  p11
+2.6 Plain Lists  p12
+2.7 Drawers  p15
+2.8 Blocks  p15
+  3 Tables  p16
+3.1 Built-in Table Editor  p16
+3.2 Column Width and Alignment  p20
+3.3 Column Groups  p21
+3.4 The Orgtbl Minor Mode  p21
+3.5 The Spreadsheet  p22
+3.5.1 References  p22
+3.5.2 Formula syntax for Calc  p24
+3.5.3 Emacs Lisp forms as formulas  p26
+3.5.4 Durations and time values  p27
+3.5.5 Field and range formulas  p27
+3.5.6 Column formulas  p28
+3.5.7 Lookup functions  p28
+3.5.8 Editing and debugging formulas  p29
+3.5.9 Updating the table  p31
+3.5.10 Advanced features  p32
+3.6 Org Plot  p33
+ --
+  4 Hyperlinks  p36
+4.1 Link Format  p36
+4.2 Internal Links  p37
+4.3 Radio Targets  p38
+4.4 External Links  p38
+4.5 Handling Links  p40
+4.6 Using Links Outside Org  p43
+4.7 Link Abbreviations  p43
+4.8 Search Options in File Links  p44
+4.9 Custom Searches  p45
+  5 TODO Items  p46
+5.1 Basic TODO Functionality  p46
+5.2 Extended Use of TODO Keywords  p47
+5.2.1 TODO keywords as workflow states  p47
+5.2.2 TODO keywords as types  p47
+5.2.3 Multiple keyword sets in one file  p48
+5.2.4 Fast access to TODO states  p49
+5.2.5 Setting up keywords for individual files  p49
+5.2.6 Faces for TODO keywords  p49
+5.2.7 TODO dependencies  p50
+5.3 Progress Logging  p51
+5.3.1 Closing items  p51
+5.3.2 Tracking TODO state changes  p51
+5.3.3 Tracking your habits  p53
+5.4 Priorities  p54
+5.5 Breaking Down Tasks into Subtasks  p55
+5.6 Checkboxes  p56
+  6 Tags  p59
+6.1 Tag Inheritance  p59
+6.2 Setting Tags  p59
+6.3 Tag Hierarchy  p62
+6.4 Tag Searches  p63
+  7 Properties and Columns  p64
+7.1 Property Syntax  p64
+7.2 Special Properties  p66
+7.3 Property Searches  p66
+7.4 Property Inheritance  p67
+7.5 Column View  p68
+7.5.1 Defining columns  p68
+7.5.1.1 Scope of column definitions  p68
+7.5.1.2 Column attributes  p68
+7.5.2 Using column view  p70
+7.5.3 Capturing column view  p71
+ --
+  8 Dates and Times  p73
+8.1 Timestamps  p73
+8.2 Creating Timestamps  p74
+8.2.1 The date/time prompt  p75
+8.2.2 Custom time format  p77
+8.3 Deadlines and Scheduling  p77
+8.3.1 Inserting deadlines or schedules  p79
+8.3.2 Repeated tasks  p79
+8.4 Clocking Work Time  p81
+8.4.1 Clocking commands  p81
+8.4.2 The clock table  p83
+8.4.3 Resolving idle time and continuous clocking  p86
+8.5 Effort Estimates  p88
+8.6 Taking Notes with a Relative Timer  p89
+  9 Refiling and Archiving  p90
+9.1 Refile and Copy  p90
+9.2 Archiving  p91
+9.2.1 Moving a tree to an archive file  p91
+9.2.2 Internal archiving  p91
+  10 Capture and Attachments  p93
+10.1 Capture  p93
+10.1.1 Setting up capture  p93
+10.1.2 Using capture  p93
+10.1.3 Capture templates  p94
+10.1.3.1 Template elements  p94
+10.1.3.2 Template expansion  p97
+10.1.3.3 Templates in contexts  p99
+10.2 Attachments  p99
+10.2.1 Attachment defaults and dispatcher  p100
+10.2.2 Attachment options  p101
+10.2.3 Attachment links  p102
+10.2.4 Automatic version-control with Git  p103
+10.2.5 Attach from Dired  p103
+10.3 RSS Feeds  p103
+  11 Agenda Views  p105
+11.1 Agenda Files  p105
+11.2 The Agenda Dispatcher  p106
+11.3 The Built-in Agenda Views  p107
+11.3.1 Weekly/daily agenda  p107
+11.3.2 The global TODO list  p110
+11.3.3 Matching tags and properties  p111
+11.3.4 Search view  p113
+11.3.5 Stuck projects  p113
+11.4 Presentation and Sorting  p114
+ --
+11.4.1 Categories  p114
+11.4.2 Time-of-day specifications  p114
+11.4.3 Sorting of agenda items  p115
+11.4.4 Filtering/limiting agenda items  p116
+11.5 Commands in the Agenda Buffer  p119
+11.6 Custom Agenda Views  p126
+11.6.1 Storing searches  p127
+11.6.2 Block agenda  p128
+11.6.3 Setting options for custom commands  p128
+11.7 Exporting Agenda Views  p129
+11.8 Using Column View in the Agenda  p131
+  12 Markup for Rich Contents  p133
+12.1 Paragraphs  p133
+12.2 Emphasis and Monospace  p133
+12.3 Subscripts and Superscripts  p134
+12.4 Special Symbols  p134
+12.5 Embedded LATEX  p135
+12.5.1 LATEX fragments  p135
+12.5.2 Previewing LATEX fragments  p136
+12.5.3 Using CDLATEX to enter math  p136
+12.6 Literal Examples  p137
+12.7 Images  p139
+12.8 Captions  p140
+12.9 Horizontal Rules  p140
+12.10 Creating Footnotes  p140
+  13 Exporting  p142
+13.1 The Export Dispatcher  p142
+13.2 Export Settings  p143
+13.3 Table of Contents  p146
+13.4 Include Files  p147
+13.5 Macro Replacement  p148
+13.6 Comment Lines  p150
+13.7 ASCII/Latin-1/UTF-8 export  p150
+13.8 Beamer Export  p152
+13.8.1 Beamer export commands  p152
+13.8.2 Beamer specific export settings  p152
+13.8.3 Frames and Blocks in Beamer  p153
+13.8.4 Beamer specific syntax  p154
+13.8.5 Editing support  p155
+13.8.6 A Beamer example  p155
+13.9 HTML Export  p155
+13.9.1 HTML export commands  p156
+13.9.2 HTML specific export settings  p156
+13.9.3 HTML doctypes  p157
+13.9.4 HTML preamble and postamble  p158
+13.9.5 Quoting HTML tags  p158
+ --
+13.9.6 Headlines in HTML export  p158
+13.9.7 Links in HTML export  p159
+13.9.8 Tables in HTML export  p159
+13.9.9 Images in HTML export  p160
+13.9.10 Math formatting in HTML export  p160
+13.9.11 Text areas in HTML export  p161
+13.9.12 CSS support  p161
+13.9.13 JavaScript supported display of web pages  p162
+13.10 LATEX Export  p163
+13.10.1 LATEX/PDF export commands  p163
+13.10.2 LATEX specific export settings  p164
+13.10.3 LATEX header and sectioning structure  p165
+13.10.4 Quoting LATEX code  p166
+13.10.5 Tables in LATEX export  p166
+13.10.6 Images in LATEX export  p168
+13.10.7 Plain lists in LATEX export  p169
+13.10.8 Source blocks in LATEX export  p169
+13.10.9 Example blocks in LATEX export  p170
+13.10.10 Special blocks in LATEX export  p170
+13.10.11 Horizontal rules in LATEX export  p171
+13.11 Markdown Export  p171
+13.12 OpenDocument Text Export  p171
+13.12.1 Pre-requisites for ODT export  p171
+13.12.2 ODT export commands  p172
+13.12.3 ODT specific export settings  p172
+13.12.4 Extending ODT export  p172
+13.12.5 Applying custom styles  p173
+13.12.6 Links in ODT export  p173
+13.12.7 Tables in ODT export  p174
+13.12.8 Images in ODT export  p174
+13.12.9 Math formatting in ODT export  p176
+13.12.9.1 LATEX math snippets  p176
+13.12.9.2 MathML and OpenDocument formula files  p177
+13.12.10 Labels and captions in ODT export  p177
+13.12.11 Literal examples in ODT export  p177
+13.12.12 Advanced topics in ODT export  p177
+13.13 Org Export  p182
+13.14 Texinfo Export  p182
+13.14.1 Texinfo export commands  p182
+13.14.2 Texinfo specific export settings  p183
+13.14.3 Texinfo file header  p183
+13.14.4 Texinfo title and copyright page  p184
+13.14.5 Info directory file  p184
+13.14.6 Headings and sectioning structure  p184
+13.14.7 Indices  p185
+13.14.8 Quoting Texinfo code  p185
+13.14.9 Plain lists in Texinfo export  p186
+13.14.10 Tables in Texinfo export  p186
+ --
+13.14.11 Images in Texinfo export  p186
+13.14.12 Quotations in Texinfo export  p187
+13.14.13 Special blocks in Texinfo export  p187
+13.14.14 A Texinfo example  p187
+13.15 iCalendar Export  p189
+13.16 Other Built-in Back-ends  p190
+13.17 Advanced Export Configuration  p190
+13.18 Export in Foreign Buffers  p193
+13.18.1 Exporting to minimal HTML  p193
+  14 Publishing  p194
+14.1 Configuration  p194
+14.1.1 The variable org-publish-project-alist  p194
+14.1.2 Sources and destinations for files  p194
+14.1.3 Selecting files  p195
+14.1.4 Publishing action  p195
+14.1.5 Options for the exporters  p196
+14.1.6 Publishing links  p200
+14.1.7 Generating a sitemap  p200
+14.1.8 Generating an index  p202
+14.2 Uploading Files  p202
+14.3 Sample Configuration  p202
+14.3.1 Example: simple publishing configuration  p202
+14.3.2 Example: complex publishing configuration  p203
+14.4 Triggering Publication  p204
+  15 Working with Source Code  p205
+15.1 Features Overview  p205
+15.2 Structure of Code Blocks  p206
+15.3 Using Header Arguments  p207
+15.4 Environment of a Code Block  p209
+15.5 Evaluating Code Blocks  p215
+15.6 Results of Evaluation  p218
+15.7 Exporting Code Blocks  p223
+15.8 Extracting Source Code  p224
+15.9 Languages  p225
+15.10 Editing Source Code  p226
+15.11 Noweb Reference Syntax  p227
+15.12 Library of Babel  p231
+15.13 Key bindings and Useful Functions  p231
+15.14 Batch Execution  p232
+ --
+  16 Miscellaneous  p233
+16.1 Completion  p233
+16.2 Structure Templates  p233
+16.3 Speed Keys  p234
+16.4 A Cleaner Outline View  p234
+16.4.1 Org Indent Mode  p235
+16.4.2 Hard indentation  p235
+16.5 Execute commands in the active region  p236
+16.6 Dynamic Headline Numbering  p236
+16.7 The Very Busy C-c C-c Key  p236
+16.8 Summary of In-Buffer Settings  p237
+16.9 Org Syntax  p240
+16.10 Context Dependent Documentation  p240
+16.11 Escape Character  p241
+16.12 Code Evaluation and Security Issues  p241
+16.13 Interaction with Other Packages  p242
+16.13.1 Packages that Org cooperates with  p242
+16.13.2 Packages that conflict with Org mode  p243
+16.14 Using Org on a TTY  p244
+16.15 Protocols for External Access  p245
+16.15.1 The store-link protocol  p245
+16.15.2 The capture protocol  p246
+16.15.3 The open-source protocol  p246
+16.16 Org Crypt  p247
+16.17 Org Mobile  p248
+16.17.1 Setting up the staging area  p248
+16.17.2 Pushing to the mobile application  p249
+16.17.3 Pulling from the mobile application  p249
+  Appendix A Hacking  p251
+A.1 Hooks  p251
+A.2 Add-on Packages  p251
+A.3 Adding Hyperlink Types  p251
+A.4 Adding Export Back-ends  p253
+A.5 Tables in Arbitrary Syntax  p253
+A.5.1 Radio tables  p253
+A.5.2 A LATEX example of radio tables  p254
+A.5.3 Translator functions  p256
+A.6 Dynamic Blocks  p256
+A.7 Special Agenda Views  p257
+A.8 Speeding Up Your Agendas  p259
+A.9 Extracting Agenda Information  p259
+A.10 Using the Property API  p261
+A.11 Using the Mapping API  p262
+  --
+Appendix B History and Acknowledgments  p264
+B.1 From Carsten  p264
+B.2 From Bastien  p265
+B.3 List of Contributions  p265
+  Appendix C GNU Free Documentation License  p269
+C.1 ADDENDUM: How to use this License for your documents  p276
+
+17 Main Index  p277
+18 Key Index  p286
+19 Command and Function Index  p291
+20 Variable Index  p295
+
+}}}
+
+emacs Org-Mode - Notes 1 2020-2021 {{{
+
+	  ####	evince -p 4 ~/gdrive/Doks/em.org.pdf &
+
+
+  -- - -- p11
+	 outliner
+	research compendium
+
+	activate / packag. system
+	 list-packages (!!)
+	add-to-list + 'load-path  *
+	[git]
+	  -- - --
+			make help
+	(font-lock via hook)  *
+  -- - -- p13
+	keybinding conventions (Elisp)
+	[local var. Org (in non-org-file)] *
+	org-submit-bug-report
+  -- - -- p14
+	start w. minimal config *  x2
+			backtrace
+	Org Syntactical Elements * (TODO etc)
+	  ****
+  -- - -- p16
+Ch. 2 - Document Structure **
+	 org-cycle + Tab *
+	Headlines (+  *, **, ***)
+	16.4 Clean view  + Headline Numbers
+	--
+	Global / Local Cycling
+		tab | s-tab
+  -- - -- p17
+	  c-u (=num.) + s-tab *
+	c-u c-u tab   c-u c-u c-u tab
+
+	c-c c-r  "reveal"
+	c-c c-k
+	c-c tab
+	c-c c-x b
+	c-c c-x v
+  -- - -- p18   init visib(!)
+	
+	2.3 Motion
+	 c-c c-u / c-p		next heading
+		 c-f / c-b
+		 c-n
+		 c-j
+  -- - -- p19
+	tab | return  (="down | up" (??))    /  n | p  ....
+	2.4 Struct. Editing
+	m-Ent	c-u | c-u c-u
+	c-Ent
+	ms-Ent  New TODO
+	cs-Ret
+
+	a-left|right  promote | demote heading
+  -- - -- p20
+	sa-left | right		promote | demote subtree *
+	a-up | down
+	c-c @   mark subtree
+	 kill | copy | paste  subtree
+	(c-u c-y)
+
+		evince -p 5 ~/gdrive/Doks/em.org.pdf &
+
+  -- - -- p21
+	 Sorting *
+	narrowing *
+		promote to headline *
+	2.5 Sparse trees  *!
+	 [c-c / ]
+  -- - -- p22 (=12(?))
+	keyb. access to specific Sp(??).trees
+	
+	2.6 Plain Lists (+checkboxes)
+
+		descr.  ' :: '
+  -- - -- p24
+	sa-Ent  = Checkbox
+	  (+etc commands)
+  -- - -- p25
+	Drawers
+	  LogBook
+	2.8 Blocks (including Code (clocking??) etc **!)
+	a-tab  =  ca-i | esc-tab ****
+  -- - -- p26 [16]
+	3 = Tables
+	c-c Ent
+	c-c |       |vert
+
+  -- - -- p27
+	Column + Row Editing (*)
+	  a-up|down (etc) !
+  -- - -- p28
+	Sort table lines
+		c-c ^
+	 [+by time | by function]
+	--
+	Region (eg. copy rect. region)
+	split  a-Ent
+  -- - -- p29
+	Calculations
+	 c-c t
+	 s-Ent
+	Misc (*)
+		import file as table *
+	c-c |(??)
+		export *!
+  -- - -- p30
+	 Align table
+	shrink | expand
+  -- - -- p31
+	hover field (=preview)
+		+remove on export
+	orgtbl-mode (=minor)
+		="use in textmode, mail, etc" **
+  -- - -- p32
+	(+add-hook
+
+		evince -p 6 ~/gdrive/Doks/em.org.pdf &
+	
+		Spreadsheet + Calc
+	references
+		c-c ? | c-c }
+	((B3)) @Row $Col
+	  $1  $+1  $-2
+		  $<
+		  $>>>
+	  @1   +3 -1
+	  @I    (=) first headerline
+	***
+	  @0  $0		+p33  Examples
+	-- - --
+	Ranges  $1 .. $3 (etc)
+		+can be used w. Calc vector functions
+	- - - -
+	formula field coord.s
+		@#  $#   etc
+	 +Ex  ((*))
+  -- - -- p34
+	Named Ref.s (pi etc)
+	Remote ref.s  **
+	 remote(  )
+	Calc formula Syntax
+		constants.el
+  -- - -- p35
+	mode string  + semicolon
+	p20  n3 s3 e2 f4
+	D R
+	F S
+	T t U
+	E*  N  L
+		+printf + Ex. *
+  -- - -- p36
+		'logical operations' (*)
+	Lisp Forms as formulas *
+		(= string manipul. etc)
+	'( ....
+		+ ;L -etc flags
+  -- - -- p37
+		+Ex.s *
+	Durations and timeval.s
+		;t  *
+	-- - --
+	3.5.5 Field and Range formulas
+		' := '
+	eg. assign formula into field *
+		vsum(@II..III)
+			+calculate
+  -- - -- p38
+	c-u c-c =
+		TBLFM
+	$2=
+	@3=
+	@1$2..@4$3  (*)
+	$NAME
+	-- - --
+	Column Formulas *  =$1+$2
+	  c-c =
+
+		evince -p 7 ~/gdrive/Doks/em.org.pdf &
+	
+  -- - -- p39
+	Lookup Functions  (3 st)
+	(eg. org-lookup-all)
+	'These three functions can be used
+	 to implement assoc. arrays,
+	 count matching cells, rank results,
+	 group data, etc
+	+Worg tutorial (*!)
+	-- - --
+	Edit + Debug formulas *
+	-- - --  (SEE MORE)
+  -- - -- p40
+	
+		shift reference
+			c-c }
+	remove formula (!)
+  -- - -- p41
+		multip. TBLFM *
+	Debug Formulas (=in menu)
+	Updating the table
+		c-c *
+		c-u c-c *
+  -- - -- p42
+	Advanced features
+	c-#
+		Students exam results example (*)		
+  -- - -- p43
+	!
+	~
+	-
+	#
+	*
+	/
+	 +Ex. *
+	---
+	3.6  Org Plot
+	 gnuplot (=praph / ascii)
+		c-c " g
+  -- - -- p44
+	Plot Options (*)
+			file (outp.)
+	script
+  -- - -- p45
+	ascii
+		c-c ``
+		c-u c-c * (update)
+  -- - -- p46
+	Ch. 4(??) - Hyperlinks *!
+	[[LINK][DESCR.]]
+		org-link-escape
+	c-c c-l
+  -- - -- p47
+	Internal Links
+	follow  c-c c-o
+	[[#my-custom-id]]
+		<<My Target>>
+	(+NAME)
+		linter *
+
+		evince -p 8 ~/gdrive/Doks/em.org.pdf &
+
+	orgs (link)  mark ring
+
+	c-c &
+
+		(link to Headers etc)
+  -- - -- p48
+	Radio Targets
+	 <<<My Target>>>
+    - - Ext. Links - -  *!
+	files, websites, messages (mail etc)
+	BBDB-db:s, IRC conversations *
+
+	file: attachment:, bbdb:,
+	  docview:, doi, elisp:,  **!
+	....
+	 help:, http(s):,
+	  id info irc  mailto news
+	 shell *
+  -- - -- p50
+		inline
+	Handling Links
+	  org-stor-link  (+bind)
+	[globally unique moveable links] *
+  -- - -- p51
+    Web Browsers
+	  ...
+	  ...
+	  ...  file types
+	Agenda View
+	  c-c c-l  insert link
+
+	link history *
+		
+		link abbrev.s *
+	c-u (x3) c-c c-l  ('kup' in list)
+  -- - -- p52
+	Completion supp. for cert. file types
+
+	c-u c-c c-l
+	c-u c-l  (on existing link)
+	c-u c-o  (+prefixes)
+	 Ret  lmb/rmb  mmb
+	--
+	c-c %  Push curr. pos. onto ring  *
+  -- - -- p53
+	c-c &  jump back
+	c-c c-x c-n/p
+	  (+ bind to  a-n/p)
+	
+	Link Abbreviations  *!!
+
+	  Elisp   + EXAMPLES (**!)
+  -- - -- p54
+		define custom abbrev.s
+	(+completion) *!
+
+	+Search Options in FileLinks
+	  (= line no, internal links,
+	   headlines, ids search)
+
+		evince -p 9 ~/gdrive/Doks/em.org.pdf &
+
+  -- - -- p55
+	(search the curr. file)
+
+	Custom Searches (w. functions *)
+	  BibTex etc
+  -- - -- p56
+	5 - TODO Items (*)
+
+	c-c c-t  rotate
+	s-right/left  (t in agenda)
+	'c-c/t'  View as Sparse tree
+	'c-C/T'  Search *
+
+  -- - -- p57
+	Show All 'RDS'(??) fr. many files
+	sa-Ent  new todo below curr.
+		
+		tags (??)
+	--
+	5.2.1  TODOs as workflow states
+
+	  "|"
+
+	  TODOs as types
+  -- - -- p58
+	tags [p69]
+		(+Using Completion)
+		[p243]
+
+	'Multip. Keyw. Sets in one file(?)
+	*(!!) (+setq and sequences)
+
+	cs-left/right  Change
+	s-right/left  sequences
+  -- - -- p59
+	* Fast access to TODO states (r, b, k etc) *
+
+	Setup Keywords for indiv. files
+	 +complete w. esc-tab
+
+	 c-c c-c
+
+  -- - -- p60
+	custom faces
+
+	  TODO Dependencies (*) !
+
+  -- - -- p61
+	blocked = dimmed / checkboxes *
+		org-depend.el
+	
+	5.3 ProgressLogging
+
+	c-u  c-c c-t
+		(or automatically) *
+	
+	closing Items (?)
+		c-c c-t space  (?)
+	 -- - --
+	Tracking TODO state changes
+
+  -- - -- p62
+	recommended drawer =LOGBOOK
+
+	Wait Done Cancelled (etc)
+
+		evince -p 10 ~/gdrive/Doks/em.org.pdf &
+
+	"WAIT (w@/!)" etc
+
+	  logging pref.s local to buf.
+
+	STARTUP Keywords
+
+		Space vs c-u Space
+			(w. point on drawer in agenda)
+
+  -- - -- p63
+	Track Habits *!*
+		(+nudge)
+	 +  ++    +2d/3d
+	
+	(+consistency graph)
+
+  -- - -- p64
+		+ colors *!
+	(+grap(?)-options)
+
+		c-u K
+		 K
+
+	5.4 Priorities (wh. has many TODOs)
+	  [#A]  A B C
+				('cookies')
+	  [#1]
+		 ((<65))
+
+  -- - -- p65
+	c-c  ,			Space
+	s-up/down
+
+	Break down tasks into Subtasks *
+
+	- = insert outline tree below
+		  the todo  (+ 33 % / 1/2)
+	
+	c-c c-c
+			recursive etc
+
+  -- - -- p66
+	Function = make entry change
+		to done wh. all children are done **!!
+
+	5.6 Checkboxes **!*
+	  [ ]  -  x
+
+		[2/4] - Cookies *
+
+  -- - -- p67	Set, Toggle etc.
+
+				(+ c-u / c-u x2)
+	c-c c-c	
+	c-c c-x c-b
+	c-c c-x c-r		(radio button)
+	sa-Ent
+	c-c c-x o	(toggle ordered)
+	  -- - --
+	(c-u) c-c #  update stat.s cookies
+
+  -- - -- p69
+
+	6 - Tags *
+
+	:work:urgent: (etc)
+		
+		(subheadings inherits tags)
+
+	'set tags that all entries in a file should inherit'
+		(??????)
+
+	Matching (*)
+		(inheritance)
+
+	6.2 Setting tags
+
+	c-c c-q
+		Enter new
+
+		evince -p 11 ~/gdrive/Doks/em.org.pdf &
+
+  -- - -- p70
+		hardlist of tags
+	Default tags etc *!
+		
+			**
+	@work @home  etc
+
+	fast tag Selection *
+	 (setq ........  *!!)
+
+			\n
+
+  -- - -- p71
+	{@work(w) @home ...
+
+	mutually exclusive tags
+
+	[:start/endgroup !!]
+
+		c-c c-c + sel.keys tag1, tag2 ...
+	 --
+	tab Ent c-g q  !  c-c
+
+  -- - -- p72
+	+Examples  *
+	 -- - --
+	Tag Hierarchy !!*
+		[GTD : Control Persp]
+	
+		+ {       }
+	+Regexes **  {re}
+
+	Searches
+
+	 c-c / m // c-c \
+
+	 org-agenda m
+				M
+
+		(Find / List urgents etc)
+
+
+  -- - -- p74
+	7 - Prop.s and / Columns
+
+	- inst. of tags, eg. for diff. softw. releases *
+	- eg. CD-db
+
+	Convinient view for editing prop.s ; Column View
+
+	prop.syntax
+			:key: val  *
+
+  -- - -- p75
+	inheritance + preset val.s  *
+
+	(prop.blocks)
+		+adding etc *
+
+	m-tab
+	c-c c-x p
+	  insert-drawer
+	c-c c-c
+  -- - -- p76
+		c-c S
+	s-left/right
+	c-c c-c d
+			D
+			--
+			C
+	
+	Spec. prop.s  ('ALLTAGS' etc)
+			**
+	
+	CLOCKSUM
+
+	7.3 Prop. Searches (=create sparse ____(trees?) etc)
+
+		evince -p 12 ~/gdrive/Doks/em.org.pdf &
+
+  -- - -- p77
+	= sparse tree / spec. lists cmds
+
+	agenda etc
+
+	'c-c / p'
+
+		Inheritance (can be slow)
+	
+	moving subtrees
+
+  -- - -- p78
+	7.5 Column View
+		s-tab s-tab
+
+  -- - -- p79
+	SUMMARY-TYPE *
+
+	'est+'
+		+Ex. *!
+
+  -- - -- p81:2  ###
+
+	Capture Col.View
+	
+	 :id
+
+	 :match  *
+
+  -- - -- p82
+  
+	:exclude-tags
+
+	c-c c-c c-c  .......
+
+	+ formulas *
+
+		Collect properties *
+
+  -- - -- p83
+	8 - Dates and Times
+	  
+	  =labeling TODO-items w. dates and times *
+
+	=> Causes entries to be shown on specif. dates of Agenda *
+
+	<d a t e>
+		+1w *
+
+	+cal(?).expressions
+
+  -- - -- p84
+	%%(
+
+  -- - -- p80(??)
+	c-c c-x c-c
+	 r / r
+	c-c c-c // q
+
+	1-9 , 0
+	n / p
+
+  -- - -- p81(??)
+	e(dit)
+	c-c c-c
+	 v
+	 a
+	 <  //  >
+	 sa-left/right
+
+		evince -p 13 ~/gdrive/Doks/em.org.pdf &
+
+	inactive timestamps
+	[ D a t e ]
+
+	c-c .
+	c-c !
+	c-c c-c
+	c-c .
+	c-c < // > (!!)
+	c-c c-o
+
+  -- - -- p85(??)
+	s-left/right
+	 -up/down
+	c-c c-y
+
+  -- - -- p86(??)
+	relat. dates
+
+  p87
+	+Formats  etc
+
+	sa-left
+	(custom formats)
+
+	Deadlines + Scheduling
+		|
+  -- - -- p88(??)
+	=setting a date wh. y. want to
+	 start working on an action item
+
+  -- - -- p89(??)
+	Insert b:s or S:s
+
+	c-c c-d
+	c-c c-s
+	c-c / d
+	c-c / b
+	c-c / s
+
+
+	Repeated
+
+  -- - -- p90
+
+		DONE
+
+	+mark repeater as done
+
+  -- - -- p91
+	Clocking Work Time *
+		(+elisp)
+
+	c-c c-x c-i
+
+  -- - -- p92
+	(effort estimates
+
+	c-c c-x c-o
+	c-c c-x c-x
+	c-c c-x c-e
+	 ...
+	cs-up/down
+
+	
+	p93
+	 sa-up/down
+	 c-c c-t
+	 c-c c-x c-q
+	 c-c c-x c-j
+	 c-c c-x c-d
+
+	the clock-table
+
+  -- - -- p94
+	:scope *
+	:block
+
+	  start
+	
+	:step/fileskip 0
+
+		evince -p 14 ~/gdrive/Doks/em.org.pdf &
+
+	|
+	|
+  -- - -- p96
+
+	:formatter (*)
+		
+		+Examples
+
+	- Resolve idle time *
+
+  -- - -- p97
+	k K  s S
+	  C
+	- -  - -
+	
+	c-c c-x c-z(or 2)
+
+		x11-idle
+
+  -- - -- p98	Effort Estim.s
+
+	c-c c-x e
+	c-c c-x c-e
+		(Columns)
+
+  p99
+	 Narrowing down
+	Relative timers!
+				++
+
+  -- - -- p100
+	9 - Refiling / Archiving
+	  + copying
+
+  -- - -- p101
+	Move proj.tree to other file **
+
+	internal archiving
+		(+key commands)
+
+  -- - -- p103
+	Capture (=new ideas and tasks)
+
+	10 - +Attachm.
+			(=assigns Ref.mat.
+			 with them)
+
+	templates
+	  + c-c  c-c
+	
+	c-c c-w
+	c-c c-k
+
+  -- - -- p104
+			=templates
+
+	c-u  Capture
+
+	c-u c-u  .....
+
+	Capt.templates (elisp)
+
+	define task fr. email. etc  +binding
+
+  p105
+
+	types
+
+	target *
+		(file .... (etc)  *
+
+  -- - -- p106
+
+		'(function  funct  ..... *
+
+	properties  +++
+
+  -- - -- p107
+
+	Template Expansion *
+
+	eg % [FILE]
+
+		evince -p 15 ~/gdrive/Doks/em.org.pdf &
+
+	p108
+		%(EXP)
+		%<Fu(nc?)t>
+		 etc
+		  .
+		  .
+		  .
+		  .
+		  .
+		%^g
+
+  -- - -- p109
+		link (=file?)  types
+	10.2 Attachm. *!
+
+  -- - -- p110  defaults + dispatcher
+	c-c c-a
+
+  p111
+	F  open w. dired
+
+  -- - -- p113
+	Autom. v-control w. git **!
+
+	attach fr. dired  + elisp (*)
+
+	rss feeds
+
+  -- - --
+  -- - -- p115
+	11 - Agenda Views *
+	
+	Sorting, collecting and displaying
+	 scattered TODOS etc *
+
+	TODO , ........
+
+	 ....   stuck (#)  etc
+	
+	Agenda Files (??)
+
+	c-c  [  //  ]
+
+  -- - -- p116
+
+	c- '/,  (??)
+
+	c-c c-x <
+
+	<  //  >
+
+	-- - --
+	
+	The Agenda Dispatcher
+
+	  a  m  / (!!)  <
+	  t  M  #   <<
+	  T  S (!!)  !    *-- - --'sticky'
+					r / g
+
+  -- - -- p117
+  
+	Agenda Views (builtin)
+
+	weekly / daily
+
+  -- - -- p118
+	a-x org-agenda a  *
+
+	Calender / Diary integration
+		( (setq ....
+
+	 c  (or C)
+
+  -- - -- p119
+	BBDB =for contacts
+
+	see upcoming anniv.
+
+	Appointm. Remainders
+
+		evince -p 16 ~/gdrive/Doks/em.org.pdf &
+
+  -- - -- p120
+	The Global TODO-List
+
+	org-agenda  t  //  T
+
+	'if y. often need to search for a specific keyword'
+
+		(scheduled / deadline)
+
+  -- - -- p121
+	Matching Tags & Prop.s
+
+	'if y. often need a specif. search' *!
+
+	TODO-keyw.s +(!) Tags *
+
+	& // |   + -
+
+	+work-boss (???)   **
+
+	work + {^boss.*}  *
+		
+		(=regexes)
+
+	Prop.s / Spec. Poop.s(????)
+		
+		SEE MORE
+
+  -- - -- p122
+
+		********
+
+	'Here is a complex example'
+
+	comparisons (<= etc)
+
+	  +/- min.s etc
+
+	<Date>
+
+	 {regex}
+
+	Searching TODO tip = 'for typing speed'
+
+	
+	p123
+		More Examples *
+	
+	Search-View **
+		(=good for finding notes) *
+
+	] // [  // { // }
+		=adjust search
+
+	GTD Stuck proj.s
+
+  -- - -- p124		#   !
+
+	11.4 Pres. + Sorting Categories *
+
+  p125
+	timeofday-specif.s
+
+	<    >--<    >
+
+	sorting + priorities
+
+  -- - -- p126
+	Filtering / Limiting agenda items *
+
+	\   <    =
+	tag  categ.  regex
+
+	custom filters
+
+  -- - -- p127
+	_    ^    /(!!)    | (=X)
+	effort  headline
+
+	Computed Tag filtering
+
+  -- - -- p128
+	(auto-exclude)   (+elisp)!!
+
+	self-adapting filters
+
+		evince -p 17 ~/gdrive/Doks/em.org.pdf &
+
+  p128
+		set limits for the Agenda
+	
+	Commands in the Agenda Buffer  p129
+							****
+
+	p132   remote editing
+					**
+
+	p136
+		Cal.commands + quit/exit
+
+
+	Custom Agenda Views - store + qu.(??) access freq. used TODOs
+
+  p137
+	Storing Searches
+		(setq .....  !**
+
+  p138
+	block agenda
+
+	Setting Options for Custom Commands (+elisp *)
+
+  p140
+	Export Agenda Views
+		html, ps, pdf, ical
+	
+	ps2pdf
+	
+	x  c-x c-w  (+elisp*) (x2)
+
+  -- - -- p141
+	emacs -eval '(......  **!
+
+  -- - -- p142
+	column view (in Agenda)
+
+
+  -- - --
+  -- - -- p143
+	12 - Markup for Rich Content
+
+	=org has lightweight lang for this (*)
+
+	line
+	-- - --
+		\\
+	-- - --
+	line
+
+	*bold*	/italic/
+	 _underlined*
+		=verbatim=
+			~code~  *
+
+  -- - -- p144
+	sub / sup    _ / ^
+
+	Latex-like   \alpha \sig  m-tab (=ma)(??)
+
+
+  p145
+	c-c c-x \
+
+		toggle display as U8 chars
+
+	Embedded Latex ***
+		(+mathjax or im.s)
+	
+	\begin {eq .....
+			 (+options)
+
+  p146
+	Preview Latex fragm.s
+		c-c c-x c-l
+	
+	cdlatex minor-mode *
+
+  -- - -- p147
+	c-c {     (*)
+	 tab   `
+	 ^     '
+	 -
+
+		evince -p 18 ~/gdrive/Doks/em.org.pdf &
+
+  -- - -- p147
+	Literal Ex.s
+	
+	#+BEGIN_EXAMPLE
+		......
+
+	#+BEGIN_SRC emacs-lisp -n 20
+		****
+
+	(ref:name)
+
+		[[ (name ]]  (+hover)
+
+					-r
+
+			=remove labels
+
+  -- - -- p149
+	-l "((%s))"
+
+	Image-links *
+
+  -- - -- p150
+	c-c c-x c-v
+		toggle inline display of im.s
+	
+	#+CAPTION
+
+	- - - - 
+
+	Footnotes   [fn:1]
+
+		+ + +
+	
+	(+cmds)
+
+  -- - --
+  -- - -- p153
+	13 - Exporting
+
+	ascii, beamer, html, ical, latex, md, odt,
+	 org, texinfo, man
+			(+install more)
+
+	c-c c-e
+
+  p153
+	  c-a
+	  c-b
+	  c-S(ubtree)
+	  c-v
+	Export-Settings
+
+  -- - -- p154
+	AUTHOR, CREATOR ....
+	DATE, Email
+	SEL/EXCLUDE_TAGS
+	  .....
+	  .....
+	  .....
+	'
+	*
+	_
+	:
+	<
+	\n
+
+  -- - -- p155
+	 .....
+	 .....
+	 .....
+
+		incl. entities footn.
+	
+	H  num. of headl.s for exp.
+
+	  todo
+	
+	 |
+
+  p156  Table of Contents
+
+  p157  Include(-)Files (*)
+	example export scr
+
+	+specif lines
+
+		evince -p 19 ~/gdrive/Doks/em.org.pdf &
+	
+	""three left curly brackets (!!)""
+
+
+  -- - -- p159  + Predefined Macros
+				 *
+		(keyw, title etc)
+
+  -- - -- p160  ' '#' '  =commented
+	clean text --- export (ascii etc)
+					|
+  -- - --
+				width etc
+  -- - --
+  p162  Beamer exp. *!
+
+  p165  Org Beamer Mode
+		 +c-c c-b
+
+	'A Beamer Emample' *
+  
+  p166  HTML Export
+
+	Doctype (etc)
+		incl html5 *
+
+  -- - -- p168
+	preamble / postamble
+
+  p170  Math formatting
+  
+  p171  text areas
+	CSS support *!
+
+  p172  + JS-support *!
+
+  -- - -- p173  Latex / PDF Export  **
+
+  p176  Quoting Latex Code **
+
+	+ tables
+	    im.s
+	  plain lists
+
+  -- - -- p179
+	Source Blocks *
+  p180
+	Example Blocks
+	 +special blocks (??)
+
+  -- - -- p181  Markdown Export
+
+	ODT Export *
+	  + Extending ODT Export
+
+	(+doc, docx, rtf, pdf)
+
+  -- - -- p183
+	Converting + LOffice / Pandoc *
+
+	+Custom Styles
+		+ Links
+	
+	Tables
+		im.s
+
+  -- - -- p185  Clickab. im.s (!!*)
+	Math
+	Latex
+  
+  p187  MathML / ODoc formulas
+
+	literal examples
+
+  -- - -- p188
+	Advanc. Topics
+	ODoc Style Files *
+	'one off-styles'
+
+	customize tables
+
+		evince -p 20 ~/gdrive/Doks/em.org.pdf &
+
+  -- - -- p192
+	Validate ODoc
+	Xml
+
+	OrgExport
+	 -- - --
+	TexInfo Export *
+
+  -- - -- p193-194
+
+	Info directory file
+
+  p195  Quoting Texinfo Code **
+
+  p196  Plain Lists
+			
+			tables
+			  im.s
+			quotes
+  p197
+		Ex.s
+	iCal Export     p199
+
+  p200
+	Advanc. Exp. Conf.
+
+	hooks (=elisp*)
+		|
+  -- - -- p201
+	Filters (**)
+
+  p202
+	extend existing backend
+
+    p203  export to minimal HTML
+
+  -- - --
+  -- - -- p204
+	14 - Publishing
+
+		+= convert files into pdf (*)
+
+	sources + destinations
+
+  p206  Options for the exporters
+			(+for the diff formats)
+
+  p210  'Publishing Links'
+			(='create link fr. one org file to another')
+
+  p211
+	Generate a Sitemap *!!
+
+  p212
+	Generate an index
+	
+		+rsync/union ?
+	
+	(+Example Conf.s)
+
+  -- - -- p214  Trigger the Public(ation(??))
+
+  -- - --
+  -- - -- p215
+	15 - Working w. Source Code
+		((=CHECK/LISTEN MORE (!!!!!) ))
+		  ***!
+	
+	  - uses appropr. maj mode
+	  - Can extract code +
+		 export to source files
+
+	Compile the Code
+
+  -- - -- p216
+	Structure of Code Blocks *!!
+
+  p217
+	15.3 Using Header arguments *
+		  + (setq  | ..... |  *
+
+  p218  Code block specif.
+	
+		evince -p 21 ~/gdrive/Doks/em.org.pdf &
+
+	#+CALL:
+
+	15.4 Environm. of a CodeBl.
+			+passing arg.s
+		v
+		v
+		v
+		v
+		v
+		v
+		v
+
+  p224
+	choosing a wdir (*!!)
+
+  p225
+	headers + footers (?)
+		(=elisp*)
+	
+  15.5 Eval.ing Code Blocks
+   *!  #+CALL: call_<name> **
+
+  p227
+	limit codeblock evaluation
+
+	Cache results
+
+  15.6 Results of Eval.  v
+						 v
+						 v
+						 v
+						 v
+						 v
+						 v
+						v
+					   v
+  p232
+	Post-processing
+			:post  (+Example
+
+  p233
+	Exporting Code blocks
+		'code', results, both, none
+
+  p234
+	15.8 Extracting Source Code
+
+  p236
+	Supported Langs *!
+
+  p237
+	Edit Source Code *!
+
+	c-c '
+	  c-x c-s
+
+	<<Ref to o(ther(??)) Code blocks>>
+		"noweb"
+
+  p241
+	15.12  Libr. of Babel
+	  = 'a collection of code blocks'
+
+	Key bindings
+	  + useful functions *
+
+	c-c c-c  (etc)
+
+  -- - -- p242
+	15.14 Batch Exec. (+elisp) *
+
+  -- - --
+  -- - -- p243
+	16 - Misc. *
+
+	esc-tab  cs-i  (*)
+
+	Insert Template
+
+		c-c c-,
+
+	 a
+	 c
+	 .
+	 .
+	 .
+	 .
+
+  -- - --
+
+	16.3  Speed Keys
+			(=single keys in headers)
+
+	16.4  A Cleaner Outline View
+
+  p245  Org indent mode
+    - hard indentation
+
+		evince -p 22 ~/gdrive/Doks/em.org.pdf &
+  
+  p246
+	16.5  c-c c-s  (etc) *
+
+	16.6
+	  = org num min. mode  *
+	
+	(+ 'turn on globally for all org files)
+
+
+	16.7
+		c-c c-c  (!!)
+
+	16.8   p247-250
+		In Buf. Settings
+			(=summary)
+
+	 #+ARCHIVE:  etc
+	     .
+	     .
+	     .
+	     .
+
+		evince -p 23 ~/gdrive/Doks/em.org.pdf &
+
+    16.9 Org Syntax
+			(on Worg)
+
+	  a-:    ((= inspect syntax))  *
+
+	16.10
+	  c-c c-x i
+
+	  Escape char.
+
+
+	  Code eval.  + secur.
+
+
+	16.3  Packages that Org cooperates with
+
+		calc.el
+		constants.el
+		cdlatex
+		 imenu
+		speedbar
+		tabk
+
+		(+pack.s that conflict w. org)
+
+
+}}}
+

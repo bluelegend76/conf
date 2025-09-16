@@ -1,0 +1,3173 @@
+vim:fdm=marker:sw=2:syn=cs:
+
+@b(ump):   3yyp}ddzc3-   #copy last q&a-post + bump i-number 1
+@s(plit):  o----yypO         #split (=put ---- + blank line + ----)
+
+    @a:  /\d\zs-\ze\af_f.ld$
+
+te: business-logic {{{
+
+Could you give me an idea of what business logic means in the context of programming?
+
+Absolutely! Business logic in programming refers to the core rules and operations that define how a particular application or system functions to meet its specific business requirements. Think of it as the "why" and "how" behind the data and user interface. It's the part of the code that translates real-world business processes into software.
+
+Here's a breakdown of what that means:
+
+    Core Functionality: Business logic encompasses the essential tasks and procedures that the software needs to perform to achieve its goals. For an e-commerce site, this might include calculating prices, processing orders, managing inventory, applying discounts, and handling shipping rules.
+    Rules and Constraints: It embodies the specific rules, policies, and constraints that govern the business. For example, "a customer can only place an order if their shipping address is within our service area," or "discount codes are only valid for certain products and during a specific timeframe."
+    Data Manipulation: Business logic often involves manipulating and transforming data based on these rules. This could involve validating user input, calculating totals, formatting reports, or updating database records in specific ways.
+    Separation of Concerns: Ideally, business logic is kept separate from the user interface (how the user interacts with the system) and the data access layer (how the system stores and retrieves data). This separation makes the code more organized, maintainable, and easier to update. If the business rules change, you only need to modify the business logic layer, without affecting the UI or database directly.
+
+Think of it this way:
+
+Imagine you're building software for a library.
+
+    User Interface: The screens and buttons that librarians and patrons use to search for books, check them out, and return them.
+    Data Access Layer: The part of the software that interacts with the library's database to store information about books, members, and loans.
+    Business Logic: The rules that govern how these interactions happen. This could include:
+        Calculating late fees based on the due date and the type of book.
+        Checking if a member has exceeded their borrowing limit.
+        Sending overdue notices.
+        Determining if a book is available for loan.
+
+In essence, business logic is the "brain" of your application. It's where the real work happens and where the application's unique value lies. It's what makes your software do what it's supposed to do for the business it serves.
+
+Does that give you a clearer picture? Let me know if you'd like to explore any specific aspect of business logic further!
+
+}}}
+te: domain-logic {{{
+
+I think so. Very helpful. What about the next 'buzz-term' I came across here, i.e. 'domain logic'?
+
+That's a great follow-up! The term "domain logic" is very closely related to "business logic," and in many contexts, they are used interchangeably. However, there can be a subtle distinction, especially within the context of Domain-Driven Design (DDD).
+
+Here's how to understand domain logic:
+
+Domain: In software development, the "domain" refers to the specific subject area or the real-world activity that the software is designed to support. For a library application, the domain is library operations (borrowing, lending, cataloging, etc.). For an e-commerce site, the domain is online sales (products, orders, customers, payments, etc.).
+
+Domain Logic: Domain logic is the part of the software that represents the core rules, concepts, and knowledge of that specific domain. It focuses on what the domain is and how things work within it, independent of any specific application or technology.
+
+The Relationship with Business Logic:
+
+    Often Synonymous: In many practical scenarios, especially for business applications, the domain is the business. Therefore, the domain logic effectively is the business logic. The rules and operations within the "library domain" are the business rules of the library. The rules and operations within the "online sales domain" are the business rules of the e-commerce business.
+    Focus on the "What": Domain logic tends to be more focused on the fundamental entities, their attributes, their relationships, and the core processes within the domain itself. It's about modeling the reality of the domain in software.
+    Abstraction: Domain logic often aims for a higher level of abstraction, trying to capture the essence of the domain in a way that is less tied to specific use cases or technical implementations.
+
+Think of it this way:
+
+Imagine our library software again:
+
+    Domain: The world of libraries, books, members, loans, etc.
+    Domain Logic:
+        A Book has properties like Title, Author, ISBN.
+        A Member has properties like MemberID, Name, Address.
+        The concept of a Loan which links a Member to a Book with a DueDate.
+        Rules about how many books a member can borrow.
+        The process of checking out a book (creating a Loan).
+        The process of returning a book (updating the Loan status).
+
+Now, let's consider business logic in this context:
+
+    It would include the domain logic (the core rules of library operations).
+    It might also include specific business requirements like:
+        Calculating late fees (a business policy based on the loan duration).
+        Sending email reminders for overdue books (a specific business process).
+        Generating reports on popular books (a business intelligence need).
+
+Key Takeaway:
+
+While the terms are often used interchangeably, you can think of domain logic as the more fundamental representation of the core concepts and processes within a specific area of knowledge (the domain). Business logic then builds upon this domain logic and incorporates the specific rules, policies, and workflows of a particular business operating within that domain.
+
+In many cases, especially when building software directly for a business, the domain you're modeling is the business, making domain logic and business logic essentially the same thing. However, understanding the slight nuance can be helpful, especially when discussing architectural patterns like Domain-Driven Design, where the focus is on creating a rich and accurate model of the domain itself.
+
+Does that distinction make sense?
+
+}}}
+p4_38: anc vs aspn1 = a simplified hosting-model
+HttpContext
+the 'strangler fig'-pattern
+route-groups
+
+
+    ----
+new//what asp.net core mvc brings (over predec.)
+{{{
+    baking in current best practices such as
+    dependency-injection,
+    strongly typed configuration,
+    and logging.
+    --
+    aspdnc_inact2023-pxxi_23...
+    }}}
+'create as many extra classes etc as you want and need'
+{{{
+    You're free to create
+    helper methods,
+    classes, and any structure that helps keep your
+    applications maintainable while
+    taking advantage of the performance
+    benefits of minimal APIs.
+    --
+    aspdnc_inact2023-pxxii_24..
+    }}}
+'common use-cases: connecting services in a microservices style architecture, or connecting mobile device clients to backend services'
+{{{
+    gRPC
+    --
+    aspdnc_inact2023-pxxii_24...
+    }}}
+te: Web-Request
+{{{
+    i.e. HTTP request-methods,
+    such as GET, POST (etc etc) **
+    --
+    aspdnc_inact2023-pxxvii_29...
+    }}}
+'the middleware- vs the main application-pipeline
+{{{
+    = see more
+    --
+    aspdnc_inact2023-pxxvii_29...
+    }}}
+read settings and secrets in AspDncMvc (+how to map them to strongly typed objects)
+{{{
+    Chapter 10
+    --
+    aspdnc_inact2023-pxxvii_29...
+    }}}
+AspDnc Identity (=use for, etc)
+{{{
+    add user-profiles and -authentication to your application
+    --
+    aspdnc_inact2023-pxxviii_30.
+    }}}
+building custom components (custom middleware, complex configs, etc)
+{{{
+    chapter 31
+    --
+    aspdnc_inact2023-pxxviii_30...
+    }}}
+    ----
+
+    ----
+building custom Razor Page-components (i.e. custom Tag-Helpers, custom validation-attributes)
+{{{
+    Chapter 32
+    --
+    aspdnc_inact2023-pxxviii_30...
+    }}}
+things/apps that can be built with AspDncMvc
+{{{
+    You can use ASP.NET Core to build:
+
+    - server-rendered web-applications,
+    - backend server-applications,
+    - HTTP-APIs that can be consumed by mobile applications,
+    
+    and much more
+    --
+    aspdnc_inact2023-p1_35...
+    }}}
+what is AspDnc? (technical term)
+{{{
+    = a 'runtime'
+    --
+    aspdnc_inact2023-p1_35...
+    }}}
+Concerning what handlers + business logic do
+{{{
+    
+    --
+    aspdnc_inact2023-p2_36.
+    }}}
+what is Dapper?
+{{{
+    = a micro-ORM
+    --
+    aspdnc_inact2023-p2_36..
+    }}}
+A typical ASP.NET Core application consists of several layers. The ASP.NET Core framework code handles ...
+{{{
+    = handles requests from a client,
+    dealing with the complex networking-code.
+    
+    Then the framework calls in to handlers (Razor Pages and Web-API controllers, for example)
+    that you write using primitives provided by the framework.
+    
+    Finally, these handlers call in to your application's domain logic -
+    typically, C# classes and objects without
+    any dependencies that are specific to ASP.NET Core.
+    --
+    aspdnc_inact2023-p2_36...
+    }}}
+Some of the different apps/applications that can be built with AspDncMvc [****]
+{{{
+    - Minimal APIs - Simple
+      HTTP-APIs that can be consumed by
+      mobile applications or
+      browser-based single-page
+      applications.
+    - NN@Web-APIs - An alternative
+      approach to building HTTP-APIs
+      that adds more structure and
+      features than minimal APIs.
+    - gRPC APIs - Used to build
+      efficient binary APIs for
+      server-to-server communication
+      using the gRPC protocol.
+    - Razor Pages - Used to build
+      page-based server-rendered
+      applications.
+    - NN@MVC-controllers - Similar
+      to Razor Pages.
+      Model-View-Controller (MVC)
+      controller-applications are for
+      server-based applications but
+      without the page-based paradigm.
+    - Blazor WebAssembly - A
+      browser-based single-page
+      application-framework that uses
+      the WebAssembly-standard, similar
+      to JavaScript-frameworks such as
+      Angular, React, and Vue.
+    - Blazor Server - Used to build
+      stateful applications, rendered
+      on the server, that send
+      UI-events and page-updates over
+      WebSockets to provide the feel of
+      a client-side single-page
+      application, but with the ease of
+      development of a server-rendered
+      application.
+    --
+    aspdnc_inact2023-p2_36...
+    }}}
+use AspDncMvc for tiny deployment
+{{{
+    = the Alpine-distro - for truly compact deployments to containers
+    --
+    aspdnc_inact2023-p4_38..
+    }}}
+    ----
+
+    ----
+what AspDncMvc offers over prev. versions of Asp.Net
+{{{
+    a simplified hosting-model
+    --
+    aspdnc_inact2023-p4_38..
+    }}}
+.
+{{{
+    As an existing .NET developer who's
+    moving to ASP.NET Core, your
+    ability to build and deploy
+    cross-platform opens the door to a
+    whole new avenue of applications,
+    such as taking advantage of
+    NN@cheaper Linux virtual machine
+    hosting in the cloud, using Docker
+    containers for repeatable
+    continuous integration, or writing
+    .NET code on your Mac without
+    needing to run a Windows virtual
+    machine. ASP.NET Core, in
+    combination with .NET 7, makes all
+    this possible.
+    --
+    aspdnc_inact2023-p4_38...
+    }}}
+1.4.1 How does an HTTP web-request work? (***)
+{{{
+    - request webpage by URL
+    - server responds by creating appropriate HTML as a response
+    - this is sent as a response by HTTP
+    - browser (the client) renders HTML on page
+    --
+    aspdnc_inact2023-p4_38-39...
+    }}}
+4
+{{{
+    T@The hostname of a website
+    uniquely identifies its location
+    on the internet by mapping via
+    the Domain Name Service (DNS) to
+    an IP-address. Examples include
+    microsoft.com, www.google.co.uk,
+    and facebook.com.
+    --
+    aspdnc_inact2023-p6_40.
+    }}}
+    ----
+
+Brief primer on HTTP
+    ----
+(HTTP) is the ____
+{{{
+    the application-level protocol that powers the web.
+    --
+    aspdnc_inact2023-p6_40..
+    }}}
+what kind of protocol is it?
+{{{
+    It's a stateless
+    request-response protocol whereby
+    a client machine sends a request
+    to a server, which sends a
+    response in turn.
+    --
+    aspdnc_inact2023-p6_40..
+    }}}
+3
+{{{
+    N@T@Every HTTP request consists
+    of a verb indicating the type of
+    the request and a path indicating
+    the resource to interact with.
+    --
+    aspdnc_inact2023-p6_40..
+    }}}
+Requests also typically contains ____  **
+{{{
+    NN@A request typically also
+    includes
+    
+    headers
+        which are key-value pairs,
+    
+    and in some cases
+    
+    a body
+        such as the contents of a form,
+        when sending data to the server
+    --
+    aspdnc_inact2023-p6_40..
+    }}}
+An HTTP-response contains ____  ****
+{{{
+    a status-code
+        indicating whether the request was successful
+    
+    and optionally
+    
+        headers and a body.
+    --
+    aspdnc_inact2023-p6_40..
+    }}}
+[more detailed look at the HTTP-protocol itself  [**]]
+{{{
+    section 1.3 ("A quick
+    introduction to HTTP") of Go Web
+    Programming, by Sau Sheong Chang
+    (Manning, 2016), at
+    http://mng.bz/x4mB. You can also
+    read the raw RFC specification at
+    https://www.rfc-editor.org/rfc/rfc9110.txt
+    if dense text is your thing!
+    --
+    aspdnc_inact2023-p6_40..
+    }}}
+To display the complete web-page instead of a static, colorless, raw HTML-file,
+{{{
+    other things (like CSS, Js etc) must be fetched by other similar requests
+    --
+    aspdnc_inact2023-p6_40...
+    }}}
+    ----
+
+    ----
+A basic web page may require only a few simple requests to render fully, whereas ____
+{{{
+    a large
+    modern web page may take hundreds.
+    --
+    aspdnc_inact2023-p7_41.
+    }}}
+AspDncMvc hosts its own ____ web-server
+{{{
+    self-hosted (i.e. Kestrel)
+    --
+    aspdnc_inact2023-p7_41...
+    }}}
+Your application can use the details stored in hm@HttpContext to ____
+{{{
+    generate an appropriate response to the request,
+    which may be to generate some HTML,
+    to return an "access denied" message,
+    or to send an email,
+    all depending on your application's requirements.
+    --
+    aspdnc_inact2023-p8_42.
+    }}}
+You can use gRPC to build ____
+{{{
+    = highly efficient server-to-server RPC applications.
+    (=efficient binary APIs)
+    --
+    aspdnc_inact2023-p10_45.
+    }}}
+You can use Blazor WebAssembly to build ____
+{{{
+    client-side applications
+    that run in the browser
+    
+    and Blazor Server to build stateful,
+    server-rendered applications that
+    send UI-updates via a
+    WebSocket-connection.
+    --
+    aspdnc_inact2023-p10_44.
+    }}}
+the middleware-pipeline defines ____
+{{{
+    how incoming web-requests
+    are processed and how a response is generated
+    --
+    aspdnc_inact2023-p11_45...
+    }}}
+te: Routing  ****
+{{{
+    = mapping URLs to endpoints
+        (+route-groups to organize your APIs)
+    --
+    aspdnc_inact2023-p12_46...
+    }}}
+the limitations of static web-applications
+{{{
+    As soon as you want to provide any kind of security or dynamism, you'll likely run into difficulties
+    --
+    aspdnc_inact2023-p14_48.
+    }}}
+    ----
+
+    ----
+AspDncMvc contains libraries for common things like ____
+{{{
+    - Creating dynamically changing web-pages
+    - Letting users log in to your web-app
+    - Letting users use their Facebook-accounts to log in to your web-app
+    - Providing a common structure for building maintainable applications
+    - Reading configuration-files
+    - Serving image-files
+    - n@Logging requests made to your web-app
+    --
+    aspdnc_inact2023-p14_48.
+    }}}
+Without a dynamic framework, it wouldn't be possible to ____
+{{{
+    log in to websites or to display any sort of
+    personalized data on a page
+    --
+    aspdnc_inact2023-p14_48..
+    }}}
+example dynamic website built with AspDncMvc **
+{{{
+    Stack Overflow
+    --
+    aspdnc_inact2023-p14_48...
+    }}}
+features built in and will appear in virtually every application you create
+{{{
+    reading configuration-files or
+    performing logging
+    
+    (+others, like ability to log in with Fb requires third-party libs)
+    --
+    aspdnc_inact2023-p17_51...
+    }}}
+Your web application logic is run by ____
+{{{
+    Kestrel
+    --
+    aspdnc_inact2023-p18_52.
+    }}}
+[Two advanced websites built with AspDncMvc]
+{{{
+    
+    --
+    aspdnc_inact2023-p19_53.
+    }}}
+Rest
+{{{
+    uses lightweight stateless HTTP-calls to read, post (etc) data
+    --
+    aspdnc_inact2023-p20_54.
+    }}}
+Blazor Server-apps uses ____ to recieve keyb.events / mouse-clicks (etc?)
+{{{
+    WebSockets
+        (+'stateful' apps running server-side + build highly interactive SPAs)
+    --
+    aspdnc_inact2023-p21_55.
+    }}}
+    ----
+
+    ----
+containers
+{{{
+    = 'great for quick provisioning'
+    --
+    aspdnc_inact2023-p22_56...
+    }}}
+self-contained deployment (SCD)
+{{{
+    = packaging the .NET-runtime with your app
+    --
+    aspdnc_inact2023-p23_57.
+    }}}
+Win-specific constructs
+{{{
+    = the Registry, Directory Services
+      (+using the Compatibility-Pack)
+    --
+    aspdnc_inact2023-p23_57...
+    }}}
+AspDncMvc + reverse proxies
+{{{
+    (= can make  Kestrel receives requests directly from the network)
+    
+    but(!) reverse proxies = more common
+      = IIS on Windows
+      + the YARP-library in AspDncMvc, to build own rev.px
+    --
+    aspdnc_inact2023-p24_58...
+    }}}
+a rev.proxy does what?
+{{{
+    software responsible for receiving requests and forwarding them to the appropriate web-server
+    (+it is exposed directly towards the web)
+    --
+    aspdnc_inact2023-p24_58...
+    }}}
+web-server vs web-host (etc)
+{{{
+    = 'naming things is hard'
+    --
+    aspdnc_inact2023-p26_60..
+    }}}
+NuGet is the same as ____
+{{{
+    Ruby Gems, npm (for Js), Maven (for Java)
+    --
+    aspdnc_inact2023-p27_61.
+    }}}
+Some of the interesting features that can be pulled in with NuGet [****]
+{{{
+    - Middleware-pipeline for defining
+      your application's behavior
+    - Built-in support for
+      dependency-injection
+    - Combined UI (MVC) and API (web
+      API) infrastructure
+    - Highly extensible
+      configuration-system
+    - Standardized, extensible
+      logging-system
+    - Uses asynchronous programming by
+      default for built-in scalability
+      on cloud-platforms
+    --
+    aspdnc_inact2023-p27_61..
+    }}}
+    ----
+
+    ----
+(converting a webforms-app to Blazor Server)
+{{{
+    
+    --
+    aspdnc_inact2023-p28_62.
+    }}}
+gRPC instead of ____ (???)
+{{{
+    WCF
+    --
+    aspdnc_inact2023-p28_62...
+    }}}
+converting an app piecemeal to AspDncMvc(!)
+{{{
+    
+    (+implementing the 'strangler fig'-pattern)
+    --
+    aspdnc_inact2023-p29_63.
+    }}}
+new 'greenfield' projects
+{{{
+    (=??)
+    --
+    aspdnc_inact2023-p29_63...
+    }}}
+code for Chapter 3 (=your first application)
+{{{
+    http://mng.bz/5wj1
+    --
+    aspdnc_inact2023-p31_65.
+    }}}
+Suppose that you want to create a web app to display information about your company
+{{{
+    You could create a simple ASP.NET Core app to achieve this goal; later, you could add dynamic features to your app
+    --
+    aspdnc_inact2023-p31_65...
+    }}}
+Middleware-processing example
+{{{
+    - 4. Middleware processes the
+    request, logging some values,
+    for example, and passes the
+    request to the t@T@endpoint
+    middleware.
+    
+    + 5. The endpoint middleware
+    generates a response such
+    as HTML.
+    
+    [+The addition of a rev.proxy as first and last point]
+    --
+    aspdnc_inact2023-p32_66.. ...
+    }}}
+What Kestrel does after having recieved a request from the rev.proxy (**!!)
+{{{
+    Kestrel takes the raw incoming network-request
+    and uses it to generate an HttpContext-object
+    that the rest of the application can use
+    --
+    aspdnc_inact2023-p32_66...
+    }}}
+The HttpContext constructed by the ASP.NET Core web server is used by the application as ____  **!!
+{{{
+    a sort of storage box for a single request
+    
+    (Anything that's
+    specific to this particular
+    request and the subsequent
+    response can be associated with
+    it and stored in it, such as
+    properties of the request,
+    request-specific services, data
+    that's been loaded, or errors
+    that have occurred.)
+    --
+    aspdnc_inact2023-p33_67.
+    }}}
+    ----
+
+...
+...
+
+    ----
+..
+{{{
+    T@At the end of the middleware
+    pipeline is the endpoint
+    middleware, which is responsible
+    for calling the code that generates
+    the final response. N@In most
+    applications that code will be a
+    Model-View-Controller (MVC), Razor
+    Pages, or minimal API endpoint.
+    --
+    aspdnc_inact2023-p33_67..
+    }}}
+a simple HTTP-API returning "Hello World!" when called
+{{{
+    
+    --
+    aspdnc_inact2023-p33_67...
+    }}}
+What a 'project' means in .NET(!!)
+{{{
+    In .NET, a project is a unit of deployment,
+    which will be compiled into a .dll file or an executable, for example.
+    
+    (+several of them at a time can be built and developed in a solution)
+    --
+    aspdnc_inact2023-p34_68...
+    }}}
+..
+{{{
+    Listing 3.1 T@T@Creating a new minimal API application with the .NET CLI
+    
+    // Creates a solution file called WebApplication1
+    // in the current folder
+    T@dotnet new sln -n WebApplication1
+    // Creates an empty ASP.NET Core project
+    // in a subfolder, WebApplication1
+    dotnet new web -o WebApplication1
+    // Adds the new project to the solution file
+    dotnet sln add WebApplication1
+    --
+    aspdnc_inact2023-p37_71.
+    }}}
+Building the application
+{{{
+    - ensure dependencies are downloaded
+    - compile the app
+    --
+    aspdnc_inact2023-p37_71..
+    }}}
+dotnet restore
+{{{
+    (=mainly for older CLI)
+    but: Makes sure all dependencies are downloaded
+    
+    + common workflow:
+    - T@T@dotnet restore
+    - dotnet build
+    - dotnet run
+    --
+    aspdnc_inact2023-p37_71...
+    }}}
+building with dotnet
+{{{
+    = is done automatically when using 'run'
+    --
+    aspdnc_inact2023-p37_71...
+    }}}
+    ----
+
+    ----
+ASP.NET Core projects list their dependencies ____ (=where?)  ****!
+{{{
+    in the project's .csproj file, an XML file that lists each dependency as a PackageReference node
+    --
+    aspdnc_inact2023-p38_72..
+    }}}
+when 'dotnet run' can be beneficial to run explicitly
+{{{
+    e.g. in continuous-integration build-pipelines
+    --
+    aspdnc_inact2023-p38_72..
+    }}}
+Check what the dotnet CLI-command can do *****
+{{{
+    dotnet --help
+    --
+    aspdnc_inact2023-p39_73.
+    }}}
+[installing certificates etc]
+{{{
+    
+    --
+    aspdnc_inact2023-p39_73...
+    }}}
+____ controls the startup and configuration of your application at runtime (**)
+{{{
+    Program.cs 
+    --
+    aspdnc_inact2023-p40_74..
+    }}}
+The .sln file is found ____ (***)
+{{{
+    outside the project folder
+    --
+    aspdnc_inact2023-p40_74..
+    }}}
+launchSettings.json.
+{{{
+    This file controls how Visual Studio
+    will run and debug the application.
+    --
+    aspdnc_inact2023-p40_74...
+    }}}
+disable/enable various features of the compiler
+{{{
+    = in the csproj-file
+    --
+    aspdnc_inact2023-p41_75...
+    }}}
+    ----
+
+    ----
+adding NuGet-references to project
+{{{
+    by using:
+    dotnet add package <pack.name>
+    
+    dotnet add package Newtonsoft.Json
+    --
+    aspdnc_inact2023-p42_76...
+    }}}
+All ASP.NET Core applications start life as a .NET Console application. As of .NET 6, that typically means ____
+{{{
+    a program written with
+    top-level statements, in which the
+    startup code for your application
+    is written directly in a file
+    instead of inside a static void Main function.
+    --
+    aspdnc_inact2023-p43_77..
+    }}}
+'it could also return int, Task, or Task<int>'
+{{{
+    
+    --
+    aspdnc_inact2023-p43_77...
+    }}}
+With top-level statements ____ ****(*!)
+{{{
+    you can write the body of this
+    method directly in the file, and
+    the compiler generates the Main
+    method for you.
+    --
+    aspdnc_inact2023-p43_77...
+    }}}
+Note: You'll find this pattern of using a builder-object ____  (*****!!)
+{{{
+    to configure a complex object
+    repeated throughout the ASP.NET
+    Core framework.
+    This technique is useful for allowing users to
+    configure an object, delaying its
+    creation until all configuration
+    has finished.
+    
+    (i.e, then calling Build())
+    --
+    aspdnc_inact2023-p44_78...
+    }}}
+WebApplicationBuilder configures a lot of things by default, including ____ (!!)
+{{{
+    - Configuration - Your app loads
+      values from JSON-files and
+      environment-variables that you
+      can use to control the app's
+      runtime-behavior, such as loading
+      connection-strings for a
+      database. You'll learn more about
+      the configuration-system in
+      chapter 10.
+    - n@Logging - ASP.NET Core includes
+      an extensible logging-system for
+      observability and debugging. I
+      cover the logging-system in
+      detail in chapter 26.
+    - NN@Services - Any classes that
+      your application depends on for
+      providing functionality - both
+      those used by the framework and
+      those specific to your
+      application - must be registered
+      so that they can be instantiated
+      correctly at runtime. The
+      WebApplicationBuilder configures
+      the minimal set of services
+      needed for an ASP.NET Core app.
+      Chapters 8 and 9 look at
+      service-configuration in detail.
+    - Hosting - ASP.NET Core uses the
+      Kestrel web-server by default to
+      handle requests.
+    --
+    aspdnc_inact2023-p45_79.
+    }}}
+After configuring the WebApplicationBuilder you call Build() to create a WebApplication-instance. The WebApplication-instance is where you define how your application handles and responds to requests, using two building-blocks:
+{{{
+    - Middleware - These small
+      components execute in sequence
+      when the application receives an
+      HTTP-request. They can perform a
+      whole host of functions, such as
+      logging, identifying the current
+      user for a request, serving
+      static files, and handling
+      errors. We'll look in detail at
+      the middleware-pipeline in
+      chapter 4.
+    - Endpoints - Endpoints
+      define how the response should be
+      generated for a specific request
+      to a URL in your app.
+    --
+    aspdnc_inact2023-p45_79..
+    }}}
+You use the MapGet function to define how to handle a request that uses the GET HTTP verb.
+{{{
+    + There are other Map* functions for other HTTP verbs, such as MapPost.
+    
+    (????)
+    --
+    aspdnc_inact2023-p45_79...
+    }}}
+Every HTTP-request includes a verb that ____
+{{{
+    indicates the type of the
+    request. When you're browsing a
+    website, the default verb is GET,
+    which fetches a resource from the
+    server so you can view it. The
+    second-most-common verb is POST,
+    which is used to send data to the
+    server, such as when you're
+    completing a form.
+    --
+    aspdnc_inact2023-p45_79...
+    }}}
+    ----
+
+    ----
+Definition: A path is _____  **
+{{{
+    the remainder of the request-URL after the domain has been removed.
+    For a request to www.example.org/accout/manage,
+        the path is /account/manage.
+    --
+    aspdnc_inact2023-p46_80.
+    }}}
+using IHost (instead of WebApplication (??))
+{{{
+    (= more 'generic' (??))
+    --
+    aspdnc_inact2023-p46_80..
+    }}}
+The application setup you've seen so far in Program.cs consists of only four lines of code but still shows the overall structure of a typical ASP.NET Core app entry point, which typically consists of six steps:  [****]
+{{{
+    - 1. Create a
+      WebApplicationBuilder-instance.
+    - 2. Register the required services
+      and configuration with the
+      WebApplicationBuilder.
+    - 3. Call Build() on the builder
+      instance to create a
+      WebApplication instance.
+    - 4. Add middleware to the
+      WebApplication to create a
+      pipeline.
+    - 5. Map the endpoints in your
+      application.
+    - 6. Call Run() on the
+      WebApplication to start the
+      server and handle requests.
+    --
+    aspdnc_inact2023-p46_80...
+    }}}
+Definition: Within the context of ASP.Net Core, service refers to _____  **(*!)
+{{{
+    any class that provides functionality to an application.
+    Services could be classes exposed by a library
+    or code you've written for your application.
+    --
+    aspdnc_inact2023-p48_82..
+    }}}
+Services and the single-responsibility principle (!!)
+{{{
+    
+    --
+    aspdnc_inact2023-p48_82...
+    }}}
+Typically, you'll ____ (=how to create the services for an app(!!))  **!
+{{{
+    Typically, you'll register the
+    dependencies of your application
+    into a container, which you can use
+    to create any service.
+    You can use the container to create both
+    your own custom application-services and
+    the framework-services used by
+    ASP.NET Core.
+    You must register each service with the
+    container before using it in your
+    application.
+    
+    In an ASP.NET Core
+    application, this registration is
+    performed by using the
+    Services-property of
+    WebApplicationBuilder.
+    Whenever you
+    use a new ASP.NET Core feature in
+    your application, you need to come
+    back to Program.cs and add the
+    necessary services. This task isn't
+    always as arduous as it sounds,
+    typically requiring only a line or
+    two of code to configure your
+    applications.
+    
+    In listing 3.4 we configured an
+    optional service for the HTTP
+    logging middleware by using the
+    line
+    
+    builder.Services.AddHttpLogging(opts =>
+      opts.LoggingFields = HttpLoggingFields.RequestProperties);
+    
+    Calling AddHttpLogging() adds the
+    necessary services for the HTTP
+    logging middleware to the
+    IoC-container and customizes the
+    options used by the middleware for
+    what to display. AddHttpLogging
+    isn't exposed directly on the
+    Services property; it's an
+    extension-method that provides a
+    convenient way to encapsulate all
+    the code required to set up
+    HTTP-logging. This pattern of
+    encapsulating setup behind
+    extension methods is common in
+    ASP.NET Core.
+    --
+    aspdnc_inact2023-p49_83. .. ...
+    }}}
+the dependency inversion principle and the IoC-container  (**)
+{{{
+    Note: I describe the dependency
+    inversion principle and the
+    IoC-container used in ASP.NET Core in
+    detail in chapters 8 and 9.
+    --
+    aspdnc_inact2023-p49_83..
+    }}}
+..
+{{{
+    As well as registering
+    framework-related services, the
+    Services property is where you'd
+    register any custom services you
+    have in your application, such as
+    the example TaxCalculator discussed
+    previously.
+    
+    N@N@The Services
+    property is an IServiceCollection,
+    which is a list of every known
+    service that your application will
+    need to use. By adding a new
+    service to it, you ensure that
+    whenever a class declares a
+    dependency on your service, the
+    IoC-container will know how to
+    provide it.
+    --
+    aspdnc_inact2023-p49_83..
+    }}}
+    ----
+
+    ----
+As well as configuring services, WebApplicationBuilder is where you customize other cross-cutting concerns, such as ____  [***(*)]
+{{{
+    logging (In listing 3.4 <= add a logging-filterh)
+    
+    builder.Logging.AddFilter(
+      "Microsoft.AspNetCore.HttpLogging", LogLevel.Information);
+    --
+    aspdnc_inact2023-p50_84.
+    }}}
+extra/note about previous (i.e. filter-conf)
+{{{
+    Note: I show configuring
+    log-filters in code here for
+    convenience, but this isn't the
+    idiomatic approach for
+    configuring filters in ASP.NET Core.
+    
+    n@n@Typically, you control
+    which levels are shown by adding
+    values to appsettings.json
+    instead, as shown in the source
+    code accompanying this chapter.
+    You'll learn more about logging
+    and log filtering in chapter 26.
+    --
+    aspdnc_inact2023-p50_84.
+    }}}
+3.7.2 Defining how requests are handled with middleware and endpoints
+{{{
+    [....]
+    --
+    aspdnc_inact2023-p50_84..
+    }}}
+After registering your services with the IoC-container on WebApplicationBuilder and doing any further customization, you create a WebApplication instance. N@You can do three main things with the WebApplication instance:  ***(*)
+{{{
+    - Add middleware to the pipeline.
+    - Map endpoints that generate a
+      response for a request.
+    - Run the application by calling
+      Run().
+    --
+    aspdnc_inact2023-p50_84...
+    }}}
+Middleware is typically added to WebApplication by calling ____  ***(*)
+{{{
+    by calling Use* extension methods.
+    In listing 3.4, I showed an example
+    of adding the HttpLoggingMiddleware
+    to the middleware pipeline
+    conditionally by calling
+    UseHttpLogging():
+    
+    if (app.Environment.IsDevelopment()) {
+      app.UseHttpLogging();
+    }
+    --
+    aspdnc_inact2023-p50_84...
+    }}}
+Middleware can use ____ (=which middleware-objects?)  **
+{{{
+    Middleware can use only objects
+    created by previous middleware in
+    the pipeline; it can't access
+    objects created by later middleware.
+    --
+    aspdnc_inact2023-p51_85.
+    }}}
+The HttpLoggingMiddleware is added to the pipeline when ____  *
+{{{
+    The HttpLoggingMiddleware is added to
+    the pipeline only when you're
+    running in development; when you're
+    running in production (or, rather,
+    N@when EnvironmentName is not set to
+    "Development"), the
+    HttpLoggingMiddleware will not be
+    added.
+    
+      Note: You'll learn about hosting
+      environments and how to change
+      the current environment in
+      chapter 10.
+    --
+    aspdnc_inact2023-p51_85.
+    }}}
+some middleware that is added automatically  (**)
+{{{
+    WebApplication
+    automatically adds more middleware,
+    including two of the most important
+    and substantial pieces of
+    middleware in the pipeline:
+    
+    the routing-middleware
+    and the endpoint-middleware
+    --
+    aspdnc_inact2023-p51_85..
+    }}}
+    ----
+
+    ----
+endpoint that defines a lambda to run for GET-requests to the /person path, + returns a C#-record  ****
+{{{
+    app.MapGet("/", () => "Hello World!");
+    app.MapGet("/person", () => new Person("Andrew", "Lock"));
+    
+    You've already seen the default
+    "Hello World!" endpoint.
+    When you send a GET request to /,
+    the routing-middleware selects the
+    "Hello World!" endpoint.
+    The request continues down the
+    middleware-pipeline until it
+    reaches the endpoint-middleware,
+    which executes the lambda and
+    returns the string value in the
+    response-body.
+    
+    N@The other endpoint defines a
+    lambda to run for GET-requests to
+    the /person-path, but it returns a
+    C#-record instead of a string. When
+    you return a C#-object from a
+    minimal API endpoint, the object is
+    serialized to JSON automatically
+    and returned in the response-body,
+    as you saw in figure 3.8. In
+    chapter 6 you'll learn how to
+    customize this response, as well as
+    return other types of responses.
+    --
+    aspdnc_inact2023-p52_86.
+    }}}
+N@All services, both framework- and custom application-services, must be ____ to be able to be accessed later in your application  ***(!)
+{{{
+    registered with the WebApplicationBuilder by means of the Services-property,
+    --
+    aspdnc_inact2023-p54_88.
+    }}}
+middleware defines how ____  *(*)
+{{{
+    your application responds to requests
+    --
+    aspdnc_inact2023-p54_88..
+    }}}
+With minimal APIs, ____ is used to generate a response.
+{{{
+    a simple function
+    --
+    aspdnc_inact2023-p54_88..
+    }}}
+    ----
+
+Ch. 4 - Handling requests with the middleware pipeline
+
+    ----
+one common/important thing that can be handled with middleware
+{{{
+    exceptions
+    --
+    aspdnc_inact2023-p55_89..
+    }}}
+two common/useful middlewares for this
+{{{
+    - N@DeveloperExceptionPageMiddleware
+      - Provides quick error-feedback
+      when building an application
+    - ExceptionHandlerMiddleware -
+      Provides a generic error-page in
+      production so that you don't leak
+      any sensitive details
+    --
+    aspdnc_inact2023-p56_90...
+    }}}
+N@In ASP.NET Core, middleware (technically) is ____  ***(!!)
+{{{
+    N@In ASP.NET Core, middleware
+    is a C#-class<1> that can handle an
+    HTTP-request or -response.
+    
+        1: Technically, middleware needs
+        to be a function
+          (as you'll see in chapter 31)
+        but it's common to implement
+        middleware as a
+        C#-class with a single method.
+    --
+    aspdnc_inact2023-p56_90...
+    }}}
+The most important piece of middleware in most ASP.NET Core applications is the ____-class  ***
+{{{
+    the EndpointMiddleware-class.
+    This class normally generates all your
+    HTML and JavaScript Object Notation
+    (JSON) responses, and is the focus
+    of most of this book
+    --
+    aspdnc_inact2023-p57_91.
+    }}}
+.
+{{{
+    - N@Adding standard
+      security-headers to the response
+    --
+    aspdnc_inact2023-p58_92.
+    }}}
+authentication-middleware
+{{{
+    
+    --
+    aspdnc_inact2023-p58_92.
+    }}}
+chain of responsibility-pattern  (**)
+{{{
+    if auth.middleware says user is not authorized,
+        the endpoint never sees the request
+    (+short-circuiting pipelines +terminal middleware)
+    --
+    aspdnc_inact2023-p58_92...
+    }}}
+the bidirectionality of the request-pipeline (!)
+{{{
+    
+    --
+    aspdnc_inact2023-p59_93.
+    }}}
+    ----
+
+    ----
+HttpContext
+{{{
+    constructed for each request
+    + used as a sort of storage-box for a single request
+    --
+    aspdnc_inact2023-p59_93.
+    }}}
+Access HttpContext-object with middleware + Use of  (**)
+{{{
+    N@All middleware has access to
+    the HttpContext for a request.
+    
+    N@It can use this object to
+    determine
+    - whether the request contains any user credentials
+    - to identify which page the request is attempting to access
+    - to fetch any posted data, for example.
+    
+    Then it can use these
+    details to determine how to
+    handle the request.
+    --
+    aspdnc_inact2023-p59_93..
+    }}}
+When the application finishes processing the request, it _____  [**]
+{{{
+    When the application
+    finishes processing the request,
+    
+    it updates the HttpContext with
+    an appropriate response
+    and returns it through the middleware
+    pipeline
+    to the web server.
+    
+    Then the ASP.NET Core web server
+    converts the representation to a
+    raw HTTP-response and sends it
+    back to the reverse proxy, which
+    forwards it to the user's
+    browser.
+    --
+    aspdnc_inact2023-p59_93..
+    }}}
+The fundamental source of behavior of your app is provided by ____  ***!
+{{{
+    Middleware + the middleware pipeline
+    
+    = it is responsible for
+     .
+    responding to any HTTP-requests
+    it receives.
+    --
+    aspdnc_inact2023-p59_93...
+    }}}
+Requests are passed to the middleware pipeline as ____  **!!
+{{{
+    = as HttpContext-objects
+    --
+    aspdnc_inact2023-p59_93...
+    }}}
+Behind the scenes, the middleware pipeline in ASP.NET Core is simply ____  **(*)
+{{{
+    Behind the scenes, the
+    middleware pipeline in ASP.NET
+    Core is simply a chain of method
+    calls, with each middleware
+    function calling the next in the
+    pipeline.
+    --
+    aspdnc_inact2023-p60_94.
+    }}}
+____ can be useful occasionally when you're setting up your application (to ensure that it's processing requests without errors)  *
+{{{
+    Adding a holding-page
+    --
+    aspdnc_inact2023-p61_95...
+    }}}
+list of middleware included by default
+{{{
+    http://mng.bz/Gyxq
+    --
+    aspdnc_inact2023-p61_95...
+    }}}
+    ----
+
+    ----
+adding a holding-page
+{{{
+    WelcomePageMiddleware (=added via middleware)
+    --
+    aspdnc_inact2023-p62_96.
+    }}}
+some on how this simple app is built (and passing of requests)
+{{{
+    The request passes to the ASP.NET Core web-server,
+    which n@builds a representation of the request and
+    passes it to the middleware pipeline.
+    
+    (+then the WelcomePageMiddleware)
+    
+    + This response passes back to the
+    ASP.NET Core web server, n@which
+    forwards it to the reverse proxy
+    and then to the user to display in
+    their browser.
+    --
+    aspdnc_inact2023-p62_96...
+    }}}
+You build up the middleware pipeline in ASP.NET Core by _____  ***(*)
+{{{
+    calling methods on WebApplication
+    (which implements IApplicationBuilder)
+    
+    (+ concerning Builder etc
+      w. 'app.Run()' )
+    --
+    aspdnc_inact2023-p63_97...
+    }}}
+This convention of creating an extension-method for each piece of middleware and starting the method-name with Use is designed to improve discoverability when you add middleware to your application<2>  BUT (=what is the downside? + tip on that)
+{{{
+    The downside to this approach is that it can hide exactly which middleware is being added to the pipeline.
+    When the answer isn't clear, I typically search for the source code of the extension method directly in GitHub (https://github.com/aspnet/aspnetcore).
+    --
+    aspdnc_inact2023-p64_98.
+    }}}
+By convention, extension-methods to add middleware to the pipeline start with ___
+{{{
+    Use
+    --
+    aspdnc_inact2023-p64_98.
+    }}}
+6
+{{{
+    (you can use) for a full application: a
+    static-file application. n@most web
+    applications, including those with
+    dynamic content, serve some pages
+    by using static files. images,
+    javascript, and css stylesheets are
+    normally saved to disk during
+    development and are served up when
+    requested from the special wwwroot
+    folder of your project, normally as
+    part of a full html page request.
+    --
+    aspdnc_inact2023-p64_98...
+    }}}
+7
+{{{
+    Definition: By default, the
+    wwwroot-folder is the only folder
+    in your application that ASP.NET
+    Core will serve files from. n@It
+    doesn't serve files from other
+    folders for security reasons. The
+    wwwroot-folder in an ASP.NET Core
+    project is typically deployed as
+    is to production, including all
+    the files and folders it
+    contains.
+    --
+    aspdnc_inact2023-p65_99.
+    }}}
+You can use ____ to serve static files from the wwwroot folder when requested, as shown in figure 4.7
+{{{
+    StaticFileMiddleware
+    --
+    aspdnc_inact2023-p65_99.
+    }}}
+    ----
+
+    ----
+In this section you'll see how to combine several standard middleware components to form a pipeline  [****]
+{{{
+    N@As before, you do this in Program.cs
+    by adding middleware to the WebApplication-object.
+    --
+    aspdnc_inact2023-p68_102..
+    }}}
+Figure 4.10 A simple minimal API application. The application uses only four pieces of middleware: ____  [****]
+{{{
+    routing-middleware
+        to choose the endpoint to run,
+    
+    endpoint-middleware
+        to generate the response from a Razor Page,
+    
+    static-file middleware
+        to serve image files,
+    
+    exception-handler middleware
+        to capture any errors.
+    --
+    aspdnc_inact2023-p68_102...
+    }}}
+The addition of middleware to WebApplication to form the pipeline should be familiar to you now, but several points are worth noting in this example  (** **)
+{{{
+    - Middleware is added with
+      Use*()-methods.
+    - MapGet defines an endpoint, not
+      middleware. It defines the
+      endpoints that the routing and
+      endpoint middleware can use.
+    - WebApplication automatically adds
+      some middleware to the pipeline,
+      such as the EndpointMiddleware.
+    - The order of the Use*()-method
+      calls is important and defines
+      the order of the middleware
+      pipeline.
+    --
+    aspdnc_inact2023-p69_103..
+    }}}
+Tip: You can define the endpoints for your app by using MapGet() anywhere in Program.cs before the call to app.Run(), n@but ____  **(*)
+{{{
+    the calls are typically placed after the middleware pipeline definition.
+    --
+    aspdnc_inact2023-p69_103...
+    }}}
+Everything has trade-offs, of course, and for WebApplication the trade-off is that ____  **
+{{{
+    it's harder to understand exactly what's in your middleware pipeline
+    without having deep knowledge of the framework-code itself.
+    
+    Luckily, you don't need to worry
+    about the middleware that
+    WebApplication adds for the most
+    part. If you're new to ASP.NET
+    Core, generally you can accept
+    that WebApplication will add the
+    middleware only when it's
+    necessary and safe to do so.
+    --
+    aspdnc_inact2023-p70_104..
+    }}}
+The routing-middleware attempts to ____  *(*)
+{{{
+    find an endpoint that will handle the request.
+    --
+    aspdnc_inact2023-p71_105..
+    }}}
+Shortcircuiting of the mw-pipeline can (=lead to/have the benefit/implic. that)
+{{{
+    if so,
+    
+    it can short-circuit
+    the pipeline and avoid the
+    unnecessary call to the
+    RoutingMiddleware.
+    --
+    aspdnc_inact2023-p72_106.
+    }}}
+8
+{{{
+    N@None of the other middleware is run for
+    the request, so the endpoint middleware
+    does not get a chance to handle the request.
+    --
+    aspdnc_inact2023-p74_108...
+    }}}
+    ----
+
+    ----
+The design-philosophy for ASP.NET Core is that every feature is opt-in. So ____  **(*)
+{{{
+    = because error-handling is a feature,
+    you need to enable it explicitly in your application.
+    --
+    aspdnc_inact2023-p75_109.
+    }}}
+NullReferenceException is thrown when ____  (and can be alleviated by ____)
+{{{
+    when you attempt to access a variable that hasn't been initialized<3>.
+    
+    3: N@NN@C# 8.0 introduced
+    non-nullable reference types,
+    which provide a way to handle
+    null values more clearly, with
+    the promise of finally ridding
+    .NET of NullReferenceExceptions!
+    --
+    aspdnc_inact2023-p75_109.
+    }}}
+4.3.1 N@Viewing exceptions in development:  **
+{{{
+    When you're developing an
+    application, you typically want
+    access to as much information as
+    possible when an error occurs
+    somewhere in your app. For that
+    reason, Microsoft provides
+    DeveloperExceptionPageMiddleware,
+    which you can add to your
+    middleware pipeline by using
+    
+    app.UseDeveloperExceptionPage();
+    
+    (+note: WebApplication adds it
+    automatically when you're in the
+    Development-environment)
+    --
+    aspdnc_inact2023-p76_110..
+    }}}
+4
+{{{
+    When an exception is thrown and
+    propagates up the pipeline to this
+    middleware, it's captured. Then the
+    middleware generates a friendly
+    HTML-page, which it returns with a
+    500 status-code, as shown in figure
+    4.15. This page contains a variety
+    of details about the request and
+    the exception, including the
+    NNN@n@exception stack-trace; the
+    source code at the line the
+    exception occurred; and details on
+    the request, such as any cookies or
+    headers that were sent.
+    --
+    aspdnc_inact2023-p76_110...
+    }}}
+5
+{{{
+    Having these details available when
+    an error occurs is invaluable for
+    debugging a problem, but they also
+    represent a security risk if used
+    incorrectly. N@You should never
+    return more details about your
+    application to users than
+    absolutely necessary, so you should
+    use DeveloperExceptionPage only
+    when developing your application.
+    The clue is in the name!
+    --
+    aspdnc_inact2023-p76_110...
+    }}}
+6
+{{{
+    Warning: n@Never use the
+    developer exception page when
+    running in production. Doing so
+    is a security risk, as it could
+    publicly reveal details about
+    your application's code, making
+    you an easy target for attackers.
+    WebApplication uses the correct
+    behavior by default and adds the
+    middleware only when running in
+    development.
+    --
+    aspdnc_inact2023-p76_110...
+    }}}
+If the developer exception page isn't appropriate for production use, what should you use instead?
+{{{
+    Luckily, NN@you can use another
+    type of general-purpose
+    error-handling middleware in production:
+    ExceptionHandlerMiddleware.
+    --
+    aspdnc_inact2023-p77_111..
+    }}}
+8
+{{{
+    about the error. N@For a minimal
+    API application, that response (en error or exception(??))
+    could be JSON or plain text, as
+    shown in figure 4.16.
+    --
+    aspdnc_inact2023-p77_111...
+    }}}
+For Razor Pages apps, you can create ____  ***
+{{{
+    = a custom error response,
+    such as the one shown in figure 4.17.
+    You maintain the look and
+    feel of the application by using
+    the same header, displaying the
+    currently logged-in user, and
+    displaying an appropriate message
+    to the user instead of full details
+    on the exception.
+    --
+    aspdnc_inact2023-p77_111...
+    }}}
+    ----
+
+    ----
+1
+{{{
+    N@Dynamic details such as the current
+    user can be shown on the error page.
+    --
+    aspdnc_inact2023-p78_112.
+    }}}
+2
+{{{
+    Figure 4.17 N@N@A custom error page created by ExceptionHandlerMiddleware. The custom error page
+    can have the same look and feel as the rest of the application by reusing elements such as the header and
+    footer. More important, you can easily control the error-details displayed to users.
+    --
+    aspdnc_inact2023-p78_112...
+    }}}
+3
+{{{
+    Figure 4.18 shows what happens when
+    ExceptionHandlerMiddleware handles
+    an exception. It shows the flow of
+    events when the minimal API
+    endpoint for the "/" path generates
+    an exception. HM@HM@The final
+    response returns an error status
+    code but also provides an
+    error-string, using the
+    "/error"-endpoint.
+    --
+    aspdnc_inact2023-p79_113...
+    }}}
+The sequence of events when an unhandled exception occurs somewhere in the middleware-pipeline (or in an endpoint) after ExceptionHandlerMiddleware is as follows:
+{{{
+    - 1. A piece of middleware throws
+      an exception.
+    - 2. ExceptionHandlerMiddleware
+      catches the exception.
+    - 3. Any partial response that has
+      been defined is cleared.
+    - 4. The ExceptionHandlerMiddleware
+      overwrites the request path with
+      the provided error-handling path.
+    - 5. The middleware sends the
+      request back down the pipeline,
+      as though the original request
+      had been for the error-handling
+      path.
+    - 6. The middleware pipeline
+      generates a new response as
+      normal.
+    - 7. When the response gets back to
+      ExceptionHandlerMiddleware, it
+      modifies the status code to a
+      500-error and continues to pass
+      the response up the pipeline to
+      the web-server.
+    --
+    aspdnc_inact2023-p79_113...
+    }}}
+One of the main advantages of reexecuting the pipeline for Razor Page apps is _____
+{{{
+    = the ability to have
+    your error-messages integrated into
+    your normal site-layout, as shown
+    in figure 4.17.
+    --
+    aspdnc_inact2023-p81_115.
+    }}}
+6
+{{{
+    aware of some gotchas.  N@First,
+    middleware can modify a response
+    generated farther down the pipeline
+    only if the response hasn't yet
+    been sent to the client. This
+    situation can be a problem if, for
+    example, an error occurs while
+    ASP.NET Core is sending a static
+    file to a client. In that case,
+    ASP.NET Core may start streaming
+    bytes to the client immediately for
+    performance reasons.  n@When that
+    --
+    aspdnc_inact2023-p81_115..
+    }}}
+7
+{{{
+    performance reasons.  n@When that
+    happens, the error-handling
+    middleware won't be able to run, as
+    it can't reset the response.
+    
+    Generally speaking, you can't do
+    much about this problem, but it's
+    something to be aware of.
+    --
+    aspdnc_inact2023-p81_115..
+    }}}
+A more common problem occurs when the error-handling path throws an error during the reexecution of the pipeline. NN@Imagine that there's a bug in the code that generates the menu at the top of the page in a Razor Pages app:
+{{{
+    - 1. When the user reaches your
+      home page, the code for
+      generating the menu bar throws an
+      exception.
+    - 2. The exception propagates up
+      the middleware pipeline.
+    - 3. When reached,
+      ExceptionHandlerMiddleware
+      captures it, and the pipe is
+      reexecuted, using the
+      error-handling path.
+    - 4. When the error page executes,
+      it attempts to generate the menu
+      bar for your app, which again
+      throws an exception.
+    - 5. The exception propagates up
+      the middleware-pipeline.
+    - 6. ExceptionHandlerMiddleware has
+      already tried to intercept a
+      request, so it lets the error
+      propagate all the way to the top
+      of the middleware-pipeline.
+    - 7. The web server returns a raw
+      500 error, as though there were
+      no error-handling middleware at
+      all.
+    --
+    aspdnc_inact2023-p81_115...
+    }}}
+    ----
+
+    ----
+Thanks to this problem, it's often good practice to ____
+{{{
+    make your error-handling pages as simple as possible to reduce the possibility that errors will occur.
+    --
+    aspdnc_inact2023-p81_115...
+    }}}
+2
+{{{
+    Warning: NN@N@If your
+    error-handling path generates an
+    error, the user will see a
+    generic browser-error. It's often
+    better to use a static error-page
+    that always works than a dynamic
+    page that risks throwing more
+    errors. You can see an
+    alternative approach using a
+    custom error-handling function in
+    this post: http://mng.bz/0Kmx.
+    --
+    aspdnc_inact2023-p82_116.
+    }}}
+Another consideration when building minimal API applications is that you generally don't want to return HTML. Returning an HTML page to an application that's expecting JSON could easily break it.
+{{{
+    NN@N@Instead, the HTTP 500 status
+    code and a JSON body describing the
+    error are more useful to a
+    consuming application. Luckily,
+    ASP.NET Core allows you to do
+    exactly this when you create
+    minimal APIs and web API
+    controllers.
+    --
+    aspdnc_inact2023-p82_116.
+    }}}
+Microsoft provides some common middleware, and ____
+{{{
+    many third-party options are available on NuGet and GitHub.
+    --
+    aspdnc_inact2023-p83_117...
+    }}}
+Chapter 3 - Creating a JSON API with minimal APIs
+{{{
+    - Creating a minimal API
+      application to return JSON to
+      clients
+    - Generating responses with IResult
+    - Using filters to perform common
+      actions like validation
+    - N@Organizing your APIs with
+      route-groups
+    --
+    aspdnc_inact2023-p84_118.
+    }}}
+6
+{{{
+    already seen.  You'll explore some
+    basic routing-concepts and N@N@show
+    how values can be extracted from
+    the URL automatically.  Then you'll
+    --
+    aspdnc_inact2023-p84_118...
+    }}}
+7
+{{{
+    In section 5.3 you'll learn about
+    the different return types you can
+    use with minimal APIs. N@You'll see
+    how to use the Results and
+    TypedResults helper classes to
+    easily create HTTP responses that
+    use status codes like 201 Created
+    and 404 Not Found.
+    
+    You'll also
+    learn how to follow web standards
+    for describing your errors by using
+    the built-in support for
+    HM@Problem-Details.
+    --
+    aspdnc_inact2023-p85_119.
+    }}}
+Section 5.4 introduces one of the big features added to minimal APIs in .NET 7: filters.
+{{{
+    You can
+    use filters to build a mini
+    pipeline (similar to the middleware-pipeline from chapter 4) for each
+    of your endpoints. Like middleware,
+    filters are great for extracting
+    common code from your endpoint-handlers, making your handlers
+    easier to read.
+    --
+    aspdnc_inact2023-p85_119.
+    }}}
+    ----
+
+    ----
+In conjunction with filters, ____ address many of the common complaints raised against minimal APIs when they were released in .NET 6.  **
+{{{
+    route-groups
+    --
+    aspdnc_inact2023-p85_119..
+    }}}
+Traditional web-applications handle requests by _____  ***!
+{{{
+    = returning HTML, which is displayed to the user in a web-browser
+    
+    = You can easily build
+    applications like that by using
+    Razor Pages to generate HTML with
+    Razor templates, as you'll learn in
+    part 2 of this book. This approach
+    --
+    aspdnc_inact2023-p85_119..
+    }}}
+3
+{{{
+    Client-side single-page
+    applications (SPAs) have become
+    popular in recent years with the
+    development of frameworks such as
+    Angular, React, and Vue. NN@These
+    frameworks typically use JavaScript
+    running in a web-browser to
+    generate the HTML that users see
+    and interact with. The server sends
+    this initial JavaScript to the
+    browser when the user first reaches
+    the app. N@The user's browser loads
+    the JavaScript and initializes the
+    SPA before loading any application
+    data from the server.
+    
+    (+later addition of SPA framework is Blazor Webassembly)
+    --
+    aspdnc_inact2023-p85_119...
+    }}}
+Definition: An HTTP-API (=does what and is structured how?)  ****
+{{{
+    = exposes multiple URLs via HTTP
+    that can be used to access or
+    change data on a server.
+    
+    It typically returns data using the
+    JSON format. HTTP-APIs are
+    sometimes called web-APIs, but as
+    web API refers to a specific
+    technology in ASP.NET Core, in
+    this book I use HTTP-API to refer
+    to the generic concept.
+    --
+    aspdnc_inact2023-p86_120...
+    }}}
+These days, mobile applications are common and, from the server-application's point of view (they ...)
+{{{
+    These days, mobile applications are
+    common and, from the
+    server-application's point of view,
+    similar to client-side SPAs. A
+    mobile application typically
+    communicates with a
+    server-application by using an
+    HTTP-API, receiving data in JSON
+    format, just like an SPA. Then it
+    modifies the application's UI
+    depending on the data it receives.
+    --
+    aspdnc_inact2023-p86_120...
+    }}}
+That's all there is to an HTTP API: it ____  ****(*)
+{{{
+    = it exposes endpoints
+    (URLs) that client-applications can
+    send requests to and retrieve data
+    from. These endpoints are used to
+    --
+    aspdnc_inact2023-p87_121..
+    }}}
+7
+{{{
+    Note: You have even more options
+    when it comes to creating APIs in
+    ASP.NET Core. NN@You can create
+    remote procedure call APIs using
+    gRPC, for example, NN@or provide
+    an alternative style of HTTP API
+    using the GraphQL standard. I
+    don't cover those technologies in
+    this book, but you can read about
+    gRPC at
+    https://docs.microsoft.com/aspnet/core/grpc
+    and find out about GraphQL in
+    NN@Building Web APIs with ASP.NET
+    Core, by Valerio De Sanctis
+    (Manning, 2023).
+    --
+    aspdnc_inact2023-p87_121...
+    }}}
+In part 3, you'll learn how to use Razor Pages to create server-rendered applications instead of minimal APIs.  Server-rendered applications can be highly productive. They're generally recommended when ____  ***!
+{{{
+    you have
+    no need to call your application
+    from outside a web-browser
+    
+    or when
+    you don't want or need to make the
+    effort of configuring a client-side
+    application.
+    --
+    aspdnc_inact2023-p88_122.
+    }}}
+    ----
+
+    ----
+5.1 What is an HTTP API, and when should you use one?
+{{{
+    = when you need to access your app from outside a web-browser (??)
+    --
+        aspdnc_inact2023-p88_122...
+    }}}
+(if you) need an HTTP-API for your application, creating one is easy, (since) ____
+{{{
+    it's the default application type in ASP.NET Core!
+    --
+    aspdnc_inact2023-p88_122...
+    }}}
+'ways to NN@handle multiple HTTP-verbs'
+{{{
+    ??
+    --
+    aspdnc_inact2023-p88_122...
+    }}}
+May be a good description of what routing does
+{{{
+    =  5.2.1 Extracting values from the URL with routing
+    --
+    aspdnc_inact2023-p89_123.
+    }}}
+The 'person'-API and why it may not be too useful (+how to make it more useful)
+{{{
+    These two APIs correspond to the
+    paths / and /person, respectively.
+    This basic functionality is useful,
+    but typically you need some of your
+    APIs to be more dynamic. It's
+    unlikely, for example, that the
+    /person-API would be useful in
+    practice, as it always returns the
+    same Person-object. NN@What might
+    be more useful is an API to which
+    you can provide the user's first
+    name, and the API returns all the
+    users with that name.
+    
+    You can achieve this goal
+    by using parameterized routes for
+    your API definitions. You can
+    create a parameter in a minimal API
+    route using the expression
+    {someValue}, where someValue is any
+    name you choose. The value will be
+    extracted from the request URL's
+    path and can be used in the lambda
+    function endpoint.
+    --
+    aspdnc_inact2023-p89_123.
+    }}}
+a 'route-template'  ***
+{{{
+    If you create an API using the
+    route-template /person/{name}, for
+    example, and send a request to the
+    path /person/Andrew, the name
+    parameter will have the value
+    "Andrew". You can use this feature
+    to build more useful APIs, such as
+    the one shown in the following
+    listing.
+    
+    
+    Listing 5.1 A minimal API that uses a value from the URL
+    
+    WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+    WebApplication app = builder.Build();
+    
+    // Creates a list of people as the
+    // data for the API
+    var people = new List<Person> {
+      new("Tom", "Hanks"),
+      new("Denzel", "Washington"),
+      new("Leondardo", "DiCaprio"),
+      new("Al", "Pacino"),
+      new("Morgan", "Freeman"),
+    };
+    
+    // The route is parameterized to extract
+    // the name from the URL.
+    app.MapGet("/person/{name}", (string name) =>
+      // The extracted value can be injected into
+      // the lambda handler.
+      people.Where(p => p.FirstName.StartsWith(name)));
+    
+    N@N@n@If you send a request to
+    /person/Al for the app defined in
+    listing 5.1, the name parameter
+    will have the value "Al", and the
+    API will return the following JSON:
+    
+    [{"firstName":"Al","lastName":"Pacino"}]
+    
+      Note: By default, minimal APIs
+      serialize C# objects to JSON.
+      You'll see how to return other
+      types of results in section 5.3.
+    --
+    aspdnc_inact2023-p89_123...
+    }}}
+"5.2.2 Mapping verbs to endpoints"  **
+{{{
+    i.e. using different HTTP-verbs
+    
+    + Map*-methods, e.g. MapPost()
+    --
+    aspdnc_inact2023-p90_124.
+    }}}
+good introduction to/refresher on HTTP
+{{{
+    http://mng.bz/KeMK
+    --
+    aspdnc_inact2023-p90_124..
+    }}}
+Table 5.1 The minimal API map endpoints and the corresponding HTML-verbs  *!!
+{{{
+    Method
+      HTTP-verb
+      Expected operation
+    
+    MapGet(path, handler)
+    
+      GET
+    
+      Fetch data only; no modification
+      of state. May be safe to cache.
+    
+    MapPost(path, handler)
+    
+      POST
+    
+      Create a new resource.
+    
+    MapPut(path, handler)
+    
+      PUT
+    
+      Create or replace an existing
+      resource.
+    
+    MapDelete(path, handler)
+    
+      DELETE
+    
+      Delete the given resource.
+    
+    MapPatch(path, handler)
+    
+      PATCH
+    
+      Modify the given resource.
+    
+    MapMethods(path, methods, handler)
+    
+      Multiple verbs
+    
+      Multiple operations.
+    
+    Map(path, handler)
+    
+      All verbs
+    
+      Multiple operations.
+    
+    MapFallback(handler)
+    
+      All verbs
+    
+      Useful for SPA fallback-routes.
+    --
+    aspdnc_inact2023-p90_124...
+    }}}
+    ----
+
+    ----
+((some interesting notes about recommendations))
+{{{
+    Note: NN@You may notice that if
+    you use the MapMethods() and
+    Map()-methods listed in table
+    5.1, your API probably doesn't
+    correspond to the expected
+    operations of the-HTTP verbs it
+    supports, so I avoid these
+    methods where possible.
+    MapFallback() doesn't have a path
+    and is called only if no other
+    endpoint matches. Fallback-routes
+    can be useful when you have a SPA
+    that uses clientside routing.
+    N@See http://mng.bz/9DMl for a
+    description of the problem and an
+    alternative solution.
+    --
+    aspdnc_inact2023-p91_125..
+    }}}
+As I mentioned at the start of section 5.2.2, testing APIs that use verbs other than GET is tricky in the browser.
+{{{
+    You need to use
+    a tool that allows sending
+    arbitrary requests such as Postman
+    (https://www.postman.com) or the
+    HTTP Client plugin in JetBrains
+    Rider. In chapter 11 you'll
+    learn how to use a tool called
+    Swagger UI to visualize and test
+    your APIs.
+    
+        + Tip: The HTTP client plugin in
+        JetBrains Rider makes it easy to
+        craft HTTP requests from inside
+        your API, and even discovers all
+        the endpoints in your application
+        automatically, making them easier
+        to test. You can read more about
+        it at
+        https://www.jetbrains.com/help/rider/Http_client_in__product__code_editor.html.
+    --
+    aspdnc_inact2023-p91_125...
+    }}}
+3
+{{{
+    Tip: nn@You should never see this
+    response when you're calling the
+    API correctly, so if you receive
+    a 405-response, make sure to
+    check that you're using the right
+    HTTP-verb and the right path.
+    Often when I see a 405, I've used
+    the correct verb but made a typo
+    in the URL!
+    --
+    aspdnc_inact2023-p92_126.
+    }}}
+4
+{{{
+    In all the examples in this book so
+    far, you provide a lambda function
+    as the handler for an endpoint. But
+    in section 5.2.3, you'll see that
+    there are many ways to define the
+    nn@handler.
+    --
+    aspdnc_inact2023-p92_126.
+    }}}
+5
+{{{
+    // NN@N@You can also use local functions, introduced in C#
+    // 7.0, as handler methods.
+    app.MapDelete("/fruit/{id}", DeleteFruit);
+    
+    --
+    aspdnc_inact2023-p92_126..(.)
+    }}}
+6
+{{{
+    Listing 5.2 demonstrates the various ways you can pass handlers to an endpoint by simulating a simple API for interacting with a collection of Fruit items:
+    
+    - A lambda expression, as in the
+      MapGet("/fruit") endpoint
+    - A Func<T, TResult> variable, as
+      in the MapGet("/fruit/{id}")
+      endpoint
+    - A static method, as in the
+      MapPost endpoint
+    - A method on an instance variable,
+      as in the MapPut endpoint
+    - A local function, as in the
+      MapDelete endpoint
+    
+    NN@ All these approaches are
+    functionally identical, so you can
+    use whichever pattern works best
+    for you.
+    --
+    aspdnc_inact2023-p93_127.
+    }}}
+[concerning 'Handlers'(??)]  Complex types - that is, types that can't be extracted from the URL by means of ____
+{{{
+    route-parameters -
+    are created by deserializing the
+    JSON-body of a request.
+    --
+    aspdnc_inact2023-p93_127..(.)
+    }}}
+Organizing endpoints with files (!!!!)
+{{{
+    N@In practice, you'll likely want to
+    extract your endpoints to separate
+    files so as to modularize them and
+    make them easier to understand.
+    Embrace that urge; that's the way
+    they were intended to be used!
+    --
+    aspdnc_inact2023-p93_127...
+    }}}
+    ----
+
+    ----
+1
+{{{
+    TUT@Figure 5.3 Sending a POST-request with Postman.
+    The minimal API automatically deserializes the JSON in the request-body to a Fruit-instance before calling the endpoint-handler.
+    --
+    aspdnc_inact2023-p94_128..
+    }}}
+Throwing an exception whenever a user requests an id that doesn't exist clearly makes for a poor experience all round. A better approach is to ____
+{{{
+    return a status-code
+    indicating the problem, such as 404
+    Not Found or 400 Bad Request.
+    
+    NN@The most declarative way to do
+    this with minimal APIs is to return
+    an IResult instance.
+    --
+    aspdnc_inact2023-p94_128...
+    }}}
+te: POCO
+{{{
+    plain old CLR-object
+    --
+    aspdnc_inact2023-p94_128...
+    }}}
+4
+{{{
+    Figure 5.4 If you try to retrieve a fruit by using a nonexistent id for the simplistic API in listing 5.2, the endpoint throws an exception.
+    nn@This exception is handled by the DeveloperExceptionPageMiddleware but provides a poor experience.
+    --
+    aspdnc_inact2023-p95_129..
+    }}}
+In summary, the endpoint-middleware handles each return-type as follows:
+{{{
+    In summary, the endpoint-middleware
+    handles each return-type as
+    follows:
+    
+    - void or Task - The endpoint
+      returns a 200-response with no
+      body.
+    - string or Task<string> - The
+      endpoint returns a 200-response
+      with the string serialized to the
+      body as text/plain.
+    - N@IResult or Task<IResult> - The
+      endpoint executes the
+      IResult.ExecuteAsync method.
+      Depending on the implementation,
+      this type can customize the
+      response, returning any status
+      code.
+    - T or Task<T> - All other types
+      (such as POCO objects) are
+      serialized to JSON and returned
+      in the body of a 200-response as
+      application/json.
+    --
+    aspdnc_inact2023-p95_129...
+    }}}
+A well-designed API uses ____ to indicate to a client what went wrong when a request failed, as well as potentially provide more descriptive codes when a request is successful.
+{{{
+    status-codes
+    
+    + ASP.NET Core exposes the simple
+    static helper-types Results and
+    TypedResults in the namespace
+    Microsoft.AspNetCore.Http. You can
+    use these helpers to create a
+    response with common status codes,
+    optionally including a JSON-body.
+    --
+    aspdnc_inact2023-p95_129...
+    }}}
+7
+{{{
+    Note: NN@Results and TypedResults
+    perform the same function, as
+    helpers for generating common
+    status-codes. The only difference
+    is that the Results-methods
+    return an IResult, whereas
+    TypedResults return a concrete
+    generic type, such as Ok<T>.
+    There's no difference in terms of
+    functionality, nn@but the generic
+    types are easier to use in
+    unit-tests and in
+    OpenAPI-documentation, as you'll
+    see in chapters 36 and 11.
+    TypedResults were added in .NET 7.
+    
+    +
+    The following listing shows an
+    updated version of listing 5.2, in
+    which we address some of the
+    deficiencies in the API and use
+    Results and TypedResults to return
+    different status-codes to clients.
+    --
+    aspdnc_inact2023-p96_130.
+    }}}
+8
+{{{
+    Listing 5.3 demonstrates several status codes, some of which you may not be familiar with:
+    
+    - 200 OK - The standard successful
+      response. n@It often includes
+      content in the body of the
+      response but doesn't have to.
+    - 201 Created - Often returned when
+      you successfully created an
+      entity on the server. The Created
+      result in listing 5.3 also
+      includes a Location-header to
+      describe the URL where the entity
+      can be found, as well as the
+      JSON-entity itself in the body of
+      the response.
+    - 204 No Content - Similar to a
+      200-response but without any
+      content in the response-body.
+    - 400 Bad Request - Indicates that
+      the request was invalid in some
+      way; often used to indicate
+      data-validation failures.
+    - 404 Not Found - Indicates that
+      the requested entity could not be
+      found.
+    --
+    aspdnc_inact2023-p97_131.
+    }}}
+    ----
+
+    ----
+1
+{{{
+    N@These status codes more
+    accurately describe your API and
+    can make an API easier to use. That
+    said, if you use only 200 OK
+    responses for all your successful
+    responses, few people will mind or
+    think less of you! You can see a
+    summary of all the possible status
+    codes and their expected uses at
+    http://mng.bz/jP4x.
+    --
+    aspdnc_inact2023-p97_131..
+    }}}
+((2))
+{{{
+    n@Note: The 404 status code in
+    particular causes endless debate
+    in online forums. Should it be
+    only used if the request didn't
+    match an endpoint? Is it OK to
+    use 404 to indicate a missing
+    entity (as in the previous
+    example)? There are endless
+    proponents in both camps, so take
+    your pick!
+    --
+    aspdnc_inact2023-p97_131..
+    }}}
+'Luckily, a web standard called Problem Details describes a consistent format to use.'
+{{{
+    
+    --
+    aspdnc_inact2023-p98_132.
+    }}}
+4
+{{{
+    N@ASP.NET Core includes two
+    helper-methods for generating
+    Problem Details responses from
+    minimal APIs: Results.Problem() and
+    Results.ValidationProblem() (plus
+    their TypedResults counterparts).
+    Both of these methods return
+    Problem Details JSON.
+    The only
+    difference is that Problem()
+    defaults to a 500 status-code,
+    whereas ValidationProblem()
+    defaults to a 400 status and
+    requires you to pass in a
+    Dictionary of validation-errors, as
+    shown in the following listing.
+    --
+    aspdnc_inact2023-p98_132..
+    }}}
+figure 5.5. You can override the default title and description by ____
+{{{
+    passing additional arguments to the Problem() and ValidationProblem() methods
+    --
+    aspdnc_inact2023-p99_133.
+    }}}
+6
+{{{
+    nn@There are essentially two
+    classes of errors, which are
+    handled differently: exceptions and
+    error status code responses. To
+    create a consistent API for
+    consumers, we need to make sure
+    that both error types return
+    Problem Details JSON in the
+    response.
+    --
+    aspdnc_inact2023-p100_134.
+    }}}
+N@You could add the middleware to your pipeline with an error-handling path of "/error":
+{{{
+    app.UseExceptionHandler("/error");
+    --
+    aspdnc_inact2023-p100_134.
+    }}}
+8
+{{{
+    N@Luckily, in .NET 7, you can
+    configure the
+    ExceptionHandlerMiddleware (and
+    DeveloperExceptionPageMiddleware)
+    to convert an exception to a
+    Problem Details response
+    automatically.
+    --
+    aspdnc_inact2023-p100_134..
+    }}}
+    ----
+
+    ----
+N@Instead of generating a Problem Details response in your endpoint handlers, you can ____
+{{{
+    add middleware to convert responses to
+    Problem Details automatically by
+    using the
+    StatusCodePagesMiddleware, as shown
+    in figure 5.7.
+    --
+    aspdnc_inact2023-p102_136..
+    }}}
+2
+{{{
+    n@Note: You can also use the
+    StatusCodePagesMiddleware to
+    reexecute the middleware-pipeline
+    with an error-handling path, as
+    you can with the
+    ExceptionHandlerMiddleware
+    (chapter 4).
+    
+    (+most useful for RPages-apps
+      w. separate err-pages
+      for specif. status-codes)
+    --
+    aspdnc_inact2023-p103_137.
+    }}}
+3
+{{{
+    NN@TT@The
+    StatusCodePagesMiddleware, coupled
+    with exception-handling middleware,
+    ensures that your API returns a
+    Problem Details response for all
+    error responses.
+    
+      Tip: nn@You can also customize
+      how the Problem Details response
+      is generated by passing
+      parameters to the
+      AddProblemDetails() method or by
+      implementing your own
+      IProblemDetailsService.
+    --
+    aspdnc_inact2023-p103_137...
+    }}}
+4
+{{{
+    So far in section 5.3, I've
+    described returning objects as
+    JSON, returning a string as text,
+    and returning custom status-codes
+    and Problem Details by using
+    Results. nn@Sometimes, however, you
+    need to return something bigger,
+    such as a file or a binary.
+    
+    Luckily, you can use the convenient
+    Results-class for that task too.
+    --
+    aspdnc_inact2023-p103_137...
+    }}}
+5
+{{{
+    - Results.Stream() - n@You can send
+      data to the client asynchronously
+      by using a Stream.
+    --
+    aspdnc_inact2023-p104_138.
+    }}}
+N@If you find yourself creating the same manual response several times, you could consider creating a ____ to encapsulate this logic.
+{{{
+    a custom IResult type
+    --
+    aspdnc_inact2023-p104_138..
+    }}}
+n@The following listing adds an additional check to the MapGet-endpoint to ensure that ____
+{{{
+    n@The following listing
+    adds an additional check to the
+    MapGet-endpoint to ensure that
+    the provided id isn't empty and that it
+    starts with the letter f.
+    --
+    aspdnc_inact2023-p104_138...
+    }}}
+fruit-type validation **(*)
+{{{
+    return _fruit.TryGetValue(id, out var fruit)
+      ? TypedResults.Ok(fruit)
+      : Results.Problem(statusCode: 404);
+    --
+    aspdnc_inact2023-p104_138...
+    }}}
+    ----
+
+    ----
+N@other cross-cutting activities include
+{{{
+    logging, authorization, and auditing.
+    --
+    aspdnc_inact2023-p105_139.
+    }}}
+2
+{{{
+    Luckily, ASP.NET Core includes a
+    feature in minimal APIs for running
+    these tangential concerns:
+    nn@endpoint-filters.
+    --
+    aspdnc_inact2023-p105_139.
+    }}}
+3
+{{{
+    nn@After the last filter
+    executes, calling next
+    invokes the endpoint
+    handler. After the
+    handler generates a
+    response, it passes back
+    through the filter pipeline.
+    --
+    aspdnc_inact2023-p105_139.
+    }}}
+4
+{{{
+    NNN@Note: The
+    EndpointFilterDelegate is a named
+    delegate type. It's effectively a
+    Func<EndpointFilterInvocationContext,
+    ValueTask<object?>>.
+    --
+    aspdnc_inact2023-p106_140...
+    }}}
+NN@N@Moving code to filters can reduce clutter in your endpoints, but
+{{{
+    it makes the flow of your
+    application harder to understand
+    --
+    aspdnc_inact2023-p108_142.
+    }}}
+TT@NN@5.4.2 Filters or middleware: Which should you choose?
+{{{
+    
+    --
+    aspdnc_inact2023-p108_142.
+    }}}
+7
+{{{
+    nnn@By contrast, there are three
+    main differences between middleware
+    and filters:
+    
+    - Middleware can run for all
+      requests; filters will run only
+      for requests that reach the
+      EndpointMiddleware and execute
+      the associated endpoint.
+    - Filters have access to additional
+      details about the endpoint that
+      will execute, such as the return
+      value of the endpoint, for
+      example an IResult. Middleware in
+      general won't see these
+      intermediate steps, so it sees
+      only the generated response.
+    - Filters can easily be restricted
+      to a subset of requests, such as
+      a single endpoint or a group of
+      endpoints. Middleware generally
+      applies to all requests (though
+      you can achieve something similar
+      with custom
+      middleware-components).
+    --
+    aspdnc_inact2023-p109_143.
+    }}}
+8
+{{{
+    That's all well and good, but how
+    should we interpret these
+    differences? When should we choose
+    one over the other?
+    
+    I like to think of middleware
+    versus filters as a question of
+    specificity. NN@Middleware is the
+    more general concept, operating on
+    lower-level primitives such as
+    HttpContext, so it has wider reach.
+    N@If the functionality you need has
+    no endpoint-specific requirements,
+    you should use a middleware
+    component. NN@NN@Exception handling
+    is a great example; exceptions
+    could happen anywhere in your
+    application, and you need to handle
+    them, so using exception-handling
+    middleware makes sense.
+    
+    NN@On the other hand, if you do
+    need access to endpoint details, or
+    if you want to behave differently
+    for some requests, you should
+    consider using a filter. Validation
+    is a good example. Not all requests
+    need the same validation. Requests
+    for static files, for example,
+    don't need parameter validation,
+    the way requests to an API endpoint
+    do. Applying validation to the
+    endpoints via filters makes sense
+    in this case.
+    
+      Tip: Where possible, consider
+      using middleware for
+      cross-cutting concerns. Use
+      filters when you need different
+      behavior for different endpoints
+      or where the functionality relies
+      on endpoint concepts such as
+      IResult objects.
+    --
+    aspdnc_inact2023-p109_143.
+    }}}
+    ----
+
+    ----
+1
+{{{
+    app.MapPost("/fruit/{id}", (Fruit fruit, string id) => { /* */ });
+    
+    Unfortunately, with this order, the
+    ValidateId filter described in
+    listing 5.9 won't work. The
+    ValidateId filter assumes that the
+    first parameter to the handler is
+    id, which isn't the case in our
+    revised MapPost implementation.
+    
+    NNN@ASP.NET Core provides a
+    solution that uses a
+    factory-pattern for filters. You
+    can register a filter-factory by
+    using the
+    AddEndpointFilterFactory() method.
+      ...   
+    --
+    aspdnc_inact2023-p110_144.
+    }}}
+2
+{{{
+    NN@The MethodInfo-property can be
+    used to control how the filter is
+    created based on the definition of
+    the endpoint-handler.
+    --
+    aspdnc_inact2023-p112_146.
+    }}}
+3
+{{{
+    5.4.4 Implementing the IEndpointFilter interface
+    
+    NNNN@Creating a lambda-method for
+    AddEndpointFilter() that satisfies
+    the compiler can be a frustrating
+    experience, depending on the level
+    of support your integrated
+    development environment (IDE)
+    provides. In this section you'll
+    learn how to sidestep the issue by
+    defining a class that implements
+    IEndpointFilter instead.
+    --
+    aspdnc_inact2023-p112_146.
+    }}}
+4
+{{{
+    NN@When designing APIs, it's
+    important to maintain consistency
+    in the routes you use for your
+    endpoints, which often means
+    duplicating part of the route
+    pattern across multiple APIs.
+    As an
+    example, all the endpoints in the
+    fruit API described throughout this
+    chapter (such as in listing 5.3)
+    start with the route prefix /fruit:
+    
+    - MapGet("/fruit", () => {/* */})
+    - MapGet("/fruit/{id}", (string id) => {/* */})
+    - MapPost("/fruit/{id}", (Fruit fruit, string id) => {/* */})
+    - MapPut("/fruit/{id}", (Fruit fruit, string id) => {/* */})
+    - MapDelete("/fruit/{id}", (string id) => {/* */})
+    --
+    aspdnc_inact2023-p113_147.
+    }}}
+NN@All this duplication can be removed by ____
+{{{
+    using route groups
+    --
+    aspdnc_inact2023-p114_148.
+    }}}
+N@Tip: If you don't want to add a prefix but still want to use the route group for applying filters, you can ____
+{{{
+    pass the prefix "/" to MapGroup().
+    --
+    aspdnc_inact2023-p114_148...
+    }}}
+HTTP verbs define ____  ****
+{{{
+    semantic expectation for a request.
+    --
+    aspdnc_inact2023-p116_150.
+    }}}
+8
+{{{
+    - NNNN@An HTTP API exposes methods
+      or endpoints that you can use to
+      access or change data on a server
+      using the HTTP protocol. An HTTP
+      API is typically called by mobile
+      or client-side web applications.
+    --
+    aspdnc_inact2023-p116_150.
+    }}}
+9
+{{{
+    (void + 200)
+    
+    NN@Any other object
+    returned from your endpoint
+    handler is serialized to JSON.
+    --
+    aspdnc_inact2023-p116_150.
+    }}}
+10
+{{{
+    - NNN@You can customize the
+    response by injecting an
+    HttpResponse object into your
+    endpoint handler and then setting
+    the status code and response
+    body.
+    --
+    aspdnc_inact2023-p116_150.
+    }}}
+    ----
+
+    ----
+1
+{{{
+    NN@NN@In section 6.4 I describe how
+    to use the routing-system to
+    generate URLs, which you can use to
+    create links and redirect requests
+    for your application. One benefit
+    of using a routing system is that
+    it decouples your handlers from the
+    underlying URLs they're associated
+    with. You can use URL generation to
+    avoid littering your code with
+    hardcoded URLs like
+    /product/view/3. Instead, you can
+    generate the URLs at runtime, based
+    on the routing system.
+    --
+    aspdnc_inact2023-p119_153.
+    }}}
+NN@NN@You can think of routing as being ____  *****
+{{{
+    the glue that ties the middleware-pipeline to endpoints
+    --
+    aspdnc_inact2023-p119_153.
+    }}}
+NNNN@NN@Routing is the process of ____  ****
+{{{
+    mapping an incoming request
+    to a method that will handle it
+    
+    + NNN@You can also use routing to enable
+    powerful features such as mapping
+    multiple URLs to the same handler
+    and automatically extracting data
+    from a request's URL.
+    --
+    aspdnc_inact2023-p119_153.
+    }}}
+NN@The process of ____ is routing
+{{{
+    mapping a request to a handler
+    --
+    aspdnc_inact2023-p119_153.
+    }}}
+5
+{{{
+    Definition: NNNN@Routing in
+    ASP.NET Core is the process of
+    selecting a specific handler for
+    an incoming HTTP request.
+    --
+    aspdnc_inact2023-p119_153.
+    }}}
+6
+{{{
+    Definition: The NNN@query string
+    is part of a URL containing
+    additional data that doesn't fit
+    in the path.
+    --
+    aspdnc_inact2023-p120_154.
+    }}}
+7
+{{{
+    NNN@N@It isn't used
+    by the routing infrastructure to
+    identify which handler to
+    execute,
+    NN@N@but ASP.NET Core can
+    extract values from the
+    query-string automatically in a
+    process called model-binding, as
+    you'll see in chapter 7.
+    --
+    aspdnc_inact2023-p120_154.
+    }}}
+Routing + 'the SEO-advantage'  ****
+{{{
+    NNNN@NN@The difference is that with
+    routing, you can completely
+    customize the URLs, as shown in
+    figure 6.2. This feature gives you
+    much more flexibility and can be
+    important in real-life applications
+    for search engine optimization
+    (SEO).
+    
+      Note: With the flexibility of
+      routing, you can encode the
+      hierarchy of your site properly
+      in your URLs, as described in
+      Google's SEO starter guide at
+      http://mng.bz/EQ2J.
+    --
+    aspdnc_inact2023-p121_155.
+    }}}
+    ----
+
+    ----
+1
+{{{
+    NN@With routing it's easy to modify
+    your exposed URLs without changing
+    any filenames or locations. You can
+    also use routing to create
+    friendlier URLs for users, which
+    can improve discovery and
+    "hackability." All of the following
+    routes could point to the same
+    handler:
+    
+    - /rates/view/1
+    - /rates/view/USD
+    - /rates/current-exchange-rate/USD
+    - /current-exchange-rate-fo
+    --
+    aspdnc_inact2023-p122_156.
+    }}}
+2
+{{{
+    NN@NN@Endpoint routing is
+    fundamental to all but the simplest
+    ASP.NET Core apps. It's implemented
+    with two pieces of middleware,
+    which you've already seen:
+    
+    - EndpointRoutingMiddleware - This
+      middleware chooses which
+      registered endpoints execute for
+      a given request at runtime. To
+      make it easier to distinguish
+      between the two types of
+      middleware, I'll be referring to
+      this middleware as the
+      RoutingMiddleware throughout this
+      book.
+    - EndpointMiddleware - This
+      middleware is typically placed at
+      the end of your middleware
+      pipeline. The middleware executes
+      the endpoint selected by the
+      RoutingMiddleware at runtime.
+    --
+    aspdnc_inact2023-p123_157.
+    }}}
+3
+{{{
+    You register the endpoints in your
+    application by calling Map*
+    functions on an
+    IEndpointRouteBuilder instance. In
+    .NET 7 apps, this instance
+    typically is a WebApplication
+    instance but doesn't have to be, as
+    you'll see in chapter 30.
+    --
+    aspdnc_inact2023-p123_157.
+    }}}
+4
+{{{
+    Definition: NNN@NN@An endpoint in
+    ASP.NET Core is a handler that
+    returns a response.
+    --
+    aspdnc_inact2023-p123_157.
+    }}}
+5
+{{{
+    Depending on the type of
+    application you're building,
+    minimal API-handlers, Razor Page
+    handlers, or MVC controller
+    action-methods typically make up
+    the bulk of the endpoints in an
+    application.
+    --
+    aspdnc_inact2023-p123_157.
+    }}}
+6
+{{{
+    - Nn@A health-check endpoint using
+      MapHealthChecks(). You can read
+      more about health checks at
+      http://mng.bz/N2YD.
+      (+two more examples)
+    --
+    aspdnc_inact2023-p123_157.
+    }}}
+7
+{{{
+    Definition: NN@N@A route-template
+    is a URL pattern that is used to
+    match against request-URLs, which
+    are strings of fixed values, such
+    as "/test" in the previous
+    listing. They can also contain
+    placeholders for variables, as
+    you'll see in section 6.3.
+    --
+    aspdnc_inact2023-p124_158.
+    }}}
+8
+{{{
+    NNn@Middleware placed before the
+    routing middleware cannot tell
+    which endpoint will be executed.
+    --
+    aspdnc_inact2023-p125_159.
+    }}}
+    ----
+
+    ----
+1
+{{{
+    NN@TUT@The StaticFileMiddleware in
+    figure 6.4 is placed before the
+    RoutingMiddleware, so it executes
+    before an endpoint is selected.
+    --
+    aspdnc_inact2023-p126_160.
+    }}}
+2
+{{{
+    NN@If you have a
+    piece of middleware that needs to
+    know which endpoint (if any) a
+    given request will execute, you
+    need to make sure to place it after
+    the RoutingMiddleware and before
+    the EndpointMiddleware.
+    --
+    aspdnc_inact2023-p126_160.
+    }}}
+*****
+{{{
+    NNNN@In this section
+    we explore the full range of
+    features available in
+    route-templates, such as:
+    
+    - default values
+    - optional segments
+    - constraints
+    --
+    aspdnc_inact2023-p126_160.
+    }}}
+a 'segment'
+{{{
+    The routing middleware parses a
+    route-template by splitting it into
+    NN@segments. A segment is typically
+    separated by the / character, but
+    it can be any valid character.
+    --
+    aspdnc_inact2023-p126_160.
+    }}}
+5
+{{{
+    
+    --
+    aspdnc_inact2023-p127_161.
+    }}}
+Ch. 6 - NOTE|TODO: FINISH ROUTING-CHAPTER[!!]
+
+    7. Model-binding and (-)validation in minimal APIs
+8. An introduction to dependency-injection  173
+9. Registering services with dependency-injection  190
+10. Configuring an ASP.NET Core application  215
+    11. Documenting APIs with OpenAPI  248
+
+19. Creating a website with MVC controllers 466
+20. Creating an HTTP API using web API controllers 486
+
+34. Building background tasks and services 846
+    35. Testing applications with xUnit 872
+    36. Testing ASP.NET Core applications 887
+

@@ -1,0 +1,5136 @@
+
+___zzzz
+@f(ill)
+	:'<,'>s/\v(.{-})\ze ; (.*)/\1\r\{\{\{\r\t\2 \}\}\}/ggv:'<,'>s/\v\}\}\}\zs.*//g
+
+
+----- mastering emacs - mickey peterson:
+----- extending emacs (part 1) - bob glickstein:
+
+___mastemacs2__p108_end
+___extemacsbobglick
+
+~/Empire/Doks/Comp/emacs/masteringemacs-v3.pdf
+
+mastemacs1__start_p108
+
+	----
+protocol-format for IDE auto-refactoring etc
+{{{
+	the Language Server Protocol
+    = an open JSON-RPC standard
+      #=progr.lang servers (***!)
+    --
+    mastemacs-p10
+    }}}
+emacs implementations of IDE (with code completion etc) [=with language servers]
+{{{
+	LSP mode
+    EGlot
+        Doom Emacs
+        Spacemacs (?)
+    --
+    mastemacs-p11
+    }}}
+(emacs project manager)
+{{{
+    (=projectile(?) etc)
+	  (+ssss)
+    --
+    mastemacs-p13
+    }}}
+crossreference tool (*)
+{{{
+	xref
+      (+tab  for cycling through links/cross-references)
+    --
+    mastemacs-p264(??)
+    }}}
+image viewer, pdf dok viewer
+{{{
+    Image Mode
+	(see more)
+    --
+    mastemacs-p270(??)
+    }}}
+Code Completer (**)
+{{{
+	FIDO (*)
+    --
+    mastemacs-p14
+    }}}
+file searcher
+{{{
+	ripgrep
+    --
+    mastemacs-p14
+    }}}
+jump to identifiers (*)
+{{{
+	dumb jump (*)
+    --
+    mastemacs-p14
+    }}}
+builtin srceensaver / games
+{{{
+	a-x zone
+    a-x tetris
+      (a-x doctor)
+    --
+    mastemacs-p25
+    }}}
+latest version of emacs (2020)
+{{{
+	27.1
+    --
+    mastemacs-p25(??)
+    }}}
+draw ascii-art
+{{{
+	='an artist mode'
+    --
+    mastemacs-p25
+    }}}
+emacs e-pub reader (**)
+{{{
+	nov
+    --
+    mastemacs-p25
+    }}}
+	----
+
+	----
+(**) alter emacs variables, call emacs functions, query emacs system of current state
+{{{
+	= done from within the editor/buffer
+      (+Notes ab. elisp debugger / elisp Code completion) *
+    --
+    mastemacs-p26
+    }}}
+emacspeak
+{{{
+	see more
+    --
+    mastemacs-p27
+    }}}
+shells in emacs
+{{{
+	emacs terminal emulator, bash wrapper, eshell  (*)
+    --
+    mastemacs-p28
+    }}}
+(emacs music player)
+{{{
+	EMMS, Bongo
+    --
+    mastemacs-p28
+    }}}
+	----
+
+	----
+scratch buffers etc (*)
+{{{
+	'if you want a throw-away area'
+      (= for testing, text, code etc (=see  buffers - 'more than text editing'))
+    --
+    mastemacs-p32(??)
+    }}}
+'mimic editing you do by hand' =from code (*!) (@)
+{{{
+	=normal editing keys are commands  just (etc)
+    --
+    mastemacs-p
+    }}}
+teterm: window (in vim etc)
+{{{
+	a 'frame'
+    --
+    mastemacs-p31
+    }}}
+teterm: buffers/splits/viewport (in vim etc)
+{{{
+	'windows'
+    --
+    mastemacs-p31
+    }}}
+** modeline (@)
+{{{
+	='status-bar'
+    (eg. info about filename, mode etc),
+      = searching for strings/patterns etc (?/)**
+    --
+    mastemacs-p32
+    }}}
+** minibuffer
+{{{
+	below the modeline
+      =errors + general information
+       (+ the command line)
+    --
+    mastemacs-p33
+    }}}
+teterm: the 'extended command' functionality  *
+{{{
+	the a-x cline
+    --
+    mastemacs-p53(??)
+    }}}
+(tip: editing commands in the minibuffer/cline)
+{{{
+	(almost identical to a normal buffer)
+    --
+    mastemacs-p33
+    }}}
+position of the 'echo area'
+{{{
+	= shares the same area with the minibuffer
+    --
+    mastemacs-p33
+    }}}
+	----
+
+	----
+teterm: 'the point'
+{{{
+	your current position in the buffer
+      (=marked by the cursor)
+    --
+    mastemacs-p(33-)34
+    }}}
+teterm: current buffer
+{{{
+	buffer with the point / programatically activated with elisp
+    --
+    mastemacs-p34
+    }}}
+**  teterm: highlight(=not necessarily visual) / selection
+{{{
+	'a region'
+    --
+    mastemacs-p34
+    }}}
+*  what represents boundaries of 'a region'
+{{{
+	'point' and 'mark'
+    --
+    mastemacs-p34
+    }}}
+**  mode that highlights 'region'
+{{{
+	transient mark mode (TMM)
+      (=on by default, but can be useful to turn off)
+    --
+    mastemacs-p35
+    }}}
+*  teterm: cut, copy, paste (T@)
+{{{
+	kill(=cut)
+    save to kill ring(/informally 'copy')
+    yank (back =paste)
+    --
+    mastemacs-p35
+    }}}
+ origin of cut/copy/paste terminology
+{{{
+	CUA (common user interface)  (ibm/apple)
+    --
+    mastemacs-p35
+    }}}
+(( set normal CUA in emacs ))
+{{{
+	(( selection compatibility mode ))
+    --
+    mastemacs-p36
+    }}}
+** initialization file in em. ** 
+{{{
+	~/.emacs.d/init.el
+    ~/.config/emacs/init.el
+    ( ~/.emacs )
+    --
+    mastemacs-p36
+    }}}
+the ~/.config/x/x.conf standard (of storing conf) is called ____
+{{{
+	the XDG convention
+    --
+    mastemacs-p36
+    }}}
+	----
+
+	----
+( easy way of rereading the init-file )
+{{{
+	( close + restart em. )
+    --
+    mastemacs-p37
+    }}}
+the 'customize interface'
+{{{
+	=for saving changes to init.el
+    --
+    mastemacs-p37
+    }}}
+teterm: syntax highlighting
+{{{
+	'font locking'
+    --
+    mastemacs-p37
+    }}}
+what Major modes do
+{{{
+	controls how buffers behave
+      (=a bit like vims 'filetype')
+    --
+    mastemacs-p37
+    }}}
+teterm: font + properties (=col, size etc) (@)
+{{{
+	'faces'
+      (eg. "my foreground face color is orange")
+    --
+    mastemacs-p38
+    }}}
+emacs decides default maj.modes for files by ___
+{{{
+	looking through centralized register
+      (=maps file extensions to maj.modes)
+    --
+    mastemacs-p38(??)
+    }}}
+files without file extensions: how does emacs decide major mode?
+{{{
+	scans first part of file + tries to infer major mode
+      (=most often correctly) *
+    --
+    mastemacs-p
+    }}}
+*  minor modes (+example)
+{{{
+	optional addons ((=only one maj.mode can be active))
+      flyspell mode (=spell/code check while writing)
+    --
+    mastemacs-p38
+    }}}
+(  get unix-like capabilities for emacs on win (*)  )
+{{{
+	cygwin )
+    --
+    mastemacs-p
+    }}}
+(  run/use linux in win 10  )
+{{{
+	( 'windows subsystem for linux' )
+    --
+    mastemacs-p41
+    }}}
+Ub**: install em. dependencies (=if want to compile em. y.self) (@)
+{{{
+	apt-get build-dep emacsNN  #eg. NN = 27
+    --
+    mastemacs-p42
+    }}}
+( installing compiled software on lin (**) )
+{{{
+	configure
+    make
+    make install
+    --
+    mastemacs-p42
+    }}}
+	----
+
+	----
+* run terminal emacs
+{{{
+	emacs -nw
+    --
+    mastemacs-p43
+    }}}
+emacs q.help
+{{{
+	emacs --help
+    --
+    mastemacs-p
+    }}}
+** Start emacs without reading init-file (eg. if emacs gives errors) **
+{{{
+	emacs -q
+    --
+    mastemacs-p43
+    }}}
+* start emacs without reading init-files (eg. local and(!) global)
+{{{
+	emacs -Q
+      #the 'site-wide file'
+    --
+    mastemacs-p43
+    }}}
+emacs client/server // server mode (?)
+{{{
+	p44  (=persistent sessions etc)
+    --
+    mastemacs-p44
+    }}}
+start emacs server-mode
+{{{
+	a-x server-start
+    emacs --daemon   emacsclient  (??)
+    --
+    mastemacs-p45
+    }}}
+(*) switch to next buffer (eg. when editing through a client)
+{{{
+	c-x #
+    --
+    mastemacs-p46
+    }}}
+( 'useful for exploring files // have files "permanently" open in em. )
+{{{
+	-n
+    --
+    mastemacs-p46
+    }}}
+tip: things to disable in emacs interface (on start)
+{{{
+	splash, scroll bars, menu, tool bar
+    --
+    mastemacs-p47
+    }}}
+Access emacs menu (eg.(?) in terminal emacs)
+{{{
+	f10
+    --
+    mastemacs-p48
+    }}}
+	----
+
+	----
+keybinding tip (=some meta keys)
+{{{
+	bind s(uper)- and H(yper)-
+      to Win / List keys  (=in op.system / win.manager)
+    --
+    mastemacs-p49
+    }}}
+** teterm: sequence of keyboard/mouse actions (@)
+{{{
+	'key sequence'
+    --
+    mastemacs-p50
+    }}}
+** teterm: one (or more) 'key sequences' that invoce a command
+{{{
+	a 'complete key'
+    --
+    mastemacs-p50
+    }}}
+** teterm: 'key sequence' that is not a 'complete key'
+{{{
+	a 'prefix key' (eg. c-x)
+    --
+    mastemacs-p50
+    }}}
+*** teterm: sets of keys that belong to a certain prefix keys (like c-x ...) (@)
+{{{
+	'key maps'  eg. c-f
+      #"key for ¶-char. is s.where in the c-x 8 key map"
+    --
+    mastemacs-p51
+    }}}
+change capslock to ctrl
+{{{
+	SharpKeys (win) / xmodmap (lin)
+    --
+    mastemacs-p52
+    }}}
+** important feature of normal user-runnable ax-commands is ___ @
+{{{
+	they are interactive
+    has additional
+    properties associated with it,
+     --
+    making it usable
+    through a-x_interface and keybindings
+    --
+    (**)  #package authors have to
+          chose if function is interactive
+          (=can be run with a-x_line)
+    --
+    mastemacs-p54,p55
+    }}}
+	----
+
+emacs completion commands - Tab, Ret (+=will run cmd if only match)
+
+	----
+** teterm: give number argument with c-u
+{{{
+	the 'universal argument' / prefix argument
+    --
+    mastemacs-p55
+    }}}
+more ways (than u-arg) to prefix num.s to commands
+{{{
+	a-0 (-- 9)
+    c-0
+    ca-0
+    c_- a_- ca_-   #concerning 'tempo' etc
+    --
+    mastemacs-p56,p57(,p55)
+    }}}
+** kill previous word from point **
+{{{
+	a_- a-d   **
+    --
+    mastemacs-p58
+    }}}
+tip: =use of negative arguments (**)
+{{{
+	upcase last input word  **
+    --
+    mastemacs-p58
+    }}}
+***['Discovering and Remembering Keys' ***(*)]  Check key to input ¶-char. (="somewh. in c-x 8 -keymap) *** @@
+{{{
+	prefix key + c-h
+      (eg. c-x 8 c-h)  ***
+    --
+    mastemacs-p58
+    }}}
+* meaning of  c-x 8 c-h  (=shows the binding 'is a prefix command')
+{{{
+	= c-x 8 "  is also keymap
+      (=contains list of subcommands for complete key sequence)
+    --
+    mastemacs-p59
+    }}}
+** "setting syntax highlighting/different color scheme/theme" (@)
+{{{
+	'font lock faces'
+    --
+    mastemacs-p61,p62
+    }}}
+	----
+
+	----
+groups(/sub-groups) in the customize interface represents ___
+{{{
+	one package / mode / piece of functionality
+    --
+    mastemacs-p62
+    }}}
+toplevel group in the customize interface
+{{{
+	Emacs
+    --
+    mastemacs-p62
+    }}}
+* open Customize interface (=from the command line) ** @
+{{{
+	a-x customize
+    --
+    mastemacs-p66
+    }}}
+** search for things by name (in the Customize interface)
+{{{
+	search bar at top (=emacs 24 +)
+    --
+    mastemacs-p
+    }}}
+the Customize interface is made up of 2 things: faces and OPTIONS
+{{{
+	o  = everything except faces (!)
+    --
+    mastemacs-p
+    }}}
+* list available font colors (in emacs) (@)
+{{{
+	a-x list-colors-display  (??)
+    --
+    mastemacs-p65
+    }}}
+* search for post concerning "Colors on a TTY" (in info) * @
+{{{
+	a-x info-apropos Colors on a TTY
+    --
+    mastemacs-p65
+    }}}
+setting selected customizations (=in the customize interface)
+{{{
+	choose apply + save
+      (=writes changes to init.el, so persists between sessions)
+    --
+    mastemacs-p65
+    }}}
+Some useful sub-commands for Customize (*) @(@)
+{{{
+	a-x customize-
+    +=
+      customize-customized
+      customize-changed
+      customize-face
+      customize-group
+      customize-mode
+      customize-saved
+      customize-themes)
+    --
+    mastemacs-p66(,p67)
+    }}}
+( tip/idea: organizing/managing too big/messy initfile )
+{{{
+	split into files/sections
+    --
+    mastemacs-p
+    }}}
+	----
+
+	----
+*** Evaluating elisp code (=in buffer, init file (etc?)) @@(@)
+{{{
+	restart emacs
+      .
+    a-x eval-buffer
+    a-x eval-region
+      .
+    ca-x (eval-defun)  +(do) in every defvar/defcustom form
+    c-x c-e (eval-last-sexp)
+    c-j
+    sa-.
+    a-x ielm (**)  (+auto-complete ??)
+      .
+      (+(!) the evaluation rules
+      (=what is eval.d once or not (etc(!))))
+    --
+    mastemacs-p68
+    https://www.masteringemacs.org/article/evaluating-elisp-emacs
+    }}}
+**(*) repos: include both elpa and melpa(!) into init @
+{{{
+    (setq package-archives
+     '(("gnu" . "http://elpa.gnu.org/packages/")
+      ("melpa" . "http://melpa.org/packages/")))
+         .
+    (+eval-buffer) **
+    --
+    mastemacs-p70
+    }}}
+** show/list (emacs repo) packages @(@)
+{{{
+	a-x package-list-packages
+    --
+    mastemacs-p70
+    }}}
+install package (=that you know the name of) @(@)
+{{{
+	a-x package-install
+    --
+    mastemacs-p70
+    }}}
+refresh packages (eg. in long-running emacs session)
+{{{
+	a-x package-refresh-contents
+    --
+    mastemacs-p70
+    }}}
+** Set color themes in Emacs ** @
+{{{
+	a-x customize-themes
+    --
+    mastemacs-p71
+    }}}
+	----
+
+
+GETTING HELP/LEARNING ABOUT EMACS (!!) *******(!!)
+
+	----
+Open Info ** @@
+{{{
+    c-h i
+	a-x info
+    --
+    mastemacs-p73
+    }}}
+**  info navigation commands @
+{{{
+	prev/next node
+      [ // ]
+    info (browse)hist back/forw.
+      l // r
+    sibling node next/prev
+      n // p
+    up to parent node
+      u
+    scroll one screen
+      space
+    cycle through xrefs/links
+      tab
+    open link
+      Ent
+    search for name (=menu)
+      m
+    quit
+      q
+    --
+     (+Everyday use tips for commands =p74 (**(!)))
+    --
+    mastemacs-p73
+    }}}
+tip: 'Emacs universal bookmarks system' (!!) (@)
+{{{
+    You can bookmark almost everything in Emacs:
+      info pages
+      files
+      directories
+        ( and more(!))
+    --
+    mastemacs-p74;
+    }}}
+open the emacs manual @
+{{{
+	c-h i m Emacs
+      #+ c-h i m Emacs Lisp Intro  (etc)
+    --
+    mastemacs-p75
+    }}}
+documentation for a command (=function) (*) @@
+{{{
+	c-h F
+    --
+    mastemacs-p75
+    }}}
+* regex-search for command (=not(!) function)  working on words ** @@
+{{{
+    c-h a -word$
+	apropos-command -word$
+    --
+    mastemacs-p76
+    }}}
+(**) set sort by relevance for apropos @
+{{{
+	(setq apropos-sort-by-scores t)
+    --
+    mastemacs-p77
+    }}}
+***(*) The manual/info Describe-system ** @@(@)
+{{{
+	c-h m
+      mode
+    c-h f
+      function
+    c-h v
+      variable
+    c-h k/c
+      char/key binding (**)
+    --
+    mastemacs-p80
+    }}}
+	----
+
+the theory of movement
+
+	----
+*(*) movement types/classes (@) (@)
+{{{
+	local(=near the point)
+    regional(=whole functions/class definitions//chapters (etc))
+    global(=from one buffer/window to another)
+    --
+    mastemacs-p83
+    }}}
+'a syntactic unit' (@)
+{{{
+	=group of characters with movement meaning
+      (eg. sentence, paragraph, balanced expression etc)
+    --
+    mastemacs-p83
+    }}}
+( set menu bar, if not showing )
+{{{
+	( a-x menu-bar-mode )
+    --
+    mastemacs-p85
+    }}}
+(( tip major modes ))
+{{{
+	each major mode has its own menus
+      =use to explore/discover features *
+    --
+    mastemacs-p85
+    }}}
+	----
+
+	----
+open(='find/visit') file @
+{{{
+	c-x c-f
+      #both existing and new (**!)
+    --
+    mastemacs-p85
+    }}}
+save file
+{{{
+	c-x c-s
+    --
+    mastemacs-p85
+    }}}
+switch buffer(s) @
+{{{
+	c-x b
+    --
+    mastemacs-p85
+    }}}
+close(='kill') buffer @
+{{{
+	c-x k
+    --
+    mastemacs-p85
+    }}}
+display all open buffers @@
+{{{
+	c-x c-b
+    --
+    mastemacs-p85
+    }}}
+exit emacs (@)
+{{{
+	c-x c-c
+    --
+    mastemacs-p86
+    }}}
+(exit prompts, regions, prefix arguments (etc.))
+{{{
+	esc esc esc
+    --
+    mastemacs-p86
+    }}}
+undo
+{{{
+	c-_
+    c-u u
+    c-/  #cs-7
+    --
+    mastemacs-p86
+    }}}
+* Mechanism for setting info about requested mode (etc) inside file ***
+{{{
+	file-local variables  (=as headers)
+      -*- mode: mode-name; my-var: val -*-
+      .
+    (or footers)  Local Variables: .....   (+will look at maj.mode-style comments(??))
+      .
+    Local Variables:
+    mode: mode-name-here
+    my-variable: value
+    End:
+    --
+    mastemacs-p87
+    }}}
+'program loader directives' (@)
+{{{
+	= #!/bin/bash  (etc.)
+	= #!/bin/bin/env python
+    --
+    mastemacs-p88
+    }}}
+(magic mode detection for files etc)
+{{{
+	(=recognize magic numbers etc in files (+reacting on))
+    --
+    mastemacs-p88
+    }}}
+'see coding system in use for current buffer' (eg. files + unicode (??) @
+{{{
+	c-h C Ent
+      (+will also show some of the
+        info in the modeline)
+    --
+    mastemacs-p89
+    }}}
+	----
+
+	---- ****
+Save as ** (@)
+{{{
+	c-x c-w
+    --
+    mastemacs-p91
+    }}}
+Save all files
+{{{
+	c-x s
+    --
+    mastemacs-p91
+    }}}
+exit emacs (@)
+{{{
+	c-x c-c 
+      +:
+    Y       save the files
+    N/del   skip curr. buffer
+    q/Ent   abort the save + exit
+    c-g     abort save + exit
+    !     save all remaining
+    d     diff file on filesystem
+          with the one in buffer)
+    --
+    mastemacs-p91
+    }}}
+switch buffer **
+{{{
+	c-x b
+    --
+    mastemacs-p92
+    }}}
+like a-tab, for current + last buffer (**) (@)
+{{{
+	c-x b  (+repeat)
+    --
+    mastemacs-p92
+    }}}
+te: transient buffers (=like buffers interacting with shell, holding transient info generated by emacs etc)
+{{{
+	*bufname*
+    --
+    mastemacs-p92
+    }}}
+Listing buffers **
+{{{
+	c-x c-b
+    --
+    mastemacs-p93
+    }}}
+ completion for buf.names (=wh. buf.switching) @
+{{{
+	ido (to em. 26) // fido (from em. 27) **
+      .
+    a-x ido-mode
+    --
+    mastemacs-p93
+    }}}
+ set ido/fido-mode (+flex-matching) permanently (=via customize) @@
+{{{
+	a-x customize-option Ent ido-mode Ent
+    a-x customize-option Ent ido-enable-flex-matching Ent
+      #=improve IDO's fuzzy matching
+    --
+    mastemacs-p94(,p93)
+    }}}
+ customize many more ido-features (*) @
+{{{
+	a-x customize-group ido
+        #+read about ido/fido mode
+    --
+    mastemacs-p94
+    }}}
+Customize extra Completion options for Fido (**!) @
+{{{
+	a-x customize-group icomplete
+      #=icomplete is the parent
+        completion mechanism fido is built on
+    --
+    mastemacs-p94
+    }}}
+Other Completion frameworks (***) than ido/fido @
+{{{
+	Helm, ivy, Selectrum, Icicles, Icomplete
+    --
+    mastemacs-p95
+    }}}
+	----
+
+	----
+close buffer (=kill)
+{{{
+	c-x k
+    --
+    mastemacs-p95
+    }}}
+teterm: Emacs 'Undo-theory' (!!)
+{{{
+	sealing w. ret/bs/move // rep. undos + redos
+    --
+    mastemacs-p96
+      #+'one cannot(!) lose undo history by "branching"'
+    --
+    mastemacs-p
+    }}}
+'Emacs never loses undo-history_posts' =Example **
+{{{
+    p97
+    --
+	mastemacs-p97
+    }}}
+teterm: head of undo-ring
+{{{
+	'*'
+    --
+    mastemacs-p98
+    }}}
+alternative undo implementation (=plugin)
+{{{
+	Undo Tree
+    --
+    mastemacs-p99
+    }}}
+	----
+
+	----
+win-cmd: switch to other win. ** (@)
+{{{
+	c-x o
+    --
+    mastemacs-p100
+    }}}
+win-cmd: delete active window *
+{{{
+	c-x 0
+    --
+    mastemacs-p100
+    }}}
+win-cmd: split window below (=vim 'split') *
+{{{
+	c-x 2
+    --
+    mastemacs-p100
+    }}}
+win-cmd: delete all Other windows **
+{{{
+	c-x 1
+    --
+    mastemacs-p100
+    }}}
+win-cmd: vsplit **(*)
+{{{
+	c-x 3
+    --
+    mastemacs-p100
+    }}}
+(saving +) returning to past win.configuration (**/?) @
+{{{
+	winner-mode  (+ c-c left//righ)
+    --
+    mastemacs-p100
+    }}}
+Set(=bind) keyb.shortc: a-o ==>> c-x o  ****!! @@(@)
+{{{
+	(global-set-key (kbd "M-o") 'other-window)
+    --
+    mastemacs-p101
+    }}}
+s + arrows =shift splits (=em. 'windows')
+{{{
+    in the init-file:
+	  (windmove-default-keybindings)
+    --
+    mastemacs-p101
+    }}}
+	----
+
+	----
+the Other Win-commands *(****)
+{{{
+	c-x 4:
+    open file       c-f
+    dired           d
+    show other win  c-o
+    switch buf.     b
+    kill buf+win    0
+    run proj.cmd    p
+    --
+    mastemacs-p102
+    }}}
+Frame Management (=open new Windows)
+{{{
+	c-x 5:
+    new 'frame'(=vim-win)       2
+    switch buf. in o. frame     b
+    del. active frame           0
+    del. o. 'frames'            1
+    find file in other frame    c-f
+    run proj.cmd in o. frame    p
+    open a-x dired in o. frame  d
+    display a buf. in o. frame  c-o
+    --
+    mastemacs-p103
+    }}}
+tab bars and tab lines
+{{{
+    (=see more)
+    --
+    mastemacs-p104
+    }}}
+customize color themes etc. for tab bar *
+{{{
+	a-x customize-apropos-faces-tab
+    --
+    mastemacs-p104
+    }}}
+emacs teterm: window configuration ** (@)
+{{{
+	other programs "workspace/proj."
+    = a collection of window
+    (="splits") that represents a
+    layout of your emacs
+    frame(="window")
+      .
+    (can be saved to disk
+    (=to a 'register'))
+    --
+    mastemacs-p105
+    }}}
+window conf. examples
+{{{
+	='switching between entire workflows'  (eg. org-mode+mail+planner, etc)
+    --
+    mastemacs-p105(??)
+    }}}
+enable Tab Bar mode * @
+{{{
+	a-x customize-option Ent tab-bar-mode
+    a-x tab-bar-mode
+      .
+    'tab bar commands' = c-x t ....  **
+    --
+    mastemacs-p105
+    }}}
+Tab (Bar) Commands ** @
+{{{
+	c-x t:
+    new tab                   2
+    close curr. tab           0
+    sel. tab by name          Ent
+    next tab                  o (or just c-tab)
+    rename t.                 r
+    move tab to right         m
+    run proj. cmd in o. tab   p
+    exec. cmd in o. tab       t
+    close all o. tabs         1
+    find file in o. tab       c-f | f
+    switch to buf. in o. tab  b
+    open dired in o. tab      d
+    --
+    mastemacs-p106
+    }}}
+Tab Bar Management (=like Frame / Window / Buffer Management keybindings): Side effect of actions that affect Other tabs
+{{{
+	= akin to creating a new tab (*)
+    --
+    mastemacs-p106
+    }}}
+naming of new tabs created
+{{{
+	= named according to the buffer that triggered their creation
+    (+from the active buffer thereafter)
+     (+=one can rename + move tabs around in tab)
+    --
+    mastemacs-p106
+    }}}
+hide visibility of tab bar (but still have active =for use) ** (@)
+{{{
+	a-x customize-option Ent tab-bar-show
+    --
+    mastemacs-p106
+    }}}
+tab cmd: Show interactive tab list
+{{{
+	a-x tab-list
+    --
+    mastemacs-p107
+    }}}
+tab cmd: undo a closed tab for each invocation (@)
+{{{
+	a-x tab-undo
+    --
+    mastemacs-p107
+    }}}
+tab cmd: switch to the last visited tab ** @
+{{{
+	a-x tab-recent
+    --
+    mastemacs-p107
+    }}}
+(Using tab bar with winner-mode (=switch between different 'tab-configs'))
+{{{
+	a-x tab-bar-history-mode  +
+    a-x customize-option Ent tab-bar-history-mode
+    --
+    mastemacs-p107
+    }}}
+tip: Configuring key-bindings for 'Stepping through tab-bar winner-configs') ****!! @@
+{{{
+	(global-set-key (kbd "M-[") 'tab-bar-history-back)
+    (global-set-key (kbd "M-]") 'tab-bar-history-forward)  
+    --
+    mastemacs-p
+    }}}
+	----
+
+
+___mastemacs2__p108_end
+
+emacs tabs 2
+
+	----
+tab line mode (@)
+{{{
+	= more like tabs in a web browser
+    a-x customize-option Ent global-tab-line-mode
+    a-x global-tab-line-mode
+    --
+    mastemacs-p108
+    }}}
+tab line mode: Select previous/next buffer **!! @
+{{{
+	c-x left//right
+    --
+    mastemacs-p108
+    }}}
+cycling through tab-buffers =limit to buffers of same major mode (=as opposed to just recent as default) **(*) @@
+{{{
+	a-x customize-option tab-line-tabs-function
+    --
+    mastemacs-p109
+    }}}
+ (change how many contextlines shown (when rolling text)) (@)
+{{{
+	next-screen-context-lines
+      (= a-x customize-option  +enter  next-screen-context-lines )
+    --
+    mastemacs-p110
+    }}}
+ (reading manpage for readline in emacs) @
+{{{
+	a-x man Ent readline Ent
+    --
+    mastemacs-p110
+    }}}
+	----
+
+	----
+(( move by char / line ))
+{{{
+	( c-f/c-b  c-p / c-n (**) )
+    --
+    mastemacs-p111
+    }}}
+teterm: 'c-' (@)
+{{{
+	='the c- modifier'
+    --
+    mastemacs-p111
+    }}}
+(Move down 10 lines * )
+{{{
+	c-u 10 c-n
+    --
+    mastemacs-p112
+    }}}
+( move to beg./end line )
+{{{
+	c-a / c-e
+    --
+    mastemacs-p112
+    }}}
+Go to first non-blank character of line **(*) (@)
+{{{
+	a-m
+    --
+    mastemacs-p113
+    }}}
+teterm: line as seen  vs.  actual line (even if visually wrapped) *
+{{{
+	visual/screen line  vs.  logical line
+    --
+    mastemacs-p113
+    }}}
+set c-p/c-n move by logical lines (=em. old/classic behavior) **! (@)
+{{{
+	a-x customize-option Ent line-move-visual
+    --
+    mastemacs-p
+    }}}
+(minor mode for extra 'visual line'-functionality)
+{{{
+	visual line mode
+      a-x visual-line-mode
+      a-x customize-option Ent global-visual-line-mode
+    --
+    mastemacs-p115
+    }}}
+teterm: word wrapping (=in emacs terminology) @
+{{{
+	truncation
+      = a-x toggle-truncate-lines  etc
+    --
+    mastemacs-p
+    }}}
+displaying line and column numbers @
+{{{
+	a-x display-line-numbers-mode
+    a-x customize-option Ent global-display-line-numbers-mode
+    a-x customize-option Ent display-line-numbers-mode
+    --
+    mastemacs-p116
+    }}}
+Customize showing of Line-Numbers (**!)  (=custom numbering etc) @
+{{{
+	a-x customize-group Ent display-line-numbers
+      #eg. relative/absolute numbers (etc)
+    --
+    mastemacs-p116
+    }}}
+line number only(!) for current line // column number (*)
+{{{
+    a-x column-number-mode
+	a-x line-number-mode
+    --
+    mastemacs-p116
+    }}}
+	----
+
+	----
+word forward/back @
+{{{
+	a-f / a-b
+      forward-word / backward-word
+        .
+      #word movement is rather
+      complex behind the scene:
+        .
+      = exact behavior of word
+      movement is dictated by
+      active major mode
+    --
+    mastemacs-p116
+    }}}
+major mode for writing text (!)
+{{{
+	a-x text-mode
+    --
+    mastemacs-p117
+    }}}
+mode for editing python code **
+{{{
+	a-x python-mode
+    --
+    mastemacs-p117
+    }}}
+teterm: the registry that maps the characters to a particularly syntax meaning (=for a major mode)
+{{{
+	a 'syntax table'
+      #=keeps track of 'what
+      characters make up a
+      word/comment?' etc
+    --
+    mastemacs-p118
+    }}}
+special about emacs syntax table (=equivalents exist in most other programs) (*)
+{{{
+	= one can inspect and change(!)
+    the syntax table  (!!)
+    --
+    mastemacs-p118
+    }}}
+view/show current buffer's syntax table (*) @
+{{{
+	c-h s
+    --
+    mastemacs-p118
+    }}}
+minor modes (+global variants(!)): treats CamelCase word as two(=distinct) words // treats snake_case words as one word (**)
+{{{
+	a-x subword-mode
+      .
+    a-x superword-mode
+    --
+    mastemacs-p121
+    }}}
+(set global versions of subword-m // superword-m) (@)
+{{{
+    M-x customize-option global-subword-mode
+    M-x customize-option global-superword-mode
+    --
+    mastemacs-p121
+    }}}
+((minor mode: split CamCase words into Cam_Case (+vice versa))) (@)
+{{{
+	glasses-mode  (+??)
+    --
+    mastemacs-p122
+    }}}
+	----
+
+	----
+teterms: S-EXPRESSIONS (**!)
+{{{
+	balanced expressions:
+      .
+    strings (=enclosed by quotes)
+    bracket-expressions (= [, (, {, < )
+    --
+    mastemacs-p122
+    }}}
+Balanced/S-Expression Forward/Backward (****!!) @(@)
+{{{
+	ca-f / ca-b
+    --
+    mastemacs-p123
+    }}}
+Down/Up List (=into next / up to enclosing  balanced/s-expression) ***!
+{{{
+	ca-d / ca-u
+      #eg. jump into next level deeper / up to enclosing level (of parentheses)
+    --
+    mastemacs-p124
+    }}}
+mini/tip: point on string +=jump to strings opening quote (**)
+{{{
+	ca-u
+      (=in newer versions of em.)
+    --
+    mastemacs-p125
+    }}}
+KILL S-EXP/BALANCED EXPR. ***(*)
+{{{
+	ca-k  ***
+    --
+    mastemacs-p125,p126
+    }}}
+To Next/Previous balanced expression/'list' **** (=sibling)
+{{{
+	ca-n // ca-p
+    --
+    mastemacs-p126
+    }}}
+spec. move: To End/Start of Paragr. (**)
+{{{
+	a-} // a-{
+        # ga-ö / ga-ä
+    --
+    mastemacs-p128
+    }}}
+(what counts as a paragraph (start/end etc) is defined by ___ )
+{{{
+	paragraph-start, paragraph-separate, use-hard-newlines
+    --
+      (+ paragraph-indent-minor-mode etc)
+    --
+    mastemacs-p129
+    }}}
+teterm: show info about eg. paragraph-start (=var.) with c-h v (***!)
+{{{
+	describing variables
+    --
+    mastemacs-p129
+    }}}
+	----
+
+	----
+Move to Beg./End of Sentence (**)
+{{{
+	a-a // a-e
+    --
+    mastemacs-p130
+    }}}
+(tip =variables for sentence-definition) **
+{{{
+	sentence-end-double-space
+    (=set to nil(!!))
+        +(sentence-end-without-period sentence-end-without-space)
+    --
+    mastemacs-p130
+    }}}
+MOVE TO BEGINNING/END OF FUNCTION **
+{{{
+	ca-a // ca-e
+      #eg. for changing name/function arguments (*)
+    --
+    mastemacs-p131
+    }}}
+ Move by Page (??)
+{{{
+	(=by character defined in page-delimiter
+    default =
+      .
+    c-x ] // c-x [
+    --
+    mastemacs-p132
+    }}}
+TIP**: FIND 'PAGE'-COMMANDS  WITH APROPOS (**)  ('is THE key to em. mastery(!!(!))) @@
+{{{
+	c-h a page$
+    a-x apropos-command page$
+        #=list commands ending with 'page'
+    --
+       #'knowing how to ask emacs
+       the right questions using
+       apropos and the describe-system
+       is THE cornerstone of
+       emacs mastery' (!!)
+    --
+    mastemacs-p133
+    }}}
+ scroll down/up win. // down/up other win. (**!)
+{{{
+	c-v // a-v
+      ||
+    ca-v // cas-v
+       #or ca_- ca-v (=reverses direction)
+    --
+    mastemacs-p133
+    }}}
+ (scroll left/right horiz. (+disabling truncation etc) for eg. long line csv-files)
+{{{
+    c- <  |  c-<next>
+    --
+	mastemacs-p135
+    }}}
+move to beginning / end of buffer
+{{{
+	a-< // sa-<
+    --
+    mastemacs-p135
+    }}}
+Go back to Mark (eg. after jumping to beginning of file)
+{{{
+	c-u c-space
+    --
+    mastemacs-p135
+    }}}
+	----
+
+Bookmarks and Registers
+
+	----
+Places/Things that can be bookmarked in Emacs ***(*)
+{{{
+	files
+    dired-dirs
+    a-x man-pages(??)
+    org-mode
+    DocView  (=pdf-files etc)
+    info man-pages  (+possibly mark remote files via Tramp)
+      .
+    #bookmarks are 'permanent'
+     (=saved to file called
+      bookmarks in ~/.emacs.d/
+    --
+    mastemacs-p136
+    }}}
+variable that stores info about where emacs stores your bookmarks *
+{{{
+	bookmark-default-file (=variable)
+    --
+    mastemacs-p136
+    }}}
+Tip: Usage Bookmarks **!
+{{{
+	efficient way of jumping
+    to frequently-used
+    files/directories,
+    sections of emacs man
+    you want to return
+    to frequently **
+    --
+    mastemacs-p137
+    }}}
+(elisp tip bookmarks)
+{{{
+	(=can be extended with
+      'custom handlers')
+    --
+    mastemacs-p137
+    }}}
+Set a Bookmark ***! @@(@) @@
+{{{
+	c-x r m
+    --
+    mastemacs-p137
+    }}}
+List Bookmarks ***!
+{{{
+	c-x r l
+    --
+    mastemacs-p137
+    }}}
+Jump to Bookmark ***!
+{{{
+	c-x r b
+    --
+    mastemacs-p137
+    }}}
+teterm: registers (=as opposed to bookmarks) **
+{{{
+	= are transient (*)
+    --
+    mastemacs-p137
+    }}}
+What can be stored with Registers? (**!)
+{{{
+	Window configurations/Framesets
+     *[+tip: winner-mode is better]
+    Location of Point **
+    Numbers and Text (*)
+    --
+    mastemacs-p137,p138
+    }}}
+Register Commands **
+{{{
+	c-x r:
+    store number in reg.      n[=point before]
+    store region in reg.      s
+    store point in reg.       space
+    increm. num. in reg.      +
+    jump to reg.              j
+    insert content of reg.    i
+    store win.conf /
+            frameset in reg.  w / f
+      #tip:  s  +  i  (=region + insert)
+    --
+    mastemacs-p139
+    }}}
+store point in register + later jump back to the stored position (!!)
+{{{
+	c-x r space
+    c-x r j
+    --
+    mastemacs-p138
+    }}}
+	----
+
+tip: store region in register + insert reg.s contents at point ; c-x r s ,, c-x r i
+the 'region' in emacs is defined as ; contigous block of text betw. point and the mark
+
+	----
+Set Mark in Emacs ** @@
+{{{
+	c-space
+    --
+    mastemacs-p140
+    }}}
+jumps in emacs leaves marks in/on the ____
+{{{
+	mark ring
+    --
+    mastemacs-p141
+    }}}
+place that stores marks/jumps for across buffer boundaries
+{{{
+	global mark ring *
+    --
+    mastemacs-p141
+    }}}
+(Simple way of just(!) setting mark (=with TMM active)) @
+{{{
+	( c-space c-space )
+    --
+    mastemacs-p142
+    }}}
+Jump to mark (+repeating =moves back in the mark-ring) ***! @
+{{{
+	c-u c-space
+    --
+    mastemacs-p142
+    }}}
+'Change point and mark' (=like vims o-cmd in v-mode)  +(!)Reactivate the region from point **!
+{{{
+	c-x c-x
+       (+= runs  exchange-point-and-mark)
+    --
+    mastemacs-p142;p143
+    }}}
+ (enabling special modes to mimic other editors =for selections)
+{{{
+	(selection compatibility mode)
+    --
+    mastemacs-p143
+    }}}
+	----
+
+marking units (like word, defun, paragraph) **
+
+	----
+Mark Next Paragraph *
+{{{
+	a-h
+    --
+    mastemacs-p146
+    }}}
+mark whole buffer *
+{{{
+	c-x h
+    --
+    mastemacs-p146
+    }}}
+mark next Defun** (=function)
+{{{
+	ca-h
+    --
+    mastemacs-p146
+    }}}
+ mark the next page
+{{{
+	c-x c-p
+    --
+    mastemacs-p146
+    }}}
+Mark the next Word
+{{{
+	a-@  (ga-q)
+    --
+      # a-x mark-word
+    --
+    mastemacs-p146
+    }}}
+MARK NEXT S-EXPRESSION **!
+{{{
+	ca-space
+      //
+    ca-@ (cga-q)
+    --
+    mastemacs-p147
+    }}}
+Selection already active. What happens when running another mark command? **(*) (@)
+{{{
+	next marked unit is added(!!) to the sel.
+    --
+    mastemacs-p147
+    }}}
+Mark-Example: Mark two Words * @
+{{{
+	a-@ a-@
+      (=add one word to sel., then the next)
+    a-2 a-@ (=mark 2 words)
+    --
+    mastemacs-p147
+    }}}
+(in reStructuredText-mode, mark defun marks ___) (@)
+{{{
+	a whole chapter (*)
+    --
+    mastemacs-p147
+    }}}
+	----
+
+	----
+Isearch (in em.) @
+{{{
+	='incremental search' (both plain, and regex-var) **
+    --
+    mastemacs-p149
+    }}}
+search forward/backward for text (=isearch) *
+{{{
+	c-s / c-r  **
+    --
+    mastemacs-p149
+    }}}
+search forward/backward for Regex (=isearch) *
+{{{
+	ca-s / ca-r  **
+    --
+    mastemacs-p149
+    }}}
+ isearch: 'pick selected match(??) / Exit'
+{{{
+	Ent  /  c-g
+    --
+    mastemacs-p149
+    }}}
+Recall last search(string) (=forward) @@
+{{{
+	c-s c-s **
+    --
+    mastemacs-p149
+    }}}
+change direction (=go forward/backward) when search/matches active **!
+{{{
+	c-s (=forw.) / c-r (=backw.)
+    --
+    mastemacs-p150
+    }}}
+start from beginning of buffer (eg. search forward has reached end of file)
+{{{
+	c-s again  (??/*)
+    --
+    mastemacs-p150
+    }}}
+teterm: case sensitivity etc. for searches (**(*****)) @
+{{{
+    case folding
+      .
+	search uses case
+    insensitivity by defalt,
+    but will switch to
+    'smartcase'(=case sensitive
+     (=called 'case/string folding'))
+    if enter 'MiXed'-type
+    searchstring ****
+    --
+    mastemacs-p151
+    }}}
+clarification: case/string folding
+{{{
+	= using case insensitive
+    search
+    UNLESS searching with
+    mixed upper/lower
+      | all uppercase letters **
+    --
+    mastemacs-p151,p152 (+p202)
+    }}}
+Set Case Sensitivity for Search/Match **
+{{{
+	a-x customize-option case-fold-search Ent
+    --
+    mastemacs-p152
+    }}}
+teterm: emacs (Isearch) Search-history
+{{{
+	search ring
+    --
+    mastemacs-p152
+    }}}
+next/prev. in Isearch history (=the ring)
+{{{
+	a-n / a-p
+    --
+    mastemacs-p152
+    }}}
+'TAB'-COMPLETE STRING AGAINST PREVIOUS ISEARCH-STRING ***** @@
+{{{
+	ca-i
+    --
+      #=typically bound to
+       'complete-symbol'
+      (=generic completion mechanism) *
+    --
+    mastemacs-p152
+    }}}
+	----
+
+	----
+isearch: search for word at point **! @
+{{{
+	c-w
+       #'add word at point
+        to search string'
+    --
+    mastemacs-p153
+    }}}
+isearch: search for char at point **!
+{{{
+	ca-y  #'add char at point to search string'
+    --
+    mastemacs-p153
+    }}}
+isearch: search for rest of line **!
+{{{
+	a-s c-e  #'add rest of line fr. point to search string' (em. 24+)
+    --
+    mastemacs-p153
+    }}}
+isearch: search for word from clipboard **!
+{{{
+	c-y
+       #'add word at point
+        to search string'  #(em. 24+)
+    --
+    mastemacs-p153
+    }}}
+Tip =Usage 'Add word (etc) at point to search' **! @
+{{{
+	several c-w adds
+    word at point,
+    then next word, etc (**)
+    --
+    mastemacs-p153,p154
+    }}}
+isearch opt-toggles: case-sensit. * @
+{{{
+	a-s c
+    --
+    mastemacs-p154
+    }}}
+isearch opt-toggles: regex-mode * @
+{{{
+	a-s r
+    --
+    mastemacs-p154
+    }}}
+isearch opt-toggles: word mode **
+{{{
+	a-s w  #eg. search for symbol-like-this or->this
+    --
+    mastemacs-p154
+    }}}
+isearch opt-toggles: Symbol Mode *
+{{{
+	a-s _
+    --
+    mastemacs-p154
+    }}}
+isearch opt-toggles: lax whitespace matching */? @
+{{{
+	a-s space
+    --
+    mastemacs-p154
+    }}}
+isearch opt-toggles: character folding (a = á, à etc) ***(*) @
+{{{
+	a-s '  #(em. 25+)
+    --
+    mastemacs-p154
+    }}}
+setting isearch options as def. (*)
+{{{
+	customize  search-default-mode
+    --
+    mastemacs-p155
+    }}}
+Isearch Forward for Symbol at Point ***** @
+{{{
+	a-s .
+    --
+    mastemacs-p157
+    }}}
+	----
+
+	----
+print / edit lines matching a regular expression (=like grep, mostly within current buffer) **! @@
+{{{
+	occur mode
+      .
+    a-s o
+    a-x occur
+    --
+    mastemacs-p158
+    }}}
+Activate Occur on current search-string (=inside Isearch) ** @@
+{{{
+	a-s o
+    --
+    mastemacs-p159
+    }}}
+( set context lines for occur )
+{{{
+	( customize var
+        list-matching-lines-default-context-lines )
+    --
+    mastemacs-p159
+    }}}
+Jump to match (=on matching line) for occur ** @
+{{{
+	lmb-click / Ent
+    --
+    mastemacs-p159
+    }}}
+go to Next/Prev. Occur-occurance **! @
+{{{
+	a-n / a-p
+    --
+    mastemacs-p159
+    }}}
+go to beginning/end of occur-buffer *
+{{{
+	< / s-<
+    --
+    mastemacs-p159
+    }}}
+ revert occur-buffer, refreshing search results @@
+{{{
+	g
+      #='COMMON CONVENTION IN EMACS'
+       (=for refreshing the buffer) (****)
+    --
+    mastemacs-p160
+    }}}
+Switch occur buffer to occur edit mode (******) @@(@)
+{{{
+	e 
+      (='switch it to
+      an editable state')
+    --
+       =let's you edit
+       the text in-line
+       (in the o-buffer)
+         .
+    +commit back to
+    source with c-c c-c **
+    --
+    mastemacs-p160
+    }}}
+Go to Next/Previous Match(=match(in occur), error(after a-x compile) etc) ****** @
+{{{
+	a-g a-n // a-g a-p  ****
+    --
+    mastemacs-p161
+    }}}
+ searching in several buffers with multi-occur (**/?)  (eg. '\.py$' in all py-buffers) @
+{{{
+	a-x multi-occur-in-matching-buffers
+    a-x multi-occur
+    --
+    mastemacs-p161
+    }}}
+Tip using multi-occur..... (**(*)) @
+{{{
+	e
+      (for editing
+       across multiple buffers)
+      + combine with keyboard
+      macros // search & replace
+    --
+    mastemacs-p161
+    }}}
+TIP EDITABLE OCCUR **(*) @@
+{{{
+	Run Occur (=bit like Vimgrep)
+      enter editable mode (press e)
+        .
+      type (eg. Use with KeyboardMacros /
+              Search&Replace)
+              + commit with c-c c-c
+    --
+    mastemacs-p214(??)
+    }}}
+	----
+
+	----
+Imenu: eg. search functions, class definitions etc when programming **  (+Bind to Key  a-i) **(***)!! @@(@)
+{{{
+	a-x imenu
+      (+see list, or input search word)
+        .
+    (global-set-key (kbd "M-i") 'imenu)
+    --
+    mastemacs-p162
+    }}}
+Advantage of Helm over imenu (**!) @
+{{{
+    helm uses
+    filter-as-you-type
+    style completion,
+    imenu tab-style (***)
+    --
+       +uses powerful
+       fuzzy search and
+       large number of
+       completion mechanisms
+    --
+    mastemacs-p163
+    }}}
+Installing Helm *****!!
+{{{
+	set package man-mechanisms in init (=elpa and melpa)***
+    a-x package-install helm Ent
+    restart emacs
+    --
+    mastemacs-p164
+    }}}
+Helm Completion-Commands Prefix **(**) @
+{{{
+	c-x c
+    --
+    mastemacs-p165
+    }}}
+tip: finding Helm-commands w. apropos **(!) @
+{{{
+    c-h a ^helm-
+	a-x apropos-command ^helm-
+       (+for variables etc)
+    --
+    mastemacs-p165
+    }}}
+teterm tip: why is it easy (and logical) to search for helm-packages w. ^helm- in apropos ***(*)TT
+{{{
+	elisp does not have
+    namespaces (=everything
+    shares a big global namespace
+      .
+    = package authors naturally
+    often set the package name
+     as the prefix) **
+    --
+    mastemacs-p165
+    }}}
+apropos-completion engine for helm (????) @@
+{{{
+	a-x helm-apropos
+    --
+      #'make sure you only
+      look in the Commands
+      header' (=???????????)
+    --
+    mastemacs-p165
+    }}}
+[list all Helm-commands =using the describe-system ***!] @@(@)
+{{{
+	c-x c c-h
+    --
+    mastemacs-p166
+    }}}
+(MOST IMPORTANT HELM COMMANDS) ** @@
+{{{
+	primary action      Ent
+        [jump to open +display candidate]
+    sec. action         c-e
+    tertiary action     c-j
+    switch to action selector  tab
+        [=list all actions
+          for the selection candidate]
+    next/prev. candidate     c-n / c-p
+    to beg./end of
+          completion-list    a-< sa-<
+    --
+    mastemacs-p167
+    }}}
+	----
+
+	----
+Resume last Helm command ** @(@)
+{{{
+	c-x c b
+    --
+    mastemacs-p168
+    }}}
+Invoke cline utility find on active buffers current directory @(@)
+{{{
+	C-x c /
+    --
+    mastemacs-p168
+    }}}
+Complete a-x apropos results @(@)
+{{{
+	C-x c a
+    --
+    mastemacs-p168
+    }}}
+Completion engine for the man page program @
+{{{
+	C-x c m
+    --
+    mastemacs-p168
+    }}}
+Lists completions sourced from a-x imenu / Semantic @(@)
+{{{
+	C-x c i
+    --
+    mastemacs-p168
+    }}}
+Interactive regular expression builder (*) @(@)
+{{{
+	C-x c r
+    --
+    mastemacs-p168
+    }}}
+Search Emacs topics in a-x info @
+{{{
+	C-x c h r
+    --
+    mastemacs-p168
+    }}}
+List completions sourced from a-x @
+{{{
+	C-x c M-x
+    --
+    mastemacs-p168
+    }}}
+Use Helm to match a-x occur patterns @(@)
+{{{
+	C-x c M-s o
+    --
+    mastemacs-p168
+    }}}
+Show matches from Google Suggest
+{{{
+	C-x c C-c g
+    --
+    mastemacs-p168
+    }}}
+Helm vs Ido-search (**) @@
+{{{
+	Helm is for in-depth search
+     + when not knowing
+       exactly(!) what you're
+       looking for
+    (+if you require additional
+       contextual awareness
+       of similar matches)
+    --
+    Ido is better for
+       seamless finding of
+       files/dirs through the
+       minibuffer
+    (eg. c-x b wc
+       #for finding widgets.c )
+    --
+    mastemacs-p170
+    }}}
+set ido mode *  (=for file and directory finding, +for buffer switching) @(@)
+{{{
+	in init:
+    (ido-mode 1)
+    (setq ido-everywhere t)
+    (setq ido-enable-flex-matching t)
+    --
+    mastemacs-p170
+    }}}
+IDO SHORTCUT KEYS (=internally when finding file / finding dir / saving file (c-x c-s) *****! @@(@)
+{{{
+	next/prev. match         c-s/c-r
+    (tradit. non-ido
+         tab-complet.        tab)
+    open match               Ent
+    open a-x dired
+         buf. in curr. dir   c-d
+    go to root dir /         //
+    go to home dir ~         ~/
+    del. char/go up dir(*)   bs
+    --
+    mastemacs-p
+    }}}
+more info on ido-mode (@)
+{{{
+	separate article on 'mastering emacs' blog/website
+    --
+    mastemacs-p172
+    https://www.masteringemacs.org/article/introduction-to-ido-mode
+    }}}
+	----
+
+	----
+Using grep from inside emacs =search for regexes or globs (+incorp. find) **! (@)
+{{{
+	a-x grep / grep-find
+          [=low-level]
+    lgrep / rgrep / rzgrep
+          [=high-level]
+    --
+    #h.l. =not exact searchstring, +uses active file-type (+symbol point is on) as que
+    --
+    mastemacs-p173
+    }}}
+Tip: Grep-search for Symbol point is on ****  (+recursive) @(@)
+{{{
+	a-x rgrep Ent Ent  **
+    --
+    mastemacs-p174
+    }}}
+tip when using find with emacs grep (*) (@)
+{{{
+	can set negative matches
+      (=don't search certain directories)(?)
+    --
+    mastemacs-p175
+    }}}
+browsing the grep category w. Customize (+setting appropr.ly) (*) @
+{{{
+	a-x customize-group Ent grep Ent
+    --
+    mastemacs-p175
+    }}}
+(jump to) next/prev. match in emacs grep (*) (@)
+{{{
+	a-g a-n  /  a-g a-p
+    --
+    mastemacs-p176
+    }}}
+maj.mode for grep-searching in em. (!) @
+{{{
+	grep-mode
+    --
+    mastemacs-p176
+      (=wh. em.s grep-commands are run, pipes output from grep to scratch-buffer named *grep* + calls grep-mode .....)
+    --
+    mastemacs-p
+    }}}
+	----
+
+some other/extra movem. commands *
+    --
+    mastemacs-p177
+
+	----
+move point to top left / mid left / bot left @
+{{{
+	a-r
+    --
+    mastemacs-p177
+    }}}
+recenter point to mid / top / bot of buffer **
+{{{
+	c-l
+    --
+    mastemacs-p177
+    }}}
+reposition comment/definition  so it is in view in the buffer * @
+{{{
+	ca-l
+    --
+    mastemacs-p177
+    }}}
+'set / resetgoal column' (??@@)
+{{{
+	 c-x c-n  /  c-u c-x c-n
+    --
+    mastemacs-p177
+    }}}
+Go to Line **
+{{{
+	a-g a-g
+    --
+       eg. a-5 a-5 a-g a-g (=move to line 55(!))
+    --
+    mastemacs-p177
+    }}}
+go to column (n?) @
+{{{
+	a-g tab
+    --
+    mastemacs-p177
+    }}}
+go to char position (@)
+{{{
+	a-g c
+    --
+    mastemacs-p177
+    }}}
+	----
+
+Ch. 5 - The Theory of Editing
+
+	----
+teterm: emacs name for "the clipboard" (**!)
+{{{
+	the 'kill ring'(!)
+    --
+    mastemacs-p181
+    }}}
+kill word
+{{{
+	a-d
+     c-bs
+    --
+    mastemacs-p183
+    }}}
+(kill to beginning of line) ** @
+{{{
+	a-0 c-k  **
+    --
+    mastemacs-p183
+    }}}
+kill sentence @
+{{{
+	a-k
+    --
+    mastemacs-p183
+    }}}
+KILL S-EXPR. *
+{{{
+	ca-k
+    --
+    mastemacs-p183
+    }}}
+Kill Current Line (@)
+{{{
+	cs-bs
+    --
+    mastemacs-p183
+    }}}
+teterm: difference between 'killing' and 'deleting' (*)
+{{{
+	killing copies to clipboard (killring)
+    delete does not copy to killring
+    --
+    mastemacs-p183
+    }}}
+kill(=cut) active region @
+{{{
+	c-w
+    --
+    mastemacs-p184
+    }}}
+copy (active region??) (*) (@)
+{{{
+	a-w
+    --
+    mastemacs-p184
+    }}}
+'append kill'(??) @
+{{{
+	ca-w
+    --
+    mastemacs-p184
+    }}}
+replace paste(='yank (back)') with next post in kill ring(!) (**) (@)
+{{{
+	(=rotate kill ring)
+    a-y
+    --
+    mastemacs-p184
+    }}}
+Tip/Idiom: Cut three words to kill ring ** @(@)
+{{{
+	a-d a-d a-d
+     = when later recalled,
+     can be pasted (etc.)
+     as all three words
+       .
+     (=consecutive copy/
+       kills to kill ring
+       BUILDS(**))
+    --
+    mastemacs-p185
+    }}}
+Cases where quicker to mark, then kill/copy (=not building incrementally with a-d, a-d etc) **(*)
+{{{
+	copying 'the region'
+     (=mark first + copy  =a-w)
+      ||
+     kill/copy odd-shaped regions
+     (='that don't conform to
+     multiples of syntactic units')
+    --
+    mastemacs-p186
+    }}}
+	----
+
+	----
+Append new kill to existing one in kill ring (eg. refactoring code, text etc) ** @@(@)
+{{{
+	ca-w
+      (=emacs stops
+       +indicates 'if next
+       cmd is a kill cmd,
+       it will append to
+       the kill ring')
+    --
+     **  (=Collecting pieces from diff. places =assemble pieces) *
+    --
+    mastemacs-p187
+    }}}
+(using c-w for killing whole line, if no region marked)
+{{{
+	[install package whole-line-or-region]
+    a-x package-install Ent whole-line-or-region Ent
+    --
+    mastemacs-p187
+    }}}
+transpose: characters
+{{{
+	c-t
+    --
+    mastemacs-p189
+    }}}
+transpose: Words * @
+{{{
+	a-t
+    --
+    mastemacs-p189
+    }}}
+transpose: S-Expressions **!! @
+{{{
+	ca-t
+    --
+    mastemacs-p189
+    }}}
+transpose: Lines *! (@)
+{{{
+	c-x c-t
+    --
+    mastemacs-p189
+    }}}
+transpose: Paragraphs
+{{{
+	a-x transpose-paragraphs
+    --
+    mastemacs-p190
+    }}}
+transpose: Sentences @
+{{{
+	a-x transpose-sentences
+    --
+    mastemacs-p190
+    }}}
+SUPER USE-TIP OF SWAP WORDS **!!! @(@)
+{{{
+	In Source Code
+     (='since emacs ignores
+     most "punctuation"-characters
+     for word moving....' ) *** 
+        'Jerry:_'Seinfeld',
+               |
+              (cursor)
+    --
+    mastemacs-p192
+    }}}
+	----
+
+	----
+teterm: Emacs "line wrap" functions (**) @@
+{{{
+	'fill'
+      (=fill column, paragraph etc) *
+    --
+    mastemacs-p196
+    }}}
+reformat line wrapping(=filling) for Paragraph Pointer is in ****! @
+{{{
+	a-q
+    --
+    mastemacs-p196
+    }}}
+set fill column width (=line wrapping?) @(@)
+{{{
+	c-x f
+      #+prompts for fill
+        width =eg. 42
+    --
+    mastemacs-p196
+    }}}
+Justify(!) Paragraph lines ** @
+{{{
+	c-u a-q
+    --
+    mastemacs-p197
+    }}}
+set Fill-prefix (*) @(@)
+{{{
+	c-x .
+      = use text up to point,
+      as fill prefix
+      (=next time using a-q) **
+    --
+    mastemacs-p197
+    }}}
+remove fill prefix (*) @
+{{{
+	- set point on empty line
+    - c-x ..
+    --
+    mastemacs-p198
+    }}}
+Setting automatic line-wrapping (=eg. for text editing) * @(@)
+{{{
+	a-x auto-fill-mode
+    --
+    mastemacs-p198
+    }}}
+Commenting/Uncommenting ** @
+{{{
+	a-;  #sa-,
+    --
+    mastemacs-p
+    }}}
+Comment/Uncomment Line *** (@)
+{{{
+	c-x a-;
+      #+works with negative/digit argument
+    --
+    mastemacs-p199
+    }}}
+comment box around region @(@)
+{{{
+	a-x comment-box
+    --
+    mastemacs-p
+    }}}
+newline + continue with comment on new/next line @
+{{{
+	a-j ca-j
+    --
+    mastemacs-p199
+    }}}
+(some customizing options) @
+{{{
+	comment-style
+    comment-styles
+    comment-start
+    comment-end
+    comment-padding
+    --
+    mastemacs-p199
+    }}}
+	----
+
+emacs Search and Replace *(*)
+
+	----
+Give Regex for Search and Replace * @(@)
+{{{
+	ca-%
+       #csa-5
+    --
+        #+can be accessed from
+          within Isearch (*/??)
+    --
+    mastemacs-p201
+    }}}
+Give string for Search and Replace *
+{{{
+	a-%
+      #sa-5
+    --
+       #+can be accessed from
+         within Isearch (*/??)
+    --
+    mastemacs-p201
+    }}}
+a-x replace-string // a-x replace-regexp
+{{{
+	search+replace string / regex
+    --
+    mastemacs-p201
+    }}}
+S&R-options: replace one match, then continue @
+{{{
+	Space / y
+    --
+    mastemacs-p202
+    }}}
+S&R-options: replace one match, then exit
+{{{
+	.
+    --
+    mastemacs-p202
+    }}}
+S&R-options: replace, but stay at current match @
+{{{
+	,
+    --
+    mastemacs-p202
+    }}}
+S&R-options: exit without replacing match *
+{{{
+	Ent / q
+    --
+    mastemacs-p202
+    }}}
+S&R-options: Replace All matches in buffer
+{{{
+	!
+    --
+    mastemacs-p202
+    }}}
+S&R-options: Move Point back to Previous Match *** @
+{{{
+	^
+    --
+    mastemacs-p202
+    }}}
+S&R-options: undo last replacement * @
+{{{
+	u  #em. 25+
+    --
+    mastemacs-p202
+    }}}
+S&R-options: undo All(!) replacements *
+{{{
+	U  #em. 25+
+    --
+    mastemacs-p202
+    }}}
+Search and Replace: replace Hello, HELLO and hello (etc.) with 'Goodbye' (Note! With correct Cases) ********** @@
+{{{
+	= ca-% with 'hello' -> 'goodbye'
+       #=uses case folding  *****
+    --
+    mastemacs-p202
+    }}}
+	----
+
+regex(!!)	#=WORKS IN ISEARCH / OCCUR-MODE ALSO *****(!!!!!)
+
+	----
+regex: Alternative, Capturing group, Repetition (**/!!) @
+{{{
+	\|
+      .
+    \(  \)
+      .
+    \{  \}
+    --
+    mastemacs-p204
+    }}}
+negative / positive lookahead/behind (!)
+{{{
+	= not supported by emacs (!!)
+    --
+    mastemacs-p204
+    }}}
+branch reset groups (?)
+{{{
+	='also missing' (?)
+    --
+    mastemacs-p204
+    }}}
+Search for Digits **
+{{{
+	[0-9]
+    [:digit:]
+      #no \d
+    --
+    mastemacs-p204
+    }}}
+start / end of word (**)
+{{{
+	\<  //  \>
+    --
+    mastemacs-p204
+    }}}
+MATCHES BEGINNING / END OF SYMBOL ****! @
+{{{
+	\_<  //  \_>
+    --
+    mastemacs-p204
+    }}}
+match is/is not 'syntax table code' (=Unicode etc etc) (**) @
+{{{
+	\scode
+    \Scode
+    --
+    mastemacs-p204,p205
+    }}}
+SYNTAX CLASSES ******* (=white space, word-characters, symbol/string-characters etc) ****** @
+{{{
+	\s-   (white space)
+    \sw   (=word-constit.s (mostly letters))
+    \s_   (symbol-constit.s (=includes !, _))
+    \s.      (punct.characters)
+    \s( \s)  (brackets***** (=all types))
+    \s"      (string characters)
+    \s< \s>  (progr.lang. comment-start/end)
+    --
+    mastemacs-p205,p206
+    }}}
+SHOW CHARACTER INFO (********) (=syntax class, font lock, Unicode name ......) **** @(@)
+{{{
+    C-u C-x =
+	C-u M-x what-cursor-position
+    --
+    mastemacs-p206,p207
+    }}}
+insert captured group 1 (=into replacement string) (**)
+{{{
+	\1
+    --
+    mastemacs-p207
+    }}}
+insert captured group 1 into replacement string + CAST AS INT (=for elisp) (**) (@)
+{{{
+	\#1
+    --
+    mastemacs-p207
+    }}}
+Prompt User for Replacement String (****!) @
+{{{
+	\?
+    --
+    mastemacs-p207
+    }}}
+Insert Number incremented from 0 (into replacement string) ***(*) @
+{{{
+	\#
+    --
+    mastemacs-p207
+    }}}
+(insert whole matched string into replacement string) (@)
+{{{
+	\&
+    --
+    mastemacs-p207
+    }}}
+EVALUATE/USE ELISP FORM IN S&R:s REPLACE-PORTION ******** @
+{{{
+	\,(form ...)
+      (like (upcase), (format) etc)
+    --
+     ****
+    (See More
+     'capturing groups are
+     string types', 'you
+     dont need capturing
+     groups' etc)
+    --
+    mastemacs-p208
+    }}}
+Tip Regarding Elisp-forms in Replacement-strings (!)
+{{{
+	= powerful, but most often simpler to use keyboard macros
+    --
+    mastemacs-p209
+    }}}
+	----
+
+'capturing groups are string types'
+
+	----
+Upcase / Lowercase / Capitalize Region (**)
+{{{
+	c-x c-u
+      /
+    c-x c-l
+      /
+    a-x upcase-initials-region
+    --
+    mastemacs-p209
+    }}}
+upcase / lowercase / capit(alize) word(s) ****
+{{{
+	a-u  /  a-l  /  a-c
+    --
+    mastemacs-p210
+    }}}
+EX: UPCASE LAST WRITTEN WORD ***(*) @
+{{{
+	a_- a-u   ***
+        +'maintaining your tempo'
+    --
+    mastemacs-p210
+    }}}
+EX: UPCASE greeting_string IN  print(greeting_string) *** @
+{{{
+	a_- a-2 a-u
+    --
+    mastemacs-p211
+    }}}
+echo list of all Unicode categories (*)
+{{{
+	a-x describe-categories
+    --
+    mastemacs-p212
+    }}}
+Count: Number of Patterns that Match (in a region) ,, Count words, lines, char.s in Buffer/,,/Region (**(*)) @
+{{{
+	a-x count-matches
+      (=against regex-patt.s you specify)
+    a-x count-words
+    a-x count-words-region // a-=
+    --
+    mastemacs-p213
+    }}}
+DELETE DUPLICATE LINES (=in emacs) **: first, last, only adjacent duplicates, do not delete adjacent blank lines ** @
+{{{
+	a-x delete-duplicate-lines
+    c-u + -"-
+    c-u c-u + -"-
+    c-u c-u c-u + -"-
+    --
+    mastemacs-p214
+    }}}
+REMOVE / KEEP LINES IN FILE  MATCHING PATTERN ***! @
+{{{
+	(works on region,
+     = can run c-x h first
+       for whole file),
+    a-x flush-lines // a-x keep-lines
+    --
+    mastemacs-p215
+    }}}
+	----
+
+joining / splitting lines
+
+	----
+insert blank line after point * (@)
+{{{
+	c-o
+      #+send right half
+      of line to next line(**)
+    --
+    mastemacs-p216
+    }}}
+delete all(!) blank lines after point ** @
+{{{
+	c-x c-o
+    --
+    mastemacs-p216
+    }}}
+SPLIT LINE AFTER POINT, KEEPING INDENTATION ***(*) @@
+{{{
+	ca-o
+    --
+    mastemacs-p216,p217
+    }}}
+join point-line with line above *(*)
+{{{
+	a-^
+      #sa-^^
+    --
+    mastemacs-p216
+    }}}
+(Splitting / Joining + Fill Prefixes) @
+{{{
+	= typing ca-o with a fill prefix active
+    --
+    mastemacs-p218
+    }}}
+( delete trailing whitespace ) @
+{{{
+	a-x delete-trailing-whitespace
+    --
+    mastemacs-p218
+    }}}
+Delete all but one(!) space/tab left/right of point ** @
+{{{
+	a-space
+       #esc space
+    --
+    mastemacs-p218
+    }}}
+delete all but one space, all space, or undo changes (@)
+{{{
+	a-x cycle-spacing
+    --
+    mastemacs-p218
+    }}}
+Delete all(!) whitespace around point **
+{{{
+	a-\
+      #ga-å
+    --
+    mastemacs-p219
+    }}}
+show whitespace / newlines / display toggle-menu of all whitespace-mode options ((**)) (@)
+{{{
+	a-x whitespace-mode
+      /
+    a-x whitespace-newline-mode
+      /
+    a-x whitespace-toggle-options
+    --
+    mastemacs-p219
+    }}}
+(Customizing colors etc for whitespace-mode)
+{{{
+	toggle-options_command (=previous)
+      / a-x customize-group Ent(?) whitespace
+    --
+    mastemacs-p220
+    }}}
+((shows whitespace issues, -"- for region, attempts automatic cleanup, -"- for region)) (@)
+{{{
+	whitespace-report
+    whitespace-report-region
+    whitespace-clean-up
+    whitespace-clean-up-region
+    --
+    mastemacs-p220
+    }}}
+	----
+
+Keyboard Macros **************
+
+	----
+((why are emacs macros so good/powerful?))
+{{{
+	almost Everything(!) is recorded
+    --
+    mastemacs-p221
+    }}}
+start / stop macro recording @@
+{{{
+	c-x (
+      .
+    c-x )
+    --
+    mastemacs-p221
+    }}}
+play last macro @(@)
+{{{
+	c-x e
+      f4
+    --
+    mastemacs-p221
+    }}}
+Start macro Recording // Insert Counter Value ***
+{{{
+	f3
+    --
+    mastemacs-p221
+    }}}
+Stop macro Recording
+{{{
+	f4  // +Plays Last Macro **
+      #or stop with
+       a-x kmacro-end-macro
+        //
+       c-g
+    --
+    mastemacs-p221
+    }}}
+teterm: indication in the modeline when macro is recording (**)
+{{{
+	'Def.'
+    --
+    mastemacs-p221
+    }}}
+teterm: macros are recorded onto/into ___
+{{{
+	the Macro Ring
+      #=macros are almost never
+       lost (even if you start
+       recording a new directly etc.) **
+    --
+    mastemacs-p222
+    }}}
+START RECORDING MACRO =APPENDING TO LAST MACRO (**!) @@
+{{{
+	c-u f3
+    --
+    mastemacs-p222
+    }}}
+Play Second Macro in the Macro Ring (=second to last?) (**) @(@)
+{{{
+	c-u f4
+    --
+    mastemacs-p222
+    }}}
+Set Counter to N(eg. 3) and Start Recording Macro *(*) @
+{{{
+	c-3 f3  **
+      (or c-u 3 f3)
+    --
+    mastemacs-p222
+    }}}
+Play last Macro N(eg. 3) Times ** @(@)
+{{{
+	c-3 f4
+      (or c-u 3 f4)
+    --
+    mastemacs-p222
+    }}}
+(RUN MACRO UNTIL FILE DONE/FAILS ON ERROR ***) @@
+{{{
+	c-0 f4
+      (or c-u 0 f4)
+    --
+    mastemacs-p222
+    }}}
+group of advanced commands for macros @@
+{{{
+	the c-x c-k map
+       (the group is named 'kmacro')
+    --
+    mastemacs-p223
+    }}}
+advanced macro commands: counters (**) @
+{{{
+	add to counter
+          c-x c-k c-a
+      [+negative argum. subtracts**]
+    insert counter + increment
+          c-x c-k tab // f3
+    insert counter without incrementing
+          c-u c-x c-k tab // c-u f3
+    set counter
+          c-x c-k c-c
+    set format counter
+          c-x c-k c-f
+      [=c-h f format for help***]
+    Query for User Input while Recording **
+          c-x c-k q
+    --
+    mastemacs-p223,p224
+    }}}
+'Query for User Input'-actions (*) @(@)
+{{{
+	continue/stop (=current
+        iteration of macro)    y/n
+                                (Y/N)
+    stop macro entirely        Ent
+    recenter screen            c-l
+    enter recursive edit(*/?)  c-r
+    exit recursive edit        ca-c
+    --
+      #recursive editing:
+       =can edit normally,
+        until exits the mode (**)
+      [+can nest recursive
+      edits as many times as you like]
+    --
+    mastemacs-p225
+    }}}
+teterm: modeline indication of recursive mode/editing (*)
+{{{
+	[] in modeline
+    --
+    mastemacs-p225
+    }}}
+Example Use of Recursive Edit Mode ****  (+exiting it =all levels) @
+{{{
+	during Isearch/Macro playback ='I need to send an email' (etc.)
+      .
+    (+ esc esc esc exits all(!) recursive levels)
+    --
+    mastemacs-p226
+    }}}
+	----
+
+Saving / Recalling Macros **
+
+	----
+Rotate macro ring, Save Macro, Bind Macro to Key, Edit Last Macro**** (*******) @(@)
+{{{
+	cycle macro ring (=next/prev.)
+               c-x c-k c-n / c-x c-k c-p
+    Name Last Macro ****
+               c-x c-k n
+    Bind Last Macro to a Key
+               c-x c-k b
+    Edit Last Macro ***
+               c-x c-k e
+    --
+    mastemacs-p226
+    }}}
+Edit Last 300 Keystrokes (=recorded as last raw(!) macro) (*(*)) @@
+{{{
+	c-x c-k l
+      #last 300 keys.
+       typed/commands
+       =are remembered
+       +called 'lossage'
+    --
+    mastemacs-p226
+    }}}
+INSERT MACRO (INTO BUFFER) AS ELISP ****(*) @@(@)
+{{{
+	a-x insert-kbd-macro
+    --
+    mastemacs-p226
+    }}}
+Save Macro to a File (**(*)) @@
+{{{
+	name the macro
+         c-x c-k n(?)
+    open the init-file
+    call a-x insert-kbd-macro
+           to insert the recorded keystrokes
+    --
+    mastemacs-p226
+    }}}
+Create Macro + see what each entry in the macro string corresponds to (=as a command) ******* @@(@)
+{{{
+	(emacs 25+)
+    a-x kmacro-edit-lossage
+    --
+    mastemacs-p227
+    }}}
+TIP: EXTRACT MACRO FROM LAST 300 ACTIONS (=if forgot to record) ****** @@
+{{{
+	print the 'lossage' buffer
+            (with c-x c-k l)
+    +edit ("as though it were text")
+    commit the changes
+            c-c c-c (***)
+    --
+    mastemacs-p227
+    }}}
+	----
+
+Text Expansion (=abbreviations)
+
+	----
+Expanding Abbreviations (etc, while typing(?)) *
+{{{
+	Abbrev
+        (silently works
+          in the background)
+    DAbbrev
+        (=expand common words
+          in buffer when
+          triggering it)
+    Hippie expand
+        (=supercharged version
+          of Dabbrev
+        (=whole lines
+          lisp symbols
+          file names (etc) (!))
+    Skeletons / Tempo
+        (templating tools)
+    YASnippet***
+        (like TextMate =Good
+         for Templates) **
+           (trigger with
+            tab or space))
+    Autoinsert
+        (templates =autoinsert
+         start for html-file etc)
+    --
+    mastemacs-p228,,230
+    }}}
+Recommended abbreviation/text expanders (**) @
+{{{
+	YAsnippet(templating)
+    Hippie Expand
+    Abbrev/Autoinsert
+    --
+    mastemacs-p230
+    }}}
+Tip: Use for Abbrev etc. (*)
+{{{
+	replace 'resume' with 'résumé', etc
+    --
+    mastemacs-p230
+    }}}
+ add abbreviations etc to Abbrev @(@)
+{{{
+	c-x a--map
+      #='backwards def.process'(??) (##)
+    --
+    c-x a l
+        add mode-specific abbrev.
+    c-x a g
+        add global abbrev.
+    c-x a i g
+        add mode-specific
+        inverse abbrev.
+    c-x a i l
+        add global inverse abbrev.
+    --
+    +INSCTRUCTIONS FOR USE =p231(!!(**))
+    --
+    mastemacs-p230
+    }}}
+Using DAbbrev. ****** @
+{{{
+    expand word at point
+     ***   a-/
+    expand, then show completions
+           ca-/  (=like vims c-n??)
+    --
+    mastemacs-p231
+    }}}
+ EXTRA/MORE (ON MAPPING KEYS-SYNTAX ********)
+{{{
+	see Extending Emacs
+    --
+     "\C-x]"   for c-x ]
+     "\C-xnq"  for c-x n q (etc) ********
+    --
+    mastemacs-p215(??)
+    }}}
+(REPLACE DABBREV WITH HIPPIE EXPAND **) @
+{{{
+	(global-set-key [remap dabbrev-expand] 'hippie-expand)
+    --
+    mastemacs-p232
+    }}}
+Hippie Expand Basic Use-Keys ** @(@)
+{{{
+	same as DAbbrev
+        a-/
+          (+ ca-/ = just DAbbrev)
+    --
+    mastemacs-p233
+    }}}
+ alter how Hippie Expand expands text @
+{{{
+	customize the variable
+      hippie-expand-try-functions-list
+    #=a bit technical and tricky
+       .
+      +documentation in:
+        a-x find-library hippie-exp
+    --
+    mastemacs-p233
+    }}}
+'Intelligent Indenting' for Source Code (=autoindent etc) **** @(@)
+{{{
+	a-x electric-indent-mode (=minor mode) **
+    --
+    mastemacs-p234
+    }}}
+(setting indetation (for em. -24.4) ) @
+{{{
+	(global-set-key (kbd "<RET>") 'newline-and-indent)
+    --
+    mastemacs-p235
+    }}}
+'Tab: Indenting the Current Line' @
+{{{
+	=tab indents (or autocompletes ((+some extra commands like a-i)))
+    --
+    mastemacs-p235
+    }}}
+'If you dislike the use of tab characters' =prefer spaces *(*) @@
+{{{
+	customize the variable
+      indent-tabs-mode (!)
+    --
+    mastemacs-p236
+    }}}
+Setting number of spaces for indent **! @(@)
+{{{
+	the variable tab-width
+    --
+    mastemacs-p236
+    }}}
+'converting tabs to tab stops'
+{{{
+	 (edit-tab-stops  +  tabs-to-tab-stop)
+    --
+    mastemacs-p237
+    }}}
+Indent (=in Python, C etc) (***(!)) @
+{{{
+	tab
+     //
+    ca-\
+     //
+    c-x tab  #=rigid indent
+    --
+    mastemacs-p237
+    }}}
+indent to column n
+{{{
+	give num n + indent
+    --
+    mastemacs-p238
+    }}}
+interactive indentation mode (*) @
+{{{
+	= c-x tab( etc??)
+     without number argument
+      .
+    = use s-right/left
+    to increase/decrease indent
+    --
+    mastemacs-p238
+    }}}
+	----
+
+	----
+Emacs sort-commands (**)
+{{{
+	sort-lines
+    sort-fields
+    sort-numeric-fields
+    sort-columns
+    sort-paragraphs
+    sort-regexp-fields
+    --
+    mastemacs-p239
+    }}}
+Reverse sort with a-x sort-lines **
+{{{
+	c-u a-x sort-lines
+    --
+    mastemacs-p239
+    }}}
+Sort on/by (whitespace-separated) Column 3 (lexicographic fields) (**)
+{{{
+	a-3 a-x sort-fields
+    --
+    mastemacs-p240
+    }}}
+sort by other separators than wh.space *****(***)
+{{{
+	use a-x sort-regexp-fields
+        Record: ^\([^,]+\),\([^,]+\)$
+        Key: \1
+    (='define Record' + 'pick Key')
+    --
+    mastemacs-p240
+    }}}
+Aligning (in emacs) @
+{{{
+	justification
+    columnated text
+       #=emacs alignment
+        engine can often
+        automatically align
+        and justify code
+    (=based on regex patt.s) (**)
+    --
+      (align, align-current (region), align-regexp)
+    --
+    mastemacs-p242
+    }}}
+alignment teterm: 'a section'
+{{{
+	group of consecutive lines,
+     for which the first
+     matching(!) alignment
+     rule applies
+    (+=applies to all
+    subsequent matching lines) *
+    --
+    mastemacs-p243
+    }}}
+Example application of Emacs automatic alignment tools ** @
+{{{
+	Align ( a-x align-current )
+       = align python code around '=' of assignment
+    lisp around '.' in alists etc **
+        (+align-regexp for when emacs does not automatically set things right) **
+    --
+    mastemacs-p244
+     (+p245** Align regex: \$ )
+    --
+    mastemacs-p
+    }}}
+Use of Regex Align Complex(!!) Mode ***(*/!!!!!)
+{{{
+	= Multi-align (eg. csv-text on sever. Columns **)  c-u a-x align-regexp  # \(\s-*\)  def. regex =zero or more wh.sp.  (+should repeat?)
+    --
+    mastemacs-p245--248
+    }}}
+Kill to arbitrary character (=like dfx in vim) * @
+{{{
+	'zapping'   a-z
+    (+prompts for character)
+       (zap to but not including char
+        =third-party plugin)
+    --
+    mastemacs-p248
+    }}}
+	----
+
+	----
+spell checking (**) @
+{{{
+	uses aspell (or ispell)
+    --
+    mastemacs-p249
+    }}}
+spell checks word at the point (*) @
+{{{
+	a-$
+      #ga-4
+    --
+    mastemacs-p249
+    }}}
+flyspell (**) @
+{{{
+	a-x flyspell-mode
+    a-x flyspell-prog-mode
+      #2 =limits spell checking
+       to comments, strings and doc strings
+       in code(!)
+    --
+    mastemacs-p249
+    }}}
+run spell check on buffer/region @
+{{{
+	a-x ispell-buffer
+      /
+    a-x ispell-region
+      .
+    #have to install aspell/ispell
+      (=on Windows)
+    ((+both are called/referred to ispell))
+    --
+    mastemacs-p249
+    }}}
+Spell check etc. for Latex *(*) @(@)
+{{{
+    [if you write tex|latex often,
+        =add this to your init-file:
+      .
+	(add-hook 'tex-mode-hook
+      #'(lambda () (setq ispell-parser 'tex)))
+    --
+    mastemacs-p250
+    }}}
+flyspell mode(=minor): auto-correct word at point **! @ @
+{{{
+	ca-i / c-.
+    --
+      #=press more/again to chose next/cycle through alternatives
+    --
+    mastemacs-p250,p251
+    }}}
+tip spell checking: if uses a lot (+custom dictionaries etc) *
+{{{
+	use Customize
+    --
+    mastemacs-p251
+    }}}
+Insert Literal Char. (like Tab, Ent, Control Characters) * @
+{{{
+	c-q
+      #eg. c-q esc
+    --
+    mastemacs-p251
+    }}}
+Insert Line Feed (=Not Carriage Return) * @
+{{{
+	c-q c-j
+    --
+    mastemacs-p251
+    }}}
+	----
+
+	----
+FIND INFORMATION ABOUT 'VERSION CONTROL' IN INFO/MANUAL ****!! @@
+{{{
+	c-h i  (a-x info)
+    go to 'emacs' hyperlink
+    search for 'version' or 'version control' with c-s
+      (+tap c-s =next)
+    #+=find 'vc-' via docstrings
+      (=since everything is prefixed in elisp)
+    + list all vc-commands with c-h a ^vc-  (a-x apropos-command)
+    --
+    mastemacs-p253+
+    }}}
+Apropos for info manuals * (=will crawl all manual pages) @
+{{{
+	a-x info-apropos
+    --
+    mastemacs-p254
+    }}}
+apropos searching in emacs doc-strings (**) @(@)
+{{{
+	c-h d
+    --
+    mastemacs-p254
+    }}}
+(teterm: elisp lacks namespaces, =___)
+{{{
+	=packages in emacs prefix their symbols (=functions, variables etc) so they don't clash
+    --
+    mastemacs-p255
+    }}}
+ prefix character for version control commands @@
+{{{
+	c-x v
+    --
+    mastemacs-p256
+    }}}
+List Version Control Commands (=prefix c-x v) ***! @@(@)
+{{{
+	c-x v c-h  **
+    --
+    mastemacs-p257
+    }}}
+(EMACS VERSION CONTROL COMMANDS) *** @(@)
+{{{
+    C-x v +    vc-update
+    C-x v =    vc-diff
+    C-x v D    vc-root-diff
+    C-x v G    vc-ignore
+    C-x v I    vc-log-incoming
+    C-x v L    vc-print-root-log
+    C-x v O    vc-log-outgoing
+    C-x v a    vc-update-change-log
+    C-x v b    vc-switch-backend
+    --
+    mastemacs-p257
+    }}}
+show 'what keybinding x is bound to in active buffer' ** @@
+{{{
+	c-h k  c-x v v
+      #=show name and docstring for key-command x ***
+    --
+    mastemacs-p257
+    }}}
+describe command (=like vc-dir) **(*)
+{{{
+    'If you have the name of a command, such as vc-dir' ...
+      .
+	c-h f vc-dir
+    --
+    mastemacs-p259
+    }}}
+c-h m @
+{{{
+	display the doc.strings for all major and minor modes active in the buffer you called it
+    +keys unique to those major/minor modes  **
+    --
+    mastemacs-p260
+    }}}
+	----
+
+describe what a key does ; c-h k <key>
+
+	----
+Project management (=Projectile +newer Cedet-based =from version control) ** @
+{{{
+	emacs 27+:
+    infer files from vc-indexed files
+    root dir inferred from the vc home dir
+    enumerating project files
+       (=for searching/replacing across sets of files)
+    selection of cmds that work with projects (like shell/dired etc??) 
+    --
+    mastemacs-p261,,p262
+    }}}
+Needed for Project management in Emacs
+{{{
+	Git or Mercurial repo (*)
+    --
+      #or use Projectile
+    --
+    mastemacs-p263
+    }}}
+prefix keymap reserved for projects management in emacs @
+{{{
+	c-x p
+    --
+      ****** see more
+    #Including 'Compile Project' **(*)
+     + c-x p f / c-x p b
+    (visit/next buf,
+     just for files included in the proj. ****
+    [[can use fido (but not ido)]]
+    --
+    mastemacs-p263
+    }}}
+	----
+
+	----
+Xref
+{{{
+	= find + go to definition (=of functions etc)
+    --
+    mastemacs-p264
+    }}}
+Find definition of name at point * @(@)
+{{{
+	a-.
+    --
+    mastemacs-p264
+    }}}
+Go back from definition jump (='pop marker and return') ** @@
+{{{
+	a-,
+    --
+    mastemacs-p264
+    }}}
+use of classic tags files/tables
+{{{
+	= for very(!) large projects
+    --
+    mastemacs-p265
+    }}}
+Recommended back-end(?) for Xref-Jump (??/****) @(@)
+{{{
+	dumb-jump (**)
+      (see more)
+    (=for ripgrep, search package-manager (with a-s o ripgrep))
+    --
+    mastemacs-p265
+    }}}
+Find references / symbols (??) matching a (regex) pattern (**) @(@)
+{{{
+	a-? // ca-.
+    --
+    mastemacs-p264;p265
+    }}}
+xref search results--commands (?) @@
+{{{
+	jump to def.    ent
+    jump to def. + hide xref  tab
+    show def        c-o
+    navigate up / down **     . / ,
+    search+replace w. regex   r ****
+    --
+    mastemacs-p266
+    }}}
+xref + dired *: search / search+replace xrefs via dired ** @
+{{{
+	A / Q
+    --
+    mastemacs-p266
+    }}}
+ Working w. log-files (*)
+{{{
+	#eg. read only-mode
+    --
+    mastemacs-p267
+    }}}
+list lines matching a pattern @@
+{{{
+	a-s o
+    =creates an occur buffer
+    (+tip: one can rerun to occur-filter further *)
+    --
+      (+flush/keep lines matching pattern)
+    --
+    mastemacs-p267
+    }}}
+tip: 'list lines matching pattern' @(@)
+{{{
+	can be run on an occur mode buffer (='to filter it further')
+    --
+    mastemacs-p267
+    }}}
+Use Highlighting for clarity **(!) @
+{{{
+	a-s h p   p
+        highlight phrase
+	a-s h p   r
+        highlight regex
+	a-s h p   .
+        highlight symbol at the point
+	a-s h p   u
+        remove highlighting under point
+    --
+      #mnemonic: named highlight- (****)
+    --
+    mastemacs-p268
+    }}}
+(updating file(s) automatically @(@)
+{{{
+	a-x auto-revert-mode
+        reverts buffer when file changes
+    a-x auto-revert-tail-mode
+        append changes when file changes
+    --
+    mastemacs-p268
+    }}}
+[tip: compression]
+{{{
+	[=emacs can automatically browse compressed files/archives]
+    --
+    mastemacs-p269
+    }}}
+	----
+
+	----
+Thumbnail Image Browser (****) @(@)
+{{{
+	a-x image-dired **
+    --
+      (next/prev
+      row up/down
+      del/mark/unmark
+      tag/untag image **
+      open image
+      rotate thumbnail left/right   #+quit/resize/show in full size
+    --
+    mastemacs-p269
+    }}}
+Emacs Image Mode ??
+{{{
+	***  see more
+    --
+    mastemacs-p270
+    }}}
+Open Pdf, MsOffice doks (etc) in Emacs **(***) @@
+{{{
+	DocView
+    --
+       n / p
+       spc / s-spc
+       a-< / a->
+       + - 0
+       W H P F
+    --
+    mastemacs-p270
+    }}}
+DocView: increase dpi (=if images look pixelated)
+{{{
+	(setq doc-view-resolution 400)
+    --
+    mastemacs-p271
+    }}}
+use emacs with presentation mode (**) @
+{{{
+	M-x doc-view-presentation  (=emacs 27+)
+    --
+    mastemacs-p271
+    }}}
+Tramp *
+{{{
+	/protocol:[user@]hostname[#port]:
+    --
+      #most likely ssh or scp
+    --
+    mastemacs-p272
+    }}}
+(tramp autolookup for ssh) *
+{{{
+	Another nifty feature of TRAMP is that it parses your ~/.ssh/config file and autocompletes known hosts when you have entered ssh as your protocol   # M-x man RET ssh_config
+    --
+    mastemacs-p274
+    }}}
+important: invoking tramp
+{{{
+	call it from root (eg. typing // in fido/ido)
+    --
+    mastemacs-p274
+    }}}
+let helm auto-generate tramp-configs
+{{{
+	helm-tramp  #+docker etc
+    --
+    mastemacs-p274
+    }}}
+ the second ':'
+{{{
+	??  =p274
+    --
+    mastemacs-p
+    }}}
+default directory + remote editing
+{{{
+	(='every buffer has a default-dir var) ??
+    --
+      #is local to buffer (as opposed to global, like variables are by default in emacs)
+    --
+    mastemacs-p275
+    }}}
+teterm: indication in modeline of tramp-mode
+{{{
+	'@' before the filename
+    --
+    mastemacs-p275
+    }}}
+a-x rgrep
+{{{
+	(=remote grep??)
+    --
+    mastemacs-p275
+    }}}
+Set of things that can be called remotely *
+{{{
+	Dired, Compile *, Grep/find commands, Shell(wrapper), eshell
+    --
+    mastemacs-p276
+    }}}
+multi-hops and user switching (??)
+{{{
+	using sudo etc. with tramp (*)
+    --
+       #eg. requesting sudo access to /etc/fstab
+    --
+    mastemacs-p277
+    }}}
+Bookmarking remote files @
+{{{
+	c-x r m
+    --
+    mastemacs-p278
+    }}}
+THE SUDO AND MULTIHOP ELISP FUNCTION ****! @(@)
+{{{
+    (defun sudo ()
+      "Use TRAMP to 'sudo' the current buffer"
+      (interactive)
+      (when buffer-file-name
+        (find-alternate-file
+         (concat "/sudo:root@localhost:"
+                 buffer-file-name))))
+    --
+    mastemacs-p278
+    }}}
+	----
+
+	----
+Emacs Web Browser
+{{{
+	EWW
+    --
+      a-x eww
+    #uses duck, but can be customized with eww-search-prefix
+    --
+    mastemacs-p279
+    }}}
+emacs 27: c-u a-x eww
+{{{
+	create new eww buffer even if one already exists
+    --
+    mastemacs-p280
+    }}}
+Open something in Web Browser (=em.) @
+{{{
+	a-x browse-url
+    --
+    mastemacs-p280
+    }}}
+Browsing keys ww * @@
+{{{
+	cycle hyperlinks  tab
+    quit              q
+    open page w. a-x browse-url(??)  &
+    show bookmarks    B
+    add bookmark      b
+    browser history   h
+    back/forw. in history   l/r
+    semantic web navig. aids(next/prev. etc. if
+       hyperlinks semantically marked)   p/n/u/t
+    reader mode       R
+    browse link       ent
+    Open link in external browser      c-u ent
+    Search (in duck) for point in EWW  a-s a-w ***
+    open link in new buf            a-ent
+    switch to (another) eww-buffer  s
+    copy link at point              w
+    --
+    mastemacs-p281
+    }}}
+	----
+
+	----
+Dired ** @@
+{{{
+	a-x dired
+    c-d (=from ido (wh. browsing w. c-x c-f etc))
+    c-x d  /  c- 4 d
+    --
+    mastemacs-p282
+    }}}
+switch dired formatting (=from ls -al--style) *
+{{{
+	customize dired-listing-switches
+    --
+    mastemacs-p283
+    }}}
+dired: go up one dir. @@
+{{{
+	^
+    --
+    mastemacs-p284
+    }}}
+dired: move point up/down (a listing)
+{{{
+	n/p  |  c-n/c-p
+    --
+    mastemacs-p284
+    }}}
+dired: close / go back(??)
+{{{
+	q
+    --
+    mastemacs-p284
+    }}}
+dired: mark/unmark active **, unmark everything *, flag for deletion  **** @@
+{{{
+	m/u  U  d
+    --
+       #+'can take negative arguments'(??/*)
+    --
+    mastemacs-p285
+    }}}
+dired teterm: sign by marked files @@
+{{{
+	'*'
+    --
+    mastemacs-p285
+    }}}
+dired: exploring more of direds many commands @@
+{{{
+	like before, test and explore // test M. Petersons 'Discover' package
+    --
+    mastemacs-p286
+    }}}
+++++ See more
+{{{
+	some extras (like 'all items visited by dired are marked')
+    --
+    mastemacs-p286
+    }}}
+Dired Operations **** (=on marked or active objects) * @@(@)
+{{{
+	copy         C
+    move/rename  R
+    chown        O
+    chgrp        G
+    chmod(=perm.s)  M
+    delete marked   D
+    delete flagged  x
+    visit files (=requires dired-x)  F | c-u F (p289)
+    compress marked to a file        c
+    --
+    mastemacs-p287
+    }}}
+more dired commands (=not marked files) @@
+{{{
+	refresh dired buffer  g
+    create sub-dir        +
+    toggle sorting by name/date   s
+    jump to prev/next dir         < // >
+    jump to file                j
+    --
+       #'g is the universal refresh key'
+    --
+    mastemacs-p288
+    }}}
+enabling dired-x @@
+{{{
+	(require 'dired-x)
+       ___package_managem
+    --
+    mastemacs-p288,p289
+    }}}
+Search/Replace in Dired-files (***(!!)) @(@)
+{{{
+	begin isearch       a-s a c-s
+    xref search|replace regex(!!)        A||Q
+    synchr./asynchr. shell command ***   !/&
+    --
+    mastemacs-p289
+    }}}
+Working across directories(???/*), collapse subdirectories (??/*) @
+{{{
+	i  $
+    --
+       #=insert multiple
+        directories into dired
+        buffer =can look at/work
+        work several directories
+        as if were one(!!!!!)
+    --
+    mastemacs-p291
+    }}}
+TIP: Emacs find wrapper-commands **** @
+{{{
+	='replacing find + xargs' **
+    --
+    mastemacs-p291,p292
+    }}}
+ find-lisp-find-dired
+{{{
+	= more stripped version (=internal, implemented in elisp)  + uses emacs regex
+    --
+    mastemacs-p292
+    }}}
+	----
+
+	----
+Call shell command + print output ** @@
+{{{
+	a-!  #sa-1
+    --
+    mastemacs-p293
+    }}}
+Call shell command + insert output into buffer ****
+{{{
+	c-u a-!  #sa-1
+    --
+    mastemacs-p293
+    }}}
+Call shell command asynchr(!!) + print output **
+{{{
+	a-&  #sa-6
+    --
+       #'although asynchr.'
+    = may not be good for long running tasks (better to call a-x compile)
+    --
+    mastemacs-p293
+    }}}
+Call shell command asynchr(!!) + insert output into buffer ****
+{{{
+	c-u a-&  #sa-6
+    --
+    mastemacs-p293
+    }}}
+Pipe Region to shell command *
+{{{
+	a-|  #ga-<
+    --
+    mastemacs-p293
+    }}}
+Pipe Region to shell command + replace region (=filter**) *
+{{{
+	c-u a-|  #ga-<
+    --
+    mastemacs-p293
+    }}}
+'compiling for asynchronous shell cmd-invocations' *
+{{{
+	= repeated/long running 'through shell' commands may be better run with compile-commands
+    --
+    mastemacs-p294
+    }}}
+COMPILING **** @(@)
+{{{
+	a-x compile
+    a-x recompile (=run last compile again)
+      a-g a-n / a-g a-p
+    re-run last command  g ***
+    compile in the current project **  c-x p c
+    --
+    mastemacs-p294
+    }}}
+	----
+
+	----
+Three emacs shells **
+{{{
+	a-x shell (bash wrapper)
+    a-x eshell
+    a-x ansi-term (=terminal emulator)
+    --
+    mastemacs-p295
+    }}}
+[replacements for top and man in emacs shells]
+{{{
+	a-x proced, a-x man
+    --
+    mastemacs-p296
+    }}}
+readline (=in em. shells) @
+{{{
+	hist: next previous   a-n/a-p | c-down/up
+    isearch hist. backw.  a-r
+    prev/next prompt      c-c c-p/n
+    Save cmd output to file       c-c c-s
+    kill cmd output to kill ring  c-c c-o
+    list cmd history      c-c c-l
+    del/exit              c-d
+    stop sub job(=send signal)    c-c c-z
+    complete     tab
+    --
+    mastemacs-p297,p298
+    }}}
+	----
+
+(some) recommended third-party tools
+    --
+    mastemacs-p303
+
+	----
+Epub reader for em. *(*)
+{{{
+	nov
+    --
+    mastemacs-p304
+    }}}
+GIT UI FOR EMACS ***
+{{{
+	Magit ***
+    --
+    mastemacs-p304
+    }}}
+put multiple cursors on screen (=for editing) ** (@)
+{{{
+	multiple cursors
+    --
+    mastemacs-p304
+    }}}
+Language Server interfaces for emacs * @
+{{{
+	LSP mode / EGlot
+    --
+    mastemacs-p304
+    }}}
+completion framework with many built-in completers @@
+{{{
+	Helm
+    --
+    mastemacs-p304
+    }}}
+flycheck can be used for ___ * @(@)
+{{{
+	spell-checking + LINTING ***
+    --
+    mastemacs-p304
+    }}}
+Build flexible popup Uis for key bindings *(?) @(@)
+{{{
+	Hydra
+    --
+    mastemacs-p305
+    }}}
+jump to definition from symbol under point *(*) @@
+{{{
+	dumb-jump + ripgrep **
+    --
+    mastemacs-p305
+    }}}
+some communities and blogs about emacs (*)
+{{{
+	reddit, stackexchange,  sacha chua, irreal, artur malabarba, bozhidar batzov, john kitchin  =Planet Emacs (aggregator)
+    --
+    mastemacs-p
+    }}}
+	----
+
+___zzzz
+
+
+___extemacsbobglick
+
+extending emacs (bob glickstein): --------------
+	doc_newest2019/doks-skrikilarch/emacsextend.pdf
+	doc_newest2019/doks-skrikilarch/emacsextend.txt
+
+	----
+recommended book for learning lisp (=common/in general)
+{{{
+	common lisp - a gentle introduction to symbolic computation (david touretzky)
+    --
+    -p
+    }}}
+teterm: 'what is an editor?'
+{{{
+	a program for viewing and altering a representation of data (of some kind)
+    --
+    mastemacs-p11
+    }}}
+(unpacking a .tar.gz-file (*))
+{{{
+	gzip -dc file.tar.gz | tar -xvf -
+    --
+    mastemacs-p16
+    }}}
+(allocating/releasing memory in c)
+{{{
+	malloc / free
+    --
+    mastemacs-p24
+    }}}
+(teterm: keys that one holds down while pressing others)
+{{{
+	'modifiers'
+    --
+    mastemacs-p25
+    }}}
+(teterm: 'why is escape (=in esc f in readline) not a modifier?'
+{{{
+	released before next key is pressed
+    --
+    mastemacs-p25
+    }}}
+[teterm: Is Elisp Case Sensitive?]
+{{{
+	Yes!(!)
+    --
+    mastemacs-p26
+    }}}
+em. keyb-strings: backslash
+{{{
+	\\ (=doubled)
+    --
+    mastemacs-p27
+    }}}
+em. keyb-strings: a-x (eg. M-x) *****
+{{{
+	"\M-x"
+    --
+    mastemacs-p27
+      #or \e (=esc) inst. of \M *****!!!
+    --
+    -p
+    }}}
+em. keyb-strings: ca-x ******
+{{{
+	"\C-\M-x"
+    --
+    mastemacs-p27
+      #or Alt. first (****)
+    --
+    -p
+    }}}
+List keybindings (+functions they invoke/run) **(**)!
+{{{
+	c-h b
+    --
+    mastemacs-p28
+      #eg. c-h = help-command, del = delete-backward-char
+    --
+    -p
+    }}}
+	----
+
+	----
+teterm: symbols in lisp expressions =evaluation of lisp expressions (*)
+{{{
+	first symbol is a function to execute (unless quoted), rest of symbols are var.s whose val.s need to be retrieved (unless quoted)
+    --
+    mastemacs-p28
+    }}}
+Keybind:  run help w. a-? (inst. of w. c-h (=if 'bs runs help'!)) ****
+{{{
+	(global-set-key "\M-?" 'help-command)
+    --
+    mastemacs-p29
+    }}}
+(longer form of 'expr)
+{{{
+	(quote expr)
+    --
+    mastemacs-p30
+    }}}
+(teterm: Self-evaluating lisp expressions (**!))
+{{{
+	( strings, numbers, characters, vector **
+    --
+    mastemacs-p30
+    }}}
+Read/Load new added expression/function (like rebinding of help-command to a-?) **!!
+{{{
+	c-x c-e  (eval-last-sexp)
+    --
+    mastemacs-p31
+      #especially if put in .init (that can grow quite large)
+    --
+    -p
+    }}}
+Enter lisp expression for evaluation (=in the minibuffer) **
+{{{
+	a-:  #sa-. (eval-expression)
+    --
+    mastemacs-p32
+    }}}
+explain the expr. (put 'eval-expression 'disabled nil)
+{{{
+	eval-expr (which is disabled by def.) should not be disabled
+    --
+    mastemacs-p33
+      #put concerns prop.lists and symbol properties (*)
+    --
+    -p
+    }}}
+eval + insert result of sexp **
+{{{
+	c-u c-x c-e  //  c-j (obs! om lisp interaction mode)
+    --
+    mastemacs-p33
+       #eval-print-last-sexp
+    --
+    -p
+    }}}
+Completion (in Lisp interaction mode) **
+{{{
+	M-tab  (=esc tab)
+    --
+    mastemacs-p33
+    }}}
+(('the del character'))
+{{{
+	"\C-?"
+    --
+    mastemacs-p34
+    }}}
+	----
+
+	----
+Make apropos list the commands' keybindings too (**)
+{{{
+	c-u a-x apropos Ent delete Ent
+    --
+    mastemacs-p35
+    }}}
+tip apropos etc helpcommands (=for var.s etc) (***(!!))
+{{{
+	as soon as own custom var.s, keybindings etc are set, they can be queried, just like em.s defaults (+shows up in help-lists etc (***!)
+    --
+    mastemacs-p35
+    }}}
+[[types of garbage collection]]
+{{{
+	='incremental' is one
+    --
+    mastemacs-p37
+    }}}
+evaluate length of "\M-?")  **
+{{{
+	(length "\M-?")
+    --
+    mastemacs-p37
+    }}}
+teterm: why is not 'command bound to keysequence' correct? (**)
+{{{
+	=many keysequences can be bound to one command(=can invoce it), but one cmd is not restricted to being bound to one single keyseq.
+    --
+    mastemacs-p37
+    }}}
+(sexp pronounciation)
+{{{
+	'sex pee'
+    --
+    -p
+    }}}
+name of the a-x_command
+{{{
+	execute-extended-command
+    --
+    mastemacs-p37
+    }}}
+	----
+
+ch. 2 - simple new commands
+
+	----
+go to last window(=split) *
+{{{
+	a_- a_1 c-x o
+    --
+    -p
+    }}}
+See if keybinding (=for custom binding) is already taken ****!
+{{{
+	describe key (!!)  (+if taken, but for commands y. don't use very often, they can alw. be run w. a-x command-name)
+    --
+    mastemacs-p39
+    }}}
+Binding key: c-x c-p ****! (=to 'other-window')
+{{{
+	(global-set-key "\C-x\C-n" 'other-window)
+    --
+    mastemacs-p39
+    }}}
+Defining an 'other-window-backward' command ****
+{{{
+	(defun other-window-backward (),,  "Select the previous window.",,  (interactive),,  (other-window -1))
+    --
+    mastemacs-p40
+      (+setting the keybinding =p41)
+    --
+    -p
+    }}}
+Parameterizing the 'other-window-backward' function ** (=can take nume arg, instead of locked to '-1') ***
+{{{
+	(defun other-window-backward (n)    + (other-window (- n))   see p 42 ***
+    --
+    -p
+    }}}
+(interactive "p") =??
+{{{
+	'The argument to interactive describes how to obtain arguments for the command that contains it  (=has no arg.s =f. takes no arg.s  ,  f. takes arg.s =one code letter per arg (eg. p for 'prefix'))
+    --
+    -p
+    }}}
+Make the argument n optional (=f. can be called w. arg, or w.out arg) **
+{{{
+	(defun other-window-backward (&optional n)  **
+    --
+    mastemacs-p44
+    }}}
+false (and true) in elisp
+{{{
+	nil (/ t)
+    --
+    mastemacs-p45
+       #() (empty list) is also false
+    --
+    -p
+    }}}
+simple if expression *
+{{{
+	(if n,,    (other-window (- n)),,  (other-window -1))
+    --
+    mastemacs-p45
+    }}}
+(teterm: three interesting properties of nil  (+'another function of nil')
+{{{
+	designates falsehood, indisting. from the empty list (=returns true both as a list and a symbol), 'is its own value' (=doesn't need to be quoted, just like 't'(**))
+    --
+    mastemacs-p45
+    -46)  #+used to 'distinguish between proper and improper lists'  (see ch. 6)
+    --
+    -p
+    }}}
+	----
+
+listp
+symbolp
+
+	----
+CONDENSING CODE (=BY FACTORING OUT COMMON SUBEXPRESSIONS IN AN IF-EXPRESSION) ***** !
+{{{
+	p47  (?????)
+    --
+    -p
+    }}}
+lisp 'or' **!
+{{{
+	return first true val. in test, or return nil (**)
+    --
+    mastemacs-p48
+      #='is false, or the first true value in the list'(**)   =>  (if a a b)  can be repl. by  (or a b)
+    --
+    -p
+    }}}
+common use of if: 'if a is true, return a - else if b is true, return b' etc ***
+{{{
+	(if a a,,  (if b b,,    (if c ......
+    --
+    mastemacs-p48
+      (+can be changed to the 'or'-form, if only want the args to be eval.d once)
+    --
+    -p
+    }}}
+lisp 'and' **
+{{{
+	eval.s all args  + return nil if finds one arg. that is nil, otherwise return the last arg. (**)
+    --
+    mastemacs-p49
+    }}}
+'do z, if a through y are all true'
+{{{
+	(if (and a b ... y) z)   or(!)  (and a b .... y z)
+    --
+    mastemacs-p49
+    }}}
+THE BEST VERSION OF 'O-WIN-BACKW' (=refactored w. negated or etc.) **!
+{{{
+	p50  interactive "P" (='raw' form of a prefix argum.) + 'prefix-numeric-value' (=can interpret a raw number as a number(?))  #'more elisp-like (better code reuse =uses the built-in function prefix-numeric-value, rather than duplicating that function's behavior)
+    --
+    -p
+    }}}
+em.s scrolling up and down functions (eg. c-v a-v)
+{{{
+	p51  scroll-up scroll-down  #+takes optional arg. how many lines to scroll
+    --
+    -p
+    }}}
+	----
+
+	----
+defining custom name for lisp function (eg. 'I think scroll up is confusing' (=moves text, or viewport??) *
+{{{
+	(defalias 'scroll-ahead 'scroll up)
+    --
+    mastemacs-p52
+    }}}
+Setting Custom Name-f. scroll-ahead/behind to c-z/c-q **(*)
+{{{
+	p52-53
+    --
+    -p
+    }}}
+(Tip/Thought (=own use of Em. for Evil))
+{{{
+	=Most chapters needed are probab. first few chapters (up to
+    --
+    mastemacs-p100
+     or so  =Setting custom keyb-shortcuts etc) **
+    --
+    -p
+    }}}
+What is a Hook? ***(*)
+{{{
+	=an ordinary lisp-var, whose val. is a list of functions that get executed under specif. conditions  write-file-hoos (wh. buf.s are saved), post-command-hook (run after every interactive command)   (+like 'set buf. to read-only wh.ever I visit a symlink')
+    --
+    mastemacs-p56
+     **
+    --
+    -p
+    }}}
+Discover what hooks are available in Em. ***
+{{{
+	a-x apropos Ent hook Ent
+    --
+    mastemacs-p56
+    }}}
+hook to run wh.ever visits cert. kind of file
+{{{
+	find-file-hooks
+    --
+    mastemacs-p56
+    }}}
+Add a function to a hook variable **
+{{{
+	(add-hook
+    --
+    -p
+    }}}
+predicate: test if file is symlink **
+{{{
+	file-symlink-p  **
+    --
+    mastemacs-p57
+    }}}
+progn  ***
+{{{
+	evaluate each of its subexpressions in order, and return the value of the last one  (eg. setting buffer read-only to true + echo message 'file is a symlink')
+    --
+    mastemacs-p58
+    }}}
+Add 'read-only-if-symlink'(=wh. defined) to find-file-hooks **(!)
+{{{
+	(add-hook 'find-file-hooks 'read-only-if-symlink)
+    --
+    -p
+    }}}
+	----
+
+	----
+nameless/lambda functions **(*)
+{{{
+	functions that don't need to be called from elsewhere (eg. use directly inside hook-call: =setting buf. to read-only if file is a symlink) **
+    --
+    mastemacs-p59
+    (!)  #=can be used wh.ever y. might use the name of a function
+    --
+    -p
+    }}}
+Tip(!): Why not to use lambdas inside hooks(!)
+{{{
+	if you ever wish to remove a function from a hook, you need to refer to it by name in a call to remove-hook (!)
+    --
+    mastemacs-p59
+    -60
+    --
+    -p
+    }}}
+Create local(=temporary) var.s (eg. use for testing etc. w.in its body-expression **)
+{{{
+	(let
+    --
+    mastemacs-p61
+    -62  ****
+    --
+    -p
+    }}}
+ask user yes/no question + return true if the answer is 'yes', false otherwise (*)
+{{{
+	yes-or-no-p
+    --
+    mastemacs-p63
+    }}}
+like C:s printf
+{{{
+	format (eg. %s, %c(for char))
+    --
+    mastemacs-p64
+      =see  c-h f format  (for list of formats format-strings/control-sequences)
+    --
+    -p
+    }}}
+Advice code + Use case (*********)
+{{{
+	code (attached to a lisp function) that gets executed before/after the function  each time the function is invoked
+    --
+    mastemacs-p65
+       (defadvice   + before/after  (or 'around'(=can embed call to the advised function inside the advice code))   +keywords (eg. activate compile)  +docstring  +interactive
+    --
+    -p
+    }}}
+Remove/Modify code for the advice (**(!))
+{{{
+	use its name (eg. existing-buffer)  (+modified by macros??) **
+    --
+    mastemacs-p66
+    }}}
+interactive "b"
+{{{
+	'accept only names of existing buffers' (*)
+    --
+    mastemacs-p65
+    -66
+    --
+    -p
+    }}}
+	----
+
+(list
+
+	----
+test whether arg./var. is nil **(!)
+{{{
+	(null current-prefix-arg)  #eg. tests wh. current-prefix-arg is nil)
+    --
+    mastemacs-p68
+      #returns t or nil
+    --
+    -p
+    }}}
+advice switch-to-buffer function, split functionality
+{{{
+	=make so 'em. won't let me respond to the prompt w. nonexistent buf. name, unless I asked for that ability by pressing c-u first'
+    --
+    mastemacs-p69
+    }}}
+teterm: parameter vs argument (*)
+{{{
+	param. =the var. in the function definition  ,  argument =the value that gets passed in when the function is called
+    --
+    mastemacs-p70
+    }}}
+define (global) var. + attach docstring to it **(!)
+{{{
+	(defvar unscroll-to nil,,  "Text position for next call to 'unscroll'.")  #+defvar allows a default var. to be given
+    --
+    mastemacs-p74
+    }}}
+defvar vs setq (*)
+{{{
+	defvar assigns val. to a var only(!) if the var. does not yet have any value (=the mail-signature_example)  +  a var.declaration w. defvar can be found w. em.s tag facilities **(*)
+    --
+    mastemacs-p75
+      #+tag-finding can be used w. all def-constructs (defun, defalias, defmacro, defvar, defsubst, defconst, defadvice)
+    --
+    -p
+    }}}
+em. function to test for equality (a == b) **
+{{{
+	(eq   eg.  (if (not (eq a b))
+    --
+    mastemacs-p76
+    }}}
+	----
+
+goto-char
+
+	----
+Tip for reading nested statements, like "(if (not (or (eq last-command 'scroll-up) ..." (!!/****)
+{{{
+	p82  'Move inward one level of subexpression at a time'  (='If something's not true, set some variable(s).'  --->>  'If neither 'last-command is scroll-up' nor 'last-command is scroll-down' is true, set some variables(s).'
+    --
+    -p
+    }}}
+	----
+
+this-command  ***
+    --
+    mastemacs-p85
+
+	----
+Symbol Properties **
+{{{
+	Every Elisp symbol may have associated w. it: A var. value, A function definition, A property list (=a list of mappings from names to values) **  #=each name is yet another lisp-symbol + each val. may be any lisp expression ****
+    --
+    mastemacs-p86
+    }}}
+storing/retrieving symbol properties **
+{{{
+	the functions put and get **
+    --
+    mastemacs-p87
+    }}}
+Setting Markers from code **
+{{{
+	set-marker
+    --
+    mastemacs-p89
+    }}}
+(Efficiency concerning markers + reseting markers)
+{{{
+	p90  markers are expensive to create and maintain  + (set-marker m nil)
+    --
+    -p
+    }}}
+why are the functions null and not so similar?
+{{{
+	actually the same function (one is an alias)  #null to see if obj. is empty list, not for inverting truth values
+    --
+    mastemacs-p90
+    }}}
+	----
+
+Ch. 4  Searching and Modifying Buffers
+
+	----
+List format codes for format-time-string (*)
+{{{
+	a-x describe-function format-time-string
+    --
+    mastemacs-p93
+    }}}
+Docstrings starting w. '*' (**!)
+{{{
+	=var. in question is a 'user option'  =Can be set interactively using set-variable + Can be edited ('en masse') w. a-x edit-options
+    --
+    mastemacs-p93
+    -94
+    --
+    -p
+    }}}
+special construction/form \\[insert-time]  **
+{{{
+	gets replaced w. its keybinding when docstring is displayed by the user
+    --
+    mastemacs-p93
+    -94
+    --
+    -p
+    }}}
+(doubling of backslashes (=\\) (!))
+{{{
+	(=inside lisp strings)
+    --
+    mastemacs-p94
+    }}}
+(( escaping \[...]-construct in docstring ))
+{{{
+	\\=
+    --
+    mastemacs-p96
+    }}}
+teterm: what should be declared w. defvar?
+{{{
+	'all var.s that are shared between two or more functions'  (+should be decl. as user var, if controls user-visib. feature (+does not involve tricky data structures etc))
+    --
+    mastemacs-p95
+    }}}
+teterm recapitul: what does keyword 'interactive' do? ****
+{{{
+	turns a function into a command + specifies how to obtain the f's arguments wh. invoked interactively
+    --
+    mastemacs-p96
+    }}}
+'*' as first argum. to interactive (*)
+{{{
+	'abort this function if curr. buf. is read-only'
+    --
+    mastemacs-p96
+    }}}
+	----
+
+(save-excursion (save-restriction (save-match-data
+(widen
+ match-beginning
+
+	----
+elisp while-loop (**)
+{{{
+	(while (search-forward "WRITESTAMP((" nil t),,  ...)
+    --
+    mastemacs-p101
+    }}}
+teterm: All lisp functions return a value =what? (**)
+{{{
+	=the value of the last expression in the function's body
+    --
+    -p
+    }}}
+why important to return nil wh. working w. write-file/contents-hooks etc?
+{{{
+	otherwise, own function is expected to take over responsib. for writing file etc (!)
+    --
+    mastemacs-p104
+    }}}
+generalizing writestamps **
+{{{
+	=defvar format + text of writestamp string (=can be updated and changed, rather than fixed strings)
+    --
+    mastemacs-p105
+    }}}
+teterm: special char.s in regex-searches are sometimes called ___
+{{{
+	metacharacters (or magic (char.s))
+    --
+    -p
+    }}}
+regex: searching ']' in a char.set (**)
+{{{
+	first char (= []a]  [^]a]
+    --
+    -p
+    }}}
+(regex: searching for '-' in a char.set)
+{{{
+	=must be spec. so can't be part of a range
+    --
+    mastemacs-p109
+    }}}
+teterm: Any text matched by a parentheses is called a ___  **
+{{{
+	submatch  #+is memorized in a numbered register
+    --
+    mastemacs-p110
+    }}}
+	----
+
+regex: logical/zero width position (like 'start of word') *****
+    --
+    mastemacs-p111
+
+	----
+match beg./end of buffer ***
+{{{
+	\`  \´
+    --
+    mastemacs-p111
+    }}}
+match curr. loc. of point (note: also zero width) ***(*)
+{{{
+	\=
+    --
+    mastemacs-p111
+    }}}
+start/end of a word ****
+{{{
+	\b  (eg. \bno\b for ' no! ')
+    --
+    mastemacs-p111
+    }}}
+match NOT beg. of word ***
+{{{
+	\B  (eg. no\B for 'nostril')
+    --
+    mastemacs-p111
+    }}}
+start of word // end of word (**)
+{{{
+	\<  \>
+    --
+    mastemacs-p111
+    }}}
+note: backslashes in regexes and(!!) Lisp strings (!!!)
+{{{
+	p112
+    --
+    -p
+    }}}
+Em. function for regex-searching in Elisp (**)
+{{{
+	re-search-forward
+    --
+    mastemacs-p112
+    }}}
+Removing magic char.s from strings (=make safe for regex-searching) **
+{{{
+	regexp-quote
+    --
+    mastemacs-p113
+    }}}
+(replace some/all of matched text from a prev. search)
+{{{
+	(replace-match
+    --
+    mastemacs-p117
+    }}}
+	----
+
+first-change-hook
+ (2 simple + one more clever approach)
+
+	----
+Collect up remaining args (=for function) **!
+{{{
+	&rest
+    --
+    mastemacs-p123
+    }}}
+clever example of let (**)
+{{{
+	'This use of let creates a temporary variable, after-change-functions, that supersedes the global after-change-functions during the call to update-modifystamps in the body of the let.'
+    --
+    mastemacs-p125
+    }}}
+Hooking user options into the "customize" system (** new in em. 20)
+{{{
+	requires using special functions called defgroup and defcustom
+    --
+    mastemacs-p127
+    }}}
+regex teterm: name of '*' regex op. among computer scientists (**)
+{{{
+	a "Kleene closure"
+    --
+    mastemacs-p127
+    }}}
+	----
+
+Chapter 5 - Elisp files (=putting plugin code in separate files (=not in init-file))
+
+	----
+basic tip for 'external' lisp files (=for loading) (*)
+{{{
+	should be written such that they can be loaded at any time (even multiple) w.out unwanted side-effects
+    --
+    mastemacs-p129
+    -130
+    --
+    -p
+    }}}
+Add directory to beg./end of em.s load-path ****!!
+{{{
+	cons or append "new/path" (w. setq) to load-path  ****
+    --
+    mastemacs-p131
+       #'notice that in the first example, "dirpath" appears as an ordinary string, but in the second ex. it appears inside a quoted list (!)
+    --
+    -p
+    }}}
+(byte compiled files, searching/loading w.out file suffix, +eval-after-load)
+{{{
+	(p131)
+    --
+    -p
+    }}}
+Em. command for interactively loading a (e)lisp file (**)
+{{{
+	load-file  load-library
+    --
+    mastemacs-p131
+    }}}
+options for programmatic loading of elisp files in emacs (*)
+{{{
+	explicit loading, conditional loading, autoloading
+    --
+    mastemacs-p132
+    }}}
+Elisp functions for making sure files get loaded once (instead of n times) (!!)
+{{{
+	require  provide
+    --
+    mastemacs-p133
+      #'features are named by l. symbols, declared w. provide, and requested by require (*/???)
+    --
+    -p
+    }}}
+recommended place to put 'require'-constructs
+{{{
+	last  #=should not be loaded unless rest of the file works
+    --
+    mastemacs-p133
+      (although many put it at the top of their files)
+    --
+    -p
+    }}}
+inferring + (require 'timestamp) instead of (require 'timestamp "timestamp")  (!)
+{{{
+	=see more
+    --
+    mastemacs-p134
+    }}}
+calling the function symbol-name on a symbol *(*)
+{{{
+	=return the symbol's name as a string
+    --
+    mastemacs-p134
+    }}}
+tip/extra: autoloading (!)
+{{{
+	keymaps and macros may also be autoloaded
+    --
+    mastemacs-p136
+    }}}
+(teterm: byte-compiled code may not work on ___ )
+{{{
+	(older versions of Em.)
+    --
+    mastemacs-p137
+    }}}
+byte-compile file(s) (!!)
+{{{
+	a-x byte-compile Ent file.el  emacs -batch -f batch-byte-compile file.el  #shell  byte-recompile-directory  #b.c. whole dir.
+    --
+    mastemacs-p137
+    }}}
+eval-after-load
+{{{
+	see more
+    --
+    mastemacs-p138
+    }}}
+diff. betw. hooks and eval-after-load
+{{{
+	hooks only execute lisp functions (often in form of anonymous funct.s, while eval-after-load can execute any lisp expression)
+    --
+    mastemacs-p138
+    }}}
+Loading (plugincode etc) via file local var.s lists (**!)
+{{{
+	p139  +the eval 'pseudo-variable'  #++more appropr. way of setting it up is to write a min.mode(!)
+    --
+    -p
+    }}}
+protecting eval in loc. file var.s lists  from trojan horse attacks (!)
+{{{
+	p142  #=enable query ('should this code be executed'(?))
+    --
+    -p
+    }}}
+definition of 'near the end of the file'
+{{{
+	within last 3000 bytes of file (+after last line w. ^L)
+    --
+    mastemacs-p142
+    }}}
+	----
+
+Chapter 6 - Lists
+
+	----
+cons:ing 'a' onto old list (3 4 5)  **
+{{{
+	(cons 'a '(3 4 5))   #+'creates a new(!) list (=the old list is never touched)
+    --
+    mastemacs-p146
+    }}}
+reverse list
+{{{
+	(reverse  #=do not reverse elements in sublists
+    --
+    mastemacs-p146
+    }}}
+teterm: lists are composed of (smaller data structures) called ___
+{{{
+	cons cells ("dotted pairs)  (=a struct. that contains two lisp expressions)
+    --
+    mastemacs-p147
+    }}}
+a list is ___
+{{{
+	a chain of cons cells where each cdr is another cons cell and the last cdr is nil  (=if cdr of a cons pair is nil, it can be abbreviated to just the car **)
+    --
+    mastemacs-p148
+    }}}
+'improper lists'
+{{{
+	wh. last cdr in list is not nil  +'frequently, the entries in an assoc. list are improper lists
+    --
+    mastemacs-p149
+    }}}
+l.functions for testing whether lisp obj. is list or list component (**)
+{{{
+	consp  true for all lists except empty, atom  whether arg. is atomic (eg. nil, numbers, strings, symbols), listp(**)  wh. arg. is list, null  wh. arg. is nil
+    --
+    mastemacs-p149
+    }}}
+recursively flattening a list (=lisp idiom) *(/??????)
+{{{
+	p150-152
+    --
+    -p
+    }}}
+Other/Some more useful l.functions ***!
+{{{
+	length, nthcdr, nth, mapcar(**), equal, assoc(**), assq  like assoc(=assoc.lists) but uses eq,
+    --
+    mastemacs-p153
+    -154
+    --
+    -p
+    }}}
+difference betw. eq and equal (*)
+{{{
+	eq: tests whether arg.s are the same obj.(!)  equal: tests whether two obj.s have same structure and content
+    --
+    mastemacs-p154
+      #+eq. is instantaneous (while equal may have to dive down into structure to compare in depth)
+    --
+    -p
+    }}}
+destructive list functions (*)
+{{{
+	nconc  destructive append,
+    --
+    mastemacs-p158
+    }}}
+use for nconc (*)
+{{{
+	=should be used w. care  but can be used for efficiency wh. changing values in an assoc.list (=if sure no other data depends on the list data)
+    --
+    mastemacs-p159
+    }}}
+(writing destructive var. of alist-replace)
+{{{
+	p160
+    --
+    -p
+    }}}
+replace car / cdr (**)
+{{{
+	setcar  setcdr
+    --
+    mastemacs-p160
+    }}}
+destr. version of reverse
+{{{
+	nreverse
+    --
+    mastemacs-p160
+    }}}
+concerning lists (flexibility + building data structures etc) **
+{{{
+	'one doesnt think of lists as being circular, ... (consists of) connected cons cells, you can build any kind of linked data structures, from trees to lattices (!!)
+    --
+    mastemacs-p163
+    }}}
+	----
+
+

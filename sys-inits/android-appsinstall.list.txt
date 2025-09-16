@@ -1,0 +1,99 @@
+export contacts
+
+clock
+----
+Omio  __
+  Termux  __
+FDroid  __
+  SyncThing Fork  __
+  vim-touch  __
+cx file-explorer  __
+@voice, @voice-license,  _  webpage read
+collabora office  __
+keepass2android
+QPython
+  dropbox
+bankid  __
+authenticator  __
+vlc
+signal  __
+  swish, vipps
+obsidian  _
+  adobe acrobat,  open-stax
+  pocket
+----
+qr scanner
+gemini
+samsung notes
+GitHub
+  chm-reader-x
+  know abacus
+wavepad free
+Anki
+
+nTrack  __
+Csound
+sunvox
+  remix-live, bandlab, cubasis 3, moises
+----
+GuitarPro  __ __
+guitar tuner  __
+metronome beats  __
+  synthesia
+  clean-master
+    my eartrainer, perfect ear
+    soundcamp,  soundcloud
+    walkband
+    maestro
+    ensemble composer
+    mobilesheets free
+MobiZen
+LyricPad
+
+kde connect
+----
+whatsapp  __
+nordea mobile  __
+västtrafik, östgötatrafiken  __
+  närhälsan online
+  bring
+  gopro quick
+pilbox
+
+Tasker
+
+discord
+steam
+----
+  facebook lite
+
+omni
+
+BeelinguApp
+----
+vocab builder
+Memrise, 'Parrot-App'
+new lakota dictionary, 
+----
+ten percent
+
+samsung flow
+
+
+Termux ----
+git
+  pgk i termux-services
+openssh
+termux-api
+oh my zsh
+python
+openjdk-17
+clang
+ldc
+tmux
+fzf | ugrep
+nodejs
+make
+ripgrep
+tree
+

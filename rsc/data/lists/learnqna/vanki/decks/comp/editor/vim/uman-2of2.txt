@@ -1,0 +1,2048 @@
+
+    __vim_pract
+
+    __vuman_last
+
+Inserting Special Char.s (=c-v, c-v u|U, c-k Co  ******
+
+    ----
+Inserting Special Char.s ******
+{{{
+    c-v | c-q <press key>  #c-q=win
+    --
+    vuman73-p123,p124
+    }}}
+insert an esc
+{{{
+    c-v Esc  ||  c-q Esc  (=win)
+    --
+    vuman73-p124
+    }}}
+(ins. a del-char(!!)  =via its key-code (127))
+{{{
+    c-v 127
+    --
+    vuman73-p124
+    }}}
+(ins. a tab-char(!!)  =via its key-code (9))
+{{{
+    c-v 9.      #inserts tab + '.'
+    c-v 009
+    --
+    vuman73-p124
+    }}}
+ins. spec.char w. hexcode 7f | octcode 123 (**)
+{{{
+    c-v x7f
+        c-v o123
+    --
+    vuman73-p124
+    }}}
+ins. 16 | 32 bit unicode char.s ****(!)
+{{{
+    c-v u1324
+    c-v U13245678
+    --
+    vuman73-p124
+    }}}
+    ----
+
+    ----
+digraphs: copywrite-sym | c/o **(**!)
+{{{
+    c-k Co
+      c-k co
+    --
+    vuman73-p124
+    }}}
+avail. digraphs | info ab. digraphs (***(!))
+{{{
+    :digraphs
+      = digraph  char. it gives  char.num(*)
+      .
+    (spec, nordic, greek, hebr, arabic, Logic(*), kana (etc))
+    --
+    :h digraphs
+    --
+    vuman73-p124
+    }}}
+input £ w. digraph (*)
+{{{
+    c-k Pd
+    c-k dP
+      .  =also works, since no entry set for that comb.
+    --
+    vuman73-p124
+    }}}
+define own digraphs (**!)  a" = ä
+{{{
+    :digraph a" ä
+    :digraph a" 228
+    --
+    vuman73-p125
+    }}}
+insert spec. char.s directly (=w. normal keys) ***(*)
+{{{
+    keymaps (**)
+    :h mbyte-keymap
+     --
+    +see|list avail. keymaps (**)
+    :echo globpath(&rtp, "keymap/*.vim")
+    --
+    vuman73-p125
+    }}}
+    ----
+
+editing formatted text
+
+    ----
+set col.width max 30 char.s(!)
+{{{
+    :set textwidth=30
+    --
+    vuman73-p126
+    }}}
+make Vim display lines w. line breaks (but do not insert line breaks in the file) (**(!))
+{{{
+    :set wrap   **
+    --
+    vuman73-p126
+    }}}
+some ex. text-formatting commands (!)
+{{{
+    =use v-mode
+    v4jgq
+    or: movement, text object (= gqap)
+     --
+    gqj
+    gq}
+     gggqG
+    --
+    + both v-mode, movem, textobj. + gq works because
+        = gq is an operator (!!(**))
+    --
+    vuman73-p126,p127
+    }}}
+'do autom. formatting for specif. types of text layouts' ((??)/**)
+{{{
+    :h auto-format
+     --
+    a flag in formatoptions  ((??)/!)
+    --
+    vuman73-p127
+    }}}
+specifying rules for text-formatting (**(!))
+{{{
+    'formatoptions'  'fo'
+    + :h fo-table
+    --
+    vuman73-p127
+    }}}
+Specify num of spaces when joining sentences (****(!!))
+{{{
+    :set joinspaces=1
+    --
+    vuman73-p127
+    }}}
+use external progr. for formatting (**)  (????)
+{{{
+    :se formatprg=
+    --
+    vuman73-p127
+    }}}
+    ----
+
+    ----
+set text in center | right justif. (+optional width =lower than 80 char.s)
+{{{
+    :{range}center [width]
+    ex:
+      .
+    :1,5center 40
+    :1,5right 37
+    --
+    vuman73-p127,p128
+    }}}
+[format 5-line paragr. w. 5chars indent for first line]
+{{{
+    :1left 5
+    :2,5left
+    --
+    vuman73-p128
+    }}}
+justify text in vim ((****))
+{{{
+    1.
+    :runtime macros/justify.vim
+        =defines new v-command _j
+     (=v-mark text + '_j')
+      .
+    2.
+    filter text through an ext. progr, eg:
+     :%!fmt
+    --
+    vuman73-p128
+    }}}
+(make vim indent text autom.)
+{{{
+    :set autoindent
+    --
+    vuman73-p129
+    }}}
+[indent paragr. | until end of paragr.] (*)
+{{{
+    >ap
+    >}
+    --
+    vuman73-p129
+    }}}
+set num. of spaces for indent (+def. num.)  (***(*))
+{{{
+    :set shiftwidth=4
+    :set shiftwidth=2
+      (+def. = 8)
+    --
+    vuman73-p129
+    }}}
+indent 6 text-lines **
+{{{
+    6>>
+    --
+    vuman73-p129
+    }}}
+make tab insert spaces(eg. 4 spaces)  (=w. shiftw. set, >> inserts spaces but(!!) tab inserts tabs (###))  ***(*)
+{{{
+    :set softtabstop=4
+    --
+    vuman73-p129
+    }}}
+set so you never(!!) get tabs for indents in files (#### (!!!!*****))
+{{{
+    :set shiftwidth=4
+    :set softtabstop=4
+    :set expandtab
+    --
+    vuman73-p129
+    }}}
+[[+the tabstop-option (######)]]
+{{{
+    ((+def. =8 (????)))
+    --
+    vuman73-p129
+    }}}
+([changing tabs  (=editing file w. tabstops originally set to 3 etc(!!))])
+{{{
+    :set tabstop=3
+    :retab 8
+      .
+    = 'The ":retab" command will change 'tabstop' to 8, while changing the text such that it looks the same.
+    ((+ 'It changes spans of white space into tabs and spaces for this. You can now write the file. Next time you edit it the indents will be right without setting an option.
+    Warning: When using ":retab" on a program, it may change white space inside a string constant. Therefore it's a good habit to use "\t" instead of a real tab.  (?????)
+    --
+    vuman73-p129
+    }}}
+    ----
+
+    ----
+don't show endpart of lines (=if wider than screen) ***(*!)
+{{{
+    :set nowrap
+      .
+    ((+tip: display horiz. scrollbar in the GUI
+        :set guioptions+=b
+    --
+    vuman73-p130
+    }}}
+[some scrolling cmds (=incl. scrolling screen right | left) (?? (ss))]
+{{{
+    zh   scroll right
+    4zh  scroll four characters right
+    zH   scroll half a window width right
+    ze   scroll right to put the cursor at the end
+    zl   scroll left
+    4zl  scroll four characters left
+    zL   scroll half a window width left
+    zs   scroll left to put the cursor at the start
+    --
+    vuman73-p130
+    }}}
+when wrap is off(**): move w.in visib. parts of line (=to start, first char, mid, end  of (visib. part of) line)
+{{{
+    g0
+    g^
+    gm
+    g$
+    --
+    vuman73-p130
+    }}}
+DISPLAYING LINES WIDER THAN WIN. AS WRAPPED +(!!) DISPLAY WHOLE WORDS ****(**)  [=display like if formatted w. gq] ******(!!)
+{{{
+    :set linebreak
+    --
+    vuman73-p131
+    }}}
+specify char.s where a line break can be inserted | specify string to show at start of broken line
+{{{
+    :set breakat=____
+    :set showbreak=**
+    --
+    vuman73-p131
+    }}}
+turn off(=avoid) splitting paragr.s (??(!))
+{{{
+    :set textwidth=0
+    --
+    vuman73-p131
+    }}}
+move up|dn by visual lines  (+set up|dn to move up|dn by vis. lines)
+{{{
+    gj  gk
+      .
+    :map <Up> gk
+    :map <Down> gj
+    --
+    vuman73-p131
+    }}}
+Tip: Convert all paragr.s to one line each (*!!)
+{{{
+    :g/./,/^$/join
+      .
+    = for each line of at least one char
+    until blank line   + join
+      .
+    (+Note: =leaves no blank lines (=since are included in the match(!!)))
+    --
+    vuman73-p131,p132
+    }}}
+convert all paragr.s to one line each (=if some sep-lines empty(!!), but not blank)  (***)
+{{{
+    :g/\S/,/^\s*$/join
+    --
+    vuman73-p132
+    }}}
+    ----
+
+editing tables (=w. tab|space-separ. values)
+
+    ----
+set so can input text in empty columns (=as if contained default spaces) (!!(*))
+{{{
+    :set virtualedit=all
+      +eg. /-search col.header-name, then j + a
+    --
+    vuman73-p132
+    }}}
+empty col.s in virtualedit-mode (=where you can edit as if contained def. spaces) is called ___
+{{{
+    'virtual space'
+    --
+    vuman73-p132
+    }}}
+copying a whole column (*)
+{{{
+    c-v for blockwise v-mode
+    include until last char.s (+amount of space wanted after)
+    cursor on first char of column to paste before + P
+    --
+    vuman73-p132,p133
+    }}}
+turn off column|virtualedit-mode (!)
+{{{
+    :set virtualedit=
+    --
+    vuman73-p133
+    }}}
+replace char in col. (=w.out bumping char.s in other col.s **)
+{{{
+    use gr  (=virtual replace-mode)
+    and gR
+    --
+    vuman73-p133
+    }}}
+    ----
+
+
+Ch. 26 - Repeating **  (incl: making a change in many files, using vim fr. a shell script(**))
+
+    ----
+make :s-changes in only certain(=contigous) lines (!!(*))
+{{{
+    v-mark lines | specify range for :s
+    + :s/.......(=changes)/g
+    --
+    vuman73-p135
+    }}}
+[reactivate prev. v-mark]
+{{{
+    gv
+    --
+    vuman73-p135
+    }}}
+tip: bump num.s for years (=19__ and 20__) w. one (*)
+{{{
+    /19[0-9][0-9]\|20[0-9][0-9]
+      (+ n, .)
+    --
+    vuman73-p135
+    }}}
+add|extract 5 from num. (**)
+{{{
+    5 c-a | c-x
+    --
+    vuman73-p135,p136
+    }}}
+[set so vim doesn't change 007 to 010 when adding (!!)]
+{{{
+    :set nrformats-=octal
+    --
+    vuman73-p136
+    }}}
+    ----
+
+    ----
+Change x_cnt to x_counter in sever. Files ****(!!)  [=in all c-files in dir] **
+{{{
+    :args *.c
+    :argdo %s/\<x_cnt\>/x_counter/ge | update
+       (+search-item can be obtained w. '*' and incl. w. %s// or %s/ + c-r /
+       # +'e'-flag included not to abort on 'not found in this file'(!!(****))
+    --
+    vuman73-p136
+    }}}
+run cert. cmd in all curr. splits (**)
+{{{
+    :windo cmd
+    --
+    vuman73-p136
+    }}}
+(why bufdo may be risky to run cmds)
+{{{
+    =may have more bufs in buflist than realizes (=check w. :buf // :ls)
+    --
+    vuman73-p136
+    }}}
+Change '-person-' to 'Jones' in many files (=not open) in a Dir ****(!!)
+{{{
+    %s/-person-/Jones/g
+    write tempfile
+    quit
+            =put in a file, like 'change.vim'
+      .
+      .
+            +in a shell|terminal, run:
+    for file in *.txt; do
+      vim -e -s $file < change.vim
+          "run vim in ex-mode + in sil.mode
+      lpr -r tempfile
+          "??(=print file + then delete it)
+    done
+    --
+    vuman73-p137
+    }}}
+run change.vim (=contains ex-cmds to be run) fr. cmd-line, w. input from script called 'producer'  (** (##))
+{{{
+    producer | vim -S change.vim -
+    --
+    vuman73-p137
+    }}}
+run vim-file as a script: =contains n-mode commands (!!!!(**))
+{{{
+    vim -s script file.txt ...
+      .
+      (+note diff. fr. the 'vim -e -s change.vim'-ex:
+        ='run as ex-cmds + silently'
+      .
+    Note: File should be edited exactly(!)
+    as keys one wants pressed (=Enter is set by a normal newline(!!))
+    --
+    vuman73-p137
+    }}}
+edit|record script that should be run as n-mode commands **(!)
+{{{
+    vim -w script file.txt ...  (=??)
+      =all keypresses will be saved to file 'script'
+    --
+    vim -w script file.txt ...  (=when run second time)
+      =appends more cmds to the file 'script'
+    --
+    vim -W script file.txt ...
+      ='this rec.session (for keystrokes) overwrites curr. contents in file 'script' '
+    --
+    vuman73-p137,p138
+    }}}
+    ----
+
+
+Ch. 27 - Search commands and patterns
+
+    ----
+help|more detailed info ab. searching in vim **(*!)
+{{{
+    :h pattern
+    --
+    vuman73-p139
+    }}}
+turn off ic(=if set) + using smartcase (****)
+{{{
+    :set noic smartcase
+    If you have a pattern with at least one uppercase character, the search becomes case sensitive. (**!!)
+    --
+    vuman73-p139
+    }}}
+search case sensitive|ci in one(!) search  (****)
+{{{
+    /\CcSensSearch  #=finds only 'cSensSearch'
+      .
+    /CISE\cARCH     #=also finds 'cisearch'
+      .
+      (+advantage(of spec.ing per pattern) =is "recorded" along w. the patt. (**(!!)))
+    --
+    vuman73-p139,p140
+    }}}
+[interrupt search taking long (*)]
+{{{
+    c-c
+    [c-break  =win]
+    --
+    vuman73-p140
+    }}}
+((turn off wraparound searches (=turned on by def.)))
+{{{
+    set nowrapscan
+    --
+    vuman73-p140
+    }}}
+    ----
+
+    ----
+search for 'patt' + move 1 | 2 lines down **(!!**)  || 2 lines above patt. ****
+{{{
+    /patt/1
+    /patt/2
+    /patt/-2
+      .
+      ?patt?-2
+    --
+    vuman73-p141
+    }}}
+search + char.offsets (**!!***)
+{{{
+    /const/e
+    /const/e+1
+    /const/e-1  #end of match + back one char
+    /const/b+2  #beg. of match + forw. 2 char.s
+      ?const?e-2
+    --
+    vuman73-p141;p142
+    }}}
+search last patt + place cursor on last char. (******)
+{{{
+    //e
+    --
+    vuman73-p141
+    }}}
+(last search again + no offset (=if //e used last time))
+{{{
+    //
+    --
+    vuman73-p141
+    }}}
+the /const/-2 + n--gotcha
+{{{
+    =will loop(=find the same match again and again)
+      (but, vim will compensate somewhat w. char.offsets(!))
+    --
+    vuman73-p142
+    }}}
+search 'ababab.....' etc
+{{{
+    /\(ab\)*
+    --
+    vuman73-p142
+    }}}
+search 'folder' or 'folders'
+{{{
+    /folders\=
+    --
+    vuman73-p142
+    }}}
+match ab, abb, or abbb (+but as few b:s as possib.) ****
+{{{
+    /ab\{-1,3}
+    --
+    vuman73-p143
+    }}}
+match a, ab, abb, or abbb (+but as few b:s as possib.) ****(***)
+{{{
+    /a.\{-}b
+    --
+    vuman73-p143
+    }}}
+    ----
+
+    ----
+match 'one' or 'two' or 'three'
+{{{
+    /one\|two\|three
+    --
+    vuman73-p143
+    }}}
+match "foo", "foobar", "foofoo", "barfoobar", etc. (****** (#####)) *******
+{{{
+    /\(foo\|bar\)\+
+    --
+    vuman73-p143
+    }}}
+match "endif", "endwhile" and "endfor"  (**********) !!
+{{{
+    matches "endif", "endwhile" and "endfor"
+    --
+    vuman73-p143
+    }}}
+match "for" in "forever" (=but not(!!!!) "fortuin")  (??????????????????  (#### !!!! ********************)
+{{{
+    /forever\&...
+       = '\& requires that both alternatives match in the same place (??????? (!!!!!!!))
+    --
+    vuman73-p143
+    }}}
+match nums + a-f
+{{{
+    /[0-9a-f]
+    --
+    vuman73-p144
+    }}}
+match nums + a-f and(!!) '-'
+{{{
+    /[0-9a-f-]
+    /[-0-9a-f]
+    --
+    vuman73-p144
+    }}}
+Search esc, tab, cr, or bs *****
+{{{
+    /[\e\t\r\b]
+    --
+    vuman73-p144
+    }}}
+(more help on [a-z]-ranges)
+{{{
+    :h /[]
+    --
+    vuman73-p144
+    }}}
+    ----
+
+    ----
+match ""-quoted strings ****(!!)
+{{{
+    /"[^"]*"
+    --
+    vuman73-p144
+    }}}
+find char.s, nondigits, hex, Wh.Spaces, lcase, uppercase letters (etc) ********* (SSSSSS)  #='predefined ranges'
+{{{
+    \d digit [0−9]
+    \D non-digit [^0−9]
+    \x hex digit [0−9a−fA−F]
+    \X non-hex digit [^0−9a−fA−F]
+    \s white space [  ]  (=<Tab> | <Space>)
+    \S non-white characters [^  ]
+    \l lowercase alpha [a−z]
+    \L non-lowercase alpha [^a−z]
+    \u uppercase alpha [A−Z]
+    \U non-uppercase alpha [^A−Z]
+         (++ are much faster(!!) than their range equiv.s (**))
+      .
+    (+ :h /\s for whole list
+    --
+    vuman73-p144
+    }}}
+[\d\l]  (****)
+{{{
+    =\d-style _ does not work in ranges
+    Use "\v(\d|\l)" instead.
+    --
+    vuman73-p144
+    }}}
+\i, \I etc are called ___
+{{{
+    'char. classes'
+      (=contrary to char. ranges (eg. \d) they can be redefined by setting eg. 'iskeyword' (*****))
+    --
+    vuman73-p145
+    }}}
+'isfname' (eg. diff. betw. lin | win)
+{{{
+    '\' is included on win, but not in unix
+    --
+    vuman73-p145
+    }}}
+char.classes: identifier char.s
+{{{
+    \i      option 'isident'
+    \I  =like \i, but excl. digits
+    --
+    vuman73-p145
+    }}}
+char.classes: keyword char.s
+{{{
+    \k      option 'iskeyword'
+    \K  =like \k, but excl. digits
+    --
+    vuman73-p145
+    }}}
+char.classes: printable char.s
+{{{
+    \p      option 'isprint'
+    \P  =like \p, but excl. digits
+    --
+    vuman73-p145
+    }}}
+char.classes: filename char.s
+{{{
+    \f      option 'isfname'
+    \F  =like \f, but excl. digits
+    --
+    vuman73-p145
+    }}}
+    ----
+
+    ----
+match 'the' last in line + 'word' at start of next line (**)
+{{{
+    /the\nword
+    --
+    vuman73-p145
+    }}}
+MATCH 'THE WORD', EVEN IF SPLIT ON TWO LINES ****
+{{{
+    /the\_sword
+      .
+      .
+    (or if 'the     ' + '     word' =on two lines:
+    /the\_s\+word
+    --
+    vuman73-p145
+    }}}
+Explain the patt.s \_a, \_s, \_.,  /"\_[^"]*"  (### (*******************(!!!)))  (SSS(S))
+{{{
+    a-z or a line break
+    space  or a line break
+    a char  or a line break
+     --
+    A string | Quoted text, that may be split over two lines ******
+    --
+    vuman73-p145,p146
+    }}}
+Find license plate num. à la 1MGU103  (**!)
+{{{
+    /\d\u\u\u\d\d\d
+    /\v\d\u{3}\d{3}
+     --
+    /[0−9][A−Z]\{3}[0−9]\{3}  #avoid (=long to type and slow to run)
+    --
+    vuman73-p146
+    }}}
+FIND AN IDENTIFIER (IN C ETC. ******) (=letter and uscore + letter, digit or uscore) *******
+{{{
+    /\v<\h\w*>
+      .
+    \h = "[A-Za-z_]"
+    \t = "[0-9A-Za-z_]"
+    --
+    vuman73-p146
+    }}}
+the 'ident-' and  /\w\@<!\h\w*\w\@! --example  (?????????)
+{{{
+     (=maybe sssss)
+    --
+    vuman73-p146
+    }}}
+MAKE '*'-SEARCH FIND WORD LIKE 'ident-id' (=Uses 'iskeyword') ********(********(!!!!)) SSSS
+{{{
+    :set iskeyword+=-
+    --
+    vuman73-p146(!)
+    }}}
+    ----
+
+
+Ch. 28 - Folding (!!(**))
+
+    ----
+manually create a fold (eg. for curr. paragr.|line)
+{{{
+    zfap   #tip: will create fold around(!) the paragr. (**)
+    zfj
+      .
+      .
+      .  ==
+    line
+      .
+    paragr
+    paragr
+      .
+      .   ==>
+    line[
+      .]
+    paragr[
+    paragr]
+    --
+    vuman73-p147
+    }}}
+"zf can be used with ___" (*)
+{{{
+    is an operator, =can be used with v-marking,
+      movements, text objects (=like 'ap')
+    --
+    vuman73-p147
+    }}}
+open|close all folds at top level // down all levels *(*)
+{{{
+    zr | zm
+      zR | zM
+    --
+    vuman73-p148
+    }}}
+deactivate | activate all folds **(*)
+{{{
+    zn | zN  //
+    zi | zi
+    --
+    vuman73-p148
+    }}}
+showing control column w. plus/minus-controls
+{{{
+    :set foldcolumn=2 
+    :set foldcolumn=0
+      open =click '+'
+      close =click '-' or '|'
+    --
+    vuman73-p148,p149
+    }}}
+open|close all folds at cursor line **(**)
+{{{
+    zO | zC
+    --
+    vuman73-p149
+    }}}
+del. a fold at cursor line **(*)
+{{{
+    zd
+      .
+    for closed fold (=w. closed subfold)
+     = remove foldmarks for toplevel fold
+     (= the closed fold the marker is on)  (**)
+    --
+    vuman73-p149
+    }}}
+Del. all folds at the cursor line ((**(*)))
+{{{
+    zD   =removes foldmarks for folds all levels down (=at cursor line)
+    --
+    vuman73-p149
+    }}}
+    ----
+
+    ----
+set so folds always open when cursor on top + reset  (SSSs)
+{{{
+    :set foldopen=all
+    :set foldopen&
+      +see more ='The 'foldopen' option can be changed to open folds for specific commands.'
+    --
+    vuman73-p149
+    }}}
+set so folds close autom. wh. moving out of it
+{{{
+    :set foldclose
+    --
+    vuman73-p149
+    }}}
+'reduce|increase' folding ((**))
+{{{
+    zr | zm
+    --
+    vuman73-p149
+    }}}
+tip: "different views" on a dok. w. folds (**)
+{{{
+    'The folding is local to the window.'
+       =can have two win.s|views open on the same buf. (=one w. folds open, +one w. them closed (etc))
+    --
+    vuman73-p149
+    }}}
+[[tip: saving and restoring manually created folds]]
+{{{
+    (w. the dok. open:
+      :mkview  +
+      :loadview
+    + storing diff. views:
+      :mkview 3
+      :loadview 2  (=can store 10 views on same file)
+        .
+        ((+note: views can become invalid, if deletes lines et))
+    --
+    vuman73-p149
+    }}}
+((managing views + where views are stored))
+{{{
+    'viewdir'  (=where the views are stored)
+    +tip: "might want to del. old views now and then"
+    --
+    vuman73-p149
+    }}}
+    ----
+
+indent-folding
+
+    ----
+[what does ':set foldlevel=3' actually mean?[**]]
+{{{
+    = all folds w. three times a 'shiftwidth' indent (or more) will be closed
+    aoeu {{{
+    }}}
+    --
+    vuman73-p150
+    }}}
+[what actually happens when using zm | zr (*)
+{{{
+    increases | decreases foldlevel
+    --
+    vuman73-p150
+    }}}
+[[Summarize foldlevels + zM and zR [****]]]
+{{{
+    foldlevel=0     =All folds are closed **(!)
+    foldlevel=1     =all folds at topmost level are open (**)
+    zM              =sets foldlevel to 0
+    zR              =sets foldlevel to curr. file's max.level
+    --
+    vuman73-p150
+    }}}
+(marker-folds displays ___ for folded|closed lines) 
+{{{
+    =the text before the opening marker
+    --
+    vuman73-p151
+    }}}
+(Using numbered(!) fold-markers)
+{{{
+    = putting the foldlevel-num behind the marker
+        [[[1
+          ]]]1   (etc)
+    --
+    vuman73-p151
+    }}}
+(['At every numbered marker a fold at the specified level begins. This will make any fold at a higher level stop here.' (?????)  (+Tip:
+{{{
+    ='You can just use numbered start markers to define all folds.
+    += 'Only when you want to explicitly stop a fold before another starts you need to add an end marker.  (***(!!))
+    --
+    vuman73-p151
+    }}}
+    ----
+
+    ----
+'folding by syntax' (*(*))
+{{{
+    'In the syntax files it is possible to add syntax items that have the "fold" argument.' (= 'These define a fold region.'
+            (= syntax file must be written + not easy, but folding is automatic
+    --
+    vuman73-p151
+    }}}
+folding by expression (!)  [SSSSS(SSs)]
+{{{
+    = calling a user function to compute the fold level of a line
+    You can use this for text where something in the text indicates which lines belong together.
+    An example is an e−mail message where the quoted text is indicated by a ">" before the line.
+    :set foldmethod=expr
+    :set foldexpr=strlen(substitute(substitute(getline(v:lnum),'\\s','',\"g\"),'[^>].*','',''))
+        gets curr line
+        remove wh.space fr. line
+        remove all after leading '>'
+        strlen =num. of '>'s found
+      .
+    +try w. this text:
+    > quoted text he wrote
+    > quoted text he wrote
+    > > double quoted text I wrote
+    > > double quoted text I wrote
+      .
+    --
+    vuman73-p151,p152
+    }}}
+(+tip: testing and checking a|your folding-expression (=because '\' must be insert bef. space, ", and \ for the set-command etc
+{{{
+    inspect the current|active folding-expression
+        :set foldexpr
+    tinker w.|correct an actual expression
+        :set foldexpr= (+Tab)
+    --
+    vuman73-p152
+    }}}
+Tip: Managing very complicated folding expressions (**!!**)
+{{{
+    put it in a function + set 'foldexpr' to call that function
+        (+see |fold-expr| in the ref.man)
+    --
+    vuman73-p152
+    }}}
+([[manually setting options and folding for diff]])
+{{{
+    :setlocal diff foldmethod=diff scrollbind nowrap foldlevel=1
+    --
+    vuman73-p152
+    }}}
+(Tips/Rules ab. which fold-method to use) (!)
+{{{
+    If there is a syntax file w. folding for the lang. you are editing
+        = use that
+    if, want to write your own
+        = requires good knowl. of search-patterns
+    --
+    +'Folding w. expr.s can make folds in almost any structured text.
+    (+quite simple to specif, espec. if start and end of a fold can easily be recogn.
+        +if using expr-method, and folds are not exactly right
+        =one can switch to manual for deleting|adding folds manually (="embellishing")
+    --
+    vuman73-p152
+    }}}
+    ----
+
+
+Ch. 29 - Moving Through Programs (**!!)
+
+    ----
+generate tags (for jumping to name definitions in program files) **(!!)
+{{{
+    ctags *.c       #generate tags for all c-files in dir
+    (cscope
+      (ctags -R *.c ??)
+    --
+    vuman73-p154
+    }}}
+jump to def of name(eg. function) 'startlist'  =fr. a code file   [[=CHECKING WHAT A FUNCTION ACTUALLY DOES (!! =lifting the cover and inspecting its machinery|working parts) *****
+{{{
+    :tag startlist      (=function)
+      //
+    cursor on word 'startlist'      +c-]  (cgs-ö)
+    --
+    vuman73-p154
+    }}}
+show list of files+lines one has traveled through (=w. :tag | c-] )  (**)  [='find out where you are']
+{{{
+    :tags
+    --
+    vuman73-p155
+    }}}
+go back to prev. tag (=go back in ':tags'-list)
+{{{
+    c-t
+    3 c-t     =go back 3 steps (*)
+    --
+    vuman73-p155
+    }}}
+go all way forward in tags-list (=to top entry (="to deepest visited file")) || "go 3 steps in"
+{{{
+    :tag  (=like many c-])
+    :3tag
+    --
+    vuman73-p155
+    }}}
+visit tag 'tagname' in a split **(****)
+{{{
+    :stag tagname
+    c-w ]
+    5 c-w ]         =splitwin will be 5 lines high
+    --
+    vuman73-p155
+    }}}
+=if have progr.files in many (sub)dir.s (=creating tags-files + setting options to find|search them) ((??(/****))) ([SSSs])
+{{{
+    ='creating tags-files in all of them' (??)
+        +
+    :set tags=./tags,./../tags,./*/tags
+      .
+      same dir
+      parent dir
+      all subdirs
+      .
+    ++ 'when editing a file in "~/proj/src", you will not find the tags file "~/proj/sub/tags".  =
+    :set tags=~/proj/**/tags
+        = search a whole directory tree for tags files.  (*******)
+    --
+    vuman73-p155
+    }}}
+BETTER SOLUTION GENERATING TAGS FOR WHOLE PROJ. (=SUBDIR OF PROGR. FILES) ****(**)**  (+=ctags|cscope can be used for c, python etc etc + vimscript files (**))
+{{{
+    cd ~/proj
+    ctags -R .
+    :set tags=~/proj/tags
+    --
+    vuman73-p156
+    }}}
+    ----
+
+    ----
+inspecting tags w. :tag (=wh. defined in sever. places (**))
+{{{
+    :tag jumps to first def.
+      .
+    - jump to next w. :tnext
+          :tfirst
+          :[count]tprev
+          :[count]tnext
+          :tlast
+    - show list of all matching tags
+        = :tselect tagname  (+sel. match w. number)
+    --
+    vuman73-p156
+    }}}
+TIP: SEARCH|USE PATT. FOR :TAG, :TSEL (eg. tag-commands) ****(***!!)
+{{{
+    :tag /block     =the tag contains patt. 'block'
+    :tselect /^write_       =tag starts w. 'write_'
+        /_bfg$  (etc)
+    --
+    vuman73-p156,p157
+    }}}
+[(tip: using a tag-file as a tags browser (=eg. for browsing function-names in a progr.) (*(****)))]
+{{{
+    ctags --c-types=f -f functions *.c
+    gvim
+    :vsplit functions
+    :setlocal ts=99
+    :nnoremap <buffer> <CR> 0ye<C-W>w:tag <C-R>"<CR>
+      .
+    (+can then browse functions in f-list by just pressing Enter on the names(**(!)))
+    --
+    vuman73-p157
+    }}}
+(use ci wh. searching tags w. :tag etc) (!)
+{{{
+    :set ic
+    --
+    vuman73-p157
+    }}}
+option 'tagbsearch' ((**))
+{{{
+    = tells if the tags file is sorted or not
+      .
+    default is to assume it is (which makes searching a lot faster)
+    (but: that will not work if the tags file isn't sorted)
+    --
+    vuman73-p157
+    }}}
+opt. 'taglength' (!)
+{{{
+    can be used to tell vim num. of signif. char.s in a tag
+    --
+    vuman73-p157
+    }}}
+(((interfacing w. sniff+)))
+{{{
+    (=is a commercial version of cscope)
+    --
+    vuman73-p157
+    }}}
+    ----
+
+    ----
+Cscope (****)
+{{{
+    free program
+     - find where identifiers are declared
+     - find where identifiers are used (!!)**
+    --
+    vuman73-p157
+    }}}
+inspecting how to call a function (=looking in its def. for what arg.s to use when calling it):  =opening :tag w. the preview win.  (**)
+{{{
+    :ptag write_char
+        (='vim will open a win + jump to the tag + takes y. back to the orig. pos.
+        ( = can cont. typing w.out having to use c-w--commands ((?|!))
+    --
+    vuman73-p157,p158
+    }}}
+cursor on identifier in progr. text: show def. in preview win (**)  (=like jumping w. c-] )  (**)
+{{{
+    c-w }
+    --
+    vuman73-p158
+    }}}
+[script that autom. displays the text where word under cursor (=in progr. text) was defined (**!!)]  (SSSSs)
+{{{
+    |CursorHold-example|
+    --
+    vuman73-p158
+    }}}
+(close the preview-win)(*)
+{{{
+    :pclose
+    --
+    vuman73-p158
+    }}}
+tip: editing specif. file in the preview-win (eg. useful for header files) *
+{{{
+    :pedit defs.h
+    --
+    vuman73-p158
+    }}}
+find word in curr. + included files  + display the match in the preview win.  [+tip: useful when ___]
+{{{
+    :psearch popen
+        eg. useful when using library functions, for which y. do not have a tags file
+    + 'This(=example) will show the "stdio.h" file in the preview window, with the function prototype for popen():
+    --
+    vuman73-p158
+    }}}
+((specif. height of preview win. when opened))
+{{{
+    'previewheight'
+    --
+    vuman73-p158
+    }}}
+    ----
+
+moving through a program (*)   #note: '{' and '}' (in the program text) should preferrebly be in the first column(!!)
+
+    ----
+jump (=forw.) betw. items in a C(==only??) #ifdef|#else|#endif  (**(!))
+{{{
+    cursor on one of lines  +  %
+      .
+    [#  ]#   =  jump back | forw. to #line **
+      (+skips "#if" − "#endif" blocks encountered (??  (sss))
+    --
+    vuman73-p158
+    }}}
+Move to start|end of outer Block (= '{' / '}' for functions)
+{{{
+    [[
+     ][   = find end of a function-block
+    --
+    move 
+    --
+    vuman73-p159
+    }}}
+move to start|end of curr. (eg. inner|nested) {-block (**)
+{{{
+    [{
+     ]}
+    --
+    vuman73-p159
+    }}}
+to end of prev.|start of next function (**)  [+(!!) FIND GOOD SCHEME|MNEMONICS-TABLE FOR THE DIFF. ]-movem.commands(!!)]
+{{{
+    []
+     ]]
+    --
+    vuman73-p159
+    }}}
+spec. case using [{ and ]} for C++ and Java (*(!!))  (=functions, blocks, classes and methods)(!!)
+{{{
+    = outer {}-blocks are for classes
+    + next {}-level are for methods
+     .
+    =  use [m and ]m  to find prev.|next start of methods (**)
+    --
+    vuman73-p159
+    }}}
+Move to Enclosing Braces (=normal parentheses) ***(**)  (eg. inside constructs like  if (a == b && (c == d || (e > f)) && x > y)
+{{{
+    [(
+     ])
+    --
+    vuman73-p159
+    }}}
+move to start|end of /* */-style comments (**)
+{{{
+    [/
+     ]/
+    --
+    vuman73-p160
+    }}}
+    ----
+
+    ----
+editing C progr. + wonder if a var is declared as "int" or "unsigned" (**)  (=finding global identifiers)  [+advant. over using tags|the preview window **]
+{{{
+    [I
+      (+vim lists matching lines
+       = in curr. + all included (=including recurs.) files
+      .
+      .
+    - included files are searched (=unlike w. tags and preview-win)
+    - works w.out tags-file|if tags-file is out of date (**)
+    --
+    Tip/note: 'include'-opt. must specif. how files are included
+                =works well for C/C++
+    +Will have to tune this setting for other langs (!!)
+    --
+    vuman73-p160
+    }}}
+locating|listing included files (+= broken include-links) ****(**(!))
+{{{
+    :checkpath
+      .
+    (= gives:
+      .
+    --- Included files not found in path ---
+    <io.h> ~                    NOT FOUND
+    vim.h −−> ~                 =successful search down
+      <functions.h> ~           NOT FOUND
+      <clib/exec_protos.h> ~    NOT FOUND
+    --
+    vuman73-p160
+    }}}
+((('Vim is not a compiler. It does not recognize "#ifdef" statements.')))
+{{{
+      (????? (ssss))
+    --
+    vuman73-p161
+    }}}
+fix broken includes found w. checkpath (!)
+{{{
+    find dir. w. missing dep.s + add to 'path' (!!(*))
+      .
+    check makefile for -I--items like "-I/usr/local/X11"
+    :set path+=/usr/local/X11
+    --
+    vuman73-p160,p161
+    }}}
+fixing broken dep.s: make path find sever. subdirs, like "/usr/local/include" as well as "/usr/X11/include"  (!!!(**))
+{{{
+    :set path+=/usr/*/include
+    --
+    vuman73-p161
+    }}}
+setting path for whole nested tree of "include"-dirs  = like /projects/invent/include, /projects/invent/main/include, /projects/invent/main/os/include  (etc)  (**  [++NOTE: CONTRAST DIFF. "STAR-PATH"-EXAMPLES(=TO UNDERSTAND BETTER)(****)
+{{{
+    :set path+=/projects/invent/**/include
+    --
+    vuman73-p161
+    }}}
+(( show full include-list (=see which included files are actually(!!) found) ))
+{{{
+    :checkpath!
+    --
+    vuman73-p161
+    }}}
+    ----
+
+    ----
+find global id.fiers: =jump to match for [I || jump to 3rd match  (**(!))
+{{{
+    [ + Tab|c-i
+     3[ + tab|c-i
+      .
+    [[++jump back w. c-o]]
+    --
+    vuman73-p161
+    }}}
+[I (=find glob. identif.):  only list first match,  only list items on lines below cursor,  only list first item below cursor  [=="higher line nr than cursor line nr"] (**(*))
+{{{
+    [i      only list first match
+    ]I      only items w. higher line nr
+    ]i      only first item w. higher line nr
+    --
+    vuman73-p161
+    }}}
+find id.fs for macros (=set w. #define)  (*)
+{{{
+    [D
+        =searches included files
+      .
+    (+ [d ]D ]d )
+        =only first match, only lower, only first lower(=next)
+    --
+    vuman73-p161
+    }}}
+Change|Set so [D works for other langs than C|C++ (****)
+{{{
+    :set define=
+      (eg. tips for setting for JS etc (**(!)) )
+    --
+    vuman73-p161
+    }}}
+Find local identifiers (**)  (eg. variables in bash scripts || only in curr. function) **
+{{{
+    gD
+        (= finding var.s defined locally (eg. 'static' in C terms))
+    gd
+    --
+    vuman73-p162
+    }}}
+    ----
+
+editing|compiling programs
+
+    ----
+the purpose of vims quickfix commands (*)
+{{{
+    compile a program from w.in vim + go through errors generated and fix them
+    --
+    vuman73-p163
+    }}}
+example|typical make session
+{{{
+    :make (arguments)
+      :!make | &tee /tmp/vim134545.err
+    Enter   #vim goes to first error
+    :cnext
+    :cc     #display full of shortened error message
+    :clist  #get an overview of all e.messages
+    display all messages    :clist! (=not just w. linenr and filename)
+    :cprev
+      :cfirst
+      :clast
+      :cc 3     go to error nr 3
+    --
+    vuman73-p163,p164
+    }}}
+program to use for make ((+make to set for visual c++))  incl. setting options to the progr. (*)
+{{{
+    :set makeprg=nmake
+      :set makeprg=nmake\ −f\ project.mak
+    --
+    vuman73-p164
+    }}}
+set makeprogr. +use 'curr file' (=as main.o instead of main.c) ****(**!!)
+{{{
+    :set makeprg=make\ %:r.o
+      (+see more |filename-modifiers|)
+    --
+    vuman73-p164
+    }}}
+prev.|next error lists  (eg. file 1 = warning, file 2 = error, +fixing error, go back to warning, + forw. to latest list)
+{{{
+    :colder
+      (+ :clist  :cc (nr)
+    :cnewer
+    --
+    vuman73-p165
+    }}}
+'switching compilers'
+{{{
+    telling vim what format your compiler produces
+        = opt. 'errorformat'
+    +tip:
+    :compiler msvc  (as an example)
+        (=will find the vim script for the "msvc" compiler and set the appropriate options
+    --
+    vuman73-p165
+    }}}
+info ab. writing y. own compiler files (=vim script(*!))
+{{{
+    |write-compiler-plugin|
+    --
+    vuman73-p165
+    }}}
+[make-cmd error-file output redirection]  (="manually")
+{{{
+    'shell'
+    'makeef'
+    'shellpipe'
+     'shellquote'
+     'shellxquote'
+    --
+    +"if you can't get ':make' to redirect the file for you:
+        compile progr. in another win
+        + redirect the output into a file
+        + let vim read this file  :cfile efilename  (**)
+    --
+    vuman73-p165
+    }}}
+    ----
+
+    ----
+'indenting cstyle text' (****)  (=c, cpp, java, d)   [+how indenting can help you to find errors early]
+{{{
+    :set cindent shiftwidth=4
+      .
+    + if vim indents a block weirdly  =good indication some braces are missing (**!)
+        (+use % to find which start-brace is matched)
+    --
+    vuman73-p165,p166
+    }}}
+RE-INDENT CODE *******(***)
+{{{
+    the '=' operator ****
+      .
+    ==      reindent line
+    =a{     reindent cstyle code block
+    gg=G
+    --
+    vuman73-p166
+    }}}
+customize indentation-style
+{{{
+    'cinoptions'
+    eg.
+    :set cinoptions+={2
+        |cinoptions-values|
+    ((+ is switched on automatically with:
+            :filetype indent on
+        (=searches for an indentfile for the detected filetype
+      .
+            :filetype indent off   (=switch off autom. indenting)
+    --
+    vuman73-p166
+    }}}
+([avoiding the indentation for a certain file type])  (+IDEA (!!!!!!!))
+{{{
+      HM!!!! (=MAYBE CAN BE USEFUL W. gq FOR VT-FORMATTING OF TEXTFILES(=THE PARAGRAPHBLOCK STAIRSTEP PROBLEM (****(!!!)) ))
+      .
+    :let b:did_indent = 1
+    {directory}/indent/{filetype, eg. 'cpp'}.vim
+        #=write the file w. a specif. filename
+    --
+    vuman73-p167
+    }}}
+[show filetype detected for a certain file(**!)]  (+check dir. to put filetype-files (ie. vims fileinstall-directories(!))
+{{{
+    :set filetype
+      (ex.  filetype=help)
+    :set runtimepath
+      (eg. first dir is ~/.vim/
+            = ~/.vim/indent/help.vim
+    --
+    vuman73-p167
+    }}}
+info on writing own indent-files ((**(!)))
+{{{
+    |indent-expression|
+    --
+    vuman73-p167
+    }}}
+reasonable automatic formatting
+{{{
+      'autoindent'
+    'smartindent'
+        (==both useful wh. no indent file is avail.)
+    (+use c-t|c-d for quickly adding|removing extra indent wh. in insert-mode (**(!)) )
+    --
+    vuman73-p167
+    }}}
+([indent contents of a {-block ])  (**)
+{{{
+    >i{
+    --
+    vuman73-p168
+    }}}
+diff. betw. >i{ and >a{  (*****(!!))
+{{{
+    >i{     indents contents of {-block
+    >a{     indents contents + the '{'s
+     ***
+    --
+    vuman73-p168
+    }}}
+    ----
+
+(tabs and spaces)
+
+    ----
+'tabstop' is set to ___ by def.
+{{{
+    8
+      universal value =used by many other programs, and printers
+      = prob. leave this value alone
+    --
+    vuman73-p168
+    }}}
+explain the 'softtabstop' option (!)
+{{{
+    tells Vim to make the <Tab> key look and feel as if tabs were set at the value of 'softtabstop', but actually use a combination of tabs and spaces.
+    = 'When you start in the first column and press <Tab>, you get 4 spaces inserted in your text. The second time, Vim takes out the 4 spaces and puts in a <Tab> (thus taking you to column 8).'
+    --
+    vuman73-p169
+    }}}
+'If y. want absolutely no tabs in your file,'  ****(!!)
+{{{
+    :set expandtab
+      =pressing tab inserts a series of spaces
+      .
+    + tip: use tab|c-t for indent || c-d for deindent (=or lots of bs-presses)
+    --
+    vuman73-p169
+    }}}
+[recalculate existing tabs in a file to spaces (**)]
+{{{
+    :set expandtab
+    :%retab
+      .
+      .
+    but(!) tabs after first non-blank char. will be kept
+    to convert all(!!) tabs to spaces:
+      .
+    :%retab!
+    ((+note: will also change tabs inside strings(!)
+      /"[^"\t]*\t[^"]*"  #=check if there are tabs inside strings
+      (+if exists, replace w. "\t" 'to avoid trouble')
+    --
+    vuman73-p169,p170
+    }}}
+[[recalculate all spaces (that can be converted) to tabs]]
+{{{
+    :set noexpandtab
+    :%retab!
+    --
+    vuman73-p170
+    }}}
+format a c-style comment /* multi * line  s */  (*****)!!
+{{{
+    - cursor at start of comment + gq]/
+    - v-sel. comment + gq
+        (+vim will autom. handle inserting new stars + checking line lengths wh. editing | inserting lines w. 'o' (etc))
+      .
+      .
+    flags in 'formatoptions' for this to work:
+     r  insert star when pressing enter in ins-mode
+     o  insert star when pressing o in normal-mode
+     c  break comment text acc. to 'textwidth'
+    --
+    vuman73-p170
+    }}}
+defining what a comment looks like
+{{{
+    :set comments=://  (=cpp-comments)
+      .
+    =  {flags}:{text}
+    --
+    vuman73-p171
+    }}}
+the 'mail-comments' ex.  =two-part comments
+{{{
+    :set comments=n:>,n:!
+      (n-flag=nesting comments)
+    --
+    vuman73-p171
+    }}}
+c-style multiline (=3-part) comments
+{{{
+    :set comments=s1:/*,mb:*,ex:*/
+      s m e  start mid end  of a three piece comment
+      1  mid part has an offset of one space
+      b  a blank must follow the text
+      x  ("after auto-inserted star, typing a slash removes the extra space")
+            |format-comments|
+    --
+    vuman73-p171
+    }}}
+    ----
+
+
+ch. 31 - (exploiting the gui  [=extra features as compared to terminal vim])
+
+    ----
+open file browser (+sel.ed file will open in split) (*)
+{{{
+    :browse split
+    :browse split /etc    #start browser in /etc
+      .
+    +'can be prepended to cmds that opens a file
+    eg.  :browse edit
+      .
+    'browsedir'  (=where browse starts)
+      last (=def.)
+      buffer   =same as curr. buffer
+      current
+    --
+    vuman73-p173
+    }}}
+( :confirm edit foo.txt )
+{{{
+      (= can be prepended to most commands that edit files)
+    --
+    vuman73-p174
+    }}}
+tip: sel. menu-item w. keys (**(!))
+{{{
+    a-key  (!!)
+    --
+    vuman73-p175
+    }}}
+[option to tell vim how to handle alt-collisions (=for mappings and menu accel.keys)]
+{{{
+    'winaltkeys'
+        def. val: menu  (=accel.keys for menus are taken, and can't be mapped)
+        no  (=accel.keys are not used for menus, and can therefore be mapped)
+    --
+    vuman73-p175
+    }}}
+[Report curr. pixel.pos of vim-win on screen **]  +Move to another pos. **
+{{{
+    :winpos
+    :winpos 172 103  #note: can be small diff. because of the border added around the win by the winmanager
+    --
+    vuman73-p175
+    }}}
+get|set size of vim-win (*(****))
+{{{
+    calculated in char.s (=depends on the fontsize)
+      .
+    report curr. win-size:
+        :set lines columns
+    change win-size:
+        set one|both values to diff. values
+            :set lines=50
+            :set columns=80
+    --
+    set win-size for gvim
+        gvim -geometry {width}x{height}+{x_offset}+{y_offset}
+    eg.  gvim -geometry 80x25+100+300
+    --
+    vuman73-p175
+    }}}
+using gvim for editing an e-mail message(*)
+{{{
+    gvim disconnects fr. the shell it was started fr.
+    (= program trying to use gvim will think it has exited)
+    gvim -f file.txt  #f = foreground
+    --
+    vuman73-p175,p176
+    }}}
+(( start gvim fr. terminal vim)
+{{{
+    :gui
+      (+ -f, :gui -f, using both terminal and gvim fr. the same session (etc))
+    --
+    vuman73-p176
+    }}}
+gvimrc (!)
+{{{
+    = settings only to apply to gvim
+    eg.  :set lines=55  (=other size specifically for gvim)
+    --
+    vuman73-p176
+    }}}
+Location of gvimrc (+setting specific gvimrc | no gvimrc (!!))
+{{{
+    ~/.gvimrc" for Unix and "$VIM/_gvimrc" for MS-Win
+    :edit $MYGVIMRC
+      .
+      .
+    gvim -U specifrc ...
+    gvim -U NONE ...
+    --
+    vuman73-p176
+    }}}
+    ----
+
+
+Ch. 32 - The Undo Tree **(!!)
+
+    ----
+te: "branching (=in the undo tree)"
+{{{
+    undoing some changes + making a new change
+    = this creates a branch in the undo tree
+      .
+    (+illustration of branching (=the 'one two | me too'-example
+            p178
+    --
+    vuman73-p177
+    }}}
+go back|forward to save-state of file ****  (=eg. want to discard changes made to file since last save)
+{{{
+    :earlier 1f     #f = file
+      ( :e! )
+    :later 1f
+        #+"note! these commands work in time sequence(!!)"
+    --
+    vuman73-p177
+    }}}
+go back to 'branch two'(=the ex. other branch) in the undo tree  (=me too in ex.) [****(!!)]
+{{{
+    :undo 2  (# =does not exactly repres. 'branch 2' but change 2 (??)  (=see Figure(!!))
+    tip: ='useful if y. know what change y. want to jump to'
+    --
+    vuman73-p178
+    }}}
+go back|forw. in undo-time  (=last|prev. change, no matter on which undo-tree branch) [***********] **
+{{{
+    g- || g+
+    (="more useful than ':undo' if don't know exact nr of change want to jump to (***))
+    --
+    vuman73-p178
+    }}}
+inspect all branches in undo-tree (=show as list) ***(*)
+{{{
+    :undolist
+    --
+    vuman73-p179
+    }}}
+(ex  = two changes in list  (=16 secs, 5 secs ago):  go back to last change)  go forward in change-list
+{{{
+    :earlier 10s
+    :later 1m
+    --
+    vuman73-p179
+    }}}
+going back far in undo-history (**(!))
+{{{
+    :earlier 10m
+    :earlier 10h
+    :earlier 3d
+    :earlier 100d  #go back to beg. = give really big number
+    --
+    vuman73-p179
+    }}}
+([showing more detail fr. undo-hist || set info in undo-hist])
+{{{
+    undotree()
+    :echo undotree()  =see what info is returned by ___
+    --
+    vuman73-p179
+    }}}
+    ----
+
+
+ch. 40 - make new commands (*!)
+
+
+mappings (**)
+
+    ----
+(mapping-ex: insert "Date: " + datestring on last line  (*))
+{{{
+    :map <F2> GoDate: <Esc>:read !date<CR>kJ
+    :imap <F2> <CR>Date: <Esc>:read !date<CR>kJ
+    --
+    vuman73-p180
+    }}}
+te: the '<>'-style special notation for spec.keys  (+tip: why use (**))
+{{{
+    angle bracket notation
+      (makes mapping better readable + text can be copied easier)
+    --
+    vuman73-p180
+    }}}
+[tips on good keys for mappings (*(*))]
+{{{
+    |map-which-keys|
+    --
+    vuman73-p180
+    }}}
+:map-- and :noremap--mappings work in ___-modes [(***)]
+{{{
+    = normal, visual, op-pending
+    (= n- v- o- modes)
+        =  nmap  vmap  omap
+    --
+    vuman73-p180
+    }}}
+make mapping for insert- and cline-modes ***(!!*)
+{{{
+    :map!  ||  :noremap!
+      |
+    + imap  cmap  (=for just one of them)
+    --
+    vuman73-p181
+    }}}
+Explain o-maps (****)!!
+{{{
+    substitutes a key (eg. <F7>)
+    for a movem.(??) or text-block(=obj.)
+    --
+    vuman73-p181
+    }}}
+O-map Ex: =so d+f7 deletes a brace-block (eg. for a function) ****(!!)
+{{{
+    :omap <F7> a{
+      .
+        (=tip: espec. useful if '{' is diff. writing|reaching on the keyboard(!))
+    --
+    vuman73-p181
+    }}}
+    ----
+
+    ----
+List all curr. defined mappings (**(**!)!)
+{{{
+    :map
+      .
+      .
+    :vmap
+    :imap
+      (etc)
+      .
+      .
+    [+mappings listed w.out 'n', 'v' etc mode-specifiers:
+        =defined w. ':map'/':noremap' (=effective in n-, v- and o-modes) ***(*)
+    --
+    vuman73-p181
+    }}}
+[tip =extra usage for listing mappings w. ':map'] (*)
+{{{
+    = checking if <>-style keys have been properly recognized (=colored correctly)
+    --
+    vuman73-p181
+    }}}
+remapping (=the 'chaining "input date"'- and 'can still start Q-mode'-examples)(!)
+{{{
+    --
+    vuman73-p181...
+    }}}
+[Tip|Idea: =RECURSIVE MAPPINGS] (**(!)) (SSSS!)
+{{{
+    :map ,, :s/5.1/5.2/<CR>:wnext<CR>,,
+      # interrupts on error (or interrupt)
+    --
+    vuman73-p182
+    }}}
+delete mapping (!(****))
+{{{
+    :unmap  (+ :unmap!, :vunmap, (etc etc))
+    --
+    vuman73-p182
+    }}}
+Tip: Define mapping that works in n-mode + o-mode (****(!!))
+{{{
+    Define w. ':map' + delete fr. v-mode (!!):
+      .
+    :map <C-A> /---><CR>
+    :vunmap <C-A>
+    --
+    vuman73-p182
+    }}}
+    ----
+
+    ----
+Remove all(!!) mappings [!!!!(**)]
+{{{
+    :mapclear
+        :mapclear!
+        :vmapclear
+        :nmapclear
+        :omapclear
+        :imapclear
+        :cmapclear
+    --
+    vuman73-p182
+    }}}
+define a map that writes + runs cmd 2 (**(!))
+{{{
+    :map <F8> :write <Bar> !checkin %<CR>
+       (cannot use '|' inside the mapping, since used to separate two commands (=effectively ending the map-command))
+    --
+    vuman73-p182
+    }}}
+((( putting a comment directly after a map-command )))
+{{{
+    --
+    vuman73-p183
+    }}}
+Making mappings local to a script (?????? (*******) SSSS)
+{{{
+    the <script> keyword
+      |:map-<script>|
+    --
+    vuman73-p183
+    }}}
+Making mappings local to a specific Buffer (?? (!!*******) SSSS)
+{{{
+    the <buffer> keyword
+      |:map-<buffer>|
+    --
+    vuman73-p183
+    }}}
+making new mapping fail wh. it alr. exists ((!**) SS)
+{{{
+    the <unique>-keyword
+      |:map-<unique>|
+    --
+    vuman73-p183
+    }}}
+[make the f7-key do nothing(!)]
+{{{
+    :map <F7> <Nop>| map! <F7> <Nop>
+    --
+    vuman73-p183
+    }}}
+    ----
+
+    ----
+1
+{{{
+    
+    --
+    vuman73-p184
+    }}}
+2
+{{{
+    
+    --
+    vuman73-p184
+    }}}
+
+evince -p 183 ~/Empire/Doks/Comp/vim/vim_user_manual.pdf &
+
+
+180 - Make New Commands  maps, cline commands, aucommands
+  p184 --
+    defining new cline-commands
+        :command   (+=shortening, completion, 
+        (must start w. Cap.letter(!)
+        (list u-defined cmds)
+    ex:  :command -nargs=0 DeleteFirst 1delete  (=effectively runs  :1d )
+    the <args>-keyword,  <q-args>,  <f-args>
+        :command -nargs=* DoIt :call AFunction(<f-args>)
+        :DoIt a b c
+         (=executes :call AFunction("a", "b", "c") )
+    Line Ranges (*)
+    -count, -bang, -register, -complete(+type, -bar, -buffer,  <lt>
+        |user-commands|
+  p186 --
+    AutoCommands
+        eg. own function DateInsert(),  + :autocmd FileWritePre * call DateInsert()
+        :autocmd [group] {events} {file_pattern} [nested] {command}
+    Events (=like BufReadPost)
+        TODO: CHECK AND SORT REFLIST FOR AUCMD-EVENTS (****!!!!!!)
+            (= |autocmd-events| )
+    Ex.
+        :autocmd BufReadPost *.gsm set filetype=asm
+        :autocmd Filetype text source ~/.vim/abbrevs.vim
+        :autocmd BufNewFile *.[ch] 0read ~/skeletons/skel.c
+    file wildcards
+        *  ?  [abc]  a{b,c} (=matches ab and ac)
+        (+absol.|relative paths)
+    managing aucmds **
+        deleting, listing(**), Grouping
+        nested  (=triggering nested) *
+    trigger aucmds w. other au.cmds
+        expand()  +  <afile>
+    :autocmd BufReadPost *.chg execute "normal ONew entry:\<Esc>" |
+            \ 1read !date   [SSSS(!)]
+    When you want the autocommand do something complicated, which involves jumping around in the file and then returning to the original position,
+        |restore-position|
+    ('eventignore')
+190 - VimScripts (*!)
+        218 - filetype plugin
+        221 - compiler plugins
+          quickload plugins
+          +writing library scripts (*)
+225 - new menus  (=incl. popup menu)
+231 - using filetypes
+234 - make syntax highlighting
+245 - Select y. Language
+        249 - enter langtext + keymaps **
+ 251 - installing vim
+
+
+
+
+    __vim_pract
+
+    ----
+1
+{{{
+    
+    --
+    vimpract-p184
+    }}}
+
+

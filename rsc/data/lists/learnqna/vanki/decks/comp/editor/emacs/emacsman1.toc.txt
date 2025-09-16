@@ -1,0 +1,760 @@
+
+
+	----
+1
+{{{
+    
+	--
+	em_man1-p23
+	}}}
+
+detailed index (=pull up as separators for deck-blocks(!!**)) {{{
+
+. {{{
+
+1 The Organization of the Screen   p6
+2 Characters, Keys and Commands   p11
+3 Entering and Exiting Emacs   p14
+4 Basic Editing Commands   p16
+5 The Minibuffer   p26
+6 Running Commands by Name   p37
+7 Help   p39
+8 The Mark and the Region   p48
+9 Killing and Moving Text   p55
+10 Registers   p67
+11 Controlling the Display   p72
+12 Searching and Replacement   p96
+13 Commands for Fixing Typos   p121
+14 Keyboard Macros   p127
+15 File Handling   p135
+16 Using Multiple Buffers   p163
+17 Multiple Windows   p173
+18 Frames and Graphical Displays   p181
+19 International Character Set Support   p201
+20 Major and Minor Modes   p224
+21 Indentation   p230
+22 Commands for Human Languages   p234
+23 Editing Programs   p268
+24 Compiling and Testing Programs   p290
+25 Maintaining Large Programs   p311
+26 Abbrevs   p345
+27 Dired, the Directory Editor   p351
+28 The Calendar and the Diary   p369
+29 Sending Mail   p388
+30 Reading Mail with Rmail   p396
+31 Miscellaneous Commands   p416
+32 Emacs Lisp Packages   p453
+33 Customization   p459
+34 Dealing with Common Problems   p494
+
+A GNU GENERAL PUBLIC LICENSE   p512
+B GNU Free Documentation License   p523
+C Command Line Arguments for Emacs Invocation   p531
+D X Options and Resources   p547
+E Emacs 26 Antinews   p555
+F Emacs and macOS / GNUstep   p557
+G Emacs and Microsoft Windows/MS-DOS   p562
+
+The GNU Manifesto   p573
+Glossary   p581
+Key (Character) Index   p605
+Command and Function Index   p615
+Variable Index   p630
+Concept Index   p639
+Table of Contents
+Preface   p1
+Distribution  p2
+Acknowledgments   p2
+
+}}}
+
+Introduction   p5
+  The Organization of the Screen   p6
+1.1 Point   p6
+1.2 The Echo Area   p7
+1.3 The Mode Line   p8
+1.4 The Menu Bar   p9
+  Characters, Keys and Commands  p11
+2.1 Kinds of User Input   p11
+2.2 Keys   p11
+2.3 Keys and Commands   p12
+  Entering and Exiting Emacs   p14
+3.1 Entering Emacs   p14
+3.2 Exiting Emacs  p15
+  Basic Editing Commands   p16
+4.1 Inserting Text   p16
+4.2 Changing the Location of Point   p17
+4.3 Erasing Text   p19
+4.4 Undoing Changes   p20
+4.5 Files   p21
+4.6 Help   p21
+4.7 Blank Lines   p21
+4.8 Continuation Lines   p22
+4.9 Cursor Position Information   p22
+4.10 Numeric Arguments   p24
+4.11 Repeating a Command   p25
+  The Minibuffer   p26
+5.1 Using the Minibuffer   p26
+5.2 Minibuffers for File Names  p26
+5.3 Editing in the Minibuffer   p27
+5.4 Completion   p28
+ --
+5.4.1 Completion Example   p29
+5.4.2 Completion Commands   p29
+5.4.3 Completion Exit   p30
+5.4.4 How Completion Alternatives Are Chosen   p31
+5.4.5 Completion Options   p32
+5.5 Minibuffer History   p33
+5.6 Repeating Minibuffer Commands   p34
+5.7 Entering passwords   p35
+5.8 Yes or No Prompts   p36
+  Running Commands by Name   p37
+  Help   p39
+7.1 Documentation for a Key   p41
+7.2 Help by Command or Variable Name   p42
+7.3 Apropos   p42
+7.4 Help Mode Commands   p44
+7.5 Keyword Search for Packages   p45
+7.6 Help for International Language Support   p45
+7.7 Other Help Commands   p45
+7.8 Help Files   p46
+7.9 Help on Active Text and Tooltips   p47
+  The Mark and the Region   p48
+8.1 Setting the Mark   p48
+8.2 Commands to Mark Textual Objects   p50
+8.3 Operating on the Region   p50
+8.4 The Mark Ring   p51
+8.5 The Global Mark Ring   p52
+8.6 Shift Selection   p52
+8.7 Disabling Transient Mark Mode   p53
+  Killing and Moving Text   p55
+9.1 Deletion and Killing   p55
+9.1.1 Deletion   p55
+9.1.2 Killing by Lines   p56
+9.1.3 Other Kill Commands   p57
+9.1.4 Options for Killing  p58
+9.2 Yanking   p58
+9.2.1 The Kill Ring   p58
+9.2.2 Yanking Earlier Kills   p59
+9.2.3 Appending Kills   p59
+9.3 “Cut and Paste” Operations on Graphical Displays   p60
+9.3.1 Using the Clipboard   p60
+9.3.2 Cut and Paste with Other Window Applications   p61
+9.3.3 Secondary Selection  p62
+ --
+9.4 Accumulating Text   p62
+9.5 Rectangles   p63
+9.6 CUA Bindings   p65
+  Registers  p67
+10.1 Saving Positions in Registers   p67
+10.2 Saving Text in Registers   p68
+10.3 Saving Rectangles in Registers   p68
+10.4 Saving Window Configurations in Registers   p69
+10.5 Keeping Numbers in Registers   p69
+10.6 Keeping File Names in Registers   p69
+10.7 Keyboard Macro Registers  p70
+10.8 Bookmarks   p70 
+  Controlling the Display  p72
+11.1 Scrolling   p72
+11.2 Recentering   p73
+11.3 Automatic Scrolling   p74
+11.4 Horizontal Scrolling   p75
+11.5 Narrowing  p76
+11.6 View Mode   p77
+11.7 Follow Mode   p77
+11.8 Text Faces   p77
+11.9 Colors for Faces   p78
+11.9.1 Color Names   p78
+11.9.2 RGB Triplets   p79
+11.10 Standard Faces   p79
+11.11 Text Scale   p82
+11.12 Font Lock mode   p82
+11.13 Interactive Highlighting   p84
+11.14 Window Fringes   p85
+11.15 Displaying Boundaries   p86
+11.16 Useless Whitespace   p87
+11.17 Selective Display   p89
+11.18 Optional Mode Line Features   p89
+11.19 How Text Is Displayed   p91
+11.20 Displaying the Cursor   p92
+11.21 Line Truncation   p93
+11.22 Visual Line Mode   p93
+11.23 Customization of Display   p94
+  Searching and Replacement   p96
+12.1 Incremental Search   p96
+12.1.1 Basics of Incremental Search   p96
+12.1.2 Repeating Incremental Search   p97
+12.1.3 Isearch Yanking   p98
+12.1.4 Errors in Incremental Search   p99
+ --
+12.1.5 Special Input for Incremental Search   p99
+12.1.6 Not Exiting Incremental Search   p101
+12.1.7 Searching the Minibuffer  p102
+12.2 Nonincremental Search   p102
+12.3 Word Search   p103
+12.4 Symbol Search   p104
+12.5 Regular Expression Search   p105
+12.6 Syntax of Regular Expressions   p106
+12.7 Backslash in Regular Expressions   p109
+12.8 Regular Expression Example   p111
+12.9 Lax Matching During Searching   p111
+12.10 Replacement Commands   p113
+12.10.1 Unconditional Replacement   p113
+12.10.2 Regexp Replacement   p113
+12.10.3 Replace Commands and Lax Matches   p114
+12.10.4 Query Replace   p115
+12.11 Other Search-and-Loop Commands   p117
+12.12 Tailoring Search to Your Needs   p119
+  Commands for Fixing Typos   p121
+13.1 Undo   p121
+13.2 Transposing Text  p122
+13.3 Case Conversion   p123
+13.4 Checking and Correcting Spelling   p124
+  Keyboard Macros  p127 
+14.1 Basic Use   p127
+14.2 The Keyboard Macro Ring   p129
+14.3 The Keyboard Macro Counter   p129
+14.4 Executing Macros with Variations   p131
+14.5 Naming and Saving Keyboard Macros   p132
+14.6 Editing a Keyboard Macro   p133
+14.7 Stepwise Editing a Keyboard Macro   p133
+  File Handling   p135
+15.1 File Names   p135
+15.2 Visiting Files   p136
+15.3 Saving Files   p139
+15.3.1 Commands for Saving Files   p139
+15.3.2 Backup Files   p141
+15.3.2.1 Single or Numbered Backups   p141
+15.3.2.2 Automatic Deletion of Backups   p142
+15.3.2.3 Copying vs. Renaming   p142
+15.3.3 Customizing Saving of Files   p143
+15.3.4 Protection against Simultaneous Editing   p144
+15.3.5 Shadowing Files   p145
+15.3.6 Updating Time Stamps Automatically   p146
+ --
+15.4 Reverting a Buffer  p146
+15.5 Auto Revert: Keeping buffers automatically up-to-date   p146
+15.6 Auto-Saving: Protection Against Disasters   p147
+15.6.1 Auto-Save Files   p148
+15.6.2 Controlling Auto-Saving   p149
+15.6.3 Recovering Data from Auto-Saves   p149
+15.7 File Name Aliases   p150
+15.8 File Directories   p150
+15.9 Comparing Files   p151
+15.10 Diff Mode   p152
+15.11 Copying, Naming and Renaming Files   p155
+15.12 Miscellaneous File Operations   p155
+15.13 Accessing Compressed Files   p156
+15.14 File Archives   p157
+15.15 Remote Files   p157
+15.16 Quoted File Names  p159
+15.17 File Name Cache   p159
+15.18 Convenience Features for Finding Files   p160
+15.19 Viewing Image Files   p160
+15.20 Filesets   p161
+  Using Multiple Buffers   p163
+16.1 Creating and Selecting Buffers   p163
+16.2 Listing Existing Buffers   p165
+16.3 Miscellaneous Buffer Operations   p165
+16.4 Killing Buffers   p166
+16.5 Operating on Several Buffers   p167
+16.6 Indirect Buffers   p169
+16.7 Convenience Features and Customization of Buffer Handling . . 170
+16.7.1 Making Buffer Names Unique   p170
+16.7.2 Fast minibuffer selection   p171
+16.7.3 Customizing Buffer Menus   p171
+  Multiple Windows   p173
+17.1 Concepts of Emacs Windows   p173
+17.2 Splitting Windows   p173
+17.3 Using Other Windows   p174
+17.4 Displaying in Another Window   p175
+17.5 Deleting and Resizing Windows   p176
+17.6 Displaying a Buffer in a Window   p177
+17.6.1 How display-buffer works   p177
+17.6.2 Displaying non-editable buffers  p179
+17.7 Convenience Features for Window Handling   p179
+17.8 Window Tab Line   p180
+ --
+  Frames and Graphical Displays  p181
+18.1 Mouse Commands for Editing   p181
+18.2 Mouse Commands for Words and Lines   p183
+18.3 Following References with the Mouse   p184
+18.4 Mouse Clicks for Menus   p184
+18.5 Mode Line Mouse Commands   p185
+18.6 Creating Frames   p186
+18.7 Frame Commands   p186
+18.8 Fonts   p187
+18.9 Speedbar Frames   p190
+18.10 Multiple Displays   p191
+18.11 Frame Parameters  p192
+18.12 Scroll Bars   p192
+18.13 Window Dividers  p194
+18.14 Drag and Drop   p194
+18.15 Menu Bars   p195
+18.16 Tool Bars   p195
+18.17 Tab Bars  p195
+18.18 Using Dialog Boxes   p198
+18.19 Tooltips  p198
+18.20 Mouse Avoidance   p199
+18.21 Non-Window Terminals   p200
+18.22 Using a Mouse in Text Terminals   p200
+  International Character Set Support  p201
+19.1 Introduction to International Character Sets   p201
+19.2 Language Environments   p203
+19.3 Input Methods   p205
+19.4 Selecting an Input Method   p206
+19.5 Coding Systems   p208
+19.6 Recognizing Coding Systems   p209
+19.7 Specifying a File's Coding System   p211
+19.8 Choosing Coding Systems for Output   p211
+19.9 Specifying a Coding System for File Text   p212
+19.10 Coding Systems for Interprocess Communication   p213
+19.11 Coding Systems for File Names  p214
+19.12 Coding Systems for Terminal I/O   p215
+19.13 Fontsets   p216
+19.14 Defining Fontsets   p217
+19.15 Modifying Fontsets   p219
+19.16 Undisplayable Characters   p220
+19.17 Unibyte Editing Mode   p220
+19.18 Charsets   p221
+19.19 Bidirectional Editing   p222
+ --
+  Major and Minor Modes   p224
+20.1 Major Modes  p224
+20.2 Minor Modes   p225
+20.3 Choosing File Modes   p227
+  Indentation  p230 
+21.1 Indentation Commands  p230
+21.2 Tab Stops   p231
+21.3 Tabs vs. Spaces   p232
+21.4 Convenience Features for Indentation   p232
+  Commands for Human Languages   p234
+22.1 Words   p234
+22.2 Sentences   p235
+22.3 Paragraphs   p236
+22.4 Pages   p237
+22.5 Quotation Marks   p238
+22.6 Filling Text   p239
+22.6.1 Auto Fill Mode   p239
+22.6.2 Explicit Fill Commands   p240
+22.6.3 The Fill Prefix   p241
+22.6.4 Adaptive Filling   p242
+22.7 Case Conversion Commands   p243
+22.8 Text Mode   p244
+22.9 Outline Mode   p244
+22.9.1 Format of Outlines   p245
+22.9.2 Outline Motion Commands   p246
+22.9.3 Outline Visibility Commands   p246
+22.9.4 Viewing One Outline in Multiple Views   p248
+22.9.5 Folding Editing  p248
+22.10 Org Mode  p249
+22.10.1 Org as an organizer   p250
+22.10.2 Org as an authoring system   p250
+22.11 TEX Mode   p251
+22.11.1 TEX Editing Commands   p251
+22.11.2 LATEX Editing Commands   p252
+22.11.3 TEX Printing Commands   p253
+22.11.4 TEX Mode Miscellany   p255
+22.12 SGML and HTML Modes   p255
+22.13 Nroff Mode   p257
+22.14 Enriched Text   p257
+22.14.1 Enriched Mode   p257
+22.14.2 Hard and Soft Newlines   p258
+22.14.3 Editing Format Information   p258
+22.14.4 Faces in Enriched Text   p259
+22.14.5 Indentation in Enriched Text   p260
+22.14.6 Justification in Enriched Text   p260
+ --
+22.14.7 Setting Other Text Properties   p261
+22.15 Editing Text-based Tables   p261
+22.15.1 What is a Text-based Table?   p261
+22.15.2 Creating a Table   p262
+22.15.3 Table Recognition   p262
+22.15.4 Commands for Table Cells   p263
+22.15.5 Cell Justification   p264
+22.15.6 Table Rows and Columns  p264
+22.15.7 Converting Between Plain Text and Tables   p264
+22.15.8 Table Miscellany   p265
+22.16 Two-Column Editing   p266
+  Editing Programs   p268
+23.1 Major Modes for Programming Languages   p268
+23.2 Top-Level Definitions, or Defuns   p269
+23.2.1 Left Margin Convention   p269
+23.2.2 Moving by Defuns   p269
+23.2.3 Imenu   p270
+23.2.4 Which Function Mode   p270
+23.3 Indentation for Programs   p271
+23.3.1 Basic Program Indentation Commands   p271
+23.3.2 Indenting Several Lines   p271
+23.3.3 Customizing Lisp Indentation  p272
+23.3.4 Commands for C Indentation   p272
+23.3.5 Customizing C Indentation   p273
+23.4 Commands for Editing with Parentheses   p274
+23.4.1 Expressions with Balanced Parentheses   p274
+23.4.2 Moving in the Parenthesis Structure   p275
+23.4.3 Matching Parentheses   p276
+23.5 Manipulating Comments   p277
+23.5.1 Comment Commands  p278
+23.5.2 Multiple Lines of Comments   p279
+23.5.3 Options Controlling Comments   p279
+23.6 Documentation Lookup   p280
+23.6.1 Info Documentation Lookup   p280
+23.6.2 Man Page Lookup   p281
+23.6.3 Emacs Lisp Documentation Lookup  p282
+23.7 Hideshow minor mode   p282
+23.8 Completion for Symbol Names   p283
+23.9 MixedCase Words   p283
+23.10 Semantic   p284
+23.11 Other Features Useful for Editing Programs   p284
+23.12 C and Related Modes   p285
+23.12.1 C Mode Motion Commands   p285
+23.12.2 Electric C Characters   p286
+23.12.3 Hungry Delete Feature in C   p286
+23.12.4 Other Commands for C Mode   p287
+23.13 Asm Mode   p288
+ --
+  Compiling and Testing Programs   p290
+24.1 Running Compilations under Emacs   p290
+24.2 Compilation Mode   p291
+24.3 Subshells for Compilation   p293
+24.4 Searching with Grep under Emacs   p294
+24.5 Finding Syntax Errors On The Fly   p296
+24.6 Running Debuggers Under Emacs   p296
+24.6.1 Starting GUD   p296
+24.6.2 Debugger Operation   p297
+24.6.3 Commands of GUD   p298
+24.6.4 GUD Customization   p300
+24.6.5 GDB Graphical Interface   p300
+24.6.5.1 GDB User Interface Layout   p301
+24.6.5.2 Source Buffers   p301
+24.6.5.3 Breakpoints Buffer   p302
+24.6.5.4 Threads Buffer   p302
+24.6.5.5 Stack Buffer   p303
+24.6.5.6 Other GDB Buffers   p304
+24.6.5.7 Watch Expressions   p304
+24.6.5.8 Multithreaded Debugging   p305
+24.7 Executing Lisp Expressions   p306
+24.8 Libraries of Lisp Code for Emacs   p307
+24.9 Evaluating Emacs Lisp Expressions   p308
+24.10 Lisp Interaction Buffers   p310
+24.11 Running an External Lisp   p310
+  Maintaining Large Programs   p311
+25.1 Version Control   p311
+25.1.1 Introduction to Version Control   p311
+25.1.1.1 Understanding the Problems it Addresses   p312
+25.1.1.2 Supported Version Control Systems   p312
+25.1.1.3 Concepts of Version Control   p313
+25.1.1.4 Merge-based vs Lock-based Version Control   p313
+25.1.1.5 Changeset-based vs File-based Version Control   p314
+25.1.1.6 Decentralized vs Centralized Repositories   p314
+25.1.1.7 Types of Log File   p314
+25.1.2 Version Control and the Mode Line   p315
+25.1.3 Basic Editing under Version Control   p315
+25.1.3.1 Basic Version Control with Merging   p316
+25.1.3.2 Basic Version Control with Locking   p317
+25.1.3.3 Advanced Control in C-x v v   p317
+25.1.4 Features of the Log Entry Buffer  p318
+25.1.5 Registering a File for Version Control   p318
+25.1.6 Examining And Comparing Old Revisions   p319
+25.1.7 VC Change Log   p321
+25.1.8 Undoing Version Control Actions   p323
+25.1.9 Ignore Version Control Files   p323
+25.1.10 VC Directory Mode   p324
+ --
+25.1.10.1 The VC Directory Buffer   p324
+25.1.10.2 VC Directory Commands   p324
+25.1.11 Version Control Branches   p326
+25.1.11.1 Switching between Branches   p326
+25.1.11.2 Pulling/Pushing Changes into/from a Branch   p327
+25.1.11.3 Merging Branches   p328
+25.1.11.4 Creating New Branches   p329
+25.2 Working with Projects   p329
+25.3 Change Logs   p330
+25.3.1 Change Log Commands   p330
+25.3.2 Format of ChangeLog   p331
+25.4 Find Identifier References   p332
+25.4.1 Find Identifiers   p333
+25.4.1.1 Looking Up Identifiers   p333
+25.4.1.2 Commands Available in the *xref* Buffer   p334
+25.4.1.3 Searching and Replacing with Identifiers   p335
+25.4.1.4 Identifier Inquiries   p336
+25.4.2 Tags Tables   p337
+25.4.2.1 Source File Tag Syntax   p337
+25.4.2.2 Creating Tags Tables   p339
+25.4.2.3 Etags Regexps   p341
+25.4.3 Selecting a Tags Table   p342
+25.5 Emacs Development Environment   p343
+  Abbrevs   p345
+26.1 Abbrev Concepts   p345
+26.2 Defining Abbrevs   p345
+26.3 Controlling Abbrev Expansion   p346
+26.4 Examining and Editing Abbrevs   p347
+26.5 Saving Abbrevs   p348
+26.6 Dynamic Abbrev Expansion   p349
+26.7 Customizing Dynamic Abbreviation   p350
+  Dired, the Directory Editor  p351
+27.1 Entering Dired   p351
+27.2 Navigation in the Dired Buffer  p352
+27.3 Deleting Files with Dired   p352
+27.4 Flagging Many Files at Once   p353
+27.5 Visiting Files in Dired   p354
+27.6 Dired Marks vs. Flags   p355
+27.7 Operating on Files   p357
+27.8 Shell Commands in Dired   p360
+27.9 Transforming File Names in Dired   p361
+27.10 File Comparison with Dired   p362
+27.11 Subdirectories in Dired   p362
+27.12 Moving Over Subdirectories   p363
+27.13 Hiding Subdirectories   p363
+ --
+27.14 Updating the Dired Buffer   p364
+27.15 Dired and find   p365
+27.16 Editing the Dired Buffer   p365
+27.17 Viewing Image Thumbnails in Dired   p366
+27.18 Other Dired Features  p367
+  The Calendar and the Diary   p369
+28.1 Movement in the Calendar   p369
+28.1.1 Motion by Standard Lengths of Time   p369
+28.1.2 Beginning or End of Week, Month or Year   p370
+28.1.3 Specified Dates   p370
+28.2 Scrolling in the Calendar   p371
+28.3 Counting Days   p371
+28.4 Miscellaneous Calendar Commands   p371
+28.5 Writing Calendar Files   p372
+28.6 Holidays   p373
+28.7 Times of Sunrise and Sunset   p374
+28.8 Phases of the Moon   p375
+28.9 Conversion To and From Other Calendars   p376
+28.9.1 Supported Calendar Systems   p376
+28.9.2 Converting To Other Calendars   p377
+28.9.3 Converting From Other Calendars   p378
+28.10 The Diary   p379
+28.10.1 The Diary File   p379
+28.10.2 Displaying the Diary   p380
+28.10.3 Date Formats   p381
+28.10.4 Commands to Add to the Diary   p382
+28.10.5 Special Diary Entries   p382
+28.10.6 Appointments   p384
+28.10.7 Importing and Exporting Diary Entries   p385
+28.11 Daylight Saving Time   p385
+28.12 Summing Time Intervals   p386
+  Sending Mail   p388
+29.1 The Format of the Mail Buffer  p388
+29.2 Mail Header Fields   p389
+29.3 Mail Aliases   p390
+29.4 Mail Commands  p391
+29.4.1 Mail Sending   p391
+29.4.2 Mail Header Editing   p392
+29.4.3 Citing Mail  p393
+29.4.4 Mail Miscellany   p393
+29.5 Mail Signature   p394
+29.6 Mail Amusements   p395
+29.7 Mail-Composition Methods   p395
+ --
+  Reading Mail with Rmail   p396
+30.1 Basic Concepts of Rmail   p396
+30.2 Scrolling Within a Message   p396
+30.3 Moving Among Messages   p397
+30.4 Deleting Messages   p398
+30.5 Rmail Files and Inboxes   p399
+30.6 Multiple Rmail Files   p400
+30.7 Copying Messages Out to Files   p401
+30.8 Labels   p403
+30.9 Rmail Attributes   p404
+30.10 Sending Replies   p404
+30.11 Summaries   p406
+30.11.1 Making Summaries   p406
+30.11.2 Editing in Summaries   p407
+30.12 Sorting the Rmail File   p409
+30.13 Display of Messages   p410
+30.14 Rmail and Coding Systems   p411
+30.15 Editing Within a Message   p412
+30.16 Digest Messages   p412
+30.17 Reading Rot13 Messages   p413
+30.18 movemail program   p413
+30.19 Retrieving Mail from Remote Mailboxes   p414
+30.20 Retrieving Mail from Local Mailboxes in Various Formats  p415
+  Miscellaneous Commands   p416
+31.1 Email and Usenet News with Gnus   p416
+31.1.1 Gnus Buffers   p416
+31.1.2 When Gnus Starts Up   p416
+31.1.3 Using the Gnus Group Buffer   p417
+31.1.4 Using the Gnus Summary Buffer   p417
+31.2 Host Security   p418
+31.3 Network Security   p418
+31.4 Document Viewing   p420
+31.4.1 DocView Navigation   p421
+31.4.2 DocView Searching   p422
+31.4.3 DocView Slicing   p422
+31.4.4 DocView Conversion   p422
+31.5 Running Shell Commands from Emacs  p423
+31.5.1 Single Shell Commands   p423
+31.5.2 Interactive Subshell   p425
+31.5.3 Shell Mode   p426
+31.5.4 Shell Prompts   p428
+31.5.5 Shell Command History   p428
+31.5.5.1 Shell History Ring   p429
+31.5.5.2 Shell History Copying   p430
+31.5.5.3 Shell History References   p430
+31.5.6 Directory Tracking   p431
+31.5.7 Shell Mode Options   p431
+ --
+31.5.8 Emacs Terminal Emulator   p432
+31.5.9 Term Mode   p433
+31.5.10 Remote Host Shell   p433
+31.5.11 Serial Terminal   p434
+31.6 Using Emacs as a Server   p434
+31.6.1 TCP Emacs server   p435
+31.6.2 Invoking emacsclient   p436
+31.6.3 emacsclient Options   p437
+31.7 Printing Hard Copies   p440
+31.7.1 PostScript Hardcopy   p441
+31.7.2 Variables for PostScript Hardcopy   p442
+31.7.3 Printing Package   p443
+31.8 Sorting Text   p443
+31.9 Editing Binary Files   p445
+31.10 Saving Emacs Sessions   p446
+31.11 Recursive Editing Levels   p448
+31.12 Hyperlinking and Web Navigation Features   p449
+31.12.1 Web Browsing with EWW  p449
+31.12.2 Embedded WebKit Widgets   p449
+31.12.3 Following URLs   p449
+31.12.4 Activating URLs   p449
+31.12.5 Finding Files and URLs at Point   p450
+31.13 Games and Other Amusements   p451
+  Emacs Lisp Packages   p453
+32.1 The Package Menu Buffer  p453
+32.2 Package Statuses  p455
+32.3 Package Installation  p455
+32.4 Package Files and Directory Layout  p457
+  Customization   p459
+33.1 Easy Customization Interface   p459
+33.1.1 Customization Groups   p459
+33.1.2 Browsing and Searching for Settings   p460
+33.1.3 Changing a Variable   p460
+33.1.4 Saving Customizations   p463
+33.1.5 Customizing Faces  p463
+33.1.6 Customizing Specific Items   p464
+33.1.7 Custom Themes   p465
+33.1.8 Creating Custom Themes   p467
+33.2 Variables   p467
+33.2.1 Examining and Setting Variables   p468
+33.2.2 Hooks   p469
+33.2.3 Local Variables   p470
+33.2.4 Local Variables in Files   p472
+33.2.4.1 Specifying File Variables   p472
+33.2.4.2 Safety of File Variables   p474
+ --
+33.2.5 Per-Directory Local Variables   p475
+33.2.6 Per-Connection Local Variables   p476
+33.3 Customizing Key Bindings   p477
+33.3.1 Keymaps   p477
+33.3.2 Prefix Keymaps   p478
+33.3.3 Local Keymaps   p479
+33.3.4 Minibuffer Keymaps   p479
+33.3.5 Changing Key Bindings Interactively   p479
+33.3.6 Rebinding Keys in Your Init File   p480
+33.3.7 Modifier Keys   p482
+33.3.8 Rebinding Function Keys   p482
+33.3.9 Named ASCII Control Characters   p483
+33.3.10 Rebinding Mouse Buttons   p484
+33.3.11 Disabling Commands   p486
+33.4 The Emacs Initialization File   p486
+33.4.1 Init File Syntax   p487
+33.4.2 Init File Examples   p488
+33.4.3 Terminal-specific Initialization   p490
+33.4.4 How Emacs Finds Your Init File   p491
+33.4.5 Non-ASCII Characters in Init Files   p491
+33.4.6 The Early Init File   p492
+33.5 Keeping Persistent Authentication Information   p492
+  Dealing with Common Problems   p494
+34.1 Quitting and Aborting   p494
+34.2 Dealing with Emacs Trouble   p495
+34.2.1 If DEL Fails to Delete   p495
+34.2.2 Recursive Editing Levels   p496
+34.2.3 Garbage on the Screen   p496
+34.2.4 Garbage in the Text   p497
+34.2.5 Running out of Memory   p497
+34.2.6 When Emacs Crashes   p497
+34.2.7 Recovery After a Crash   p498
+34.2.8 Emergency Escape   p499
+34.2.9 Long Lines   p499
+34.3 Reporting Bugs   p500
+34.3.1 Reading Existing Bug Reports and Known Problems   p500
+34.3.2 When Is There a Bug  p501
+34.3.3 Understanding Bug Reporting   p502
+34.3.4 Checklist for Bug Reports   p502
+34.3.5 Sending Patches for GNU Emacs   p507
+34.4 Contributing to Emacs Development  p509
+34.4.1 Coding Standards   p510
+34.4.2 Copyright Assignment   p511
+34.5 How To Get Help with GNU Emacs   p511
+ --
+Appendix A GNU GENERAL PUBLIC LICENSE   p512
+Appendix B GNU Free Documentation License  p523
+Appendix C Command Line Arguments
+for Emacs Invocation   p531
+C.1 Action Arguments   p531
+C.2 Initial Options   p533
+C.3 Command Argument Example   p536
+C.4 Environment Variables   p536
+C.4.1 General Variables   p536
+C.4.2 Miscellaneous Variables   p539
+C.4.3 The MS-Windows System Registry   p540
+C.5 Specifying the Display Name   p540
+C.6 Font Specification Options   p541
+C.7 Window Color Options  p541
+C.8 Options for Window Size and Position  p543
+C.9 Internal and Outer Borders   p544
+C.10 Frame Titles   p545
+C.11 Icons   p545
+C.12 Other Display Options   p546
+Appendix D X Options and Resources   p547
+D.1 X Resources   p547
+D.2 Table of X Resources for Emacs   p548
+D.3 GTK+ resources   p549
+D.3.1 GTK+ Resource Basics   p550
+D.3.2 GTK+ widget names   p551
+D.3.3 GTK+ Widget Names in Emacs   p551
+D.3.4 GTK+ styles   p552
+Appendix E Emacs 26 Antinews   p555
+Appendix F Emacs and macOS / GNUstep  p557
+F.1 Basic Emacs usage under macOS and GNUstep  p557
+F.1.1 Grabbing environment variables   p557
+F.2 Mac / GNUstep Customization  p558
+F.2.1 Modifier keys   p558
+F.2.2 Frame Variables   p558
+F.2.3 macOS Trackpad/Mousewheel Variables   p559
+F.2.4 Font Panel   p559
+F.3 Windowing System Events under macOS / GNUstep   p559
+F.4 GNUstep Support   p561
+ --
+Appendix G Emacs and Microsoft Windows/MS-DOS  p562
+G.1 How to Start Emacs on MS-Windows   p562
+G.2 Text Files and Binary Files   p563
+G.3 File Names on MS-Windows   p564
+G.4 Emulation of ls on MS-Windows   p565
+G.5 HOME and Startup Directories on MS-Windows   p565
+G.6 Keyboard Usage on MS-Windows   p566
+G.7 Mouse Usage on MS-Windows   p567
+G.8 Subprocesses on Windows 9X/ME and Windows NT/2K/XP/Vista/7/8/10   p567
+G.9 Printing and MS-Windows   p568
+G.10 Specifying Fonts on MS-Windows   p570
+G.11 Miscellaneous Windows-specific features  p572
+The GNU Manifesto  p573
+What's GNU? Gnu's Not Unix!   p573
+Why I Must Write GNU   p574
+Why GNU Will Be Compatible with Unix   p574
+How GNU Will Be Available  p574
+Why Many Other Programmers Want to Help   p574
+How You Can Contribute   p575
+Why All Computer Users Will Benefit   p575
+Some Easily Rebutted Objections to GNU's Goals   p576
+Glossary   p581
+Key (Character) Index   p605
+Command and Function Index   p615
+Variable Index   p630
+Concept Index   p639
+
+}}}
+

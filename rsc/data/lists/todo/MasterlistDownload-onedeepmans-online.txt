@@ -1,0 +1,1345 @@
+vim:fdm=marker:
+___start
+
+@h
+  "uyiW:!echo u >> dump.txt
+@o
+  :!lynx -dump u >> dump.txtdd{P}
+-------
+@a
+  @h@ou
+. {{{
+    @o:
+      "uyiW:exe ":!echo \"" . escape(@u, '"') . "\" >> dump.txt":!lynx -dump u >> dump.txt
+
+    lynx -dump -crawl "https://www.address.org/pagename.html" >> dump.txt
+}}}
+
+
+https://github.com/cforonda/books/blob/master/Computer%20Science/CS%20200%20-%20Intro%20to%20Computer%20Organization/Linda%20Null%20and%20Julia%20Lobur%20-%20The%20Essentials%20of%20Computer%20Organization%20and%20Architecture.pdf  [____]
+
+
+https://www.jetbrains.com/help/resharper/Cookbook.html  ____
+https://www.jetbrains.com/help/rider/Analyzing_Coverage_NET.html
+        https://www.jetbrains.com/help/resharper/sdk/welcome.html
+    (( https://www.jetbrains.com/help/rider/Templates__Applying_Templates__Creating_Source_Code_Using_Live_Templates.html x3 ))
+https://www.jetbrains.com/help/rider/Managing_Projects_and_Solutions.html
+  https://www.jetbrains.com/help/rider/Code_Analysis__Code_Inspections.html
+
+  https://vim-latex.sourceforge.net/documentation/latex-suite-quickstart/
+  https://vim-latex.sourceforge.net/documentation/latex-suite/latex-completion.html
+        [ https://vim-latex.sourceforge.net/ ]
+
+
+https://www.mayakeniny.com/language-list/  #record audio-samples (Audacity)
+
+https://en.wikisource.org/wiki/Diary_of_ten_years_eventful_life_of_an_early_settler_in_Western_Australia_and_also_A_descriptive_vocabulary_of_the_language_of_the_aborigines/A_descriptive_vocabulary_of_the_language_in_common_use_amongst_the_aborigines_of_Western_Australia
+https://www.noongarboodjar.com.au/wp-content/uploads/2017/
+
+
+___start
+*REDO(=WEBLINKS)*  FSHARP FUN AND PROFIT {{{
+https://www.gitbook.com/book/swlaschin/fsharpforfunandprofit
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/site-contents/
+____
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/why-use-fsharp/
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/installing-and-using/
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/fsharp-in-60-seconds.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/learning-fsharp/
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/troubleshooting-fsharp/
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/low-risk-ways-to-use-fsharp-at-work.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/low-risk-ways-to-use-fsharp-at-work.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/low-risk-ways-to-use-fsharp-at-work-2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/low-risk-ways-to-use-fsharp-at-work-3.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/low-risk-ways-to-use-fsharp-at-work-4.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/low-risk-ways-to-use-fsharp-at-work-5.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/why-use-fsharp.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/why-use-fsharp-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/fsharp-in-60-seconds.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/fvsc-sum-of-squares.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/fvsc-quicksort.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/fvsc-download.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/key-concepts.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/conciseness-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/conciseness-type-inference.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/conciseness-type-definitions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/conciseness-extracting-boilerplate.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/conciseness-functions-as-building-blocks.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/conciseness-pattern-matching.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/convenience-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/convenience-types.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/convenience-functions-as-interfaces.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/convenience-partial-application.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/convenience-active-patterns.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/correctness-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/correctness-immutability.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/correctness-exhaustive-pattern-matching.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/correctness-type-checking.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-for-correctness.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/concurrency-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/concurrency-async-and-parallel.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/concurrency-actor-model.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/concurrency-reactive.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/completeness-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/completeness-seamless-dotnet-interop.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/completeness-anything-csharp-can-do.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/why-use-fsharp-conclusion.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/thinking-functionally.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/thinking-functionally-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/mathematical-functions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/function-values-and-simple-values.html
+####
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/how-types-work-with-functions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/currying.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/partial-application.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/function-composition.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/defining-functions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/function-signatures.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/organizing-functions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/type-extensions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/stack-based-calculator.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/expressions-and-syntax.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/expressions-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/expressions-vs-statements.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/understanding-fsharp-expressions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/let-use-do.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/fsharp-syntax.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/naming-conventions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/control-flow-expressions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/exceptions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/match-expression.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/printf.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/pattern-matching-command-line.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/roman-numerals.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/understanding-fsharp-types.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/types-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/overview-of-types-in-fsharp.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/type-abbreviations.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/tuples.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/records.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/discriminated-unions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/the-option-type.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/enum-types.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/cli-types.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/units-of-measure.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/type-inference.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/list-module-functions.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/object-oriented-programming-in-fsharp.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/object-oriented-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/classes.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/inheritance.html
+  __
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/interfaces.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/object-expressions.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/computation-expressions.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-continuations.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-bind.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-wrapper-types.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-wrapper-types-part2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-builder-part1.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-builder-part2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-builder-part3.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-builder-part4.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-builder-part5.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/computation-expressions-builder-part6.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recipe-part3.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/dependency-cycles.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/cyclic-dependencies.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/removing-cyclic-dependencies.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/cycles-and-modularity-in-the-wild.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/porting-from-csharp.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/porting-to-csharp-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/porting-to-csharp-getting-started.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/designing-with-types.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-with-types-intro.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-with-types-single-case-dus.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-with-types-making-illegal-states-unrepresentable.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-with-types-discovering-the-domain.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-with-types-representing-states.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-with-types-more-semantic-types.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-with-types-non-strings.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-with-types-conclusion.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/type-size-and-design.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/13-ways-of-looking-at-a-turtle.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/13-ways-of-looking-at-a-turtle-2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/13-ways-of-looking-at-a-turtle-3.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recipe-part1.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recipe-part2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/railway-oriented-programming-carbonated.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/understanding-monoids.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/monoids-without-tears.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/monoids-part2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/monoids-part3.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/understanding-parser-combinators.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/understanding-parser-combinators.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/understanding-parser-combinators-2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/understanding-parser-combinators-3.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/understanding-parser-combinators-4.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/handling-state.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/monadster.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/monadster-2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/monadster-3.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/map-and-bind-and-apply-oh-my.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/elevated-world.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/elevated-world-2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/elevated-world-3.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/elevated-world-4.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/elevated-world-5.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/elevated-world-6.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/elevated-world-7.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/recursive-types-and-folds.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recursive-types-and-folds.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recursive-types-and-folds-1b.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recursive-types-and-folds-2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recursive-types-and-folds-2b.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recursive-types-and-folds-3.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recursive-types-and-folds-3b.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/series/a-functional-approach-to-authorization.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/capability-based-security.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/capability-based-security-2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/capability-based-security-3.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/property-based-testing.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/property-based-testing-2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/designing-for-correctness.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/stack-based-calculator.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/pattern-matching-command-line.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/roman-numerals.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/roman-numeral-kata.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/calculator-design.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/calculator-implementation.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/calculator-complete-v1.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/calculator-complete-v2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/enterprise-tic-tac-toe.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/enterprise-tic-tac-toe-2.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/understanding-parser-combinators-4.html
+
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/ten-reasons-not-to-use-a-functional-programming-language.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/why-i-wont-be-writing-a-monad-tutorial.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/is-your-language-unreasonable.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/no-uml-diagrams.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/introvert-vs-extrovert.html
+https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/typesafe-performance-with-compiler-directives.html
+
+}}}
+Audacity
+                      https://kivy.org/doc/stable/
+  https://docs.lmms.io/user-manual/getting-started/installation
+https://suave.io/
+MongoDB Compass ____ ____
+    https://www.mongodb.com/docs/compass/current/install/
+    https://www.mongodb.com/docs/atlas/
+      https://www.mongodb.com/try/download/atlascli
+https://github.com/fsprojects/FsUnit
+Figma {{{
+https://designcode.io/figma-handbook
+____
+
+https://designcode.io/figma-handbook-figma-design-tool
+https://designcode.io/figma-handbook-figma-interface
+https://designcode.io/figma-handbook-basic-tools
+https://designcode.io/figma-handbook-position-properties
+https://designcode.io/figma-handbook-color-styles
+https://designcode.io/figma-handbook-masks
+https://designcode.io/figma-handbook-dark-mode
+https://designcode.io/figma-handbook-gradients
+https://designcode.io/figma-handbook-creating-backgrounds
+https://designcode.io/figma-handbook-blending-modes
+https://designcode.io/figma-handbook-alignment-properties
+https://designcode.io/figma-handbook-union-corner-radius
+https://designcode.io/figma-handbook-shadow-and-blur-effects
+https://designcode.io/figma-handbook-using-images
+https://designcode.io/figma-handbook-fill-stroke-and-advanced-stroke
+https://designcode.io/figma-handbook-text-properties-and-styles
+https://designcode.io/figma-handbook-fonts
+https://designcode.io/figma-handbook-accessibility
+https://designcode.io/figma-handbook-responsive-design
+https://designcode.io/figma-handbook-constraints
+https://designcode.io/figma-handbook-layout-grid
+https://designcode.io/figma-handbook-auto-layout
+https://designcode.io/figma-handbook-vector-mode
+https://designcode.io/figma-handbook-vector-network
+https://designcode.io/figma-handbook-perspective-mockups
+https://designcode.io/figma-handbook-3d-mockups
+https://designcode.io/figma-handbook-using-illustrations
+https://designcode.io/figma-handbook-booleans
+https://designcode.io/figma-handbook-icon-design
+https://designcode.io/figma-handbook-components
+https://designcode.io/figma-handbook-team-library
+https://designcode.io/figma-handbook-creating-confetti
+https://designcode.io/figma-handbook-looper-shape-duplication
+https://designcode.io/figma-handbook-apple-watch-ring
+https://designcode.io/figma-handbook-exporting-assets
+https://designcode.io/figma-handbook-exporting-css-codes
+https://designcode.io/figma-handbook-designing-with-data
+https://designcode.io/figma-handbook-prototyping
+https://designcode.io/figma-handbook-version-history
+https://designcode.io/figma-handbook-multiplayer-commenting-and-previews
+https://designcode.io/figma-handbook-variants
+https://designcode.io/figma-handbook-interactive-components
+https://designcode.io/figma-handbook-uikits
+https://designcode.io/figma-handbook-plugins
+https://designcode.io/figma-handbook-blob-background
+https://designcode.io/figma-handbook-wave-background
+https://designcode.io/figma-handbook-3d-shape
+https://designcode.io/figma-handbook-parallax-prototyping-figma
+https://designcode.io/figma-handbook-3d-ui-perspective-design
+https://designcode.io/figma-handbook-glass-icon
+https://designcode.io/figma-handbook-water-effect-animation
+https://designcode.io/figma-handbook-animation-with-letters
+https://designcode.io/figma-handbook-futuristic-line-animation
+https://designcode.io/figma-handbook-import-illustrator
+https://designcode.io/figma-handbook-illustration
+https://designcode.io/figma-handbook-removebg-plugin
+https://designcode.io/figma-handbook-circular-lines
+https://designcode.io/figma-handbook-publish-community
+https://designcode.io/figma-handbook-image-tracer-plugin
+https://designcode.io/figma-handbook-scrolling-content
+https://designcode.io/figma-handbook-hug-content-resizing
+https://designcode.io/figma-handbook-advanced-layout
+https://designcode.io/figma-handbook-circular-text
+https://designcode.io/figma-handbook-mirror-prototype
+https://designcode.io/figma-handbook-sticky-nav
+https://designcode.io/figma-handbook-video-prototype
+https://designcode.io/figma-handbook-mesh-gradients
+https://designcode.io/figma-handbook-sections
+https://designcode.io/figma-handbook-unsplash
+https://designcode.io/figma-handbook-angular-gradient
+https://designcode.io/figma-handbook-radial-gradient
+https://designcode.io/figma-handbook-after-delay-animation
+https://designcode.io/figma-handbook-ui-wireframe
+https://designcode.io/figma-handbook-lottie-animations
+https://designcode.io/figma-handbook-signup-screen
+https://designcode.io/figma-handbook-content-generator
+https://designcode.io/figma-handbook-design-lint
+https://designcode.io/figma-handbook-slice-tool
+https://designcode.io/figma-handbook-adaptive-layout-breakpoints
+https://designcode.io/figma-handbook-chart-designs
+https://designcode.io/figma-handbook-design-modals
+https://designcode.io/figma-handbook-batch-rename
+https://designcode.io/figma-handbook-onboarding-screen
+https://designcode.io/figma-handbook-animated-button-prototype
+https://designcode.io/figma-handbook-smart-selection
+https://designcode.io/figma-handbook-component-properties
+https://designcode.io/figma-handbook-redlines
+https://designcode.io/figma-handbook-interactive-calendar
+https://designcode.io/figma-handbook-measure-distance
+https://designcode.io/figma-handbook-variable-fonts
+https://designcode.io/figma-handbook-ai-plugins
+https://designcode.io/figma-handbook-text-animation
+https://designcode.io/figma-handbook-resize-layers
+https://designcode.io/figma-handbook-view-layer-outlines
+https://designcode.io/figma-handbook-prototype-connections
+https://designcode.io/figma-handbook-export-svg
+https://designcode.io/figma-handbook-3d-illustrations
+https://designcode.io/figma-handbook-ui-placeholder
+https://designcode.io/figma-handbook-dark-mode-switch
+https://designcode.io/figma-handbook-dev-mode
+https://designcode.io/figma-handbook-dark-mode-variables
+https://designcode.io/figma-handbook-figma-to-html
+
+}}}
+https://jeroenjanssens.com/dsatcl/  #data science at command-line
+https://docs.aws.amazon.com/neptune/  ____ ____
+https://pillow.readthedocs.io/en/stable/reference/Image.html
+----
+https://wiki.archlinux.org/title/General_recommendations  ____
+        https://www.puppet.com/docs/puppet/7/puppet_language.html
+----
+material ui(??)
+
+----
+    Terraform {{{
+
+    https://developer.hashicorp.com/terraform/install
+    https://developer.hashicorp.com/terraform/intro
+    https://developer.hashicorp.com/terraform/tutorials
+    https://developer.hashicorp.com/terraform/docs
+    https://developer.hashicorp.com/terraform/language
+    https://developer.hashicorp.com/terraform/cli
+    https://developer.hashicorp.com/terraform/cloud-docs
+    https://developer.hashicorp.com/terraform/enterprise
+    https://developer.hashicorp.com/terraform/cdktf
+    https://developer.hashicorp.com/terraform/language/providers
+    https://developer.hashicorp.com/terraform/plugin
+    https://developer.hashicorp.com/terraform/registry
+    https://developer.hashicorp.com/terraform/docs/partnerships
+    }}}
+DONE: lilypond scheme {{{
+
+https://scheme-book.readthedocs.io/en/latest/scheme/quoting/unquoting.html
+____
+
+https://scheme-book.readthedocs.io/en/latest/index.html
+https://scheme-book.readthedocs.io/en/latest/introduction/lilyponds-scheme.html
+https://scheme-book.readthedocs.io/en/latest/introduction/language.html
+https://scheme-book.readthedocs.io/en/latest/introduction/integrating.html
+https://scheme-book.readthedocs.io/en/latest/introduction/advanced.html
+https://scheme-book.readthedocs.io/en/latest/scheme/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/expressions.html
+https://scheme-book.readthedocs.io/en/latest/scheme/including.html
+https://scheme-book.readthedocs.io/en/latest/scheme/music-function-primer.html
+https://scheme-book.readthedocs.io/en/latest/scheme/concepts.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/numbers.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/booleans.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/strings.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/symbols.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/compound.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/lists-and-pairs/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/lists-and-pairs/creating-pairs.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/lists-and-pairs/accessing-pairs.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/lists-and-pairs/creating-lists.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/lists-and-pairs/structure.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/lists-and-pairs/accessing-lists.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/lists-and-pairs/list-pair-comparison.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/vectors.html
+https://scheme-book.readthedocs.io/en/latest/scheme/data-types/custom.html
+https://scheme-book.readthedocs.io/en/latest/scheme/equality.html
+https://scheme-book.readthedocs.io/en/latest/scheme/quoting/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/quoting/preventing-evaluation.html
+https://scheme-book.readthedocs.io/en/latest/scheme/quoting/lists-and-pairs.html
+https://scheme-book.readthedocs.io/en/latest/scheme/quoting/unquoting.html
+https://scheme-book.readthedocs.io/en/latest/scheme/binding/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/binding/top-level.html
+https://scheme-book.readthedocs.io/en/latest/scheme/binding/local.html
+https://scheme-book.readthedocs.io/en/latest/scheme/binding/let.html
+https://scheme-book.readthedocs.io/en/latest/scheme/binding/paren-errors.html
+https://scheme-book.readthedocs.io/en/latest/scheme/binding/letstar.html
+https://scheme-book.readthedocs.io/en/latest/scheme/conditionals/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/conditionals/if.html
+https://scheme-book.readthedocs.io/en/latest/scheme/conditionals/cond.html
+https://scheme-book.readthedocs.io/en/latest/scheme/conditionals/case.html
+https://scheme-book.readthedocs.io/en/latest/scheme/conditionals/logical.html
+https://scheme-book.readthedocs.io/en/latest/scheme/lists/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/lists/accessing.html
+https://scheme-book.readthedocs.io/en/latest/scheme/lists/extend-reverse.html
+https://scheme-book.readthedocs.io/en/latest/scheme/lists/filtering.html
+https://scheme-book.readthedocs.io/en/latest/scheme/lists/modifying.html
+https://scheme-book.readthedocs.io/en/latest/scheme/lists/iteration.html
+https://scheme-book.readthedocs.io/en/latest/scheme/alists/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/alists/retrieving.html
+https://scheme-book.readthedocs.io/en/latest/scheme/alists/modifying.html
+https://scheme-book.readthedocs.io/en/latest/scheme/loops/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/loops/map.html
+https://scheme-book.readthedocs.io/en/latest/scheme/loops/for-each.html
+https://scheme-book.readthedocs.io/en/latest/scheme/loops/recursion.html
+https://scheme-book.readthedocs.io/en/latest/scheme/loops/do-while.html
+https://scheme-book.readthedocs.io/en/latest/scheme/procedures/index.html
+https://scheme-book.readthedocs.io/en/latest/scheme/procedures/lambda.html
+https://scheme-book.readthedocs.io/en/latest/scheme/procedures/lambda-signatures.html
+https://scheme-book.readthedocs.io/en/latest/scheme/procedures/binding.html
+https://scheme-book.readthedocs.io/en/latest/scheme/procedures/predicates.html
+https://scheme-book.readthedocs.io/en/latest/scheme/procedures/parameter-types.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/index.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/functions/switch-languages.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/functions/music-scheme-void.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/functions/interface.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/functions/markup-functions.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/functions/list-music-expressions.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/old-stuff/functions/index.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/old-stuff/functions/01.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/old-stuff/functions/02.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/old-stuff/functions/03.html
+https://scheme-book.readthedocs.io/en/latest/lilypond/old-stuff/functions/04.html
+https://scheme-book.readthedocs.io/en/latest/internals/index.html
+https://scheme-book.readthedocs.io/en/latest/internals/built-in/index.html
+https://scheme-book.readthedocs.io/en/latest/internals/overriding-stencils.html
+https://scheme-book.readthedocs.io/en/latest/internals/engravers/index.html
+https://scheme-book.readthedocs.io/en/latest/internals/scheme-music/index.html
+}}}
+    https://www.jetbrains.com/help/rider/Refactorings__Index.html
+    https://clojure.org/reference/macros [__ __]
+https://www.clojerl.io/  [____]
+    https://github.com/clojerl/clojerl/tree/master/scripts/examples
+https://www.learnreframe.com/  Clojure
+  https://day8.github.io/re-frame/
+
+                                https://github.com/dlang-community/Pegged/wiki/Pegged-Tutorial  ____
+                                    https://github.com/eBay/tsv-utils
+        https://fossil-scm.org/home/doc/trunk/www/permutedindex.html
+----
+https://github.com/yt-dlp/yt-dlp/wiki
+https://www.promptingguide.ai/  ____
+    https://pub.dev/packages/fpdart
+----
+https://python-pptx.readthedocs.io/en/latest/user/presentations.html
+Lldb {{{
+https://llvm.org/docs/  [__ __]
+https://llvm.org/docs/FAQ.html
+    https://lldb.llvm.org/
+
+}}}
+yarn {{{
+https://yarnpkg.com/getting-started
+
+}}}
+
+KIVY [PYTHON]
+    https://docs.micropython.org/en/latest/  __
+PipeWire
+  https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home
+  https://wiki.archlinux.org/title/PipeWire
+  https://docs.pipewire.org/
+
+
+    Qt DesignStudio
+    ----
+    https://wiki.archlinux.org/title/Installation_guide
+
+    https://docs.jupyter.org/en/latest/  [____]
+https://github.com/JarrodCTaylor/vim-plugin-starter-kit/wiki
+----
+  https://docs.flutter.dev/cookbook
+----
+https://github.com/purescript/documentation
+
+https://sass-lang.com/documentation/  __
+https://docs.nunit.org/articles/nunit/intro.html  https://docs.nunit.org/articles/nunit/writing-tests/attributes.html
+https://tinkerpop.apache.org/docs/current/reference/ (=Gremlin etc)
+https://zig.guide/
+. yet another scheme tutorial {{{
+
+https://www.shido.info/lisp/idx_scm_e.html
+https://www.shido.info/lisp/scheme1_e.html
+https://www.shido.info/lisp/scheme2_e.html
+https://www.shido.info/lisp/scheme3_e.html
+https://www.shido.info/lisp/scheme4_e.html
+https://www.shido.info/lisp/scheme5_e.html
+https://www.shido.info/lisp/scheme6_e.html
+https://www.shido.info/lisp/scheme7_e.html
+https://www.shido.info/lisp/scheme8_e.html
+https://www.shido.info/lisp/scheme9_e.html
+https://www.shido.info/lisp/scheme_asg_e.html
+https://www.shido.info/lisp/scheme_cs_e.html
+https://www.shido.info/lisp/scheme_sym_e.html
+https://www.shido.info/lisp/scheme_ah_e.html
+https://www.shido.info/lisp/scheme_vec_e.html
+https://www.shido.info/lisp/scheme_syntax_e.html
+https://www.shido.info/lisp/scheme_cc_e.html
+https://www.shido.info/lisp/scheme_lazy_e.html
+https://www.shido.info/lisp/scheme_amb_e.html
+}}}
+
+    https://www.cliki.net/clim  ((__))
+  https://www.sphinx-doc.org/en/master/  ____
+            [ https://www.jetbrains.com/guide/tags/sphinx/ ]
+    https://wiki.greasespot.net/Main_Page
+Xunit {{{
+https://xunit.net/#documentation
+}}}
+https://jitsi.github.io/handbook/docs/category/user-guide/
+  https://jitsi.github.io/handbook/docs/category/developer-guide/
+  https://jitsi.github.io/handbook/docs/devops-guide/
+https://docs.racket-lang.org/scribble/index.html {{{
+}}}
+https://moodledev.io/general/development/gettingstarted {{{
+
+https://moodledev.io/general/development/gettingstarted
+https://moodledev.io/general/development/policies
+https://moodledev.io/general/development/policies/accessibility
+https://moodledev.io/general/development/policies/backporting
+https://moodledev.io/general/development/policies/codingstyle
+https://moodledev.io/general/development/policies/codingstyle/frankenstyle
+https://moodledev.io/general/development/policies/codingstyle/sql
+https://moodledev.io/general/development/policies/codingstyle-moodleapp
+https://moodledev.io/general/development/policies/component-communication
+https://moodledev.io/general/development/policies/deprecation
+https://moodledev.io/general/development/policies/deprecation/icon-deprecation
+https://moodledev.io/general/development/policies/deprecation/scss-deprecation
+https://moodledev.io/general/development/policies/designing-usable-forms
+https://moodledev.io/general/development/policies/naming
+https://moodledev.io/general/development/policies/php
+https://moodledev.io/general/development/policies/security
+https://moodledev.io/general/development/policies/security/unauthenticated-access
+https://moodledev.io/general/development/policies/security/unauthorised-access
+https://moodledev.io/general/development/policies/security/crosssite-request-forgery
+https://moodledev.io/general/development/policies/security/crosssite-scripting
+https://moodledev.io/general/development/policies/security/sql-injection
+https://moodledev.io/general/development/policies/security/commandline-injection
+https://moodledev.io/general/development/policies/security/dataloss
+https://moodledev.io/general/development/policies/security/info-leakage
+https://moodledev.io/general/development/policies/security/configinfo-leakage
+https://moodledev.io/general/development/policies/security/session-fixation
+https://moodledev.io/general/development/policies/security/dos
+https://moodledev.io/general/development/policies/security/bruteforcing-login
+https://moodledev.io/general/development/policies/security/insecure-config
+https://moodledev.io/general/development/policies/security/bufferoverruns
+https://moodledev.io/general/development/policies/security/socialengineering
+https://moodledev.io/general/development/tools
+https://moodledev.io/general/development/tools/behat
+https://moodledev.io/general/development/tools/behat/running
+https://moodledev.io/general/development/tools/behat/writing
+https://moodledev.io/general/development/tools/behat/browsers
+https://moodledev.io/general/development/tools/behat/browsers/supportedbrowsers
+https://moodledev.io/general/development/tools/cibot
+https://moodledev.io/general/development/tools/component-library
+https://moodledev.io/general/development/tools/composer
+https://moodledev.io/general/development/tools/exceptiontracing
+https://moodledev.io/general/development/tools/generator
+https://moodledev.io/general/development/tools/gha
+https://moodledev.io/general/development/tools/gitpod
+https://moodledev.io/general/development/tools/mdk
+https://moodledev.io/general/development/tools/metadata
+https://moodledev.io/general/development/tools/nodejs
+https://moodledev.io/general/development/tools/phpcs
+https://moodledev.io/general/development/tools/phpunit
+https://moodledev.io/general/development/tools/xmldb
+https://moodledev.io/general/development/abc
+https://moodledev.io/general/development/abc/comments
+https://moodledev.io/general/development/abc/faq
+https://moodledev.io/general/development/abc/fixups
+https://moodledev.io/general/development/upgradenotes
+}}}
+https://www.autohotkey.com/docs/v2/
+----
+https://docs.openindiana.org/books/about/#book-categories
+
+https://leafo.net/lapis/reference.html
+
+DONE: Fable {{{
+https://fable.io/docs/index.html
+https://fable.io/docs/introduction/dotnet-users-read-this.html
+https://fable.io/docs/introduction/js-users-read-this.html
+----
+https://fable.io/docs/getting-started/setup.html
+https://fable.io/docs/getting-started/your-first-fable-project.html
+https://fable.io/docs/getting-started/javascript.html
+https://fable.io/docs/getting-started/typescript.html
+https://fable.io/docs/getting-started/python.html
+https://fable.io/docs/getting-started/rust.html
+https://fable.io/docs/getting-started/cli.html
+https://fable.io/docs/your-fable-project/use-a-fable-library.html
+https://fable.io/docs/your-fable-project/author-a-fable-library.html
+https://fable.io/docs/new-to-fsharp/learning-the-language.html
+https://fable.io/docs/new-to-fsharp/let-keyword.html
+https://fable.io/docs/new-to-fsharp/project-file.html
+https://fable.io/docs/javascript/build-and-run.html
+https://fable.io/docs/javascript/features.html
+https://fable.io/docs/javascript/compatibility.html
+https://fable.io/docs/typescript/build-and-run.html
+https://fable.io/docs/typescript/features.html
+https://fable.io/docs/typescript/compatibility.html
+https://fable.io/docs/python/build-and-run.html
+https://fable.io/docs/python/features.html
+https://fable.io/docs/python/compatibility.html
+https://fable.io/docs/miscellaneous/official-samples.html
+https://fable.io/docs/miscellaneous/fable-in-videos.html
+}}}
+*DONE*  Fabulous {{{
+https://docs.fabulous.dev/
+https://docs.fabulous.dev/get-started
+https://docs.fabulous.dev/basics
+https://docs.fabulous.dev/basics/mvu
+https://docs.fabulous.dev/basics/application-state
+https://docs.fabulous.dev/basics/application-state/commands
+https://docs.fabulous.dev/basics/application-state/state-validation
+https://docs.fabulous.dev/basics/user-interface
+https://docs.fabulous.dev/basics/user-interface/widgets-and-modifiers
+https://docs.fabulous.dev/basics/user-interface/styling
+https://docs.fabulous.dev/basics/user-interface/animations
+https://docs.fabulous.dev/basics/testing
+https://docs.fabulous.dev/basics/error-monitoring
+https://docs.fabulous.dev/advanced
+https://docs.fabulous.dev/advanced/saving-and-restoring-app-state
+https://docs.fabulous.dev/advanced/performance-optimization
+https://docs.fabulous.dev/advanced/composing-larger-applications
+https://docs.fabulous.dev/advanced/composing-larger-applications/splitting-into-independent-mvu-states
+https://docs.fabulous.dev/advanced/composing-larger-applications/integrating-commands
+https://docs.fabulous.dev/advanced/composing-larger-applications/communicating-between-mvu-states
+https://docs.fabulous.dev/architecture
+https://docs.fabulous.dev/architecture/attribute-definitions
+https://docs.fabulous.dev/architecture/virtualized-collections
+https://docs.fabulous.dev/architecture/using-nightly-builds
+https://docs.fabulous.dev/xamarinforms/get-started
+https://docs.fabulous.dev/xamarinforms/samples-and-tutorials
+https://docs.fabulous.dev/xamarinforms/samples-and-tutorials/videos
+https://docs.fabulous.dev/xamarinforms/user-interface
+https://docs.fabulous.dev/xamarinforms/user-interface/custom-controls
+https://docs.fabulous.dev/xamarinforms/user-interface/effects
+https://docs.fabulous.dev/xamarinforms/user-interface/navigation
+https://docs.fabulous.dev/xamarinforms/user-interface/pop-ups
+https://docs.fabulous.dev/xamarinforms/extensions
+https://docs.fabulous.dev/xamarinforms/extensions/ffimageloading
+https://docs.fabulous.dev/xamarinforms/extensions/oxyplot
+https://docs.fabulous.dev/xamarinforms/extensions/skiasharp
+https://docs.fabulous.dev/xamarinforms/extensions/videomanager
+https://docs.fabulous.dev/xamarinforms/extensions/xamarin.forms.maps
+https://docs.fabulous.dev/maui/get-started
+https://docs.fabulous.dev/maui/samples-and-tutorials
+https://docs.fabulous.dev/maui/samples-and-tutorials/samples
+https://docs.fabulous.dev/maui/advanced
+https://docs.fabulous.dev/maui/advanced/optimizing-performances
+https://docs.fabulous.dev/maui/advanced/optimizing-performances/profiling-fabulous-apps
+https://docs.fabulous.dev/avalonia/get-started
+
+}}}
+*DONE*  kawa {{{
+  https://www.gnu.org/software/kawa/Manual-License.html    24.2. License for the Kawa manual
+  https://www.gnu.org/software/kawa/Running.html    Usage Reference (running Kawa)
+  https://www.gnu.org/software/kawa/Options.html    6.1. Command-line arguments
+  https://www.gnu.org/software/kawa/Scripts.html    6.2. Running Command Scripts
+  https://www.gnu.org/software/kawa/REPL-Console.html    6.3. The REPL (read-eval-print-loop) console
+  https://www.gnu.org/software/kawa/Exiting.html    6.4. Exiting Kawa
+  https://www.gnu.org/software/kawa/Compiling.html    6.5. Compiling to byte-code
+  https://www.gnu.org/software/kawa/Syntax.html    7. Syntax
+  https://www.gnu.org/software/kawa/Syntax-notation.html    7.1. Notation
+  https://www.gnu.org/software/kawa/Lexical-and-datum-syntax.html    7.2. Lexical and datum syntax
+  https://www.gnu.org/software/kawa/Lexical-syntax.html    7.3. Lexical syntax
+  https://www.gnu.org/software/kawa/Datum-syntax.html    7.4. Datum syntax
+  https://www.gnu.org/software/kawa/Hash-prefixed-forms.html    7.5. Hash-prefixed forms
+  https://www.gnu.org/software/kawa/Primitive-expression-syntax.html    7.6. Primitive expression syntax
+  https://www.gnu.org/software/kawa/Colon-notation.html    7.7. Property access using colon notation
+  https://www.gnu.org/software/kawa/Bodies.html    7.8. Programs and Bodies
+  https://www.gnu.org/software/kawa/Syntax-and-conditional-compilation.html    7.9. Syntax and conditional compilation
+  https://www.gnu.org/software/kawa/Macros.html    7.10. Macros
+  https://www.gnu.org/software/kawa/Named-quasi-literals.html    7.11. Named quasi-literals
+  https://www.gnu.org/software/kawa/Program-structure.html    8. Program structure
+  https://www.gnu.org/software/kawa/Boolean-values.html    8.1. Boolean values
+  https://www.gnu.org/software/kawa/Conditionals.html    8.2. Conditionals
+  https://www.gnu.org/software/kawa/Variables-and-Patterns.html#Patterns    8.3.1. Patterns
+  https://www.gnu.org/software/kawa/Definitions.html    8.4. Definitions
+  https://www.gnu.org/software/kawa/Local-binding-constructs.html    8.5. Local binding constructs
+  https://www.gnu.org/software/kawa/Lazy-evaluation.html    8.6. Lazy evaluation
+  https://www.gnu.org/software/kawa/Repeat-forms.html    8.7. Repeat patterns and expressions
+  https://www.gnu.org/software/kawa/Threads.html    8.8. Threads
+  https://www.gnu.org/software/kawa/Exceptions.html    8.9. Exception handling
+  https://www.gnu.org/software/kawa/Control-features.html    9. Control features
+  https://www.gnu.org/software/kawa/Mapping-functions.html    9.1. Mapping functions
+  https://www.gnu.org/software/kawa/Multiple-values.html    9.2. Multiple values
+  https://www.gnu.org/software/kawa/Symbols-and-namespaces.html    10. Symbols and namespaces
+  https://www.gnu.org/software/kawa/Simple-symbols.html    10.1. Simple symbols
+  https://www.gnu.org/software/kawa/Namespaces.html    10.2. Namespaces and compound symbols
+  https://www.gnu.org/software/kawa/Keywords.html    10.3. Keywords
+  https://www.gnu.org/software/kawa/Special-named-constants.html    10.4. Special named constants
+  https://www.gnu.org/software/kawa/Procedures.html    11. Procedures
+  https://www.gnu.org/software/kawa/Application-and-Arguments-Lists.html    11.1. Application and Arguments Lists
+  https://www.gnu.org/software/kawa/Extended-formals.html    11.2. Lambda Expressions and Formal Parameters
+  https://www.gnu.org/software/kawa/Procedure-properties.html#Standard-properties    11.3.1. Standard properties
+  https://www.gnu.org/software/kawa/Generic-procedures.html    11.4. Generic (dynamically overloaded) procedures
+  https://www.gnu.org/software/kawa/Partial-application.html    11.5. Partial application
+  https://www.gnu.org/software/kawa/Numbers.html    12. Numbers
+  https://www.gnu.org/software/kawa/Numerical-types.html    12.1. Numerical types
+  https://www.gnu.org/software/kawa/Arithmetic-operations.html    12.2. Arithmetic operations
+  https://www.gnu.org/software/kawa/Numerical-input-and-output.html    12.3. Numerical input and output
+  https://www.gnu.org/software/kawa/Quaternions.html    12.4. Quaternions
+  https://www.gnu.org/software/kawa/Quantities.html    12.5. Quantities and Units
+  https://www.gnu.org/software/kawa/Logical-Number-Operations.html    12.6. Logical Number Operations
+  https://www.gnu.org/software/kawa/Performance-of-numeric-operations.html    12.7. Performance of numeric operations
+  https://www.gnu.org/software/kawa/Characters-and-text.html    13. Characters and text
+  https://www.gnu.org/software/kawa/Characters.html    13.1. Characters
+  https://www.gnu.org/software/kawa/Character-sets.html    13.2. Character sets
+  https://www.gnu.org/software/kawa/Strings.html    13.3. Strings
+  https://www.gnu.org/software/kawa/String-literals.html    13.4. String literals
+  https://www.gnu.org/software/kawa/Unicode.html    13.5. Unicode character classes and conversions
+  https://www.gnu.org/software/kawa/Regular-expressions.html    13.6. Regular expressions
+  https://www.gnu.org/software/kawa/Data-structures.html    14. Data structures
+  https://www.gnu.org/software/kawa/Sequences.html    14.1. Sequences
+  https://www.gnu.org/software/kawa/Lists.html    14.2. Lists
+  https://www.gnu.org/software/kawa/Vectors.html    14.3. Vectors
+  https://www.gnu.org/software/kawa/Ranges.html    14.6. Ranges
+  https://www.gnu.org/software/kawa/Streams.html    14.7. Streams - lazy lists
+  https://www.gnu.org/software/kawa/Arrays.html    14.8. Multi-dimensional Arrays
+  https://www.gnu.org/software/kawa/Hash-tables.html    14.9. Hash tables
+  https://www.gnu.org/software/kawa/Eval-and-Environments.html    15. Eval and Environments
+  https://www.gnu.org/software/kawa/Locations.html    15.1. Locations
+  https://www.gnu.org/software/kawa/Parameter-objects.html    15.2. Parameter objects
+  https://www.gnu.org/software/kawa/Debugging.html    16. Debugging
+  https://www.gnu.org/software/kawa/Input-Output.html    17. Input, output, files
+  https://www.gnu.org/software/kawa/Named-output-formats.html    17.1. Named output formats
+  https://www.gnu.org/software/kawa/Files.html    17.3. File System Interface
+  https://www.gnu.org/software/kawa/Reading-and-writing-whole-files.html    17.4. Reading and writing whole files
+  https://www.gnu.org/software/kawa/Ports.html    17.5. Ports
+  https://www.gnu.org/software/kawa/Format.html    17.6. Formatted Output (Common-Lisp-style)
+  https://www.gnu.org/software/kawa/Pretty-printing.html    17.7. Pretty-printing
+  https://www.gnu.org/software/kawa/Resources.html    17.8. Resources
+  https://www.gnu.org/software/kawa/Types.html    18. Types
+  https://www.gnu.org/software/kawa/Standard-Types.html    18.1. Standard Types
+  https://www.gnu.org/software/kawa/Parameterized-Types.html    18.2. Parameterized Types
+  https://www.gnu.org/software/kawa/Type-tests-and-conversions.html    18.3. Type tests and conversions
+  https://www.gnu.org/software/kawa/Objects-Classes-and-Modules.html    19. Object, Classes and Modules
+  https://www.gnu.org/software/kawa/Defining-new-classes.html    19.1. Defining new classes
+  https://www.gnu.org/software/kawa/Anonymous-classes.html#Lambda-as-shorthand-for-anonymous-class    19.2.1. Lambda as shorthand for anonymous class
+  https://www.gnu.org/software/kawa/Enumerations.html    19.3. Enumeration types
+  https://www.gnu.org/software/kawa/Annotations.html    19.4. Annotations of declarations
+  https://www.gnu.org/software/kawa/Module-classes.html    19.5. Modules and how they are compiled to classes
+  https://www.gnu.org/software/kawa/Importing.html    19.6. Importing from a library
+  https://www.gnu.org/software/kawa/Record-types.html    19.7. Record types
+  https://www.gnu.org/software/kawa/Dynamic-records.html    19.8. Creating New Record Types On-the-fly
+  https://www.gnu.org/software/kawa/Method-operations.html    19.9. Calling Java methods from Scheme
+  https://www.gnu.org/software/kawa/Allocating-objects.html    19.10. Allocating objects
+  https://www.gnu.org/software/kawa/Field-operations.html    19.11. Accessing object fields
+  https://www.gnu.org/software/kawa/Mangling.html    19.12. Mapping Scheme names to Java names
+  https://www.gnu.org/software/kawa/Scheme-types-in-Java.html    19.13. Scheme types in Java
+  https://www.gnu.org/software/kawa/Array-operations.html    19.14. Using Java Arrays
+  https://www.gnu.org/software/kawa/Loading-Java-functions-into-Scheme.html    19.15. Loading Java functions into Scheme
+  https://www.gnu.org/software/kawa/Evaluating-Scheme-expressions-from-Java.html#Using-javax.script-portable-Java-scripting    19.16.1. Using 
+  https://www.gnu.org/software/kawa/XML-tools.html    20. Working with XML and HTML
+  https://www.gnu.org/software/kawa/Formatting-XML.html    20.1. Formatting XML
+  https://www.gnu.org/software/kawa/Creating-HTML-nodes.html    20.2. Creating HTML nodes
+  https://www.gnu.org/software/kawa/Creating-XML-nodes.html    20.3. Creating XML nodes
+  https://www.gnu.org/software/kawa/XML-literals.html    20.4. XML literals
+  https://www.gnu.org/software/kawa/Server-side-scripts.html    20.5. Web page scripts
+  https://www.gnu.org/software/kawa/Self-configuring-page-scripts.html    20.6. Self-configuring web page scripts
+  https://www.gnu.org/software/kawa/Servlets.html    20.7. Installing web page scripts as Servlets
+  https://www.gnu.org/software/kawa/CGI-scripts.html    20.8. Installing Kawa programs as CGI scripts
+  https://www.gnu.org/software/kawa/HTTP-requests.html    20.9. Functions for accessing HTTP requests
+  https://www.gnu.org/software/kawa/HTTP-response.html    20.10. Generating HTTP responses
+  https://www.gnu.org/software/kawa/XML-beyond-Scheme.html    20.11. Using non-Scheme languages for XML/HTML
+  https://www.gnu.org/software/kawa/Miscellaneous.html    21. Miscellaneous topics
+  https://www.gnu.org/software/kawa/Composable-pictures.html    21.1. Composable pictures
+  https://www.gnu.org/software/kawa/Building-JavaFX-applications.html#Using-JavaFX-with-JDK-11+    21.2.1. Using JavaFX with JDK 11+
+  https://www.gnu.org/software/kawa/Building-for-Android.html    21.3. Building for Android
+  https://www.gnu.org/software/kawa/Android-view-construction.html    21.4. Android view construction
+  https://www.gnu.org/software/kawa/System-inquiry.html    21.5. System inquiry
+  https://www.gnu.org/software/kawa/Processes.html    21.6. Processes
+  https://www.gnu.org/software/kawa/Time-related-functions.html    21.7. Time-related functions
+  https://www.gnu.org/software/kawa/Low-level-functions.html    21.8. Deprecated low-level functions
+  https://www.gnu.org/software/kawa/FAQs.html    22. Frequently Asked Questions
+  https://www.gnu.org/software/kawa/Framework.html    23. The Kawa language framework
+  https://www.gnu.org/software/kawa/License.html    24. License
+  https://www.gnu.org/software/kawa/Software-License.html    24.1. License for the Kawa software
+}}}
+*DONE*  kotlin multiplatform {{{
+KotlinMultiplatform-Rider.txt
+____
+
+https://www.jetbrains.com/kotlin-multiplatform/
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/supported-platforms.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/case-studies.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/faq.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/kotlin-multiplatform-roadmap.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-170.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-1610.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-fleet-1-31.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-setup.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-create-first-app.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-update-ui.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-dependencies.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-upgrade-app.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-wrap-up.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-create-first-app.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-explore-composables.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-modify-project.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-new-project.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-integrate-in-existing-app.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-connect-to-apis.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-project-configuration.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-ktor-sqldelight.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-run-tests.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-publish-apps.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html
+https://www.jetbrains.com/lp/compose-multiplatform/
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-and-jetpack-compose.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-resources.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-resources-setup.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-resources-usage.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-lifecycle.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-viewmodel.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-navigation-routing.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-drag-drop.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-swiftui-integration.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-uikit-integration.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-ios-touch.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-ios-accessibility.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-ios-migration.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-android-only-components.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-components.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-top-level-windows-management.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-scrollbars.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-tooltips.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-context-menus.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-mouse-events.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-keyboard.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-native-distribution.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-accessibility.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-ui-testing.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-desktop-swing-interoperability.html
+https://kotlinlang.org/docs/wasm-get-started.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-compiler.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-compatibility-and-versioning.html
+https://github.com/JetBrains/compose-multiplatform/blob/master/CHANGELOG.md
+https://kotlinlang.org/docs/multiplatform.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/recommended-ides.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/fleet.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/amper.html
+https://kotlinlang.org/docs/multiplatform-dsl-reference.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/cross-platform-mobile-development.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/native-and-cross-platform.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/cross-platform-frameworks.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-introduce-your-team.html
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-reasons-to-try.html
+
+}}}
+*DONE*  Jetbrains Fleet {{{
+https://www.jetbrains.com/help/fleet/getting-started.html
+https://www.jetbrains.com/help/fleet/installation.html
+https://www.jetbrains.com/help/fleet/launch-from-cli.html
+https://www.jetbrains.com/help/fleet/uninstall.html
+https://www.jetbrains.com/help/fleet/workspace.html
+https://www.jetbrains.com/help/fleet/navigation.html
+https://www.jetbrains.com/help/fleet/edit-code.html
+https://www.jetbrains.com/help/fleet/smart-mode.html
+https://www.jetbrains.com/help/fleet/run-configs.html
+https://www.jetbrains.com/help/fleet/execute-raw-commands.html
+https://www.jetbrains.com/help/fleet/run-config-sequences.html
+https://www.jetbrains.com/help/fleet/built-in-macros.html
+https://www.jetbrains.com/help/fleet/format-code.html
+https://www.jetbrains.com/help/fleet/comparing-files-and-folders.html
+https://www.jetbrains.com/help/fleet/viewing-reference-information.html
+https://www.jetbrains.com/help/fleet/getting-started-with-java-in-fleet.html
+https://www.jetbrains.com/help/fleet/run-java-code.html
+https://www.jetbrains.com/help/fleet/java-run-configs.html
+https://www.jetbrains.com/help/fleet/debug-java-code.html
+https://www.jetbrains.com/help/fleet/breakpoints-java.html
+https://www.jetbrains.com/help/fleet/java-debug-watches.html
+https://www.jetbrains.com/help/fleet/hotswap-java.html
+https://www.jetbrains.com/help/fleet/attach-to-process.html
+https://www.jetbrains.com/help/fleet/coding-assistance-java.html
+https://www.jetbrains.com/help/fleet/live-templates-list-java.html
+https://www.jetbrains.com/help/fleet/postfix-templates-list-java.html
+https://www.jetbrains.com/help/fleet/getting-started-with-kotlin-in-fleet.html
+https://www.jetbrains.com/help/fleet/run-kotlin-code.html
+https://www.jetbrains.com/help/fleet/kotlin-run-configs.html
+https://www.jetbrains.com/help/fleet/debug-kotlin-code.html
+https://www.jetbrains.com/help/fleet/breakpoints-kotlin.html
+https://www.jetbrains.com/help/fleet/kotlin-debug-watches.html
+https://www.jetbrains.com/help/fleet/hotswap-kotlin.html
+https://www.jetbrains.com/help/fleet/coding-assistance-kotlin.html
+https://www.jetbrains.com/help/fleet/live-templates-list-kotlin.html
+https://www.jetbrains.com/help/fleet/postfix-templates-list-kotlin.html
+https://www.jetbrains.com/help/fleet/kotlin-multiplatform.html
+https://www.jetbrains.com/help/fleet/getting-started-with-kotlin-multiplatform.html
+https://www.jetbrains.com/help/fleet/getting-started-with-go.html
+https://www.jetbrains.com/help/fleet/run-go-code.html
+https://www.jetbrains.com/help/fleet/go-run-configs.html
+https://www.jetbrains.com/help/fleet/debug-go-code.html
+https://www.jetbrains.com/help/fleet/breakpoints-go.html
+https://www.jetbrains.com/help/fleet/go-debug-watches.html
+https://www.jetbrains.com/help/fleet/coding-assistance-go.html
+https://www.jetbrains.com/help/fleet/live-templates-list-go.html
+https://www.jetbrains.com/help/fleet/postfix-templates-list-go.html
+https://www.jetbrains.com/help/fleet/getting-started-with-python.html
+https://www.jetbrains.com/help/fleet/run-python-code.html
+https://www.jetbrains.com/help/fleet/running-code-using-a-virtual-environment.html
+https://www.jetbrains.com/help/fleet/python-run-configs.html
+https://www.jetbrains.com/help/fleet/debug-python-code.html
+https://www.jetbrains.com/help/fleet/using-pytest.html
+https://www.jetbrains.com/help/fleet/using-unittest.html
+https://www.jetbrains.com/help/fleet/coding-assistance-python.html
+https://www.jetbrains.com/help/fleet/live-templates-list-python.html
+https://www.jetbrains.com/help/fleet/postfix-templates-list-python.html
+https://www.jetbrains.com/help/fleet/getting-started-with-php.html
+https://www.jetbrains.com/help/fleet/php-run-configs.html
+https://www.jetbrains.com/help/fleet/coding-assistance-php.html
+https://www.jetbrains.com/help/fleet/live-templates-list-php.html
+https://www.jetbrains.com/help/fleet/getting-started-with-javascript.html
+https://www.jetbrains.com/help/fleet/debug-node-js-application.html
+https://www.jetbrains.com/help/fleet/run-javascript-code.html
+https://www.jetbrains.com/help/fleet/javascript-run-configs.html
+https://www.jetbrains.com/help/fleet/coding-assistance-javascript-and-typescript.html
+https://www.jetbrains.com/help/fleet/live-templates-list-javascript.html
+https://www.jetbrains.com/help/fleet/postfix-templates-list-javascript.html
+https://www.jetbrains.com/help/fleet/getting-started-with-cpp-in-fleet.html
+https://www.jetbrains.com/help/fleet/configure-cpp-clangd.html
+https://www.jetbrains.com/help/fleet/generating-a-json-compilation-database.html
+https://www.jetbrains.com/help/fleet/getting-started-with-csharp.html
+https://www.jetbrains.com/help/fleet/manage-net-projects-solutions.html
+https://www.jetbrains.com/help/fleet/inspect-and-fix-csharp.html
+https://www.jetbrains.com/help/fleet/code-analysis-code-inspections.html
+https://www.jetbrains.com/help/fleet/code-analysis-value-analysis.html
+https://www.jetbrains.com/help/fleet/code-analysis-integral-values.html
+https://www.jetbrains.com/help/fleet/collection-access-analysis.html
+https://www.jetbrains.com/help/fleet/code-analysis-string-formatting-methods.html
+https://www.jetbrains.com/help/fleet/code-analysis-find-and-update-obsolete-apis.html
+https://www.jetbrains.com/help/fleet/code-analysis-code-annotations.html
+https://www.jetbrains.com/help/fleet/code-analysis-annotations-in-source-code.html
+https://www.jetbrains.com/help/fleet/code-analysis-external-annotations.html
+https://www.jetbrains.com/help/fleet/contract-annotations.html
+https://www.jetbrains.com/help/fleet/reference-code-annotation-attributes.html
+https://www.jetbrains.com/help/fleet/code-inspection-list-csharp.html
+https://www.jetbrains.com/help/fleet/coding-assistance-in-csharp.html
+https://www.jetbrains.com/help/fleet/code-completion-in-csharp.html
+https://www.jetbrains.com/help/fleet/coding-assistance-typing-assistance.html
+https://www.jetbrains.com/help/fleet/templates-applying-templates-creating-source-code-using-live-templates.html
+https://www.jetbrains.com/help/fleet/postfix-templates.html
+https://www.jetbrains.com/help/fleet/source-templates.html
+https://www.jetbrains.com/help/fleet/reference-templates-explorer-live-templates-csharp.html
+https://www.jetbrains.com/help/fleet/navigate-in-csharp.html
+https://www.jetbrains.com/help/fleet/search-in-csharp.html
+https://www.jetbrains.com/help/fleet/refactor-csharp.html
+https://www.jetbrains.com/help/fleet/reformat-csharp.html
+https://www.jetbrains.com/help/fleet/editorconfig-csharp-blanklinespagescheme.html
+https://www.jetbrains.com/help/fleet/editorconfig-csharp-bracespageschema.html
+https://www.jetbrains.com/help/fleet/editorconfig-csharp-csharpcodestylepageimplschema.html
+https://www.jetbrains.com/help/fleet/editorconfig-csharp-csharpindentstylepageschema.html
+https://www.jetbrains.com/help/fleet/editorconfig-csharp-linebreakspageschema.html
+https://www.jetbrains.com/help/fleet/editorconfig-csharp-spacespageschema.html
+https://www.jetbrains.com/help/fleet/build-csharp-projects.html
+https://www.jetbrains.com/help/fleet/run-debug-csharp.html
+https://www.jetbrains.com/help/fleet/run-debug-csharp-unit-tests.html
+https://www.jetbrains.com/help/fleet/dotnet-run-configs.html
+https://www.jetbrains.com/help/fleet/csharp-debugging-tutorial.html
+https://www.jetbrains.com/help/fleet/using-editorconfig.html
+https://www.jetbrains.com/help/fleet/getting-started-with-rust.html
+https://www.jetbrains.com/help/fleet/debug-rust-code.html
+https://www.jetbrains.com/help/fleet/rust-debug-watches.html
+https://www.jetbrains.com/help/fleet/using-rust-analyzer.html
+https://www.jetbrains.com/help/fleet/run-rust-code.html
+https://www.jetbrains.com/help/fleet/rust-run-configs.html
+https://www.jetbrains.com/help/fleet/coding-assistance-rust.html
+https://www.jetbrains.com/help/fleet/terraform.html
+https://www.jetbrains.com/help/fleet/install-on-a-remote-machine.html
+https://www.jetbrains.com/help/fleet/connect-to-workspace.html
+https://www.jetbrains.com/help/fleet/forward-ports.html
+https://www.jetbrains.com/help/fleet/download-files-from-remote-env.html
+https://www.jetbrains.com/help/fleet/git-tools-overview.html
+https://www.jetbrains.com/help/fleet/set-up-a-git-repository.html
+https://www.jetbrains.com/help/fleet/sync-with-a-remote-git-repository-fetch-pull-sync.html
+https://www.jetbrains.com/help/fleet/manage-git-branches.html
+https://www.jetbrains.com/help/fleet/commit-and-push-changes-to-git-repository.html
+https://www.jetbrains.com/help/fleet/ai-assistant.html
+https://www.jetbrains.com/help/fleet/chat-with-ai.html
+https://www.jetbrains.com/help/fleet/use-prompts-to-explain-and-refactor-your-code.html
+https://www.jetbrains.com/help/fleet/use-ai-in-editor.html
+https://www.jetbrains.com/help/fleet/work-with-commits.html
+https://www.jetbrains.com/help/fleet/generate-documentation.html
+https://www.jetbrains.com/help/fleet/markdown.html
+https://www.jetbrains.com/help/fleet/vim.html
+https://www.jetbrains.com/help/fleet/terminal-emulator.html
+https://www.jetbrains.com/help/fleet/wsl.html
+https://www.jetbrains.com/help/fleet/docker.html
+https://www.jetbrains.com/help/fleet/docker-images.html
+https://www.jetbrains.com/help/fleet/docker-containers.html
+https://www.jetbrains.com/help/fleet/docker-run-configurations.html
+https://www.jetbrains.com/help/fleet/collaborative-development.html
+https://www.jetbrains.com/help/fleet/managing-plugins.html
+https://www.jetbrains.com/help/fleet/building-custom-theme-plugins.html
+https://www.jetbrains.com/help/fleet/modifying-theme-settings.html
+https://www.jetbrains.com/help/fleet/changes-in-json-keys-for-theme-plugins.html
+https://www.jetbrains.com/help/fleet/theme-plugin-json-keys-reference.html
+https://www.jetbrains.com/help/fleet/color-themes.html
+https://www.jetbrains.com/help/fleet/keymap.html
+https://www.jetbrains.com/help/fleet/settings.html
+https://www.jetbrains.com/help/fleet/textmate.html
+https://www.jetbrains.com/help/fleet/tips-and-tricks.html
+https://www.jetbrains.com/help/fleet/fleet-slack-code-of-conduct.html
+https://www.jetbrains.com/help/fleet/architecture-overview.html
+https://www.jetbrains.com/help/fleet/release-notes-fleet.html
+
+}}}
+DONE: https://www.reactiveui.net/docs/getting-started/ {{{
+
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/getting-started/index.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/getting-started/installation/index.html
+https://www.reactiveui.net/docs/getting-started/installation/avalonia.html
+https://www.reactiveui.net/docs/getting-started/installation/blazor.html
+https://www.reactiveui.net/docs/getting-started/installation/tizen.html
+https://www.reactiveui.net/docs/getting-started/installation/windows-forms.html
+https://www.reactiveui.net/docs/getting-started/installation/windows-presentation-foundation.html
+https://www.reactiveui.net/docs/getting-started/installation/winui.html
+https://www.reactiveui.net/docs/getting-started/installation/xamarin-android.html
+https://www.reactiveui.net/docs/getting-started/installation/xamarin-forms.html
+https://www.reactiveui.net/docs/getting-started/installation/xamarin-ios.html
+https://www.reactiveui.net/docs/getting-started/installation/xamarin-mac.html
+https://www.reactiveui.net/docs/getting-started/compelling-example.html
+https://www.reactiveui.net/docs/getting-started/minimum-versions.html
+
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/guidelines/index.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/guidelines/debugging/debug-symbols.html
+https://www.reactiveui.net/docs/guidelines/debugging/disable-just-my-code.html
+https://www.reactiveui.net/docs/guidelines/debugging/enable-break-on-first-exception.html
+https://www.reactiveui.net/docs/guidelines/debugging/enable-framework-logging.html
+https://www.reactiveui.net/docs/guidelines/debugging/threading.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/guidelines/framework/asynchronous-commands.html
+https://www.reactiveui.net/docs/guidelines/framework/command-execution.html
+https://www.reactiveui.net/docs/guidelines/framework/command-names.html
+https://www.reactiveui.net/docs/guidelines/framework/commands.html
+https://www.reactiveui.net/docs/guidelines/framework/dispose-your-subscriptions.html
+https://www.reactiveui.net/docs/guidelines/framework/performance-optimization.html
+https://www.reactiveui.net/docs/guidelines/framework/prefer-oaph-over-properties.html
+https://www.reactiveui.net/docs/guidelines/framework/ui-thread-and-schedulers.html
+https://www.reactiveui.net/docs/guidelines/framework/use-descriptive-variables-with-whenany.html
+https://www.reactiveui.net/docs/guidelines/framework/use-this-on-left-of-whenany.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/guidelines/platform/blazor.html
+https://www.reactiveui.net/docs/guidelines/platform/tizen.html
+https://www.reactiveui.net/docs/guidelines/platform/windows-forms.html
+https://www.reactiveui.net/docs/guidelines/platform/windows-presentation-framework.html
+https://www.reactiveui.net/docs/guidelines/platform/xamarin-android.html
+https://www.reactiveui.net/docs/guidelines/platform/xamarin-forms.html
+https://www.reactiveui.net/docs/guidelines/platform/xamarin-ios.html
+https://www.reactiveui.net/docs/guidelines/platform/xamarin-mac.html
+
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/index.html
+https://www.reactiveui.net/docs/handbook/collections.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/commands/index.html
+https://www.reactiveui.net/docs/handbook/commands/binding-commands.html
+https://www.reactiveui.net/docs/handbook/commands/canceling.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/data-binding/index.html
+https://www.reactiveui.net/docs/handbook/data-binding/value-converters.html
+https://www.reactiveui.net/docs/handbook/data-binding/avalonia.html
+https://www.reactiveui.net/docs/handbook/data-binding/windows-forms.html
+https://www.reactiveui.net/docs/handbook/data-binding/windows-presentation-foundation.html
+https://www.reactiveui.net/docs/handbook/data-binding/xamarin-forms.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/data-persistence.html
+https://www.reactiveui.net/docs/handbook/default-exception-handler.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/dependency-inversion/index.html
+https://www.reactiveui.net/docs/handbook/dependency-inversion/custom-dependency-inversion.html
+https://www.reactiveui.net/docs/handbook/design-time.html
+https://www.reactiveui.net/docs/handbook/events.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/interactions/index.html
+https://www.reactiveui.net/docs/handbook/interactions/binding-interactions.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/logging/index.html
+https://www.reactiveui.net/docs/handbook/logging/observable-logger.html
+https://www.reactiveui.net/docs/handbook/logging/visual-studio-intellitrace.html
+https://www.reactiveui.net/docs/handbook/message-bus.html
+https://www.reactiveui.net/docs/handbook/observable-as-property-helper.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/obsolete/index.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/obsolete/collections/index.html
+https://www.reactiveui.net/docs/handbook/obsolete/collections/derived-lists.html
+https://www.reactiveui.net/docs/handbook/obsolete/collections/reactive-list.html
+https://www.reactiveui.net/docs/handbook/obsolete/collections/reactive-composite-collections.html
+https://www.reactiveui.net/docs/handbook/routing.html
+https://www.reactiveui.net/docs/handbook/scheduling.html
+https://www.reactiveui.net/docs/handbook/snippets.html
+https://www.reactiveui.net/docs/handbook/testing.html
+https://www.reactiveui.net/docs/handbook/user-input-validation.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/view-location/index.html
+https://www.reactiveui.net/docs/handbook/view-location/extending-iviewfor.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/handbook/view-models/index.html
+https://www.reactiveui.net/docs/handbook/view-models/boilerplate-code.html
+https://www.reactiveui.net/docs/handbook/when-activated.html
+https://www.reactiveui.net/docs/handbook/when-any.html
+https://www.reactiveui.net/docs/getting-started/#
+
+https://www.reactiveui.net/docs/reactive-programming/index.html
+https://www.reactiveui.net/docs/reactive-programming/videos.html
+
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/resources/blogs.html
+https://www.reactiveui.net/docs/resources/in-the-news.html
+https://www.reactiveui.net/docs/resources/podcasts.html
+https://www.reactiveui.net/docs/resources/presentations.html
+  https://www.reactiveui.net/docs/resources/samples.html
+https://www.reactiveui.net/docs/resources/videos.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/roadmap/index.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/security/index.html
+https://www.reactiveui.net/docs/getting-started/#
+https://www.reactiveui.net/docs/upgrading/index.html
+
+}}}
+DONE: CSOUND REF-MANUAL 1 [*****] {{{
+
+https://csound.com/docs/manual/index.html
+
+Preface:
+https://csound.com/docs/manual/PrefaceTop.html
+https://csound.com/docs/manual/PrefaceHistory.html
+https://csound.com/docs/manual/PrefaceCopy.html
+https://csound.com/docs/manual/PrefaceGettingStarted.html
+https://csound.com/docs/manual/PrefaceWhatsNew.html
+
+Overview:
+https://csound.com/docs/manual/PartOverview.html
+https://csound.com/docs/manual/Introduction.html
+https://csound.com/docs/manual/CommandTop.html
+https://csound.com/docs/manual/CommandDesc.html
+https://csound.com/docs/manual/CommandFlags.html
+https://csound.com/docs/manual/CommandFlagsCategory.html
+https://csound.com/docs/manual/CommandEnvironment.html
+https://csound.com/docs/manual/CommandUnifile.html
+https://csound.com/docs/manual/CommandUnifileExample.html
+https://csound.com/docs/manual/CommandUnifileParFile.html
+https://csound.com/docs/manual/CommandPreproc.html
+https://csound.com/docs/manual/CommandPreindie.html
+https://csound.com/docs/manual/Using.html
+https://csound.com/docs/manual/UsingDesign.html
+https://csound.com/docs/manual/UsingRealTime.html
+https://csound.com/docs/manual/RealTimeLinux.html
+https://csound.com/docs/manual/RealTimeMac.html
+https://csound.com/docs/manual/RealTimeWindows.html
+https://csound.com/docs/manual/RealTimeJack.html
+https://csound.com/docs/manual/UsingOptimizing.html
+https://csound.com/docs/manual/Configuring.html
+https://csound.com/docs/manual/OrchTop.html
+https://csound.com/docs/manual/OrchIblock.html
+https://csound.com/docs/manual/OrchStatemnt.html
+https://csound.com/docs/manual/OrchKvar.html
+https://csound.com/docs/manual/OrchExpress.html
+https://csound.com/docs/manual/OrchDirFiles.html
+https://csound.com/docs/manual/OrchNomen.html
+https://csound.com/docs/manual/OrchMacros.html
+https://csound.com/docs/manual/OrchNamedInstruments.html
+https://csound.com/docs/manual/OrchUDO.html
+https://csound.com/docs/manual/Orchtab.html
+https://csound.com/docs/manual/functional.html
+https://csound.com/docs/manual/udpserver.html
+https://csound.com/docs/manual/ScoreTop.html
+https://csound.com/docs/manual/ScoreStatements.html
+https://csound.com/docs/manual/ScoreNextp.html
+https://csound.com/docs/manual/ScoreRamping.html
+https://csound.com/docs/manual/ScoreMacros.html
+https://csound.com/docs/manual/ScoreMult.html
+https://csound.com/docs/manual/ScoreEval.html
+https://csound.com/docs/manual/ScoreStrings.html
+https://csound.com/docs/manual/OviewFrontEnds.html
+https://csound.com/docs/manual/BuildingCsound.html
+https://csound.com/docs/manual/CsoundLinks.html
+
+Opcodes Overview:
+https://csound.com/docs/manual/PartOpcodesOverview.html
+https://csound.com/docs/manual/SiggenTop.html
+https://csound.com/docs/manual/SiggenBasic.html
+https://csound.com/docs/manual/SiggenDynamic.html
+https://csound.com/docs/manual/SiggenFmsynth.html
+https://csound.com/docs/manual/SiggenGranular.html
+https://csound.com/docs/manual/SiggenHvs.html
+https://csound.com/docs/manual/SiggenLineexp.html
+https://csound.com/docs/manual/SiggenEnvelope.html
+https://csound.com/docs/manual/SiggenModels.html
+https://csound.com/docs/manual/SiggenPhasors.html
+https://csound.com/docs/manual/SiggenNoise.html
+https://csound.com/docs/manual/SiggenSample.html
+https://csound.com/docs/manual/SiggenScanTop.html
+https://csound.com/docs/manual/SiggenTableacc.html
+https://csound.com/docs/manual/SiggenWaveterr.html
+https://csound.com/docs/manual/SiggenWavguide.html
+https://csound.com/docs/manual/SigioTop.html
+https://csound.com/docs/manual/SigioInput.html
+https://csound.com/docs/manual/SigioOutput.html
+https://csound.com/docs/manual/SoftwareBus.html
+https://csound.com/docs/manual/SigioPdisplay.html
+https://csound.com/docs/manual/SigioQueries.html
+https://csound.com/docs/manual/SigmodTop.html
+https://csound.com/docs/manual/SigProcConmorph.html
+https://csound.com/docs/manual/SigmodDelay.html
+https://csound.com/docs/manual/SigmodPanspatl.html
+https://csound.com/docs/manual/SigmodReverbtn.html
+https://csound.com/docs/manual/SigmodSample.html
+https://csound.com/docs/manual/SigmodSiglimit.html
+https://csound.com/docs/manual/SigmodSpeciale.html
+https://csound.com/docs/manual/SigmodStandard.html
+https://csound.com/docs/manual/SigmodSpeciali.html
+https://csound.com/docs/manual/SigmodWavguide.html
+https://csound.com/docs/manual/SigmodWavshape.html
+https://csound.com/docs/manual/ControlTop.html
+https://csound.com/docs/manual/ControlConditional.html
+https://csound.com/docs/manual/ControlDurctl.html
+https://csound.com/docs/manual/ControlFltkIntro.html
+https://csound.com/docs/manual/ControlFltkValuators.html
+https://csound.com/docs/manual/ControlFltkOther.html
+https://csound.com/docs/manual/ControlFltkAppearance.html
+https://csound.com/docs/manual/ControlFltkGeneral.html
+https://csound.com/docs/manual/ControlInvocat.html
+https://csound.com/docs/manual/ControlPgmctl.html
+https://csound.com/docs/manual/ControlRealtime.html
+https://csound.com/docs/manual/ControlReinitn.html
+https://csound.com/docs/manual/ControlSensing.html
+https://csound.com/docs/manual/ControlStacks.html
+https://csound.com/docs/manual/ControlSubinstrument.html
+https://csound.com/docs/manual/ControlTimeread.html
+https://csound.com/docs/manual/TableTop.html
+https://csound.com/docs/manual/TableReadwrit.html
+https://csound.com/docs/manual/TableSelect.html
+https://csound.com/docs/manual/MathTop.html
+https://csound.com/docs/manual/MathArtLogic.html
+https://csound.com/docs/manual/SigmodCompaccum.html
+https://csound.com/docs/manual/MathMatfunc.html
+https://csound.com/docs/manual/MathOpeqfunc.html
+https://csound.com/docs/manual/MathRndfunc.html
+https://csound.com/docs/manual/MathTrig.html
+https://csound.com/docs/manual/linearalgebraopcodes.html
+https://csound.com/docs/manual/arrayOpcodes.html
+https://csound.com/docs/manual/PitchTop.html
+https://csound.com/docs/manual/PitchTuning.html
+https://csound.com/docs/manual/MidiTop.html
+https://csound.com/docs/manual/MidiInput.html
+https://csound.com/docs/manual/MidiOutput.html
+https://csound.com/docs/manual/MidiGeneric.html
+https://csound.com/docs/manual/MidiConvert.html
+https://csound.com/docs/manual/MidiExtender.html
+https://csound.com/docs/manual/MidiOnoff.html
+https://csound.com/docs/manual/MidiInterop.html
+https://csound.com/docs/manual/MidiRealtime.html
+https://csound.com/docs/manual/MidiSlidrbk.html
+https://csound.com/docs/manual/SpectralTop.html
+https://csound.com/docs/manual/SpectralLpcresyn.html
+https://csound.com/docs/manual/SpectralNonstand.html
+https://csound.com/docs/manual/SpectralRealTime.html
+https://csound.com/docs/manual/SpectralATS.html
+https://csound.com/docs/manual/arraysfft.html
+https://csound.com/docs/manual/StringsTop.html
+https://csound.com/docs/manual/stringconvert.html
+https://csound.com/docs/manual/vectorial.html
+https://csound.com/docs/manual/vectorialscalar.html
+https://csound.com/docs/manual/vectorialvectorial.html
+https://csound.com/docs/manual/envelopeGenerators.html
+https://csound.com/docs/manual/vectorialimiting.html
+https://csound.com/docs/manual/vectorialdelay.html
+https://csound.com/docs/manual/vectorialrandom.html
+https://csound.com/docs/manual/ZakTop.html
+https://csound.com/docs/manual/PluginTop.html
+https://csound.com/docs/manual/OSCNetwork.html
+https://csound.com/docs/manual/OSC.html
+https://csound.com/docs/manual/Network.html
+https://csound.com/docs/manual/Remote.html
+https://csound.com/docs/manual/MixerOpcodes.html
+https://csound.com/docs/manual/SignalFlowGraphOpcodes.html
+https://csound.com/docs/manual/JackoOpcodes.html
+https://csound.com/docs/manual/py.html
+https://csound.com/docs/manual/PythonOpcodesSyntax.html
+https://csound.com/docs/manual/ImageopcodesTop.html
+https://csound.com/docs/manual/STKTop.html
+https://csound.com/docs/manual/MiscopcodesTop.html
+
+}}}
+-----
+https://dune.readthedocs.io/en/latest/
+[[ + DUNE BUILDING [OCAML / REASON]  https://www.youtube.com/watch?v=BNZhmMAJarw ]]
+
+
+https://docs.sqlalchemy.org/en/20/  (+sqlalchemy cheat sheet)
+https://codeigniter.com/user_guide/intro/index.html
+https://github.com/duckdb/duckdb
+----
+https://www.oracle.com/java/technologies/javase/javafx-docs.html
+https://docs.oracle.com/javafx/2/api/
+
+

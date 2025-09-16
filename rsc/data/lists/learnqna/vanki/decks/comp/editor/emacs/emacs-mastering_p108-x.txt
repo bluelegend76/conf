@@ -1,0 +1,506 @@
+
+@f(ill)
+	:'<,'>s/\v(.{-})\ze ; (.*)/\1\r\{\{\{\r\t\2 \}\}\}/ggv:'<,'>s/\v\}\}\}\zs.*//g
+	(@u: 'insert refpdf_pagenumber')
+@n: {2ztV/-----
+@c: /\C[CS]vu
+
+
+----- index
+- mastering emacs (mickey peterson)
+- extending emacs (bob glickstein)
+-----
+
+mastering emacs (mickey peterson): --------------
+		=p108++
+
+	Search and Replace		___ZZZZ =p200 (!!!!!!*********)
+								=CAN USE ELISP IN THE REPLACE-SECTION (****)
+	keyboard macros  p220
+	text expansion  p228
+	indenting text and code  p234
+	zapping
+	spell checking  p249
+	 exploring + version control
+	proj. managem.  p261
+	xref  p264
+	 working w. log files  p266
+	dired  p269
+	DocView  p270	(+slide show)
+	EWW  p279
+	dired  p282
+	 marking different files and directories  p285
+	Carry out Operations (=on marked files etc)  p287
+	SHELL COMMANDS  p292
+	Compiling in Emacs  p294
+	shells in em.  p295  +readline
+	 Extra Resources (=nov for reading epub, Magit etc)  p304
+	  ripgrep (=uses ag?)
+
+
+
+
+
+
+
+
+
+
+
+extending emacs (bob glickstein): --------------
+	doc_newest2019/doks-skrikilarch/emacsextend.pdf
+	doc_newest2019/doks-skrikilarch/emacsextend.txt
+
+	----
+recommended book for learning lisp (=common/in general) ; common lisp - a gentle introduction to symbolic computation (david touretzky)
+teterm: 'what is an editor?' ; a program for viewing and altering a representation of data (of some kind)  p11
+(unpacking a .tar.gz-file (*)) ; gzip -dc file.tar.gz | tar -xvf -  p16
+(allocating/releasing memory in c) ; malloc / free  p24
+(teterm: keys that one holds down while pressing others) ; 'modifiers'  p25
+(teterm: 'why is escape (=in esc f in readline) not a modifier?' ; released before next key is pressed  p25
+[teterm: Is Elisp Case Sensitive?] ; Yes!(!)  p26
+em. keyb-strings: backslash ; \\ (=doubled)  p27
+em. keyb-strings: a-x (eg. M-x) ***** ; "\M-x"  p27  #or \e (=esc) inst. of \M *****!!!
+em. keyb-strings: ca-x ****** ; "\C-\M-x"  p27  #or Alt. first (****)
+List keybindings (+functions they invoke/run) **(**)! ; c-h b  p28  #eg. c-h = help-command, del = delete-backward-char
+	----
+
+	----
+teterm: symbols in lisp expressions =evaluation of lisp expressions (*) ; first symbol is a function to execute (unless quoted), rest of symbols are var.s whose val.s need to be retrieved (unless quoted)  p28
+Keybind:  run help w. a-? (inst. of w. c-h (=if 'bs runs help'!)) **** ; (global-set-key "\M-?" 'help-command)  p29
+(longer form of 'expr) ; (quote expr)  p30
+(teterm: Self-evaluating lisp expressions (**!)) ; ( strings, numbers, characters, vector **  p30
+Read/Load new added expression/function (like rebinding of help-command to a-?) **!! ; c-x c-e  (eval-last-sexp)  p31  #especially if put in .init (that can grow quite large)
+Enter lisp expression for evaluation (=in the minibuffer) ** ; a-:  #sa-. (eval-expression)  p32
+explain the expr. (put 'eval-expression 'disabled nil) ; eval-expr (which is disabled by def.) should not be disabled  p33  #put concerns prop.lists and symbol properties (*)
+eval + insert result of sexp ** ; c-u c-x c-e  //  c-j (obs! om lisp interaction mode)  p33   #eval-print-last-sexp
+Completion (in Lisp interaction mode) ** ; M-tab  (=esc tab)  p33
+(('the del character')) ; "\C-?"   p34
+	----
+
+	----
+Make apropos list the commands' keybindings too (**) ; c-u a-x apropos Ent delete Ent  p35
+tip apropos etc helpcommands (=for var.s etc) (***(!!)) ; as soon as own custom var.s, keybindings etc are set, they can be queried, just like em.s defaults (+shows up in help-lists etc (***!)  p35
+[[types of garbage collection]] ; ='incremental' is one  p37
+evaluate length of "\M-?")  ** ; (length "\M-?")  p37
+teterm: why is not 'command bound to keysequence' correct? (**) ; =many keysequences can be bound to one command(=can invoce it), but one cmd is not restricted to being bound to one single keyseq.  p37
+(sexp pronounciation) ; 'sex pee'
+name of the a-x_command ; execute-extended-command  p37
+	----
+
+ch. 2 - simple new commands
+
+	----
+go to last window(=split) * ; a_- a_1 c-x o
+See if keybinding (=for custom binding) is already taken ****! ; describe key (!!)  (+if taken, but for commands y. don't use very often, they can alw. be run w. a-x command-name)  p39
+Binding key: c-x c-p ****! (=to 'other-window') ; (global-set-key "\C-x\C-n" 'other-window)  p39
+Defining an 'other-window-backward' command **** ; (defun other-window-backward (),,  "Select the previous window.",,  (interactive),,  (other-window -1))  p40  (+setting the keybinding =p41)
+Parameterizing the 'other-window-backward' function ** (=can take nume arg, instead of locked to '-1') *** ; (defun other-window-backward (n)    + (other-window (- n))   see p 42 ***
+(interactive "p") =?? ; 'The argument to interactive describes how to obtain arguments for the command that contains it  (=has no arg.s =f. takes no arg.s  ,  f. takes arg.s =one code letter per arg (eg. p for 'prefix'))
+Make the argument n optional (=f. can be called w. arg, or w.out arg) ** ; (defun other-window-backward (&optional n)  **  p44
+false (and true) in elisp ; nil (/ t)  p45   #() (empty list) is also false
+simple if expression * ; (if n,,    (other-window (- n)),,  (other-window -1))  p45
+(teterm: three interesting properties of nil  (+'another function of nil') ; designates falsehood, indisting. from the empty list (=returns true both as a list and a symbol), 'is its own value' (=doesn't need to be quoted, just like 't'(**))  p45-46)  #+used to 'distinguish between proper and improper lists'  (see ch. 6)
+	----
+
+listp
+symbolp
+
+	----
+CONDENSING CODE (=BY FACTORING OUT COMMON SUBEXPRESSIONS IN AN IF-EXPRESSION) ***** ! ; p47  (?????)
+lisp 'or' **! ; return first true val. in test, or return nil (**)  p48  #='is false, or the first true value in the list'(**)   =>  (if a a b)  can be repl. by  (or a b)
+common use of if: 'if a is true, return a - else if b is true, return b' etc *** ; (if a a,,  (if b b,,    (if c ......   p48  (+can be changed to the 'or'-form, if only want the args to be eval.d once)
+lisp 'and' ** ; eval.s all args  + return nil if finds one arg. that is nil, otherwise return the last arg. (**)  p49
+'do z, if a through y are all true' ; (if (and a b ... y) z)   or(!)  (and a b .... y z)  p49
+THE BEST VERSION OF 'O-WIN-BACKW' (=refactored w. negated or etc.) **! ; p50  interactive "P" (='raw' form of a prefix argum.) + 'prefix-numeric-value' (=can interpret a raw number as a number(?))  #'more elisp-like (better code reuse =uses the built-in function prefix-numeric-value, rather than duplicating that function's behavior)
+em.s scrolling up and down functions (eg. c-v a-v) ; p51  scroll-up scroll-down  #+takes optional arg. how many lines to scroll
+	----
+
+	----
+defining custom name for lisp function (eg. 'I think scroll up is confusing' (=moves text, or viewport??) * ; (defalias 'scroll-ahead 'scroll up)  p52
+Setting Custom Name-f. scroll-ahead/behind to c-z/c-q **(*) ; p52-53
+(Tip/Thought (=own use of Em. for Evil)) ; =Most chapters needed are probab. first few chapters (up to p100 or so  =Setting custom keyb-shortcuts etc) **
+What is a Hook? ***(*) ; =an ordinary lisp-var, whose val. is a list of functions that get executed under specif. conditions  write-file-hoos (wh. buf.s are saved), post-command-hook (run after every interactive command)   (+like 'set buf. to read-only wh.ever I visit a symlink')  p56 **
+Discover what hooks are available in Em. *** ; a-x apropos Ent hook Ent  p56
+hook to run wh.ever visits cert. kind of file ; find-file-hooks  p56
+Add a function to a hook variable ** ; (add-hook
+predicate: test if file is symlink ** ; file-symlink-p  **  p57
+progn  *** ; evaluate each of its subexpressions in order, and return the value of the last one  (eg. setting buffer read-only to true + echo message 'file is a symlink')  p58
+Add 'read-only-if-symlink'(=wh. defined) to find-file-hooks **(!) ; (add-hook 'find-file-hooks 'read-only-if-symlink)
+	----
+
+	----
+nameless/lambda functions **(*) ; functions that don't need to be called from elsewhere (eg. use directly inside hook-call: =setting buf. to read-only if file is a symlink) **  p59(!)  #=can be used wh.ever y. might use the name of a function
+Tip(!): Why not to use lambdas inside hooks(!) ; if you ever wish to remove a function from a hook, you need to refer to it by name in a call to remove-hook (!)  p59-60
+Create local(=temporary) var.s (eg. use for testing etc. w.in its body-expression **) ; (let   p61-62  ****
+ask user yes/no question + return true if the answer is 'yes', false otherwise (*) ; yes-or-no-p  p63
+like C:s printf ; format (eg. %s, %c(for char))  p64  =see  c-h f format  (for list of formats format-strings/control-sequences)
+Advice code + Use case (*********) ; code (attached to a lisp function) that gets executed before/after the function  each time the function is invoked  p65   (defadvice   + before/after  (or 'around'(=can embed call to the advised function inside the advice code))   +keywords (eg. activate compile)  +docstring  +interactive
+Remove/Modify code for the advice (**(!)) ; use its name (eg. existing-buffer)  (+modified by macros??) **  p66
+interactive "b" ; 'accept only names of existing buffers' (*)  p65-66
+	----
+
+(list
+
+	----
+test whether arg./var. is nil **(!) ; (null current-prefix-arg)  #eg. tests wh. current-prefix-arg is nil)  p68  #returns t or nil
+advice switch-to-buffer function, split functionality ; =make so 'em. won't let me respond to the prompt w. nonexistent buf. name, unless I asked for that ability by pressing c-u first'  p69
+teterm: parameter vs argument (*) ; param. =the var. in the function definition  ,  argument =the value that gets passed in when the function is called  p70
+define (global) var. + attach docstring to it **(!) ; (defvar unscroll-to nil,,  "Text position for next call to 'unscroll'.")  #+defvar allows a default var. to be given  p74
+defvar vs setq (*) ; defvar assigns val. to a var only(!) if the var. does not yet have any value (=the mail-signature_example)  +  a var.declaration w. defvar can be found w. em.s tag facilities **(*)  p75  #+tag-finding can be used w. all def-constructs (defun, defalias, defmacro, defvar, defsubst, defconst, defadvice)
+em. function to test for equality (a == b) ** ; (eq   eg.  (if (not (eq a b))  p76
+	----
+
+goto-char
+
+	----
+Tip for reading nested statements, like "(if (not (or (eq last-command 'scroll-up) ..." (!!/****) ; p82  'Move inward one level of subexpression at a time'  (='If something's not true, set some variable(s).'  --->>  'If neither 'last-command is scroll-up' nor 'last-command is scroll-down' is true, set some variables(s).'
+	----
+
+this-command  ***  p85
+
+	----
+Symbol Properties ** ; Every Elisp symbol may have associated w. it: A var. value, A function definition, A property list (=a list of mappings from names to values) **  #=each name is yet another lisp-symbol + each val. may be any lisp expression ****  p86
+storing/retrieving symbol properties ** ; the functions put and get **  p87
+Setting Markers from code ** ; set-marker  p89
+(Efficiency concerning markers + reseting markers) ; p90  markers are expensive to create and maintain  + (set-marker m nil)
+why are the functions null and not so similar? ; actually the same function (one is an alias)  #null to see if obj. is empty list, not for inverting truth values  p90
+	----
+
+Ch. 4  Searching and Modifying Buffers
+
+	----
+List format codes for format-time-string (*) ; a-x describe-function format-time-string  p93
+Docstrings starting w. '*' (**!) ; =var. in question is a 'user option'  =Can be set interactively using set-variable + Can be edited ('en masse') w. a-x edit-options  p93-94
+special construction/form \\[insert-time]  ** ; gets replaced w. its keybinding when docstring is displayed by the user  p93-94
+(doubling of backslashes (=\\) (!)) ; (=inside lisp strings)  p94
+(( escaping \[...]-construct in docstring )) ; \\=  p96
+teterm: what should be declared w. defvar? ; 'all var.s that are shared between two or more functions'  (+should be decl. as user var, if controls user-visib. feature (+does not involve tricky data structures etc))  p95
+teterm recapitul: what does keyword 'interactive' do? **** ; turns a function into a command + specifies how to obtain the f's arguments wh. invoked interactively  p96
+'*' as first argum. to interactive (*) ; 'abort this function if curr. buf. is read-only'  p96
+	----
+
+(save-excursion (save-restriction (save-match-data
+(widen
+ match-beginning
+
+	----
+elisp while-loop (**) ; (while (search-forward "WRITESTAMP((" nil t),,  ...)  p101
+teterm: All lisp functions return a value =what? (**) ; =the value of the last expression in the function's body
+why important to return nil wh. working w. write-file/contents-hooks etc? ; otherwise, own function is expected to take over responsib. for writing file etc (!)  p104
+generalizing writestamps ** ; =defvar format + text of writestamp string (=can be updated and changed, rather than fixed strings)  p105
+teterm: special char.s in regex-searches are sometimes called ___ ; metacharacters (or magic (char.s))
+regex: searching ']' in a char.set (**) ; first char (= []a]  [^]a]
+(regex: searching for '-' in a char.set) ; =must be spec. so can't be part of a range  p109
+teterm: Any text matched by a parentheses is called a ___  ** ; submatch  #+is memorized in a numbered register  p110
+	----
+
+regex: logical/zero width position (like 'start of word') ***** p111
+
+	----
+match beg./end of buffer *** ; \`  \´  p111
+match curr. loc. of point (note: also zero width) ***(*) ; \=  p111
+start/end of a word **** ; \b  (eg. \bno\b for ' no! ')  p111
+match NOT beg. of word *** ; \B  (eg. no\B for 'nostril')  p111
+start of word // end of word (**) ; \<  \>  p111
+note: backslashes in regexes and(!!) Lisp strings (!!!) ; p112
+Em. function for regex-searching in Elisp (**) ; re-search-forward  p112
+Removing magic char.s from strings (=make safe for regex-searching) ** ; regexp-quote  p113
+(replace some/all of matched text from a prev. search) ; (replace-match  p117
+	----
+
+first-change-hook
+ (2 simple + one more clever approach)
+
+	----
+Collect up remaining args (=for function) **! ; &rest  p123
+clever example of let (**) ; 'This use of let creates a temporary variable, after-change-functions, that supersedes the global after-change-functions during the call to update-modifystamps in the body of the let.'  p125
+Hooking user options into the "customize" system (** new in em. 20) ; requires using special functions called defgroup and defcustom  p127
+regex teterm: name of '*' regex op. among computer scientists (**) ; a "Kleene closure"  p127
+	----
+
+Chapter 5 - Elisp files (=putting plugin code in separate files (=not in init-file))
+
+	----
+basic tip for 'external' lisp files (=for loading) (*) ; should be written such that they can be loaded at any time (even multiple) w.out unwanted side-effects  p129-130
+Add directory to beg./end of em.s load-path ****!! ; cons or append "new/path" (w. setq) to load-path  ****  p131   #'notice that in the first example, "dirpath" appears as an ordinary string, but in the second ex. it appears inside a quoted list (!)
+(byte compiled files, searching/loading w.out file suffix, +eval-after-load) ; (p131)
+Em. command for interactively loading a (e)lisp file (**) ; load-file  load-library  p131
+options for programmatic loading of elisp files in emacs (*) ; explicit loading, conditional loading, autoloading  p132
+Elisp functions for making sure files get loaded once (instead of n times) (!!) ; require  provide  p133  #'features are named by l. symbols, declared w. provide, and requested by require (*/???)
+recommended place to put 'require'-constructs ; last  #=should not be loaded unless rest of the file works  p133  (although many put it at the top of their files)
+inferring + (require 'timestamp) instead of (require 'timestamp "timestamp")  (!) ; =see more p134
+calling the function symbol-name on a symbol *(*) ; =return the symbol's name as a string  p134
+tip/extra: autoloading (!) ; keymaps and macros may also be autoloaded  p136
+(teterm: byte-compiled code may not work on ___ ) ; (older versions of Em.)  p137
+byte-compile file(s) (!!) ; a-x byte-compile Ent file.el  emacs -batch -f batch-byte-compile file.el  #shell  byte-recompile-directory  #b.c. whole dir.  p137
+eval-after-load ; see more  p138
+diff. betw. hooks and eval-after-load ; hooks only execute lisp functions (often in form of anonymous funct.s, while eval-after-load can execute any lisp expression)  p138
+Loading (plugincode etc) via file local var.s lists (**!) ; p139  +the eval 'pseudo-variable'  #++more appropr. way of setting it up is to write a min.mode(!)
+protecting eval in loc. file var.s lists  from trojan horse attacks (!) ; p142  #=enable query ('should this code be executed'(?))
+definition of 'near the end of the file' ; within last 3000 bytes of file (+after last line w. ^L)  p142
+	----
+
+Chapter 6 - Lists
+
+	----
+cons:ing 'a' onto old list (3 4 5)  ** ; (cons 'a '(3 4 5))   #+'creates a new(!) list (=the old list is never touched)  p146
+reverse list ; (reverse  #=do not reverse elements in sublists  p146
+teterm: lists are composed of (smaller data structures) called ___ ; cons cells ("dotted pairs)  (=a struct. that contains two lisp expressions)  p147
+a list is ___ ; a chain of cons cells where each cdr is another cons cell and the last cdr is nil  (=if cdr of a cons pair is nil, it can be abbreviated to just the car **)  p148
+'improper lists' ; wh. last cdr in list is not nil  +'frequently, the entries in an assoc. list are improper lists  p149
+l.functions for testing whether lisp obj. is list or list component (**) ; consp  true for all lists except empty, atom  whether arg. is atomic (eg. nil, numbers, strings, symbols), listp(**)  wh. arg. is list, null  wh. arg. is nil  p149
+recursively flattening a list (=lisp idiom) *(/??????) ; p150-152
+Other/Some more useful l.functions ***! ; length, nthcdr, nth, mapcar(**), equal, assoc(**), assq  like assoc(=assoc.lists) but uses eq,   p153-154
+difference betw. eq and equal (*) ; eq: tests whether arg.s are the same obj.(!)  equal: tests whether two obj.s have same structure and content  p154  #+eq. is instantaneous (while equal may have to dive down into structure to compare in depth)
+destructive list functions (*) ; nconc  destructive append,  p158
+use for nconc (*) ; =should be used w. care  but can be used for efficiency wh. changing values in an assoc.list (=if sure no other data depends on the list data)  p159
+(writing destructive var. of alist-replace) ; p160
+replace car / cdr (**) ; setcar  setcdr   p160
+destr. version of reverse ; nreverse  p160
+concerning lists (flexibility + building data structures etc) ** ; 'one doesnt think of lists as being circular, ... (consists of) connected cons cells, you can build any kind of linked data structures, from trees to lattices (!!)  p163
+	----
+
+
+
+
+
+
+
+
+
+
+
+
+Chapter 7 - Minor Mode *
+
+	----
+example of minor modes ; auto-save-mode, line-number-mode  p167
+	----
+
+	----
+Defining a minor mode ; see more  p168
+	----
+
++'always turning on/off'
+'For instance, the minor mode may have a keymap, a syntax table, or an abbrev table associated with it, ...'
+left (??)  p175
+max  p177
+(list Predicates)  p178
+skip-chars-forward  p179
+(the function/use of) Syntax Tables *  p180
+'What we can do is ask Emacs to tell us the code letter for the syntax of newline characters, then use that result to construct the argument to skip-syntax-forward:'
+char-to-string
+
+	----
+return char's syntax code as another char. (*) ; char-syntax  p182
+Checking execution speed etc for two functions (**!) ; the 'profiler'  p182
+	----
+
+'?\ '
+'Try M-x finder-by-keyword RET to browse Emacs's many modes and other extensions.'
+
+Ch. 8 - Evaluation and Error Recovery  #+optimizing the code
+(incl. Macros **)
+eval **  p191
+MACRO FUNCTIONS AND DEFMACRO ***  p192
+debugging macros w.  (macroexpand   ***  p193
+'It turns out that nearly all macros recombine their arguments with calls to such functions as list and append, w. some expressions quoted and others not.' (=so common that ELisp has a special syntax making it possible to write templates for how macro expansions should appear)  p194
+quotes, backquotes, commas (=lisp macro syntax and expansions) **!!  p195
+ 'splicing unquote operator'  ,@  p196
+let*  p198 ****
+'The variable reference is said to be captured by the macro expansion.'
+generate brand-new symbol guaranteed not to conflict with other symbols in use (+what it means for two symbols to conflict)  p199		make-symbol
+'reading'
+obarray
+'interning the symbol'
+Failing Gracefully  p202
+'Information about pending function calls is kept in an internal data structure called a stack.'  #+unwinding of stack		p202
+'It is possible to write Lisp code that gets executed while the stack is being unwound!'  unwind-protect  p202
+provid 'limited  (?)  p204
+'The Quips Maj.mode'  p207
+name-mode-hook  p208
+make-keymap (vs. make-sparse-keymap)  p208
+make-local-variable  p212
+('we need a keymap')  A keymap is a Lisp data structure that maps keystrokes to the
+commands they should invoke.  p214
+nested/doubly nested etc. keymaps
+'mode-specific commands are often bound to sequences beginning with c-c'  ****  p216
+how users of the quip mode can alter its keybindings (via hooks) **  p216
+(Narrowing **)  p217
+eobp
+ point-min/max
+'For closer conformance with Text mode, we should clone text-mode-syntax-table too (using copy-syntax-table), not just text-mode- ...'  p220
+package derived (***) (=macro for 'deriving' new maj.mode from old)  p220-221
+array/matrix  = create using vectors  p225/226
+Vectors in Lisp  [a b c ...]  #self-evaluating (**)
+(vector a b c)
+make-vector  aset  aref
+'When function definitions are very short, like these last four, it's usually a good idea to turn them into inline functions using defsubst instead of defun.'
+'the conventional way to denote a "private" function that isn't part of a package's advertised programming interface'  pre--post  p230
+cond: each arg. called a clause  each clause is a list  first elem. of each clause (its condition) is eval.d in turn  +++   p237  #+the default t-clause (p238)**
+division (/) is integer division by default  p239
+Games/Designing the Crossword Mode-Example:  LOGIC, INTERACTION/INTERFACE, COMMANDS(=FOR INTERACTION)  p???
+substitute-key-definition  p250
+suppress-keymap  p252
+the data structure 'input-event'
+interactive  @
+[mouse-2]  [mouse-3]   (etc) 
+Defining menu items is easy (**)   p258
+ make-local-hook  add-hook
+condition-case vs unwind-protect  p264
+'when an Emacs mode is appropriate only for editing specially prepared text, the mode symbol should be given the special property'
+UNIXes have a word file in /usr/dict/words or /usr/lib /dict/words or, on modern GNU systems, /usr/local/share /dict/words.
+'Wouldn't it be nice if we could just hit a key and have Emacs construct the correct regular expression and run grep for us?'  p269
+ .....
+ .....
+ .....
+ .....
+(call-process "grep"  ***  p273
+Run grep(etc.) asynchronously **  start-process  (+which buffer will recieve the output *****)  p279-280
+(install a 'sentinel' on the process object.)  p280
+	process-status  exit
+Filter functions (*)
+buffer  set-buffer  display-buffer
+ process-connection-type
+
+define-key
+
+
+two-way-symmetry (etc)
+
+Selective display  p298
+text properties  
+minibuffer + various prompting/completion routines
+timers  apply  funcall
+tailoring undo
+ Lisp Ref   p300
+
+
+?a		#='a'
+?\t		#=tab
+
+cchar-equal
+char-to-string
+
+Strings
+Symbols
+Lists
+Sequences and Arrays
+
+	control structures
+Var.s
+Sequencing  (progn  progl)
+Conditionals  if  cond
+
+Looping  while
+ Literal data  'expr
++MACROS, BACKQUOTING, UNQUOTING(,), AND SPLICING *************  p312
+	FUNCTIONS  p313		lambda  defun
+'When a macro is invoked, its arguments are not evaluated. Instead, they are used in their literal form to compute a new Lisp expression. Then that is evaluated.'  p313 ****
+
+APP C - DEBUGGING AND PROFILING ****
+			c-x c-e  (ETC ETC ETC)  *******
+
+*Backtrace*		#=debugger is active
+Useful Debugging Commands
+	c(ontinue) q d(=cont. until next function call) e(val) b(reak) r
+EDEBUG (**)  p316
+  step through the actual source code of a running lisp program
+The Profiler  p319  ELP
+
+	Sharing
+the shar program
+
+The Jargon File  ****
+
+HOW TO BUILD EMACS  p329 **
+Here's how I always invoke .config
+
+
+TABLE OF CONTENTS (=p362) ***!!
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+
+	----
+	----
+

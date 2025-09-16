@@ -1,0 +1,594 @@
+~/scripts/ALLTODOIST/pr_lynx.bash
+___0000
+
+
+vim:fdm=marker:sw=2:syn=:
+
+@b(ump):   3yyp}ddzc3-   #copy last q&a-post + bump i-number 1
+@s(plit):  o----yypO         #split (=put ---- + blank line + ----)
+
+----
+1
+{{{
+    
+    --
+    refdokid-p1
+    }}}
+
+
+TODO  =MAYBE CONVERT TO INDENT-STYLE LIST(!!)
+
+	http://homes.chass.utoronto.ca/~purslow/lhfb.html
+	https://www.geeksforgeeks.org/using-lynx-to-browse-the-web-from-the-linux-terminal/
+
+lynx -dump https://www.wordhippo.com/what-is/the/german-word-for-hero.html  #'blocked by website security' (='no scraping(!)')
+
+vankilist 2021 {{{
+
+cleaned orig. (=picklist) {{{
+
+               m              - Modify the name or location of selected file 
+               r              - Remove selected file 
+               t              - Tag highlighted file 
+               u              - Upload a file into the current directory 
+	
+	OTHER:       ? (or h)       - Help (this screen)  
+               a              - Add the current link to a bookmark file (+d, l, c =page, link el cancel) 
+               c              - Send a comment to the document owner 
+               d              - Download the current link 
+               e              - Edit the current file 
+               E              - Edit the current link's URL (or ACTION) and 
+                                use that as a goto URL. 
+               g              - Goto a user specified URL or file 
+               G              - Edit the current document's URL and use that 
+                                as a goto URL. 
+               i              - Show an index of documents 
+               j              - Execute a jump operation 
+               k              - Show list of actual key mappings 
+               l              - List references (links) in current document 
+               m              - Return to main screen 
+               o              - Set your options 
+               p              - Print to a file, mail, printers, or other 
+               q              - Quit (Capital 'Q'/Ctrl-D for quick quit) 
+               /              - Search for a string within the current document 
+               s              - Enter a search string for an external search 
+               n              - Go to the next search string 
+               N              - Go to the previous search string 
+               v              - View a bookmark file 
+               V              - Go to the Visited Links Page 
+               x              - Force submission of form or link with no-cache 
+               z              - Cancel transfer in progress 
+               [del]/[backspace]    - Go to the History Page 
+               =              - Show info about current document, URL and link 
+               \              - Toggle document source/rendered view 
+               !              - Spawn your default shell 
+               '              - Toggle "historical" vs minimal or valid comment 
+                                parsing 
+               _              - Clear all authorization info for this session 
+               `              - Toggle minimal or valid comment parsing 
+               *              - Toggle image_links mode on and off 
+               @              - Toggle raw 8-bit translations or CJK mode 
+                                on or off 
+               .              - Run external program on the current link. 
+               ,              - Run external program on the current document. 
+               {              - Shift the screen left. 
+               }              - Shift the screen right. 
+               |              - Toggle line-wrap mode.  When line-wrap is 
+                                off, you may use { and } to shift the screen 
+                                left/right.  The screen width is set to 999. 
+               ~              - Toggle parsing of nested tables (experimental). 
+               [              - Toggle pseudo_inlines mode on and off 
+               ]              - Send a HEAD request for the current doc or link 
+               "              - Toggle valid or "soft" double-quote parsing 
+               CTRL-R         - Reload current file and refresh the screen 
+               CTRL-L         - Refresh the screen 
+
+               CTRL-V         - Outside of a text input line or field, 
+                                switch to alternative parsing of HTML. 
+                              - In a form text input field, 
+                                CTRL-V prompts for a key command (allows 
+                                escaping from the field). 
+
+                                Note that on most UNIX hosts, CTRL-V is bound 
+                                via stty to the lnext (literal-next) code but 
+                                the exact behavior of that is implementation 
+                                specific.  On Solaris you must type CTRL-V 
+                                twice to use it, since it quotes the following 
+                                keystroke. 
+
+               CTRL-U         - Inside text input line or field, 
+                                erase input line (more input line commands) 
+                              - Outside of text input or field, 
+                                undo returning to previous topic. 
+
+               CTRL-G         - Cancel input or transfer 
+
+               CTRL-T         - Toggle trace mode on and off 
+               ;              - View the Lynx Trace Log for the current session 
+               CTRL-K         - Invoke the Cookie Jar Page 
+               CTRL-X         - Invoke the Cache Jar Page 
+               numbers        - Invoke the prompt 
+                                Follow link (or goto link or page) number: 
+                                  or the 
+                                  Select option (or page) number: 
+                                prompt 
+	
+
+
+plocka från 
+
+LYNX
+
+   If you want to recall recent status-line messages, you can do so by entering the `g' 
+   command, followed by `LYNXMESSAGES:'. 
+
+If the filename does not have one of the suffixes mapped by Lynx to 
+   HTML, the -force_html command line option can be included to force treatment of the file 
+   as hypertext. 
+
+
+Directory editing  **** (hel liten underkategori kommandon)
+
+
+ The session 
+   data is saved if lynx is invoked with the -session=FILENAME switch. The FILENAME is the 
+   name of the file where the session will be stored. 
+
+   There are also switches for only restoring: -sessionin=FILENAME and for only saving: 
+   -sessionout=FILENAME sesions: 
+
+   A summary of the Lynx command line options (switches) is returned to stdout if Lynx is 
+   invoked with the -help switch. (el manpage)
+
+
+Exempel från commandline-options (titta mer på :) : 
+        -cmd_log=FILENAME 
+                write keystroke commands and related information to the specified file. 
+
+        -cmd_script=FILENAME 
+                read keystroke commands from the specified file. You can use the data 
+                written using the -cmd_log option. Lynx will ignore other information which 
+                the command-logging may have written to the log- file. Each line of the 
+                command script contains either a comment beginning with "#", or a keyword: 
+
+              exit 
+                      causes the script to stop, and forces lynx to exit immediately. 
+
+              key 
+                      the character value, in printable form. Cursor and other special keys 
+                      are given as names, e.g., Down Arrow. Printable 7-bit ASCII codes are 
+                      given as-is, and hexadecimal values represent other 8-bit codes. 
+
+              set 
+                      followed by a "name=value" allows one to override values set in the 
+                      lynx.cfg file. 
+	
+
+
+       -dump 
+                dumps the formatted output of the default document or one specified on the command line to standard out. This can be used in the following way: lynx -dump http://www.w3.org/ 
+        -editor=EDITOR 
+                enable external editing using the specified EDITOR. (vi, ed, emacs, etc.)  :DDD
+        -help 
+                print this Lynx command syntax usage message. 
+
+}}}
+
+movement, scrolling
+	# seems like 'page' means "subpage/curr. page", 'document' means 'whole of page/website'
+
+	----
+highlight next/prev. topic		#=link ???
+{{{
+	down/up (=arrow) }}}
+jump to highl. topic		#=link ???
+{{{
+	right (=arrow) }}}
+follow sel. link
+{{{
+	enter }}}
+go back from link  **  #'return to prev. topic'
+{{{
+	left (=arrow) / u }}}
+scroll down / up to next 'page'(?)
+{{{
+	+ / space  //  - / b }}}
+go to first/last page of 'current document' (??)
+{{{
+	c-a / c-e }}}
+scroll to prev./next 'page'
+{{{
+	c-b / c-f }}}
+forw./back two lines (in curr. 'document')  (**)
+{{{
+	c-n / c-p }}}
+go forw./back half a page (in curr. 'document') *!
+{{{
+	)  //  ( }}}
+search for string in curr. dok  (+external)  **
+{{{
+	/  (+ n/N for next/prev.) **    (+ s =seek external(=??)) }}}
+return to main screen (=of lynx ??)
+{{{
+	m }}}
+toggle line-wrap mode  #+shift screen right/left
+{{{
+	|    } / { }}}
+	----
+
+save text of dok's/page's rendered version **
+{{{
+	lynx -dump http://www.w3.org/ }}}
+save text of dok's/page's all(!) subpages ***!
+{{{
+	lynx -crawl -traversal "http://learnvimscriptthehardway.stevelosh.com/" }}}
+
+links + toolbar(??) || 'dired'
+
+	----
+go to user specified url/file **!
+{{{
+	g }}}
+edit current 'documents' url + go to url **!!
+{{{
+	G }}}
+go to: first / last link in curr. line *
+{{{
+	^ / $ }}}
+go to: next / prev. link in curr. column
+{{{
+	>  //  < }}}
+(edit curr. file  (=with vim(??/*)))
+{{{
+	e  (??) }}}
+edit curr. link's url/action + go to url *(*)
+{{{
+	E }}}
+list links(='references') in curr. document (**)
+{{{
+	l }}}
+go to: toolbar/banner(??) in curr. 'document'
+{{{
+	# }}}
+reload curr. file  //  refresh screen
+{{{
+	c-r  /  c-l }}}
+'dired': create new file(??  =sending a email/comment to page owner)
+{{{
+	c }}}
+'dired': download 'sel. file' / 'current link'
+{{{
+	d }}}
+x
+{{{
+	x }}}
+x
+{{{
+	x }}}
+'dired': 'edit sel. file' (??(?))
+{{{
+	e }}}
+'dired': show full menu of options for curr. 'file'
+{{{
+	f }}}
+'dired': 
+{{{
+	x }}}
+'dired': upload a file into the curr. directory
+{{{
+	u }}}
+Record lynx script to file  #to be replayed as macro by lynx
+{{{
+	cline: -cmd_log=filename }}}
+Read keystroke commands from specified file  #run as macro
+{{{
+	-cmd_script=filename }}}
+	----
+
+Extra/Other (**)
+
+history etc
+
+	----
+add current link to a bookmark file
+{{{
+	a }}}
+('show an index of documents' (=??))
+{{{
+	i }}}
+('execute a jump operation' (=???))
+{{{
+	j }}}
+x
+{{{
+	x }}}
+clear authorization info for this session
+{{{
+	_ }}}
+save data from/for session in file *!
+{{{
+	-session=filename  #+-sessionin/sessionout }}}
+x
+{{{
+	x }}}
+show info ab. curr. dok, url and link
+{{{
+	= }}}
+toggle dok source / rendered view  **!
+{{{
+	\ }}}
+run external program on curr link / document
+{{{
+	. / , }}}
+'spawn your default shell' (=??)
+{{{
+	! }}}
+toggle image links mode on/off
+{{{
+	* }}}
+	----
+
+	----
+quit / emphatic quit
+{{{
+	q / Q }}}
+show help (**!)
+{{{
+	?  /  h }}}
+list key-mappings  *
+{{{
+	k }}}
+set prefs/options
+{{{
+	o }}}
+go to 'visited links' page **
+{{{
+	V }}}
+go to 'history' page  (??)
+{{{
+	del / bs }}}
+x
+{{{
+	x }}}
+x
+{{{
+	x }}}
+force submission of form/link w. no-cache
+{{{
+	x }}}
+cancel transfer in progress
+{{{
+	z }}}
+Cancel input or(!) transfer
+{{{
+	c-g }}}
+	----
+
+Cache jar
+Cookie jar
+ Trace mode + trace log
+
+}}}
+
+TODO {{{
+}}}
+länkar, tips, sökningar {{{
+}}}
+sökord_tags_etiketter {{{
+}}}
+termerterms_begrepp_nyckelord {{{
+}}}
+Cookbook/Önskelista Vanliga Uppgifter {{{
+
+	DUMPA ALLA SIDOR OCH LÄNKARS SIDOR SOM TEXTFILER (NOFEARSHAKESPEARE MM*****) {{{
+
+		-crawl 
+			= med -traversal –> output each page to a file
+		---
+	___0000
+		lynx -crawl -traversal "http://www.drstrang.se/index.php?page=egen%20musik"
+		lynx -crawl -traversal "http://www.linuxcommand.org/lc3_learning_the_shell.php"
+
+		lynx -crawl -traversal "http://nfs.sparknotes.com/asyoulikeit/"
+
+		lynx -crawl -traversal ""
+		:D :D :D
+
+		lynx -crawl -traversal "http://learnvimscriptthehardway.stevelosh.com/"
+
+	}}}
+
+}}}
+INDEX/ÖVERSIKT/OMRÅDEN {{{
++++ Keystroke Commands +++  {{{
+	MOVEMENT:    Down arrow     - Highlight next topic  {{{
+               Up arrow       - Highlight previous topic 
+               Right arrow,   - Jump to highlighted topic 
+               Return, Enter  - Follow selected link 
+               Left arrow     - Return to previous topic 
+	}}}
+	SCROLLING:   +              - Scroll down to next page (Page-Down)  {{{
+               -              - Scroll up to previous page (Page-Up) 
+               SPACE          - Scroll down to next page (Page-Down) 
+               b              - Scroll up to previous page (Page-Up) 
+               CTRL-A         - Go to first page of the current document (Home) 
+               CTRL-E         - Go to last page of the current document (End) 
+               CTRL-B         - Scroll up to previous page (Page-Up) 
+               CTRL-F         - Scroll down to next page (Page-Down) 
+               CTRL-N         - Go forward two lines in the current document 
+               CTRL-P         - Go back two lines in the current document 
+               )              - Go forward half a page in the current document 
+               (              - Go back half a page in the current document 
+
+	}}}
+	LINKS AND TOOLBAR {{{
+
+               ^              - Go to the first link on the current line 
+               $              - Go to the last link on the current line 
+               <              - Go to the previous link in the current column 
+               >              - Go to the next link in the current column 
+               #              - Go to Toolbar or Banner in the current document 
+
+	}}}
+	DIRED:       c              - Create a new file  ((bl a sänd e-post till sidans skapare)) :}  {{{
+               d              - Download selected file 
+               e              - Edit selected file 
+               f              - Show a full menu of options for current file 
+               m              - Modify the name or location of selected file 
+               r              - Remove selected file 
+               t              - Tag highlighted file 
+               u              - Upload a file into the current directory 
+	}}}
+	OTHER:       ? (or h)       - Help (this screen)  {{{
+               a              - Add the current link to a bookmark file (+d, l, c =page, link el cancel) 
+               c              - Send a comment to the document owner 
+               d              - Download the current link 
+               e              - Edit the current file 
+               E              - Edit the current link's URL (or ACTION) and 
+                                use that as a goto URL. 
+               g              - Goto a user specified URL or file 
+               G              - Edit the current document's URL and use that 
+                                as a goto URL. 
+               i              - Show an index of documents 
+               j              - Execute a jump operation 
+               k              - Show list of actual key mappings 
+               l              - List references (links) in current document 
+               m              - Return to main screen 
+               o              - Set your options 
+               p              - Print to a file, mail, printers, or other 
+               q              - Quit (Capital 'Q'/Ctrl-D for quick quit) 
+               /              - Search for a string within the current document 
+               s              - Enter a search string for an external search 
+               n              - Go to the next search string 
+               N              - Go to the previous search string 
+               v              - View a bookmark file 
+               V              - Go to the Visited Links Page 
+               x              - Force submission of form or link with no-cache 
+               z              - Cancel transfer in progress 
+               [del]/[backspace]    - Go to the History Page 
+               =              - Show info about current document, URL and link 
+               \              - Toggle document source/rendered view 
+               !              - Spawn your default shell 
+               '              - Toggle "historical" vs minimal or valid comment 
+                                parsing 
+               _              - Clear all authorization info for this session 
+               `              - Toggle minimal or valid comment parsing 
+               *              - Toggle image_links mode on and off 
+               @              - Toggle raw 8-bit translations or CJK mode 
+                                on or off 
+               .              - Run external program on the current link. 
+               ,              - Run external program on the current document. 
+               {              - Shift the screen left. 
+               }              - Shift the screen right. 
+               |              - Toggle line-wrap mode.  When line-wrap is 
+                                off, you may use { and } to shift the screen 
+                                left/right.  The screen width is set to 999. 
+               ~              - Toggle parsing of nested tables (experimental). 
+               [              - Toggle pseudo_inlines mode on and off 
+               ]              - Send a HEAD request for the current doc or link 
+               "              - Toggle valid or "soft" double-quote parsing 
+               CTRL-R         - Reload current file and refresh the screen 
+               CTRL-L         - Refresh the screen 
+
+               CTRL-V         - Outside of a text input line or field, 
+                                switch to alternative parsing of HTML. 
+                              - In a form text input field, 
+                                CTRL-V prompts for a key command (allows 
+                                escaping from the field). 
+
+                                Note that on most UNIX hosts, CTRL-V is bound 
+                                via stty to the lnext (literal-next) code but 
+                                the exact behavior of that is implementation 
+                                specific.  On Solaris you must type CTRL-V 
+                                twice to use it, since it quotes the following 
+                                keystroke. 
+
+               CTRL-U         - Inside text input line or field, 
+                                erase input line (more input line commands) 
+                              - Outside of text input or field, 
+                                undo returning to previous topic. 
+
+               CTRL-G         - Cancel input or transfer 
+
+               CTRL-T         - Toggle trace mode on and off 
+               ;              - View the Lynx Trace Log for the current session 
+               CTRL-K         - Invoke the Cookie Jar Page 
+               CTRL-X         - Invoke the Cache Jar Page 
+               numbers        - Invoke the prompt 
+                                Follow link (or goto link or page) number: 
+                                  or the 
+                                  Select option (or page) number: 
+                                prompt 
+	}}}
+}}}
+}}}
+plocka från {{{
+
+LYNX
+
+   If you want to recall recent status-line messages, you can do so by entering the `g' 
+   command, followed by `LYNXMESSAGES:'. 
+
+If the filename does not have one of the suffixes mapped by Lynx to 
+   HTML, the -force_html command line option can be included to force treatment of the file 
+   as hypertext. 
+
+
+Directory editing  **** (hel liten underkategori kommandon)
+
+
+ The session 
+   data is saved if lynx is invoked with the -session=FILENAME switch. The FILENAME is the 
+   name of the file where the session will be stored. 
+
+   There are also switches for only restoring: -sessionin=FILENAME and for only saving: 
+   -sessionout=FILENAME sesions: 
+
+   A summary of the Lynx command line options (switches) is returned to stdout if Lynx is 
+   invoked with the -help switch. (el manpage)
+
+
+Exempel från commandline-options (titta mer på :) : {{{
+        -cmd_log=FILENAME 
+                write keystroke commands and related information to the specified file. 
+
+        -cmd_script=FILENAME 
+                read keystroke commands from the specified file. You can use the data 
+                written using the -cmd_log option. Lynx will ignore other information which 
+                the command-logging may have written to the log- file. Each line of the 
+                command script contains either a comment beginning with "#", or a keyword: 
+
+              exit 
+                      causes the script to stop, and forces lynx to exit immediately. 
+
+              key 
+                      the character value, in printable form. Cursor and other special keys 
+                      are given as names, e.g., Down Arrow. Printable 7-bit ASCII codes are 
+                      given as-is, and hexadecimal values represent other 8-bit codes. 
+
+              set 
+                      followed by a "name=value" allows one to override values set in the 
+                      lynx.cfg file. 
+	}}}
+
+
+       -dump 
+                dumps the formatted output of the default document or one specified on the command line to standard out. This can be used in the following way: lynx -dump http://www.w3.org/ 
+        -editor=EDITOR 
+                enable external editing using the specified EDITOR. (vi, ed, emacs, etc.)  :DDD
+        -help 
+                print this Lynx command syntax usage message. 
+
+}}}
+listor, referenslistor nyckelord mm {{{
+}}}
+
+exempelkod/exempelprogram {{{
+}}}
+
+LITT INDEX {{{
+}}}
+
+
+
+

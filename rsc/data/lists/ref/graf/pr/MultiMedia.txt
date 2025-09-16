@@ -1,0 +1,1543 @@
+set foldmethod=indent foldlevel=2
+vim: fdm=indent:fdl=2:
+
+Anki  ____  ¤¤¤
+                        . ~/gdrive/rsc/data/lists/ref/comp/pr/Ankiman-Cookbook.txt
+                        ~/Dropbox/rsc/Doks/phone/learn/ankiman2021plus.Tags1.txt
+                          # ~/Dropbox/rsc/Doks/phone/learn/ankiman2021plus.txt
+                        ---- Te/Terms
+                        card
+                            .
+                            a question and answer-pair
+                        deck
+                            .
+                            a group of cards (=each can have different settings, e.g. how many cards to show per day)
+                            can contain sub-decks (separated by '::')
+                            [decks =for holding broad categories of cards]
+                        note
+                            .
+                            a related collection of information (e.g. 'french: bonjour, english: hello, page: #12')
+                            [=each type of note can have one or more card-types]
+                        field
+                            .
+                            each piece of information on/in a note
+                             click the 'fields...'-button while adding/editing notes
+                        card-type
+                            .
+                            ="which fields should be displayed on the front or back of each card"
+                            +=as soon as a card-type has been created, every time you add a new note, a card will be created based on that card-type
+                            +add/edit card-types, click the "cards..."-button while adding/editing notes
+                        template (or card-templates)
+                            .
+                            (each card-type has two templates: one for the Q and one for the A)
+                            Q: {{French}}
+                            A: {{English}}<br>
+                               Page #{{Page}}
+                            = (card-templates) tell Anki which fields should appear on the front and back of your card, and countrol which cards will be generated when certain fields have text in them
+                        note-types
+                            .
+                        ----
+
+                        ____
+                        TODO: INPUT Q-TAGGED AREAS FROM ANKIMAN 2021++
+
+                        ---- Anki-Client
+                        file ----
+                        switch profile  cs-p, a_fs
+                        --
+                        import...  cs-i, a_fi
+                        export...  c-e, a_fe
+                        create backup  a_fb
+                        revert to backup  a_fr
+                        --
+                        exit  c-q, a_fx
+                        edit ----
+                        undo  c-z
+                        view ----
+                        toggle full-screen  f11, a_vf
+                        zoom in / zoom out  a_vi / a_vo
+                        reset zoom  c-0
+                        tools ----
+                        study deck...  /
+                        create filtered deck...  f
+                        --
+                        check database  a_tc
+                        check media  a_tm
+                        empty cards...
+                        --
+                        add-ons  cs-a
+                        --
+                        manage note-types  cs-n
+                        preferences  c-p, a_t
+                        help ----
+                        guide  f1, a_hg
+                        support anki  a_hs
+                        about  a_ha
+
+    Reveal.js  (@@)
+                ----
+                .
+    impress.js
+                ----
+                .
+
+Gimp  ¤¤
+            ---- Gimp Regular
+                .
+            ---- Gimp Scripting (tinyscheme, python)  -->  Pil(low)
+                .
+            ---- G'Mic
+                .
+Inkscape  ¤¤¤
+                    ----
+                    select, zoom, view
+                    move, scale
+                    transform
+                    pen (+line-shapes)
+                      spiro/shaped lines (+simplif.)
+                    tool-styles/settings
+                    bezier, nodes
+                    tweak
+                    calligr.
+                    gradient
+                    hints/color-gestures
+                      mini-swatch
+                    boolean
+                    convert  # shape to outline, obj. to path, stroke to path
+                    eraser
+                    snap (*)
+                      grids|guides (+'obj. to guides' ****)
+                      tiling
+                    layers  (+sublayers|layer-groups)
+                    align|distribute, arrange
+                    tracing (+autotrace, potrace)
+                    xml (+gvim/gvimdiff edit)
+                     3d-box
+                    tiling (generate)
+                    'gradient-meshes'
+
+                    py-extensions
+                    edit|create|generate svg (with Vim - from svg code(**(!)))
+                    CommandLine/scripting
+                    svg clean
+Scribus  ¤¤(¤)
+                    ----
+                    scribus-man: (keyb-shortc.s) {{{
+                     (renskrivn. sista delen av manualen (=keyboard shortcuts))
+
+                        evince -p 330 ~/documents-legacy/doks/scribusmanual.pdf &
+
+                    14.2 Keyboard and Mouse Shortcuts
+
+                    14.2.1 Keyboard Shortcuts
+
+                    Entries in italics don't appear in any menu.
+
+                    File:
+                        new file                    c-n
+                    new from template           ca-n
+                        open an existing file       c-o
+                        close current file            c-w
+                    save as                 cs-s
+                    save as template        ca-s
+                        print                   c-p
+                    print preview           ca-p
+                        quit                    c-q
+
+                    Edit:
+                        cut                     c-x
+                        copy                    c-c
+                        paste                   c-v
+                    select all                c-a
+                    deselect all              cs-a
+                    search / replace        c-f
+                    edit text(??)           c-y
+                    copy contents           cs-c
+                    paste contents          cs-v
+                    undo | redo             c-z | cs-z
+
+                    Item:
+                    duplicate               csa-d
+                    delete                  c-k
+                    group                   c-g
+                    ungroup                 cs-g
+                    lock / unlock           cs-l
+                    raise / lower *         c-home / c-end
+                    raise / lower to top/bottom              home / end
+
+
+                    Insert:
+                    text frame              t
+                    image frame             i
+                    table                   a
+                    shape                   s
+                    polygon                 p
+                    line                    l
+                    bezier curve            b
+                    freehand line           f
+                    char. / page num. *         csa-p
+                    char. / smart hyphen        cs_-
+                    char. / non-br. hyphen      ca_-
+                    char. / frame-break (**)    c-enter
+                    char. / column-break *      enter
+                    char. / new line            s-enter
+
+                    Style:
+                    image effects               c-e
+
+                    View:
+                    fit in window *             c-0
+                    100% zoom               c-1
+                    show rulers             cs-r
+                    zoom in / out           c_+ / c_-
+
+                    Tools:
+                    select *                c
+                    zoom tool               z
+                    edit contents           e
+                    edit text-frame with story editor **       c-y
+                    eye dropper             y
+                    link text-frame *(*)    n
+                    unlink text-frame       u
+                    rotate object           r
+
+
+                        evince -p 331 ~/documents-legacy/doks/scribusmanual.pdf &
+
+                    Windows:
+                    open properties-window **      f2
+                    open layers-window *           f6
+
+                    Help:
+                        scribus manual            f1
+
+                    misc:
+                    hide/bring back all palettes (**)       f10
+                    hide/bring back all guides, grids etc(**)     f11
+                    value (??)              f12
+
+                    Inside text frames or in the
+                    Story Editor, shortcuts are working
+                    as common in modern text editors:
+
+                    Add the next character
+                      to the selection      s-right/left  **
+                            marks the current word            cs-left/right
+                            marks the complete text         c-a
+                            move to the end / start of the line         end / home
+                    moves the cursor one word(!)    ca-left / ca-right
+
+                    14.2.2 Changing Keyboard Shortcuts
+
+                    In File > Preferences you can change all menu-related
+                    shortcuts and also set new ones.
+                        a_f,r
+
+                    To change or assign an action ta a shortcut, select the action
+                    in the list. If a shortcut is assigned, it will be displayed in the
+                    gray field on the right. If the action has no shortcut assigned,
+                    will show the radio button "No Key" active. Click
+                    "Set Key" and type the new shortcut on the keyboard. If the
+                    shortcut isn't already assigned to another action, the radio button
+                    "User Defined Key" becomes active. In case the shortcut is
+                    already in use by another action, a warning will pop up.
+
+                    __
+                    You can also use your custom shortcuts on another
+                    computer. Just click on the "Export" button, and save a "Key
+                    Set XML File" Using a file dialog. To use it on another computer,
+                    copy it to a USB stick or similar and load it with the
+                    "Import" button there. By clicking the "OK" button, you make
+                    the loaded set the shortcut set for your current and future documents.
+                    If you want or need to return to the default shortcut set,
+                    click on "Reset."
+
+                    Another option is "Loadable Shortcut Sets." By default, it
+                    doesn't seem to be useful, as the only set in the dropdown list
+                    is "Scribus 1.3.3." You can, however, easily create your own
+                    shortcut set, eg. to mimic the behavior of another layout
+                    program you know. Just create a plain text file that looks like this:
+
+                      <?xml version="1.0" encoding="UTF-8"?>
+                      <shortcutset name="InDesign 2.x">
+                          <function name="fileOpen" shortcut="Ctrl+O"/>
+                          <function name="fileSave" shortcut="Ctrl+S"/>
+                      </shortcutset>
+
+                    __
+                    "function name" denotes the action in Scribus, and since you
+                    probably won't know what all the functions' names are, it's
+                    probably better to open the file scribus13.ksxml in the install
+                    directory of Scribus under /lib/scribus/keysets (or
+                    \lib\scribus\keysets on Windows and OS/2) and use it
+                    as a template. If you edit the file, don't forget to save it under a
+                    different name, because otherwise you'll lose your Scribus
+                    default shortcuts. Once you've finished adding your desired
+                    shortcuts, save or copy the file to the "keysets" directory
+                    mentioned above, and the new shortcut will be available from
+                    the dropdown list. Please note that you'll probably need
+                    root/Administrator privileges to save the file in this directory.
+                    After selecting the new set from the list, you have to click the
+                    "Load" button and then click "OK."
+
+
+                    14.2.3 Mouse Usage
+
+                    Mouse usage in Scribus has some subtle, but once learned,
+                    very useful shortcuts:
+
+                      __
+                      - Click third button, or on two button mice ("chord" them by
+                        click left and right together) refreshes the view.
+                      - Control + Shift + left click for select through levels on the
+                        same layer.
+                      - Control + left click resize/move for lower objects. Release +
+                        drag resizes. Hold down Control + drag moves.
+                      - Left click + drag resizes frames. Add Ctrl, you get orthogonal
+                        movement.
+                      - Shift + left click + drag resizes frames proportionally.
+                      - Ctrl + Alt + left click + drag resizes text frames and their
+                        content.
+                      - Rotate tool + Ctrl + left click rotates an item in steps of 15
+                        degrees.
+                      - Right click: A context menu will pop up offering some choices.
+
+                      - Ctrl + wheel zooms the view in and out.
+
+                        evince -p 332 ~/documents-legacy/doks/scribusmanual.pdf &
+
+                      - Shift + wheel adds a 10x multiplier to scroll wheel action.
+                      - Ctrl + right button drag allows you to pan the document up or
+                        down and/or left to right depending on the zoom factor.
+
+                    14.2.4 Other Shortcuts
+
+                      - Space bar toggles the panning mode for the mouse if nothing is
+                        selected.
+                      - With nothing selected, Tab will change between the open
+                        documents.
+
+                      - In normal mode we can:
+                        · Use backspace or delete the item
+                        · Use PageUp/PageDown to raise/lower an item.
+                        · Use the arrow keys to move an item or group around:
+                                - With no meta, by 1.0 unit
+                                - Ctrl, by 10.0 units
+                                - Shift, by 0.1 units
+                                - Ctrl Shift, 0.01 units
+                        · Use the arrow keys to resize an item:
+                                - Alt right / left, move right/left side
+                                    outwards (expand)
+                                - Alt Shift right / left, move right/left side
+                                    inwards (shrink)
+
+                      - In edit mode of an image frame, use the arrow keys to resize
+                        the image:
+                        - Alt right, move right side of image outwards
+                                (expand)
+                        - Alt left arrow, move right side inwards (shrink)
+                        - Alt down arrow, move bottom side downwards (expand)
+                        - Alt up arrow, move top side inwards (shrink)
+
+
+
+                    terminology:
+
+                    Scribus                     QuarkXPress     InDesign
+
+                    align and distrib.          space/align     align palette
+                    collect for output          collect for
+                                                    output      package
+                    color                       color           swatch
+                    convert to outlines         text to box     create outlines
+                    default text properties     normal style
+                                                    sheet           default text attributes
+                    document                    layout          document
+                    dclick on image frame/
+                      /prop.s palette > image   content tool    position tool
+                    edit text (e)               content tool    type tool
+                    frame                       box             frame
+                    get image/get text          get image/
+                                                    /get text       place
+                    gradient                    blend           gradient
+                    image                       picture         graphic
+                    image frame                 picture box     picture frame
+                    item                        item            object
+                    item color                  bg color        fill
+                    line                        frame           stroke
+                    line                        line            path
+                    line spacing                leading         leading
+                    linking (text frames        linking (text
+                                                    boxes)      threading (text)
+                    manage pictures             picture usage   links
+                    n.a.                        project         book
+                    page display color          white color     paper
+                    path text properties        text path
+                                                    tools           type on a path tool
+                    plug-in                     xtension        plug-in
+                    preferences/document
+                      setup                     pref.s          pref.s
+                    prop.s palette              measurem.s
+                                                    palette     control palette
+                    prop.s palette > x, y, z    modify          transform
+                    select item tool            item tool       selection tool
+                    shade                       shade           tint
+                    shear                       skew            shear
+                    story editor                n.a.            story editor
+                    style                       style sheet     style
+                    table of contents           lists           table of contents
+                    text flow (around a frame)  runaround       text wrap
+
+                    }}}
+                    Scribus-Man Checkthrough 1 (2020?) {{{
+
+                    s - Shape
+                    f2 - scribus prop.s palette
+                    draw horiz. line - c-drag
+                    pstoedit (etc)
+                    (c-f + f3/s-f3)
+                        tooltips
+                    .SLA        collect for output
+                    'Fit in window' - c-0
+                     show grids/guides/frames
+                    Hide grids/guides etc - f11
+
+                      windows > outline (+names in prop.s palette)
+                    Bookmarks*  p47
+                      working w. frames  p53
+                    t(ext) i(mage) s(hape) p(olygon)
+
+                    "Sel. under" for frames  p53
+                    Duplicate"++"  csa-d  (etc)
+                      edit frame size - a-arrows
+                    group/ungroup frames - c-g/cs-g
+
+                    (text)story editor - c-y    p63
+                     edit contents of frame - e   c
+                    link/unlink next frame(s) - n/u
+                    resize textframe + contents - ca-drag
+
+                    Styles - p76
+                    Images - p87
+                    ppi etc - p89
+
+                    get image into frame - c-d
+                      scale/repos. image *  p93
+                    image over sever. pages *  p94
+
+                    Shapes/Polygons - p95
+                      straight lines/arrows - l
+                    béz. curves / freehand - p106
+                    col.s/grad.s - p108
+                    color sets - p111
+
+                    Import Vectors - p113 (eg. SVG) *
+                      ps  OODraw + formulas
+
+                    Tables - p122
+                      Master-Pages - p125
+                                (=underlay of fixed elements)
+                        for pages *
+
+                    page numbering - p129
+                     (frame + csa-p)
+
+                    Prefs etc - p131
+                    4.5 Guides
+                    4.6 Typogr. ++  Tools Hyphenator
+                     Fonts  Preflight Verific. (....)
+                    TOC/Indexes
+                    Sections*
+
+                    4.18 External tools
+                     (4.20 Plugins)
+
+                    5.1 The Scrapbook
+                    5.2 Converting frames (*)
+                    Action History *
+                        5.4 Search/Replace
+                    text to path - p152
+                    (importing text w. text filters) ((+styles))
+                                        +regexes - p162
+
+                    [Typogr. + Fonts (+Fontforge)  - p163 *! ***]
+                    5.7.3  fontmatrix (etc?)  + install fonts(*)
+
+                    Drop Caps - p183
+                    short words + hyphen
+                      Spec. Char.s - p192
+                      quotes, ligatures
+
+                     == == == == == ==
+
+                    5.7.7 Lists (incl. Custom) ?
+                      measuring-tool
+                      Prop.s palette - p203
+                    Move/Resize obj.s w. keyoard - p204
+
+                    rotate - r
+                     Multiple Duplicate (**)
+                    Align/Distrib.
+                      Grids  Guides
+                     TOC * - p216
+                    Layer - p219
+
+                    -----
+
+                    Barcode write
+                        6.1 eyedropper + Col. Managem. *
+
+
+                    te:Spot-colors (??)
+                        'the objective of color managem.'  ICC/ICM
+                        Soft proofing
+                       rendering intents
+
+                    7- Export
+                        Presentations (??)
+                    8 - Printing
+                        P.F.Verif. - p278
+                    Booklet printing - p285
+                        professional printing
+
+
+
+                    9 - PDF Forms - p296 ***(!!)
+                     Forms - JS - p305 *
+
+                    PDF Annotations - p312
+                        + Links *
+
+                    10 - PDF Presentations - p316
+
+                    11 - The Scripter - p323 *
+                      Script info - p327
+                    Scripting Basics - p343
+
+
+                    ----
+                    12 - Tips and tricks - "p2-303"
+                        tiled image *
+                       Circular diagram
+                         Borders
+                       Text over images
+                        custom frames
+
+                    Batik + Squiggle
+                                 + +
+                     gsview  kpdf
+                      LProf
+
+                    }}}
+. fontforge
+                ----
+                .
+Audacity  ¤¤(¤)
+            ~/Empire/Doks/Comp/mu/au/audacity/audacity-shortc.pdf
+            File Menu ----
+                New  c-n
+                Open...  c-o
+                Close  c-w
+                Save Project
+                  Save Project  c-s
+                  Save Project As...
+                  Save Lossless Copy of Project...
+                  Save Compressed Copy of Project...
+                Export
+                  Export as MP3
+                  Export as WAV
+                  Export as OGG
+                  Export Audio...  cs-e
+                  Export Selected Audio...
+                  Export Labels...
+                  Export Multiple...  cs-l
+                  Export MIDI...
+                Import
+                  Import Audio...  cs-i
+                  Labels...
+                  MIDI...
+                  Raw Data...
+                Page Setup...
+                Print...
+                Exit  c-q
+            Edit Menu ----  ___hm_eng
+                Undo  c-z
+                Redo  cs-z
+                Cut  c-x
+                Delete  c-k
+                Copy  c-c
+                Paste  c-v
+                Duplicate  c-d  __
+                Remove Special
+                  Split Cut  ca-x
+                  Split Delete  ca-k
+                  Silence Audio  c-l
+                  Trim Audio  c-t
+                Clip Boundaries
+                  Split  c-i
+                  Split New
+                  Join
+                  Detach at Silences
+                Labels
+                  Edit Labels...
+                  Add Label at Selection  c-b  __
+                  Add Label at Playback Position  c-m
+                  Paste Text to New Label
+                  Type to Create a Label (on/off)
+                Labeled Audio
+                  Cut
+                  Delete
+                  Split Cut  sa-x
+                  Split Delete  sa-k
+                  Silence Audio
+                  Copy  sa-c  __
+                  Split
+                  Join
+                  Detach at Silences  sa-j
+                Metadata...
+                Preferences...  c-p
+            Select Menu ----  ___hm_eng
+                All  c-a
+                None
+                Tracks
+                  Select In All Tracks  cs-k
+                  Select In All Sync-Locked Tracks  cs-y
+                Region
+                  Select Left at Playback Position  [
+                  Select Right at Playback Position  ]
+                  Select Track Start to Cursor  s-j
+                  Select Cursor to Track End  s-k
+                  Select Track Start to End
+                  Store Selection
+                  Retrieve Selection
+                Spectral  ____
+                  Toggle Spectral Selection  q  __
+                  Next Higher Peak Frequency
+                  Next Lower Peak Frequency
+                Clip Boundaries
+                  Previous Clip Boundary to Cursor
+                  Cursor to Next Clip Boundary
+                  ?? Previous Clip  a-,  __
+                  Next Clip  a-.
+                Cursor to Stored Cursor Position
+                Store Cursor Position
+                Select At Zero Crossings  z
+            View Menu ----  ___hm_eng
+                Zoom
+                  Zoom In  c-1
+                  Zoom Out  c-3
+                  Zoom Normal  c-2
+                  Zoom to Selection  c-e
+                  ?? Zoom Toggle  s-z
+                  Advanced Vertical Zooming
+                Track Size
+                  Fit to Width  c-f
+                  Fit to Height  cs-f
+                  Collapse All Tracks  cs-c
+                  Expand Collapsed Tracks  cs-x
+                Skip to
+                  Selection Start
+                  Selection End
+                History...
+                Karaoke...
+                Mixer Board...
+                Toolbars
+                  Reset Toolbars
+                  Transport Toolbar
+                  Tools Toolbar
+                  Recording Meter Toolbar
+                  Playback Meter Toolbar
+                  Mixer Toolbar
+                  Edit Toolbar
+                  Play-at-Speed Toolbar
+                  Scrub Toolbar
+                  Device Toolbar
+                  Selection Toolbar
+                  Time Toolbar
+                  Spectral Selection Toolbar
+                Extra Menus (on/off)
+                Show Clipping (on/off)
+            Transport Menu ----
+                Playing
+                  Play/Stop  Space
+                  Play/Stop and Set Cursor  x  __
+                  Loop Play  s-Space
+                  Pause  p
+                Recording  __
+                  Record  r
+                  Record New Track  s-r
+                  Timer Record...  s-t
+                  Punch and Roll Record  s-d
+                Scrubbing
+                  Scrub
+                  Seek
+                  Scrub Ruler
+                Cursor to
+                  Selection Start
+                  Selection End
+                  Track Start  j  [__]
+                  Track End  k
+                  Previous Clip Boundary
+                  Next Clip Boundary
+                  Project Start  home
+                  Project End  end
+                Play Region
+                  Lock
+                  Unlock
+                Rescan Audio Devices
+                Transport Options
+                  Sound Activation Level...
+                  Sound Activated Recording (on/off)
+                  Pinned Play/Record Head (on/off)
+                  Overdub (on/off)
+                  Software Playthrough (on/off)
+            Tracks Menu
+                Add New
+                  Mono Track
+                  Stereo Track
+                  Label Track
+                  Time Track
+                Mix
+                  Mix Stereo Down to Mono
+                  Mix and Render
+                  Mix and Render to New Track
+                Resample...
+                Remove Tracks
+                Mute/Unmute
+                  Mute All Tracks  c-u
+                  Unmute All Tracks  cs-u
+                  Mute Tracks  ca-u
+                  Unmute Tracks  csa-u
+                Pan
+                  Left
+                  Right
+                  Center
+                Align Tracks
+                  Align End to End
+                  Align Together
+                  Start to Zero
+                  Start to Cursor/Selection Start
+                  Start to Selection End
+                  End to Cursor/Selection Start
+                  End to Selection End
+                  Move Selection with Tracks (on/off)
+                Sort Tracks
+                  By Start Time
+                  By Name
+                Sync-Lock Tracks (on/off)
+            Generate Menu ----  ___hm_eng
+                Add / Remove Plug-ins...
+                Chirp...
+                DTMF Tones...
+                Noise...
+                Silence...
+                Tone...
+                Pluck...
+                Rhythm Track...
+                Risset Drum...
+            Effect Menu ----
+                .
+                Add / Remove Plug-ins...
+            Repeat Last Effect  c-r
+                Amplify...
+                Auto Duck...
+                Bass and Treble...
+                Change Pitch...
+                Change Speed...
+                Change Tempo...
+                Click Removal...
+                Compressor...
+                Distortion...
+                Echo...
+                Fade In
+                Fade Out
+                Filter Curve...
+                Graphic EQ...
+                Invert
+                Loudness Normalization...
+                Noise Reduction...
+                Normalize...
+                Paulstretch...
+                Phaser...
+                Repair
+                Repeat...
+                Reverb...
+                Reverse
+                Truncate Silence...
+                Wahwah...
+                Plug-in 1 to 15
+                  Adjustable Fade...
+                  Clip Fix...
+                  Crossfade Clips
+                  Crossfade Tracks...
+                  Delay...
+                  High-Pass Filter...
+                  Limiter...
+                  Low-Pass Filter...
+                  Noise Gate...
+                  Notch Filter...
+                  Spectral Delete
+                  Spectral edit multi tool
+                  Spectral edit parametric EQ...
+                  Spectral edit shelves...
+                  Studio Fade Out
+                Plug-in 16 to 18
+                  Tremolo...
+                  Vocal Reduction and Isolation...
+                  Vocoder...
+            Analyze Menu ----  ___hm_eng
+                Add / Remove Plug-ins...
+                Contrast...
+                Plot Spectrum...
+                Find Clipping...
+                Beat Finder...
+                Silence Finder...
+                Sound Finder...
+            Tools Menu ----
+                Add / Remove Plug-ins...
+                Macros...
+                Apply Macro
+                  Palette...
+                Reset Configuration
+                Screenshot...
+                Run Benchmark...
+                NyquistPrompt..
+                Nyquist Plug-inInstallen.
+                Regular Interval Labels..
+                Sample DataExport..
+                Sample DataImport..
+            Extra Menu
+                Transport  __
+                  Play
+                  Stop
+                  Play One Second  [ 1 ]
+                  Play to Selection  b
+                  Play Before Selection Start
+                  Play After Selection Start
+                  Play Before Selection End
+                  Play After Selection End
+                  Play Before and After Selection Start
+                  Play Before and After Selection End
+                  Play Cut Preview  c
+                  Scrub Backwards  u
+                  Scrub Forwards  i
+                Tools
+                  Selection Tool  F1
+                  Envelope Tool  F2
+                  Draw Tool  F3
+                  Zoom Tool  F4
+                  Time Shift Tool  F5
+                  Multi Tool  F6
+                  Previous Tool
+                  Next Tool
+                Mixer
+                  Adjust Playback Volume...
+                  Increase Playback Volume
+                  Decrease Playback Volume
+                  Adjust Recording Volume...
+                  Increase Recording Volume
+                  Decrease Recording Volume
+                Edit
+                  Delete Key  Bs
+                  Delete Key2  Del
+                Play-at-Speed
+                  Normal Play-at-Speed
+                  Loop Play-at-Speed
+                  Play Cut Preview-at-Speed
+                  Adjust Playback Speed...
+                  Increase Playback Speed
+                  Decrease Playback Speed
+            Move to Prev./Next Label  a-left/right
+                Seek
+                  Short Seek Left During Playback  left
+                  Short Seek Right During Playback  right
+                  Long Seek Left During Playback  s-left
+                  Long Seek Right During Playback  s-right
+                Device
+                  Change Recording Device...
+                  Change Playback Device...
+                  Change Audio Host...
+                  Change Recording Channels...
+                Selection
+                  Snap-To Off
+                  Snap-To Nearest
+                  Snap-To Prior
+                  Selection to Start  s-Home
+                  Selection to End  s-End
+                  Selection Extend Left  s-left
+                  Selection Extend Right  s-right
+                  Set (or Extend) Left Selection
+                  Set (or Extend) Right Selection
+                  Selection Contract Left  cs-right
+                  Selection Contract Right  cs-left
+                Move Backward Through Active Windows
+                Move Forward Through Active Windows
+                Focus
+                  Move Backward from Toolbars to Tracks  cs-f6  __
+                  Move Forward from Toolbars to Tracks  c-f6
+                  Move Focus to Previous Track  up
+                  Move Focus to Next Track  down
+                  Move Focus to First Track
+                  Move Focus to Last Track
+                  Move Focus to Previous and Select  s-up
+                  Move Focus to Next and Select  s-down
+                  Toggle Focused Track  Return
+                  Toggle Focused Track  k-Enter
+                Cursor
+                  Cursor Left
+                  Cursor Right
+                  Cursor Short Jump Left
+                  Cursor Short Jump Right
+                  Cursor Long jump Left
+                  Cursor Long Jump Right
+                  Clip Left
+                  Clip Right
+                Track
+                  Change Pan on Focused Track...
+                  Pan Left on Focused Track
+                  Pan Right on Focused Track
+                  Change Gain on Focused Track...  s-g  [__]
+                  Increase Gain on Focused Track
+                  Decrease Gain on Focused Track
+                  Open Menu on Focused Track...  s-m  <__>
+                  Mute/Unmute Focused Track  s-u
+                  Solo/Unsolo Focused Track  s-s
+                  Close Focused Track
+                  Move Focused Track Up
+                  Move Focused Track Down
+                  Move Focused Track to Top
+                  Move Focused Track to Bottom
+                Scriptables I
+                  Select Time...
+                  Select Frequencies...
+                  Select Tracks...
+                  Set Track Status...
+                  Set Track Audio...
+                  Set Track Visuals...
+                  Get Preference...
+                  Set Preference...
+                  Set Clip...
+                  Set Envelope...
+                  Set Label...
+                  Set Project...
+                Scriptables II
+                  Select...
+                  Set Track...
+                  Get Info...
+                  Message...
+                  Help...
+                  Import...
+                  Export...
+                  Open Project...
+                  Save Project...
+                  Move Mouse...
+                  Compare Audio...
+                  Screenshot (short format)...
+                Full Screen (on/off)  f11
+            Help Menu ----  ___hm_eng
+                Quick Help...
+                Manual...
+                Diagnostics
+                  Audio Device Info...
+                  MIDI Device Info...
+                  Show Log...
+                  Generate Support Data...
+                  Check Dependencies...
+                Check for Updates...
+                About Audacity...
+Blender  ¤¤(¤)
+                ----
+                .
+Kdenlive  TODO: IMPORT 
+                .
+                .
+pdftk  @@[@] [**]  (from Transcribe)
+                .
+                .
+potrace  ¤¤
+                .
+                .
+xsane  ¤¤
+                .
+                .
+imagick  ¤[¤]
+                        ~/Dropbox/rsc/Doks/phone/graf/Imagemagick2_usage-techniques.txt
+                        ~/Dropbox/rsc/data/lists/ref/comp/cb/imagickcb.txt
+                            ~/Dropbox/rsc/data/lists/ref/comp/pr/imagemagick_use-scripts.txt
+                        ~/Dropbox/rsc/data/lists/ref/comp/pr/media/imagick.txt
+                        ----
+                        .
+                        ~/Dropbox/rsc/data/lists/ref/comp/cb/imagickcb.txt
+                        ~/Dropbox/rsc/data/lists/ref/comp/pr/imagemagick_use-scripts.txt
+ffmpeg  (from Blender at-index (etc))  ¤[¤¤[¤]]
+                        ____
+                        ~/Dropbox/rsc/data/lists/ref/comp/cb/ffmpegcb.txt
+                        --
+                        combine audio and video   https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg#277667
+                        --
+                        ffmpeg -i "video.mkv" -itsoffset 00:00:01 -i "audio.ogg" -map 0:v -map 1:a -c copy "out-vidplusaudio.mkv"
+                            ffmpeg -i "11_02.mkv" -itsoffset 00:00:02 -i "11_02.ogg" -map 0:v -map 1:a -c copy "2024-03-11_02.mkv"
+                                                      ^
+                                                      +---- offset audio 1 sec
+
+                        ___ffmpeg_convert ___ffmpeg_aureplace(*) ___ffmpeg_rec (=frecord.bash vid.mp4)**  ___ffmpeg_crop   ___ffmpeg_cut ___ffmpeg_splice
+                        https://stackoverflow.com/questions/7333232/how-to-concatenate-two-mp4-files-using-ffmpeg?rq=1  ****************
+                        ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.mp4
+                        (=Lösning 2 (concat demuxer) ***************** )  mkv, mp4 mm (**!)
+
+                        ___ffmpeg_rec
+                            Ref =drs_screencastingkommandon
+                        ffmpeg -f alsa -ac 2 -i pulse -f x11grab -s 1920x1080 -i :0.0 -r 25 -vcodec libx264 FNAME.mkv
+                        audacity: Audio Host=ALSA, Recording Device=pulse
+
+                        ffmpeg -f pulse -f x11grab -s 1920x1080 -i :0.0 -r 25 -vcodec libx264 output.mkv                    #bara video (=spela in audio separat + lägg på)
+                        ffmpeg -f alsa -ac 2 -i pulse -f x11grab -s 1920x1080 -i :0.0 -r 25 -vcodec libx264 output2.mkv     #VIDEO + AUDIO DIREKT *****
+                        ffmpeg -f alsa -ac 2 -i pulse -f x11grab -s 1920x1080 -i :0.0 -r 24 -vcodec libx264 output3.mp4     #HM: CAPTURE VERKAR INTE FUNKA SPEC. BRA FÖR JUST VLC (????)
+                                                        -r 25                   force 25 fps
+                        +JÄMFÖR M. EXEMPEL 6.1 o 6.2 FR:  https://ffmpeg.org/ffmpeg.html  **********
+                        ref 2   #=hd för gaming mm (**)
+                        ffmpeg -f alsa -i pulse -f x11grab -s 1920×1080 -i :0.0 -c:a libmp3lame -ab 128k -ac 2 -c:v mpeg2video -qscale:v 0 amnesia_mpeg_0.avi
+                                -b:v                    (t.ex. 64k) =video average bit rate
+
+                        offset audio/video for video file
+                            ffmpeg -i "in.mp4" -itsoffset 3.84 -i "in.mp4" -map 0:v -map 1:a -c copy "out.mp4"  #audio delayed
+                                ffmpeg -i "movie.mp4" -itsoffset 3.84 -i "movie.mp4" -map 0:v -map 1:a -c copy "movie-audio-delayed.mp4"
+                            ffmpeg -i "in.mp4" -itsoffset 3.84 -i "in.mp4" -map 1:v -map 0:a -c copy "out.mp4"  #video delayed
+                            -----
+                            ffmpeg -itsoffset 0.25 -i in.mkv out.mkv
+                            ffmpeg -itsoffset -0.1 -i in.mkv out.mkv
+
+                        ___ffmpeg_crossfade(**)     sök: crossfade effect between video clip audio ffmpeg
+                                            https://superuser.com/questions/778762/crossfade-between-2-videos-using-ffmpeg  (=testa lösning 2)
+                                    ffmpeg -f alsa -ac 2 -i pulse -f x11grab -s 1920x1080 -i :0.0 -r 24 -vcodec libx264 output3.mp4
+                            @a: 'attzmzo    **** #=återcentrera pverktygslistan (**)
+                             #+kan sen köras med 'Q' igen
+
+                            VIDEO =VIDEOFORMAT (WEBM, MP4 MM MM) ****  +FFMPEG TUTORIALS, PVERKTL MM *********
+                            {{{
+
+                                    Visa Info om Videofil mm (=MediaFil):  ffprobe (**)
+                                            https://ffmpeg.org/ffprobe.html
+
+
+                                an ffmpeg tutorial (for beginners**) ****** {{{
+
+                                    recording, converting and streaming digital audio and video in various formats.
+                                    It can be used to do most of our multimedia tasks quickly and easily say, audio compression,
+                                    audio/video format conversion, extract images from a video and a lot more
+
+
+                                ___ffmpeg_convert
+                                    syntax enklaste konvertering                    ffmpeg -i input.avi output.mpg
+                                    flaggor för i/o-filerna                         direkt innan filen de ska påverka (=innan i- o innan o-filen (respektive))
+
+                                            comment on ffm basic simplicity:
+                                                But there is one slight flaw. Since FFmpeg devs had to keep a default setting
+                                                for the audio and video bitrate, they settled on a 64kbps audio(radio quality)
+                                                and 200 kbps for video, a bad video quality. But these options can always be changed
+                                                so this is not a big issue.
+
+                                    keep vid. qual. of o-file                       ffmpeg -i input.avi -sameq output.mpg
+                                      same as i-file ***            
+                                    pre-defined audio and video options             ffmpeg -i input.avi -target dvd output.mpg      ___teoriterm ******
+                                      for various file formats (t.ex. dvd) **
+                                    convert first 30 sec. of i- to o-               ffmpeg -i input.fmt1  -t 30 output.fmt2
+
+                                        -ar                                 au.freq. för o-fil (t.ex. 48000 Hz)
+                                        -ac                                 antal au-kanaler ut
+                                        -ab                                 bitrate val. för au-fil     #t.ex. -ab 128k
+                                         -an                                no audio
+
+                                                +SE EV. 'AUDIO COMPRESSION HOWTO' (***)  ---->>
+
+                                    -acodec
+
+                                    konvertera audio till ogg vorb.                 ffmpeg -i input.mp3  -b 128k  output.ogg
+
+                                        -b                                  sätt bitrate för videofil
+                                                                                    ffmpeg -i input.avi -b 200k output.avi
+                                        -r                                  framerate (**)
+                                        -s                                  set size/resolution of output file *
+                                                                                    ffmpeg -i input.avi  -s 1024x768 output.avi         # -s xga    +se ev. mer 'resolution abbrevs'
+                                                                                                                                        # hd720 stands for 1280x720
+                                        -aspect                             set o- aspect ratio
+                                                                                    ffmpeg -i input.avi -aspect 4:3 output.avi
+
+                                ___ffmpeg_aureplace (**!)
+
+                                        ffmpeg -i INPUTVID.mp4 -i AUREPLACE.mp3 -acodec copy -vcodec copy -map 0:v:0 -map 1:a:0 OUTVID.mp4
+                                        ffmpeg -i ~/Hämtningar/testing/tpope--vim_config.mp4 -i ~/Hämtningar/testing/tpope--vim_config--compr.mp3 -acodec copy -vcodec copy -map 0:v:0 -map 1:a:0 tpope--vim_config_cleanedaudio.mp4
+
+                                        howto cropping and padding                              https://superuser.com/questions/690021/video-padding-using-ffmpeg#690211
+                                          videos using ffmpeg (**)
+                                ___ffmpeg_crop
+                                        for f in *.mp4; do ffmpeg -i $f -vf "crop=1280:720:70:170" ${f/-orig/}; done  #(!!)= rename origvids to vidname-orig.mp4
+                                                ffmpeg -i before.mp4 -vf "crop=w:h:x:y" after.mp4
+
+                                        ACR-EGDE/CPP-10H_CROPMATRIX (***(*)):       170 570 190 70  1920 1080       #el 180(**)
+                                                ffmpeg -i before.mp4 -vf "crop=1280:720:70:170" after.mp4
+
+
+                                                1a 3b 6c 9d
+                                                320 770 340 710
+                                                    ct"
+                                                    =1920-b-d:
+                                                    =1080-a-c:
+                                                    =d:
+                                                    =a
+                                                    
+
+                                                50 0 50 0
+                                        Bridge Cropmatrix
+
+
+
+                                        Kashmir Dfs
+                                                390 0 40 630  1920 1080
+                                                width=1920-430            1490
+                                                height=1080-630           450
+                                                frleft=630                630
+                                                frtop=1080-390            690
+                                                ffmpeg -i Infile.mp4 -vf "crop=1290:650:630:390" Outfile.mp4
+
+
+                                        Cut Vlc Cropmatrix-numbers(*)
+                                            @m:  "ayiww"byiww"cyiww"dyiww"xyiww"yyiw
+                                        Convert Vlc-crop_format (top-right-bot-left) to ffmpeg-crop_format (width-height-frleft-frtop)      #=sätt först top-right-bot-left till "a "b "c "d    + "x "y till wh-orig (def. 1920x1080)
+                                            @f:  ^fwct"=x-b-d:=y-a-c:=d:=a
+
+                                            ffmpeg -i ancientegypt.mp4 -vf "crop=480:260:0:50" ancientegypt_croptest.mp4
+                        480 360
+
+                                            (t.ex.:) ffmpeg -i test.mp4 -vf "crop=1070:600:230:250" test-cropped.mp4  (****************/!!!!!!)
+
+                                                                                    ######  ffmpeg -i inputfile.avi -croptop 88 -cropbottom 88 -cropleft 360 -cropright 360 outputfile.avi
+                                                                                    ffmpeg -i input.avi  -padtop 120  -padbottom 120  -padcolor 000000  output.avi  ****
+
+                                        -vn
+                                        -vcodec
+                                                                                     ffmpeg -i input.avi  -vcodec libtheora output.ogv
+
+                                        komprimera audio fr. 320 kbps       ffmpeg -i inputfile.mp3 -ab 128 outputfile.mp3
+                                          till 128
+
+                                        KONVERTERINGSLISTA + EV. IDÉ: KONVERTERA NER LJUDINSPELNING FÖR RÖST (SB-L.B.) TILL 96 kbs el. likn.        #=låter som radioröst ****
+
+                                        ffmpeg -i  inputfile.mpg  -vcodec mpeg4 outputfile.avi
+                                        If you want to force a particular format. You can easily do this using the '-f' flag
+
+
+                                        Convert 'down' to flv (**/!)
+                                             ffmpeg -i  recorded_file.mov  -ar 22050  -ab 32k  -r 25  -s 480x360  -vcodec flv -qscale 9.5 output_file.avi
+
+
+                                    ffmpeg -formats
+
+                                        extract images from a video         ffmpeg -i inputfile.avi -r 1 -f image2 image-%3d.jpeg
+
+                                                                            ffmpeg -i inputfile.avi -r 1 -s 4cif -f image2 image-%3d.jpeg       #semer 4cif
+                                                                            ffmpeg -i inputfile.avi  -r  1  -t  4  image-%d.jpeg
+                                                                            ffmpeg -i inputfile.avi  -r 1 -t  40 -ss  01:30:14 image-%d.jpeg
+                                                                            ffmpeg -i inputfile.avi  -r 1 -vframes 120 -ss  01:30:14 image-%d.jpeg
+
+                                                            ___SEMER ___SEMER *****
+
+                                        How to record audio from mic using FFmpeg aka audio grabbing *****
+                                                                            ffmpeg -f oss -i /dev/dsp audio.mp3
+                                            cat /dev/sda1 > /dev/dsp
+
+                                        remove au                           ffmpeg -i inputfile.avi -an outputfile.avi
+                                        remove vid                          ffmpeg -i inputfile.avi -vn -ab 128 outputfile.mp3
+
+
+                                    ___ffmpeg_cut
+
+                                            https://superuser.com/questions/138331/using-ffmpeg-to-cut-up-video (**/?)
+                                                    ffmpeg -ss 00:00:30.0 -i input.wmv -c copy -t 00:00:10.0 output.wmv         #=klipp fr. 00:00:30 till 00:00:40 (****/?)
+                                                    ffmpeg -ss 30 -i input.wmv -c copy -t 10 output.wmv
+
+                                }}}
+                                https://www.labnol.org/internet/useful-ffmpeg-commands/28490/   ******************** ___SEMER ___SEMER (=GÅ IGENOM + GÖR PVERKTL FÖR FFMPEG ********)   ___ffmpeg_crop
+
+                                https://blog.addpipe.com/converting-webm-to-mp4-with-ffmpeg/ ** {{{
+
+                                        ffmpeg -i video.webm video.mp4
+
+                                    webm - låg minnesförbrukn. (=mobila enheter mm)
+                                    mp4 - bättre stöd över många enheter        (om video=h.264 + audio=aac)        #+ev. h264 =high profile + level 4.2
+
+                                    bra program för att                         vlc **
+                                      visa info om strömmar i
+                                      videofil
+
+                                    (converting can be lengthy and _intensive process, but)
+                                      ffmpeg provides a series of presets and controls to help you optimize for quality or faster conversions
+
+
+                                    video encoding m. h.264:
+                                        control qual. w. quantizer scale                crf(=constant rate factor)  =0-51       #0=lossless, 23=def, 51=worst
+                                    video encoding qual. presets                        ultrafast - veryslow (medium=def.)      #slower =better compression
+
+                                }}}
+                                 https://docs.blender.org/manual/en/latest/files/media/video_formats.html ** {{{
+
+                                    se/infogat i teorilistan **
+
+                                 }}}
+                                https://www.reddit.com/r/blender/comments/14wx9b/best_video_output_format/  **** {{{
+
+                                    ___pverktl_video
+
+                                    save animations to still frames in non-lossy image format                   tif/png
+                                    stitch together w. ffmpeg                                                   mp4 container w. h264 encoding (w. no compression at all)       #highest 1080 resolution avail.
+
+                                    Another reason I like mp4/h264 is I can upload compressed versions of these videos to my own personal sites and have
+                                    flash players play them progressively (non-stream) -- even things like android and iphones can handle the format.
+
+                                    mp3 (el aac)        #use max bitrate poss.
+
+                                    For long term archiving I keep all the individual frames and maybe a lower resolution preview video along with my .blend files
+                                    and other assets. Can always re-encode new videos from the still images when the common video file format shifts to something else in the future.
+
+                                     color corrections/grading (**)  (=gimp/macprogrammet??)
+                                                        https://docs.blender.org/manual/en/latest/files/media/image_formats.html
+
+                                    If you're going to do any sort of post processing, especially any gamma operations,
+                                    and HD space is not an issue you should definitely be going for openExr instead of tiff.    #???
+
+                                }}}
+                                 https://docs.blender.org/manual/en/latest/render/output/file_formats.html {{{
+
+                                    tips(=bygger på samma som redit-artikeln =rendera ut png-bilder+):
+                                        Images can then be encoded to a video by adding the rendered image sequence
+                                        into the Video Sequencer and choosing an appropriate Video Output. (*)
+
+                                    Blender Encoding Panel(=för video output):
+                                        video container         #=output format
+                                        codec
+                                        compression settings
+
+                                    With all of these compression choices, there is a trade-off between file size,
+                                    compatibility across platforms, and playback quality.
+
+                                        tips: se mer info när encoding körs
+                                            kolla terminalen + om programmet startats med 'blender -d'
+
+                                    tips(!): 'check the compatibility of your container format and codec' (*!!)
+
+                                    +DETALJERAT 'SPARA UT/RENDER VIDEO AS IMAGE SEQ, EITHER PNG OR OPENEXR**' +mm ****
+
+                                 }}}
+                                .    https://blender.stackexchange.com/questions/3470/what-file-format-should-i-use-for-rendering {{{
+
+                                    dpx image format                            huge; used in preservation
+                                    openexr tips                                enable preview (=sparar jpgs så kan kolla snabbt på resultatet)
+                                    png   true color        +ANG. COMPRESSION
+
+                                    openexr:
+                                    These images are good for keeping every bit of data around
+                                    (including render passes in the case of Multilayer),
+                                    which can be useful for compositing.
+
+                                    Note that when rendering a still, the image is stored uncompressed in memory,
+                                    so you can render an image then save it multiple times in different formats
+                                    (with different compression ratios).
+
+
+                                      PNG 8 bit is fine to save file without any changes
+                                      PNG 16bit is fine for some editing in Photoshop/Gimp
+                                      Heavy color editing and compositing -- OpenEXR -- has a huge dynamic range
+                                      Heavy compositing, animation/movie compositing -- OpenEXR multilayer
+
+                                }}}
+
+
+                                https://danielpocock.com/quick-start-blender-video-editing/ {{{
+
+                                        ___pverktl_video 1
+
+                                    review the max. memory size property                            #set to somewhat less than amount of phys. ram in the workstation
+
+                                    (!!) same fps for output file (to render) as input file         =KOLLA EV. O JÄMFÖR FPS FÖR VIDEO FILMAD M. VIDEOKAM./S5-TELEFONEN/GOPRO-MINI/TAB-S3/WEBCAM-1BT (****)
+                                    resolution_percentage (=under 'picture dimensions')             =100%
+
+                                    output format =png (**)
+                                    outp. dir + ## om 01-99 (mm)
+
+                                        GrundRedigera 1, +
+
+                                    kolla klippets längd till hö. (=prop.s)
+                                     + mata in värdet i rutan nere
+                                                 (=hur långt vill rendera (=ej def.=250 frames))
+
+                                    check av-sync (!!)
+
+                                     'you will need to listen to the strips...' =???????????        (=matcha mot slaskaudiospåret(=orig.)  tills ej hör eko + ta bort slaskspåret(!!)
+
+                                    TRANSFORMS =ZOOM IN PICTURE ???? MM                             H-KLICKA TRANSFORM-STRIP + KOLLA 'UNIFORM SCALE' ??????/******      +redigera värden o animera m. keyframes (**)    ___PICKOUT ( ___SEMER )
+
+                                    GENERERA PNG.S + GENERERA AUDIO (ogg?)    ___PICKOUT ( ___SEMER )
+
+                                      apt-get install mjpegtools vpx-tools mkvtoolnix
+
+                                    ------
+
+                                    Color Balance (=om bild är för ljus, gul mm):  strip modifier > color balance       #anv. reglagen lift, gamma o gain för att justera shadows, midtones o highlights     ( ___PICKOUT )
+
+                                }}}
+                                 https://www.instructables.com/id/Learn-to-Edit-Video-on-Blender-in-5-Minutes/ ****** ++ ___SEMER {{{
+
+                                    tips: spara .blend-filen i samma mapp som videorna (=även om flyttar filerna, så hittar blender videorna)(??)
+
+
+                                    top: video preview
+                                    bottom: seq. editor
+                                    right: prop.s of project
+
+
+                                    To play our video, we need to set the preview zone.     ( ___PICKOUT ) ___SEMER
+                                    Only the strips inside the preview zone will be played.
+                                        p
+                                        a-a
+                                        mhj
+                                          zoom
+
+
+
+                                    I hope this tutorial was useful!
+
+                                    Next time we will see how to
+
+                                        Create Group (Meta)                             =VAR ???????? ( ___SEMER )      #=hitta mer info/annan tutorial, testa mm (***/!!!)
+                                        Add Text/Image/Video overlay                    =VAR ???????? ( ___SEMER )  ( ___PICKOUT )
+                                                Modify a strip (color/position/size)
+
+                                 }}}
+
+                            ------
+                                 Ffmpeg - an intermediate guide     #wikibook: OBS OBS! KAN BEHÖVA RENSAS =SAMMANSTÄLLAS FÖRST (=TILL EN TEXTFIL) (o inte sönderbruten html-sida) {{{
+                                 }}}
+                                Video Compression (bok)  (=INKLUSIVE VIDEOREDIGERING, BILDFORMAT, VIDEOSTANDARDS MM *******) {{{
+                                    ~/vidaudcompr.pdf
+
+                                    viktiga scheman/ordlistor/tabeller (=förstförsta genomtitten(*)):
+                                        s24
+                                        s59
+                                        s63 - aspect ratios
+                                            s71 - audio synchronization
+                                        s91 - frame rates
+                                        s100 ca++ - mer om aspect ratios
+                                        s124 - video formats
+                                         Dig. Image formats (+screen resolution*)
+                                                ===========
+                                                ===========
+                                                ===========
+                                                ===========
+                                                ===========
+
+                                }}}
+                                Ffmpeg Documentation(!)   #=Man     (+ev. bash-man(??)) {{{
+                                }}}
+                                        .   (anteckn. =första genomtitt doc/index*) {{{
+                                            TODO: EV. LYSSNA IN (=VALOUD) BÖRJAN(*) PÅ FFMPEG DOCUMENTATION (=presentationen av vad ffmpeg kan göra*)
+                                             -sources
+                                             -sinks
+                                              -report
+                                             5.4 main options       -f -i -c -t -ss  -metadata  -disposition
+                                             5.5 video options      -r -s
+                                                5.6 advanced video options
+                                                        key_frames??
+                                             5.7 audio options
+                                                5.8 advanced audio options
+                                              5.9 subtitle options
+                                             +Advanced options
+                                             preset files(??)
+                                              ffpreset files
+                                              avpreset files
+                                                --- examples ---
+                                            6.1/6.2 GRAB AUDIO AND VIDEO (=SCREENCASTING MM) *****
+                                            6.3 Video and Audio File Format Conversion (*)      #+='convert dvd to mp4' mm
+                                        }}}
+                                    https://en.wikipedia.org/wiki/List_of_codecs #Lossless_video_compression
+
+                            }}}
+                        
+                        https://trac.ffmpeg.org/wiki/How%20to%20speed%20up%20/%20slow%20down%20a%20video
+
+                        ____
+                        ~/Dropbox/rsc/data/lists/ref/comp/pr/media/FFmpeg-Faq-Toc--Docs.txt
+                        ~/Dropbox/rsc/Doks/phone/graf/pr/ffmpeg/ffmpeg-cookb.toc.txt
+                        ~/Dropbox/rsc/Doks/phone/graf/pr/ffmpeg/FfmpegBook.txt
+                            ~/Dropbox/rsc/Doks/phone/graf/pr/ffmpeg/Ffmpeg.txt  #=linkslist
+                        ---- ----
+yt-dlp  ¤[¤]
+                ~/Dropbox/rsc/Doks/phone/Comp/media/ytdlp-man.txt
+                ~/gdrive/rsc/Doks/taskuj/mmedia/Mpv-Docs.txt
+
+                Now that yt-dlp is installed, you can use it from the command line. Here are a few basic examples:
+
+                Download a YouTube video:
+                    yt-dlp <YouTube_URL>
+                Download the best audio-only version:
+                    yt-dlp -x --audio-format mp3 <YouTube_URL>
+                    yt-dlp -x --audio-format mp3 "https://www.youtube.com/watch?v=QjB3qextZbQ&list=OLAK5uy_kkL5jD6ELJzI6o9x3eJO2x87d-PzELkVY&index=22"
+                Download a specific audio clip:
+                    Find the start and end times of the clip you want.
+                    use the following command, replacing the times and URL appropriately.
+                    yt-dlp --download-sections "*[00:01:00-00:01:30]" -x --audio-format mp3 <YouTube_URL>
+                test 1 - Blade Runner (Blade Runner 2049) ----
+                    yt-dlp --download-sections "*00:00:20-00:02:00" -x --audio-format mp3 "https://www.youtube.com/watch?v=QjB3qextZbQ&list=OLAK5uy_kkL5jD6ELJzI6o9x3eJO2x87d-PzELkVY&index=22"
+                    This example downloads the audio between 1 minute and 1 minute and 30 seconds.
+
+Obs Studio (Win)
+                .
+                .
+
+
+
+~/Dropbox:
+  ~/Dropbox/rsc/aubooks/comp/dolphin-man.tags.txt
+  ~/Dropbox/rsc/aubooks/comp/dolphin-man.txt
+~/Dropbox/rsc/data/lists/at/Blender.g.txt
+~/Dropbox/rsc/data/lists/ref/comp/sysadm/cmdl-fu.shell.txt
+~/Dropbox/rsc/Doks/phone/Comp/lang/py/au-transcribe/Py-VoiceCompute-Intro_2018.txt
+~/Dropbox/rsc/Doks/phone/graf/pr/Blender/blender-refman_pythonscripting.txt
+~/Dropbox/rsc/Doks/phone/graf/vid/vidaudcompr.txt
+
+
+
+- Great. Just as a clarifier (on a previous snippet of our conversation above), I would like to learn a lot more about the ffmpeg command and its uses in the future.
+
+I'll just outline it here for future reference:
+
+I find that when learning about a complex and versatile command like ffmpeg, it's quite tricky to just try to force-feed oneself 50 or a hundred different flags and what they do.
+
+What I instead try to do is to approach it from several different angles a bit in tandem.
+
+- What are the broad areas of utility where the command can be used (i.e. conversion, adding audio to a video track, cropping video, etc etc)
+- Taking a glance at specific flags and see what they do
+- Listing areas of multimedia problems I suspect could be solved with ffmpeg
+- Organizing an overview of one or more manuals/documentation into broad areas of use
+etc
+
+
+You've outlined an excellent and effective strategy for learning ffmpeg. Approaching it from multiple angles simultaneously is much more effective than rote memorization of flags. Here's a refined version of your approach and how I can help:
+
+Your Learning Strategy (Refined):
+
+Broad Areas of Utility (Categories of Tasks): Identifying the broad categories of tasks that ffmpeg can handle is a great starting point. Here are some key categories:
+
+Transcoding (Conversion): Converting between different video and audio formats (e.g., MP4 to AVI, MP3 to AAC).
+Encoding/Decoding: Changing the encoding parameters within a format (e.g., changing the bitrate or codec of an MP4 video).
+Demuxing/Muxing: Separating audio and video streams from a container (demuxing) or combining them into a container (muxing).
+Filtering: Applying various filters to audio and video streams (e.g., scaling, cropping, adding watermarks, applying effects).
+Metadata Manipulation: Adding, editing, or removing metadata (e.g., tags, titles, album art).
+Streaming: Streaming audio and video over a network.
+Device Capture: Capturing audio and video from devices (e.g., webcams, microphones, screens).
+Exploring Specific Flags (Targeted Learning): Instead of trying to learn all the flags at once, focus on the flags relevant to the specific tasks you want to accomplish. As you encounter new tasks, you'll learn new flags.
+
+Listing Multimedia Problems (Problem-Driven Learning): This is a very effective approach. When you encounter a multimedia problem (e.g., "How do I extract the audio from this video?"), try to solve it with ffmpeg. This makes the learning process more practical and engaging.
+
+Organizing Documentation (Structured Overview): The official ffmpeg documentation is comprehensive but can be overwhelming. Creating your own structured overview based on the broad areas of utility can be very helpful.
+
+How I Can Help (Aligned with Your Strategy):
+
+Category-Based Examples: I can provide ffmpeg commands and explanations organized by the broad areas of utility listed above.
+Flag Explanations: When explaining commands, I will provide detailed explanations of the relevant flags, including their syntax, purpose, and usage examples.
+Problem-Solving Assistance: If you have a specific multimedia problem you want to solve with ffmpeg, I can help you construct the command and explain the reasoning behind it.
+Documentation Summarization: I can help you summarize and organize information from the ffmpeg documentation related to specific areas of use.
+Example (Transcoding):
+
+Let's say you want to convert a .mov file to .mp4.
+
+Category: Transcoding.
+Basic Command: ffmpeg -i input.mov output.mp4
+Relevant Flags:
+-i: Specifies the input file.
+No other flags are strictly required for a basic conversion, as ffmpeg will usually choose appropriate defaults.
+Problem: "I need to convert a .mov file to .mp4 so I can play it on my phone."
+Documentation: You can then consult the ffmpeg documentation for more advanced options related to MP4 encoding, such as setting the video codec (-c:v), audio codec (-c:a), bitrate (-b:v, -b:a), and quality (-crf).
+Example (Filtering - Cropping):
+
+Let's say you want to crop a video to remove black bars.
+
+Category: Filtering.
+Relevant Flags:
+-filter:v crop=w:h:x:y: This is the crop filter.
+w: Output width.
+h: Output height.
+x: X-coordinate of the top-left corner of the cropped area.
+y: Y-coordinate of the top-left corner of the cropped area.
+Problem: "My video has black bars at the top and bottom, and I want to remove them."
+Example Command: ffmpeg -i input.mp4 -filter:v "crop=1280:720:0:100" output.mp4 (This crops the video to 1280x720, starting at coordinates 0,100.)
+Documentation: You can then refer to the ffmpeg documentation for more details on the crop filter and other video filters.
+By following this combined approach, you'll learn ffmpeg more effectively and be able to apply it to a wide range of multimedia tasks. I'm here to help you through this process. Just provide specific tasks, problems, or areas you want to explore, and I'll provide relevant commands, explanations, and documentation summaries.
+
+
+- Oh, and one more: Trying to extract and list (and organize with the other overview material) areas and problems where different people have found ffmpeg useful
+
+That's an excellent addition to your learning strategy. Understanding how others use ffmpeg in real-world scenarios can provide valuable insights and inspiration. Here's how we can approach this:
+
+1. Common Use Cases and Problems Solved by ffmpeg:
+
+Here's a breakdown of common areas where people find ffmpeg useful, along with specific problems it solves:
+
+Video Conversion and Format Compatibility:
+Problem: Playing a video file on a device that doesn't support its format (e.g., playing an MKV file on an older DVD player).
+ffmpeg Solution: Converting the video to a widely supported format like MP4 or AVI.
+Example: ffmpeg -i input.mkv output.mp4
+Reducing File Size:
+Problem: A video file is too large to share or store efficiently.
+ffmpeg Solution: Reducing the video bitrate or using a more efficient codec.
+Example: ffmpeg -i input.mp4 -b:v 1000k output.mp4 (reduces video bitrate)
+Extracting Audio from Video:
+Problem: You need the audio track from a video file.
+ffmpeg Solution: Extracting the audio stream to a separate audio file (e.g., MP3, WAV).
+Example: ffmpeg -i input.mp4 -vn output.mp3 (-vn disables video)
+Joining/Concatenating Video Files:
+Problem: You have multiple video clips that you want to combine into a single video.
+ffmpeg Solution: Concatenating the video files.
+Example: This is a bit more complex and usually involves creating a text file listing the input files.
+Splitting/Cutting Video Files:
+Problem: You want to extract a specific segment from a video file.
+ffmpeg Solution: Cutting the video at specific timestamps.
+Example: ffmpeg -i input.mp4 -ss 00:01:00 -to 00:02:00 output.mp4 (extracts the segment from 1:00 to 2:00)
+Adding Subtitles:
+Problem: You want to add subtitles to a video.
+ffmpeg Solution: Embedding subtitle files (e.g., SRT, ASS) into the video.
+Example: ffmpeg -i input.mp4 -vf subtitles=subtitles.srt output.mp4
+Adding Watermarks:
+Problem: You want to add a logo or watermark to a video.
+ffmpeg Solution: Overlaying an image onto the video.
+Example: ffmpeg -i input.mp4 -i watermark.png -filter_complex "overlay=10:10" output.mp4 (overlays watermark.png at position 10,10)
+Changing Video Resolution/Scaling:
+Problem: You need to resize a video to fit a specific screen or device.
+ffmpeg Solution: Scaling the video to a different resolution.
+Example: ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4
+Rotating/Flipping Videos:
+Problem: A video is rotated incorrectly.
+ffmpeg Solution: Rotating or flipping the video.
+Example: ffmpeg -i input.mp4 -vf "transpose=1" output.mp4 (rotates 90 degrees clockwise)
+Creating GIFs from Videos:
+Problem: You want to create an animated GIF from a short video clip.
+ffmpeg Solution: Extracting frames and encoding them into a GIF.
+Example: This usually requires a few steps involving palette generation.
+Streaming Video:
+Problem: You want to stream a video over a network.
+ffmpeg Solution: Streaming to various protocols like RTMP or HLS.
+2. Finding Real-World Examples:
+
+Online Forums and Communities: Search online forums like Stack Overflow, Reddit (subreddits like r/ffmpeg), and video production forums for ffmpeg use cases and solutions.
+Blog Posts and Tutorials: Many blog posts and tutorials demonstrate how to use ffmpeg for specific tasks. Search for tutorials related to the problems you're interested in.
+Scripts and Projects: Look for open-source scripts or projects that use ffmpeg. This can give you practical examples of how ffmpeg is used in larger contexts.
+3. Creating Your Own Use Case List:
+
+Start creating your own list of multimedia problems you encounter or anticipate encountering. Then, try to find ffmpeg solutions for them. This will make your learning more focused and relevant.
+
+How I Can Help with This:
+
+I can provide more detailed explanations and examples for each of the use cases listed above.
+If you have a specific multimedia problem, I can help you find or construct the appropriate ffmpeg command.
+I can help you interpret and understand ffmpeg commands you find online.
+By combining this approach with the other learning strategies we discussed, you'll be well on your way to mastering ffmpeg and using it effectively for a wide range of multimedia tasks. Just let me know which area you want to explore further, or if you have a specific problem you'd like to solve.
+

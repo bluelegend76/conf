@@ -1,0 +1,23 @@
+
+~/Empire/Doks/Comp/lang/py/mlearn/mlearn-scikitkerastflow-2e_2019.pdf
+
+~/Empire/Doks/Comp/mlearn-ai/genetic-algorithms-and-machine-learning-for-programmers_P1.0.pdf
+~/Empire/Doks/Comp/lang/py/mlearn/genetic-algos-mlearn.pdf
+~/Empire/Doks/Comp/lang/py/mlearn/pymlearn-thougtful_2017.pdf
+~/Empire/Doks/Comp/mlearn-ai/evol/evolmlearn-techalgosapplic_2020.pdf
+~/Empire/Doks/Comp/mlearn-ai/test/mlearn-testdriven_2015.pdf
+~/Empire/Doks/Comp/mlearn-ai/devops/mlearn-devops_2021.pdf
+~/Empire/Doks/Comp/mlearn-ai/cloud/aipragm-cloudmlearn.ru.pdf
+    ~/Empire/Doks/Comp/mlearn-ai/mlearning.pdf
+~/Empire/Doks/Comp/mlearn-ai/mlearn-doksprocess_2020.pdf
+    ~/Empire/Doks/Comp/mlearn-ai/ref/encyclopedia-of-machine-learning_compress.pdf
+    ~/Empire/Doks/Comp/mlearn-ai/patts-algos/pro-mlearnalgos_2018.pdf
+    ~/Empire/Doks/Comp/mlearn-ai/mlearnautom.pdf
+----
+~/Empire/Doks/Comp/lang/rust/mlearn/rust-projspract-wmlearn_2020.pdf
+~/Empire/Doks/Comp/lang/rust/rsc/practical-machine-learning-with-rust-creating-intelligent-applications-in-rust_compress.pdf
+~/Empire/Doks/Comp/lang/wasm/wasmlearn-ccpp_2018.pdf
+    ~/Empire/Doks/Comp/lang/xml/xml-learn_2020.pdf
+
+~/Empire/Doks/Comp/lang/py/mlearn/mlearnapps-ideatoprod_2020.pdf
+

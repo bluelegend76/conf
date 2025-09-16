@@ -1,0 +1,9 @@
+
+# Exclude Vim swap files
+*.swp
+
+*.xml
+
+# Exclude Emacs Doom config-files
+.emacs.d/elpa/**
+

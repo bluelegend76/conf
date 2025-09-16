@@ -1,0 +1,1493 @@
+vim:fdm=marker:
+    ~/bin/scripts/at/at.Python.prl.bash
+___0000
+init doks {{{
+  ~/dropbox-legacy/scripts/ALLTODOIST/PYTHON.bash
+}}}
+Ref-doks to add to 'Dashboard Startup' {{{
+
+## ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/py/pycb.txt
+##   starts with cb:s
+
+~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/py/PyStdLib.txt
+  ~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/py/pystdlib3.txt
+
+~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/py/lpy01.ref.txt
+~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/py/lpy03-09.reviewcmp.ref.txt
+~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/py/lpy03-09.reviewcmp.txt
+
+~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/py/PyPackagesIndex-pypi.txt
+
+
+~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/py/pyessref-beaz.txt
+  ## ~/Empire/Doks/Comp/lang/py/pylibs-shoulduse.txt
+    # ~/Empire/Doks/Comp/lang/py/ref/pyessref-bea.pdf
+}}}
+~/Dropbox/rsc/samples/code/py/abcode-pyfiltering.py
+ristretto ~/Dropbox/transcr/abcode/abcoding-0*.jpg &
+jupyter notebooks (+vim, emacs, vs-code) {{{
+
+Quick question: Is there a way to get a Jupyter Notebook type of experience using Vim, Emacs, Visual Studio Code, or any of the editors in the JetBrains suite?
+
+Show drafts
+
+
+Absolutely! There are several ways to achieve a Jupyter Notebook-like experience in these editors.
+
+Vim:
+Nvim-jupyter: This plugin provides a Jupyter notebook interface within Neovim.
+Vim-ipython: Another option for integrating IPython (Python's interactive shell) with Vim.
+Emacs:
+Emacs Jupyter: A major mode for Emacs that provides Jupyter notebook functionality.
+Visual Studio Code:
+Jupyter Notebook Extension: Install the "Jupyter Notebook" extension from the VS Code marketplace.
+Python Extension: Ensure you have the Python extension installed for Python-based notebooks.
+JetBrains IDEs:
+Jupyter Notebook Plugin: Most JetBrains IDEs have built-in support for Jupyter notebooks or offer plugins. Check the specific documentation for your IDE.
+Key Features to Look For:
+
+Cell execution: The ability to execute code cells individually.
+Output display: Rendering of text, code, and visualizations.
+Kernel management: Support for different kernels (e.g., Python, R, Julia).
+Markdown support: For creating rich text content within your notebooks.
+By using these tools and extensions, you can enjoy a Jupyter Notebook-like experience within your preferred editor.
+
+Would you like to explore any of these options in more detail or discuss specific use cases?
+
+
+
+
+
+
+
+I guess PyCharm could be the most fruitful editor in the JB suite to explore?
+
+Show drafts
+
+
+Yes, PyCharm is an excellent choice for a Jupyter Notebook experience. It provides a comprehensive environment for data science and scientific computing, including Jupyter Notebook support.   
+
+Here are some key benefits of using PyCharm for Jupyter Notebooks:
+
+Integrated Development Environment (IDE): PyCharm offers a rich set of features for code editing, debugging, and project management.   
+Jupyter Kernel Support: PyCharm supports various Jupyter kernels, including Python, R, Julia, and more.
+Code Completion and Analysis: Benefit from PyCharm's intelligent code completion and analysis features.   
+Debugging: Easily debug your Jupyter Notebook code within PyCharm.   
+Version Control: Seamlessly integrate with Git and other version control systems.   
+Customization: Customize your Jupyter Notebook environment to your preferences.
+To get started with Jupyter Notebooks in PyCharm:
+
+Create a new Jupyter project: In PyCharm, go to File > New Project and select the Jupyter template.   
+Create a new notebook: Right-click on your project directory and select New > Jupyter Notebook.   
+Start coding: Begin adding cells to your notebook and writing your code.   
+PyCharm's Jupyter Notebook support provides a powerful and convenient way to work with data science and scientific computing projects.   
+
+Would you like to explore specific features or use cases for Jupyter Notebooks in PyCharm?
+
+
+Sources and related content
+Jupyter notebook support | PyCharm Documentation - JetBrains
+
+www.jetbrains.com
+
+Creating and Managing Projects | PyCharm Documentation - JetBrains
+
+www.jetbrains.com
+
+Intelligent Coding Assistance - Features | PyCharm - JetBrains
+
+www.jetbrains.com
+
+Version control integration support | PyCharm Documentation - JetBrains
+
+www.jetbrains.com
+
+Create and edit Jupyter notebooks | PyCharm Documentation - JetBrains
+
+www.jetbrains.com
+
+
+
+
+}}}
+__
+Py Webscraping: Extract+Consolidate Shallow Tut-Webpage {{{
+
+I'm trying to learn more about
+web-scraping and -crawling, and my
+impression is that Python is/has
+many good tools for this. What I'm
+trying to do at the outset, is the
+following: I have a website online
+that has a manual/tutorial, and
+(which is quite common) the website
+is separated up on let's say 20 or
+30 sub-pages each containing a part
+of the tutorial text. Could you
+give me some guidance on how to
+extract these 'shallow' sub-pages
+as one unified text file using
+Python, or any other tool or
+language?
+
+Yes, Python is a great language for
+web scraping and crawling. There
+are several libraries available for
+Python that can be used to extract
+data from websites, including the
+following:
+
+- Beautiful Soup: Beautiful Soup is
+  a Python library that makes it
+  easy to parse HTML and XML
+  documents. It can be used to
+  extract text, tags, and
+  attributes from web pages.
+- Selenium: Selenium is a Python
+  library that can be used to
+  automate browsers. This means
+  that you can use Selenium to
+  control a web browser and
+  navigate to different websites,
+  fill out forms, and submit data.
+- requests: requests is a Python
+  library that can be used to make
+  HTTP requests to websites. This
+  can be useful for retrieving data
+  from websites that don't have
+  public APIs.
+
+To extract the text from multiple
+sub-pages using Python, you can
+follow these general steps:
+
+- Identify the URLs of the
+  sub-pages: First, you need to
+  identify the URLs of the
+  sub-pages that contain the
+  tutorial text. This may involve
+  inspecting the HTML of the main
+  page or using a tool like the
+  Chrome Developer Tools to
+  identify the URLs of all of the
+  linked pages.
+- Create a loop to fetch each
+  sub-page: Once you have the URLs
+  of all of the sub-pages, you can
+  use a loop to fetch each sub-page
+  and extract the text from it.
+  This can be done using a library
+  like Beautiful Soup.
+- Concatenate the text from all of
+  the sub-pages: After fetching the
+  text from each sub-page, you can
+  concatenate the text together to
+  create one unified text file.
+
+Here is an example of how to do
+this using Beautiful Soup:
+
+Python
+
+import requests
+from bs4 import BeautifulSoup
+
+base_url = "https://example.com/tutorial"
+
+def extract_text_from_subpage(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    text = soup.find_all('p', class_='tutorial-text')
+    return ''.join([t.text for t in text])
+
+for i in range(1, 31):
+    subpage_url = f"{base_url}/{i}.html"
+    subpage_text = extract_text_from_subpage(subpage_url)
+    with open('tutorial.txt', 'a') as f:
+        f.write(subpage_text)
+
+This code will create a file called
+tutorial.txt that contains the text
+from all of the sub-pages.
+}}}
+sed-tasks with Python/Dlang {{{
+
+Let's also say I have a simple sed
+script for cleaning up the
+resulting file (e.g. replacing
+certain characters by others. I am
+quite confident I could be using
+Python for this task instead. Could
+you comment on this, and could you
+also maybe suggest any other tools
+that may be appropriate, preferably
+by programming (i.e. one or more
+languages - excluding Perl)?
+
+
+Yes, you could use Python for
+cleaning up the resulting text
+file. Here is an example of how to
+do this using the re module:
+
+import re
+
+with open('tutorial.txt', 'r') as f:
+    text = f.read()
+
+text = re.sub(r'[!@#$%^&*()<>/?]', '', text)
+
+with open('cleaned_tutorial.txt', 'w') as f:
+    f.write(text)
+
+This code will replace all of the
+characters in the file tutorial.txt
+that match any of the patterns in
+the regular expression
+[!@#$%^&*()<>/?] with an empty
+string. The result will be written
+to a file called
+cleaned_tutorial.txt.
+
+Here are some other tools that you
+could use for cleaning up the
+resulting text file:
+
+- JQ: JQ is a command-line tool for
+  processing JSON data. It can also
+  be used to clean up text files.
+  To use JQ to clean up the
+  resulting text file, you would
+  use the following command:
+
+jq -r '. | gsub("[!@#$%^&*()<>/?]", "")' tutorial.txt > cleaned_tutorial.txt
+
+- AWK: AWK is another powerful tool
+  for processing text files. To use
+  AWK to clean up the resulting
+  text file, you would use the
+  following command:
+
+awk 'sub("[!@#$%^&*()<>/?]", "", $0) {print}' tutorial.txt > cleaned_tutorial.txt
+
+These are just a few examples of
+tools that you could use for
+cleaning up the resulting text
+file. The best tool for you will
+depend on your specific needs and
+preferences.
+
+
+I guess Dlang could also be used. I
+also know about a Dlang tool called
+tsvutils, but if I remember
+correctly, it is more appropriate
+for analyzing and reporting?
+
+
+Yes, Dlang can also be used for
+cleaning up the resulting text
+file. Dlang is a general-purpose
+programming language that is
+well-suited for text processing
+tasks. You can use Dlang to write a
+script that reads the text from the
+file, cleans it up, and then writes
+the cleaned text to a new file.
+
+The tsvutils library is a good
+choice for analyzing and reporting
+on text files that are in CSV
+format. However, it can also be
+used for other types of text files,
+including plain text files. If you
+are comfortable with Dlang, you
+could use it to write a script that
+reads the text file, cleans it up,
+and then converts it to CSV format.
+You could then use the tsvutils
+library to analyze and report on
+the data.
+
+Ultimately, the best way to clean
+up the resulting text file will
+depend on your specific needs and
+preferences. If you are comfortable
+with Dlang, then it is a good
+option to consider.
+
+Could you rewrite the small Python
+script sketched just above here in
+Dlang?
+
+Yes, I can rewrite the small Python
+script sketched just above here in
+Dlang. Here is the equivalent Dlang
+script:
+
+import std.file;
+import std.regex;
+import std.format;
+
+const targetFile = "tutorial.txt";
+const cleanedFile = "cleaned_tutorial.txt";
+const badCharsRegex = "[!@#$%^&*()<>/?]";
+
+void cleanTextFile()
+{
+    auto text = readTextFile(targetFile);
+    auto cleanedText = text.replaceAll(badCharsRegex, "");
+    writeTextFile(cleanedFile, cleanedText);
+}
+
+void main()
+{
+    cleanTextFile();
+}
+
+This script will read the text from
+the file tutorial.txt, remove all
+of the characters that match the
+pattern [!@#$%^&*()<>/?], and write
+the cleaned text to the file
+cleaned_tutorial.txt.
+
+I have a question about this simple Dlang-program we talked about some time before:
+
+import std.file;
+import std.regex;
+import std.format;
+
+const targetFile = "tutorial.txt";
+const cleanedFile = "cleaned_tutorial.txt";
+const badCharsRegex = "[!@#$%^&*()<>/?]";
+
+void cleanTextFile()
+{
+  auto text = readTextFile(targetFile);
+  auto cleanedText = text.replaceAll(badCharsRegex, "");
+  writeTextFile(cleanedFile, cleanedText);
+}
+
+void main()
+{
+  cleanTextFile();
+}
+The provided Dlang program attempts to clean a text file named "tutorial.txt" by removing any characters matching the regular expression [!@#$%^&*()<>/?]. It reads the original text file, replaces those characters with empty strings, and writes the cleaned text to a new file named "cleaned_tutorial.txt".
+
+The code is generally correct, but there are a few minor modifications that could enhance its readability and robustness. Here's a slightly improved version of the code:
+
+Code snippet
+import std.file;
+import std.regex;
+import std.format;
+
+const targetFile = "tutorial.txt";
+const cleanedFile = "cleaned_tutorial.txt";
+
+auto cleanTextFile(string sourceFile, string targetFile, string badCharsRegex)
+{
+    // Read the text from the source file
+    auto text = readTextFile(sourceFile);
+
+    // Replace all occurrences of the bad characters with empty strings
+    auto cleanedText = text.replaceAll(badCharsRegex, "");
+
+    // Write the cleaned text to the target file
+    writeTextFile(targetFile, cleanedText.text);
+}
+
+void main()
+{
+    cleanTextFile(targetFile, cleanedFile, badCharsRegex);
+}
+
+This version separates the cleanTextFile() function into a separate module, making it more reusable and maintainable. It also introduces a function parameter for the regular expression, allowing you to customize the characters to be removed.
+
+Here's an example of how to call the cleanTextFile() function with a different regular expression:
+
+Code snippet
+cleanTextFile("tutorial.txt", "cleaned_tutorial.txt", "[a-zA-Z0-9]");
+
+This will remove all alphanumeric characters from the original text file, leaving only punctuation and special symbols.
+
+profile picture
+Is there also a way to rewrite it to use more of Dlang's pipeline and functional features? I.e. that has some tendency to make the code even more clear (i.e. something flows into and gets filtered by something, etc)?
+Yes, you can rewrite the code to utilize D's pipeline and functional features to enhance its readability and expressiveness. Here's a revised version of the code that employs a pipeline approach:
+
+Code snippet
+import std.file;
+import std.regex;
+import std.format;
+
+const targetFile = "tutorial.txt";
+const cleanedFile = "cleaned_tutorial.txt";
+
+auto cleanTextFile(string sourceFile, string targetFile, string badCharsRegex)
+{
+    // Read the text from the source file
+    auto originalText = readTextFile(sourceFile);
+
+    // Create a regex matcher object
+    auto matcher = regex(badCharsRegex);
+
+    // Filter the original text, removing matches of the bad characters
+    auto cleanedText = originalText.filter!(m => not matcher.match(m));
+
+    // Write the cleaned text to the target file
+    writeTextFile(targetFile, cleanedText);
+}
+
+This version breaks down the process into smaller, more manageable steps, using pipelines to chain together operations. It emphasizes the flow of data through the pipeline, making the code more intuitive and easier to understand.
+
+profile picture
+I was working on a solution for C# in this vein, and I was thinking that I could have a dictionary, where I give a name to a pattern to be matched, and that some filtration function then picks rules to be used from an array or such. Do you think that could be a good approach? (i.e. picking and matching different filtration rules and sets)
+Yes, using a dictionary to store patterns and a filtration function to pick rules from an array or another data structure can be a practical approach for applying different filtration rules and sets in C#. This approach offers several advantages:
+
+Flexibility: It allows you to define and manage various patterns and filtration rules in a structured manner, making it easy to add, remove, or modify them as needed.
+
+Reusability: You can reuse the same filtration function with different sets of patterns, adapting the filtering process to different scenarios.
+
+Efficiency: The dictionary lookup mechanism provides efficient access to the patterns, allowing you to quickly identify matching rules.
+
+Maintainability: The clear separation of patterns and filtration rules makes the code easier to understand, maintain, and extend.
+
+Here's an example of how you could implement this approach in C#:
+
+C#
+using System;
+using System.Collections.Generic;
+
+// Create a dictionary to store patterns and associated filtration rules
+Dictionary<string, Regex> patterns = new Dictionary<string, Regex>()
+{
+    { "badChars", new Regex("[!@#$%^&*()<>/?]") },
+    { "alphanumeric", new Regex("[a-zA-Z0-9]") },
+};
+
+// Filter a string based on specified patterns and rules
+string cleanText = FilterText("tutorial.txt", patterns);
+
+The FilterText() function would iterate through the patterns dictionary, applying each pattern's associated regex to the text and removing matching characters. This approach allows you to easily incorporate multiple filtration rules and tailor the filtering process to specific requirements.
+
+profile picture
+And what would it look like if we go back to Dlang?
+
+
+Implementing a similar approach in Dlang involves utilizing D's powerful data structures and functional programming capabilities. Here's an example of how you could implement the dictionary-based filtration approach in Dlang:
+
+Code snippet
+import std.array;
+import std.regex;
+import std.file;
+
+// Create a dictionary to store patterns and associated regexes
+struct PatternRule {
+    string name;
+    Regex regex;
+}
+
+void cleanTextFile(string sourceFile, string targetFile, array<PatternRule> rules)
+{
+    // Read the text from the source file
+    auto originalText = readTextFile(sourceFile);
+
+    // Process each pattern and regex in the rules array
+    for (auto rule : rules) {
+        auto matcher = regex(rule.regex);
+        originalText = originalText.filter!(m => not matcher.match(m));
+    }
+
+    // Write the cleaned text to the target file
+    writeTextFile(targetFile, originalText);
+}
+
+This code creates a custom struct PatternRule to encapsulate the pattern name and its associated regex. The cleanTextFile() function takes an array of PatternRule objects as input and iterates through them, applying each regex to the original text and filtering out matching characters. This approach maintains the flexibility and reusability of the dictionary-based approach while leveraging D's functional programming features.
+
+
+Implementing a similar approach in Python involves utilizing Python's built-in data structures and functional programming capabilities. Here's an example of how you could implement the dictionary-based filtration approach in Python:
+
+Python
+import re
+
+# Create a dictionary to store patterns and associated regexes
+pattern_rules = {
+    "bad_chars": "[!@#$%^&*()<>/?]",
+    "alphanumeric": "[a-zA-Z0-9]",
+}
+
+def clean_text(text, rules):
+    cleaned_text = []
+    for character in text:
+        for pattern, regex_pattern in rules.items():
+            if re.match(regex_pattern, character):
+                continue
+        cleaned_text.append(character)
+    return ''.join(cleaned_text)
+
+# Clean a text string based on specified patterns
+cleaned_text = clean_text("tutorial.txt", pattern_rules)
+print(cleaned_text)
+
+This code creates a dictionary pattern_rules to store pattern names and their corresponding regular expressions. The clean_text() function takes a text string and the pattern_rules dictionary as input and iterates through the patterns, applying each regex to the text and appending the non-matching characters to a new list. Finally, it returns the cleaned text as a string. This approach maintains the flexibility and reusability of the dictionary-based approach while leveraging Python's functional programming features.
+
+}}}
+
+bpython {{{
+
+Sure, here are some of the more common commands and shortcuts for using bpython effectively:
+
+Navigation shortcuts
+
+Ctrl-a: Move cursor to the beginning of the line
+Ctrl-e: Move cursor to the end of the line
+Up arrow: Move cursor to the previous command in the history
+Down arrow: Move cursor to the next command in the history
+Ctrl-p: List the previous commands in the history
+Ctrl-n: List the next commands in the history
+Enter: Execute the current line
+Command execution shortcuts
+
+!command: Execute the given command in the underlying shell
+import module: Import the given module
+reload module: Reload the given module
+quit: Exit bpython
+Input and editing shortcuts
+
+Tab: AutoComplete words based on the current context
+Ctrl-r: Search for previously typed text
+Ctrl-w: Delete the previous word
+Ctrl-u: Delete the entire line
+Ctrl-c: Interrupt the current command
+Error handling shortcuts
+
+?: View help for the current error
+!: Execute the previous command again
+Ctrl-c: Exit bpython
+Interactive object inspection
+
+!print obj: Print the value of the object obj
+!dir obj: List the attributes of the object obj
+Interactive shell configuration
+
+!set variable value: Set the value of the bpython variable variable to value
+!unset variable: Unset the bpython variable variable
+!config variable value: Set the value of the bpython configuration variable variable to value
+!load config file: Load the given configuration file
+These are just a few of the many commands and shortcuts available in bpython. For a complete list, please refer to the bpython documentation.
+
+I hope this helps!
+
+profile picture
+What different commands and keyboard shortcuts are available for completion (i.e. the reason I ask is that I sometimes do not get the most intuitive results completing suggestions with just hitting Tab)?
+Bpython provides various commands and keyboard shortcuts for completion to enhance its usability and provide more relevant suggestions. Here's an overview of the different completion methods:
+
+Tab Completion:
+
+The most common and convenient way to autocomplete is by pressing the Tab key. As you type, bpython will display a list of potential completions based on the current context. Pressing Tab repeatedly will cycle through the available options.
+
+Ctrl-Space Completion:
+
+A more efficient way to autocomplete is by using the Ctrl-Space shortcut. This shortcut triggers the incremental completion mode, which suggests completions as you type. Unlike Tab completion, it doesn't require you to complete the entire word before showing suggestions.
+
+Fuzzy Completion:
+
+Bpython supports fuzzy completion, which means you can type partial words or misspellings, and it will still suggest relevant completions. This is useful for cases where you're unsure of the exact spelling or if you're familiar with the concept but not the exact syntax.
+
+Object Completion:
+
+When working with objects, bpython can autocomplete properties, methods, and attributes based on the current object. To invoke object completion, type the object name and press Tab or Ctrl-Space. Bpython will display a list of available properties, methods, and attributes.
+
+Module Completion:
+
+When importing modules or using module-level functions, bpython can autocomplete the available functions, classes, and variables within the module. To invoke module completion, type the module name and press Tab or Ctrl-Space. Bpython will display a list of available members.
+
+Custom Completion:
+
+bpython allows you to define custom completion rules for specific situations. This can be useful for extending completion beyond the built-in functionality. For example, you could define rules for autocompleting function arguments or customizing completion for specific data structures.
+
+By utilizing these completion methods, you can streamline your workflow and significantly improve the efficiency of writing Python code in bpython.
+}}}
+Jetbrains PyCharm - Recommended plugins {{{
+
+Question: Are there any plugins that you can find that are recommended to install after installing Jetbrains Pycharm?
+Yes, there are several plugins that are recommended to install after installing JetBrains PyCharm. These plugins can help you to improve your productivity, make your code more readable, and debug your code more effectively.
+
+Here are a few of the most popular and well-regarded plugins for PyCharm:
+
+    1. Rainbow Brackets: This plugin adds color to brackets in your code, which can help you to visually identify the nesting of your code and make it easier to read and understand.
+
+    2. Live Edit: This plugin allows you to see a live preview of your HTML, CSS, and JavaScript code in the browser as you type it. This can help you to quickly and easily debug your code and make sure that it is working as expected.
+
+3. Key Promoter X: This plugin helps you to learn the keyboard shortcuts for PyCharm. It shows you a tooltip with the shortcut for the action you are currently performing, and it tracks your progress as you learn the shortcuts.
+
+4. Code With Mosh: This plugin provides access to coding tutorials from Mosh Hamedani. You can watch the tutorials directly within PyCharm and follow along with the code.
+
+5. WaX Python Plugin: This plugin provides a variety of tools for working with Python web development, including code generation, template editing, and debugging.
+
+
+6. PyCharm-Debugger: This plugin extends the PyCharm debugger with additional features, such as the ability to inspect and modify variables during a debugging session.
+
+7. Kite: This plugin provides code completion and other intelligent features for Python development. It uses machine learning to understand your code and provide suggestions that are context-aware.
+
+8. Pylint for PyCharm: This plugin integrates the Pylint linter into PyCharm, which can help you to identify potential problems in your code.
+
+
+9. PyCharm Remote Development: This plugin allows you to develop Python applications on a remote server or virtual machine.
+
+10. Git Integration: This plugin provides a variety of tools for working with Git repositories, including code commits, branches, and merges.
+
+These are just a few of the many plugins available for PyCharm. With so many plugins to choose from, you can be sure to find ones that meet your specific needs and preferences.
+
+}}}
+
+___0000
+~/Dropbox/rsc/Doks/phone/Comp/lang/py/py3aut.Tags2.txt
+~/Dropbox/rsc/data/lists/learnqna/vanki/decks/comp/lang/py/py3aut-kap1-6.txt
+#=prune down to ptools/quicklist, located in 'lpy01.ref.txt'
+                                                    |
+                            (+may want to Rename it to "Generic" Name/Index)
+
+~/gdrive/sedawk-shscript-withPython.Tags1.txt
+  ~/Dropbox/rsc/Doks/phone/Comp/sysadm/lin/sedawk-shscript-withPython.txt
+projs/areas [__] {{{
+  ~/Empire/Doks/Comp/lang/py/webscrape/
+    https://stackoverflow.com/questions/15798878/how-to-search-internet-with-python#15799102
+    https://duckduckgo.com/?q=duckduckgo+web+search+api&t=newext&atb=v369-1&ia=web
+    https://stackoverflow.com/questions/37012469/duckduckgo-api-getting-search-results
+    https://restapidevelopers.com/api/duckduckgo-search-api-a-step-by-step-guide-for-beginners/
+    https://serpapi.com/duckduckgo-search-api
+    https://restapidevelopers.com/api/the-benefits-of-automating-duckduckgo-web-search-with-an-api/
+  ~/Empire/Doks/Comp/lang/py/mmedia/ (= with cv)
+  ~/Empire/Doks/Comp/lang/py/au-transcribe/
+
+  ~/Empire/Doks/Comp/lang/py/datasci/
+      https://towardsdatascience.com/replacing-excel-with-python-30aa060d35e
+      https://www.jcchouinard.com/pandas-python/
+
+  ~/Empire/Doks/Comp/lang/py/text-natlang/
+}}}
+--
+~/Empire/Doks/Comp/lang/py/funct/pyfunct-3e_lott.txt
+  ~/Empire/Doks/Comp/lang/py/funct/pyfunctional.txt
+  ~/Empire/Doks/Comp/lang/py/funct/pyfunct-2e_lott.txt
+https://realpython.com/python-functional-programming/  [**]
+Doks/Resources, (+Searches etc) {{{
+    https://help.libreoffice.org/latest/en-US/text/sbasic/guide/basic_2_python.html
+https://wizardforcel.gitbooks.io/sicp-in-python/content/
+https://shop.learncodethehardway.org/products/contents/9/?page=1&query=  #LPy3Hardw Videos [**]
+  https://learncodethehardway.org/more-python/  #MorePy3Hardw
+Python Pyramid (web framework) {{{
+  https://trypyramid.com/documentation.html
+  https://buildmedia.readthedocs.org/media/pdf/pyramid/2.0-branch/pyramid.pdf
+  https://docs.pylonsproject.org/projects/pyramid-tutorials/en/latest/
+  https://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tutorial/index.html
+  https://docs.pylonsproject.org/projects/pyramid-cookbook/en/latest/
+  https://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tour.html
+  https://trypyramid.com/extending-pyramid.html
+  https://docs.pylonsproject.org/projects/pyramid/en/latest/#support-and-development
+  https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/introduction.html
+
+  https://instrumental.readthedocs.io/en/latest/intro.html
+}}}
+
+map(lambda x : x.split(":")[1],commands.getstatusoutput('fc-list')[1].split("\n"))
+
+https://inventwithpython.com/  *****(!!!!)  #PyAut3-boken(+et al)s Hemsida
+PyAux (=PyProgr, PyCb3, +pylib(!)) (+python subareas(!)) {{{
+        Gui:s (Qt)
+        Pyramid
+        web scraping  (beautiful soup)
+         Gis  (=arc)
+            own webbrowser(*) | im.viewer (|video-player)
+    --
+    statistics
+    Data Science
+    machine learning
+        deep learning
+        deep reinforcement learning
+    recommendation systems|engines
+    --
+    social media analysis
+    language analytics
+    natural language processing
+        NLTK
+    --
+    intelligent web
+    blockchain(?)
+    open-cv
+    raspberry pi
+}}}
+~/Dropbox/rsc/Doks/phone/Comp/lang/py/py3aut.tags1.txt ~/Dropbox/rsc/Doks/phone/Comp/lang/py/py3aut.txt
+
+    ipython mini:  https://www.youtube.com/watch?v=395BLGo0yGM
+    TODO!!!!(!!): =Export list as first minibasis of new ptools-list
+                    in Python.txt (=Empire(!))
+
+      https://realpython.com/python-matplotlib-guide/
+
+          ~/Empire/Doks/Comp/lang/py/webscrape/pywebscraping.pdf
+          ~/Empire/Doks/Comp/lang/py/webscrape/webscraping-py.pdf
+          ~/Empire/Doks/Comp/lang/py/webscrape/webscraping-datascience.pdf
+
+TODO: INPUT PYTHON REFFILE 1 DRS
+    --
+    ~/Dropbox/rsc/Doks/phone/Comp/lang/py/z_ProgrPy.txt
+    ~/Dropbox/rsc/Doks/phone/Comp/lang/py/py2hardw.TOCLEAN.txt
+        ~/Dropbox/rsc/Doks/phone/Comp/lang/py/z_PyLib.txt
+        ~/Dropbox/rsc/Doks/phone/Comp/lang/py/pycb3kil.fmt35.txt
+    --
+    ~/Dropbox/rsc/Doks/phone/Comp/lang/py/funcpy.txt
+        ~/Empire/Doks/Comp/lang/py/pyfunc3.docx
+        ~/Empire/Doks/Comp/lang/py/pyfunct2.pdf
+        ~/Empire/Doks/Comp/lang/py/pyfunctional.txt
+            ~/Empire/Doks/Comp/lang/py/pyfunctional.pdf
+
+  https://www.freecodecamp.org/learn/scientific-computing-with-python/
+  https://www.freecodecamp.org/learn/data-analysis-with-python/
+  https://www.freecodecamp.org/learn/machine-learning-with-python/
+
+https://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tutorial/index.html#quick-tutorial
+--
+https://www.listendata.com/2017/12/python-pandas-tutorial.html
+
+    --------
+    [+Start vanki DECK.MASTER.txt]
+    ~/Dropbox/rsc/data/lists/learnqna/vanki/decks/comp/lang/py/lpy01.txt
+    . {{{
+        ~/Empire/video/instructional/Comp/lang/py/lpy05of14.ogg
+        ~/Empire/video/instructional/Comp/lang/py/lpy06of14.ogg
+        ~/Empire/video/instructional/Comp/lang/py/lpy07of14.ogg
+        ~/Empire/video/instructional/Comp/lang/py/lpy08of14.ogg
+        ~/Empire/video/instructional/Comp/lang/py/lpy09of14.ogg
+        ~/Empire/video/instructional/Comp/lang/py/lpy10of14.ogg
+    }}}
+        gvim -c 'so ~/Dropbox/config/vim/maps/vis.vim' ~/Dropbox/rsc/Doks/Comp/lang/py/learnpy.fmt-def2.txt
+          [[ ~/Dropbox/rsc/Doks/Comp/lang/py/learnpy.fmt.txt ]]
+    ~/Empire/video/instructional/Comp/lang/py/lpy04of14.ogg
+        zzzz = 00:14:50
+                Maps:
+                    space--vmark sentence
+                    v_space--vmark next sentence + 'o'      #??
+                    v_s-space--vmark prev sentence + 'o'    #??
+    ~/Empire/Doks/Comp/lang/py/learnpy.pdf
+        okular ~/Empire/Doks/Comp/lang/py/learnpy.pdf &
+    --------
+          ~/Dropbox/rsc/data/lists/learnqna/vanki/comp/lang/py/lpy02.tempmoot.txt
+        ~/Dropbox/rsc/data/lists/learnqna/vanki/comp/lang/py/lpy03-helpdoc.txt
+        ~/Dropbox/rsc/data/lists/learnqna/vanki/comp/lang/py/lpy04-functs_adv.txt
+        ~/Dropbox/rsc/data/lists/learnqna/vanki/comp/lang/py/lpy05-functs_22.txt
+        ~/Dropbox/rsc/data/lists/learnqna/vanki/comp/lang/py/lpy06-mods.txt
+        ~/Dropbox/rsc/data/lists/learnqna/vanki/comp/lang/py/lpy07-classes.txt
+        ~/Dropbox/rsc/data/lists/learnqna/vanki/comp/lang/py/lpy08-exceptions.txt
+        ~/Dropbox/rsc/data/lists/learnqna/vanki/comp/lang/py/lpy09-outerlayers.txt
+    ~/dropbox-legacy/python.txt  -c 'colors base16-ateliersulphurpool' {{{
+        /dropbox-legacy/python-ankisource-01.txt
+        /dropbox-legacy/python-ankisource-02.txt
+            /dropbox-legacy/python-ankisource-02.orig.txt
+        /dropbox-legacy/python-ankisource-03--help-doc-mm.txt
+        /dropbox-legacy/python-ankisource-04.txt
+        /dropbox-legacy/python-ankisource-05--1of4_Functions.txt
+        /dropbox-legacy/python-ankisource-06--2of4_Modules.txt
+        /dropbox-legacy/python-ankisource-07--3of4_Classes.txt
+        /dropbox-legacy/python-ankisource-08--4of4_Exceptions.txt
+        /dropbox-legacy/python-ankisource-09--5of4_Outer-layers.txt
+    }}}
+          ~/dropbox-legacy/pythonexplore_dfs2015.py
+          ?? /dropbox-legacy/python_metoder-strängar.txt ??
+
+https://www.scribd.com/book/386435002/Data-Science-from-Scratch-The-1-Data-Science-Guide-for-Everything-A-Data-Scientist-Needs-to-Know-Python-Linear-Algebra-Statistics-Coding-Applic
+
+        # ~/Empire/Doks/Comp/lang/py/learnpy.txt  #some crippled 1.2M version (=???)
+    ~/Empire/Doks/Comp/lang/py/programming_python.pdf
+    ~/Empire/Doks/Comp/lang/py/LearnPythonTheHardWay2ndEdition.pdf
+     ~/Empire/Doks/Comp/lang/py/funcpy.pdf
+        ~/Empire/Doks/Comp/lang/py/pystdlib.pdf
+    ~/Empire/Doks/Comp/lang/py/pycb3kil.pdf
+     ~/Empire/Doks/Comp/lang/py/pycb3kil.txt
+    ~/Empire/Doks/Comp/lang/py/mpycb.pdf
+    ~/Empire/Doks/Comp/lang/py/py-aut.pdf
+    ~/Empire/Doks/Comp/lang/py/flupy.pdf
+    ~/Empire/Doks/Comp/lang/py/pythink.pdf
+    --
+    ~/Empire/Doks/Comp/lang/py/datasciesspy.pdf
+    ~/Empire/Doks/Comp/lang/py/pydatasci.pdf
+    ~/Empire/Doks/Comp/lang/py/pyessref-bea.pdf
+        (+include nltk, recommendations, Pyramid, 
+          (+Stat.s/Datasci,  BlendPy,  Analytics, NLTK, OpenCv, DesPatts(!), +kivy/mail*, webbrows|im.brows)  rasppi
+
+}}}
+hylang {{{
+  https://github.com/hylang/hy/blob/master/docs/index.rst
+    https://hylang.org/
+    https://docs.hylang.org/en/stable/cheatsheet.html#hy
+  https://docs.hylang.org/en/stable/tutorial.html
+  https://docs.hylang.org/en/stable/
+  https://hyrule.readthedocs.io/en/master/index.html
+    https://github.com/hylang/hyhomepage
+  --
+  https://handwiki.org/wiki/Hy
+
+  https://leanpub.com/hy-lisp-python/read
+    https://leanpub.com/hy-lisp-python
+}}}
+rsc, programs {{{
+
+abcoding filtering:annotate-list-with-tags (*!)
+}}}
+vdecks {{{
+
+    ----
+browse methods (etc) for eg. sets **
+{{{
+    'set.' + tab **
+      (+ browse w. tab | s-tab)
+    --
+    https://www.youtube.com/watch?v=395BLGo0yGM&t=25
+    }}}
+check what 'set.add' does  (=print + inspect its docstring)
+{{{
+    'set.add?' + Ent
+    --
+    https://www.youtube.com/watch?v=395BLGo0yGM&t=35
+    }}}
+check methods for other things, eg. like dictionaries
+{{{
+    write 'dict'  += turns green (eg. the word 'dict' is inspectible **)
+    --
+    https://www.youtube.com/watch?v=395BLGo0yGM&t=50
+    }}}
+test code in ipython3 (**) (eg. print nums fr. 0-15 w. a for-loop) **
+{{{
+    for i in range(1, 15):
+      [+pauses for input of rest of loop, wh. one hits Ent]
+        ...  print(i)
+        .
+        .
+     ++note: has to press Ent twice (=to determine that one wants to end loop)
+    --
+    https://www.youtube.com/watch?v=395BLGo0yGM&t=70
+    }}}
+importing and using packages fr. the std(and other) libraries (* +of course inspecting ****(!!))
+{{{
+    import numpy as np
+      .
+    'np.'  + tab
+      #=import numpy to alias np + inspect ***(**)
+    (( + the 'np.block?' example (**)))
+    --
+    https://www.youtube.com/watch?v=395BLGo0yGM&t=80
+    }}}
+exit ipy (*)
+{{{
+    quit  |  c-d + y
+    --
+    https://www.youtube.com/watch?v=395BLGo0yGM&t=120
+    }}}
+    ----
+
+'clean lpy minilist 1' {{{
+
+
+Learn Python 3 **!
+
+paper-notes page 1 - - - -
+
+run file 'hello.py' (=w. py-commands in it)
+{{{
+    python hello.py }}}
+packaging programs  @@!
+{{{
+    progr.pyc  /  frozen binary (=bytecode of proj. + PVM) }}}
+use etc. of frozen binaries  @@!
+{{{
+    - readily distributable gui-programs
+    - web
+        etc }}}
+stopping/interrupting command-line py-prompt  @@!
+{{{
+    c-d (unix)  c-z (windows) }}}
+printing value of var. 'name' at py-prompt
+{{{
+    name  # print(name) often not needed at prompt }}}
+uses for the interactive prompt
+{{{
+    experimenting (w. statements and expressions)
+    testing program files on the fly ** }}}
+import (+test) module/file: eg. "pwd" (=at interactive prompt) **!  @@!
+{{{
+    import os
+    os.getcwd()  #lpy p103+ }}}
+run shell commands etc from python (=python's commandline)  @@!
+{{{
+    os.system }}}
+    ----
+    ----
+remember: =why one must use print statements in files
+{{{
+    =expression results are not automatically echoed (*) }}}
+py-path on unix  @@t
+{{{
+    /usr/bin/python3  (or eg. /usr/local/bin/python ) }}}
+
+(tip: interactive prompt + indentation)  @!
+{{{
+    (=no indentation needed at interactive prompt (except of course for nested code(??))) }}}
+break out of statements at command line  @@!
+{{{
+    c-c  #=interrupt }}}
+'terminate compound statements at i-prompt w. empty line' (='like for-loops etc')
+{{{
+    =?? }}}
+print os/platform (*)  @@!
+{{{
+    import sys
+    print(sys.platform) }}}
+when must(!) files be named .py?  @!t
+{{{
+    =files for importing }}}
+importing module w. filename /path/mod.py  **
+{{{
+    import mod }}}
+python-scripts as executable scripts on unix **  @@!
+{{{
+    #!/usr/bin/python3
+    #!/usr/bin/env python3 }}}
+fix on unix =if env. cannot find python (**)
+{{{
+    update your PATH (??) }}}
+(minitrick for portable scripts between unix and windows)  @@!
+{{{
+    python script.py  (**) }}}
+    ----
+    ----
+changing the and ... prompts ()
+{{{
+    sys }}}
+
+run python on mac (??)  @
+{{{
+    PythonLauncher (in MacPython) }}}
+location of generated pyc-files in py 3.2+  @@!
+{{{
+    __pychache__ dir in proj. dir }}}
+Read + Return next Line fr. Stdin (like unix read) ***(*)  @@!
+{{{
+    py 2: raw_input()
+    py 3: input() }}}
+read fr. stdin + prompt-string ***(*)  (like 'read -p')  @@!
+{{{
+    input("Press Enter!") }}}
+save std-input fr. reader in var. **!  @@!
+{{{
+    nextinput = input() }}}
+example w. stdin + unix input redirection (**)  @!
+{{{
+    python reader.py < input.txt  p117 }}}
+wh. to allow clickstart for programs (!)  @@!
+{{{
+    wh. debugged + error redirected to file (eg. log file) }}}
+design of program w. modules  (*)  @@!
+{{{
+    =one main/top level file/script (=that starts/launches the progr.) }}}
+c-line =run by importing
+{{{
+    note: =once per session =process)  ??(??) }}}
+    ----
+    ----
+run script again (=in session)  (?)  @@!
+{{{
+    from imp import reload
+    reload(script1) }}}
+
+teterm: the function/use of modules **!  @@!
+{{{
+    as a package of var.names (=attributes)  #=known as a name space }}}
+teterm: def. of 'attribute' (*)
+{{{
+    a var-name attached to a specific obj. (**)  #='like a module' }}}
+the two ways to import var. 'title' from "myfile" (p121)
+{{{
+    import myfile
+    myfile.title  #echoes 'the meaning of life'
+
+    from myfile import title
+    title  # --"--
+
+    }}}
+what does 'from' do?
+{{{
+    copies module's var.s  =becomes simple var.s in the recipient }}}
+echo list of all var.s/names(*) avail. inside a module ****!!!  (eg. an imported one)  @@!!
+{{{
+    dir(module)  #=gives builtins à la __doc__ + ordinary var.s }}}
+popular testing technique in py-classes **
+{{{
+    using imports and reloads }}}
+(more ab. exec, eval, compile) **!
+{{{
+    =see pages (!) }}}
+    ----
+    ----
+(example use of exec)
+{{{
+    exec(open('script1.py').read()) }}}
+
+idle: prev./next history line
+{{{
+    a-p/a-n }}}
+idle syntax auto completion *(*)
+{{{
+    tab }}}
+advanc. idle tools
+{{{
+    debugger, object browser  p129 }}}
+idle debugger: set breakpoints
+{{{
+    rmbclick ++  p129 }}}
+(idle?:) jump to place of error in code
+{{{
+    rmbclick error message }}}
+Python development in Eclipse
+{{{
+    install PyDev }}}
+Netbeans
+{{{
+    +VSCode, PyCharm, Eric  etc  p132 }}}
+Debugging Python code
+{{{
+    insert print statements  + pdb c-line debugger }}}
+Launching interactive pdb-session  @@!
+{{{
+    by importing, or as toplevel script  (python -m) }}}
+pdb: run function(/function to run(??)) after exception occurs (=get information fr. time of the error)  *!
+{{{
+    'postmortem' =   pdb.pm() }}}
+interactive mode for pdb  @@
+{{{
+    pdb -i }}}
+(old old legacy debugging) *
+{{{
+    calculating hex values for memory dump printouts }}}
+    ----
+    ----
+winpdb
+{{{
+    =?? }}}
+
+Tools for Help and Documentation *(***)  @@!
+{{{
+    dir(), PyDoc, help }}}
+    ----
+    ----
+reposit. for py-extensions (***)  @@!
+{{{
+    PyPi }}}
+
+
+
+pylearn start =chapter 4, first intro (*!)
+
+teterm: (approxim.) Definition of object in python ***!!  @@!
+{{{
+    pieces of memory w. values and sets of operations assoc. to it }}}
+teterm: What do expressions do? ***!  @@!
+{{{
+    create and process objects (****) }}}
+(Why is C/C++ progr. more tedious and error prone?) *
+{{{
+    most work goes into implementing objects (also known as data structures)* to represent y. components +search/access-routines etc }}}
+explain 'the syntax used to code their literals'  (from the book  eg. like numbers) **
+{{{
+    =the expressions that generates those obj.s, eg. numbers }}}
+py.s 'core' data types **!
+{{{
+    lists, dictionaries, etc }}}
+['the syntax of the expressions you run determines the type of obj.s you create and use']
+{{{
+    p148 }}}
+'strongly typed' (vs(??)) 'dynamically typed'
+{{{
+    only operations for the active type are valid  p148 }}}
+rational number example
+{{{
+    1/3 }}}
+convert to string + length for string *  @@!
+{{{
+    str()  len()  }}}
+'babushka'-nested function calls  **  @@!
+{{{
+    len(str(2 ** 100)) }}}
+    ----
+    ----
+'two to the eighth power'
+{{{
+    2 ** 8 }}}
+
+repr vs str display/printing  @@!
+{{{
+    6.28300000004 vs. 6.283  (=in py2.7)  p150 }}}
+pi and square root (*)  @@!
+{{{
+    (import math)
+    math.pi  math.sqrt(85) }}}
+random nr  @@!
+{{{
+    import random
+    random.random()
+    random.choice([1,2,3]) }}}
+Extra third party math utils
+{{{
+    matrices, vectors, extra precision (etc) }}}
+second char. of string in var 's' ****!!  #eg. "spam"  @@!
+{{{
+    s[1] }}}
+assign string 'Spam' to var 's'  **
+{{{
+    s = 'Spam' }}}
+last / sec. to last char of var. 's'  *!  @@!
+{{{
+    s[-1]  s[-2] }}}
+example: arbitr. expression in indexing--square brackets ***!!!  @@!
+{{{
+    s[len(s)-1] }}}
+    ----
+    ----
+teterm: sequence  @@!
+{{{
+    positionally ordered collection of other objects }}}
+
+slicing: get 'am' from Spam (in var 's')   @@!
+{{{
+    s[2:4] }}}
+slicing: get 'pam' from Spam (in var 's')  **  @@!
+{{{
+    s[1:] }}}
+slicing: get 'Sp' from Spam (in var 's')  *  @@!
+{{{
+    s[0:2]  s[:2] }}}
+slicing: get 'Spa' from Spam (in var 's')  **  @@!  @@!
+{{{
+    s[:-1]  #=all but last char }}}
+    ----
+    ----
+slicing: Complete copy w. slicing  (*)  @@!
+{{{
+    s[:] }}}
+
+
+
+p 152 ++  (!!(**))
+
+Slicing a String Returns __  (**)
+{{{
+    a slice, which is a New Object (*)
+     --
+    lpy3_n2-p152
+    }}}
+"You can't change a string in place(=immut.), but ___"  @@!
+{{{
+    build new string
+    + assign back to the same name
+     --
+    (+= the old obj. later gets
+     cleaned up/collected by python)
+             --
+             --
+    [+Can(!) actually be changed
+            (=if 8 bits(ascii) or lower(!!))
+    --
+            - expand into list of chars,
+                 change, join back w.
+     nothing between
+            - use newer bytearray type
+                 (=in py 2.6+)            ]
+     --
+    lpy3_n2-p153,154
+    }}}
+Mutable and Immutable Types (in Python) (*!)  @@!
+{{{
+    - lists
+    - dicts
+    - sets
+    - - - -
+    - numbers
+    - strings   #although can
+                 actually(!) be changed
+    - tuples
+     --
+    lpy3_n2-p153
+    }}}
+Type(eg. string)specific Methods: find, replace  @@! (reformulate)
+{{{
+    Objects (like strings)
+     have operations (eg. methods)
+     attached to the obj.
+            --
+    [=triggered by
+     'call-syntax' (!*) ]
+    --
+    S = 'Spam'
+    S.find('pa')
+    S.replace('pa', 'XYZ')
+            --
+    lpy3_n2-p154
+    }}}
+(some more string methods: split, upper, alpha, rstrip)  @@! @@!
+{{{
+    line = 'aaa,bbb,ccccc,dd'
+    line.split(',')
+     --
+    S = 'spam'
+    S.upper()
+    S.isalpha()     # True
+     --
+    line = 'aaa,bbb,ccccc,dd\n'
+    line.rstrip()
+                --
+    + can combine 2 operations  ***(*)
+    line.rstrip().split(',')
+     --
+    lpy3_n2-p155
+    }}}
+sneak-peak: string formatting (*(*))   + use cases/examples (**)
+{{{
+     (classic / pre 2.6):
+    '%s, eggs, and %s' % ('spam', 'SPAM!')
+            -- --
+     newer syntax (+num.s optional
+             in later pythons:
+    '{0}, eggs, and {1}'.format('spam', 'SPAM!')
+    '{}, eggs, and {}'.format('spam', 'SPAM!')
+                 --
+     --  good for: numeric reports (**)
+     --
+    # Separators, decimal digits
+    '{:,.2f}'.format(296999.2567)
+                '296,999.26'
+    # Digits, padding, signs
+    '%.2f | %+05d' % (3.14159, −42)
+                '3.14 | −0042'
+     --
+    lpy3_n2-p155
+    }}}
+tip: generic vs type specific operations  (='Python’s toolset is layered')  @@!
+{{{
+    generic operations that span
+    multiple types
+    show up as built-in functions
+    or expressions (e.g., len(X) , X[0] ),
+     --
+    but type-specific operations
+    are method calls (e.g., aString.upper() ).
+     --
+    lpy3_n2-p155
+    }}}
+    ----
+    ----
+'Although seq.operat.s are generic...' +Tip/Rule(*)
+{{{
+    (=seq. operations on strings)
+     --
+    =methods are not(!!) generic
+     --
+    lpy3_n2-p155
+    }}}
+
+LIST ALL METHODS + ASSIGNED VAR.S (FOR OBJECT, EG. 'S') *********** (!!)  @@!
+{{{
+    dir(S)
+     --  eg. output:
+    ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__',
+    '__str__', ...... '__subclasshook__', 'capitalize', 'casefold', 'center', 'count',
+     ....
+    'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower',
+    'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust',
+     ....
+     ....
+    }}}
+(pre: Use of __add__ etc (****))  @@!
+{{{
+    represent the implementation
+            of the string object
+            and are available
+            to support customization.
+    (=overloading of methods
+     for custom classes etc)
+    --
+    The __add__ method of strings, for example,
+    is what really performs concatenation (**)
+     --
+    lpy3_n2-p156
+    }}}
+LIST/SHOW HELP FOR METHOD (LIKE STRING-REPLACE) ******* (!!)  @@!
+{{{
+    help(S.replace)   *****
+     --
+    lpy3_n2-p156
+    }}}
+'help is part of __'  @@!
+{{{
+    ='a handful of interfaces
+     to a system of code that
+     ships w. python
+    known as PyDoc
+    --
+     (= tool for extracting documentation
+            from objects (!))
+    --
+    ++ Can render reports in html
+     =for viewing by/in web browser (**)
+             --
+    lpy3_n2-p157
+    }}}
+dir/help + eg. str, list, dict (=Espec. for help)  @@!
+{{{
+    =Recommended/Often best to ask
+    for a specific method
+     --
+    eg. for method 'replace' on strings ****
+                 help(str.replace)  ****
+    --
+    (=help often most(!!) complete
+     method of obtaining information) (**(!!))
+            --
+    lpy3_n2-p157
+    }}}
+show ascii(etc) num for char **  @@!
+{{{
+    ord('\n')
+     --
+    lpy3_n2-p157
+    }}}
+string quotes (+recommendation)
+{{{
+    single or double quotes
+    (=most programmers prefer single-quotes)
+    }}}
+"""-Strings (**!)  @@!
+{{{
+    eg. embedding multiline strings
+    like:
+    - html, xml, json  (etc)
+    - Commenting out Block Tempor. (**!!)
+     --
+    +Py replaces the newlines in """-blocks
+     w. '\n' (**)
+     --
+    lpy3_n2-p157,158
+    }}}
+Unicode in 3.X Strings (!!**)
+{{{
+    =the normal str-type
+    handles unicode in Py 3.X
+    --
+     (+MORE CONCERNING U-CODE (######))
+            --
+    lpy3_n2-p158
+    }}}
+    ----
+    ----
+(raw-strings)
+{{{
+    eg. turns off '\' for escaping
+    (=useful for windows-path_strings)
+     --
+    lpy3_n2-p158
+    }}}
+
+ (byte strings / byte array)
+{{{
+    b'spam'
+     --
+    lpy3_n2-p158
+    }}}
+Coding non-ascii char.s w. Hex/Ucode Escape-seq.s (**!!)  [ 'What these values mean...' (??) ]  @@!
+{{{
+    \x \u \U   eg. Ä
+            \xc4    (=the only format
+                 accepted by byte-strings)
+            \u00c4
+            \U000000c4
+     --
+    'sp\xc4\u00c4\U000000c4m'
+     --
+    lpy3_n2-p159
+    }}}
+u'x' (etc)  @@!
+{{{
+    in 2.X
+     normal and u-codestrings can be
+     mixed (often)
+    in 3.X
+     normal and bytestrings
+     cannot be mixed (=w.out
+     explicit conversion)
+            --
+    lpy3_n2-p159
+    }}}
+encoding + decoding + files
+{{{
+    'text is encoded to bytes
+     when stored in a file'
+            -- and
+    'decoded into char.s (=code points
+     when read back into memory'
+    --
+             (+processing text as string
+                once it is loaded)
+     --
+    (+files are content-specific
+     in 3.X  (ucode/str  vs  binary))
+    lpy3_n2-p159
+    }}}
+'no need to learn trickier string coding concepts until __'
+{{{
+    =using more complex char.s/char-types
+     than ascii (!*)
+            --
+    lpy3_n2-p160
+    }}}
+REGEX AND PATTERN MATCHING (****)  @@!
+{{{
+    import re
+    match = re.match('Hello[ \t]*(.*)world', 'Hello   Python world')
+    match.group(1)
+             'Python')
+             --
+    match = re.match('[/:](.*)[/:](.*)[/:](.*)', '/usr/home:lumberjack')
+    match.groups()
+             ('usr', 'home', 'lumberjack')
+    re.split('[/:]', '/usr/home/lumberjack')
+             ['', 'usr', 'home', 'lumberjack']
+    --
+     re.match.group(1)
+     re.match.groups()
+     re.match.split(.....
+             --
+    lpy3_n2-p160 (**)
+    }}}
+    ----
+    ----
+(+OTHER MORE ADVANCED MATCHING/PARSING SCHEMES(**))  @@!
+{{{
+    - xml
+    - hmtl
+    - natural language analysis
+    }}}
+
+
+
+}}}
+
+}}}
+
+qpython, kivy, etc {{{
+https://foreignerds.com/python-for-mobile-app-development-in-2023-kivy-vs-beeware/
+  https://stackoverflow.com/questions/28001100/qpython-or-kivy-for-android-programming-with-python-producing-installable-apk
+  https://blog.logrocket.com/comparing-top-python-gui-frameworks/
+  https://edu.qpython.org/kivy-qpython/index.html?form=web
+  https://www.reddit.com/r/Python/comments/k5fm2p/gui_for_engineeringscience_kivy_vs_pysimplegui_vs/
+  https://towardsdatascience.com/3-ways-to-convert-python-app-into-apk-77f4c9cd55af
+}}}
+

@@ -1,0 +1,251 @@
+
+Emmet Vim (**) {{{
+
+TODO: Check off against the Tutorial(!)
+    https://github.com/mattn/emmet-vim/blob/master/TUTORIAL
+    (=for understanding the original mans sometimes cryptic formulations(!))
++Test against code =check off against the Freec-Tutorials ***(**)!
+
+----(basics +) trigger-keys
+Emmet currently supports
+    .
+    CSS, HTML, XML/XSL and HAML, Slim languages via filters (see |emmet-filter|).
+
+Expand Abbrev.(s)
+    .
+    c-h ,  #orig. = c-y(!!)
+start a basic html5 webpage **(!)
+    .
+    html:5 + c-h ,
+custom snippets **(!)
+    .
+    =install web-api + make a snippets.json file  (+ex)
+Expand Word (not html-token (eg. 'foo'  =to tag) *
+    .
+    c-h [sk]
+update tag *(*)  (eg.  insert attrib. 'class="global"' into a tag)
+    .
+    c-h u  (+ write '.global' at request prompt)
+Wrap w. abbrev. (eg. wrap as ul-li-list || blockquote-tag) *
+    .
+    v-mark + c-h ,
+    (+specify eg. 'Tag:' + 'ul>li*'
+sel. inward / outward *
+    .
+    i_c-h d // D  #outward ='balance tag outw.'  (=something like select inner / outer block)
+go to next / prev. edit point (??)
+    .
+    i_c-h n // N
+Add and update <img> size  (eg. add or update 'width' and 'height' attributes of image)
+    .
+    c-h i  (x2)  #="update image-tag"
+join lines(*)
+    .
+    (sel. part of lines (incl. 'li'?))  + c-h m
+remove tag in the block *
+    .
+    (i_)c-h k
+join / split block  (????)
+    .
+    (i_)c-h j
+toggle comment *
+    .
+    (i_)c-h /
+Make Anchor fr. URL *!  14.
+    .
+    c-h a
+[make quoted text fr. URL]  15.
+    .
+    c-h A
+code pretty (eg. C-code  =convert " etc to html entities)
+    .
+    c-h c
+txt to html
+    .
+    see :TOhtml
+Insert dummy text (=30 words by default)
+    .
+    eg.  div>lorem + c-h ,
+(jp dummy text)
+    .
+    (?)
+ins. 3 lat dummy words
+    .
+    div>lorem3 + c-h ,
+----html expression syntax
+insert basic p, divs etc **
+    .
+    p + c-h ,  (+emm. knows some empty, like br and meta)
+set html-flavor (eg. html 5)
+    .
+    g:emmet_html5
+create anchor / link **
+    .
+    a / link + c-h ,
+specify attrib.s to be inserted automatically (*)
+    .
+    g:user_emmet_settings  (+some other user settings)
+----2. Nesting-Operators (= >,+ etc) (*)*
+• child element: =nest elements inside each other (eg. u-list inside a div) **
+    .
+    div>ul>li  (eg. equals 'indentation')
+• sibling: =place elements near each other, on the same level (eg. a div, a paragr. and a quote **
+    .
+    div+p+bq
+back one indent-level for next elem. *
+    .
+    ^  eg. em^bq  (+can use more than one =^^^bq)
+make u-list w. 5 li-elements **
+    .
+    use multiplication *  = ul>li*5
+multi: make two tr-elem.s w. three td:s each inside *(*)
+    .
+    tr*2>td*3
+create complex block w. two indent-peaks (!)
+    .
+    grouping, eg. complex examples like  div>(header>ul>li*2>a)+footer>p  (+nesting  like (div>dl>(dt+dd)*3)+footer>p )
+----Attrib. Operators (=class, etc)
+get <span class="class1 class2"></span> **
+    .
+    span.class1.class2
+get <div id="wrapper" class="content"></div>
+    .
+    div#wrapper.content
+more complex =build three lines *
+    .
+    div#header+div.page+div#footer.class1.class2.class3
+.  (!!**)
+<td title="Hello world!" colspan="3"></td> (=get own/custom attributes) *
+    .
+    td[title="Hello world!" colspan=3]
++get <td colspan="" title="">
+    .
+    td[colspan title]
+[+concerning quoting x2  = <div a="value1" b="value2"></div> and <td title="hello" colspan="3"></td> (*)]
+    .
+    1. =can use single or double quotes for quoting attribute values.
+     div[a='value1' b="value2"]
+    2.  don't need to quote values if they don't contain spaces:
+     td[title=hello colspan=3]
+--3.3. Item numbering **(*)  (= get <ul>\n<li class="item_1"></li>\n... (+items 2-5)
+    .
+    ul>li.item_$*5
+get <ul>\n<li class="item_001"></li> ... (=pad nums w. zeros) *(*)
+    .
+    ul>li.item_$$$*5
+get <h1 title="item1">Header 1</h1> =num.s in elements | text (***!)
+    .
+    h$[title=item$]{Header $}*3
+--3.3.1. change num.orig. + direction *
+<ul>\n<li class="item_N"></li>: =5-1
+    .
+    ul>li.item_$@-*5
+<ul>\n<li class="item_N"></li>: =3-7
+    .
+    ul>li.item_$@3*5
+<ul>\n<li class="item_N"></li>: =7-3
+    .
+    ul>li.item_$@-3*5
+--3.4. Quote character
+= set to use ' inst. of "
+    .
+    (sss)
+--4. Text  (=add to elem.)
+<a href="">Click me</a>  (=add a-elem. w.(!) text  **
+    .
+    a{Click me}
++ a{click}+b{here} vs a>{click}+b{here} (!!)
+    .
+    (ssss)
+--
+shorthand for 'div.content'
+    .
+    .content  ** 
+      =gives <div class="content"></div>
+      (= '5. Implicit tag names')
+      (+resolving-rules **)
+ex. x2: <div class="wrapper"></div>\n<div id="popup"></div>  =w. shorthand (!)
+    .
+    .wrapper  #popup
++TABLE: =PARENT RESOLVING RULES * (****)
+    .
+    (SSSS) (=tables, options, spans and divs) (+SOME EX.S ****(!!))
+     (+tip: don't overdo it(!))
+--
+incorp. text (= '7. Choose position to insert text when wrap(ping) abbreviation')
+(eg. convert 'First' (etc lines) to '<ul>\n<li title="[First]">First</li>' etc )
+    .
+    linewise sel. + ul>li[ title="[$#]" ]* (activate)
++ 'input[ type=input value=$# ]' expands to ___
+    .
+    (ss)
+get '<a href="" title="foo">foo</a>' ($# =expands only for one textblock)
+    .
+    a[title=$#]{foo}
+----Css Expression Syntax
+SNIPPETS FOR CSS PROPERTIES **!!
+
+m
+t
+d
+o
+ov
+bdrs
+
+m1+p2
+c  bgc  zoo
+
+d:n
+d:b
+d:i
+
+m10
+m2e
+m10-20
+ p1-2-3
+m-10
+p-1--2
+ p-2--1-0-1
+m!  bac!  # =+ !important
+
+lg( .... ) (=linear gradient)
+
+ fs1.5  bor2 fs100 miw20
+w100p  *  fs2e
+ -bdrs (etc)
+----
+:Emmet (exprs)   (expand expression from the command line)
+ (:EmmetInstall)
+
+VARIABLES *  (=> h5-support  *)     g:emmet_html5=1 (=yes)
+
+OmniComplete(*)   = g:user_emmet_complete_tag
+Dictionary, which contains user settings.  g:user_emmet_settings
+ modes  = g:user_emmet_mode
+
+   Customize:
+let g:user_emmet_leader_key = '<C-h>'
+((map each action separately !))
+  <plug> [+= Cmd-List (**!!)]
+
+  +make map work for 'filetype(s) you want'
+Indent size *
+  set global indent  (+for cert. filetypes will override the global)
+----
+Create abbrev.s and snippets  !!*(??) ****  (='emmet-define-tags-behavior')
+    (+overriding predefined)
+ aliases (eg. bq for blockquote) or 'ol'  *****
+
+filters ((**))  + |emmet-filters-list| eg. 'e' (=for escaping xml-unsafe char.s*)  #header|e
+    'escaped all' *
+ apply filter w '|'  **
+    (more than one (=filters))
+[[ 'If you have installed the |webapi| **!
+            (+=snippets.json) ]]
+
+[ e  c(omment!! (+'lastonly')  s(ingle line!!)  t(rim !!!!) ]  **!!
+
+'full list of avail. abbrev.s and snippets' **  x2
+
+}}}
+

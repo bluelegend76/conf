@@ -1,0 +1,728 @@
+
+Viktig Information Till Sveriges Invånare
+
+
+___toc
+    evince -p 2 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Innehållsförteckning
+
+Krisberedskap ----
+
+Din krisberedskap
+Falska information
+Vid terrorattentat
+Tips för din hemberedskap
+
+Totalförsvar ----
+
+Sveriges försvar
+Angrepp mot Sverige
+Höjd beredskap
+
+Varningssystem ----
+Viktigt meddelande till allmänheten
+Beredskapslarm
+Skyddsrum
+
+
+This brochure is available for download in several different languages on dinsakerhet.se.
+
+Frågor och svar om broschyren finns på dinsäkerhet.se.
+
+Myndigheten för samhällsskydd och beredskap
+
+
+Grafisk form och produktion: Kreab AB
+Illustrationer: Arvid Steen
+
+Tryck: Stibo Graphic A/S
+
+Publ.nr: MSB1186 - maj 2018
+
+ISBN: 978-91-7383-808-5
+
+MSB är en statlig myndighet som arbetar för att samhället ska bli bättre
+på att förebygga och hantera olyckor och kriser. Vid en allvarlig olycka
+eller kris ger vi stöd till dem som är ansvariga.
+
+Myndigheten för samhällsskydd och beredskap
+651 81 Karlstad
+www.msb.se
+
+
+    evince -p 3 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Till Sveriges invånare
+
+Den här broschyren skickas till alla hushåll i Sverige på
+uppdrag av regeringen. Myndigheten för samhällsskydd och
+beredskap (MSB) ansvarar för innehållet. Broschyren ska hjälpa
+OSS att bli bättre förberedda på allt från allvarliga olyckor,
+extremt väder och it-attacker till militära konflikter.
+
+Många människor kan känna oro inför en osäker omvärld.
+Även om Sverige är tryggare än många andra länder, finns
+det hot mot vår säkerhet och självständighet. Fred, frihet och
+demokrati är värden som vi måste skydda och stärka varje dag.
+
+Myndigheter, landsting och regioner, kommuner, företag och
+organisationer ansvarar för att samhället ska fungera. Men
+ansvaret för vårt lands säkerhet och trygghet är gemensamt
+för alla som bor här. En av våra viktigaste tillgångar när
+något hotar oss är vår vilja att hjälpa varandra.
+
+Om du är förberedd bidrar du till att hela landet bättre kommer
+att klara en svår påfrestning.
+
+SPARA BROSCHYREN!
+
+
+
+mA a RA AA SA stenskott AAA a
+
+    evince -p 4 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Vad skulle du göra om din vardag vändes upp och ner?
+
+En kris kan göra att samhället inte fungerar som vi är vana
+vid. Ett förändrat klimat kan göra att översvämningar och
+skogsbränder blir vanligare. Händelser i omvärlden kan ge
+brist på vissa livsmedel. Störningar i viktiga it-system kan
+påverka elförsörjningen. Efter bara en kort tid kan vardagen
+bli besvärlig:
+
+
+Värmen försvinner.
+Det blir svårt att laga och förvara mat.
+Mat och andra varor kan ta slut i affärerna.
+Det kommer inget vatten i kranen eller toaletten.
+Det går inte att tanka.
+Betalkort och bankomater fungerar inte.
+Mobilnät och internet fungerar inte.
+Kollektivtrafik och andra transporter står stilla.
+Det blir svårt att få tag i läkemedel och medicinsk utrustning.
+
+Tänk igenom hur du och personer i din närhet kan klara en
+situation när samhällets normala service och tjänster inte
+fungerar som vanligt.
+
+    evince -p 5 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Din krisberedskap
+
+Din kommun ansvarar för att bland annat äldreomsorg,
+vattenförsörjning, räddningstjänst och skola fungerar även
+vid en samhällskris. Du som privatperson har också ett
+ansvar. Med rätt förberedelser kan du klara en besvärlig
+situation bättre, oavsett vad som orsakat den.
+
+Vid en samhällskris kommer hjälpen att först gå till dem
+som bäst behöver den. De flesta måste vara beredda på att
+kunna klara sig själva en tid. Ju bättre förberedd du är desto
+större möjlighet har du också att hjälpa andra som inte har
+samma förutsättningar.
+
+Viktigast är att ha vatten, mat och värme och att kunna ta
+del av information från myndigheter och medier. Du behöver
+också kunna komma i kontakt med anhöriga. På sidorna 10
+
+och 11 finns checklistor med matvaror och saker som kan vara
+bra att ha hemma.
+
+Fundera på vilka risker som kan påverka dig i ditt
+närområde. Bor du i ett område som är känsligt för skred
+eller översvämning? Finns det någon farlig industri eller
+något annat i din närhet som kan vara bra att känna till?
+
+    evince -p 6 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Var vaksam mot falsk information
+
+Stater och organisationer använder redan idag vilseledande
+information för att försöka påverka våra värderingar och hur
+
+Vi agerar. Syftet kan vara att minska vår motståndskraft och
+försvarsvilja.
+
+Det bästa skyddet mot falsk information och fientlig
+propaganda är att vara källkritisk:
+
+
+
+Är det fakta eller åsikter?
+
+Vad är syftet med informationen?
+
+Vem är avsändaren?
+
+Är källan trovärdig?
+
+Finns informationen någon annanstans?
+
+Är informationen ny eller gammal och varför finns den
+just nu?
+
+- Sök information - du kan motverka propaganda och
+falsk information bäst genom att vara påläst.
+
+- Tro inte på rykten - använd flera trovärdiga källor för
+att se om informationen stämmer.
+
+- Sprid inte rykten - verkar informationen inte trovärdig,
+sprid den inte vidare.
+
+
+Läs mer på
+
+[IEA
+
+    evince -p 7 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Vid terrorattentat
+
+Terrorattentat kan riktas mot enskilda personer eller grupper,
+mot allmänheten eller mot samhällsviktiga funktioner som
+elförsörjning eller transportsystem. Även om ett terrorattentat
+kan utföras på olika sätt och på olika platser så finns det
+några råd som kan gälla i de flesta situationer:
+
+- Sätt dig själv i säkerhet och undvik folksamlingar.
+-  Larma polisen via 112 och meddela om du ser något viktigt.
+
+- Varna dem som befinner sig i fara och hjälp dem som
+behöver.
+
+»« Sätt mobilen på ljudlöst och ring inte till någon som
+kan befinna sig i riskområdet. Mobilsignalen kan röja en
+person som gömmer sig.
+
+. Ring inte med mobilen om du inte måste. Blir nätet
+överbelastat kan det bli svårt för livsviktiga samtal att
+komma fram.
+
+- Följ polisens, räddningstjänstens och myndigheternas
+uppmaningar.
+
+- Dela inte obekräftad information på nätet eller på något
+annat sätt.
+
+
+    evince -p 8 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Sveriges försvar
+
+
+
+-. SÅ os :
+Sveriges samlade försvar ska skydda och försvara landet, ;
+vår frihet och rätten att leva som vi själva väljer. Vi har |
+alla en uppgift om Sverige hotas. |
+|
+|
+|
+
+Totalförsvar
+
+Totalförsvar är all verksamhet som behövs för att förbereda
+Sverige för krig. Totalförsvaret består av militärt försvar och |
+civilt försvar. |
+
+Militärt försvar
+
+I
+
+Det militära försvaret består av Försvarsmakten inklusive |
+Hemvärnet samt ett antal andra myndigheter som i
+har till huvuduppgift att stödja det militära försvaret. |
+Försvarsmakten försvarar vårt territorium och våra gränser. | |
+|
+
+i
+
+Civilt försvar
+
+Civilt försvar handlar om hela samhällets motståndskraft ;
+vid krigsfara och krig. Civilt försvar är det arbete som görs Y
+av statliga myndigheter, kommuner, landsting och regioner, I
+privata företag och frivilligorganisationer. Arbetet syftar till Oo
+att skydda civilbefolkningen och att exempelvis sjukvård och Rn
+transporter fungerar vid krigsfara och krig. Vid krigsfara Ar Hj Fr
+och krig ska det civila försvaret också kunna stödja MA
+Försvarsmakten. . JA Oe
+
+    evince -p 9 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Totalförsvarsplikt
+
+I Sverige gäller totalförsvarsplikt. Det innebär att alla som
+bor här och är mellan 16 och 70 år kan kallas in för att
+hjälpa till på olika sätt vid krigsfara och krig. Alla har en
+skyldighet att bidra och alla behövs.
+
+Det finns tre typer av totalförsvarsplikt:
+
+- Värnplikt i Försvarsmakten.
+
+-  Civilplikt inom verksamheter som regeringen beslutar om.
+
+- Allmän tjänsteplikt som innebär att man tjänstgör inom
+verksamheter som måste fungera även vid krigsfara och
+krig. Det betyder att du fortsätter på ditt vanliga jobb,
+arbetar inom en frivilligorganisation eller får 1 uppgift
+av Arbetsförmedlingen att utföra arbete som är särskilt
+viktigt för totalförsvaret.
+
+
+
+
+
+Totalförsvarspliktiga kan bli krigsplacerade. Är du
+krigsplacerad har du fått en krigsplaceringsorder eller
+annat besked av din arbetsgivare om detta.
+
+I många år har förberedelserna för krigsfara och krig varit
+mycket begränsade i Sverige. I stället har myndigheter och
+kommuner satsat på att stärka beredskapen för fredstida
+kriser som översvämningar och it-attacker. Men i takt med
+en förändrad omvärld har regeringen beslutat att stärka = /
+totalförsvaret. Därför ska planeringen för Sveriges civila
+försvar återupptas. Det kommer att ta tid att utveckla alla Y
+delar igen. Samtidigt är beredskapen för fredstida kriser ER
+en viktig grond för vår mötstärniskraft vid Skal PR
+
+
+    evince -p 10 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Tips för din hemberedskap
+
+Förutsättningar och behov ser olika ut, exempelvis om du bor på landsbygd eller i tätort, i hus elle;
+Använd det som passar just dig och dina nära. Gå gärna ihop om vissa saker och låna av varandra.
+
+Mat
+
+Det är viktigt att ha extra mat
+hemma som ger tillräckligt med
+energi. Använd hållbar mat som
+kan tillagas snabbt, kräver liten
+mängd vatten eller som kan ätas
+utan tillagning.
+
+[ ] potatis, kål, morötter, ägg
+
+
+
+[ ] bröd med lång hållbarhet, till exempel
+tortilla, hårt bröd, kex, skorpor
+
+
+
+LJ mjukost, messmör och andra pålägg
+på tub
+
+
+
+[|] havredryck, sojadryck, torrmjölkspulver
+[| matolja, hårdost
+LJ snabbpasta, ris, gryn, potatismospulver
+
+[ ] färdigkokta linser, bönor, grönsaker,
+hummus på burk
+
+; LJ krossade tomater att till exempel koka
+pasta i
+
+[ ] konserver med köttfärssås, makrill,
+sardiner, ravioli, laxbullar, kokt kött,
+soppor
+[ ] fruktkräm, sylt, marmelad
+
+[] färdig blåbärs- och nyponsoppa, juice
+eller annan dryck som håller i
+rumstemperatur
+
+
+
+[] kaffe, te, choklad, energibars, honung,
+mandlar, nötter, nötsmör, frön.
+
+Vatten
+
+Rent dricksvatten är
+livsnödvändigt. Räkna med minst
+tre liter per vuxen och dygn. Om du
+är osäker på kvaliteten behöver du
+kunna koka vattnet.
+
+Om toaletten inte fungerar
+kan du ta kraftiga plastpåsar
+eller plastsäckar och placera i
+toalettstolen. En god handhygien är
+viktig för att undvika smittor.
+
+[| flaskor
+[] hinkar med lock
+
+[LJ] PET-flaskor att frysa vatten i (fyll inte
+ända upp, då spricker flaskan)
+
+
+
+[] mineralvatten
+
+
+
+[|] dunkar, gärna med tappkran, att
+hämta vatten i. Du kan också ha ett
+par rena dunkar fyllda med vatten i
+reserv. De ska stå mörkt och svalt.
+
+FIRA
+hemberedskap på
+dinsäkerhet.se
+eller lägenhet. Här får du allmänna tips för din hemberedskap.
+
+ra.
+
+    evince -p 11 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Värme
+
+Om elen försvinner under en kall
+årstid kommer bostaden snabbt att
+bli utkyld. Samlas i ett rum, häng
+filtar för fönstren, täck golvet med
+mattor och bygg en koja under ett
+bord för att hålla värmen. Tänk
+på brandfaran. Släck alla ljus och
+alternativa värmare innan ni somnar.
+
+Vädra regelbundet för att få in syre.
+LJ] ullplagg
+varma och oömma ytterkläder
+mössor, vantar, halsdukar
+filtar
+liggunderlag
+sovsäckar
+stearinljus
+värmeljus
+tändstickor eller braständare
+
+CL JE LA RE TA LL
+alternativ värmekälla, till exempel
+
+Övrigt
+
+[ ] spritkök och bränsle
+[] ficklampa, pannlampa
+[] batterier
+gasolvärmare, fotogendrivna element.
+
+
+
+
+Kommunikation
+
+Vid en allvarlig händelse behöver du
+kunna ta emot viktig information
+från myndigheterna, framför allt via
+Sveriges Radio P4. Du behöver också
+kunna följa mediernas rapportering,
+ha kontakt med anhöriga och
+vänner och i akuta fall kunna nå
+räddningstjänst, sjukvård eller polis.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[ ] radio som drivs med batteri, solceller
+eller vev
+bilradio
+papperslista med viktiga telefonnummer
+extrabatteri/power bank till bland
+annat mobiltelefon
+laddare till mobiltelefonen att
+använda i bilen.
+
+LJ
+
+
+
+
+
+
+
+[|] kontanter i mindre valörer
+
+
+
+LJ husapotek och extra mediciner
+[ ] våtservetter
+
+LJ handsprit
+
+LJ] blöjor och mensskydd
+
+[] utskrifter på papper av exempelvis |
+försäkringsbrev, bankuppgifter,
+registreringsbevis
+
+LJ] drivmedel i tanken.
+
+
+
+
+
+
+
+
+
+
+
+n
+
+    evince -p 12 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Om Sverige angrips krävs motståndskraft
+
+Vi måste kunna stå emot olika slags angrepp mot vårt land.
+Redan i dag sker attacker mot viktiga it-system och försök att
+påverka oss med falsk information. Vi kan också påverkas av
+konflikter i närområdet. Möjliga angrepp kan vara:
+
+Cyberattacker som slår ut viktiga it-system.
+
+Sabotage av infrastruktur (till exempel vägar, broar,
+flygplatser, järnvägar, elledningar och kärnkraftverk).
+
+Terrorattentat som drabbar många människor eller
+viktiga verksamheter.
+
+Försök att påverka Sveriges beslutsfattare eller invånare.
+
+Avskurna transporter som ger brist på livsmedel och
+andra varor.
+
+Militära angrepp, exempelvis flyganfall, robotattacker
+eller andra krigshandlingar.
+
+
+
+
+-
+Ä a gäl? pr
+pr RDR na å
+V JV Kinpgne "
+es att" se pd I a
+a 5 pf FE
+Pat v |
+
+    evince -p 13 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Höjd beredslllnp
+
+För att stärka Sveriges möjligheter att försvara sig kan
+regeringen besluta om höjd beredskap. De fredstida lagarna
+gäller, men vid höjd beredskap kan även andra lagar
+användas. Staten kan exempelvis ta över privat egendom
+som är särskilt viktig för totalförsvaret.
+
+Vid höjd beredskap ska hela samhället kraftsamla för
+att möta en angripare och för att se till att det viktigaste
+fungerar. Vid höjd beredskap kan du bli inkallad för att
+hjälpa till på olika sätt.
+
+Information om höjd beredskap får du genom radio och TV.
+Sveriges Radio P4 är beredskapskanal.
+
+
+    evince -p 14 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Signal 7 sekunder - uppehåll 14 sekunder mm 4
+
+0) Faran över
+Oavbruten signal 30 sekunder
+
+Varningssystem :
+
+Viktigt meddelande till allmänheten
+
+Varnings- och informationssystemet VMA (viktigt meddelande
+till allmänheten) används vid krissituationer - till exempel
+vid utsläpp av farliga ämnen, bränder med explosionsrisk,
+skogsbränder och andra naturkatastrofer.
+
+Viktigt meddelande till allmänheten sänds framför allt
+i Sveriges Radios kanaler, Sveriges Televisions kanaler
+och på SVT Text. VMA kan också skickas som SMS till
+mobiltelefoner inom ett visst område.
+
+NESS SATT
+
+    evince -p 15 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Utomhusvarning
+
+Vid sällsynta tillfällen används utomhusvarning ("Hesa
+Fredrik"). Anläggningar för utomhusvarning finns på de
+flesta större orter samt runt Sveriges kärnkraftverk.
+
+Om du hör signalen: gå inomhus, stäng fönster, dörrar
+och ventilation och lyssna på Sveriges Radio P4 som har i
+uppdrag att ge samhällsinformation.
+
+Systemet för utomhusvarning testas klockan 15.00 den första
+helgfria måndagen i mars, juni, september och december.
+
+
+
+
+TEA ESTATE:
+
+
+    evince -p 16 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+
+09) Beredskapslarm
+Signal 30 sekunder - uppehåll 15 sekunder mura :s 30
+
+0) Flyglarm
+Signal med korta stötar under 1 minut. mm mm mm ov cm oc mm m Be
+
+0) Faran över
+Oavbruten signal 30 sekunder NNE
+
+Beredskapslarm och && <
+flyglarm
+
+Beredskapslarm är ett sätt för regeringen att meddela att
+det råder omedelbar krigsfara, eller att landet är i krig.
+
+Om du hör signalen ska du omedelbart gå inomhus och
+lyssna på Sveriges Radio P4. Förbered dig på att kunna lämna
+bostaden med det allra viktigaste, varma kläder, något att
+äta och dricka samt id-handlingar. Är du krigsplacerad ska
+du omedelbart bege dig till den plats du har fått besked om.
+
+Flyglarm betyder att du omedelbart ska uppsöka skydd,
+exempelvis skyddsrum eller en källare i den byggnad där du
+befinner dig.
+
+3 Nya sätt att varna befolkningen kan bli aktuella.
+
+Håll dig
+uppdaterad på
+
+- dinsäkerhet.se
+
+16
+
+2 RET
+
+    evince -p 17 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Skyddsrum och andra skyddande utrymmen
+
+Skyddsrum ska ge skydd åt befolkningen i krig.
+Alla skyddsrum och byggnader med skyddsrum A
+är märkta med skylt. Du tillhör inget särskilt
+skyddsrum utan använder det som finns närmast.
+
+Ta reda på var ditt närmaste skyddsrum finns där du
+bor och där du befinner dig dagtid. Vid flyglarm ska du
+omedelbart bege dig till ett skyddsrum eller i nödfall
+till annat skyddande utrymme som källare, tunnel eller
+tunnelbanestation.
+
+    evince -p 18 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+Utbilda dig!
+
+Lär dig att ge första hjälpen. Din kunskap kan rädda liv.
+Om du är först på plats vid en olycka eller en annan allvarlig
+händelse, ring nödnumret 112 till SOS Alarm. Även om ditt
+kontantkort har slut på pengar eller om din mobiltelefon
+saknar SIM-kort fungerar 112. SOS Alarm kan ge råd om hur
+du ska agera på olycksplatsen.
+
+Engagera dig!
+
+Många ideella organisationer och trossamfund gör viktiga
+insatser för vår gemensamma säkerhet och beredskap.
+De frivilliga försvarsorganisationerna har särskilda
+uppdrag inom totalförsvaret och erbjuder både kurser och
+utbildningar. Vid kriser och höjd beredskap hjälper de bland
+annat till att sprida viktig information till invånarna.
+Du behövs och din insats gör skillnad!
+
+
+    evince -p 19 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+
+ERE:
+TEL ETLAN |
+
+
+
+
+
+
+Viktiga anteckningar
+
+Skriv upp viktiga telefonnummer, adresser och
+narmaste skyddsrum eller annat skyddande utrymme.
+
+Den här broschyren ska hjälpa oss att bli bättre förberedda
+på allt från allvarliga olyckor, extremt väder och it-attacker till
+militära konflikter. Prata gärna om innehållet med andra i din
+omgivning.
+
+
+    evince -p 20 ~/Empire/Doks/allm-a/krisberedskap-häfte.pdf &
+
+
+Klimat-
+
+DDR Samhällsinformation ekonomisk
+
+VIKTIGA TELEFONNUMMER
+OCH WEBBPLATSER
+
+112
+
+Vid en nödsituation som kräver omedelbar
+hjälp av ambulans, brandkår eller polis.
+
+11313
+
+För att lämna eller få information vid allvarliga
+olyckor eller krissituationer.
+
+1414
+
+Alla polisärenden som inte handlar om
+pågående brott eller händelser.
+
+1177
+
+Sjukvårdsrådgivning.
+
+Dinsäkerhet.se
+
+Fördjupad information om innehållet i den här broschyren.
+
+Krisinformation.se
+samlad information från Sveriges myndigheter vid kriser.
+
+

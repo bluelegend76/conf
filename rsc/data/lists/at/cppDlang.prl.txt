@@ -1,0 +1,4839 @@
+vim:fdm=marker:
+    ~/bin/scripts/at/at.cppDlang.prl.bash
+
+[[some more/old script refdoks]] {{{
+
+gvim -p \
+    ~/Dropbox/rsc/data/lists/at/cppDlang.prl.txt \
+#¤  ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/ c-cpp-tutorial.txt \
+    ~/Empire/Doks/Comp/lang/clangs/cpp/cppprogr1.txt \
+#¤  ~/gdrive/share/abe-rick/komvux-komplett-2022-2023/Index.txt \
+#¤  ~/Dropbox/rsc/data/lists/learnqna/vanki/comp/lang/cpp/ komvux2023-Cpp1.Tags2.txt \
+    ~/Dropbox/rsc/samples/code/dlang/test.d \
+    ~/Dropbox/rsc/samples/code/dlang/rsc.d \
+    -c 'tabdo set foldmethod=marker' \
+    -c 'lcd %:h' \
+    -c 'normal 1gt' \
+
+gvim -p \
+#¤  ~/Dropbox/rsc/data/lists/ref/comp/lang/dlang/ dlangcb-idioms-funcgarden.txt \
+#¤  ~/Dropbox/rsc/data/lists/ref/comp/lang/dlang/ dprogr-alicehreli_index.txt \
+    ~/Dropbox/rsc/data/lists/ref/comp/lang/dlang/dlang.phobos.txt \
+
+# gvim \
+#     ~/gdrive/share/abe-rick/komvux-komplett-2022-2023/01-progr1_cpp/cppprogr1_abok.txt \
+
+gvim -p ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/ chardway.txt ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/ modernc.txt
+
+gvim -p \
+    ~/git/komvux2023-cpp/PengarTillbaka.cpp \
+    ~/git/komvux2023-cpp/SimpleBank.cpp \
+    ~/git/komvux2023-cpp/PrintGrades.cpp \
+    ~/git/komvux2023-cpp/WeatherStation.cpp \
+
+}}}
+
+~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/c/chardway.txt
+~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/c/modernc.txt
+    ~/Empire/Doks/Comp/lang/clangs/c/modernc_2020.txt
+    ~/Empire/Doks/Comp/lang/clangs/cpp/cpp-modernchallenge_2018.txt
+----
+~/RiderProjects/bluelegend76/rsc/data/lists/ref/comp/lang/clangs/dlang/DlangWiki-FunctionalGarden.txt
+    https://wiki.dlang.org/Cookbook
+
+TODO INCLUDE: F# Cheatsheets[!]
+set syntax=cpp textwidth=35 nosi ai nojs spell shiftwidth=2 | colors monochrome
+
+Windows Systems Programming - 3e, Jonathan Hart
+  Unicode Demystified
+  Fonts and Encodings
+Algorithms in C - Cedric  **   chapter 2
+Standish - Data Structures
+  Numbers and Computers
+
+https://github.com/jinyus/related_post_gen/blob/main/d_v2/source/app.d
+https://github.com/jinyus/related_post_gen
+
+
+https://github.com/goober99/lisp-gui-examples  [=Git Download + Test/Document Examples]  __
+
+    https://tour.dlang.org/tour/en/dub/pegged
+    https://forum.dlang.org/post/vbda5s$fng$1@digitalmars.com  # Tuple Unpacking
+___dlangdoks2022
+Per Nordlöw repos, Dlang Contribute (etc) {{{
+  https://github.com/nordlow/phobos-next/blob/main/src/nxt/stdio.d
+    https://gitlab.common-lisp.net/ecl/ecl-android
+  https://gitlab.com/per.nordlow/scripts
+https://gitlab.com/
+  https://gitlab.com/projects/new#import_project
+
+  https://docs.gitlab.com/ee/user/project/repository/forking_workflow.html
+  
+  https://docs.gitlab.com/ee/topics/git/clone.html
+
+
+
+  https://github.com/dlang/phobos/labels?q=first+issue
+  https://github.com/dlang/phobos/issues/10565
+  https://github.com/dlang/phobos/issues/10597
+  https://github.com/dlang/phobos
+    https://github.com/dlang/phobos/blob/master/std/bigint.d
+
+}}}
+doks init {{{
+  ~/dropbox-legacy/scripts/ALLTODOIST/d_C-CPP.bash
+}}}
+rsc {{{
+  c:
+  cpp:
+  cs:
+  fs:
+    ~/Dropbox/rsc/samples/code/cs/fs/test.fsx
+    --
+    cd ~/Dropbox/rsc/samples/code/cs/fs/
+    ~/Dropbox/rsc/samples/code/cs/fs/fsfundamentals-tut1.fsx
+}}}
+checkable ref-lists [!!]
+gcc/g++ (+tips/tricks) {{{
+  [ https://code.visualstudio.com/docs/cpp/config-mingw ]  =gcc(??)
+
+compile (+run) current file **
+  !gcc -Wall % -o %:r
+  !./%:r
+  --
+  !g++ -Wall % -o %:r
+
+}}}
+gcc semantic analysis(?) catching bugs  (gcc -fanalyzer  ??)
+. make (+cmake) {{{
+  ~/Empire/Doks/Comp/lang/clangs/make-manual.pdf
+  ~/Empire/Doks/Comp/lang/clangs/cmake/cmakecb.txt
+
+  https://cmake.org/cmake/help/book/mastering-cmake/
+  ~/Dropbox/rsc/data/lists/ref/comp/lang/cmake.txt
+}}}
+exceptions {{{
+  https://stackoverflow.com/questions/70141702/out-of-range-try-catch-block-exception-handling-in-c
+}}}
+Refs | +Tuts {{{
+
+  memory = Stack vs Heap  (cppprogr 1, 14.15)
+* _ / *_ // &_ / _& {{{
+
+* = dereference operator
+    # pointer arithmetic = utgår från typen du pekar på (=int* + 1  ="+1 av typens storlek")
+
+  * _   int* p                  #(just =type-name+dereference)
+           skapa en pekare
+  *_    *p
+           skriva ut värdet vid adress (som pekare 'p' referar till)
+  --
+  &_    int x; void* p = &x
+           ta adress av en variabel
+                        # void pointers: ("cannot do pointer arithmetic on")
+                        # (void pointers =används ofta som 'jag har ingen uppfattning om storleken')
+                        #   (kolla t.ex. 'man strcmp', 'man memcp')
+  _&    void foo(CDummy& x)
+           (="funktionen tar argumentet x, som är en referens till CDummy-objekt")
+           skicka in argument via referens till en funktion
+
+}}}
+static (=three different meanings) (**(*)) {{{
+
+Statiska Variabler / Funktioner på filnivå  = Går bara att komma åt från den filen (=med deras namn)  12.5
+    (=deras scope blir bara filen / privata för filen)
+
+statiska variabler / funktioner i klasser  = finns bara en instans (som tillhör klassen)  (=har inget specifikt objekt den tillhör)
+
+(statiska variabler i funktioner (=statiska lokala variabler)  = överlever funktionen(allokeras globalt))  #fiffig konstruktion, som ofta kan bli problem (+är osynlig i unit-tests)
+
+}}}
+  c++ '->' operator
+
+    https://www.timesmojo.com/what-is-the-most-commonly-used-header-file-in-c/
+        https://www.geeksforgeeks.org/c-library-functions/ __ **
+    https://github.com/wardvanwanrooij/thecbook
+    https://github.com/wardvanwanrooij/thecbook/releases/tag/20020721
+    https://www.linuxlinks.com/excellent-free-books-learn-c/3/  #the gnu c refman, gnu c programming tutorial
+        https://www.linuxlinks.com/excellent-free-tutorials-learn-c/
+    ~/Empire/Doks/Comp/lang/clangs/c/cprogr-primer.txt
+
+  commonly used c++ standard libraries {{{
+      https://www.incredibuild.com/blog/top-13-c-libraries-to-watch-out-for
+    https://learn.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-reference?redirectedfrom=MSDN&view=msvc-170
+    https://libcxx.llvm.org/  (=clang)
+    https://gcc.gnu.org/onlinedocs/libstdc++/  **
+      https://stackoverflow.com/questions/777764/what-modern-c-libraries-should-be-in-my-toolbox
+  search: c++ stl most commonly used
+      https://iq.opengenus.org/commonly-used-utilities-in-standard-template-library-cpp/
+    https://www.geeksforgeeks.org/important-functions-of-stl-components-in-c/
+  }}}
+  https://cplusplus.com/reference/  #=C++ standard library
+https://www.scribd.com/document/490168542/Rainer-Grimm-The-C-Standard-Library-2d-Ed-including-C-17-Leanpub-2018
+  ~/Empire/Doks/Comp/lang/clangs/cpp/cpp-stdlib_qref.pdf
+    ~/Empire/Doks/Comp/lang/clangs/cpp/cpp-prim_5e.pdf
+      ~/Dropbox/rsc/data/lists/ref/comp/lang/cpp/cppcb.txt
+      ~/Dropbox/rsc/data/lists/ref/comp/cb/cppcb.txt
+    evince -p 13 ~/Empire/Doks/Comp/lang/clangs/cpc.pdf &
+    evince -p 5 ~/Empire/Doks/Comp/lang/clangs/c-cpp-tutorial.pdf &
+    https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
+
+~/Empire/Doks/Comp/lang/clangs/cpp/cpp-prim_5e.txt
+~/Empire/Doks/Comp/lang/clangs/cpp/cpp-stdlib_qref.txt
+  https://cplusplus.com/reference/cstring/strlen/
+
+  https://cplusplus.com/
+  https://cplusplus.com/doc/  #=tutorials
+
+            https://en.wikipedia.org/wiki/C%2B%2B_Standard_Library
+              https://learn.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-overview?view=msvc-170
+                https://www.geeksforgeeks.org/functors-in-cpp/
+            https://en.wikipedia.org/wiki/C_standard_library
+            https://en.wikipedia.org/wiki/C_POSIX_library
+          https://en.wikipedia.org/wiki/Standard_Template_Library
+          https://www.geeksforgeeks.org/the-c-standard-template-library-stl/
+            https://en.wikipedia.org/wiki/Boost_(C%2B%2B_libraries)
+
+    ___cpptut1
+    [ ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/c-cpp-tutorial.txt ]
+
+}}}
+--
+    .gamedev, guiqt (etc) {{{
+    Agk, Tier 2
+    --
+        ~/Dropbox/rsc/data/lists/ref/comp/gamedev/cppgamedevcb.txt
+        ~/Empire/Doks/Comp/Gamedev/cppgamedev-byex.pdf
+        ~/Empire/Doks/Comp/Gamedev/gamedevcpp-mast.txt
+        ~/Empire/Doks/Comp/Gamedev/gamedevpatt-bestpract.txt
+    }}}
+    gui {{{
+      ~/Dropbox/tmp/yvidstranscribe-04-cppguicrossplatform.txt
+        ~/Dropbox/rsc/Doks/phone/Comp/lang/zz_Qt-Qml.txt
+        ~/Dropbox/rsc/Doks/phone/Comp/lang/zz_qtdesignstudio.txt
+
+            ~/Empire/Doks/Comp/lang/clangs/cpp/gui/cppqt5.txt
+            ~/Empire/Doks/Comp/lang/clangs/cpp/gui/cppqt-handson.txt
+    }}}
+.(sound, audio, synths) {{{
+    ## ~/Empire/video/instructional/Comp/mu/juceframework-tut00--intro_buildfirstproj.mp4
+    clam++ framework
+      ~/Empire/Doks/Comp/lang/clangs/cpp/juce/juce-start.txt
+      ~/Dropbox/tmp/yvidstranscribe-02-midiwithcpp.txt
+}}}
+
+c/c++ style guides {{{
+  ~/Empire/Doks/Comp/lang/clangs/c/ccpp-styleguidel.txt
+  ~/Empire/Doks/Comp/lang/clangs/c/c-styleelements.pdf
+  ~/Empire/Doks/Comp/lang/clangs/cpp/cppstyleelem.txt
+    ~/Empire/Doks/Comp/lang/clangs/cpp/cppstyleelem.pdf
+  ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/cppstyleguide_google.txt
+  ~/Dropbox/rsc/data/lists/ref/comp/lang/cpp/cpp_coreguidelines.txt
+  --
+  ~/Empire/Doks/Comp/lang/clangs/c/c-thebook.pdf
+}}}
+xfce plugins (with c++) {{{
+
+#include <xfce4-panel-plugin.h> 
+#include <gtk/gtk.h> 
+
+/* ... Plugin implementation ... */
+
+int main(int argc, char **argv) {
+    gtk_init(&argc, &argv); 
+
+    // Create the plugin instance
+    XfcePanelPlugin *plugin = xfce_panel_plugin_new(); 
+
+    // Create and add UI elements (e.g., labels, buttons)
+    GtkWidget *label = gtk_label_new("My Plugin");
+    xfce_panel_plugin_add(plugin, label); 
+
+    // ... Handle events, configure settings, etc. ... 
+
+    gtk_main(); 
+    return 0;
+}
+
+}}}
+----
+c {{{
+cmake / make {{{
+  https://www.incredibuild.com/blog/cmake-vs-make
+  https://cmake.org/cmake/help/book/mastering-cmake/cmake/Help/guide/tutorial/index.html
+  https://cmake.org/examples/
+        https://github.com/ttroy50/cmake-examples
+}}}
+https://shop.learncodethehardway.org/products/contents/3/  #LCHardw Videos
+
+gvim -p ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/chardway.txt ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/modernc.txt
+evince -p 24 ~/Empire/Doks/Comp/lang/clangs/c/chardway.pdf & evince -p 3 ~/Empire/Doks/Comp/lang/clangs/c/modernc.pdf &
+# modern c  =2020[!]
+
+c gui programming gtk+raspb(!)  https://www.linuxlinks.com/excellent-free-books-learn-c/2/
+    --
+      https://www.linuxlinks.com/excellent-free-books-learn-c/4/
+            https://www.linuxlinks.com/excellent-free-books-learn-c/5/
+    https://publications.gbdirect.co.uk//c_book/
+        https://www.linuxlinks.com/excellent-free-books-learn-c/
+    ~/dropbox-legacy/c-cpp.txt
+
+~/Empire/video/instructional/Comp/lang/clangs/freec-c.mkv
+    ~/dropbox-legacy/ocrbooks/cpp10h_caleb.txt
+    ~/Empire/Doks/Comp/lang/clangs/c/cfrb.txt
+
+~/Empire/Doks/Comp/lang/clangs/c/gnu-codingstandards.pdf
+~/Empire/Doks/Comp/lang/clangs/c/cprogr-primer.txt
+~/Empire/Doks/Comp/lang/clangs/c/cprogr-begguide_2022.pdf
+~/Empire/Doks/Comp/lang/clangs/c/cprogr-learn_2020.pdf
+~/Empire/Doks/Comp/lang/clangs/c/c-allref.txt
+  ~/Empire/Doks/Comp/lang/clangs/c/cprogr-embedded.pdf
+~/Empire/Doks/Comp/lang/clangs/c/c-styleelements.pdf
+~/Empire/Doks/Comp/lang/clangs/c/c-thebook.pdf
+~/Empire/Doks/Comp/lang/clangs/c/notes4pros-c.pdf
+
+}}}
+  ~/gdrive/share/abe-rick/komvux-komplett-2022-2023/Index.txt
+c++ {{{
+
+personal
+  ~/git/bluelegend76/komvux2023-cpp/SimpleBank.cpp
+     ('unused function return values'),
+  ~/git/bluelegend76/komvux2023-cpp/
+
+gvim -p ~/git/bluelegend76/komvux2023-cpp/PengarTillbaka.cpp ~/git/bluelegend76/komvux2023-cpp/SimpleBank.cpp ~/git/bluelegend76/komvux2023-cpp/PrintGrades.cpp ~/git/bluelegend76/komvux2023-cpp/WeatherStation.cpp 
+
+~/gdrive/share/abe-rick/komvux-komplett-2022-2023/01-progr1_cpp/code/PengarTillbaka.cpp {{{
+testfall:
+}}}
+. {{{
+https://www.delftstack.com/howto/cpp/convert-float-to-int-cpp/
+
+    https://stackoverflow.com/questions/70426658/c-cmd-application-command-to-scroll-terminal-until-current-line-is-at-the-top
+    https://www.geeksforgeeks.org/how-to-clear-console-in-cpp/
+
+search: c++ test if value is a number
+search: c++ abort program if input is not a number
+  https://stackoverflow.com/questions/9855649/check-if-input-is-a-number-and-if-not-return-to-input
+https://cplusplus.com/forum/general/42594/
+https://cplusplus.com/reference/cctype/  #isdigit (etc)
+  search: cctype c++
+search: check if input is numeric c++
+--
+https://stackoverflow.com/questions/5655142/how-to-check-if-input-is-numeric-in-c __ __ __ ****
+search: cin.ignore()
+    https://www.tutorialspoint.com/what-is-the-use-of-cin-ignore-in-cplusplus
+ https://stackoverflow.com/questions/25475384/when-and-why-do-i-need-to-use-cin-ignore-in-c
+ https://www.codespeedy.com/how-to-use-cin-ignore-in-cpp-to-clear-input-buffer/
+
+control number output (=eg. Avoid Scientific Notation (in answer) **
+    search: c++ ios manipulators
+https://www.geeksforgeeks.org/manipulators-in-c-with-examples/
+}}}
+  https://www.skolportalen.se/EbookReader/Logga-in.aspx?error=login&bookID=1088
+    ~/Empire/Doks/Comp/lang/clangs/cpp/cppprogr1.txt
+      ~/gdrive/share/abe-rick/komvux-komplett-2022-2023/01-progr1_cpp/cppprogr1_abok.txt
+      ~/Empire/Doks/Comp/lang/clangs/cpp/cppprogr1_abok.pdf  #+weblink
+
+                        ~/dropbox-legacy/cppdir.txt
+
+https://www.circle-lang.org/  The 'Circle' C++ Compiler[!!]
+
+    YSEARCH: MODERN C++ JETBRAINS ****
+    YSEARCH: jason turner most important new features in c++ (=3-4 videos) ****         https://www.youtube.com/user/lefticus1/videos
+C++ weekly w. jason turner {{{
+
+    +EXTRACT AND INPUT SOURCELINKS + TEST DOWNLOADING   + TAKE SOME BASIC SCRATCHNOTES FOR EACH VID. (**(!!))
+
+    Cᐩᐩ Weekly With Jason Turner
+
+    76.5K subscribers
+
+    Twitter
+    8:40
+    Now playing
+    C++ Weekly - Ep 291 - Start Using `as_const`
+    18K views6 days ago
+
+    CC
+    6:17
+    Now playing
+    C++ Weekly - Ep 290 - C++14's Digit Separators and Binary Literals
+    6.4K views1 week ago
+
+    CC
+    6:06
+    Now playing
+    C++ Weekly - Ep 289 - Returning From The `void`
+    10K views2 weeks ago
+
+    CC
+    10:18
+    Now playing
+    C++ Weekly - Ep 288 - Quick Perf Tip: Prefer `auto`
+    10K views3 weeks ago
+
+    CC
+    11:15
+    Now playing
+    C++ Weekly - Ep 287 - Understanding `auto`
+    14K views1 month ago
+
+    CC
+    17:56
+    Now playing
+    C++ Weekly - Ep 286 - How Command and Conquer's Dual Screen DOS Support Worked
+    7.6K views1 month ago
+
+    CC
+    21:18
+    Now playing
+    C++ Weekly - Ep 285 - Experiments With Generating Stably Random Game Assets
+    7.2K views1 month ago
+
+    CC
+    7:29
+    Now playing
+    C++ Weekly - Ep 284 - C++20's Safe Integer Comparisons
+    10K views1 month ago
+
+    CC
+    16:40
+    Now playing
+    C++ Weekly - Ep 283 - Stop Using const_cast!
+    13K views2 months ago
+
+    CC
+    10:21
+    Now playing
+    C++ Weekly - Ep 282 - Quick Perf Tip: Don't Repeat Your Work
+    12K views2 months ago
+
+    CC
+    10:45
+    Now playing
+    C++ Weekly - Ep 281 - N Times Faster Code With Parallel Algorithms
+    13K views2 months ago
+
+    CC
+    21:22
+    Now playing
+    C++ Weekly - Ep 280 - A Quick Look At The Source To Amazon's O3DE Game Engine (constexpr surprises!)
+    21K views2 months ago
+
+    CC
+    7:54
+    Now playing
+    C++ Weekly - Ep 279 - Quick Perf Tip: Use The Right Iterator Comparison
+    11K views2 months ago
+
+    CC
+    15:31
+    Now playing
+    C++ Weekly - Ep 278 - `emplace_back` vs `push_back`
+    16K views3 months ago
+
+    CC
+    9:47
+    Now playing
+    C++ Weekly - Ep 277 - Quick Perf Tip: Avoid Integer Conversions
+    12K views3 months ago
+
+    CC
+    8:52
+    Now playing
+    C++ Weekly - Ep 276 - C++20's Conditionally `explicit` Conversions
+    6.6K views3 months ago
+
+    CC
+    22:56
+    Now playing
+    C++ Weekly - Ep 275 - Trust Your Standard Library in 3 Simple Steps
+    11K views3 months ago
+
+    19:56
+    Now playing
+    C++ Weekly - Ep 274 - Why Is My Pair 310x Faster Than `std::pair`?
+    38K views4 months ago
+
+    CC
+    1:59:51
+    Now playing
+    Live Code Review - CTRE
+    13K viewsStreamed 4 months ago
+
+    7:17
+    Now playing
+    C++ Weekly - Ep 273 - C++23's Lambda Simplification (With Commodore 64 Example)
+    7.9K views4 months ago
+
+    17:16
+    Now playing
+    C++ Weekly - Ep 272 - Hello World, Hello Commodore
+    6.4K views4 months ago
+
+    11:32
+    Now playing
+    C++ Weekly - Ep 271 - string.clear() vs string = ""
+    15K views4 months ago
+
+    35:49
+    Now playing
+    C++ Weekly - Ep 270 - Break ABI to Save C++
+    25K views5 months ago
+
+    16:53
+    Now playing
+    C++ Weekly - Ep 269 - How To Use C++20's constexpr std::vector and std::string
+    12K views5 months ago
+
+    6:07:38
+    Now playing
+    C++20 For The Commodore 64
+    9.7K viewsStreamed 5 months ago
+
+    27:45
+    Now playing
+    C++ Weekly - Ep 268 - Top 10 C++ Resources You MUST Know About!
+    21K views5 months ago
+
+    5:42
+    Now playing
+    C++ Weekly - Ep 267 - C++20's starts_with and ends_with
+    7.4K views5 months ago
+
+    2:04:07
+    Now playing
+    Modernizing SWIG's C++ Output
+    6.8K viewsStreamed 5 months ago
+
+    6:47
+    Now playing
+    C++ Weekly - Ep 266 - C++20's std::shift_left and std::shift_right
+    8.2K views5 months ago
+
+    8:38
+    Now playing
+    C++ Weekly - Ep 265 - C++20's std::bit_cast
+    8.9K views6 months ago
+
+    7:35
+    Now playing
+    C++ Weekly - Ep 264 - Covariant Return Types and Covariant Smart Pointers
+    10K views6 months ago
+
+    9:05
+    Now playing
+    C++ Weekly - Ep 263 - Virtual Inheritance: Probably Not What You Think It Is
+    14K views6 months ago
+
+    8:17
+    Now playing
+    C++ Weekly - Ep 262 - std::string's 11 Confusing Constructors
+    9.3K views6 months ago
+
+    4:13
+    Now playing
+    C++ Weekly - Ep 261 - C++20's New consteval Keyword
+    7.5K views7 months ago
+
+    5:35
+    Now playing
+    C++ Weekly - Ep 260 - C++'s Most Vexing Parse: How To Spot It, Why It Exists, and How To Avoid It
+    9.3K views7 months ago
+
+    44:15
+    Now playing
+    C++ Weekly - Exploring and Reviewing F', The Mars Ingenuity Flight Software
+    17K views7 months ago
+
+    9:56
+    Now playing
+    C++ Weekly - Ep 259 - CRTP: What It Is, Some History and Some Uses
+    12K views7 months ago
+
+    9:52
+    Now playing
+    C++ Weekly - Ep 258 - The Awesome Power of C++20's std::source_location
+    15K views7 months ago
+
+    5:42:22
+    Now playing
+    I2C Device Hacking With Raspberry Pi 2 - Part 4
+    4.5K viewsStreamed 7 months ago
+
+    5:15
+    Now playing
+    C++ Weekly - Ep 257 - Garbage In, Garbage Out - Why Initialization Matters
+    7.4K views8 months ago
+
+    2:03:30
+    Now playing
+    C++ Mythbusting with Victor and Jason
+    16K viewsStreamed 8 months ago
+
+    1:40:03
+    Now playing
+    I2C Device Hacking With Raspberry Pi 2 - Part 3
+    2.7K viewsStreamed 8 months ago
+
+    9:44
+    Now playing
+    C++ Weekly - Ep 256 - C++11's Garbage Collector
+    13K views8 months ago
+
+    2:00:58
+    Now playing
+    I2C Device Hacking With Raspberry Pi 2 - Part 2
+    3.2K viewsStreamed 8 months ago
+
+    2:22:06
+    Now playing
+    I2C Device Hacking With Raspberry Pi 2
+    8K viewsStreamed 8 months ago
+
+    14:34
+    Now playing
+    C++ Weekly - Ep 255 - C++11-17 Features You Still Cannot Use in 2021
+    13K views8 months ago
+
+    4:29
+    Now playing
+    C++ Weekly - Ep 254 - C++23's signed / unsigned size_t Literals
+    9.7K views8 months ago
+
+    5:50
+    Now playing
+    C++ Weekly - Ep 253 - C++20 is Official! How To Get Your Copy of the Standard
+    9.1K views8 months ago
+
+    20:55
+    Now playing
+    C++ Weekly - Ep 252 - Real World PMR: 2-3x Faster JSON Parsing with Custom Allocation Strategies
+    8.4K views9 months ago
+
+    7:15
+    Now playing
+    C++ Weekly - Ep 251 - constexpr Parameters With C++20's CNTTP
+    7.5K views9 months ago
+
+    19:04
+    Now playing
+    C++ Weekly - Ep 250 - Custom Allocation - How, Why, Where (Huge multi threaded gains and more!)
+    12K views9 months ago
+
+    6:46
+    Now playing
+    C++ Weekly - Ep 249 - Types That Shall Not Be Named
+    9.6K views9 months ago
+
+    21:07
+    Now playing
+    C++ Weekly - Ep 248 - Understand the C++17 PMR Standard Allocators and Track All the Things
+    7.2K views10 months ago
+
+    11:01
+    Now playing
+    C++ Weekly - Ep 247 - -O3, -Os, -Og, -Oz, Oh My!
+    9.6K views10 months ago
+
+    5:04
+    Now playing
+    C++ Weekly - Ep 246 - (+[](){})() What Does It Mean?
+    23K views10 months ago
+
+    18:44
+    Now playing
+    C++ Weekly - Ep 245 - PMR: Mistakes Were Made (By Me)
+    8.8K views10 months ago
+
+    12:28
+    Now playing
+    C++ Weekly - Ep 244 - Channel News, Updates, Thank Yous, and Changes
+    4.4K views11 months ago
+
+    20:09
+    Now playing
+    C++ Weekly - Ep 243 - Computer Science: The Magic of Two's Complement Binary Math
+    5.7K views11 months ago
+
+    8:40
+    Now playing
+    How To Actually Fix The Davinci Resolve "clip could not be processed" Error!
+    6.2K views11 months ago
+
+    5:57
+    Now playing
+    C++ Weekly - Ep 242 - Design By Introspection in C++20 (concepts + if constexpr)
+    7.9K views11 months ago
+
+    6:48
+    Now playing
+    C++ Weekly - Ep 241 - Using `explicit` to Find Expensive Accidental Copies
+    9.8K views11 months ago
+
+    6:06
+    Now playing
+    C++ Weekly - Ep 240 - Start Using [[nodiscard]]!
+    10K views11 months ago
+
+    10:21
+    Now playing
+    C++ Weekly - Ep 239 - std::mem_fun vs std::mem_fn Fight!
+    10K views1 year ago
+
+    6:54
+    Now playing
+    C++ Weekly - Ep 238 - const mutable Lambdas?
+    9K views1 year ago
+
+    11:22
+    Now playing
+    C++ Weekly - Ep 237 - Teach Yourself C++ in ∞ Days
+    19K views1 year ago
+
+    23:48
+    Now playing
+    C++ Weekly - Ep 236 - Creating Allocator-Aware Types
+    10K views1 year ago
+
+    22:37
+    Now playing
+    C++ Weekly - Ep 235 - PMR: Amazing, Fast, But, Not Quite Magic
+    14K views1 year ago
+
+    11:38
+    Now playing
+    C++ Weekly - Ep 234 - map[] vs map.at()
+    14K views1 year ago
+
+    25:25
+    Now playing
+    C++ Weekly - Ep 233 - std::map vs constexpr map (huge perf difference!)
+    31K views1 year ago
+
+    7:04
+    Now playing
+    C++ Weekly - Ep 232 - C++20's `using enum`
+    15K views1 year ago
+
+    12:46
+    Now playing
+    C++ Weekly - Ep 231 - Multiple Destructors in C++20?! How and Why
+    24K views1 year ago
+
+    5:48:09
+    Now playing
+    (Saving/Replaying Game Events. It Works!) Hacking On the C++ Weekly Game Project - Part 2
+    11K viewsStreamed 1 year ago
+
+    4:10:23
+    Now playing
+    (Saving/Replaying Game Events. Prep work.) Hacking On the C++ Weekly Game Project - Part 1
+    9.1K viewsStreamed 1 year ago
+
+    20:13
+    Now playing
+    C++ Weekly - Ep 230 - Building A High Performance Bit Pattern Match DSL
+    16K views1 year ago
+
+    3:27
+    Now playing
+    C++ Weekly - Ep 229 - C++20: Why Deprecate The Comma Operator?
+    15K views1 year ago
+
+    4:26
+    Now playing
+    C++ Weekly - Ep 228 - C++20's (High Precision) Mathematical Constants
+    12K views1 year ago
+
+    22:18
+    Now playing
+    C++ Weekly - Ep 227 - RPG In C++20 - Part 6: Dealing With Game Events - 2
+    8.8K views1 year ago
+
+    4:35
+    Now playing
+    C++ Weekly - Ep 226 - The Arrow Operator Is Magic
+    26K views1 year ago
+
+    29:02
+    Now playing
+    Moving From Intel to ARM - Apple's Big Performance Mistake?
+    65K views1 year ago
+
+    11:56
+    Now playing
+    C++ Weekly - Ep 225 - Understanding Operator Overloading
+    18K views1 year ago
+
+    1:28:03
+    Now playing
+    Reviewing The Command & Conquer Source!
+    63K viewsStreamed 1 year ago
+
+    22:01
+    Now playing
+    C++ Weekly - Ep 224 - RPG In C++20 - Part 5: Dealing With Game Input Events
+    9.7K views1 year ago
+
+    6:49
+    Now playing
+    C++ Weekly - Ep 223 - Know Your Standard Library: std::nextafter
+    20K views1 year ago
+
+    3:36:35
+    Now playing
+    Jonathan Teaches Jason Rust! - Part 2
+    18K viewsStreamed 1 year ago
+
+    10:37
+    Now playing
+    C++ Weekly - Ep 222 - 3.5x Faster Standard Containers With PMR!
+    31K views1 year ago
+
+    CC
+    17:29
+    Now playing
+    C++ Weekly - Ep 221 - Generating a .clang-format For C++ Doom
+    13K views1 year ago
+
+    9:35
+    Now playing
+    C++ Weekly - Ep 220 - C++20's [[likely]] and [[unlikely]] With Practical use Case
+    21K views1 year ago
+
+    2:50:16
+    Now playing
+    Jonathan Teaches Jason Rust!
+    43K viewsStreamed 1 year ago
+
+    34:58
+    Now playing
+    C++ Weekly - Ep 219 - RPG In C++20 - Part 4: Reading SFML Joystick States
+    11K views1 year ago
+
+    3:40:54
+    Now playing
+    Matt And Jason Discuss Cycle Perfect Emulation
+    10K viewsStreamed 1 year ago
+
+    3:35
+    Now playing
+    C++ Weekly - Ep 218 - C++20's std::to_array
+    19K views1 year ago
+
+    12:39
+    Now playing
+    C++ Weekly - Ep 217 - Doom vs C++: Round 1: Initial Results
+    19K views1 year ago
+
+    3:03:30
+    Now playing
+    C++ Weekly - Live Stream 5 - Porting Doom to C++ - More constexpr!
+    30K viewsStreamed 1 year ago
+
+    4:03
+    Now playing
+    C++ Weekly - Ep 216 - C++20's lerp, midpoint And Why They Are Necessary
+    14K views1 year ago
+
+    26:06
+    Now playing
+    C++ Weekly - Ep 215 - An RPG in C++20: Part 3 - Handling Command Line Parameters
+    23K views1 year ago
+
+    9:57:24
+    Now playing
+    C++ Weekly - Ep 214 - Epic 10 Hour Port of Doom to C++
+    36K views1 year ago
+
+    11:55:01
+    Now playing
+    C++ Weekly - Live Stream 3 - Porting Doom to C++
+    216K viewsStreamed 1 year ago
+
+    8:36
+    Now playing
+    C++ Weekly - Ep 213 - CTRE: Compile Time Regular Expressions
+    11K views1 year ago
+
+    43:09
+    Now playing
+    C++ Weekly - Live Stream 2 - Code Review
+    14K viewsStreamed 1 year ago
+
+    12:48
+    Now playing
+    C++ Weekly - Ep 212 - An RPG In C++20 - Part 2: Finding Errors As Soon As Possible
+    14K views1 year ago
+
+    58:26
+    Now playing
+    C++ Weekly - Live Stream 1 - Code Reviews
+    34K viewsStreamed 1 year ago
+
+    6:13
+    Now playing
+    C++ Weekly - Ep 211 - C++20's Bit Manipulation Functions
+    17K views1 year ago
+
+    32:06
+    Now playing
+    C++ Weekly - Ep 210 - An RPG in C++20 - Part 1: Getting Started With SFML & Dear ImGui
+    41K views1 year ago
+
+    13:26
+    Now playing
+    C++ Weekly - Ep 209 - An RPG in C++20 - Part 0: The Plan
+    44K views1 year ago
+
+    32:51
+    Now playing
+    C++ Weekly - Ep 208 - The Ultimate CMake / C++ Quick Start
+    47K views1 year ago
+
+    CC
+    8:21
+    Now playing
+    C++ Weekly - Ep 207 - C++20's jthread and stop_token
+    13K views1 year ago
+
+    5:43
+    Now playing
+    C++ Weekly - Ep 206 - Surprising Conversions with CTAD
+    6.6K views1 year ago
+
+    6:42
+    Now playing
+    C++ Weekly - Ep 205 - Christmas Class 2019 - Chapter 5 of 5 Answers
+    1.8K views1 year ago
+
+    5:18
+    Now playing
+    C++ Weekly - Ep 204 - Christmas Class 2019 - Chapter 5 of 5 - Lambdas To The Limits
+    3.3K views1 year ago
+
+    12:02
+    Now playing
+    C++ Weekly - Ep 203 - Christmas Class 2019 - Chapter 4 of 5 - The Evolution of Lambdas
+    3.5K views1 year ago
+
+    26:27
+    Now playing
+    C++ Weekly - Ep 202 - Christmas Class 2019 - Chapter 3 of 5 - Utilizing Lambdas
+    5.7K views1 year ago
+
+    19:24
+    Now playing
+    C++ Weekly - Ep 201 - Christmas Class 2019 - Chapter 2 of 5 - Building On Lambdas
+    6.3K views1 year ago
+
+    9:38
+    Now playing
+    C++ Weekly - Ep 200 - Christmas Class 2019 - Chapter 1 of 5 - Understanding Lambdas
+    14K views1 year ago
+
+    4:44
+    Now playing
+    C++ Weekly - Ep 199 - [[nodiscard]] Constructors And Their Uses
+    10K views1 year ago
+
+    6:28
+    Now playing
+    C++ Weekly - Ep - 198 - Surprise Uses For `explicit` Constructors
+    14K views1 year ago
+
+    12:18
+    Now playing
+    C++ Weekly - Ep 197 - 25 Years of Best Practices
+    12K views1 year ago
+
+    4:12
+    Now playing
+    C++ Weekly - Ep 196 - What is `requires requires`?
+    10K views1 year ago
+
+    5:59
+    Now playing
+    C++ Weekly - Ep 195 - C++20's `constinit`
+    10K views1 year ago
+
+    12:56
+    Now playing
+    C++ Weekly - Ep 194 - From SFINAE To Concepts With C++20
+    23K views1 year ago
+
+    3:13
+    Now playing
+    C++ Weekly - Ep 193 - C++20's `contains` Members
+    9.3K views1 year ago
+
+    4:56
+    Now playing
+    C++ Weekly - Ep 192 - Stop Using Double Underscores
+    11K views1 year ago
+
+    CC
+    11:25
+    Now playing
+    C++ Weekly - Ep 191 - Cevelop IDE With CMake Based Projects
+    7.7K views1 year ago
+
+    CC
+    10:53
+    Now playing
+    C++ Weekly - Ep 190 - The Important Parts of C++17 in 10 Minutes
+    24K views1 year ago
+
+    CC
+    8:34
+    Now playing
+    C++ Weekly - Ep 189 - C++14's Variable Templates
+    11K views1 year ago
+
+    CC
+    5:11
+    Now playing
+    C++ Weekly SE - clang-tidy Auto Fixes in Compiler Explorer - Tribute to Hubert Matthews
+    5.8K views1 year ago
+
+    8:36
+    Now playing
+    C++ Weekly - Ep 188 - C++20's `constexpr` `new` Support
+    11K views1 year ago
+
+    6:23
+    Now playing
+    C++ Weekly - Ep 187 - C++20's `constexpr` Algorithms
+    7.4K views2 years ago
+
+    10:32
+    Now playing
+    C++ Weekly - Ep 186 - What Are Callables?
+    10K views2 years ago
+
+    10:32
+    Now playing
+    C++ Weekly - Ep 185 - Stop Using reinterpret_cast!
+    23K views2 years ago
+
+    7:05
+    Now playing
+    C++ Weekly - Ep 184 - What Are Higher Order Functions?
+    13K views2 years ago
+
+    7:09
+    Now playing
+    C++ Weekly - Ep 183 - Start Using Raw String Literals
+    20K views2 years ago
+
+    9:31
+    Now playing
+    C++ Weekly - Ep 182 - Overloading In C and C++
+    11K views2 years ago
+
+    13:16
+    Now playing
+    C++ Weekly - Ep 181 - Fixing Our bind_front with std::invoke
+    5.4K views2 years ago
+
+    CC
+    4:00
+    Now playing
+    C++ Weekly - Ep 180 - Whitespace Is Meaningless
+    7.1K views2 years ago
+
+    CC
+    8:46
+    Now playing
+    C++ Weekly - Ep 179 - Power C - A Native C Compiler for the Commodore 64
+    5.6K views2 years ago
+
+    9:16
+    Now playing
+    C++ Weekly - Ep 178 - The Important Parts of C++14 In 9 Minutes
+    21K views2 years ago
+
+    CC
+    6:09
+    Now playing
+    C++ Weekly - Ep 177 - `std::bind_front` Implemented With Lambdas
+    5.2K views2 years ago
+
+    CC
+    11:52
+    Now playing
+    C++ Weekly - Ep 176 - Important Parts of C++11 in 12 Minutes
+    26K views2 years ago
+
+    CC
+    5:55
+    Now playing
+    C++ Weekly - Ep 175 - Spaceships in C++20: operator 〈=〉
+    15K views2 years ago
+
+    CC
+    5:27
+    Now playing
+    C++ Weekly - Ep 174 - C++20's `std::bind_front`
+    7.7K views2 years ago
+
+    CC
+    13:25
+    Now playing
+    C++ Weekly - Ep 173 - The Important Parts of C++98 in 13 Minutes
+    14K views2 years ago
+
+    CC
+    2:34
+    Now playing
+    C++ Weekly - Ep 172 - Execution Support in Compiler Explorer
+    4.7K views2 years ago
+
+    CC
+    6:22
+    Now playing
+    C++ Weekly - Ep 171 - C++20's Parameter Packs In Captures
+    8.3K views2 years ago
+
+    CC
+    5:40
+    Now playing
+    C++ Weekly - Ep 170 - C++17's `inline` Variables
+    13K views2 years ago
+
+    CC
+    3:28
+    Now playing
+    C++ Weekly - Ep 169 - C++20 Aggregates With User Defined Constructors
+    6.1K views2 years ago
+
+    CC
+    5:14
+    Now playing
+    C++ Weekly - Ep 168 - Discovering Warnings You Should Be Using
+    5.7K views2 years ago
+
+    CC
+    3:47
+    Now playing
+    C++ Weekly - Ep 167 - What Is Variable Shadowing?
+    6.7K views2 years ago
+
+    CC
+    5:33
+    Now playing
+    C++ Weekly - Ep 166 - C++20's Uniform Container Erasure
+    8.4K views2 years ago
+
+    CC
+    6:18
+    Now playing
+    C++ Weekly - Ep 165 - C++20's is_constant_evaluated()
+    7K views2 years ago
+
+    CC
+    7:08
+    Now playing
+    C++ Weekly - Ep 164 - Adding a Random Device To The C++ Box
+    4.5K views2 years ago
+
+    CC
+    7:33
+    Now playing
+    C++ Weekly - Ep 163 - Practicing ARM Assembly
+    6K views2 years ago
+
+    9:14
+    Now playing
+    C++ Weekly - Ep 162 - Recursive Lambdas
+    13K views2 years ago
+
+    CC
+    9:18
+    Now playing
+    C++ Weekly - Ep 161 - The C++ Box Project
+    7.7K views2 years ago
+
+    CC
+    5:26
+    Now playing
+    C++ Weekly - Ep 160 - Argument Dependent Lookup (ADL)
+    9.3K views2 years ago
+
+    CC
+    5:55
+    Now playing
+    C++ Weekly - Ep 159 - `constexpr` `virtual` Members In C++20
+    8.6K views2 years ago
+
+    CC
+    6:51
+    Now playing
+    C++ Weekly - Ep 158 - Getting The Most Out Of Your CPU
+    9.9K views2 years ago
+
+    CC
+    5:05
+    Now playing
+    C++ Weekly - Ep 157 - Never Overload Operator && or ||
+    7.8K views2 years ago
+
+    CC
+    7:36
+    Now playing
+    C++ Weekly - Ep 156 - A C++ Conference Near You
+    3.6K views2 years ago
+
+    CC
+    5:22
+    Now playing
+    C++ Weekly - Ep 155 - Misuse of pure Function Attribute
+    8.4K views2 years ago
+
+    CC
+    7:51
+    Now playing
+    C++ Weekly - Ep 154 - One Simple Trick For Reducing Code Bloat
+    32K views2 years ago
+
+    CC
+    13:23
+    Now playing
+    C++ Weekly - Ep 153 - 24-Core C++ Builds Using Spare Computers!
+    8.4K views2 years ago
+
+    CC
+    9:19
+    Now playing
+    C++ Weekly - Ep 152 - Lambdas: The Key To Understanding C++
+    23K views2 years ago
+
+    CC
+    4:00
+    Now playing
+    Thinkpad 13 Keyboard Swap
+    9.8K views2 years ago
+
+    4:33
+    Now playing
+    C++ Weekly - Ep 151 - C++20's Lambdas As Custom Comparators
+    14K views2 years ago
+
+    CC
+    5:38
+    Now playing
+    C++ Weekly - Ep 150 - C++20's Lambdas For Resource Management
+    12K views2 years ago
+
+    CC
+    5:44
+    Now playing
+    C++ Weekly - Ep 149 - C++20's Lambda Usability Changes
+    10K views2 years ago
+
+    CC
+    7:10
+    Now playing
+    C++ Weekly - Ep 148 - clang-tidy Checks To Avoid
+    7.4K views2 years ago
+
+    CC
+    5:48
+    Now playing
+    C++ Weekly - Ep 147 - C++ And Python Tooling
+    7.2K views2 years ago
+
+    CC
+    9:09
+    Now playing
+    C++ Weekly - Ep 146 - C++20's std::to_address
+    18K views2 years ago
+
+    CC
+    4:18
+    Now playing
+    C++ Weekly - Ep 145 - Semi-Automatic `constexpr` and `noexcept`
+    7.7K views2 years ago
+
+    CC
+    4:36
+    Now playing
+    C++ Weekly - Ep 144 - Pure Functions in C++
+    12K views2 years ago
+
+    CC
+    5:46
+    Now playing
+    C++ Weekly - Ep 143 - GNU Function Attributes
+    7.1K views2 years ago
+
+    CC
+    6:48
+    Now playing
+    C++ Weekly - Ep 142 - Short Circuiting With Logical Operators
+    6.3K views2 years ago
+
+    CC
+    5:18
+    Now playing
+    C++ Weekly - Ep 141 - C++20's Designated Initializers And Lambdas
+    6.8K views2 years ago
+
+    CC
+    4:58
+    Now playing
+    C++ Weekly - Ep 140 - Use `cout`, `cerr`, and `clog` Correctly
+    15K views2 years ago
+
+    8:07
+    Now playing
+    C++ Weekly - Ep 139 - References To Pointers
+    12K views2 years ago
+
+    8:44
+    Now playing
+    C++ Weekly - Ep 138 - Will It C++? MIPS Architecture (1985)
+    3.7K views2 years ago
+
+    4:32
+    Now playing
+    C++ Weekly - Ep 137 - C++ Is Not An Object Oriented Language
+    13K views2 years ago
+
+    7:24
+    Now playing
+    C++ Weekly - Ep 136 - How `inline` Might Affect The Optimizer
+    12K views2 years ago
+
+    6:15
+    Now playing
+    C++ Weekly - Ep 135 - {fmt} is Addictive! Using {fmt} and spdlog
+    14K views3 years ago
+
+    6:09
+    Now playing
+    C++ Weekly - Ep 134 - The Best Possible Way To Create A Visitor?
+    12K views3 years ago
+
+    6:30
+    Now playing
+    C++ Weekly - Ep 133 - What Exactly IS A Lambda Anyhow?
+    24K views3 years ago
+
+    4:29
+    Now playing
+    C++ Weekly - Ep 132 - Lambdas In Fold Expressions
+    7.5K views3 years ago
+
+    12:01
+    Now playing
+    C++ Weekly - Ep 131 - Literals in ARM Assembly
+    4.6K views3 years ago
+
+    5:54
+    Now playing
+    C++ Weekly - Ep 130 - C++20's for init-statements
+    7.2K views3 years ago
+
+    4:44
+    Now playing
+    C++ Weekly - Ep 129 - The One Feature I'd Remove From C++
+    9.3K views3 years ago
+
+    6:31
+    Now playing
+    C++ Weekly - Ep 128 - C++20's Template Syntax For Lambdas
+    12K views3 years ago
+
+    8:36
+    Now playing
+    C++ Weekly - Ep 127 - C++20's Designated Initializers
+    12K views3 years ago
+
+    5:44
+    Now playing
+    C++ Weekly - Ep 126 - Lambdas With Destructors
+    11K views3 years ago
+
+    13:10
+    Now playing
+    C++ Weekly - Ep 125 - The Optimal Way To Return From A Function
+    53K views3 years ago
+
+    CC
+    6:05
+    Now playing
+    C++ Weekly - Ep 124 - ABM and BMI Instruction Sets
+    3.2K views3 years ago
+
+    5:58
+    Now playing
+    C++ Weekly - Ep 123 - Using in_place_t
+    10K views3 years ago
+
+    8:25
+    Now playing
+    C++ Weekly - Ep 122 - `constexpr` With `optional` And `variant`
+    6.7K views3 years ago
+
+    6:19
+    Now playing
+    C++ Weekly - Ep 121 - Strict Aliasing In The Real world
+    9.1K views3 years ago
+
+    9:21
+    Now playing
+    C++ Weekly - Ep 120 - Will It C++? The Tandy 1000 From 1984
+    3.8K views3 years ago
+
+    7:54
+    Now playing
+    C++ Weekly - Ep 119 - Negative Cost Structs
+    19K views3 years ago
+
+    9:27
+    Now playing
+    C++ Weekly - Ep 118 - Trying Out The vcpkg Package Manager
+    13K views3 years ago
+
+    9:34
+    Now playing
+    C++ Weekly - Ep 117 - Trying Out The Hunter Package Manager
+    5.6K views3 years ago
+
+    13:18
+    Now playing
+    C++ Weekly - Ep 116 - Trying Out The Conan Package Manager
+    21K views3 years ago
+
+    CC
+    9:53
+    Now playing
+    C++ Weekly - Ep 115 - Compile Time ARM Emulator
+    6.9K views3 years ago
+
+    10:29
+    Now playing
+    C++ Weekly - Ep 114 - cpp_starter_project GUI Additions
+    6.3K views3 years ago
+
+    16:12
+    Now playing
+    C++ Weekly - Ep 113 - Will It C++? Atari Touch Me From 1978
+    5.5K views3 years ago
+
+    6:31
+    Now playing
+    C++ Weekly - Ep 112 - GCC's Leaky Abstractions
+    6.7K views3 years ago
+
+    3:42
+    Now playing
+    C++ Weekly - Ep 111 - kcov
+    5.4K views3 years ago
+
+    6:17
+    Now playing
+    C++ Weekly - Ep 110 - gdbgui
+    9.8K views3 years ago
+
+    4:55
+    Now playing
+    C++ Weekly - Ep 109 - When noexcept Really Matters
+    19K views3 years ago
+
+    4:25
+    Now playing
+    C++ Weekly - Ep 108 - Understanding emplace_back
+    16K views3 years ago
+
+    4:32
+    Now playing
+    C++ Weekly - Ep 107 - The Power of =delete
+    11K views3 years ago
+
+    5:05
+    Now playing
+    C++ Weekly - Ep 106 - Disabling Move From const
+    6.6K views3 years ago
+
+    5:30
+    Now playing
+    C++ Weekly - Ep 105 - Learning "Modern" C++ - 5: Looping and Algorithms
+    13K views3 years ago
+
+    7:59
+    Now playing
+    C++ Weekly - Ep 104 - Learning "Modern" C++ - 4 : const and constexpr
+    32K views3 years ago
+
+    CC
+    9:23
+    Now playing
+    C++ Weekly - Ep 103 - Learning "Modern" C++ - 3: Inheritance
+    18K views3 years ago
+
+    CC
+    12:36
+    Now playing
+    C++ Weekly - Ep 102 - Learning "Modern C++" - 2: Hello World
+    24K views3 years ago
+
+    CC
+    7:57
+    Now playing
+    C++ Weekly - Ep 101 - Learning "Modern" C++ - 1: The Tools
+    30K views3 years ago
+
+    CC
+    8:07
+    Now playing
+    C++ Weekly - Ep 100 - All The Assignment Operators
+    8.1K views3 years ago
+
+    CC
+    4:47
+    Now playing
+    C++ Weekly - Ep 99 - C++ 20's Default Bit-field Member Initializers
+    16K views3 years ago
+
+    CC
+    6:33
+    Now playing
+    C++ Weekly - Ep 98 - Precision Loss with Accumulate
+    5.1K views3 years ago
+
+    6:43
+    Now playing
+    C++ Weekly - Ep 97 - Lambda To Function Pointer Conversion
+    11K views3 years ago
+
+    9:27
+    Now playing
+    C++ Weekly - Ep 96 - Transparent Lambda Comparators
+    6.9K views3 years ago
+
+    6:07
+    Now playing
+    C++ Weekly - Ep 95 - Transparent Comparators
+    5.3K views3 years ago
+
+    7:28
+    Now playing
+    C++ Weekly - Ep 94 - Lambdas as Comparators
+    7.8K views3 years ago
+
+    4:54
+    Now playing
+    C++ Weekly - Ep 93 - Custom Comparators for Containers
+    11K views3 years ago
+
+    CC
+    7:36
+    Now playing
+    C++ Weekly - Ep 92 - function-try-blocks
+    8.6K views3 years ago
+
+    CC
+    7:55
+    Now playing
+    C++ Weekly - Ep 91 - Using Lippincott Functions
+    11K views3 years ago
+
+    7:10
+    Now playing
+    C++ Weekly - Ep 90 - Using Codecov and Project Badges
+    5.3K views3 years ago
+
+    5:41
+    Now playing
+    C++ Weekly - Ep 89 - Overusing Lambdas
+    9.5K views3 years ago
+
+    6:49
+    Now playing
+    C++ Weekly - Ep 88 - Don't Forget About puts
+    10K views3 years ago
+
+    7:36
+    Now playing
+    C++ Weekly - Ep 87 - std::optional
+    14K views3 years ago
+
+    7:38
+    Now playing
+    C++ Weekly - Ep 86 - Valgrind
+    22K views3 years ago
+
+    9:50
+    Now playing
+    C++ Weekly - Ep 85 - Fuzz Testing
+    11K views3 years ago
+
+    11:41
+    Now playing
+    C++ Weekly - Ep 84 - C++ Sanitizers
+    20K views3 years ago
+
+    6:03
+    Now playing
+    C++ Weekly - Ep 83 - Installing Compiler Explorer
+    11K views4 years ago
+
+    6:51
+    Now playing
+    C++ Weekly - Ep 82 - Intro To CTest
+    14K views4 years ago
+
+    9:40
+    Now playing
+    C++ Weekly - Ep 81 - Basic Computer Architecture
+    5.9K views4 years ago
+
+    7:33
+    Now playing
+    C++ Weekly - Ep 80 - Intro to AppVeyor
+    8.2K views4 years ago
+
+    6:30
+    Now playing
+    C++ Weekly - Ep 79 - Intro To Travis CI
+    13K views4 years ago
+
+    13:12
+    Now playing
+    C++ Weekly - Ep 78 - Intro to CMake (Old version - see links)
+    150K views4 years ago
+
+    CC
+    9:22
+    Now playing
+    C++ Weekly - Ep 77 - G++ 7.1 for DOS
+    5.7K views4 years ago
+
+    6:09
+    Now playing
+    C++ Weekly - Ep 76 - static_print
+    9.7K views4 years ago
+
+    6:08
+    Now playing
+    C++ Weekly - Ep 75 - Why You Cannot Move From Const
+    8.5K views4 years ago
+
+    5:22
+    Now playing
+    C++ Weekly - Ep 74 - std::regex optimize
+    6.5K views4 years ago
+
+    7:42
+    Now playing
+    C++ Weekly - Ep 73 - std::string_view
+    19K views4 years ago
+
+    4:39
+    Now playing
+    C++ Weekly - Ep 72 - Hidden C++17 - Part 2
+    4.8K views4 years ago
+
+    7:27
+    Now playing
+    C++ Weekly - Ep 71 - Hidden C++ 17 - Part 1 (Fixed Video Quality)
+    5.8K views4 years ago
+
+    7:27
+    Now playing
+    C++ Weekly - Ep 71 - Hidden C++ 17 - Part 1
+    3.6K views4 years ago
+
+    5:26
+    Now playing
+    C++ Weekly - Ep 70 - C++ IIFE in quick-bench.com
+    6.3K views4 years ago
+
+    8:34
+    Now playing
+    C++ Weekly - Ep 69 - C++17's Searchers
+    7.4K views4 years ago
+
+    4:12
+    Now playing
+    C++ Weekly - Ep 68 - std::iota
+    9.3K views4 years ago
+
+    3:26
+    Now playing
+    C++ Weekly - Ep 67 - C++17's std::gcd and std::lcm
+    8.1K views4 years ago
+
+    3:49
+    Now playing
+    C++ Weekly - Ep 66 - Variadic fmin for C++11
+    4.4K views4 years ago
+
+    4:48
+    Now playing
+    C++ Weekly - Ep 65 - C++11's std::fmin
+    7.4K views4 years ago
+
+    7:13
+    Now playing
+    C++ Weekly - Ep 64 - C++11's std::min (and my version)
+    9K views4 years ago
+
+    6:49
+    Now playing
+    C++ Weekly - Ep 63 - What is Negative Zero?
+    6.2K views4 years ago
+
+    CC
+    8:26
+    Now playing
+    C++ Weekly - Ep 62 - std::regex
+    14K views4 years ago
+
+    5:37
+    Now playing
+    C++ Weekly - Ep 61 - Storage Duration with Lambdas
+    8K views4 years ago
+
+    2:56
+    Now playing
+    C++ Weekly - Ep 60 - std::quoted
+    8.7K views4 years ago
+
+    5:22
+    Now playing
+    C++ Weekly - Ep 59 - Negative Cost Embedded C++ - Part 2
+    5.5K views4 years ago
+
+    13:12
+    Now playing
+    C++ Weekly - Ep 58 - Negative Cost Embedded C++ - Part 1
+    10K views4 years ago
+
+    8:18
+    Now playing
+    C++ Weekly - Ep 57 - Dissecting An Optimization
+    9K views4 years ago
+
+    5:36
+    Now playing
+    C++ Weekly - Ep 56 - Zero Cost Embedded C++ - Part 3
+    6.3K views4 years ago
+
+    7:26
+    Now playing
+    C++ Weekly - Ep 55 - Zero Cost Embedded C++ - Part 2
+    8.5K views4 years ago
+
+    11:27
+    Now playing
+    C++ Weekly - Ep 54 - Zero Cost Embedded C++ - Part 1
+    21K views4 years ago
+
+    7:14
+    Now playing
+    C++ Weekly - Ep 53 - Gotos Are Everywhere
+    10K views4 years ago
+
+    5:21
+    Now playing
+    C++ Weekly - Ep 52 - C++ To C Compilation
+    6.8K views4 years ago
+
+    6:03
+    Now playing
+    C++ Weekly - Ep 51 - Advanced Stateful Lambdas
+    11K views4 years ago
+
+    4:42
+    Now playing
+    C++ Weekly - Ep 50 - Inheriting Lambdas vs Generic Lambdas
+    7.7K views4 years ago
+
+    4:17
+    Now playing
+    C++ Weekly - Ep 49 - Why Inherit From Lambdas?
+    12K views4 years ago
+
+    6:23
+    Now playing
+    C++ Weekly SE - Why -0xFFFFFFFF == 1
+    9.5K views4 years ago
+
+    5:16
+    Now playing
+    C++ Weekly - Ep 48 - C++17's Variadic `using`
+    11K views4 years ago
+
+    3:35
+    Now playing
+    C++ Weekly - Ep 47 - My Visual C++ Pet Peeve
+    5.7K views4 years ago
+
+    6:21
+    Now playing
+    C++ Weekly - Ep 46 - Start Using Visual C++
+    10K views4 years ago
+
+    9:18
+    Now playing
+    C++ Weekly - Ep 45 - Compile Time Maze Generator (and Solver)
+    11K views4 years ago
+
+    5:21
+    Now playing
+    C++ Weekly - Ep 44 - constexpr Compile Time Random
+    11K views4 years ago
+
+    5:14
+    Now playing
+    C++ Weekly - Ep 43 - Stack Elision?
+    7.8K views4 years ago
+
+    4:50
+    Now playing
+    C++ Weekly - Ep 42 - Clang's Heap Elision
+    8K views4 years ago
+
+    4:38
+    Now playing
+    C++ Weekly - Ep 41 - C++17's constexpr Lambda Support
+    8.9K views4 years ago
+
+    4:26
+    Now playing
+    C++ Weekly - Ep 40 - Inheriting From Lambdas
+    13K views4 years ago
+
+    CC
+    4:29
+    Now playing
+    C++ Weekly - Ep 39 - C++17's Deduction Guides
+    9.5K views4 years ago
+
+    4:02
+    Now playing
+    C++ Weekly - Ep 38 - C++17's Class Template Argument Type Deduction
+    10K views4 years ago
+
+    5:17
+    Now playing
+    C++ Weekly - Ep 37 - Stateful Lambdas
+    15K views4 years ago
+
+    6:54
+    Now playing
+    C++ Weekly - Ep 36 - Reading Assembly Language - Part 3
+    6.6K views4 years ago
+
+    5:50
+    Now playing
+    C++ Weekly - Ep 35 - Reading Assembly Language - Part 2
+    10K views4 years ago
+
+    7:16
+    Now playing
+    C++ Weekly - Ep 34 - Reading Assembly Language - Part 1
+    23K views4 years ago
+
+    8:26
+    Now playing
+    C++ Weekly SE - Visual C++ 1.52 (1993) Review
+    3K views4 years ago
+
+    4:33
+    Now playing
+    C++ Weekly - Ep 33 - Start Using Default Member Initializers
+    10K views4 years ago
+
+    8:35
+    Now playing
+    C++ Weekly SE - g++ 2.4.5 (1993) Review
+    3.2K views4 years ago
+
+    6:35
+    Now playing
+    C++ Weekly - Ep 32 - Lambdas For Free
+    16K views4 years ago
+
+    7:18
+    Now playing
+    C++ Weekly Special Edition - Borland Turbo C++ 3.0 Review - Part 2
+    2K views4 years ago
+
+    12:01
+    Now playing
+    C++ Weekly - Ep 31 - IncludeOS
+    12K views5 years ago
+
+    12:26
+    Now playing
+    C++ Weekly Special Edition - Borland Turbo C++ 3.0 Review
+    6.7K views5 years ago
+
+    0:17
+    Now playing
+    Commodore 64 Column Shimmer After Transport
+    1.5K views5 years ago
+
+    3:40
+    Now playing
+    C++ Weekly - Ep 30 - C++17's [[nodiscard]] Attribute
+    8.5K views5 years ago
+
+    3:00
+    Now playing
+    C++ Weekly - Ep 29 - C++17's [[maybe_unused]] Attribute
+    5K views5 years ago
+
+    4:04
+    Now playing
+    [Re-upload] C++ Weekly - Ep 28 - C++17's [[fallthrough]] Attribute
+    5K views5 years ago
+
+    4:04
+    Now playing
+    C++ Weekly - Ep 28 - C++17's [[fallthrough]] Attribute
+    5.5K views5 years ago
+
+    7:04
+    Now playing
+    C++ Weekly - Ep 27 - C++17 Changes To Sequence Containers
+    8.6K views5 years ago
+
+    7:53
+    Now playing
+    C++ Weekly - Ep 26 Language Features Removed in C++17
+    13K views5 years ago
+
+    4:47
+    Now playing
+    C++ Weekly - Ep 25 C++17's Aggregate Initializations
+    9.3K views5 years ago
+
+    7:30
+    Now playing
+    C++ Weekly - Ep 24 C++17's Structured Bindings
+    11K views5 years ago
+
+    6:11
+    Now playing
+    C++ Weekly - Ep 23 C++17's __has_include
+    9.4K views5 years ago
+
+    6:01
+    Now playing
+    C++ Weekly - Ep 22 C++17's Nested Namespaces and `std::clamp`
+    9.8K views5 years ago
+
+    8:52
+    Now playing
+    C++ Weekly - Ep 21 C++17's `if` and `switch` Init Statements
+    17K views5 years ago
+
+    7:09
+    Now playing
+    C++ Weekly - Ep 20 C++17's Fold Expressions - Introduction
+    17K views5 years ago
+
+    17:13
+    Now playing
+    C++ Weekly - Ep 19 C++14 For The Commodore 64
+    22K views5 years ago
+
+    4:28
+    Now playing
+    C++ Weekly Special Edition - Using C++17's constexpr if
+    10K views5 years ago
+
+    12:39
+    Now playing
+    C++ Weekly - Ep 18 C++17's constexpr if
+    22K views5 years ago
+
+    10:40
+    Now playing
+    C++ Weekly - Ep 17 C++17's `std::invoke`
+    30K views5 years ago
+
+    5:34
+    Now playing
+    Ask C++ Weekly: `std::exchange` vs `std::swap`
+    10K views5 years ago
+
+    13:53
+    Now playing
+    C++ Weekly - Ep 16 Avoiding `std::bind`
+    19K views5 years ago
+
+    11:27
+    Now playing
+    C++ Weekly - Ep 15 Using `std::bind`
+    27K views5 years ago
+
+    8:37
+    Now playing
+    C++ Weekly - Ep 14 Standard Library Gems: `next` and `exchange`
+    16K views5 years ago
+
+    25:02
+    Now playing
+    C++ Weekly - Ep 13 Fibonacci: You're Doing It Wrong
+    33K views5 years ago
+
+    CC
+    18:27
+    Now playing
+    C++ Weekly - Ep 12 C++17's std::any
+    43K views5 years ago
+
+    CC
+    16:07
+    Now playing
+    C++ Weekly - Ep 11 std::future Part 2
+    11K views5 years ago
+
+    15:06
+    Now playing
+    C++ Weekly - Ep 10 Variadic Expansion Wrap-Up
+    10K views5 years ago
+
+    15:47
+    Now playing
+    C++ Weekly - Ep 9 std::future Quick-Start
+    29K views5 years ago
+
+    13:56
+    Now playing
+    C++ Weekly - Ep 8 C++ Name Demangling
+    14K views5 years ago
+
+    11:20
+    Now playing
+    C++ Weekly - Ep 7 Stop Using std::endl
+    58K views5 years ago
+
+    CC
+    20:38
+    Now playing
+    C++ Weekly - Ep 6 Intro To Variadic Templates
+    44K views5 years ago
+
+    CC
+    25:44
+    Now playing
+    C++ Weekly - Ep 5 Intro To ChaiScript
+    13K views5 years ago
+
+    26:49
+    Now playing
+    C++ Weekly - Ep 4 Variadic Template Refactor
+    16K views5 years ago
+
+    16:52
+    Now playing
+    C++ Weekly - Ep 3 Intro to clang-tidy
+    31K views5 years ago
+
+    20:02
+    Now playing
+    C++ Weekly - Ep 2 Cost of Using Statics
+    46K views5 years ago
+
+    CC
+    36:25
+    Now playing
+    C++ Weekly - Ep 1 ChaiScript_Parser Initialization Refactor
+    94K views5 years ago
+
+    18:03
+    Now playing
+    Faster Compile Times with ChaiScript
+    3.7K views6 years ago
+
+    0:33
+    Now playing
+    GameEngineTest1
+    3.4K views6 years ago
+
+}}}
+. {{{
+
+    Jason Turner - Modern C++ ****
+
+    98/03:
+
+    deterministic object lifetime
+    [(closes and destroys file handler)
+     RAII]  (+connects to 'unique-ptr')
+    Destructors(??) (='should not have to make your own)
+    Templates(!) (+can apply algorithms to)
+    #include <vector>
+    std::sort (etc)
+    cppreference (=browse the library)
+
+    11:
+
+    auto (=when you don't care what the type is)
+    - very good with generic programming
+    - ranged for loops
+            [const auto]
+    lambdas (*)
+    variadic templates
+        template <typename Func, typename ... T>
+    unique-ptr
+    constexpr
+
+
+    14:  (making 11 more consistent)
+
+    (implicit templates)
+    generalized capture expressions
+    std::make_unique (=new and delete no longer needed)
+    better constexpr
+
+
+    17:
+
+    Guaranteed copy/move elision
+    beginning of constexpr support in the std-library
+    constexpr lambdas
+    std::string_view
+    Class Template Argument Deduction
+    fold expressions (=good with variadic templates)
+    structured bindings (good with eg. maps)
+    if-init expression
+
+
+    20:
+
+    Modules(*)
+    Ranges
+    Coroutines
+    Concepts
+    changes to
+        - lambdas
+        - constexpr
+    Concurrency changes
+    design. initializers
+    <=>
+      ....
+      ....
+     [[likely]]
+    ----
+     cal
+     span
+     feat. test(?)
+     consteval
+     constinit
+     using
+    ....
+    ....
+
+}}}
+.. {{{
+        98: https://www.youtube.com/watch?v=78Y_LRZPVRg
+        11: https://www.youtube.com/watch?v=D5n6xMUKU3A
+        14: https://www.youtube.com/watch?v=mXxNvaEdNHI
+        17: https://www.youtube.com/watch?v=QpFjOlzg1r4     https://www.youtube.com/watch?v=m7hwL0gHuP4     https://www.youtube.com/watch?v=vLhr_y4YOIY&list=PLs3KjaCtOwSbcWD1LlHS7w5AVM0tCAD86
+                https://www.youtube.com/watch?v=_Ny6Qbm_uMI
+            'Just how different is modern c++ from legacy c++?'     https://www.youtube.com/watch?v=UsrHQAzSXkA
+         20 spaceship: https://www.youtube.com/watch?v=0SeUPb8LC9I
+         20 ---  https://www.youtube.com/watch?v=cuFILbHp-RA
+        'how 20 changes the way we write code'  https://www.youtube.com/watch?v=D81yl6_kHEM
+            https://www.youtube.com/watch?v=ImLFlLjSveM
+            'An almost complete overview'(!!)   https://www.youtube.com/watch?v=T3wKtiqW2PI
+         23 - https://www.youtube.com/watch?v=fPWWo0MVK34
+            - https://www.youtube.com/watch?v=iadZWeOWr0U
+        'learning modern c++'  https://www.youtube.com/watch?v=juJaaCf_yKc
+            playlist  https://www.youtube.com/watch?v=EJtqHLvAIZE&list=PLs3KjaCtOwSZ2tbuV1hx8Xz-rFZTan2J1
+      https://www.youtube.com/watch?v=5FQwQ0QWBTU&t=3s  #emacs as c++ ide (atila neves)
+}}}
+    ## ~/Empire/video/instructional/Comp/lang/cpp_calebc-allinone.mp4 (**!)
+        +Caleb 'C, all in one'
+
+            ## ~/Empire/Doks/pick/DataTekn/C++_i1_01_Intro_to_C++.avi
+            ## ~/Empire/Doks/pick/DataTekn/C++_i1_02_Variables_and_Data_Types.avi
+            ## ~/Empire/Doks/pick/DataTekn/C++_i1_03_Operators.avi
+            ## ~/Empire/Doks/pick/DataTekn/C++_i1_04_Control Statements_Branching.avi
+            ## ~/Empire/Doks/pick/DataTekn/C++_i1_05_Control Statements_Looping.avi
+            ## ~/Empire/Doks/pick/DataTekn/C++_i1_06_Arrays.avi
+
+        ~/Empire/video/instructional/Comp/lang/clangs/dbanas-cpp2021.webm
+        ~/Empire/video/instructional/Comp/lang/clangs/freec-cpp1.webm
+            ~/Empire/video/instructional/Comp/lang/clangs/cpp_minicourse/cpp06-arrays.avi
+        ~/Empire/video/instructional/Comp/lang/clangs/effmodcpp-scottm_01.mp4
+
+    https://www.educba.com/c-plus-plus-static/
+
+    ~/Empire/Doks/Comp/lang/clangs/cpp/cppdir2def.txt
+    --
+    ~/Dropbox/rsc/samples/code/cpp/caleb-cpptotal.txt {{{
+        ~/Dropbox/rsc/transcr/calebcpptotal.aux/cpp10h-04.txt.txt
+        ~/Dropbox/rsc/transcr/calebcpptotal.aux/cpp10h-07.txt.txt
+        ~/Dropbox/rsc/transcr/calebcpptotal.aux/cpp10h-03.txt.txt
+        ~/Dropbox/rsc/transcr/calebcpptotal.aux/cpp10h-05.txt.txt
+        ~/Dropbox/rsc/transcr/calebcpptotal.aux/cpp10h-08.txt.txt
+        ~/Dropbox/rsc/transcr/calebcpptotal.aux/cpp10h-06.txt.txt
+        ~/Dropbox/rsc/transcr/calebcpptotal.aux/cpp10h-02.txt.txt
+    }}}
+
+    --
+    ~/Dropbox/rsc/data/lists/ref/comp/lang/cpp/scottm-cpp_modcpp.txt {{{
+          ~/Empire/video/instructional/Comp/lang/clangs/effmodcpp-scottm_01.srt
+        ~/Dropbox/rsc/samples/code/cpp/scottm-effmodcpp-6videos.txt
+        ~/Dropbox/rsc/transcr/scottm-modeffcpp/scottm-effmodcpp-6videos.txt
+
+        ~/Empire/Doks/Comp/lang/clangs/cpp/scottm/effcpp-scottm.txt
+        ~/Empire/Doks/Comp/lang/clangs/cpp/scottm/effcpp-scottm_more.txt
+        ~/Empire/Doks/Comp/lang/clangs/cpp/scottm/effmodcpp.txt
+    }}}
+
+
+~/Empire/Doks/Comp/lang/clangs/cpp/ndk/androidndk.pdf
+~/Empire/Doks/Comp/lang/clangs/cpp/ndk/androidndk-beg.pdf
+~/Empire/Doks/Comp/lang/clangs/cpp/ndk/androidndk-beg_2e.pdf
+
+~/Empire/Doks/Comp/lang/clangs/cpp/cppdir2.txt
+~/Empire/Doks/Comp/lang/clangs/cpp/cppdir2def.txt
+
+~/Dropbox/rsc/transcr/scottm-modeffcpp/scottm-effmodcpp-6videos.txt
+~/Empire/Doks/Comp/lang/clangs/cpp/scottm/effcpp-scottm.txt
+~/Empire/Doks/Comp/lang/clangs/cpp/scottm/effcpp-scottm_more.txt
+~/Empire/Doks/Comp/lang/clangs/cpp/scottm/effmodcpp.txt
+
+~/Empire/Doks/Comp/PROGR/codeportab-2005.txt
+~/Empire/Doks/Comp/PROGR/progrthinklike-cpp.txt
+
+  https://cplusplus.com/forum/beginner/248886/  #Array: Index out of bounds
+
+}}}
+
+https://run.dlang.io/
+dlang {{{
+https://github.com/jinyus/related_post_gen  #bruce carneal - benchmarks dlang __
+    https://github.com/jinyus/related_post_gen/blob/main/rust/src/main.rs
+https://github.com/jinyus/related_post_gen/blob/main/d_v2/source/app.d
+
+    https://github.com/rikkimax?page=2&tab=repositories
+    https://github.com/Project-Sidero/basic_memory
+  https://github.com/gnunn1/tilix
+  https://github.com/gnunn1?tab=repositories
+    https://github.com/gnunn1/tilix/tree/master/source
+    https://github.com/gnunn1/tilix/blob/master/source/app.d                   #=using gx gtk (etc)
+    https://github.com/gnunn1/tilix/blob/master/source/gx/tilix/application.d  # ****
+
+https://github.com/nordlow/phobos-next
+
+Dconf 2023 {{{
+  https://www.facebook.com/photo/?fbid=10202320568326707&set=a.1362729879417
+  https://www.facebook.com/photo.php?fbid=226100657420189&set=t.1566691901&type=3
+    https://www.facebook.com/photo.php?fbid=226116614085260&set=t.1566691901&type=3
+  https://www.facebook.com/photo.php?fbid=380093031333&set=t.1566691901&type=3
+  https://www.facebook.com/photo.php?fbid=383744187252&set=t.1566691901&type=3
+  https://www.facebook.com/photo.php?fbid=128554627188287&set=t.1566691901&type=3
+  https://www.facebook.com/photo.php?fbid=10150099226901794&set=t.1566691901&type=3
+  https://www.facebook.com/photo.php?fbid=10150099227046794&set=t.1566691901&type=3
+    https://www.facebook.com/photo.php?fbid=226116507418604&set=t.1566691901&type=3
+    https://www.facebook.com/photo.php?fbid=357795547584032&set=t.1566691901&type=3
+  https://www.facebook.com/photo.php?fbid=10150920757445788&set=t.1566691901&type=3
+  https://www.facebook.com/photo.php?fbid=10150099227956794&set=t.1566691901&type=3
+  https://www.facebook.com/photo.php?fbid=10150099228001794&set=t.1566691901&type=3
+  https://www.facebook.com/photo.php?fbid=10150099227896794&set=t.1566691901&type=3
+}}}
+safety, performance(+), introspection, multiplatform|runs everywhere,
+Dconf 2023 Pres {{{
+ - VIDEO VERSION ONLINE: TWEAK TOWARDS (=PITCH BEING) MORE PROMOTIONAL (Of Dlang)
+
+Title
+    "The Doctor is Here"
+      (=joking reference to my old stage name as a musician)
+Kind
+    talk
+Duration (we're aiming for 45-minute or 25-minute presentations)
+    25 minutes  (=haven't timed and worked out the slides yet, but I think that's realistic to shoot for)
+Target Audience (e.g., beginner, intermediate, advanced)
+    Beginner + (hopefully also) Dlang as a Community
+Abstract: the "elevator pitch" of the talk, in one paragraph
+    A voracious newcomer's experience with learning programming, learning D, and discovering the D community
+Extended Description: an extended abstract including any details you believe are relevant for evaluating the submission
+    Using my long experience as a teacher (and interest in constructing systems for that process) trying to learn programming in general and in D.
+    Also some remarks about what could be learned from that, both for myself, and for the D community.
+Brief Speaker Biography: including a summary of the speaker's expertise relative to the talk topic
+    - 15(ish) years of experience teaching several musical instruments (and also martial arts)
+    - Interested in and have read a fair bit about many programming languages (=dipping the toes in every pool before deciding in which to plunge in)
+    - Interest in human languages and philosophy
+    + Connecting all those areas: =Having a deep(!) interest in systems, and the utility of clear concepts
+
+
+
+===================================================================================================================
+[+Included below: The actual content/material to be worked into a presentation and slides during the summer]
+
+  == Who am I? ==
+    Singer/Guitarist (+throw in some other noice-making devices)
+    Worked very long(!) as a teacher  (Music and martial arts)
+    Also studied human languages (not any one in particular), and philosophy (=only the good parts)
+  Has (discovered) a keen interest in systems, and learning/teaching
+    ("My specialty is not actually eg. the guitar; It's the process of learning to play eg. the guitar")
+  
+  My Background as a Coder:
+  Am I a beginner?
+    In one sense:  No (=I've been interested in and been reading about and have a birds-eye view of many different programming languages)
+    In another sense:  Very much so
+      (have primarily done administration of Linux systems and automating tasks with Bash =for-loops and other basic constructs)
+
+  -- How I got interested in D (and real programming)
+    Interested in progr. languages  (=always seemed a bit like magic - talking to robots)
+  - One of Alis presentations made me interested (2017(?) at a Cpp Con)
+        #pull out a few points/highlights
+
+  Good things about the D Community (that made me stay and investigate more):
+    - Dconf talks + eg. Mike P:s fireside chats with Walter and others
+    - Professional and with technical knowledge, yet personal and relaxed - not only tech talking
+  
+  What has been most helpful for me to learn [both D and programming]:
+  - Alis book 'Programming in D' =Long string of small tutorials that present and give examples in D
+      (+as Andrei says in the foreword: 'Also a good resource for getting a piece-wise introduction to computer science, not just a run-through of Dlang')
+  - The Discord channel(!)
+  - The BeerConfs
+    Getting contact with many programmers (+Several have kindly agreed to offer pointers and tips as I progress)
+  - Video tutorials (and Conf-talks)
+  --
+  More difficult sides:
+    - The documentation can be a bit confusing for the beginner  (=slogging through the syntax and examples with the keywords(?) like nogc etc)
+    - Tutorials and material (especially video) is a bit spread out over different channels, different topics etc)
+  --
+  What if we could have:
+  - Something like a video version of Ali's book  (collected tutorials and bits and pieces at a central point/repository)
+   - links to relevant talks / blog posts in the reference materials online
+  - Might/Should we: Set up a Task-Force/Group for VideoProduction/Collecting videos etc?
+  
+  A possibility / In what direction is my interest in programming pointed?
+  My interest is in building:
+    - Administration and data mining tools  (backend: =for my upcoming business endeavours teaching music online)
+    - Games and web platforms (=for music learning etc)
+  What if we could have: A good unified dev-experience coverage across platforms, including mobile  (a combined solution for Android iOs Web etc with D)
+  I think that(!) could be one of D:s killer features.
+  
+  +Lastly about me: I have some knowledge and background in:
+  - Video editing + presentation
+  - Video organizing and curation (or at least raising hell about the topic)
+  - Can some music I've composed be a resource?
+  
+  (+Should we add a group Image to/somewhere on our HomePage?)
+
+  WHAT IDEAS WOULD YOU HAVE?  (
+
+
+  The Journey Begins
+}}}
+
+Bruce C, Next:
+  - Pipeline (as discussed with Nic Wilson)
+  - Pegged:  =Use to generate freqlist for progr.lang?  =Analyzing for LyProcess?
+    - send mail-message with attachment
+  - Next Project: LyProcess / AutoSkew(!!)
+      - resources on Big O notation and uses
+
+
+https://tour.dlang.org/tour/en/basics/foreach
+    https://wiki.dlang.org/Tutorials
+    https://wiki.dlang.org/Getting_Started
+TsvUtils(!!)
+
+https://wiki.dlang.org/Libraries_and_Frameworks
+https://dlang.org/phobos/std_functional.html
+https://tour.dlang.org/tour/en/basics/functions
+https://tour.dlang.org/tour/en/gems/range-algorithms
+  https://www.youtube.com/watch?v=GFvh6Hbc-3k&t=397s
+  https://www.youtube.com/@TheDLanguageFoundation/videos
+  https://www.youtube.com/watch?v=QGwQ4uZp5I4
+  https://github.com/MrcSnm/HipremeEngine
+  https://hipreme.medium.com/how-it-feels-to-write-a-game-engine-from-scratch-in-2022-using-a-non-standard-programming-language-3106bafa096f
+  http://ddili.org/ders/d.en/ranges.html
+  http://ddili.org/ders/d.en/ranges_more.html
+https://github.com/dlang-community/drepl
+--
+https://github.com/dlang/dub
+
+
+Dub
+https://github.com/dlang-community/drepl
+        https://github.com/gdamore/tree-sitter-d
+lilyblock-process  #=with Stefan K {{{
+
+I think it's beneficial to use selective imports.
+Especially when learning and it should be better in long run too.  It's pretty easy in that comment out the import std and then start filling in with 
+std.XXX and then with std.XXX : yyy;  The compiler is reasonably good at helping you. 
+
+The other comments I have would be style oriented and that depends on what you're comfortable with and  what your goals are.  A guiding rule of thumb I try to keep is that a function only has 1 control structure in it.   I probably keep to it 80% of time.  Like I might have an if/else inside a foreach....and sometimes I have a nested foreach if it's obviously a 2D structure...Mostly, nested structures are a cue that maybe I should look at some refactoring.  Especially with local functions. 
+18:38
+
+Brian
+Brian says:I find too, that being intentional about what I'm writing code for.  Is this an exploration, spike, proof of concept or is this a long term maintenance/production kind of code.  My styles are very different between those two cases. 
+
+
+I find too, that being intentional about what I'm writing code for.  Is this an exploration, spike, proof of concept or is this a long term maintenance/production kind of code.  My styles are very different between those two cases. 
+18:40
+avatar
+rikki
+rikki says:soundness is the big one for me 
+rikki says:if I care about it, I do very different things 
+18:40
+B
+Brian
+Brian says:I will be more clever in my spikes and more simple and verbose in the production. 
+Brian says:For production, way more emphasis on unittests and documentation.  I'm optimizing for maintenance and stability (and correctness). 
+Brian says:But for a spike that lasts a couple of months, those are largely wasted efforts. 
+
+}}}
+Dlang Pegged  http://lilypond.web.fc2.com/v2.13.45/Documentation/notation/lilypond-grammar.html
+
+https://p0nce.github.io/d-idioms/
+        https://github.com/p0nce/DIID  #=Gå igenom och Testa [****] __
+https://garden.dlang.io/  #The Functional Dlang Garden(!)
+  https://wiki.dlang.org/Cookbook
+  https://github.com/dlang-community/awesome-d
+--
+https://github.com/Domain/tsv-utils-dlang
+https://dlang.org/dstyle.html
+--
+https://codingcat.club/d_fundamentals.html
+https://d.readthedocs.io/en/latest/
+
+
+  http://ddili.org/ders/d.en/files.html
+  https://stackoverflow.com/questions/3463426/in-c-how-should-i-read-a-text-file-and-print-all-strings#3463793
+
+ast based formatter
+clang format
+dfmt
+  parser combinator
+
+number of errors returned from compilation process
+  can be set with flag
+-v errors
+tailoring the objects for better inspection with gdb
+
+-verrors=context -verrors=3
+
+'you can be clever at first to get code working, but then rewrite it'
+
+new searches {{{
+    Dprogr-lang Tour **  https://www.youtube.com/watch?v=S383ZZM7z9s&feature=emb_imp_woyt
+https://dconf.org/2022/online/index.html
+
+dlang simd
+  libdparse
+
+https://github.com/DiamondMVC/Diamond
+    https://github.com/adamdruppe
+
+    https://wiki.dlang.org/GUI_Libraries
+https://dplug.org/
+https://github.com/AuburnSounds/Dplug/wiki
+https://github.com/serpent-os
+
+https://github.com/yeti0904/yrpn/blob/main/source/interpreter.d
+https://github.com/Javier164/Canarium/blob/main/source/app.d
+    https://courses.mshah.io/
+
+https://github.com/rorm-orm/dorm/tree/main/testapp
+
+https://github.com/UplinkCoder/metac
+
+}}}
+    dlang ali cehr. (=first Dlang Vanki-Deck(!!)): {{{
+        formatting
+        foreach (+switch)
+         enum
+        functs
+         immut
+        (val|ref-types)
+        funct-param.s
+        except
+        unit test *
+        Structs
+         op.overload
+         (Class + interface)
+        modules + libs
+        Templates *
+        pragmas (!)
+        static if (etc) *(*)
+        is
+        delegates, lambdas
+         foreach w. Structs (etc)
+         nested Functions (etc)
+        unions, labels, tuples
+        Templates 2, meta programming
+        inout, keywords (eg. @safe)
+        Mixins, ranges,
+         static foreach
+        parallelism, concurrency
+        this(), fibers
+        UDAs *
+    }}}
+
+        https://dlang.org/spec/spec.html
+    https://p0nce.github.io/d-idioms/
+        ## ~/Dropbox/rsc/data/lists/ref/comp/lang/dlang-phobos.odt
+dlangdoks *** {{{
+    ___dlangdoks2022
+    ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/dlearn.tagged.txt
+    ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/dcookb.txt
+    ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/dwebdev.txt
+
+    ~/Empire/Doks/Comp/lang/clangs/dlearn.txt
+        ~/Empire/Doks/Comp/lang/clangs/dlearn.pdf
+    ~/Empire/Doks/Comp/lang/clangs/dcookb.txt
+        ~/Empire/Doks/Comp/lang/clangs/dcookb.pdf
+    ~/Empire/Doks/Comp/lang/clangs/dwebdev.txt
+        ~/Empire/Doks/Comp/lang/clangs/dwebdev.pdf
+     ~/Empire/Doks/Comp/lang/clangs/dprogrlang.txt
+        ~/Empire/Doks/Comp/lang/clangs/dprogrlang.pdf
+     ~/Empire/Doks/Comp/lang/clangs/270398530-D-Programming.odt
+     ~/Empire/Doks/Comp/lang/clangs/dlang-templatestut.txt
+        ~/Empire/Doks/Comp/lang/clangs/dlang-templatestut.pdf
+
+        ~/Empire/Doks/Comp/lang/clangs/dintro-ali.pdf
+        ~/Empire/Doks/Comp/lang/clangs/dintro-ali.txt
+        ~/Empire/Doks/Comp/lang/clangs/dprogrin-ali.pdf
+        ~/Empire/Doks/Comp/lang/clangs/dprogrin-ali.txt
+}}}
+    https://dlang.org/blog/
+        https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode
+    https://www.tutorialspoint.com/d_programming/d_programming_quick_guide.htm
+
+    https://tour.dlang.org/tour/en/dub/mir
+    http://mir-algorithm.libmir.org/
+    https://tour.dlang.org/tour/en/dub/mir-algorithm
+      https://github.com/jondegenhardt
+    https://github.com/eBay/tsv-utils/
+    https://dlang.org/blog/author/jondegenhardt/
+        http://dconf.org/2018/talks/degenhardt.html
+
+dlang {{{
+    https://github.com/dlang-community/awesome-d
+https://github.com/jonathanballs/backgammony  dlang + gtk
+    https://github.com/gecko0307/dagon
+    https://github.com/gecko0307/electronvolt
+    https://github.com/aferust/dagon-shooter
+
+    https://github.com/godot-d/godot-d
+        https://docs.godotengine.org/en/stable/
+
+dlang machine learning
+    https://github.com/Netflix/vectorflow
+    https://github.com/lempiji/bindbc-onnxruntime
+
+    http://rosettacode.org/wiki/Category:D
+https://wiki.dlang.org/The_D_Programming_Language
+
+    https://code.dlang.org/
+}}}
+    http://qznc.github.io/d-tut/
+    https://blog.cy.md/2014/03/21/functional-image-processing-in-d/
+    http://nomad.uk.net/articles/working-with-files-in-the-d-programming-language.html
+      https://wiki.dlang.org/SDC  #the snazzy d compiler
+      https://github.com/snazzy-d/SDC
+            https://code.dlang.org/packages/sdc
+
+}}}
+https://github.com/Domain/tsv-utils-dlang **(**)
+Dplug [!!]
+    https://dplug.org/ ****
+    https://github.com/DISTRHO/DPF/wiki/Plugins-made-with-DPF
+    --
+    https://github.com/DISTRHO/DPF/tree/main/examples
+https://github.com/lempiji/openai-d
+
+hipreme
+gamedev with Raylib
+--
+Pegged {{{
+  https://github.com/PhilippeSigaud/Pegged
+  https://bford.info/pub/lang/peg/
+  https://bford.info/pub/lang/peg.pdf
+  https://bford.info/pub/lang/peg-slides.pdf
+}}}
+https://rainers.github.io/visuald/visuald/StartPage.html
+
+c# ----  (+check dmcs on linux (**)) {{{
+    https://github.com/huynxtb/C-Sharp-Projects
+https://wellsb.com/csharp/beginners/create-menu-csharp-console-application
+
+~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/cs/csfunct.tags1.txt
+Des.Patts {{{
+
+Frequency of use: high
+    abstract factory
+    factory method
+    facade
+    observer
+    strategy
+    iterator
+
+Frequency of use: medium-high
+    singleton
+    adapter
+    composite
+    proxy
+    command
+
+Frequency of use: medium
+    prototype
+    state
+    template-method
+    decorator
+
+
+Frequency of use: medium-low
+    bridge
+    builder
+    chain-of-responsibility
+    mediator
+
+Frequency of use: low
+    flyweight
+    visitor
+    memento
+    interpreter
+
+}}}
+W3RESOURCES {{{
+  https://www.w3resource.com/csharp-exercises/array/index.php
+  https://www.w3resource.com/csharp-exercises/stack/index.php
+  https://www.w3resource.com/csharp-exercises/string/index.php
+  https://www.w3resource.com/csharp-exercises/function/index.php
+  https://www.w3resource.com/csharp-exercises/recursion/index.php
+  https://www.w3resource.com/csharp-exercises/re/index.php
+  https://www.w3resource.com/csharp-exercises/linq/index.php
+  https://www.w3resource.com/csharp-exercises/structure/index.php
+  https://www.w3resource.com/csharp-exercises/file-handling/index.php
+}}}
+
+~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/cs/CsdocsLearn_AvancInteresting.txt
+
+~/Empire/rsc/code/cs/csfiddle*.cs
+    https://www.w3schools.com/cs/index.php
+    https://www.w3resource.com/csharp-exercises/array/index.php
+C# Documentation/Learn Pickouts (=interesting pages for 'Stab 1') {{{
+  TODO: EXPORT TO TEXT-FILE IN DROP = FOR READING/REFERENCE[!!!!] __ __ [__]
+  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/anonymous-types
+  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/pattern-matching
+  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/discards
+  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/how-to-display-command-line-arguments
+  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/safely-cast-using-pattern-matching-is-and-as-operators
+  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/pattern-matching
+  https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/static-virtual-interface-members
+  https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/records
+  https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/interpolated-string-handler
+  https://learn.microsoft.com/en-us/dotnet/csharp/tutorials/ranges-indexes
+  https://learn.microsoft.com/en-us/dotnet/csharp/tutorials/string-interpolation
+  https://learn.microsoft.com/en-us/dotnet/csharp/tutorials/working-with-linq
+  https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/data-transformations-with-linq
+  https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/walkthrough-writing-queries-linq
+  https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/linq-and-file-directories
+  https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/how-to-use-expression-trees-to-build-dynamic-queries
+  https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/
+  https://learn.microsoft.com/en-us/dotnet/csharp/indexers
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/reflection-and-attributes/
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/reflection-and-attributes/how-to-query-assembly-metadata-with-reflection-linq
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/reflection-and-attributes/generics-and-reflection
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/reflection-and-attributes/attribute-tutorial
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/interface-implementation/mixins-with-default-interface-methods
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/expression-trees-explained
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/interop/example-com-class
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/interop/how-to-use-platform-invoke-to-play-a-wave-file
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/interop/using-type-dynamic
+  https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/performance/ref-tutorial
+  https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/
+  https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members
+  https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/using-properties
+  https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/how-to-implement-a-lightweight-class-with-auto-implemented-properties
+  https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions
+  https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/how-to-subscribe-to-and-unsubscribe-from-events
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-forgiving
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/namespace-alias-qualifier
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/await
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/is
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/nameof
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/jump-statements
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/yield
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/raw-string
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/attributes/global
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/ranges
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/records
+}}}
+
+Bard Code Conversations {{{
+
+Is there a simple way to capitalize words in C#? I.e. I have a bunch of word-pairs (that I originally sketched to place in a dictionary), but the only difference between key and value is that the first letter of the word is upper-case in key, and lower-case in value.
+Yes, there are a few simple ways to capitalize words in C#. Here are two methods:
+
+Method 1: Using the string.ToUpper() Method
+
+The string.ToUpper() method converts a string to uppercase. You can use this method to capitalize the first letter of a word by slicing the string to get the first letter, converting it to uppercase, and concatenating it with the rest of the string. Here's an example of how to do this:
+
+C#
+string word = "hello";
+string capitalizedWord = word[0].ToString().ToUpper() + word.Substring(1);
+Console.WriteLine(capitalizedWord); // Output: Hello
+
+Method 2: Using the CultureInfo.CurrentCulture.TextInfo.ToTitleCase() Method
+
+The CultureInfo.CurrentCulture.TextInfo.ToTitleCase() method converts a string to title case, which means it capitalizes the first letter of each word. You can use this method to capitalize all words in a string, including the first word. Here's an example of how to do this:
+
+C#
+string sentence = "this is a lowercase sentence";
+string titleCaseSentence = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(sentence);
+Console.WriteLine(titleCaseSentence); // Output: This Is A Lowercase Sentence
+
+Using a Dictionary
+
+If you have a dictionary of word pairs, you can use a combination of the string.ToUpper() method or the CultureInfo.CurrentCulture.TextInfo.ToTitleCase() method to convert the keys to uppercase and the values to lowercase. Here's an example of how to do this:
+
+C#
+Dictionary<string, string> wordPairs = new Dictionary<string, string>()
+{
+    { "hello", "hello" },
+    { "world", "world" },
+    { "how", "how" },
+    { "are", "are" },
+    { "you", "you" }
+};
+
+foreach (KeyValuePair<string, string> pair in wordPairs)
+{
+    string capitalizedKey = pair.Key[0].ToString().ToUpper() + pair.Key.Substring(1);
+    string lowercaseValue = pair.Value.ToLower();
+    Console.WriteLine(capitalizedKey + ": " + lowercaseValue);
+}
+
+This code will output the following:
+
+Hello: hello
+World: world
+How: how
+Are: are
+You: you
+
+Great. I think the ToTitleCase() method could come in handy. Is there also a variant that lower-cases just the first character of a word?
+No, the CultureInfo.CurrentCulture.TextInfo.ToTitleCase() method does not have a variant that lower-cases just the first character of a word. However, you can easily create a custom function to do this. Here's an example of how to do this:
+
+C#
+public static string ToLowerFirstChar(string word)
+{
+    if (word.Length == 0)
+    {
+        return word;
+    }
+    else
+    {
+        return word[0].ToString().ToLower() + word.Substring(1);
+    }
+}
+
+To use this function, you can call it like this:
+
+C#
+string word = "Hello";
+string lowerFirstCharWord = ToLowerFirstChar(word);
+Console.WriteLine(lowerFirstCharWord); // Output: hello
+
+
+Just out of curiosity: Would there be a more functional style way of doing the same?
+Sure, here is a more functional-style way of doing the same thing:
+
+C#
+public static string ToLowerFirstChar(string word) =>
+    word.Length == 0
+        ? word
+        : word[0].ToString().ToLower() + word.Substring(1);
+
+This code uses a lambda expression to define a function that takes a string as input and returns a string with the first letter lowercased. The lambda expression is more concise than the block form of the function.
+
+Here is another way to write the same thing using a LINQ expression:
+
+C#
+public static string ToLowerFirstChar(string word) =>
+    new string(word.Select(c => char.IsLower(c) ? c : char.ToLower(c)).ToArray());
+
+This code uses a LINQ expression to iterate over the characters in the string and convert the first character to lowercase. The LINQ expression is more functional than the imperative code in the previous example.
+
+Both of these code snippets show how to lower the first character of a word in a functional style.
+
+}}}
+
+gvim -p ~/Empire/rsc/code/cs/Program.cs ~/Empire/Doks/Comp/lang/clangs/csharp/learn-intro/csharplearn-2020.txt ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/ciss.txt ~/Dropbox/rsc/Doks/phone/Comp/PROGR/prograb.txt ~/Empire/Doks/Comp/lang/clangs/csharp/Ref/CSDOCS-TOC.txt ~/Empire/Doks/Comp/lang/clangs/csharp/Ref/CSDOCS.txt ~/Empire/Doks/Comp/lang/clangs/csharp/funct/functional-cs.txt
+
+gvim -p ~/Empire/rsc/code/cs/rsc.cs ~/Empire/rsc/code/cs/test.cs
+    ~/Dropbox/rsc/samples/code/cs/SkewCorrection/
+    ~/Dropbox/rsc/samples/code/cs/MidiSheetMusic-2.6-linux-src/
+      https://github.com/myty/nu-plugin-lib
+--
+    https://www.mono-project.com/docs/gui/winforms/getting-started-guide/
+https://unix.stackexchange.com/questions/10685/how-do-i-install-monos-system-windows-forms-on-ubuntu
+https://www.mono-project.com/docs/gui/winforms/
+    https://www.markheath.net/post/running-windows-forms-on-linux-with-mono
+https://stackoverflow.com/questions/15668986/how-can-i-use-system-windows-forms-in-monodevelop-on-ubuntu
+
+https://www.mono-project.com/
+
+mcs                         =The (Turbo) C# Compiler (!!(*))
+mcs hello.cs                compile c# source-file
+csc  #the mono cs compiler(!!)
+run|display compiled exe
+  ./hello.exe
+  mono hello.exe     #'if you know the exe is a .net application'
+  wine dir/hello.exe
+
+evince -p 21 ~/Empire/Doks/Comp/lang/clangs/ciss.pdf &
+    ~/Dropbox/rsc/Doks/Comp/ciss.txt
+
+~/Dropbox/rsc/samples/code/cs/
+
+
+https://code-maze.com/csharp-composition-vs-inheritance/
+https://stackify.com/oop-concepts-composition/
+https://stackoverflow.com/questions/57337942/understanding-composition-in-c-sharp#57338187
+c# inner classes
+https://softwareengineering.stackexchange.com/questions/314043/when-and-why-to-use-nested-classes
+https://www.geeksforgeeks.org/nested-classes-in-c-sharp/
+https://stackoverflow.com/questions/1193812/inner-classes-in-c-sharp
+    https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/nested-types
+    execute inner class when outer class is run c#
+https://stackoverflow.com/questions/71808525/c-sharp-inner-class-specific-to-instance-of-outer-class
+
+C# Collections {{{
+
+Could you give me a quick breakdown of the available collections in C#, and give some simple use cases, not with extensive example code, but more as in a short description of what their strengths are and what they're commonly used for?
+C# offers a rich collection of data structures that cater to various use cases and performance requirements. Here's a quick overview of some common collections along with their strengths and usage scenarios:
+
+Lists: Ordered collections of elements that can hold any type of data. They are mutable, allowing elements to be added, removed, and modified. Lists are commonly used for storing sequences of data, such as a list of names, a list of numbers, or a list of tasks.
+Example:
+
+C#
+List<string> names = new List<string>() { "John", "Jane", "Peter" };
+
+Arrays: Fixed-sized collections of elements of the same type. They are efficient for accessing elements by index but cannot be resized after creation. Arrays are commonly used for storing data with a known upfront size, such as pixel data, coordinates, or lookup tables.
+Example:
+
+C#
+int[] numbers = new int[5] { 1, 2, 3, 4, 5 };
+
+Dictionaries (Hashtables): Unordered collections of key-value pairs. The keys can be any type of data, and the values can also be any type of data. Dictionaries are commonly used for storing data that needs to be accessed quickly based on a key, such as user profiles, product catalogs, or configuration settings.
+Example:
+
+C#
+Dictionary<string, string> capitals = new Dictionary<string, string>()
+{
+    {"France", "Paris"},
+    {"Germany", "Berlin"},
+    {"Italy", "Rome"}
+};
+
+HashSets: Unordered collections of unique values. They are commonly used for efficient membership checks and eliminating duplicates. HashSets are often used for storing sets of IDs, unique items, or non-repetitive data.
+Example:
+
+C#
+HashSet<int> numbers = new HashSet<int>() { 1, 2, 3, 4, 5 };
+
+Queues: First-in, first-out (FIFO) collections of elements. They are commonly used for implementing task queues, job scheduling, and asynchronous message processing. Queues ensure that elements are processed in the order they were added.
+Example:
+
+C#
+Queue<string> tasks = new Queue<string>();
+tasks.Enqueue("Task 1");
+tasks.Enqueue("Task 2");
+tasks.Enqueue("Task 3");
+
+Stacks: Last-in, first-out (LIFO) collections of elements. They are commonly used for implementing undo/redo functionality, function call stacks, and expression parsing. Stacks ensure that elements are processed in the reverse order they were added.
+Example:
+
+C#
+Stack<string> browserHistory = new Stack<string>();
+browserHistory.Push("Page 1");
+browserHistory.Push("Page 2");
+browserHistory.Push("Page 3");
+
+These collections provide a powerful toolkit for managing data in C# applications. Choosing the right collection for a specific task can significantly impact the efficiency, readability, and maintainability of the code.
+}}}
+named tuples {{{
+
+When I return a tuple from a method in C#, can I return the tuple as a named tuple, or would it be easier to do that on the receiving side when I run the method and save the output from it?
+Yes, you can return a named tuple from a method in C#. Named tuples are a feature of C# 7 and later, and they allow you to give names to the individual elements of a tuple. This can make your code more readable and easier to understand, especially when you are working with tuples that have more than two or three elements.
+
+Here is an example of how to return a named tuple from a method:
+
+C#
+public (string Name, int Age) GetPersonInfo()
+{
+    return ("John Doe", 30);
+}
+
+This code defines a method called GetPersonInfo() that returns a named tuple of type (string Name, int Age). The tuple contains two elements: Name and Age. The method returns a tuple that contains the values "John Doe" and 30.
+
+You can also return a named tuple from a method that uses a tuple type without explicit names for the elements. For example, the following code is equivalent to the previous code:
+
+C#
+public (string, int) GetPersonInfo()
+{
+    return ("John Doe", 30);
+}
+
+When you call a method that returns a named tuple, you can access the individual elements of the tuple by name. For example, the following code calls the GetPersonInfo() method and prints the values of the Name and Age elements:
+
+C#
+var (name, age) = GetPersonInfo();
+Console.WriteLine($"Name: {name}");
+Console.WriteLine($"Age: {age}");
+
+You can also use the Item1, Item2, and so on properties to access the individual elements of a named tuple. However, using the named properties is generally considered to be more readable and less error-prone.
+
+In general, it is a good idea to return named tuples from methods if you are working with tuples that have more than two or three elements, or if you want to make your code more readable and easier to understand. However, it is also possible to return tuples without explicit names for the elements, and you can still access the individual elements of the tuple by name or by using the Item1, Item2, and so on properties.
+
+I hope this helps!
+
+}}}
+--
+c# class design best practices {{{
+  https://www.google.com/search?q=c%23+class+design+best+practices&oq=c%23+class+design+&aqs=chrome.1.69i57j0i22i30l5j0i10i15i22i30i625j69i58.5207j0j7&sourceid=chrome&ie=UTF-8
+}}}
+C# programming best practices
+    https://www.linkedin.com/pulse/best-practices-c-programming-comprehensive-guide-ayoub-sahraoui
+    https://www.freecodecamp.org/news/coding-best-practices-in-c-sharp/ **** __
+
+C# Unit Testing {{{
+
+https://www.jetbrains.com/help/rider/Getting_Started_with_Unit_Testing.html#step-3-run-the-tests
+
+
+Follow up on the last one again: I'm trying to learn Unit Testing, and also Test-driven Design. Could you comment on this concerning maybe the first proposed solution using a foreach loop, and maybe comment on using unit testing for the code first, and then on TDD with respect to the code?
+Sure, I can provide some insights on using unit testing and test-driven development (TDD) for the proposed solution involving a foreach loop to pack half-sized pallets into slots:
+
+Unit Testing:
+
+Unit testing is an essential practice in software development for ensuring the correctness and reliability of individual components of the code. In the context of the proposed solution, unit tests could be written to verify the following aspects:
+
+Correct identification of slots with half-sized pallets: A unit test could check that the code correctly identifies slots with only one half-sized pallet and sufficient capacity.
+
+Proper movement of half-sized pallets: A unit test could validate that the code correctly moves half-sized pallets from the halfSized list to slots with half-sized pallets.
+
+Maintenance of slot capacity: A unit test could ensure that the code correctly updates the capacity of slots after adding half-sized pallets, maintaining the invariant of one half-sized pallet per slot.
+
+Test-Driven Development (TDD):
+
+TDD is a software development methodology that emphasizes writing unit tests before writing the actual production code. This approach promotes a design-first mindset and helps ensure that the code meets the desired functionality from the outset.
+
+In the context of the proposed solution, TDD could be applied by following these steps:
+
+Write a failing unit test: Before writing any production code, write a unit test that asserts the expected behavior of the code. For instance, the unit test could check that the code correctly moves all half-sized pallets to slots with half-sized pallets.
+
+Write the minimum amount of production code to make the test pass: Implement the simplest code necessary to make the failing unit test pass. This could involve the foreach loop iteration to move half-sized pallets.
+
+Refactor the code: Once the unit test passes, refactor the code to improve its readability, maintainability, and adherence to best practices. This could involve introducing methods to encapsulate logic or using more concise language constructs.
+
+Repeat steps 1-3 for new functionality or edge cases: As you identify new requirements or edge cases, repeat the cycle of writing failing unit tests, writing the minimum production code to make them pass, and refactoring.
+
+By following TDD, you can ensure that the code is well-tested and meets the desired functionality from the beginning, leading to a more robust and maintainable codebase.
+
+Remember, unit testing and TDD are valuable tools for improving software quality and ensuring that the code behaves as intended. By incorporating these practices into your development process, you can build more reliable and trustworthy software.
+
+profile picture
+Great. Could you give me some examples of using unit testing with some of the code we discussed above, so I can make it more concrete in my mind by seeing some C# code examples with unit testing incorporated? I.e. the difficult part about unit testing and all sorts of stuff is often "getting off the ground" with the first concrete steps, if you know what I mean ;)
+Sure, here are some examples of using unit testing with some of the code we discussed above:
+
+Example 1: Unit Testing the NextAvailable() Method
+
+Consider the NextAvailable() method that retrieves the next available slot for a given pallet type. You can write a unit test to verify its behavior by providing various input scenarios and asserting the expected output.
+
+C#
+[Test]
+public void NextAvailable_ShouldReturnFirstAvailableSlotForPalletType()
+{
+  // Arrange
+  var slots = new List<Slot>()
+  {
+    new Slot(Type.Hel, 1),
+    new Slot(Type.Halv, 1),
+    new Slot(Type.Hel, 2)
+  };
+
+  // Act
+  var availableSlot = NextAvailable(Type.Hel);
+
+  // Assert
+  Assert.That(availableSlot, Is.EqualTo(slots[0]));
+}
+
+In this example, the unit test checks that the NextAvailable() method correctly returns the first available slot with the specified pallet type (Type.Hel) in the provided list of slots.
+
+Example 2: Unit Testing the MoveHalfSizedPallets() Method
+
+Consider the MoveHalfSizedPallets() method that distributes half-sized pallets among slots with half-sized pallets. You can write a unit test to ensure it correctly moves all half-sized pallets and updates slot capacities.
+
+C#
+[Test]
+public void MoveHalfSizedPallets_ShouldMoveAllHalfSizedPalletsAndUpdateSlotCapacities()
+{
+  // Arrange
+  var halfSized = new List<Pallet>()
+  {
+    new Pallet(Type.Halv),
+    new Pallet(Type.Halv)
+  };
+
+  var slots = new List<Slot>()
+  {
+    new Slot(Type.Hel, 1),
+    new Slot(Type.Halv, 1),
+    new Slot(Type.Hel, 1)
+  };
+
+  // Act
+  MoveHalfSizedPallets(halfSized, slots);
+
+  // Assert
+  Assert.That(halfSized.Count, Is.EqualTo(0));
+  Assert.That(slots[1].Items.Count, Is.EqualTo(2));
+  Assert.That(slots[1].CapacityLeft, Is.EqualTo(0));
+}
+
+In this example, the unit test checks that the MoveHalfSizedPallets() method correctly depletes the halfSized list, moves all half-sized pallets to available slots, and updates the capacity of the corresponding slots.
+
+By writing unit tests for individual methods and functions, you can ensure that each component of your code behaves as intended, contributing to a more reliable and maintainable codebase. Remember, unit testing should be an integral part of your software development process.
+
+profile picture
+Great. Could you give me some examples (preferably elaborations on some simple code) of how to get started with TDD in C#?
+Sure, here are some examples of how to get started with TDD in C#:
+
+Example 1: Adding a Number
+
+Consider a simple task of writing a method to add two numbers. You can apply TDD to develop the method in an incremental manner:
+
+Write a failing unit test: Start by writing a unit test that asserts the expected behavior of the Add() method, even though the method doesn't exist yet.
+C#
+[Test]
+public void Add_ShouldAddTwoNumbers()
+{
+  // Arrange
+  int a = 5;
+  int b = 3;
+
+  // Act
+  int result = Add(a, b);
+
+  // Assert
+  Assert.That(result, Is.EqualTo(8));
+}
+
+Write the minimum amount of production code to make the test pass: Implement the Add() method with the simplest code necessary to make the failing unit test pass.
+C#
+public int Add(int a, int b)
+{
+  int result = a + b;
+  return result;
+}
+
+Refactor the code: Once the unit test passes, refactor the code to improve its readability, maintainability, and adherence to best practices. This could involve adding comments or using more descriptive variable names.
+Repeat steps 1-3 for new functionality or edge cases. By following this cycle, you can ensure that the code is well-tested and meets the desired functionality from the beginning.
+
+Example 2: Converting Celsius to Fahrenheit
+
+Consider a more complex task of writing a method to convert a temperature from Celsius to Fahrenheit. You can still apply TDD to develop the method incrementally:
+
+Write a failing unit test: Start by writing a unit test that asserts the expected behavior of the ConvertCelsiusToFahrenheit() method, even though the method doesn't exist yet.
+C#
+[Test]
+public void ConvertCelsiusToFahrenheit_ShouldConvertTemperatureCorrectly()
+{
+  // Arrange
+  double celsius = 20;
+
+  // Act
+  double fahrenheit = ConvertCelsiusToFahrenheit(celsius);
+
+  // Assert
+  Assert.That(fahrenheit, Is.EqualTo(68));
+}
+
+Write the minimum amount of production code to make the test pass: Implement the ConvertCelsiusToFahrenheit() method with the simplest code necessary to make the failing unit test pass. This could involve the conversion formula:
+C#
+public double ConvertCelsiusToFahrenheit(double celsius)
+{
+  double fahrenheit = (celsius * 9 / 5) + 32;
+  return fahrenheit;
+}
+
+Refactor the code: Once the unit test passes, refactor the code to improve its readability, maintainability, and adherence to best practices. This could involve adding comments or using more descriptive variable names.
+Repeat steps 1-3 for new functionality or edge cases. By following this cycle, you can ensure that the code is well-tested and meets the desired functionality from the beginning.
+
+Remember, TDD is not just about writing unit tests; it's a mindset that emphasizes design-first development and continuous improvement. By embracing TDD, you can create more reliable, maintainable, and robust code.
+
+profile picture
+Awesome. I would really like to get started with that approach - that is I've heard so much good about it on how it improves code quality. Could you elaborate more on this with respect to the last example, maybe also about adding generated test examples (if that is possible with unit testing in C#), and lastly maybe some good resources that talk about TDD - maybe some good tutorials.
+Sure, I can elaborate more on the benefits of TDD and provide some additional examples and resources:
+
+Benefits of TDD:
+
+TDD is a software development methodology that emphasizes writing unit tests before writing production code. This approach offers several advantages:
+
+Improved code quality: By writing unit tests first, you ensure that the code meets the desired functionality from the outset. Unit tests act as a safety net, preventing regressions and ensuring that the code remains consistent with the intended behavior.
+
+Enhanced design-driven development: TDD promotes a design-first mindset, encouraging you to think about the structure and functionality of your code before writing the actual implementation. This leads to more maintainable and extensible code.
+
+Reduced debugging time: Unit tests help identify and isolate bugs early in the development process, making them easier to fix and preventing them from propagating into later stages of development.
+
+Increased confidence in code changes: When you have a comprehensive suite of unit tests, you can make code changes with greater confidence, knowing that the tests will catch any regressions or unintended consequences.
+
+Generated Test Examples in C#:
+
+In C#, you can use tools like xUnit or NUnit to generate test examples from existing code or code templates. These tools can help you quickly create a skeleton for your unit tests, making it easier to get started with TDD.
+
+For instance, xUnit provides the TheoryAttribute that allows you to generate multiple test cases from a single set of input data. This can be useful for testing various scenarios and edge cases.
+
+Additional Resources on TDD:
+
+Here are some recommended resources to learn more about TDD:
+
+Kent Beck's "Test-Driven Development: By Example": This classic book by the originator of TDD provides a comprehensive introduction to the methodology and its practical application.
+
+"The Art of Agile Testing with xUnit" by Roy Osher and Matt Hains: This book focuses on using xUnit, a popular unit testing framework in C#, to implement TDD effectively.
+
+"Growing Object-Oriented Software, Guided by Tests" by Uncle Bob: This book provides a more in-depth discussion of object-oriented design principles and how TDD can be integrated into object-oriented development.
+
+Microsoft's "Unit Testing in C#" documentation: This official Microsoft documentation provides a comprehensive guide to unit testing in C#, including using TDD practices.
+
+Visual Studio's built-in unit testing support: Visual Studio provides integrated support for unit testing, including test runners, code coverage analysis, and test case generation tools.
+
+By following these resources and practicing TDD regularly, you can develop the skills and mindset to write high-quality, reliable, and maintainable code.
+
+
+Could we return just quickly to the unit testing examples. Is there any extra code I would have to add or any extra setup required if I am using JetBrains Rider for coding my C# programs?
+JetBrains Rider provides integrated support for unit testing C# code. To use this feature, you don't need to install any additional software or configure specific settings. Rider automatically detects and runs unit tests based on the conventions used in your project.
+
+Here's an overview of the process for unit testing in Rider:
+
+Create a Unit Test Project: If you haven't already, create a separate unit test project for your C# code. This project will house all your unit tests for the production code.
+
+Add References: Ensure that the unit test project has references to the necessary assemblies containing the production code you want to test.
+
+Write Unit Tests: Write unit tests for individual methods, classes, or modules in your production code. Use a testing framework like xUnit or NUnit to structure your tests.
+
+Run Unit Tests: Execute unit tests using Rider's built-in test runner. You can run tests from the Unit Tests window, which displays test results and progress.
+
+Refactor and Iterate: As you develop your production code, continue writing unit tests to ensure the code's correctness and behavior. Refactor both production and test code whenever necessary.
+
+Rider provides various features to enhance your unit testing experience:
+
+Test Explorer: The Test Explorer window allows you to organize, filter, and run unit tests.
+
+Live Unit Testing: Rider can run tests continuously as you edit your code, providing immediate feedback.
+
+Code Coverage Analysis: Rider can analyze your code coverage to identify areas that lack unit test coverage.
+
+Test Refactoring: Rider supports refactoring of test code, ensuring consistency with changes in production code.
+
+Test Generation: Rider can generate test stubs from existing code, providing a starting point for test development.
+
+By utilizing Rider's unit testing features, you can effectively ensure the quality and reliability of your C# code.
+
+profile picture
+And where does JetBrains Aqua come into the picture?
+JetBrains Aqua is a complementary tool to JetBrains Rider that provides advanced features for automating software testing in C#. It integrates with Rider and other JetBrains IDEs to streamline the testing process.
+
+Aqua offers several capabilities for automating C# testing:
+
+Test Generation: Aqua can automatically generate test cases from existing production code, providing a base for comprehensive testing.
+
+Test Data Management: Aqua helps manage test data effectively, ensuring that tests have the necessary data to execute successfully.
+
+Test Execution: Aqua provides a centralized platform for executing tests across different environments and systems.
+
+Test Reporting: Aqua generates comprehensive test reports, providing insights into test results, coverage, and trends.
+
+Integration with Continuous Integration (CI): Aqua integrates with CI systems like Jenkins and Azure DevOps, enabling automated testing in the CI pipeline.
+
+Test Automation for Web Applications: Aqua supports automating tests for web applications, including web UI and API testing.
+
+Cross-Platform Testing: Aqua can execute tests on multiple platforms, including Windows, macOS, and Linux.
+
+Overall, JetBrains Aqua complements JetBrains Rider by providing advanced automation capabilities for C# testing. It helps developers and testers streamline the testing process, improve test coverage, and ensure software quality.
+
+
+Vim Unit Testing C#
+
+Ah great. I was thinking more about doing unit testing if I write my programs with Vim 8 (or NeoVim) on Ubuntu 22.04, and I compile and run my programs using Mono.
+To perform unit testing for C# code written in Vim 8 or NeoVim on Ubuntu 22.04 using Mono, you'll need to install and configure the necessary testing tools and frameworks. Here's a step-by-step guide:
+
+1. Install xUnit:
+
+Install the xUnit testing framework, which provides a comprehensive suite of features for unit testing C# code. You can use the following command in your terminal:
+sudo apt-get install xunit
+2. Configure Vim for xUnit:
+
+Set the xunit-path option in your Vim configuration file (usually ~/.vimrc or ~/.vimrc) to point to the xUnit installation directory. For example:
+set xunit-path=/usr/share/xunit
+Set the mono-path option to the Mono runtime directory:
+set mono-path=/path/to/mono
+Set the mono-regex-path option to the regular expression for matching Mono executables:
+set mono-regex-path=/path/to/mono/bin/mono
+3. Install OmniSharp-xUnit:
+
+Install the OmniSharp-xUnit plugin, which provides integration between OmniSharp and xUnit, enabling unit test discovery and execution within Vim:
+vim +PlugInstall --sync omni-sharp-xunit
+4. Writing and Running Unit Tests:
+
+Create a separate unit test project for your C# code. This project will house all your unit tests for the production code.
+
+Create unit tests for individual methods, classes, or modules in your production code using xUnit's test case syntax.
+
+Open your Vim or NeoVim instance and navigate to the unit test project directory.
+
+Execute unit tests using the :!xunit command from Vim or NeoVim. This will run all the unit tests in the current project.
+
+OmniSharp-xUnit will automatically discover and display the test results within Vim, providing feedback on test successes and failures.
+
+By following these steps, you can effectively perform unit testing for your C# code using Vim 8 or NeoVim on Ubuntu 22.04 with Mono. xUnit and OmniSharp-xUnit provide a powerful and integrated environment for testing your code and ensuring its quality and reliability.
+
+
+https://learn.microsoft.com/en-us/visualstudio/test/walkthrough-creating-and-running-unit-tests-for-managed-code?view=vs-2022
+https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test
+--
+https://www.jetbrains.com/help/rider/Getting_Started_with_Unit_Testing.html
+
+}}}
+Ado.Net / Entity Framework {{{
+
+    https://csharp-station.com/Tutorial/AdoDotNet/Lesson02?authuser=1#google_vignette
+    https://csharp-station.com/Tutorial/AdoDotNet/Lesson03?authuser=1
+
+Super! Another question: I understand that Entity Framework in C# is the more modern way of getting data from a database (rather than directly with Ado). Are there any newer developments, or would that be the recommended way of interacting with a database these days?
+Entity Framework (EF) is still the recommended way of interacting with a database in C# for most applications. It provides a higher-level abstraction over ADO.NET, making it easier to develop data-driven applications. EF Core, the latest version of EF, is a modern and actively developed framework that supports a wide range of databases, including SQL Server, MySQL, PostgreSQL, and SQLite.
+
+While there are newer data access technologies available, such as Dapper and LINQ to SQL, EF Core remains the most popular and well-supported choice for C# developers. It offers several advantages over these alternatives, including:
+
+Automatic change tracking: EF Core automatically tracks changes made to objects in memory, making it easy to persist those changes to the database.
+
+Query translation: EF Core translates LINQ queries into SQL statements, which can be optimized by the database engine.
+
+Scaffolding: EF Core provides scaffolding tools to generate code from a database schema, which can save a significant amount of time when developing new applications.
+
+Of course, the best choice for your specific application will depend on your requirements and preferences. However, for most C# developers, EF Core is the recommended way to interact with a database.
+
+Here is a table summarizing the pros and cons of Entity Framework Core:
+
+Pros	Cons
+Higher-level abstraction over ADO.NET	Can be more complex to learn and use than ADO.NET
+Automatic change tracking	May not be suitable for applications that require fine-grained control over SQL statements
+Query translation	Can be less performant than direct SQL execution in some cases
+Scaffolding	Requires a database schema to be available
+Overall, Entity Framework Core is a powerful and versatile framework that can be used to develop a wide range of data-driven applications. It is a mature and well-supported framework, and it is the recommended choice for most C# developers.
+
+
+Could you give me a small primer on what it would look like in code getting some data from a database using Entity Framework, i.e. compared to Ado and using a reader? PS I've worked a bit with Ado, so focus on what it would look like using EF.
+
+1
+
+2
+
+3
+Sure, here's a small primer on how to retrieve data from a database using Entity Framework Core compared to ADO.NET:
+
+ADO.NET:
+
+Establish a connection:
+C#
+using (var connection = new SqlConnection("connection string"))
+{
+    connection.Open();
+}
+
+Create a command object:
+C#
+using (var command = new SqlCommand("SELECT * FROM Products", connection))
+{
+    using (var reader = command.ExecuteReader())
+    {
+        while (reader.Read())
+        {
+            int productId = reader.GetInt32(0);
+            string productName = reader.GetString(1);
+            decimal unitPrice = reader.GetDecimal(2);
+            int unitsInStock = reader.GetInt32(3);
+
+            Console.WriteLine($"Product ID: {productId}");
+            Console.WriteLine($"Product Name: {productName}");
+            Console.WriteLine($"Unit Price: {unitPrice}");
+            Console.WriteLine($"Units in Stock: {unitsInStock}");
+            Console.WriteLine("-------------------");
+        }
+    }
+}
+
+Entity Framework Core:
+
+Install the Entity Framework Core NuGet package:
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Create a DbContext class:
+C#
+public class ProductDbContext : DbContext
+{
+    public DbSet<Product> Products { get; set; }
+}
+
+Query the database:
+C#
+using (var context = new ProductDbContext())
+{
+    var products = context.Products.ToList();
+
+    foreach (var product in products)
+    {
+        Console.WriteLine($"Product ID: {product.ProductId}");
+        Console.WriteLine($"Product Name: {product.ProductName}");
+        Console.WriteLine($"Unit Price: {product.UnitPrice}");
+        Console.WriteLine($"Units in Stock: {product.UnitsInStock}");
+        Console.WriteLine("-------------------");
+    }
+}
+
+As you can see, Entity Framework Core provides a higher-level abstraction over ADO.NET, making it easier to query and work with data. With EF Core, you can simply write LINQ queries to retrieve data from the database, and the framework will take care of translating those queries into SQL statements and executing them against the database.
+
+Sources
+github.com/Alx-sh/EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey
+github.com/duydat1998/C-DotNetExercises
+github.com/Vovanviet/TestCSharp
+
+Very nice. Has the quality of the generated SQL gotten up to snuff these days? I know there were some concerns (at least a couple of years ago) that that was or could be an issue?
+Yes, the quality of the generated SQL in Entity Framework Core has significantly improved over the years. The framework has undergone numerous optimizations and enhancements to ensure that the generated SQL is efficient, performant, and adheres to database best practices.
+
+In the early versions of EF Core, there were some concerns about the quality of the generated SQL, particularly for complex queries. However, the framework has evolved considerably since then, and the SQL generation engine has been refined to produce more optimized and efficient code.
+
+Here are some of the factors that have contributed to the improved quality of generated SQL in EF Core:
+
+Query optimization: The framework employs various query optimization techniques, such as query rewriting, constant folding, and expression simplification, to produce more efficient SQL queries.
+
+Database-specific optimizations: EF Core takes into account the specific capabilities and limitations of different databases when generating SQL, ensuring that the generated code is optimized for the target database.
+
+Code readability and maintainability: The generated SQL is formatted in a way that is easy to read and understand, making it easier for developers to debug and maintain their applications.
+
+While there may still be some edge cases where the generated SQL can be improved, the overall quality of the SQL produced by EF Core is very good. In most cases, the framework will generate efficient and performant SQL that can handle even complex queries effectively.
+
+If you have concerns about the quality of the generated SQL for your specific application, you can always use the SQL Server Profiler or other profiling tools to analyze the generated SQL and identify any potential bottlenecks or inefficiencies. You can also manually tune the SQL queries if necessary to achieve the desired performance.
+
+}}}
+Spectre Console {{{
+
+  ~/Dropbox/rsc/Doks/phone/Comp/lang/clangs/cs/SpectreConsole.txt
+
+Great. Another question: Could you help me a bit with Spectre Console. It would be very helpful if you could give me a list of some of the most common "keywords" used, things like table, Markup etc. Just a plain list of say the 20 or 30 most commonly used words. Would that be possible?
+Sure, here is a list of some of the most common keywords used in Spectre Console:
+
+General Keywords:
+
+table: Creates a table to display data
+markup: Creates formatted text using Markdown syntax
+panel: Creates a panel to group content
+placeholder: Creates a placeholder element to fill with content later
+button: Creates a button to trigger an action
+
+Styling Keywords:
+
+style: Sets the style of an element
+color: Sets the text color of an element
+background: Sets the background color of an element
+padding: Sets the padding of an element
+margin: Sets the margin of an element
+border: Sets the border of an element
+
+Data Keywords:
+
+data: Sets the data for an element
+items: Sets the items for a list or table
+header: Sets the header for a table
+row: Creates a row in a table
+cell: Creates a cell in a table
+
+Layout Keywords:
+
+flex: Creates a flex container to layout elements
+grid: Creates a grid container to layout elements
+stack: Creates a stack to layout elements vertically
+columns: Creates a layout with multiple columns
+rows: Creates a layout with multiple rows
+
+Input Keywords:
+
+input: Creates an input field for user input
+label: Creates a label for an input field
+select: Creates a select box for selecting an option
+checkbox: Creates a checkbox
+radio: Creates a radio button
+
+Other Keywords:
+
+alert: Displays an alert message
+confirm: Displays a confirmation dialog
+prompt: Displays a prompt for user input
+progress: Creates a progress bar
+spinner: Creates a spinner indicator
+
+This is not an exhaustive list of all the keywords used in Spectre Console, but it should give you a good starting point for learning the library.
+
+Great. And there are also pascal cased words like Markup, AddColumn etc?
+
+Yes, that's correct. Spectre Console uses PascalCase for most of its keyword names. This is a common naming convention in programming languages, and it helps to make the code more readable and easier to understand. For example, the Markup keyword is more descriptive than the markup keyword, and it is more likely to stand out in the code.
+
+Here are some other examples of PascalCase keywords in Spectre Console:
+
+AddColumn
+AddRow
+SetStyle
+GetData
+Refresh
+
+Using PascalCase for keywords makes it easier to distinguish between keywords and other identifiers in the code. It also helps to make the code more consistent and easier to maintain.
+
+I hope this helps!
+
+AddColumn,
+AddRow,
+AddRows,
+AddStyle,
+AddStyles,
+AlignContent,
+AlignLeft,
+AlignRight,
+AppendColumn,
+AppendRow,
+AppendRows,
+AutoSize,
+AutoSizeColumns,
+AutoSizeRows,
+AutoWrap,
+Background,
+BorderColor,
+BorderThickness,
+BorderStyle,
+CellPadding,
+CellSpacing,
+Clear,
+ClearAll,
+ClearContents,
+ClearStyles,
+Column,
+ColumnCount,
+ColumnWidth,
+Columns,
+Content,
+Copy,
+CopyStyles,
+DefaultStyle,
+DeleteColumn,
+DeleteRow,
+DeleteRows,
+DisableAutoWrap,
+EnableAutoWrap,
+Fill,
+FillStyle,
+Find,
+FindNext,
+FindPrevious,
+Font,
+FontSize,
+FontWeight,
+Foreground,
+Freeze,
+FrozenColumns,
+FrozenRows,
+HeaderStyle,
+Height,
+Hide,
+HorizontalAlignment,
+IsFrozen,
+IsHidden,
+IsSelected,
+IsStyleApplied,
+Left,
+LineStyle,
+Margin,
+MaxAutoSize,
+MaxWidth,
+MinAutoSize,
+MinWidth,
+NoStyle,
+Padding,
+PaddingLeft,
+PaddingRight,
+PaddingTop,
+PaddingBottom,
+RemoveStyle,
+RenameColumn,
+RenameRow,
+Row,
+RowCount,
+RowHeight,
+Rows,
+Scroll,
+ScrollToEnd,
+ScrollTo,
+Select,
+SelectAll,
+SelectedStyle,
+SetColumnWidth,
+SetContent,
+SetStyle,
+SetStyles,
+Show,
+Style,
+Styles,
+TableStyle,
+Text,
+TextAlign,
+Top,
+Unfreeze,
+Unhide,
+Unselect,
+UnselectAll,
+Update,
+VerticalAlignment,
+Width,
+Wrap
+
+}}}
+
+AVALONIA {{{
+
+Let's say I have a C# console program, and I cannot (for different reasons use Spectre Console).
+The program communicates with a MS SQL Server database via Ado.
+Then let's say I want to (in the console program) run the following SQL question, and show the results in a separate report window created with Avalonia (so the user has some reference about what values are available in the database).
+
+SELECT *
+FROM Products p
+ INNER JOIN "Order Details" od
+  ON p.ProductID = od.ProductID
+ INNER JOIN Orders o
+  ON o.OrderID = od.OrderID
+
+Could you give me a sketch of what that would look like?
+
+1
+Sure, here's a sketch of how to create a separate report window in Avalonia to display the results of the SQL query:
+
+1. Create the Avalonia Report Window:
+
+Start by creating a new Avalonia project and designing the UI for your report window. This could include a table or grid to display the product information, order details, and order information.
+
+2. Establish Ado Connection:
+
+In your C# console program, establish a connection to the MS SQL Server database using ADO.NET. This involves creating a connection string and using the SqlConnection class to open a connection to the database.
+
+3. Execute SQL Query:
+
+Use the SqlCommand class to execute the SQL query against the database. This will return a SqlDataReader object containing the results of the query.
+
+4. Map SQL Results to Report Data:
+
+Iterate over the SqlDataReader object and extract the product information, order details, and order information. Create a corresponding data model to represent this information.
+
+5. Pass Data to Avalonia Report Window:
+
+Establish communication between the C# console program and the Avalonia report window. You can use inter-process communication (IPC) mechanisms like named pipes or memory-mapped files to share the data model.
+
+6. Update Avalonia Report Window:
+
+In the Avalonia report window, receive the data model from the C# console program and update the UI accordingly. This involves populating the table or grid with the product information, order details, and order information.
+
+Here's a simplified code snippet illustrating the process:
+
+C#
+// In C# console program
+using (var connection = new SqlConnection(connectionString))
+{
+    connection.Open();
+
+    using (var command = new SqlCommand(sqlQuery, connection))
+    {
+        using (var reader = command.ExecuteReader())
+        {
+            // Map SQL results to report data
+            var reportData = new List<ProductReportItem>();
+            while (reader.Read())
+            {
+                var productReportItem = new ProductReportItem()
+                {
+                    ProductId = reader.GetInt32(0),
+                    ProductName = reader.GetString(1),
+                    OrderQuantity = reader.GetInt32(2),
+                    OrderDate = reader.GetDateTime(3)
+                };
+                reportData.Add(productReportItem);
+            }
+
+            // Pass data to Avalonia report window
+            using (var pipeClient = new NamedPipeClient(pipeName))
+            {
+                pipeClient.SendObject(reportData);
+            }
+        }
+    }
+}
+
+C#
+// In Avalonia report window
+using (var pipeClient = new NamedPipeServer(pipeName))
+{
+    var reportData = pipeClient.ReceiveObject<List<ProductReportItem>>();
+
+    // Update Avalonia report window
+    dataGrid.ItemsSource = reportData;
+}
+
+This code snippet demonstrates the basic flow of data from the C# console program to the Avalonia report window. You'll need to adjust the code to fit your specific data model and UI design.
+
+Sources
+github.com/doncl/SeeSharp subject to license (MIT)
+
+Great. Could you show me more specifically some Avalonia and XAML (I think it is?) code for setting up and dealing with that kind of project?
+Certainly, here's an example of setting up and dealing with an Avalonia and XAML project that involves communicating with a MS SQL Server database via ADO and displaying the results in a separate report window:
+
+1. Create the Avalonia Project Structure:
+
+Create a new Avalonia project using your preferred IDE or command-line tools.
+Organize the project structure to include separate folders for the C# code, XAML files, and any resource files (e.g., icons, images).
+2. Establish Ado Connection in C# Code:
+
+Create a class or module dedicated to handling database operations.
+Use the SqlConnection class to establish a connection to the MS SQL Server database. Provide the connection string with the appropriate server name, database name, authentication credentials.
+3. Implement SQL Query Execution:
+
+Define a method to execute the SQL query against the database.
+Use the SqlCommand class to create a command object and specify the SQL query to execute.
+Execute the command using the ExecuteNonQuery() method if the query updates or deletes data.
+Use the ExecuteReader() method if the query retrieves data and return the resulting SqlDataReader object.
+4. Retrieve and Process SQL Results:
+
+Iterate over the SqlDataReader object to extract the results of the query.
+Access the data from each row using the appropriate column index or column name.
+Process the retrieved data as needed, such as converting data types or formatting values.
+5. Create the Avalonia Report Window:
+
+Design the UI for the report window in XAML.
+Use appropriate controls like DataGrid or ListBox to display the product information, order details, and order information.
+Define data bindings to connect the UI elements to the data model.
+6. Establish Communication with C# Console Program:
+
+Implement a mechanism for the Avalonia report window to receive data from the C# console program.
+Consider using inter-process communication (IPC) techniques like named pipes or memory-mapped files.
+Create a method or handler in the Avalonia report window to receive the data and update the UI accordingly.
+7. Update Avalonia Report Window with Data:
+
+Upon receiving the data from the C# console program, update the UI elements in the Avalonia report window.
+Assign the received data to the data source of the DataGrid or ListBox.
+Refresh the displayed data to reflect the updated data source.
+8. Implement Data Binding in XAML:
+
+In the XAML file, define data bindings between the UI elements and the data model properties.
+Use the ItemsSource property of the DataGrid or ListBox to bind to the data collection.
+Use data binding syntax to bind individual UI elements to specific data model properties.
+9. Run the Application:
+
+Build and run the Avalonia application.
+The C# console program will execute the SQL query and send the results to the Avalonia report window via the chosen IPC mechanism.
+The Avalonia report window will receive the data, update the UI, and display the product information, order details, and order information.
+
+Could you show me some XAML example code?
+
+1
+Sure, here is some XAML example code that demonstrates the basic structure of an Avalonia report window:
+
+XML
+<Window
+    xmlns="https://github.com/avaloniaui/avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Product Report"
+    x:Class="ProductReportWindow">
+
+    <ContentPanel>
+        <DataGrid ItemsSource="{Binding ProductReportItems}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Product ID" Binding="{Binding ProductId}"/>
+                <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}"/>
+                <DataGridTextColumn Header="Order Quantity" Binding="{Binding OrderQuantity}"/>
+                <DataGridTextColumn Header="Order Date" Binding="{Binding OrderDate, StringFormat='{0:yyyy-MM-dd}'}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </ContentPanel>
+</Window>
+
+This XAML code defines a Window control named ProductReportWindow that displays a DataGrid to show the product report information. The ItemsSource property of the DataGrid is bound to the ProductReportItems property in the code-behind, which should contain the list of ProductReportItem objects retrieved from the SQL query.
+
+The DataGrid.Columns section defines the columns to be displayed in the data grid. Each DataGridTextColumn specifies the header text for the column and the data binding expression that connects the column to the corresponding property in the ProductReportItem object.
+
+This is a simplified example, and you may need to adjust the XAML code to fit your specific data model and UI design requirements.
+
+Sources
+github.com/KolesarAndreja/DAN_XLV_Andreja_Kolesar
+
+Great. What are the specific using directives and such that I would have to include in my C# file to use Avalonia (and you can also mention if there are any specific NuGet packages to include).
+Sure, here are the specific using directives and NuGet packages that you would need to include in your C# file to use Avalonia:
+
+Using Directives:
+
+using Avalonia;: This directive imports the Avalonia namespace, which provides fundamental types and utilities for Avalonia applications.
+
+using Avalonia.Markup.Xaml;: This directive imports the Avalonia XAML namespace, which allows you to define and process XAML markup for Avalonia controls and UI elements.
+
+using Avalonia.Controls;: This directive imports the Avalonia Controls namespace, which provides a collection of pre-defined controls for building user interfaces.
+
+using Avalonia.Markup.Xaml.Templates;: If you're using data templates for dynamic UI generation, you'll need to include this directive.
+
+Additional using directives may be needed depending on the specific Avalonia features you're using, such as Avalonia.Media for graphics and animations or Avalonia.Threading for asynchronous operations.
+
+NuGet Packages:
+
+AvaloniaUI: The core Avalonia UI framework package, containing the essential classes and libraries for building Avalonia applications.
+
+Avalonia.Aliases: A collection of convenience aliases for common Avalonia types and namespaces, simplifying code readability and maintainability.
+
+Avalonia.Diagnostics: Provides tools and utilities for debugging and diagnostics within Avalonia applications.
+
+Avalonia.ReactiveUI: Integration with the ReactiveUI framework for building responsive and reactive user interfaces.
+
+Avalonia.Markup.Xaml.Build: Provides support for generating XAML code from C# code, useful for code-behind interactions with XAML UI elements.
+
+Depending on your specific project requirements, you may need additional NuGet packages related to data access, networking, or other functionalities.
+
+
+Very nice. Could you also comment some on ReactiveUI, although it is not relevant for my specific case of just showing a report window based on an SQL question? And could you also produce me a list (not necessarily exhaustive, but a long list is no problem) of some of the methods and keywords that are used in Avalonia with similar functionality as Spectre's Menu, Column and such?
+Sure, here are some comments on ReactiveUI and a list of Avalonia methods and keywords with similar functionality as Spectre's Menu, Column, and such:
+
+ReactiveUI
+
+ReactiveUI is a popular MVVM framework for building reactive user interfaces with Avalonia. It simplifies the process of creating responsive and data-driven applications by utilizing reactive programming techniques. While it's not strictly necessary for your specific task of displaying a report window based on an SQL query, ReactiveUI can offer several advantages for more complex UI scenarios:
+
+Reactive Data Binding: ReactiveUI's data binding system automatically updates UI elements whenever the underlying data changes, ensuring a seamless and responsive user experience.
+
+Commanding: ReactiveUI provides a powerful commanding framework for handling user interactions and triggering actions within the application.
+
+State Management: ReactiveUI offers a structured approach to managing application state, making it easier to maintain complex UI interactions and data relationships.
+
+However, if your application's UI is relatively simple and doesn't require the extensive capabilities of a full-fledged MVVM framework, you can continue using the basic UI controls provided by Avalonia.
+
+Avalonia Methods and Keywords
+
+Avalonia provides a comprehensive set of UI controls, methods, and keywords for building rich and interactive user interfaces. Here's a list of some methods and keywords with similar functionality as Spectre's Menu, Column, and such:
+
+Menu and MenuItem: The Menu and MenuItem controls create hierarchical menus with clickable items. You can customize the menu appearance using properties like Header, Icon, and Command.
+
+StackPanel: The StackPanel arranges child controls vertically or horizontally, depending on the Orientation property. It's similar to Spectre's Column.
+
+Grid: The Grid control arranges child controls in a grid layout, allowing you to position them using row and column indices. It's comparable to Spectre's Grid.
+
+Border: The Border control adds a decorative border around child controls, similar to Spectre's Border.
+
+Padding and Margin: The Padding and Margin properties control the spacing around child controls within their parent containers.
+
+Alignment: The HorizontalAlignment and VerticalAlignment properties align child controls within their parent containers.
+
+Style: Avalonia's styling system allows you to define reusable styles for controls, applying them using the Style property or class selectors.
+
+Template: Templates provide a flexible mechanism for customizing the appearance and behavior of UI elements, analogous to Spectre's Markup.
+
+These are just a few examples of the many methods and keywords available in Avalonia for building user interfaces. The specific methods and keywords you use will depend on the specific requirements of your application's UI.
+
+
+Great. I would be very happy for you to produce even more keywords and properties used in Avalonia. I.e. 50-60 items is no problem - I'd like to get a bit of an overview.
+Sure, here's a comprehensive list of keywords and properties commonly used in Avalonia for building user interfaces:
+
+Data Binding Keywords:
+
+Binding: Establishes a connection between a UI element's property and a data source property.
+
+Source: Specifies the data source object from which to bind data.
+
+Path: Identifies the property within the data source to bind to.
+
+Mode: Configures the direction of data flow between the UI element and data source.
+
+Convert: Defines a value converter for transforming data between the UI element and data source.
+
+Control Properties:
+
+Content: Sets the content displayed within a control.
+
+IsVisible: Determines whether a control is visible or hidden.
+
+IsEnabled: Controls whether a control is interactive or disabled.
+
+Margin: Specifies the spacing around a control within its parent container.
+
+Padding: Sets the spacing between a control's content and its borders.
+
+HorizontalAlignment: Aligns a control horizontally within its parent container.
+
+VerticalAlignment: Aligns a control vertically within its parent container.
+
+Layout Properties:
+
+Orientation: Sets the orientation of child controls within a StackPanel or ItemsControl.
+
+Rows: Defines the rows and their properties within a Grid.
+
+Columns: Defines the columns and their properties within a Grid.
+
+Children: A collection of child controls within a parent container.
+
+ItemTemplate: Specifies the template for generating items in a ItemsControl.
+
+Styling Keywords:
+
+Style: Applies a predefined style to a control.
+
+Class: Assigns a class identifier to a control for targeted styling.
+
+StyleSelector: Defines a style based on class selectors, tags, or control types.
+
+Trigger: Defines conditions that activate specific style properties.
+
+Setter: Sets the value of a control's property based on triggered conditions.
+
+Event Handling:
+
+Click: Handles mouse click events on a control.
+
+DoubleClick: Handles double-click events on a control.
+
+TextChanged: Handles text changes within a text-based control.
+
+SelectionChanged: Handles selection changes in a list or grid.
+
+IsVisibleChanged: Triggers an event when a control's visibility changes.
+
+Common Controls:
+
+Button: Defines a clickable button for user interactions.
+
+TextBox: Provides a text input field for user input.
+
+Label: Displays text labels for information or instructions.
+
+TextBlock: Presents formatted text content.
+
+StackPanel: Arranges child controls vertically or horizontally.
+
+Grid: Arranges child controls in a grid layout.
+
+ItemsControl: Displays a collection of items, using data templates to customize item appearance.
+
+This list provides a comprehensive overview of commonly used keywords and properties in Avalonia. The specific keywords and properties you'll use will depend on the specific requirements of your application's UI.
+
+
+I am very happy with your answers. I feel it's always good to get a feel and a bit of a birds-eye view of the terrain before diving in.
+I'm glad you find the information helpful. It's always beneficial to have a preliminary understanding of a framework or technology before diving into its implementation. This allows you to approach the development process with a clearer vision and make informed decisions.
+
+
+Very much so. Would you have some suggestions for good places to start resource-wise, and maybe some videos or written tutorials that are popular on the subject of Avalonia and C#? I've also been doing some web searches for books on the subject, but that is sadly a bit hard to find. ;)
+Sure, here are some suggestions for good places to start resource-wise, and popular videos or written tutorials on Avalonia and C#:
+
+Official Documentation:
+
+The official Avalonia documentation is an excellent starting point for learning the basics of the framework. It covers everything from installation and setup to UI development, data binding, and styling.
+
+https://docs.avaloniaui.net/docs/next/welcome
+Community Resources:
+
+Avalonia has a vibrant community that provides a wealth of resources, including tutorials, forums, and code examples.
+
+https://github.com/AvaloniaUI
+https://www.reactiveui.net/docs/handbook/data-binding/avalonia
+Popular Tutorials:
+
+Here are some popular video and written tutorials that cover Avalonia development:
+
+https://www.youtube.com/watch?v=TA0VSIrCFw4
+https://medium.com/@artillustration391/avalonia-tutorial-getting-started-programming-with-avalonia-c-wpf-1d13c23fd68b
+https://www.youtube.com/watch?v=TA0VSIrCFw4
+Books:
+
+While there are no dedicated books on Avalonia yet, there are several books that cover C# programming and UI development, which can provide a solid foundation for learning Avalonia.
+
+https://www.amazon.com/NET-Cross-Platform-Development-intelligent-Framework/dp/180056810X
+https://learn.microsoft.com/en-us/dotnet/csharp/
+https://www.manning.com/books/c-sharp-in-depth-fourth-edition
+As you gain more experience with Avalonia, you'll find that the framework's documentation, community resources, and online tutorials are sufficient to address most of your needs. However, if you're looking for a more structured learning approach, consider taking an online course or attending a workshop.
+
+I hope this helps!
+
+
+Question again about Avalonia: Is there standard or recommended way of where in a C# project solution to put the XAML code for the Avalonia user interface?
+Sure, here are some standard and recommended ways of where in a C# project solution to put the XAML code for the Avalonia user interface:
+
+1. Create a dedicated XAML folder:
+
+A common approach is to create a dedicated folder within your project solution specifically for XAML files. This helps keep your code organized and makes it easier to find the XAML files you need. For example, you could create a folder named Views or UserInterfaces to store your XAML files.
+
+2. Group XAML files by view or component:
+
+Within the XAML folder, you can further organize your XAML files by grouping them based on the views or components they represent. For instance, you could create subfolders for each view or component, such as MainWindow, ProductDetailsView, or ProductSearchComponent.
+
+3. Place XAML files near corresponding code-behind files:
+
+It's often helpful to place XAML files near their corresponding code-behind files. This makes it easier to navigate between the UI design and the code that controls it. For example, if you have a view named MainWindow, you could place its XAML file (MainWindow.xaml) alongside its code-behind file (MainWindow.xaml.cs).
+
+4. Utilize the project structure to reflect the application's organization:
+
+If your application has a complex structure with multiple screens, modules, or features, you can use the project structure to reflect this organization. For instance, you could create subprojects within your main project solution to represent different parts of the application, and then place the XAML files for each subproject in its respective folder.
+
+5. Follow consistent naming conventions:
+
+To maintain consistency and readability, follow consistent naming conventions for your XAML files. For example, you could use PascalCase for view and component names, and lowercase with underscores for code-behind files.
+
+Remember, the specific organization of your XAML files will depend on the complexity and structure of your application. The key is to find an approach that works for you and keeps your code organized, easy to find, and maintainable.
+
+
+__
+
+
+
+That's awesome. Another question: What other languages are supported for writing apps with Avalonia UI?
+Avalonia UI is a cross-platform framework that supports multiple programming languages for developing user interfaces. Besides F#, which we discussed earlier, here are some other popular languages supported by Avalonia UI:
+
+C#: C# is the primary language for Avalonia UI development. It is a versatile and widely used language that offers a broad range of features and libraries for building robust UI applications.
+
+Visual Basic .NET: Visual Basic .NET (VB.NET) is another popular choice for Avalonia UI development. It is a beginner-friendly language that shares many similarities with C# but has its own syntax and style.
+
+C++: Avalonia UI also supports C++, a powerful and performance-oriented language that is particularly well-suited for developing native applications.
+
+C++/CX: C++/CX is a language extension for C++ that facilitates interoperability with the Windows Runtime (.NET framework on Windows). It can be used to develop Avalonia UI applications on Windows platforms.
+
+JavaScript: Avalonia UI supports JavaScript for developing web-based applications using WebAssembly. This allows you to leverage the familiarity of JavaScript while building cross-platform web apps.
+
+These are just a few of the languages supported by Avalonia UI. The framework's openness and extensibility allow developers to explore other languages and integrate them into their projects. The choice of language ultimately depends on the developer's expertise, project requirements, and target platforms.
+
+
+Could you list some more languages? If the list is long, no problem with me (PS You can just list some so I can get an overview)
+Sure, here's a more comprehensive list of languages supported by Avalonia UI:
+
+C#
+Visual Basic .NET (VB.NET)
+C++
+C++/CX
+JavaScript
+ILAsm (Intermediate Language Assembler)
+PowerShell
+Python
+Ruby
+Rust
+Swift
+Elm
+Haskell
+F#
+This list encompasses a wide range of programming languages, from general-purpose languages like C# and VB.NET to specialized languages like Python and Ruby. It also includes web-centric languages like JavaScript and Elm, alongside native programming languages like C++ and C++/CX. Additionally, functional programming languages like Haskell and F# are supported, providing different programming paradigms for UI development.
+
+Avalonia UI's language support is driven by its underlying Skia rendering engine, which can effectively translate code from various languages into the necessary rendering commands. This cross-language compatibility allows developers to choose the language that best suits their expertise and project needs.
+
+
+Cool. Is the D programming language supported?
+Yes, the D programming language is supported by Avalonia UI through the D-Avalonia project. D-Avalonia is a third-party library that provides bindings between the Avalonia UI framework and the D programming language. It allows developers to write Avalonia UI applications using D syntax, enabling them to leverage the strengths of the D language, such as its efficient memory management and strong typing.
+
+To use D-Avalonia, you'll need to install the D language compiler and the D-Avalonia library. Once you have those prerequisites, you can start writing Avalonia UI applications in D. D-Avalonia provides bindings for most of the Avalonia UI API, allowing you to create rich and responsive UI applications using D code.
+
+Here's an example of a simple Avalonia UI application written in D using D-Avalonia:
+
+D
+import avalonia;
+import avalonia.controls;
+import avalonia.styling;
+import avalonia.markup.xaml;
+
+class MainWindow : Window {
+    static void Main() {
+        Avalonia.Application.Run(new MainWindow());
+    }
+
+    [<XAML>]
+    Widget CreateContent() {
+        return new StackPanel {
+            Children = {
+                new Label {
+                    Text = "Hello, Avalonia UI World!",
+                    FontSize = 32,
+                    FontWeight = FontWeight.Bold,
+                },
+                new Button {
+                    Content = "Click Me",
+                    Margin = new Thickness(10),
+                },
+            },
+        };
+    }
+}
+
+This code defines a MainWindow class that inherits from the Window class provided by Avalonia UI. The code uses XAML markup to define the layout of the window and its contents. The XAML markup includes a StackPanel container that holds a Label control and a Button control. The Button control has a Content property set to "Click Me".
+
+To run this application, you would need to compile the D code and generate the executable file. Once you have the executable, you can run it to start the Avalonia UI application and display the MainWindow window.
+
+D-Avalonia is a relatively new project, but it is actively maintained and has a growing community of users. It provides a promising way to develop Avalonia UI applications using the D programming language.
+
+
+That seems awesome. Would that (although the project is newish) maybe in some time be able to solve getting Dlang to run and support apps on many platforms, including web and mobile ones?
+Yes, it is certainly possible that the D-Avalonia project, along with ongoing developments in the D programming language and cross-platform frameworks, could contribute to Dlang's ability to run and support apps on many platforms, including web and mobile ones.
+
+D-Avalonia is a promising example of how D can be integrated with cross-platform frameworks like Avalonia UI to create applications for various platforms. Avalonia UI itself supports platforms like Windows, macOS, Linux, and WebAssembly, which already expands D's reach.
+
+Additionally, the D programming language is evolving to support web development through projects like Vibe.d and DWeb, which aim to bring D's strengths to web development and enable D programmers to create web applications.
+
+In the mobile realm, efforts like DMobile and DMDroid are exploring the potential of D for mobile app development. DMobile provides a native Android development framework using D, while DMDroid focuses on cross-platform mobile app development with D.
+
+While these projects are still under development, they demonstrate the potential for D to expand its reach to web and mobile platforms. The progress of these projects, along with the continuous development of the D language and its ecosystem, could make Dlang a viable choice for developing applications across multiple platforms, including web and mobile ones.
+}}}
+
+https://github.com/gui-cs/Terminal.Gui
+--
+    https://www.c-sharpcorner.com/UploadFile/72d20e/gui-with-monodevelop/
+https://www.mono-project.com/docs/getting-started/mono-basics/
+  https://www.mono-project.com/docs/about-mono/languages/csharp/
+    https://www.mono-project.com/docs/getting-started/
+c# mono documentation
+  https://www.mono-project.com/docs/
+  https://www.mono-project.com/docs/gui/
+https://www.mono-project.com/docs/gui/gtksharp/beginners-guide/
+https://www.mono-project.com/docs/gui/gtksharp/
+
+    https://www.c-sharpcorner.com/uploadfile/mahesh/building-android-applications-using-C-Sharp/
+    https://www.codeproject.com/articles/663461/developing-android-apps-using-csharp
+    https://www.twilio.com/blog/build-first-mobile-app-csharp-dotnet-xamarin
+
+gui libraries
+  https://stackoverflow.com/questions/779283/is-there-a-cross-platform-gui-framework-for-c-net
+  https://devblogs.microsoft.com/dotnet/introducing-net-multi-platform-app-ui/
+    https://www.mono-project.com/docs/gui/winforms/
+  https://github.com/picoe/Eto
+https://stackoverflow.com/questions/585071/user-interface-design-tool
+
+
+.NET Framework Class Library (****)  (FCL)
+    https://learn.microsoft.com/en-us/dotnet/standard/class-library-overview
+https://learn.microsoft.com/en-us/dotnet/api/
+https://learn.microsoft.com/en-us/dotnet/api/system?view=net-6.0
+--
+https://fsharp.org/use/linux/
+https://github.com/dotnet/fsharp
+  https://en.wikipedia.org/wiki/.NET_Framework
+
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-methods
+  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/records
+C#/.Net Linq ('language integrated query' =queries are a first-class language construct)
+    https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/
+https://www.geeksforgeeks.org/c-sharp-type-gettypecode-method/
+
+}}}
+https://www.manning.com/books/functional-programming-in-c-sharp
+    --
+    https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/naming-warnings
+    https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1?view=net-7.0
+    https://www.geeksforgeeks.org/hashset-in-c-sharp-with-examples/
+      https://www.tutorialspoint.com/xaml/index.htm
+    https://stackoverflow.com/questions/60100091/formatting-timespan-to-hours-minutes-and-seconds#60100171
+    https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-timespan-format-strings
+    --
+    https://www.techiedelight.com/find-min-and-max-values-in-a-list-with-index-csharp/
+    https://levelup.gitconnected.com/how-to-implement-icomparable-t-in-your-custom-defined-classes-in-c-net7-3ff5581f973e
+      https://docs.bentley.com/LiveContent/web/OpenBuildings%20GenerativeComponents%20Help-v10/en/GUID-DD076DC9-2D6F-FFC6-2C01-BF66BB99A193.html
+    https://stackoverflow.com/questions/36045862/convert-seconds-to-hhmmss-with-string-format
+https://www.amazon.com/Agile-Principles-Patterns-Practices-C/dp/0131857258/?_encoding=UTF8&pd_rd_w=vsHRN&content-id=amzn1.sym.579192ca-1482-4409-abe7-9e14f17ac827&pf_rd_p=579192ca-1482-4409-abe7-9e14f17ac827&pf_rd_r=138-4484833-8829316&pd_rd_wg=R6ThG&pd_rd_r=8f5a8708-a35d-48e1-83a7-e869bf3ab73d&ref_=aufs_ap_sc_dsk
+    --
+    https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-2204
+. f# {{{
+
+Avalonia {{{
+
+Is it possible to write Avalonia UI in/with F#?
+Yes, it is possible to write Avalonia UI in F#. Avalonia UI is a cross-platform graphical user interface (GUI) framework that supports multiple programming languages, including F#. F# is a functional programming language that is well-suited for developing declarative and reactive user interfaces.
+
+Avalonia UI provides a comprehensive set of controls and APIs for building rich and responsive UI applications. You can use F# to create Avalonia UI applications by directly interacting with the Avalonia UI API classes and properties. Additionally, there are F#-specific libraries and tools that can simplify the development process, such as FSharp.AvaloniaUI.
+
+Here's an example of a simple Avalonia UI application written in F#:
+
+F#
+open Avalonia
+open Avalonia.Controls
+open Avalonia.Styling
+
+open Avalonia.Markup.Xaml
+
+module MainWindow =
+    [<XAML>]
+    <Window
+        xmlns="http://schemas.avalonia.com/winfx/2019/xaml"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        Title="Hello, Avalonia!"
+        MinHeight="300"
+        MinWidth="400">
+        <StackPanel>
+            <Label Text="Hello, Avalonia World!" FontSize="32" FontWeight="Bold" />
+            <Button Content="Click Me" Margin="10" />
+        </StackPanel>
+    </Window>
+
+This code defines a MainWindow class that inherits from the Window class provided by Avalonia UI. The code uses XAML markup to define the layout of the window and its contents. The XAML markup includes a StackPanel container that holds a Label control and a Button control. The Button control has a Content property set to "Click Me".
+
+To run this application, you would need to create an AvaloniaApplication instance and call the Run method:
+
+F#
+let app = new AvaloniaApplication()
+app.Run(MainWindow())
+
+This code creates an AvaloniaApplication instance and calls the Run method, passing the MainWindow class as the startup window. This will start the Avalonia UI application and display the MainWindow window.
+
+This is just a simple example, and you can use F# to create much more complex Avalonia UI applications. F# provides a powerful and expressive language for developing user interfaces, and Avalonia UI provides a flexible and extensible framework for building cross-platform UI applications.
+
+}}}
+
+https://www.youtube.com/watch?v=Teak30_pXHk
+https://www.youtube.com/watch?v=hsTmLhnzRhE
+https://www.youtube.com/watch?v=PFWYwr7Hhhg
+https://www.youtube.com/watch?v=AMjcjXIMzmA
+https://www.youtube.com/watch?v=ARJB8eDyxrg
+
+https://learn.microsoft.com/en-us/dotnet/fsharp/scenarios/machine-learning
+https://fsharp.org/guides/data-science/
+https://fslab.org/
+
+
+  https://en.wikibooks.org/wiki/F_Sharp_Programming
+Doks/Resources {{{
+https://fsharpforfunandprofit.com/why-use-fsharp/
+     ~/Empire/video/instructional/Comp/lang/dbanas/dbanas-fsharp.webm
+  ~/Empire/Doks/Comp/lang/clangs/csharp/fsharp/fsharp.cheatsh.pdf
+  ~/Empire/Doks/Comp/lang/clangs/csharp/fsharp/fsharp2.cheatsh.pdf
+
+  ~/Empire/Doks/Comp/lang/clangs/csharp/fsharp/fsharp4-beg-2016.txt
+  ~/Empire/Doks/Comp/lang/clangs/csharp/fsharp/fs-mast_2016.txt
+  ~/Empire/Doks/Comp/lang/clangs/csharp/fsharp/fs-datastructsalgos_2015.txt
+  ~/Empire/Doks/Comp/lang/clangs/csharp/fsharp/fsharpbook-2014.txt
+  ~/Empire/Doks/Comp/lang/clangs/csharp/fsharp/fsharp-funprofit.txt
+  ~/Empire/Doks/Comp/lang/clangs/csharp/fsharp/fsharp-survguide.txt
+   ~/Empire/Doks/Comp/lang/clangs/csharp/fsharp/functprogr-realworld_2010.txt
+}}}
+  code ~/Dropbox/rsc/samples/code/cs/fs/test.fsx
+gvim ~/Dropbox/rsc/samples/code/cs/fs/test.fsx
+https://thomasbandt.com/powerful-scripting-with-fsharp
+.More Resources [=Including Std-Library] etc **[!!] {{{
+  https://fsharp.org/docs/
+   https://learn.microsoft.com/en-us/dotnet/standard/io/
+   https://www.tutorialspoint.com/fsharp/fsharp_basic_io.htm
+   https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/
+  https://fsharp.github.io/fsharp-core-docs/
+  https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core.html
+   https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/strings
+  https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/lists
+  --
+  https://fsharp.github.io/fsharp-core-docs/
+  https://learn.microsoft.com/en-us/dotnet/fsharp/style-guide/formatting **
+}}}
+--
+https://plugins.jetbrains.com/plugin/14839-avaloniarider
+Android/Mobile Apps with F# {{{
+  https://fsharp.org/use/mobile-apps/
+  https://fsharp.org/guides/mobile-apps/
+  https://fabulous.dev/  #+Avalonia
+}}}
+  https://github.com/fsprojects/awesome-fsharp
+
+derek banas f# tutorial cheat-sheet/code {{{
+    https://www.newthinktank.com/2017/04/f-tutorial/
+
+// F# is Microsofts functional language
+// It provides a way to develop predictable
+// code that is often way shorter
+// Functional languages apply functions
+// to data rather then focus on state changes
+// like most OO languages
+ 
+// Functional languages are great when you
+// must execute multiple processes at once.
+// Because all variables are immutable it
+// is hard to make changes that will effect
+// the execution of other processes
+ 
+// Whitespace is used to define code blocks
+ 
+// Allows you access to ReadLine, WriteLine, etc.
+open System
+ 
+// ----- INTRODUCTION -----
+ 
+// Let binds a name to a value or function
+let hello() = 
+ 
+    // Print to screen without a newline
+    printf "Enter your name : "
+ 
+    // Read data from the user
+    // Identifiers must start with an underscore
+    // or a letter and then numbers
+    let name = Console.ReadLine()
+ 
+    // printfn is statically typed in regards
+    // to the parameters %s represents a string
+    // %i : Integer
+    // %f : float
+    // %b : boolean
+    // %s : string
+    // %A : Internal representation of things like tuples
+    // %O : Other objects
+    printfn "Hello %s" name
+ 
+    // Format floats which default to 6 digits 
+    printfn "PI : %.4f" 3.141592653589793238462643383
+ 
+    // Use M to keep precision to 27 decimals
+    let big_pi = 3.141592653589793238462643383M
+ 
+    printfn "Big PI : %M" big_pi
+ 
+    // Add padding to right and left
+    printfn "%-5s %5s" "a" "b"
+ 
+    // Add dynamic padding
+    printfn "%*s" 10 "Hi"
+ 
+// ----- BINDING -----
+let bind_stuff() =
+    
+    // By default variables are immutable
+    // unless marked as mutable
+    let mutable weight = 175
+    weight <- 170
+ 
+    printfn "weight : %i" weight
+ 
+    // You can also use reference cells if you
+    // must change values
+    let change_me = ref 10
+    change_me := 50
+ 
+    printfn "change_me : %i" ! change_me
+ 
+// ----- FUNCTIONS -----
+// Functions start with let, the name, parameters, 
+// optional parameter types, optional return type
+let do_funcs() =
+    
+    let get_sum (x : int, y : int) : int = x + y
+ 
+    printfn "5 + 7 = %i" (get_sum(5,7))
+ 
+    // Calculate the factorial with a recursive
+    // function
+ 
+    let rec factorial x =
+        if x < 1 then 1
+        else x * factorial (x - 1)
+ 
+    printfn "Factorial 4 : %i" (factorial 4)
+ 
+    // 1st : result = 4 * factorial(3) = 4 * 6 = 24
+    // 2nd : result = 3 * factorial(2) = 3 * 2 = 6
+    // 3rd : result = 2 * factorial(1) = 2 * 1 = 2
+ 
+    // We use fun to create lambda expressions
+    // Create a list
+    let rand_list = [1;2;3]
+ 
+    // Map performs a calculation on every item
+    // in the list and returns the new list
+    let rand_list2 = List.map (fun x -> x * 2) rand_list
+ 
+    // %A returns the internal representation
+    // of a list
+    printfn "Double List : %A" rand_list2
+ 
+    // We can use the pipeline operator to nest
+    // function calls
+    [5;6;7;8]
+ 
+    // Filter keeps only items in the list that 
+    // match the condition
+    |> List.filter (fun v -> (v % 2) = 0)
+    |> List.map (fun x -> x * 2)
+ 
+    // Once the list has been created print it
+    |> printfn "Even Doubles : %A"
+ 
+    // Another way to execute multiple functions
+    let mult_num x = x * 3
+    let add_num n = n + 5
+ 
+    let mult_add = mult_num >> add_num
+    let add_mult = mult_num << add_num
+ 
+    printfn "mult_add : %i" (mult_add 10)
+    printfn "add_mult : %i" (add_mult 10)
+ 
+// ----- MATH -----
+let do_math() =
+    printfn "5 + 4 = %i" (5 + 4)
+    printfn "5 - 4 = %i" (5 - 4)
+    printfn "5 * 4 = %i" (5 * 4)
+    printfn "5 / 4 = %i" (5 / 4)
+    printfn "5 %% 4 = %i" (5 % 4)
+    printfn "5 ** 2 = %f" (5.0 ** 2.0)
+ 
+    // Get the data type
+    let number = 2
+    printfn "Type : %A" (number.GetType())
+ 
+    // Cast to another type
+    printfn "A Float : %.2f" (float number)
+    printfn "An Int : %i" (int 3.14)
+ 
+    // Math functions
+    // Also cos, sin, tan, acos, asin, atan,
+    // cosh, sinh, tanh
+    printfn "abs 4.5 : %i" (abs -1)
+    printfn "ceil 4.5 : %f" (ceil 4.5)
+    printfn "floor 4.5 : %f" (floor 4.5)
+    printfn "log 2.71828 : %f" (log 2.71828)
+    printfn "log10 1000 : %f" (log10 1000.0)
+    printfn "sqrt 25 : %f" (sqrt 25.0)
+ 
+// ----- STRINGS -----
+let string_stuff() =
+    // Escape characters
+    // \n, \\, \", \'
+    let str1 = "This is a random string"
+ 
+    // Verbatim Strings
+    let str2 = @"I ignore backslashes"
+ 
+    // Triple Quoted Strings
+    let str3 = """ "I ignore double quotes and backslashes" """
+ 
+    // Combine strings
+    let str4 = str1 + " " + str2
+ 
+    // Get length
+    printfn "Length : %i" (String.length str4)
+ 
+    // Access index
+    printfn"%c" str1.[1]  
+ 
+    // Get a substring with a range
+    printfn"1st Word : %s" (str1.[0..3])
+ 
+    // Collect executes a function on each character
+    let upper_str = String.collect (fun c -> sprintf"%c, " c) "commas"
+    printfn "Commas : %s" upper_str
+ 
+    // Exists checks if any characters meet a condition
+    printfn "Any Upper : %b" (String.exists (fun c -> Char.IsUpper(c)) str1)
+ 
+    // Check if every character meets condition
+    printfn "Number : %b" (String.forall (fun c -> Char.IsDigit(c)) "1234")
+ 
+    // Apply function to each index in a string
+    let string1 = String.init 10 (fun i -> i.ToString())  
+    printfn"Numbers : %s" string1
+ 
+    // Apply function to each item in string
+    String.iter(fun c -> printfn "%c" c) "Print Me" 
+ 
+// ----- LOOPING -----
+ 
+let loop_stuff() =
+ 
+    // ----- WHILE LOOP -----
+    let magic_num  = "7"
+    let mutable guess = ""
+ 
+    while not (magic_num.Equals(guess)) do
+        printf "Guess the Number : "
+        guess <- Console.ReadLine()
+ 
+    printfn "You Guessed the Number"
+ 
+    // ----- FOR LOOP -----
+    for i = 1 to 10 do 
+        printfn "%i" i
+ 
+    // Iterate down
+    for i = 10 downto 1 do
+        printfn "%i" i
+ 
+    // Iterate over a range
+    for i in [1..10] do
+        printfn "%i" i
+ 
+    // Why loop at all when you can pipe
+    // a list to any function
+    [1..10] |> List.iter (printfn "Num : %i")
+ 
+    // Sum a list
+    let sum = List.reduce (+) [1..10]
+    printfn "Sum : %i" sum
+ 
+// ----- CONDITIONALS -----
+ 
+let cond_stuff() =
+ 
+    // ----- IF ELSE ELIF -----
+    let age = 8
+ 
+    if age < 5 then
+        printfn "Preschool"
+    elif age = 5 then 
+        printfn "Kindergarten"
+    elif (age > 5) && (age <= 18) then
+        let grade = age - 5
+        printfn "Go to Grade %i" grade
+    else
+        printfn "Go to College"
+ 
+    let gpa = 3.9
+    let income = 15000
+    printfn "College Grant : %b" ((gpa >= 3.8) || (income <= 12000))
+ 
+    printfn "Not True : %b" (not true)
+ 
+    // ----- MATCH -----
+    // You can use match and guard statements
+    // to do the same thing
+    let grade2: string = 
+        match age with
+        | age when age < 5 -> "Preschool"
+        | 5 -> "Kindergarten" 
+        | age when ((age > 5) && (age <= 18)) -> (age - 5).ToString()
+        | _ -> "College"
+ 
+    printfn "Grade2 : %s" grade2
+ 
+// ----- LISTS -----
+let list_stuff() =
+    // Define a list literal
+    let list1 = [1; 2; 3; 4]
+ 
+    // Print list
+    list1 |> List.iter (printfn "Num : %i")
+ 
+    // Print list
+    printfn "%A" list1
+ 
+    // Use cons operator 
+    let list2 = 5::6::7::[]
+    printfn "%A" list2
+ 
+    // Use ranges
+    let list3 = [1..5]
+    let list4 = ['a'..'g']
+    printfn "%A" list4
+ 
+    // Generate a list with init
+    // Create 5 indexes and multiply the index
+    // value times 2
+    let list5 = List.init 5 (fun i -> i * 2)
+    printfn "%A" list5
+ 
+    // Generate a list with yield
+    let list6 = [ for a in 1..5 do yield (a * a) ]
+    printfn "%A" list6
+ 
+    // Generate even list with yield
+    let list7 = [ for a in 1 .. 20 do if a % 2 = 0 then yield a]
+    printfn "%A" list7
+ 
+    // Generate a list with yield bang which
+    // creates multiple lists for each item
+    // and merges into a final list
+    // 1 generates 1; 2; 3 for example
+    let list8 = [for a in 1..3 do yield! [ a .. a + 2 ] ]
+    printfn "%A" list8
+ 
+    // Get length
+    printfn "Length : %i" list8.Length
+ 
+    // Check if empty
+    printfn "Empty : %b" list8.IsEmpty
+ 
+    // Get item at index
+    printfn "Index 2 : %c" (list4.Item(2))
+ 
+    // Get the 1st item
+    printfn "Head : %c" (list4.Head)
+ 
+    // Get the tail
+    printfn "Tail : %A" (list4.Tail)
+ 
+    // Filter out only evens
+    let list9 = list3 |> List.filter (fun x -> x % 2 = 0)
+    printfn "Evens : %A" list9
+ 
+    // Multiply all values times themselves
+    let list10 = list9 |> List.map (fun x -> (x * x))
+    printfn "Squares : %A" list10
+ 
+    // Sort a list
+    printfn "Sorted : %A" (List.sort [5; 4; 3])
+ 
+    // Sum a list with fold
+    printfn "Sum : %i" (List.fold (fun sum elem -> sum + elem) 0 [1;2;3])
+ 
+// ----- ENUMS -----
+ 
+// You can define enums 
+type emotion =
+| joy = 0
+| fear = 1
+| anger = 2
+ 
+let enum_stuff() = 
+ 
+    let my_feeling = emotion.joy
+ 
+    match my_feeling with
+    | joy -> printfn "I'm joyful"
+    | fear -> printfn "I'm fearful"
+    | anger -> printfn "I'm angry"
+ 
+// ----- OPTIONS -----
+// Option is used when a function may not return 
+// a value
+ 
+let option_stuff() = 
+ 
+    // Divide unless they try to divide by 0
+    let divide x y =
+        match y with
+        | 0 -> None
+        | _ -> Some(x/y)
+ 
+    if (divide 5 0).IsSome then
+        printfn "5 / 0 = %A" ((divide 5 0).Value)
+    elif (divide 5 0).IsNone then
+        printfn "Can't Divide by Zero"
+    else
+        printfn "Something Happened"
+ 
+// ----- TUPLES -----
+// Comma separated list of values of any type
+ 
+let tuple_stuff() =
+    let avg (w, x, y, z) : float =
+        let sum = w + x + y + z
+        sum / 4.0
+ 
+    printfn "Avg : %f" (avg (1.0,2.0,3.0,4.0))
+ 
+    let my_data = ("Derek", 42, 6.25)
+ 
+    // Get data from tuple but ignore height
+    let (name, age, _) = my_data
+    printfn "Name : %s" name
+ 
+// ----- RECORDS -----
+// Lists of key value pairs for creating custom types
+ 
+type customer = 
+        { Name : string;
+        Balance : float}
+ 
+let record_stuff() =
+ 
+    let bob = { Name = "Bob Smith"; Balance = 101.50 }
+    printfn "%s owes us %.2f" bob.Name bob.Balance
+ 
+// ----- SEQUENCES -----
+// Sequences are infinite data structures that 
+// aren't defined until needed
+ 
+let seq_stuff() =
+    // You can have a list made from a range
+    let seq1 = seq { 1 .. 100 }
+ 
+    // You can use a range of evens
+    let seq2 = seq { 0 .. 2 .. 50 }
+ 
+    // Descending sequence
+    let seq3 = seq { 50 .. 1 }
+ 
+    // If you try to print it is abbreviated
+    printfn "%A" seq2
+ 
+    // Print the whole list
+    Seq.toList seq2 |> List.iter (printfn "Num : %i")
+ 
+    // Test if a number is prime
+    let is_prime n =
+        let rec check i =
+            i > n/2 || (n % i <> 0 && check (i + 1))
+        check 2
+ 
+    // If is_prime returns true then add to the sequence
+    let prime_seq = seq { for n in 1..500 do if is_prime n then yield n }
+ 
+    printfn "%A" prime_seq
+ 
+    // Print the whole list of primes
+    Seq.toList prime_seq |> List.iter (printfn "Prime : %i")
+ 
+// ----- MAPS -----
+// Maps are collections of key value pairs
+ 
+let map_stuff() =
+    // Create a map
+    let customers =
+        // Create empty map
+        Map.empty. 
+            // Add key values to map
+            Add("Bob Smith", 100.50).
+            Add("Sally Marks", 50.25)
+ 
+    // Number of customers
+    printfn "# of Customers %i" customers.Count
+ 
+    // Find Bob Smiths balance
+    let cust = customers.TryFind "Bob Smith"
+    match cust with
+    | Some x -> printfn "Balance : %.2f" x
+    | None -> printfn "Not Found"
+ 
+    // List customer names and balances
+    printfn "Customers: %A" customers
+ 
+    // Test if key exists
+    if customers.ContainsKey "Bob Smith" then
+        printfn "Bob Smith was Found"
+ 
+    // Get value of key
+    printfn "Bobs Balance : %.2f" customers.["Bob Smith"]
+ 
+    // Remove an item
+    let custs2 = Map.remove "Sally Marks" customers
+    printfn "# of Customers %i" custs2.Count
+ 
+// ----- GENERICS -----
+// Generics allow you to use any data type in a function
+ 
+let add_stuff<'T> x y =
+        printfn "%A" (x + y)
+ 
+let generic_stuff() =
+        
+    // add_stuff<float> 5.5 2.4
+    add_stuff<int> 5 2
+ 
+// ----- EXCEPTION HANDLING -----
+// Allows use to catch errors
+ 
+let exp_stuff() =
+    let divide x y =
+        try
+            printfn "%.2f / %.2f = %.2f" x y (x / y)
+        with
+            | :? System.DivideByZeroException -> printfn "Can't Divide by Zero"
+ 
+    divide 5.0 4.0
+ 
+// ----- STRUCTS -----
+// Structs allow you to create data types
+ 
+type Rectangle = struct
+    val Length : float
+    val Width : float
+ 
+    new (length, width) =
+        {Length = length; Width = width}
+end
+ 
+let struct_stuff() =
+    
+    let area(shape: Rectangle) =
+        shape.Length * shape.Width
+ 
+    let rect = new Rectangle(5.0, 6.0)
+ 
+    let rect_area = area rect
+ 
+    printfn "Area : %.2f" rect_area
+    
+// ----- CLASSES -----
+// Classes model real world objects by
+// defining their attributes (fields) and
+// capabilities (methods)
+ 
+type Animal = class
+   val Name : string
+   val Height : float
+   val Weight : float
+ 
+   new (name, height, weight) =
+      { Name = name; Height = height; Weight = weight;}
+ 
+   member x.Run =
+      printfn "%s Runs" x.Name
+end
+ 
+// ----- INHERITANCE -----
+ 
+// Define the subclass Dog
+type Dog(name, height, weight) = 
+    inherit Animal(name, height, weight)
+ 
+    member x.Bark =
+        printfn "%s Barks" x.Name
+ 
+let class_stuff() =
+    let spot = new Animal("Spot", 20.5, 40.5)
+ 
+    spot.Run
+ 
+    let bowser = new Dog("Bowser", 20.5, 40.5)
+ 
+    // Subclasses get every field and method
+    // in the super class plus new ones
+    bowser.Run
+    bowser.Bark
+ 
+hello()
+ 
+bind_stuff()
+ 
+do_funcs()
+ 
+do_math()
+ 
+string_stuff()
+ 
+loop_stuff()
+ 
+cond_stuff()
+ 
+list_stuff()
+ 
+enum_stuff()
+ 
+option_stuff()
+ 
+tuple_stuff()
+ 
+record_stuff()
+ 
+seq_stuff()
+ 
+map_stuff()
+ 
+generic_stuff()
+ 
+exp_stuff()
+ 
+struct_stuff()
+ 
+class_stuff()
+ 
+// Keeps the console open
+// Ignore says to ignore the input
+System.Console.ReadKey() |> ignore
+
+}}}
+
+interactive f# repl(**): 'dotnet fsi'
+  https://learn.microsoft.com/en-us/dotnet/fsharp/tools/fsharp-interactive/
+    https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options?source=recommendations
+
+
+https://learn.microsoft.com/en-us/dotnet/fsharp/style-guide/?source=recommendations __ __  #+Download Study whole site's Txt-content **(**(!!))
+--
+https://www.youtube.com/@bengobeil933/videos
+ https://www.youtube.com/watch?v=gwEFDUxIveY  #'Best Resources to Learn F# in 2021'
+search: f# gui library linux
+https://fsharp.org/use/desktop-apps/  #Avalonia
+  xaml (=windows)
+https://github.com/fsprojects/Avalonia.FuncUI
+  https://fsharp.org/community/projects/  #Paket, Fake, FsharpLint *
+https://www.youtube.com/watch?v=Teak30_pXHk&list=PLEoMzSkcN8oNiJ67Hd7oRGgD1d4YBxYGC  #System Crafters 5 Tuts
+
+https://learn.microsoft.com/en-us/dotnet/fsharp/style-guide/?source=recommendations
+https://learn.microsoft.com/en-us/dotnet/fsharp/tools/development-tools  #linting etc
+
+
+https://www.youtube.com/watch?v=SvOInBxPL30&t=725s {{{
+
+00:00 - Intro
+07:09 - .fs vs.fsx files
+    https://www.youtube.com/watch?v=SvOInBxPL30&t=725s
+07:56 - Let binding
+    09:29 - Type inference
+    09:16 - Whitespace delimitation
+    09:58 - F# Interactive
+        13:32 - it
+    11:32 - Type annotations
+    12:31 - Primitives
+    13:18 - Mutable/Assignment
+16:36 - Functions
+    18:39 - Expressions vs Statements
+    20:41 - Lambda expressions
+    21:45 - Currying/Baking-In 
+    24:59 - Partial Application
+    30:28 - Prefix vs Infix operator notation
+    28:34 - Function composition
+        35:19 - Pipe operator
+        38:40 - Composition operator 
+        39:59 - Defining new operators
+42:25  -  Files, namespaces and modules
+    46:08 - Ordering definitions
+    46:42 - Ordering Files
+    47:23 - Number of files/file size rant F# vs OOP
+    50:17 - Access Control
+51:10 - Hello World/Main function
+    53:40 - Unit
+    56:26 - Printing to Console
+    58:21 - Design time, compile time and runtime errors
+    1:03:24 - Eager evaluation vs lazy evaluation
+1:09:28  - Type system
+    1:09:59 - Product types
+        1:10:21 - Record type
+        1:20:35 - Tuple 
+        1:22:54  - Anonymous records
+    1:25:07 - Sum types
+        1:25:36 - Discriminated Unions
+1:30:35 - Pattern Matching
+    1:33:37 - The "function" keyword
+    1:52:32 - Pattern matching with let and fun -- 
+1:58:52 - Option type
+    2:01:38 - Domain Errors vs Exceptions
+2:04:36 - Generics and SRTP
+    2:06:16 and 2:48:11- Inline keyword
+    2:07:05 - Type members
+2:10:20 - Collections
+    2:10:39 - Arrays
+    2:12:41 - Lists
+    2:18:18 - Collection libraries
+        2:18:18 - List.head
+        2:20:55 - Recursion / List.iter
+        2:26:28 - List.map
+        2:29:03 - List.fold
+        2:31:10 - List.reduce
+        2:33:18 - List.sum
+        2:34:13 - Bind
+2:38:42 - Exception handling
+    2:43:23 - Results / Error Modeling
+2:45:30 - Outro
+
+}}}
+
+}}}
+

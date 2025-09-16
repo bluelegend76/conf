@@ -1,0 +1,13 @@
+vim:fdm=marker:sw=2:syn=:
+
+@b(ump):   3yyp}ddzc3-   #copy last q&a-post + bump i-number 1
+@s(plit):  o----yypO         #split (=put ---- + blank line + ----)
+
+----
+1
+{{{
+    
+    --
+    refdokid-p1
+    }}}
+
