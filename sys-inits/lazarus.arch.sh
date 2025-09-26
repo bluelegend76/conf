@@ -58,7 +58,11 @@ cd yay
 makepkg -si
 
 cd
-git clone https://github.com/bluelegend76/bluelegend76.git
+git clone https://github.com/bluelegend76/conf.git
+mkdir ~/repos/
+git clone https://github.com/bluelegend76/vtouch-vanki.git ~/repos/vtouch-vanki/
+
+sudo pacman -S noto-fonts noto-fonts-cjk && fc-cache -fv
 
 cd
 yay -Syu dropbox
@@ -220,6 +224,7 @@ sudo pacman -S renameutils
 #acpi rar
 sudo pacman -S unrar
 sudo pacman -S scrot tree
+sudo pacman -S unzip # zip
 sudo pacman -S tre
   # i.e. includes agrep
 silversearcher-ag
@@ -249,6 +254,7 @@ sudo pacman -S vlc mpv audacious
 # +playerctl ?
 gtick
 sudo pacman -S lilypond
+yay -S mma
 sudo pacman -S frescobaldi
 sudo pacman -S ardour
 sudo pacman -S rosegarden
