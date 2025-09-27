@@ -1,4 +1,5 @@
-
+# vim:fdm=marker:
+# TODO ____
 # ========================================================
 # ---------------- "Let There be ..."  -------------------
 # ========================================================
@@ -16,8 +17,6 @@
 # Main/Daily updating via Pacman/Yay:
 # sudo pacman -Syu; yay -Syu
 
-# ____
-#
 # Format external drive to ExFat (Lin/Win/Mac compatability):
 # sudo pacman -S exfat-utils
 # sudo mkfs.exfat /dev/sdb1
@@ -58,9 +57,10 @@ cd yay
 makepkg -si
 
 cd
-git clone https://github.com/bluelegend76/conf.git
+git clone https://github.com/bluelegend76/conf.git ~/conf/
 mkdir ~/repos/
 git clone https://github.com/bluelegend76/vtouch-vanki.git ~/repos/vtouch-vanki/
+git clone https://github.com/bluelegend76/scripts.git ~/repos/scripts/
 
 sudo pacman -S noto-fonts noto-fonts-cjk && fc-cache -fv
 
@@ -115,18 +115,21 @@ read -p "Start nm-tray(=applet) and make sure Network is up and Connected. +Pres
 sudo pacman -S noto-fonts-cjk
 # sudo pacman -S ttf-liberation ttf-japanese-gothic noto-fonts-cjk
 
-# TODO: CHANGE MAJOR CONFIG-PATH TO GITHUB/BLUELEGEND76
+# ____
+# TODO TODO: CHANGE MAJOR CONFIG-PATH TO GITHUB/BLUELEGEND76
 echo "Now linking up bashrc, inputrc: ..."
 rm -f ~/.bashrc ~/.inputrc ~/.profile
 # ln -s ~/Dropbox/config/.bashrc
 # ln -s ~/Dropbox/config/.inputrc
 # ln -s ~/Dropbox/config/.profile
-ln -s ~/bluelegend76/.bashrc
-ln -s ~/bluelegend76/.inputrc
-ln -s ~/bluelegend76/.profile
+ln -s ~/conf/.bashrc
+ln -s ~/conf/.inputrc
+ln -s ~/conf/.profile
 # For Keyb3: Alt-gr + Lessthan/GreaterThan
 ## ln -s ~/Dropbox/config/keymap/.keyb3_altgr-lessgreater.xmodmap
 # Frescobaldi, Isabelle Prover (etc)  Interface Color-Theme CSS/Style 
+ln -s ~/repos/scripts/ ~/.local/bin/scripts/
+find ~/repos/scripts/ -maxdepth 1 -type f -exec ln -s "{}" ~/.local/bin/ \;
 
 # echo "Linking up flux-settings: ..."
 # read -p "[Tip Fluxbox: Good menus theme ='Squared Blue': "
@@ -172,18 +175,18 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # rm -f ~/.vim/{colors,plugin,spell}/
 # OR, USE RMDIR(!!)
 # OR(!!!!) OPEN .VIM-DIR WITH THUNAR/DOLPHIN, AND REMOVE BY HAND
-ln -s ~/bluelegend76/vim/colors ~/.vim/colors  #TODO TODO
-ln -s ~/bluelegend76/vim/plugin ~/.vim/plugin
-ln -s ~/bluelegend76/vim/spell ~/.vim/spell
+ln -s ~/conf/vim/colors ~/.vim/colors  #TODO TODO
+ln -s ~/conf/vim/plugin ~/.vim/plugin
+ln -s ~/conf/vim/spell ~/.vim/spell
 
 # FIXME __ :
 echo "Now linking up vimrc and emacs inits: ..."
-ln -s ~/bluelegend76/.vimrc
+ln -s ~/conf/.vimrc
 # If using next line: Add gitignore (for Emacs system-dirs) to Git-repo
 # mkdir .emacs.d
-ln -s ~/bluelegend76/.emacs.d ~/.emacs.d
-ln -s ~/bluelegend76/.emacs.d/init.el ~/.emacs.d/init.el
-## ln -s ~/bluelegend76/.emacs.d/lilypond/ ~/.emacs.d/lilypond
+# ln -s ~/conf/.emacs.d ~/.emacs.d
+ln -s ~/conf/.emacs.d/init.el ~/.emacs.d/init.el
+## ln -s ~/conf/.emacs.d/lilypond/ ~/.emacs.d/lilypond
 
 # helix editor {{{
 #  sudo add-apt-repository ppa:maveonair/helix-editor
@@ -1393,7 +1396,7 @@ yay -S mongodb-compass
 #   https://go.dev/doc/install
 # }}}
 sudo pacman -S supercollider sc3-plugins
-scide ~/bluelegend76/scoll_scel-install.scd &
+scide ~/conf/scoll_scel-install.scd &
 # TODO: START/RUN EMACS WITH:
 #   emacs -f sclang-start
 #     sclang-start

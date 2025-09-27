@@ -30,6 +30,8 @@ ln -s ~/conf/termux/.emacs.d/ ~/.emacs.d/
  ....
 ln -s ~/conf/vim/colors/ ~/.vim/colors/
 ln -s ~/conf/vim/spell/ ~/.vim/spell/
+ln -s ~/conf/termux/termux.properties ~/.termux/termux.properties
+# termux-reload-settings
 ## 'for each color-scheme in vim/ (in conf), check:'
 ##   - does colorscheme exist
 

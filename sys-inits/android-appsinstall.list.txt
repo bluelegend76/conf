@@ -5,7 +5,8 @@ clock
 Omio  __
   Termux  __
 FDroid  __
-  SyncThing Fork  __
+Termux:API  __
+  SyncThing Fork  __  [+upgrade to 2.0]
   vim-touch  __
 cx file-explorer  __
 @voice, @voice-license,  _  webpage read
