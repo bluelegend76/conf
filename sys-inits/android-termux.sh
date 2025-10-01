@@ -126,7 +126,7 @@ TODO: Block to softlink in config-files
 
 set fdm=indent syntax=vim
 # To be able to run "+p etc
-pkg install termux-api -y
+pkg install termux-tools termux-api -y
 
         " Emulate the "+y (yank) command
         vmap <C-c> "*y:w !termux-clipboard-set<CR>

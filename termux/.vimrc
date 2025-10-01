@@ -298,3 +298,30 @@ noremap <leader>tr :Trans
 " vnoremap <silent> <leader>to :TransSelectDirection<CR>
 " TranslateShell End -----------
 
+"" " Set the default direction for all files with the 'markdown' filetype
+"" autocmd FileType markdown let g:trans_default_direction = ":en+is+da"
+
+" TODO: Set the default direction only for files whose names match a specific pattern
+" autocmd BufReadPost *.isl.txt let g:trans_default_direction = ":en+is+da"
+" autocmd BufReadPost *isl*.freq.txt let g:trans_default_direction = ":is"
+" ":de"
+" ":es"
+" ":ru"
+" ":uk" " Ukrainian
+    " is|fo(=faeroese), da, no, la(tin), el(=greek)
+"let g:trans_default_direction = ":ar+zh-CN+yue+zh-TW+ja+fa+he+hi+ur+tr+af"
+    " arabic, zh-CN(chin), ja(p), fa(rsi)|prs(=dari), he(br), hi(n)+ur, tr(=turk), af(rikaans)
+    " yua(=yucatec maya),  =BING
+"let g:trans_default_direction = ":fi+cy+ga+gd+pl"
+    " fi(nnish), cy(=welsh), ga(=ir),  gd(=scots gaelic), pl(=polish)
+"let g:trans_default_direction = ":bo+ms+sa+ku+ckb"
+    " ms(=malay), sa(nskrit), yue(=cantonese), zh-TW ku/ckb  [=kurmanji | sorani], bo(=tibetan)
+"let g:trans_default_direction = ":ka+hy+eu+hu+ps+qu"
+    " ka+hy (georgian+armenian), eu(skara), hu(ngarian), chr(=cherokee), qu(echua), ps(=pashto)
+"let g:trans_default_direction = ":" bengali, punjabi, kannada, ta(mil),  telugu, malayalam  marathi, gu(jarati)
+    " bengali, punjabi, kannada, ta(mil),  telugu, malayalam  marathi, gujarati
+"let g:trans_default_direction = ":mi+gn+mg+tl"
+    " mi(=maori) iu(=inuktut syllabary) kl(=kalaallisut)  gn(=guarani)????,  mg?(=malagasy)  tl(=tagalog)
+"let g:trans_default_direction = ":yo+xh+zu+yi+eo"
+    " yo(ruba), xh(osa), zu(lu) yi(ddish) ie(=interlingue), eo(=esperanto)
+
