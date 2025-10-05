@@ -1,6 +1,10 @@
+" vim:fdm=indent:
+" __
+
 
 " ___TranslShell_Langs
 let mapleader = ","
+
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -28,7 +32,6 @@ Plug 'tpope/vim-surround'
 " The plugin for translate-shell
 " Plug 'soimort/translate-shell'
 Plug 'echuraev/translate-shell.vim'
-
 
 Plug 'srcery-colors/srcery-vim'
 "Plugin 'flazz/vim-colorschemes'
@@ -69,39 +72,39 @@ call plug#end()
 
 
 " " --- FZF Plugin Configuration ---
-" " Disable the preview window to save space on small screens
-" let g:fzf_preview_window = []
-" 
-" " Use a new window for fzf (e.g., :Buffers) to make it full-screen
-" " Alternative: let g:fzf_layout = { 'window': 'enew' }
-" let g:fzf_layout = { 'window': 'new' }
-" 
-" 
-" " --- Custom FZF Buffers Command (show only filenames) ---
-" " This section replaces the default :Buffers command behavior
-" function! s:buffers_filename()
-"   let list = []
-"   for n in range(1, bufnr('$'))
-"     if buflisted(n)
-"       let filename = fnamemodify(bufname(n), ':t')
-"       let fullpath = bufname(n)
-"       " Add both the filename and full path to the list, separated by a unique delimiter
-"       call add(list, printf('%s %s', filename, fullpath))
-"     endif
-"   endfor
-"   return list
-" endfunction
-" 
-" " Create a custom Fzf command to use the function above
-" command! BuffersFilename call fzf#run({
-"       \ 'source': sort(s:buffers_filename()),
-"       \ 'sink': 'e',
-"       \ 'options': '--delimiter=" " --nth=1',
-"       \ 'height': '50%',
-"       \ })
-" 
-" " Map a shortcut to the new command
-" nnoremap <leader>b :BuffersFilename<CR>
+    " " Disable the preview window to save space on small screens
+    " let g:fzf_preview_window = []
+    " 
+    " " Use a new window for fzf (e.g., :Buffers) to make it full-screen
+    " " Alternative: let g:fzf_layout = { 'window': 'enew' }
+    " let g:fzf_layout = { 'window': 'new' }
+    " 
+    " 
+    " " --- Custom FZF Buffers Command (show only filenames) ---
+    " " This section replaces the default :Buffers command behavior
+    " function! s:buffers_filename()
+    "   let list = []
+    "   for n in range(1, bufnr('$'))
+    "     if buflisted(n)
+    "       let filename = fnamemodify(bufname(n), ':t')
+    "       let fullpath = bufname(n)
+    "       " Add both the filename and full path to the list, separated by a unique delimiter
+    "       call add(list, printf('%s %s', filename, fullpath))
+    "     endif
+    "   endfor
+    "   return list
+    " endfunction
+    " 
+    " " Create a custom Fzf command to use the function above
+    " command! BuffersFilename call fzf#run({
+    "       \ 'source': sort(s:buffers_filename()),
+    "       \ 'sink': 'e',
+    "       \ 'options': '--delimiter=" " --nth=1',
+    "       \ 'height': '50%',
+    "       \ })
+    " 
+    " " Map a shortcut to the new command
+    " nnoremap <leader>b :BuffersFilename<CR>
  
 
 " Here: Block for overriding sensible-settings
@@ -110,7 +113,41 @@ call plug#end()
 " set shiftwidth=4
 " set tabstop=4
 
-set autochdir
+" ?? set autochdir
+
+
+" __
+colorscheme ron
+nnoremap <leader>C :colors <c-d>
+
+" ==============================================================
+" TODO TODO: ADD BASIC PERSONAL MAPPINGS FROM .VIMRC DESKTOP 2.0
+" (e.g. L, H, gL, gH,  etc)
+" ==============================================================
+
+set scrolloff=1
+
+noremap tt zt
+
+" TODO: MAY WANT TO USE PGUP/PGDN INSTEAD
+nnoremap ]] :bn<CR>
+nnoremap [[ :bp<CR>
+" TODO: +HOME/END FOR :bfirst/:blast[??]
+
+" 'KÖR RADEN' = T.EX. EVINCE -P  OSV  ,ex/,ru
+" nnoremap <leader>ru ^yg_:!<C-R>"<CR><CR>
+" nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
+nnoremap <leader>R ^yg_:!<C-R>"<CR><CR>
+nnoremap <leader>E ^yg_:<C-R>"<CR><CR>
+vnoremap <leader>R g_y:!<C-R>"<CR><CR>
+vnoremap <leader>E g_y:<C-R>"<CR><CR>
+
+inoremap zz <Esc>
+inoremap Zz <Esc>
+inoremap ZZ <Esc>
+inoremap zx <Esc>
+inoremap Zx <Esc>
+inoremap ZX <Esc>
 
 
 " TranslateShell Start -----------
