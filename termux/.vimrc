@@ -138,6 +138,7 @@ nnoremap <PageUp> :bp<CR>
 " nnoremap ]] :bn<CR>
 " nnoremap [[ :bp<CR>
 " TODO: +HOME/END FOR :bfirst/:blast[??]
+nnoremap <End> :Buffers<CR>
 
 " 'KÖR RADEN' = T.EX. EVINCE -P  OSV  ,ex/,ru
 " nnoremap <leader>ru ^yg_:!<C-R>"<CR><CR>
