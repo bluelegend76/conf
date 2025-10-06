@@ -6,6 +6,8 @@
 let mapleader = ","
 
 
+" TODO: ADD 'THE TWO GIT-RELATED PLUGINS'  __ __
+
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 

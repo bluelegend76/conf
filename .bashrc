@@ -116,7 +116,7 @@ fi
 
 
 #DRS-ADDITIONS
-export PATH=$PATH:/home/bluelegend/bin:/home/bluelegend/bin/scripts:/home/bluelegend/bin/scripts/legacy:/home/bluelegend/bin/scripts/at:/home/bluelegend/bin/scripts/at/init:/home/bluelegend/bin/scripts/at/students:/opt:/opt/v:/opt/jetbrains:/home/bluelegend/.local/bin/
+export PATH=$PATH:$HOME/repos/at:$HOME/repos/init:/home/bluelegend/bin:/home/bluelegend/bin/scripts:/home/bluelegend/bin/scripts/legacy:/home/bluelegend/bin/scripts/at:/home/bluelegend/bin/scripts/at/init:/home/bluelegend/bin/scripts/at/students:/opt:/opt/v:/opt/jetbrains:/home/bluelegend/.local/bin/
 export PATH=$PATH:$(which tlmgr)
 export PATH=$PATH:/home/bluelegend/scripts
 
