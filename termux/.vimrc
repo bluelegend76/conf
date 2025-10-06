@@ -126,13 +126,20 @@ nnoremap <leader>C :colors <c-d>
 " ==============================================================
 
 set scrolloff=1
+" Mappings-timeout in milliseconds
+" (default =1000)
+set tm=1500
 
 noremap tt zt
 
 " TODO: MAY WANT TO USE PGUP/PGDN INSTEAD
-nnoremap ]] :bn<CR>
-nnoremap [[ :bp<CR>
+nnoremap <PageDown> :bn<CR>
+nnoremap <PageUp> :bp<CR>
+" nnoremap ]] :bn<CR>
+" nnoremap [[ :bp<CR>
 " TODO: +HOME/END FOR :bfirst/:blast[??]
+nnoremap <Home> :bfirst<CR>
+nnoremap <End> :Buffers<CR>
 
 " 'KÖR RADEN' = T.EX. EVINCE -P  OSV  ,ex/,ru
 " nnoremap <leader>ru ^yg_:!<C-R>"<CR><CR>
