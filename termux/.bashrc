@@ -84,10 +84,12 @@ termux_key_update() {
     pkg update
 }
 
+
 # PATH ----
 export PATH="$HOME/conf:$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Add specific project-directories from the repos-folder
-# export PATH="$HOME/repos//bin:$PATH"
-# export PATH="$HOME/repos//scripts:$PATH"
+export PATH="$HOME/repos/at:$HOME/repos/at/init:$PATH"
+# export PATH="$HOME/repos/bin:$PATH"
+# export PATH="$HOME/repos/utils:$PATH"
 

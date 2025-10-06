@@ -1,5 +1,20 @@
 export contacts
 
+# ANDROID APPINSTALL-LIST [####]
+#   Bixby _
+# Loop Player
+#
+# 'Specials' (i.e. needs particular setup betw. phone aux / desktop:
+#     Signal
+#     Authenticator
+#       Nordea
+#     Mobilt BankId
+#     Keepass2Android
+#     Dropbox
+#     ----
+#     Discord
+#     Steam
+
 clock
 ----
 Omio  __

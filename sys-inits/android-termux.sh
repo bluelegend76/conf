@@ -2,22 +2,6 @@
 # vim:fdm=indent:
 # Android Termux setup
 
-# ANDROID APPINSTALL-LIST [####]
-#   Bixby _
-# Loop Player
-#
-# 'Specials' (i.e. needs particular setup betw. phone aux / desktop:
-#     Signal
-#     Authenticator
-#       Nordea
-#     Mobilt BankId
-#     Keepass2Android
-#     Dropbox
-#     ----
-#     Discord
-#     Steam
-
-
 git config --global user.email "trulystrange@gmail.com"
 git config --global user.name "Daniel Albertsson"
 git clone https://github.com/bluelegend76/conf.git
