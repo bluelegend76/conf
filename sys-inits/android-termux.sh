@@ -15,13 +15,14 @@ ln -s ~/conf/termux/.emacs.d/ ~/.emacs.d/
 ln -s ~/conf/vim/colors/ ~/.vim/colors/
 ln -s ~/conf/vim/spell/ ~/.vim/spell/
 ln -s ~/conf/termux/termux.properties ~/.termux/termux.properties
+ln -s ~/conf/termux/.tmux.conf ~/.tmux.conf  __
 mkdir ~/.local/bin
 # termux-reload-settings
 ## 'for each color-scheme in vim/ (in conf), check:'
 ##   - does colorscheme exist
 
 
-# git add . && git commit -m "Your commit message here"  ___git
+# git add . && git commit -m "Your commit message here"  _git_
 
 
 pkg install texlive-full pandoc -y  \\
