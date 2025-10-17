@@ -290,6 +290,7 @@ sudo pacman -S seq24
 sudo pacman -S soundstretch mma
 sudo pacman -S csound
 sudo pacman -S csoundqt
+sudo pacman -S faust
 # csound-plugins
 yay -S csound-blue
 # https://github.com/kunstmusik/blue/releases/download/2.9.1/blue-linux-2.9.1.zip

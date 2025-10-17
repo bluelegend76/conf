@@ -45,6 +45,7 @@ pkg install tmux -y
 pkg install fzf -y
 pkg install lilypond -y
 pkg install fluidsynth mpg123 ffmpeg cmus -y
+pkg install faust
 pkg install python -y
   pip install hy
 pkg install golang -y

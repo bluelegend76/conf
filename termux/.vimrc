@@ -134,6 +134,8 @@ set tm=1500
 
 noremap tt zt
 
+nnoremap gx yiW:termux-open <C-R>"<CR>
+
 " TODO: MAY WANT TO USE PGUP/PGDN INSTEAD
 nnoremap <PageDown> :bn<CR>
 nnoremap <PageUp> :bp<CR>
