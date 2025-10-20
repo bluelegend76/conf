@@ -307,7 +307,6 @@ sudo pacman -S kdenlive
 
 echo "Installing some media-utils, Dok/Pdf-readers, etc: ..."
 sudo pacman -S gimp gimp-plugin-gmic inkscape
-sudo pacman -S 
 #--
 sudo pacman -S obsidian  #joplin
 sudo pacman -S scribus
@@ -1037,6 +1036,7 @@ texlive-basic texlive-context
 sudo pacman -S idris
 # ¤¤ Hy Python: [sudo] pip3 install --user hy
 
+yay -S picolisp
 sudo pacman -S xmlstarlet
 # ¤¤ Xml {{{
 # in Vim:
