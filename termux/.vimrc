@@ -1,6 +1,34 @@
 " vim:fdm=indent:
 " __
 
+" TODO
+" ResetPluginMappings:
+"   unmap
+" TabConvenience:(gt/gT)
+"   GT / GTT
+" ReSourceVimrc:
+"   ,0 / ,1 / ,5 / ,3  = :source ~/.vimrc
+" FindTriggerNextMisspell:
+"   ,SS = ]szz
+"   ,S  = z=
+" ConvenienceSETTRANSLSHELLTARGETLANG:
+"   ,L(L ,LA )  @@@
+" ConvenienceFOLDTOGGLE:(za)  ****
+"    X  ×÷■¤
+" GotoNextPrev: O=C-O//C-I(JUMPS), Mark, FOLDLEVEL, Change, 
+" ----
+" GotoNextSplitPLUSMaximizeTargetSplit:
+"   ,WW
+"     @@ c-w c-w WITH MAX-FLIP
+" EqualizeSizeOfSplits:
+"   ,W
+" ----
+" OPENNEWTAB:(+split etc)
+"   GW/GF = c-w gf  GW / GS
+" SimpleVisualLineHighlighter:
+"   = when visual-line mark active
+"       up/down = vertical width stays the same
+
 
 " ___TranslShell_Langs
 let mapleader = ","
@@ -121,6 +149,7 @@ call plug#end()
 " __
 colorscheme ron
 nnoremap <leader>C :colors <c-d>
+nnoremap <leader>c :colors <c-d>
 
 " ==============================================================
 " TODO TODO: ADD BASIC PERSONAL MAPPINGS FROM .VIMRC DESKTOP 2.0

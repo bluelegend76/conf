@@ -1,6 +1,14 @@
 " TODO: Add extended _vimrc
 " TODO: Add Vundle-plugin-block
 " TODO: SWITCH TO PLUG ____
+"
+" ~/conf/.vimrc
+"   ~/Dropbox/config/.vimrc ~/conf/legacy.vimrc
+"  ~/conf/termux/.vimrc
+"  ~/conf/_vimrc
+
+" Install/Download Plug (i.e. for managing plugins)
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 let mapleader=","
 " TODO: VIM SPELL, VIM COLORS
