@@ -1,21 +1,29 @@
 " vim:fdm=indent:
 " __
 
-" TODO
+" TODO TODO
+" MAY WANT TO TRANSLATE SEVERAL/MANY
+" BINDINGS TO 'LEADER-LESS'
+" (i.e. ,LA ==> LA)
+"
 " ResetPluginMappings:
 "   unmap
-" TabConvenience:(gt/gT)
-"   GT / GTT
 " ReSourceVimrc:
 "   ,0 / ,1 / ,5 / ,3  = :source ~/.vimrc
+" TabConvenience:(gt/gT)
+"   GT / GTT
 " FindTriggerNextMisspell:
 "   ,SS = ]szz
 "   ,S  = z=
-" ConvenienceSETTRANSLSHELLTARGETLANG:
-"   ,L(L ,LA )  @@@
 " ConvenienceFOLDTOGGLE:(za)  ****
 "    X  ×÷■¤
-" GotoNextPrev: O=C-O//C-I(JUMPS), Mark, FOLDLEVEL, Change, 
+" ConvenienceSETTRANSLSHELLTARGETLANG:
+"   ,LA  @@@
+" GotoNextPrev:
+"   JUMPS O=C-O//C-I
+"   Marks
+"   FOLDLEVEL
+"   Changes
 " ----
 " GotoNextSplitPLUSMaximizeTargetSplit:
 "   ,WW
@@ -24,18 +32,18 @@
 "   ,W
 " ----
 " OPENNEWTAB:(+split etc)
-"   GW/GF = c-w gf  GW / GS
+"   GF = c-w gf  GS / GE
 " SimpleVisualLineHighlighter:
 "   = when visual-line mark active
 "       up/down = vertical width stays the same
 
 
+unmap
 " ___TranslShell_Langs
 let mapleader = ","
 
 
 " TODO: ADD 'THE TWO GIT-RELATED PLUGINS'  __ __
-
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
@@ -147,36 +155,113 @@ call plug#end()
 
 
 " __
-colorscheme ron
+colorscheme industry
 nnoremap <leader>C :colors <c-d>
 nnoremap <leader>c :colors <c-d>
-
-" ==============================================================
-" TODO TODO: ADD BASIC PERSONAL MAPPINGS FROM .VIMRC DESKTOP 2.0
-" (e.g. L, H, gL, gH,  etc)
-" ==============================================================
-
 set scrolloff=1
 " Mappings-timeout in milliseconds
 " (default =1000)
 set tm=1500
 
+" Source Vimrc
+nnoremap <leader>0 :source ~/.vimrc<CR>
+" Tab-convenience
+nnoremap <leader>1 1gt
+
+" Save file
+" +possible TODO: bufdo write
+nnoremap <leader><leader> :up<CR>
+
+" ==============================================================
+" TODO: ADD BASIC PERSONAL MAPPINGS FROM .VIMRC DESKTOP 2.0
+" (e.g. L, H, gL, gH,  etc)
+" ==============================================================
+
+" BREAK OUT of Plugin/Mapping-Mode
+nnoremap <Leader>Z :norm! 
+" preparation for setting
+"   Global (File-level Mark)
+nnoremap M :norm! m
+
 noremap tt zt
+" Simple Visual-Line Highlighter
+vnoremap <Up> kok$
+vnoremap <Down> joj$
 
-nnoremap gx yiW:!termux-open <C-R>"<CR><CR>
+" Tabs conveniance-mapping
+nnoremap GTT gt
+nnoremap GT gT
 
-" TODO: MAY WANT TO USE PGUP/PGDN INSTEAD
-nnoremap <PageDown> :bn<CR>
-nnoremap <PageUp> :bp<CR>
+" FOLD-TOGGLING
+nnoremap X za
+" --------------
+" Safe Toggle
+function! SafeFoldToggle()
+  try
+    normal! za
+  catch /^Vim\%((\a\+)\)\=:E490/
+    normal! zj
+  endtry
+endfunction
+" --------------
+nnoremap <silent> X :<C-u>call SafeFoldToggle()<CR>
+"" nnoremap <silent> <Space> :<C-u>call SafeFoldToggle()<CR>
+
+" TODO Or GX
+nnoremap GX yiW:!termux-open <C-R>"<CR><CR>
+" nnoremap gx yiW:!termux-open <C-R>"<CR><CR>
+
+" SPELLING
+" Find next misspelled word
+nnoremap <leader>SS ]szz
+" Correct word under cursor
+nnoremap <leader>S z=
+
 " nnoremap ]] :bn<CR>
 " nnoremap [[ :bp<CR>
-" TODO: +HOME/END FOR :bfirst/:blast[??]
+nnoremap <PageDown> :bn<CR>
+nnoremap <PageUp> :bp<CR>
 nnoremap <Home> :bfirst<CR>
 nnoremap <End> :Buffers<CR>
+
+" GotoNextPrev:
+" TODO: OR nnoremap
+" +Possible future TODO:
+" Switch order of navigating
+"  Changes and Marks
+"  (= S- for changes
+"   and A- for marks)
+" Jumps --
+noremap <Up> <C-O> 
+noremap <Down> <C-I> 
+" Changes/Edits/Copying --
+noremap <A-Up> ['
+noremap <A-Down> ]'
+" FOLDLEVEL ----
+nnoremap <Right> zr
+nnoremap <Left> zm
+" Marks --
+noremap <S-Up> g;
+noremap <S-Down> g,
+
+" Go to next Split, plus maximize target-split
+nnoremap <leader>WW <C-W>w<C-W>_
+" Equalize size of Splits
+nnoremap <leader>W <C-W>=
+" ----
+" Tab-follow Link
+nnoremap GF <C-W>gf
+" open new tab (on same file)
+"   GW
+nnoremap GE :tabedit<CR>
+" split (on same file)
+nnoremap GS :split<CR>
 
 " 'KÖR RADEN' = T.EX. EVINCE -P  OSV  ,ex/,ru
 " nnoremap <leader>ru ^yg_:!<C-R>"<CR><CR>
 " nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
+" TODO TODO: MAY WANT TO CHANGE BINDINGS TO
+" 'RU' AND 'EX' (*****)
 nnoremap <leader>R ^yg_:!<C-R>"<CR><CR>
 nnoremap <leader>E ^yg_:<C-R>"<CR><CR>
 vnoremap <leader>R g_y:!<C-R>"<CR><CR>
@@ -188,6 +273,9 @@ inoremap ZZ <Esc>
 inoremap zx <Esc>
 inoremap Zx <Esc>
 inoremap ZX <Esc>
+
+" Set translate-shell transation-language
+nnoremap <leader>LA :let g:trans_default_direction = ":en+sv
 
 
 " TranslateShell Start -----------

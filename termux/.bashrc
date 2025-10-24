@@ -1,6 +1,8 @@
 # Termux-Specific Setup and Environment
 # Termux installation-directory /data/data/com.termux/files/usr is $PREFIX
 
+set -o vi
+
 # Termux specific environment variables
 export EDITOR='vim'
 export VISUAL='vim'
