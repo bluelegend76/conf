@@ -38,7 +38,10 @@
 "       up/down = vertical width stays the same
 
 
-unmap
+" unmap
+" Reset previous/mappings from other scripts
+silent! mapclear
+silent! mapclear!
 " ___TranslShell_Langs
 let mapleader = ","
 
@@ -225,24 +228,33 @@ nnoremap <Home> :bfirst<CR>
 nnoremap <End> :Buffers<CR>
 
 " GotoNextPrev:
+" TODO for VIMRC LINUX:
+" up/down = g;/g,
+" rt/left = fdl
+" s-rt/s-left = vis
+"   (v)rt/left = next/prev. vis
+" /-Search:
+" - REPORT NUM. OF MATCHES
+"   DIRECTLY ON SEARCH(=Enter)  ******
+"
 " TODO: OR nnoremap
 " +Possible future TODO:
 " Switch order of navigating
 "  Changes and Marks
 "  (= S- for changes
 "   and A- for marks)
-" Jumps --
-noremap <Up> <C-O> 
-noremap <Down> <C-I> 
 " Changes/Edits/Copying --
-noremap <A-Up> ['
-noremap <A-Down> ]'
+noremap <Up> g;
+noremap <Down> g,
 " FOLDLEVEL ----
 nnoremap <Right> zr
 nnoremap <Left> zm
 " Marks --
-noremap <S-Up> g;
-noremap <S-Down> g,
+noremap <A-Up> [`
+noremap <A-Down> ]`
+" Jumps --
+noremap <S-Up> <C-O> 
+noremap <S-Down> <C-I> 
 
 " Go to next Split, plus maximize target-split
 nnoremap <leader>WW <C-W>w<C-W>_
