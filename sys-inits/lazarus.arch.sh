@@ -122,9 +122,10 @@ rm -f ~/.bashrc ~/.inputrc ~/.profile
 # ln -s ~/Dropbox/config/.bashrc
 # ln -s ~/Dropbox/config/.inputrc
 # ln -s ~/Dropbox/config/.profile
-ln -s ~/conf/.bashrc
-ln -s ~/conf/.inputrc
-ln -s ~/conf/.profile
+ln -s ~/conf/.bashrc ~/.bashrc
+ln -s ~/conf/.inputrc ~/.inputrc
+ln -s ~/conf/.profile ~/.profile
+## ln -s ~/SyncThing/config/.viminfo ~/.viminfo
 # For Keyb3: Alt-gr + Lessthan/GreaterThan
 ## ln -s ~/Dropbox/config/keymap/.keyb3_altgr-lessgreater.xmodmap
 # Frescobaldi, Isabelle Prover (etc)  Interface Color-Theme CSS/Style 

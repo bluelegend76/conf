@@ -301,6 +301,8 @@ nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
 " nnoremap <leader>gi viWy:!gimp <C-R>" &<CR><CR>
 "" open with gvim
 " nnoremap <leader>gm viWy:!gvim <C-R>"<CR><CR>
+"" open with Emacs
+" nnoremap <leader>em viWy:!emacs <C-R>" &<CR><CR>
 "" open with timidity**** +TEMPOMARKERING
 " nnoremap <leader>ti ^f/viW"tyWyiw:!timidity -T <C-R>" <C-R>t <CR><CR>
 "" open with timidity** (=enkel)

@@ -191,7 +191,7 @@ nnoremap <Leader>Z :norm!
 "   Global (File-level Mark)
 nnoremap M :norm! m
 
-noremap tt zt
+noremap tt zt | noremap ZT zt
 " Simple Visual-Line Highlighter
 vnoremap <C-Up> kok$
 vnoremap <C-Down> joj$
@@ -215,7 +215,6 @@ endfunction
 nnoremap <silent> X :<C-u>call SafeFoldToggle()<CR>
 "" nnoremap <silent> <Space> :<C-u>call SafeFoldToggle()<CR>
 
-" TODO Or GX
 nnoremap GX yiW:!termux-open <C-R>"<CR><CR>
 " nnoremap gx yiW:!termux-open <C-R>"<CR><CR>
 
@@ -231,6 +230,8 @@ nnoremap <PageDown> :bn<CR>
 nnoremap <PageUp> :bp<CR>
 nnoremap <Home> :bfirst<CR>
 nnoremap <End> :Buffers<CR>
+" TODO 2025: MAY WANT TO ADD SOME MORE
+" (I.E. TABLAST, BUFFERLAST, ETC)
 
 " GotoNextPrev:
 " TODO for VIMRC LINUX:
@@ -260,6 +261,11 @@ noremap <A-Down> ]`
 " Jumps --
 noremap <S-Up> <C-O> 
 noremap <S-Down> <C-I> 
+
+" TODO: MOVE FORWARD/BACK BETW.
+" - Selections
+" - Searches
+"  ....
 
 " Go to next Split, plus maximize target-split
 nnoremap <leader>WW <C-W>w<C-W>_
