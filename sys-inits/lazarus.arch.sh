@@ -181,7 +181,7 @@ ln -s ~/conf/vim/spell ~/.vim/spell
 
 # FIXME __ :
 echo "Now linking up vimrc and emacs inits: ..."
-ln -s ~/conf/.vimrc
+ln -s ~/conf/.vimrc ~/.vimrc
 # If using next line: Add gitignore (for Emacs system-dirs) to Git-repo
 # mkdir .emacs.d
 # ln -s ~/conf/.emacs.d ~/.emacs.d

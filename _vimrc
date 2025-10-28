@@ -1,4 +1,5 @@
 let mapleader=","
+" __
 " IDEAS:
 "  TODO: DOT-COMMAND FOR VMARKED LINES [*****]
 " TODO: TAG MARKED SENTENCE WITH EMPIRE-STYLE TAGS  v_n v_N (+numbers) v_t v_T (etc/and others)
@@ -15,6 +16,73 @@ let mapleader=","
 " TODO: VIM SPELL, VIM COLORS
 " INVESTIGATE: INSTALLING AND USING VUNDLE/PLUG FOR HANDLING VIM-PLUGINS
 " TODO: ADD ,et : go to top + set setting/run ex-line at top
+
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" The sensible defaults plugin
+Plug 'tpope/vim-sensible'
+
+" Some good and interesting plugins to install
+" The default plugin for syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
+" Allows you to search for visual selections
+Plug 'thinca/vim-visualstar'
+
+" A fast fuzzy file finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Enhance netrw for file browsing
+Plug 'tpope/vim-vinegar'
+
+" A great plugin for surrounding text with quotes, brackets, etc.
+Plug 'tpope/vim-surround'
+
+" The plugin for translate-shell
+" Plug 'soimort/translate-shell'
+Plug 'echuraev/translate-shell.vim'
+
+Plug 'srcery-colors/srcery-vim'
+"Plugin 'flazz/vim-colorschemes'
+" TODO TODO: https://github.com/MaxMEllon/vim-jsx-pretty
+" TODO TODO: https://github.com/mlaursen/vim-react-snippets
+" Plugin 'mattn/emmet-vim'
+" TODO https://github.com/reasonml-editor/vim-reason-plus
+" Plugin 'rescript-lang/vim-rescript'
+"Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'vim-latex/vim-latex'
+" Plugin 'instant-markdown/vim-instant-markdown'
+    " Plugin 'preservim/vim-markdown'
+Plug 'elzr/vim-json'
+" Bash-support
+" ALE[!!] =Linting-plugin
+"   https://github.com/SirVer/ultisnips
+" Plugin 'vim-scripts/SyntaxComplete'
+Plug 'tpope/vim-commentary'
+Plug 'mechatroner/rainbow_csv'
+" :RainbowAlign
+" Plugin 'vimoutliner/vimoutliner'
+" Plugin 'neo4j-contrib/cypher-vim-syntax'
+" Plugin 'vim-scripts/sparql.vim'
+"Plugin 'Omer/vim-sparql'
+"Plugin 'vim-scripts/sparql.vim'
+"Plugin 'vimwiki/vimwiki'
+Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
+" Plugin 'jeetsukumaran/vim-indentwise'
+"   gc: gcc gcap v+gc :1,10Commentary :g/Todo/Commentary
+" MATCHIT(xml mm) **
+" Plugin 'LhKipp/nvim-nu'
+Plug 'hylang/vim-hy'
+" Plugin 'edwinb/idris2-vim'
+
+" Initialize plugin system
+call plug#end()
+
+
 "---- __
 colorscheme ron
 set guicursor+=a:blinkon0

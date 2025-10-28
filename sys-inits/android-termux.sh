@@ -15,6 +15,7 @@ ln -s ~/conf/termux/.emacs.d/ ~/.emacs.d/
  ....
 ln -s ~/conf/vim/colors/ ~/.vim/colors/
 ln -s ~/conf/vim/spell/ ~/.vim/spell/
+# TODO: CREATE SOFTLINK TO conf/vim/plugin
 ln -s ~/conf/termux/termux.properties ~/.termux/termux.properties
 ln -s ~/conf/termux/.tmux.conf ~/.tmux.conf  __
 mkdir ~/.local/bin

@@ -1,17 +1,85 @@
 " TODO: Add extended _vimrc
 " TODO: Add Vundle-plugin-block
 " TODO: SWITCH TO PLUG ____
+" TODO: NEW 'TRUE NORTH/NORTH STAR/COMPASS ROSE' NAVIGATOR
 "
-" ~/conf/.vimrc
-"   ~/Dropbox/config/.vimrc ~/conf/legacy.vimrc
-"  ~/conf/termux/.vimrc
-"  ~/conf/_vimrc
+" ~/conf/_vimrc
+" ~/Dropbox/config/.vimrc ~/conf/legacy.vimrc
+" ~/conf/termux/.vimrc  # plugins-list
+" ___FILESYSTEM_UTILS
+
+let mapleader=","
+let maplocalleader = "\\"
+" TODO: VIM SPELL, VIM COLORS
 
 " Install/Download Plug (i.e. for managing plugins)
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-let mapleader=","
-" TODO: VIM SPELL, VIM COLORS
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" The sensible defaults plugin
+Plug 'tpope/vim-sensible'
+
+" Some good and interesting plugins to install
+" The default plugin for syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
+" Allows you to search for visual selections
+Plug 'thinca/vim-visualstar'
+
+" A fast fuzzy file finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Enhance netrw for file browsing
+Plug 'tpope/vim-vinegar'
+
+" A great plugin for surrounding text with quotes, brackets, etc.
+Plug 'tpope/vim-surround'
+
+" The plugin for translate-shell
+" Plug 'soimort/translate-shell'
+Plug 'echuraev/translate-shell.vim'
+
+Plug 'srcery-colors/srcery-vim'
+"Plugin 'flazz/vim-colorschemes'
+" TODO TODO: https://github.com/MaxMEllon/vim-jsx-pretty
+" TODO TODO: https://github.com/mlaursen/vim-react-snippets
+" Plugin 'mattn/emmet-vim'
+" TODO https://github.com/reasonml-editor/vim-reason-plus
+" Plugin 'rescript-lang/vim-rescript'
+"Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'vim-latex/vim-latex'
+" Plugin 'instant-markdown/vim-instant-markdown'
+    " Plugin 'preservim/vim-markdown'
+Plug 'elzr/vim-json'
+" Bash-support
+" ALE[!!] =Linting-plugin
+"   https://github.com/SirVer/ultisnips
+" Plugin 'vim-scripts/SyntaxComplete'
+Plug 'tpope/vim-commentary'
+Plug 'mechatroner/rainbow_csv'
+" :RainbowAlign
+" Plugin 'vimoutliner/vimoutliner'
+" Plugin 'neo4j-contrib/cypher-vim-syntax'
+" Plugin 'vim-scripts/sparql.vim'
+"Plugin 'Omer/vim-sparql'
+"Plugin 'vim-scripts/sparql.vim'
+"Plugin 'vimwiki/vimwiki'
+Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
+" Plugin 'jeetsukumaran/vim-indentwise'
+"   gc: gcc gcap v+gc :1,10Commentary :g/Todo/Commentary
+" MATCHIT(xml mm) **
+" Plugin 'LhKipp/nvim-nu'
+Plug 'hylang/vim-hy'
+" Plugin 'edwinb/idris2-vim'
+
+" Initialize plugin system
+call plug#end()
+
+
 "---- __
 colorscheme ron
 set guicursor+=a:blinkon0
@@ -220,6 +288,8 @@ nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
 "" open word in Babel (translate)
 " nnoremap <leader>tr viwy:!firefox -new-tab http://sv.bab.la/lexikon/engelsk-svensk/<C-R>"<CR><CR>
 " nnoremap <leader>et viwy:!firefox -new-tab http://www.etymonline.com/index.php?term=<C-R>"&allowed_in_frame=0<CR><CR>
+" Open Video
+" nnoremap <leader>mp yiW:!mpv <C-R>" &<CR><CR>
 " nnoremap <leader>ac viWy:!audacity <C-R>" &<CR><CR>
 "" Image-program
 " nnoremap <leader>ri viWy:!ristretto <C-R>" &<CR><CR>
@@ -249,6 +319,7 @@ nnoremap <c-w>V <c-w>v<c-w><c-w><c-f>
 " Alt+PgUp/PgDn = Move Tab Left/Right in Tabs-List
 nnoremap <C-S-PageUp> :tabmove -1<CR> | nnoremap <C-S-PageDown> :tabmove +1<CR>
 
+" ___FILESYSTEM_UTILS
 " File-System Utilities  __
 "" GENERAL UTILITIES: RENAME
 " nnoremap <leader>mv :!mv <C-R><C-A> <C-R><C-A>

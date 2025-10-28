@@ -1,4 +1,5 @@
 " vim:fdm=indent:
+" Android/Termux .vimrc-file
 " __
 
 " TODO TODO
@@ -159,12 +160,16 @@ call plug#end()
 
 " __
 colorscheme industry
-nnoremap <leader>C :colors <c-d>
-nnoremap <leader>c :colors <c-d>
 set scrolloff=1
 " Mappings-timeout in milliseconds
 " (default =1000)
 set tm=1500
+
+" Color-scheme convenience + report current
+" NOTE: Separate 'Color-Scheme Rotator'
+"   adds scheme-flip functionality
+nnoremap <leader>C :colors <c-d>
+nnoremap <leader>CC :colors<CR>
 
 " Source Vimrc
 nnoremap <leader>0 :source ~/.vimrc<CR>
@@ -188,8 +193,8 @@ nnoremap M :norm! m
 
 noremap tt zt
 " Simple Visual-Line Highlighter
-vnoremap <Up> kok$
-vnoremap <Down> joj$
+vnoremap <C-Up> kok$
+vnoremap <C-Down> joj$
 
 " Tabs conveniance-mapping
 nnoremap GTT gt
@@ -269,15 +274,18 @@ nnoremap GE :tabedit<CR>
 " split (on same file)
 nnoremap GS :split<CR>
 
-" 'KÖR RADEN' = T.EX. EVINCE -P  OSV  ,ex/,ru
-" nnoremap <leader>ru ^yg_:!<C-R>"<CR><CR>
-" nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
-" TODO TODO: MAY WANT TO CHANGE BINDINGS TO
-" 'RU' AND 'EX' (*****)
-nnoremap <leader>R ^yg_:!<C-R>"<CR><CR>
-nnoremap <leader>E ^yg_:<C-R>"<CR><CR>
-vnoremap <leader>R g_y:!<C-R>"<CR><CR>
-vnoremap <leader>E g_y:<C-R>"<CR><CR>
+" 'RUN LINE' = e.g. 'evince -p' etc  ***
+nnoremap RU ^yg_:!<C-R>"<CR><CR>
+ nnoremap UR ^Wyg_:!<C-R>"<CR><CR>
+nnoremap EX ^yg_:<C-R>"<CR><CR>
+ nnoremap UX ^Wyg_:<C-R>"<CR><CR>
+
+ vnoremap RU g_y:!<C-R>"<CR><CR>
+ vnoremap EX g_y:<C-R>"<CR><CR>
+" nnoremap <leader>R ^yg_:!<C-R>"<CR><CR>
+" nnoremap <leader>E ^yg_:<C-R>"<CR><CR>
+" vnoremap <leader>R g_y:!<C-R>"<CR><CR>
+" vnoremap <leader>E g_y:<C-R>"<CR><CR>
 
 inoremap zz <Esc>
 inoremap Zz <Esc>
@@ -478,6 +486,7 @@ noremap <leader>tr :Trans
 "" " Set the default direction for all files with the 'markdown' filetype
 "" autocmd FileType markdown let g:trans_default_direction = ":en+is+da"
 
+" TODO TEST: =Possible to use \ to break up Lines?:
 " TODO: Set the default direction only for files whose names match a specific pattern
 " autocmd BufReadPost *.isl.txt let g:trans_default_direction = ":en+is+da"
 " autocmd BufReadPost *isl*.freq.txt let g:trans_default_direction = ":is"
