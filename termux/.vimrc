@@ -278,6 +278,8 @@ nnoremap GF <C-W>gf
 nnoremap GE :tabedit %<CR>
 " split below (on curr. file), + maximize split
 nnoremap GS :split<CR><C-W>w<C-W>_
+" split + follow file-link, + maximize curr. split
+nnoremap GB :split<CR><C-W>_gf
 " split below(=horizontal), follow file-link, + maximize split
 nnoremap GH :split<CR><C-W>w<C-W>_gf
 " GW =split + open file-link in new win (=using Tmux)
