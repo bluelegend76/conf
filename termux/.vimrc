@@ -274,11 +274,14 @@ nnoremap <leader>W <C-W>=
 " ----
 " Tab-follow Link
 nnoremap GF <C-W>gf
-" open new tab (on same file)
-"   GW
-nnoremap GE :tabedit<CR>
-" split (on same file)
-nnoremap GS :split<CR>
+" open new tab (on curr. file)
+nnoremap GE :tabedit %<CR>
+" split below (on curr. file), + maximize split
+nnoremap GS :split<CR><C-W>w<C-W>_
+" split below(=horizontal), follow file-link, + maximize split
+nnoremap GH :split<CR><C-W>w<C-W>_gf
+" GW =split + open file-link in new win (=using Tmux)
+" TODO:
 
 " 'RUN LINE' = e.g. 'evince -p' etc  ***
 nnoremap RU ^yg_:!<C-R>"<CR><CR>
