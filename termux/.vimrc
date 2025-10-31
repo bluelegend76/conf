@@ -250,14 +250,14 @@ nnoremap <End> :Buffers<CR>
 "  (= S- for changes
 "   and A- for marks)
 " Changes/Edits/Copying --
-noremap <Up> g;
-noremap <Down> g,
+noremap <A-Up> g;
+noremap <A-Down> g,
 " FOLDLEVEL ----
 nnoremap <Right> zr
 nnoremap <Left> zm
 " Marks --
-noremap <A-Up> [`
-noremap <A-Down> ]`
+noremap <Up> [`
+noremap <Down> ]`
 " Jumps --
 noremap <S-Up> <C-O> 
 noremap <S-Down> <C-I> 
