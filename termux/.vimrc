@@ -250,14 +250,14 @@ nnoremap <End> :Buffers<CR>
 "  (= S- for changes
 "   and A- for marks)
 " Changes/Edits/Copying --
-noremap <Up> g;
-noremap <Down> g,
+noremap <A-Up> g;
+noremap <A-Down> g,
 " FOLDLEVEL ----
 nnoremap <Right> zr
 nnoremap <Left> zm
 " Marks --
-noremap <A-Up> [`
-noremap <A-Down> ]`
+noremap <Up> [`
+noremap <Down> ]`
 " Jumps --
 noremap <S-Up> <C-O> 
 noremap <S-Down> <C-I> 
@@ -274,16 +274,13 @@ nnoremap <leader>W <C-W>=
 " ----
 " Tab-follow Link
 nnoremap GF <C-W>gf
-" open new tab (on curr. file)
-nnoremap GE :tabedit %<CR>
-" split below (on curr. file), + maximize split
-nnoremap GS :split<CR><C-W>w<C-W>_
-" split + follow file-link, + maximize curr. split
-nnoremap GB :split<CR><C-W>_gf
-" split below(=horizontal), follow file-link, + maximize split
-nnoremap GH :split<CR><C-W>w<C-W>_gf
-" GW =split + open file-link in new win (=using Tmux)
-" TODO:
+" open new tab (on same file)
+"   GW
+nnoremap GE :tabedit<CR>
+" split (on same file)
+nnoremap GS :split<CR>
+" Close split
+nnoremap CC <C-W>c
 
 " 'RUN LINE' = e.g. 'evince -p' etc  ***
 nnoremap RU ^yg_:!<C-R>"<CR><CR>
