@@ -44,7 +44,6 @@
 ;----
 ;; swiper (fuzzy match over lines in buffer)
 
-
 ;; Initialize package sources
 (require 'package)
 
@@ -360,6 +359,98 @@
 
 (global-set-key (kbd "<C-f7>") 'next-theme)
 ; (global-set-key (kbd "C-F8") 'next-theme)
+
+
+; ;; Silence the double theme reload prompt
+; (setq doom-theme-silently-reload t)
+
+; ;; ------------------------------------------------------------
+; ;; Org-mode visual extras – fixed for Emacs 29+ & MELPA
+; ;; ------------------------------------------------------------
+; 
+; ;; ---- 1. Mode-local visual setup --------------------------------
+; (defun emp/org-mode-setup ()
+;   "Turn on the visual niceties that belong to Org buffers."
+;   (org-indent-mode 1)
+;   (variable-pitch-mode 1)
+;   (visual-line-mode 1))
+; 
+; ;; ---- 2. Font-lock bullet replacement ---------------------------
+; (defun emp/org-replace-list-bullets ()
+;   "Replace the leading hyphen of plain lists with a bullet."
+;   (font-lock-add-keywords
+;    nil
+;    '(("^ *\\([-]\\) "
+;       (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
+; 
+; ;; ---- 3. Headline scaling ---------------------------------------
+; (defun emp/org-scale-headlines ()
+;   "Scale Org headings with Cantarell."
+;   (dolist (face '((org-level-1 . 1.2)
+;                   (org-level-2 . 1.1)
+;                   (org-level-3 . 1.05)
+;                   (org-level-4 . 1.0)
+;                   (org-level-5 . 1.0)
+;                   (org-level-6 . 1.0)
+;                   (org-level-7 . 1.0)
+;                   (org-level-8 . 1.0)))
+;     (set-face-attribute (car face) nil
+;                         :font "Cantarell"
+;                         :weight 'regular
+;                         :height (round (* 10 (cdr face))))))
+; 
+; ;; ---- 4. Fixed-pitch faces ---------------------------------------
+; (defun emp/org-fixed-pitch-faces ()
+;   "Make code, blocks, tables, etc. inherit `fixed-pitch'."
+;   (dolist (face '(org-block org-table org-code org-verbatim
+;                   org-special-keyword org-meta-line org-checkbox org-indent))
+;     (set-face-attribute face nil :inherit 'fixed-pitch))
+;   (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+;   (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+;   (set-face-attribute 'org-special-keyword nil
+;                       :inherit '(font-lock-comment-face fixed-pitch))
+;   (set-face-attribute 'org-meta-line nil
+;                       :inherit '(font-lock-comment-face fixed-pitch)))
+; 
+; ;; ---- 5. Global font defaults (SAFE) -----------------------------
+; (when (display-graphic-p)
+;   (let* ((fixed-family "Fira Code Retina")   ; ← change if describe-font shows different
+;          (var-family   "Cantarell")
+;          (fixed-font (font-spec :family fixed-family :height 260))
+;          (var-font   (font-spec :family var-family   :height 295 :weight 'regular)))
+;     (when (font-info fixed-font)  ; only set if available
+;       (set-face-attribute 'fixed-pitch nil :font fixed-font))
+;     (when (font-info var-font)
+;       (set-face-attribute 'variable-pitch nil :font var-font))))
+; 
+; ;; ---- 6. Packages ------------------------------------------------
+; (use-package org
+;   :hook (org-mode . emp/org-mode-setup)
+;   :config
+;   (setq org-ellipsis " down arrow")
+;   (emp/org-replace-list-bullets)
+;   (emp/org-scale-headlines)
+;   (require 'org-indent)
+;   (emp/org-fixed-pitch-faces))
+; 
+; (use-package org-bullets
+;   :after org
+;   :hook (org-mode . org-bullets-mode)
+;   :custom
+;   (org-bullets-bullet-list '("filled circle" "open circle" "filled dot" "open circle" "filled dot" "open circle" "filled dot")))
+; 
+; ;; ---- 7. Visual-fill-column (built-in on Emacs 29+) -------------
+; (defun emp/org-mode-visual-fill ()
+;   "Center text at 100 columns."
+;   (setq visual-fill-column-width 100
+;         visual-fill-column-center-text t)
+;   (visual-fill-column-mode 1))
+; 
+; (add-hook 'org-mode-hook #'emp/org-mode-visual-fill)
+; 
+; ;; ------------------------------------------------------------
+; ;; End of Org visual block
+; ;; ------------------------------------------------------------
 
 
 (custom-set-variables

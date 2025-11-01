@@ -168,7 +168,7 @@ set tm=1500
 " Color-scheme convenience + report current
 " NOTE: Separate 'Color-Scheme Rotator'
 "   adds scheme-flip functionality
-nnoremap <leader>C :colors <c-d>
+nnoremap <leader>cc :colors <c-d>
 nnoremap <leader>CC :colors<CR>
 
 " Source Vimrc
