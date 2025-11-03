@@ -219,6 +219,8 @@ onoremap H 0
 " Simple Visual-Line Highlighter
 vnoremap <Up> kok$k$<C-y> 
 vnoremap <Down> joj$<C-e>
+vnoremap <leader><Space> kok$k$<C-y> 
+vnoremap <leader><leader> joj$<C-e>
 vnoremap <ScrollWheelUp> kok$k$<C-y> 
 vnoremap <ScrollWheelDown> joj$<C-e>
 " Conveniance: Keep visual-mark active
