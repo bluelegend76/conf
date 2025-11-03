@@ -115,7 +115,7 @@ read -p "Start nm-tray(=applet) and make sure Network is up and Connected. +Pres
 sudo pacman -S noto-fonts-cjk
 # sudo pacman -S ttf-liberation ttf-japanese-gothic noto-fonts-cjk
 
-# ____
+# ____ 
 # TODO TODO: CHANGE MAJOR CONFIG-PATH TO GITHUB/BLUELEGEND76
 echo "Now linking up bashrc, inputrc: ..."
 rm -f ~/.bashrc ~/.inputrc ~/.profile
