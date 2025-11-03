@@ -165,6 +165,20 @@ set scrolloff=1
 " (default =1000)
 set tm=1500
 
+" TODO: Testing. Keymap1 = RightMouse
+" inoremap <RightMouse> <Esc>
+inoremap <RightMouse><RightMouse> <Esc>
+" aux Redo|Undo
+nnoremap Å <C-R>
+nnoremap <RightMouse> u
+vnoremap Å <Esc><C-R>gv
+nnoremap Ä u
+vnoremap Ä <Esc>ugv
+vnoremap <RightMouse><RightMouse> <Esc>ugv
+
+" Flip ltr/rtl:
+nnoremap RL :setlocal rightleft!<CR>
+
 " Color-scheme convenience + report current
 " NOTE: Separate 'Color-Scheme Rotator'
 "   adds scheme-flip functionality
@@ -192,9 +206,23 @@ nnoremap <Leader>Z :norm!
 nnoremap M :norm! m
 
 noremap tt zt | noremap ZT zt
+onoremap L $
+onoremap H 0
+" TODO: Possible later additions
+" noremap gL g_
+" noremap gH ^
+" onoremap gL g_    
+" onoremap gH ^
+
 " Simple Visual-Line Highlighter
-vnoremap <C-Up> kok$
-vnoremap <C-Down> joj$
+vnoremap <Up> kok$<C-e>
+vnoremap <Down> joj$<C-e>
+" Conveniance: Keep visual-mark active
+" post indentation/de-indentation
+vnoremap < <gv | vnoremap > >gv
+
+vnoremap <RightMouse> <gv | vnoremap  >gv
+vnoremap <RightMouse><LeftMouse> <gv | vnoremap  >gv
 
 " Tabs conveniance-mapping
 nnoremap GTT gt
@@ -256,8 +284,8 @@ noremap <A-Down> g,
 nnoremap <Right> zr
 nnoremap <Left> zm
 " Marks --
-noremap <Up> [`
-noremap <Down> ]`
+noremap <C-Up> [`
+noremap <C-Down> ]`
 " Jumps --
 noremap <S-Up> <C-O> 
 noremap <S-Down> <C-I> 
@@ -297,10 +325,30 @@ nnoremap EX ^yg_:<C-R>"<CR><CR>
 
 inoremap zz <Esc>
 inoremap Zz <Esc>
-inoremap ZZ <Esc>
 inoremap zx <Esc>
 inoremap Zx <Esc>
 inoremap ZX <Esc>
+" inoremap ZZ <Esc>
+
+
+" Handling Lines, Common Replacements, etc ----
+"
+" OMNI DASHIFY [Moved here from vtd.Tagging] ----
+let @c='viw"aywviw"by'
+let @e='ma:.,$s/\vasb/-/g`a'
+let @s='\zs( |\n\s*)\ze'
+let @r='@c@e'
+" DASH_NEXT / DASH_PREV
+noremap <Leader>E <Esc>f s-<Esc>
+noremap <Leader>B <Esc>k:s/\n/-/<CR>:nohl<CR>
+
+" FIXME
+" Input, a comma at the end of vmarked text
+vnoremap a <Esc>a,<Esc>gv
+
+" Join current line with next
+nnoremap <Leader>J :norm! J<CR>
+
 
 " Set translate-shell transation-language
 nnoremap <leader>LA :let g:trans_default_direction = ":en+sv
