@@ -177,7 +177,7 @@ vnoremap Ä <Esc>ugv
 " vnoremap <RightMouse><RightMouse> <Esc>ugv
 
 " Flip ltr/rtl:
-nnoremap RL :setlocal rightleft!<CR>
+nnoremap <silent> RL :setlocal rightleft!<CR>
 
 " Color-scheme convenience + report current
 " NOTE: Separate 'Color-Scheme Rotator'
@@ -219,8 +219,8 @@ onoremap H 0
 " Simple Visual-Line Highlighter
 vnoremap <Up> kok$k$<C-y> 
 vnoremap <Down> joj$<C-e>
-vnoremap <leader><Space> kok$k$<C-y> 
-vnoremap <leader><leader> joj$<C-e>
+" vnoremap <leader><Space> kok$k$<C-y> 
+" vnoremap <leader><leader> joj$<C-e>
 vnoremap <ScrollWheelUp> kok$k$<C-y> 
 vnoremap <ScrollWheelDown> joj$<C-e>
 " Conveniance: Keep visual-mark active
@@ -528,6 +528,7 @@ let g:trans_join_lines = 1
 " +win_height|width (=in characters)
 
 "" TRANSLATE-SHELL MAPS
+" heart
 nnoremap <silent> <leader>tx :Trans<CR>
 inoremap <silent> <leader>tx <ESC>:Trans<CR>
 noremap <silent> <leader>tt :Trans -brief<CR>
