@@ -167,14 +167,14 @@ set tm=1500
 
 " TODO: Testing. Keymap1 = RightMouse
 " inoremap <RightMouse> <Esc>
-inoremap <RightMouse><RightMouse> <Esc>
+" inoremap <RightMouse><RightMouse> <Esc>
 " aux Redo|Undo
 nnoremap Å <C-R>
-nnoremap <RightMouse> u
+" nnoremap <RightMouse> u
 vnoremap Å <Esc><C-R>gv
 nnoremap Ä u
 vnoremap Ä <Esc>ugv
-vnoremap <RightMouse><RightMouse> <Esc>ugv
+" vnoremap <RightMouse><RightMouse> <Esc>ugv
 
 " Flip ltr/rtl:
 nnoremap RL :setlocal rightleft!<CR>
@@ -215,14 +215,14 @@ onoremap H 0
 " onoremap gH ^
 
 " Simple Visual-Line Highlighter
-vnoremap <Up> kok$<C-e>
+vnoremap <Up> kok$<C-y>
 vnoremap <Down> joj$<C-e>
 " Conveniance: Keep visual-mark active
 " post indentation/de-indentation
-vnoremap < <gv | vnoremap > >gv
+vnoremap < <:norm! V<CR> | vnoremap > >gv
 
-vnoremap <RightMouse> <gv | vnoremap  >gv
-vnoremap <RightMouse><LeftMouse> <gv | vnoremap  >gv
+" vnoremap <RightMouse> <gv | vnoremap  >gv
+" vnoremap <RightMouse><LeftMouse> <gv | vnoremap  >gv
 
 " Tabs conveniance-mapping
 nnoremap GTT gt
