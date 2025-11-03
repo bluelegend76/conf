@@ -193,6 +193,8 @@ nnoremap <leader>1 1gt
 " Save file
 " +possible TODO: bufdo write
 nnoremap <leader><leader> :up<CR>
+vnoremap <leader> <Esc>:up<CR>gv
+" :norm! V<CR>
 
 " ==============================================================
 " TODO: ADD BASIC PERSONAL MAPPINGS FROM .VIMRC DESKTOP 2.0
