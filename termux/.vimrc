@@ -215,15 +215,13 @@ onoremap H 0
 " onoremap gH ^
 
 " Simple Visual-Line Highlighter
-vnoremap <Up> kok$<C-y> 
+vnoremap <Up> kok$k$<C-y> 
 vnoremap <Down> joj$<C-e>
-vnoremap <ScrollWheelUp> kok$<C-y> 
+vnoremap <ScrollWheelUp> kok$k$<C-y> 
 vnoremap <ScrollWheelDown> joj$<C-e>
 " Conveniance: Keep visual-mark active
 " post indentation/de-indentation
-vnoremap < <:norm! V<CR> | vnoremap > >gv
-
-vnoremap <ScrollWheelLeft> <:norm! V<CR> | vnoremap <ScrollWheelRight> >gv
+vnoremap < <:norm! V<CR> | vnoremap > >:norm! V<CR>
 " <RightMouse><LeftMouse>
 
 " Tabs conveniance-mapping
