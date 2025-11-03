@@ -247,8 +247,8 @@ endfunction
 nnoremap <silent> X :<C-u>call SafeFoldToggle()<CR>
 "" nnoremap <silent> <Space> :<C-u>call SafeFoldToggle()<CR>
 
-nnoremap GX yiW:!termux-open <C-R>"<CR><CR>
-" nnoremap gx yiW:!termux-open <C-R>"<CR><CR>
+nnoremap <silent> GX yiW:!termux-open <C-R>"<CR>
+" nnoremap <silent> gx yiW:!termux-open <C-R>"<CR>
 
 " SPELLING
 " Find next misspelled word
@@ -315,17 +315,17 @@ nnoremap GS :split<CR>
 nnoremap CC <C-W>c
 
 " 'RUN LINE' = e.g. 'evince -p' etc  ***
-nnoremap RU ^yg_:!<C-R>"<CR><CR>
- nnoremap UR ^Wyg_:!<C-R>"<CR><CR>
-nnoremap EX ^yg_:<C-R>"<CR><CR>
- nnoremap UX ^Wyg_:<C-R>"<CR><CR>
+nnoremap <silent> RU ^yg_:!<C-R>"<CR>
+ nnoremap <silent> UR ^Wyg_:!<C-R>"<CR>
+nnoremap <silent> EX ^yg_:<C-R>"<CR>
+ nnoremap <silent> UX ^Wyg_:<C-R>"<CR>
 
- vnoremap RU g_y:!<C-R>"<CR><CR>
- vnoremap EX g_y:<C-R>"<CR><CR>
-" nnoremap <leader>R ^yg_:!<C-R>"<CR><CR>
-" nnoremap <leader>E ^yg_:<C-R>"<CR><CR>
-" vnoremap <leader>R g_y:!<C-R>"<CR><CR>
-" vnoremap <leader>E g_y:<C-R>"<CR><CR>
+ vnoremap <silent> RU <Esc>^yg_:!<C-R>"<CR>
+ vnoremap <silent> EX <Esc>^yg_:<C-R>"<CR>
+" nnoremap <silent> <leader>R ^yg_:!<C-R>"<CR>
+" nnoremap <silent> <leader>E ^yg_:<C-R>"<CR>
+" vnoremap <silent> <leader>R g_y:!<C-R>"<CR>
+" vnoremap <silent> <leader>E g_y:<C-R>"<CR>
 
 inoremap zz <Esc>
 inoremap Zz <Esc>
@@ -529,14 +529,19 @@ let g:trans_join_lines = 1
 
 "" TRANSLATE-SHELL MAPS
 " heart
-nnoremap <silent> <leader>tx :Trans<CR>
-inoremap <silent> <leader>tx <ESC>:Trans<CR>
-noremap <silent> <leader>tt :Trans -brief<CR>
-nnoremap <silent> <leader>tte vg_:Trans -brief<CR>
+noremap <silent> <leader>TR :Trans<CR>
+inoremap <silent> <leader>TR <ESC>:Trans<CR>
+noremap <silent> <leader>TT :Trans -brief<CR>
+inoremap <silent> <leader>TT <ESC>:Trans -brief<CR>
+noremap <silent> <leader>TQ :Trans -brief :en+sv<CR>
+inoremap <silent> <leader>TQ <ESC>:Trans -brief :en+sv<CR>
+nnoremap <silent> <leader>TE vg_:Trans -brief<CR>
+nnoremap <silent> <leader>TS vis:Trans -brief<CR>
 "   \ yy<CTRL-W><CTRL-W>p
 "   \ <CTRL-W>o
-vnoremap <leader>tb :Trans -brief :
-noremap <leader>tr :Trans 
+noremap <leader>TL :Trans -brief :
+noremap <leader>TP :Trans :
+
 " ,tis =Translate Inner Sentence  (+input
 "    below curr. sentence (without indent?))
 " ,tq  ,tj  ,tk
