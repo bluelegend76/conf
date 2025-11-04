@@ -354,10 +354,6 @@ vnoremap a <Esc>a,<Esc>gv
 nnoremap <Leader>J :norm! J<CR>
 
 
-" Set translate-shell transation-language
-nnoremap <leader>LA :let g:trans_default_direction = ":en+sv
-
-
 " TranslateShell Start -----------
 " =Default Target Language(s) [**]
 "@@@@ let g:trans_default_direction = ":en+sv"
@@ -541,6 +537,11 @@ nnoremap <silent> <leader>TS vis:Trans -brief<CR>
 "   \ <CTRL-W>o
 noremap <leader>TL :Trans -brief :
 noremap <leader>TP :Trans :
+
+nnoremap <leader>DL :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
+
+" Set translate-shell transation-language
+nnoremap <leader>LA :let g:trans_default_direction = ":en+sv
 
 " ,tis =Translate Inner Sentence  (+input
 "    below curr. sentence (without indent?))
