@@ -281,6 +281,7 @@ nnoremap <End> :Buffers<CR>
 "  Changes and Marks
 "  (= S- for changes
 "   and A- for marks)
+" TRUE NORTH/NORTH STAR/COMPASS ROSE ----
 " Changes/Edits/Copying --
 noremap <A-Up> g;
 noremap <A-Down> g,

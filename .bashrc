@@ -246,3 +246,5 @@ function sort-by-date() {
 # 
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -166,12 +166,14 @@ ln -s /run/media/bluelegend/${EXTHD1}/legacy/
 #   git clone https://github.com/bluelegend76/lilyblock-render.git ~/git/lilyblock-render
 #   # TODO: Convert to for-loop on list of the repo names(!!)
 
+# TODO TODO: RECONSTITUTE WITH PLUG[!!]
 echo "Installing Vims + linking up vim settings: ..."
-mkdir -p ~/.vim/bundle
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# mkdir -p ~/.vim/bundle
 sudo pacman -S gvim neovim
 # sudo apt-get install neovim-qt
 ## emacs
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # TODO: rm: cannot remove 'x/': Is a directory === TODO ===
 # rm -f ~/.vim/{colors,plugin,spell}/
 # OR, USE RMDIR(!!)
@@ -281,6 +283,14 @@ sudo snap install n-trackstudio
 # ____
 yay -S tuxguitar
 sudo pacman -S evince fontforge
+mkdir -p ~/{.config,.cache}/neomutt/
+sudo pacman -S neomutt msmtp{,-mta} isync abook
+ln -s ~/{conf,.config/neomutt}/neomuttrc
+ln -s ~/{conf,.config/neomutt}/vim-keys.rc
+
+  # msmtp-mta  Needed if using other mail-programs than NeoMutt
+  sudo pacman -S notmuch urlview w3m lynx
+  sudo pacman -S pass python-gobject
 sudo pacman -S pdftk xsane
 sudo pacman -S timidity++ midish
 sudo pacman -S shotwell

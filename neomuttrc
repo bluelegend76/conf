@@ -1,0 +1,129 @@
+# vim: filetype=neomuttrc
+# ========================================
+# Basic Settings
+# ========================================
+# Use Vim as the editor for composing/replying
+set editor = "nvim +call cursor($LINE,$COL)"  # Or "vim"; use nvim for Lua plugins
+set edit_headers = yes  # Edit To/Subject/CC in Vim (with <Esc> to switch fields)
+set send_charset = "utf-8"
+set charset = "utf-8"
+
+# Abort key (like Vim's <Esc>)
+set abort_key = "<Esc>"
+
+# Real name and default sender
+set realname = "Daniel Albertsson"
+set from = "trulystrange@gmail.com"
+set envelope_from = yes
+
+# Mail storage (adjust for Maildir/IMAP)
+set folder = "imaps://imap.example.com:993/"  # IMAP example
+set spoolfile = "+INBOX"  # Incoming mail
+set mbox_type = Maildir
+set header_cache = "~/.cache/neomutt/headers"
+set message_cachedir = "~/.cache/neomutt/bodies"
+set certificate_file = "~/.neomutt/certificates"
+
+# Sorting and threading
+set sort = threads
+set sort_aux = reverse-last-date-received
+# set sort_re = reverse-last-date-received
+# set thread_sort_hierarchy = date  # Sort threads by date
+
+# UI tweaks
+set menu_scroll = yes  # Vim-like scrolling
+set pager_stop = yes  # Stop at end of message
+set tilde = yes  # Fill empty lines with ~ (Vim style)
+set mark_old = no  # Don't mark read messages as old
+
+# Auto-view attachments
+auto_view text/html application/pdf
+alternative_order text/plain text/html
+
+# Format=flowed for soft wrapping (prevents mobile line breaks)
+set text_flowed = yes
+# set free_header = yes
+
+# ========================================
+# Account-Specific (Example: Gmail IMAP/SMTP)
+# ========================================
+# Uncomment and adjust for your provider. Use app-specific passwords for Gmail.
+set imap_user = "trulystrange@gmail.com"
+# set imap_pass = "your-app-password"
+set smtp_url = "smtps://trulystrange@gmail.com@smtp.gmail.com:465/"
+# set smtp_pass = "your-app-password"
+
+# Folder hooks for multiple accounts (source separate files)
+# folder-hook . "source ~/.config/neomutt/accounts/default"
+# folder-hook imaps://imap.gmail.com/ "source ~/.config/neomutt/accounts/gmail"
+
+# ========================================
+# Vim Keybindings (Heavy Focus)
+# ========================================
+# Source official Vim keys (download from https://neomutt.org/contrib/vim-keys)
+# Place vim-keys.rc in ~/.config/neomutt/ and source it
+# TODO source "~/.config/neomutt/vim-keys.rc"
+
+# Additional custom bindings (Vim-inspired)
+# Index (message list)
+bind index gg first-entry
+bind index G last-entry
+bind index <C-u> previous-page  # Half-page up
+bind index <C-d> next-page      # Half-page down
+bind index j next-entry
+bind index k previous-entry
+bind index <C-f> next-page      # Full page down
+bind index <C-b> previous-page  # Full page up
+bind index ? help               # ? for help (like Vim)
+bind index q exit               # q to quit
+
+# Pager (reading message)
+bind pager j next-line
+bind pager k previous-line
+bind pager <space> next-page
+bind pager <b> previous-page
+bind pager <C-u> previous-page
+bind pager <C-d> next-page
+# bind pager gg first-entry
+# bind pager G last-entry
+bind pager q exit
+
+# Editor (composing)
+# bind editor <C-x><C-s> save  # Ctrl+S to save draft
+bind editor "\e" abort      # Esc to abort
+# bind editor <Esc> abort      # Esc to abort
+
+# Generic
+bind generic , noop           # Comma does nothing (free for macros)
+bind generic <C-l> refresh    # Ctrl+L to refresh screen
+
+# ========================================
+# Colors (Vim-like scheme)
+# ========================================
+# Basic colors (adapt to your terminal)
+color normal default default
+color error brightred default
+color index brightyellow default ~N  # Unread messages
+color index brightwhite default ~O  # Old messages
+color indicator brightcyan default
+color markers brightred default
+# color pointer brightmagenta default
+color hdrdefault brightgreen default
+
+# Syntax highlighting for quoted text (Vim rainbow style)
+color quoted green default
+color quoted1 blue default
+color quoted2 yellow default
+color quoted3 cyan default
+color quoted4 magenta default
+
+# ========================================
+# Macros and Hooks
+# ========================================
+# Quick reply macro (Vim-style: <leader>r)
+macro index,pager <leader>r "<reply> -- <return>" "Quick Reply"
+
+# Auto-sign/encrypt if GPG is set up
+# source /usr/share/doc/neomutt/gpg.rc  # Adjust path
+
+# End of config
