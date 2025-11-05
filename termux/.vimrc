@@ -286,8 +286,8 @@ nnoremap <End> :Buffers<CR>
 noremap <A-Up> g;
 noremap <A-Down> g,
 " FOLDLEVEL ----
-nnoremap <Right> zr
-nnoremap <Left> zm
+nnoremap <Right> zr:set fdl?<CR>
+nnoremap <Left> zm:set fdl?<CR>
 " Marks --
 noremap <C-Up> [`
 noremap <C-Down> ]`

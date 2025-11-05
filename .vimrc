@@ -1,7 +1,8 @@
 " vim:fdm=marker:
-" TODO: Add extended _vimrc
 " TODO: NEW 'TRUE NORTH/NORTH STAR/COMPASS ROSE' NAVIGATOR
-" TODO TODO: A-N A-M ETC
+" TODO: ADD MODIFIED VIS-NAVIGATION (= v-right/left
+
+" ??TODO: Add extended _vimrc
 "
 " ~/conf/_vimrc
 " ~/Dropbox/config/.vimrc ~/conf/legacy.vimrc
@@ -259,25 +260,40 @@ nnoremap DD :%d
 nnoremap <C-S-A-w> :bw<CR>
 
 " TODO: TRUE NORTH/NORTH STAR/COMPASS ROSE
-" ---- Jump in Change-List ----
+" Navigation etc
+" Changelist
 nnoremap gg g;
 nnoremap gG g,
-nnoremap <A-PageUp> g;
-nnoremap <A-PageDown> g,
-" ---- Jump between Marks ----
-nnoremap <S-PageUp> ['
-nnoremap <S-PageDown> ]'
-nnoremap <PageUp> [`
-nnoremap <PageDown> ]`
+nnoremap <A-Up> g;
+nnoremap <A-Down> g,
+" Change foldlevel
+nnoremap <Right> zr:set fdl?<CR>
+nnoremap <Left> zm:set fdl?<CR>
+" Jump betw. Marks
+nnoremap <C-Up> [`
+nnoremap <C-Down> ]`
+" nnoremap <Up> [`
+" nnoremap <Down> ]`
+" --
 nnoremap <leader>gg gg
 
 " Move lines with Alt-Up/Down (Gedit-style)
-nnoremap <A-Up> ddkP
-nnoremap <A-Down> ddjP
-" vnoremap <A-Up> dkkpV`]
-" vnoremap <A-Down> dpV`]
-" nnoremap <C-A-Up> ddkPzc
-" nnoremap <C-A-Down> ddjPzc
+" nnoremap <A-Up> ddkP
+" nnoremap <A-Down> ddjP
+  " vnoremap <A-Up> dkkpV`]
+  " vnoremap <A-Down> dpV`]
+  " nnoremap <C-A-Up> ddkPzc
+  " nnoremap <C-A-Down> ddjPzc
+" Simple Visual-Line Highlighter
+" TODO: Perhaps remove <c-y> / <c-e>
+"  = Not as important/helpful on Linux
+vnoremap <Up> kok$
+vnoremap <Down> joj$
+vnoremap <ScrollWheelUp> kok$
+vnoremap <ScrollWheelDown> joj$
+" Navigate v-mark over sentences
+vnoremap <Right> <Esc>)visozt<C-Y>
+vnoremap <Left> <Esc>(ztviso<C-Y>
 
 
 " logical undo
@@ -468,10 +484,25 @@ nnoremap <Leader>fh :!ls -sh <C-R><C-A><CR>
 
 " Cutting/Pasting (from/to system clipboards)  __
 inoremap <leader>ii <C-R>+<CR>
-
 nnoremap <leader>ia "*p
 inoremap <leader>ia <C-R>*
-" inoremap <leader>ia <C-R><C-R>*
+  " inoremap <leader>ia <C-R><C-R>*
+
+
+" INSERT-MODE COMPLETION ----
+inoremap <leader><leader> <c-n>
+" --
+inoremap <a-up> <c-p>
+inoremap <a-down> <c-n>
+
+inoremap <leader>ä <c-p>
+inoremap <leader>xf <c-x><c-f>
+inoremap <leader>xl <c-x><c-l><c-n>
+inoremap <leader>ö <c-x><c-n>
+inoremap <c-,> <c-x><c-n>
+" inoremap <c-s-,> <c-x><c-p>
+" inoremap <leader>xn <c-x><c-n>
+inoremap <leader>pn <c-p><c-n>
 
 " Macros/Actions  __
 " Run latest run macro **
