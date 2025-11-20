@@ -109,6 +109,11 @@ Plug 'junegunn/vim-easy-align'
 Plug 'hylang/vim-hy'
 " Plugin 'edwinb/idris2-vim'
 
+" The main Git wrapper
+Plug 'tpope/vim-fugitive'
+" Shows diff signs in the gutter
+Plug 'airblade/vim-gitgutter'
+
 " Initialize plugin system
 call plug#end()
 
@@ -525,7 +530,6 @@ let g:trans_join_lines = 1
 " +win_height|width (=in characters)
 
 "" TRANSLATE-SHELL MAPS
-" heart
 noremap <silent> <leader>TR :Trans<CR>
 inoremap <silent> <leader>TR <ESC>:Trans<CR>
 noremap <silent> <leader>TT :Trans -brief<CR>

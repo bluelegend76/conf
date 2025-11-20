@@ -65,7 +65,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # ~/.zshrc
 # For Powerlevel10k, for example
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
+#
 # Change line with plugins=(git) to:
 plugins=(git z zsh-autosuggestions zsh-syntax-highlighting)
 # + run source ~/.zshrc

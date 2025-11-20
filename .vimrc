@@ -1,5 +1,8 @@
 " vim:fdm=marker:
-" TODO: NEW 'TRUE NORTH/NORTH STAR/COMPASS ROSE' NAVIGATOR
+" Linux Vimrc
+
+" TODO: Add Leader-u as Redo
+
 " TODO: ADD MODIFIED VIS-NAVIGATION (= v-right/left
 
 " ??TODO: Add extended _vimrc
@@ -71,9 +74,16 @@ Plug 'junegunn/vim-easy-align'
 Plug 'hylang/vim-hy'
 " Plugin 'edwinb/idris2-vim'
 
+" The main Git wrapper
+Plug 'tpope/vim-fugitive'
+" Shows diff signs in the gutter
+Plug 'airblade/vim-gitgutter'
+
 " Initialize plugin system
 call plug#end()
 "}}}
+
+set ignorecase
 
 "---- __
 colorscheme ron
@@ -96,6 +106,18 @@ set nocompatible
 filetype plugin indent on
 syntax on
 " + Change to filetype off when introducing Vundle
+
+set scrolloff=0
+" size of a hard tabstop
+set tabstop=4
+" size of an "indent"
+set shiftwidth=4
+" a combination of spaces and tabs are used to simulate tab stops at a width
+"   other than the (hard)tabstop
+set softtabstop=4
+" no tabs at all - just spaces
+set expandtab
+set smartindent
 
 " magnifichar =fontsize {{{
 " FONTS (RESIZING AND RESETTING - OS-agnostic (hopefully))  __
@@ -165,19 +187,25 @@ nnoremap <silent> <A-?> :echo "Current Fontsize: " . g:currFontSize<CR>
 nnoremap <silent> <A-0> :call DefaultFontsize()<CR>
 "}}}
 
-" size of a hard tabstop
-set tabstop=4
-" size of an "indent"
-set shiftwidth=4
-" a combination of spaces and tabs are used to simulate tab stops at a width
-"   other than the (hard)tabstop
-set softtabstop=4
-" no tabs at all - just spaces
-set expandtab
-set smartindent
+nnoremap Sy<Space> :set syntax=
+nnoremap So<Space> :source 
+nnoremap Se<Space> :set 
+" TODO: Toggle (+option/common option to toggle)
+"  / Pop-up menu with option/common option to toggle
 
 " Folding  __
 nnoremap <Space> za
+" --------------
+" Safe Toggle
+function! SafeFoldToggle()
+  try
+    normal! za
+  catch /^Vim\%((\a\+)\)\=:E490/
+    normal! zj
+  endtry
+endfunction
+" --------------
+nnoremap <silent> <Space> :<C-u>call SafeFoldToggle()<CR>
 " --
 " fold marked lines
 vnoremap <leader>fm <Esc>o<c-h><Esc>gvjo<Esc>A <Esc>gvzfzc
@@ -234,12 +262,17 @@ vnoremap <C-G> gq<CR>
 "%% expanderar till aktiva filens mapp (= %:h) *****
 " cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "Next/Prev. buffer**
+nnoremap <PageDown> :bn<CR>
+nnoremap <PageUp> :bp<CR>
+nnoremap <Home> :bfirst<CR>
+nnoremap <End> :ls<CR>
+" --
 nnoremap <C-S-A-n> :bn<CR>
 nnoremap <C-S-A-p> :bp<CR>
 "Foldmethods Convenience Mappings
 nnoremap <C-S-A-i> :set foldmethod=indent<CR>
 nnoremap <C-S-A-m> :set foldmethod=marker<CR>
-nnoremap <C-S-A-l> :ls<CR>
+nnoremap <C-S-A-l> :Buffers<CR>
 nnoremap <C-S-A-a> :args<CR>
 ""nnoremap <C-S-A-c> <C-^>
 "------
@@ -259,7 +292,7 @@ nnoremap DD :%d
 " Pop buffer from buffer list
 nnoremap <C-S-A-w> :bw<CR>
 
-" TODO: TRUE NORTH/NORTH STAR/COMPASS ROSE
+" TODO: TRUE NORTH Navigation/NORTH STAR/COMPASS ROSE
 " Navigation etc
 " Changelist
 nnoremap gg g;
@@ -267,8 +300,10 @@ nnoremap gG g,
 nnoremap <A-Up> g;
 nnoremap <A-Down> g,
 " Change foldlevel
-nnoremap <Right> zr:set fdl?<CR>
-nnoremap <Left> zm:set fdl?<CR>
+nnoremap <Right> zrzt:set fdl?<CR>
+nnoremap <Left> zmzt:set fdl?<CR>
+"" nnoremap <Right> zrzz:set fdl?<CR>
+"" nnoremap <Left> zmzz:set fdl?<CR>
 " Jump betw. Marks
 nnoremap <C-Up> [`
 nnoremap <C-Down> ]`
@@ -297,6 +332,7 @@ vnoremap <Left> <Esc>(ztviso<C-Y>
 
 
 " logical undo
+" nnoremap <Leader>u <C-R>
 nnoremap U <C-R>
 
 " Custom movements  __
@@ -332,12 +368,13 @@ cnoremap <leader>J <Esc>
 
 " Searching / Substitute, Global  __
 " Toggle ignorecase ***
-nnoremap <leader>ic :set ic!<CR>
+" Toggle ignorecase ***
+nnoremap <leader>ic :set ic!<CR>:set ic?<CR>
 noremap <leader>ii /
 noremap <leader>uu ?
 nnoremap <leader>iv /\v
 nnoremap <leader>uv ?\V
-noremap <leader>ic /\c
+" noremap <leader>ic /\c
 noremap <leader>uc ?\c
 " --
 " Star and Hash only hlmarks word. Cont. search with 'n'
@@ -488,7 +525,6 @@ nnoremap <leader>ia "*p
 inoremap <leader>ia <C-R>*
   " inoremap <leader>ia <C-R><C-R>*
 
-
 " INSERT-MODE COMPLETION ----
 inoremap <leader><leader> <c-n>
 " --
@@ -512,4 +548,40 @@ nnoremap ö .nzz
 " Run latest macro/cli-command, jump to next search-match + center
 nnoremap zö @@nzz
 
+" "" TRANSLATE-SHELL MAPS
+" noremap <silent> <leader>TR :Trans<CR>
+" inoremap <silent> <leader>TR <ESC>:Trans<CR>
+" noremap <silent> <leader>TT :Trans -brief<CR>
+" inoremap <silent> <leader>TT <ESC>:Trans -brief<CR>
+" noremap <silent> <leader>TQ :Trans -brief :en+sv<CR>
+" inoremap <silent> <leader>TQ <ESC>:Trans -brief :en+sv<CR>
+" nnoremap <silent> <leader>TE vg_:Trans -brief<CR>
+" nnoremap <silent> <leader>TS vis:Trans -brief<CR>
+" "   \ yy<CTRL-W><CTRL-W>p
+" "   \ <CTRL-W>o
+" noremap <leader>TL :Trans -brief :
+" noremap <leader>TP :Trans :
+" 
+" nnoremap <leader>DL :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
+" 
+" " Set translate-shell transation-language
+" nnoremap <leader>LA :let g:trans_default_direction = ":en+sv
+
+" Cleaning, Filtering, Post Ocr-Extraction etc
+" MATA IN REFERENSDOKS SIDNUMMER I TEXTFIL + INCREM. ****** ('put/push')
+"nnoremap <leader>pu o<Esc>"pp<C-A>"pyyo<Esc>.
+nnoremap <leader>ppu "pp<C-A>"pyyo<Esc>kzt
+nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
+
+" TODO TODO TODO = Integrate
+" ========================================
+" ~/SyncThing/scratch/shorth-tools.vim
+" ========================================
+" vnoremap <silent> <F5> y:!evince --find='"' ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf &<CR>
+vnoremap <silent> <F9> y:!evince -l '<C-R>"' ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf &<CR>gv
+vnoremap <silent> <F12> y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf &<CR>gv
+vnoremap <silent> <S-F12> y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf &<CR>gv
+
+inoremap <leader>ti <Esc>:r !date +"\%Y-\%m-\%d"<CR>A 
+" inoremap <leader>ti <C-o>:r !date +"\%Y-\%m-\%d"<CR>
 

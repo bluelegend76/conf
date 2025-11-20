@@ -248,3 +248,4 @@ function sort-by-date() {
 # 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export PATH="$PATH:$HOME/.local/bin"

@@ -62,7 +62,10 @@ mkdir ~/repos/
 git clone https://github.com/bluelegend76/vtouch-vanki.git ~/repos/vtouch-vanki/
 git clone https://github.com/bluelegend76/scripts.git ~/repos/scripts/
 
-sudo pacman -S noto-fonts noto-fonts-cjk && fc-cache -fv
+sudo pacman -S \
+    noto-fonts \
+    noto-fonts-cjk \
+    && fc-cache -fv
 
 cd
 yay -Syu dropbox
