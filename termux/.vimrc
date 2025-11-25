@@ -106,8 +106,9 @@ Plug 'junegunn/vim-easy-align'
 "   gc: gcc gcap v+gc :1,10Commentary :g/Todo/Commentary
 " MATCHIT(xml mm) **
 " Plugin 'LhKipp/nvim-nu'
-Plug 'hylang/vim-hy'
+Plug 'pigpigyyy/yuescript-vim'
 " Plugin 'edwinb/idris2-vim'
+Plug 'hylang/vim-hy'
 
 " The main Git wrapper
 Plug 'tpope/vim-fugitive'

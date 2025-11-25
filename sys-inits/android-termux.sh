@@ -37,7 +37,7 @@ pkg install wkhtmltopdf pandoc -y
 
 
 pkg update -y && pgk upgrade -y
-pkg search tree htop ssh -y
+pkg install tree htop ssh -y
 pkg install vim neovim -y
 pkg install ripgrep -y
   # pkg search agrep

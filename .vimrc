@@ -73,6 +73,7 @@ Plug 'junegunn/vim-easy-align'
 " Plugin 'LhKipp/nvim-nu'
 Plug 'hylang/vim-hy'
 " Plugin 'edwinb/idris2-vim'
+Plug 'pigpigyyy/yuescript-vim'
 
 " The main Git wrapper
 Plug 'tpope/vim-fugitive'
@@ -564,7 +565,7 @@ nnoremap zö @@nzz
 " 
 " nnoremap <leader>DL :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
 " 
-" " Set translate-shell transation-language
+"" Set translate-shell transation-language
 " nnoremap <leader>LA :let g:trans_default_direction = ":en+sv
 
 " Cleaning, Filtering, Post Ocr-Extraction etc
@@ -581,7 +582,28 @@ nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
 vnoremap <silent> <F9> y:!evince -l '<C-R>"' ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf &<CR>gv
 vnoremap <silent> <F12> y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf &<CR>gv
 vnoremap <silent> <S-F12> y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf &<CR>gv
+" ------
+" SEARCH MARKED WORD                                        pdf
+"   (v) S1 S2 S3
+"   (v) Ss Sg Sp
+" SEARCH BY KEYSTRING (i.e. [\'här'] / ^\'här'$ = hur)      txt / pdf
+"   
+" SEARCH LONGEST PHRASE-MATCH                               txt  # via vimgrep
+"       Sl / SL
+" INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)          txt
+"       Ki (??)
+" PRACTICE-DECKS:                                           txt
+"   image / key  2  word
+"   word  2  image / key    (=4 permutations)
+"
+" OPEN SHORTH-REFS                                          txt
+"       Sr/SR
+" <<SEARCH WORDS/ABBREVS-(=txt)LIST (IN SPLIT-WINDOW)       txt>>
+"   ** Give suggestion for Sh-Grob to learn (basis: word often written when writing text in a text-document on the computer)
+" [LANGS ABBREVS-LIST (FEDERATED)]                          txt
 
 inoremap <leader>ti <Esc>:r !date +"\%Y-\%m-\%d"<CR>A 
 " inoremap <leader>ti <C-o>:r !date +"\%Y-\%m-\%d"<CR>
+
+" SYNTAX TOGGLE:  ST (??)
 
