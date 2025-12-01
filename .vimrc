@@ -330,6 +330,9 @@ vnoremap <ScrollWheelDown> joj$
 " Navigate v-mark over sentences
 vnoremap <Right> <Esc>)visozt<C-Y>
 vnoremap <Left> <Esc>(ztviso<C-Y>
+" Vmark navigate word right/left
+vnoremap <A-Right> <Esc>/\v<[A-ZÅÄÖa-zåäö]<CR>:nohl<CR>viw
+vnoremap <A-Left> <Esc>?\v<[A-ZÅÄÖa-zåäö]<CR>n:nohl<CR>viw
 
 
 " logical undo
@@ -412,12 +415,13 @@ nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
 " ^yg_:<C-R>"<CR><CR>'tzt'm
 " ----
 "" Run with external program (or use gx) {{{
-nnoremap <leader>fi viWy:!firefox -new-tab <C-R>"<CR><CR>
+nnoremap <silent> <leader>fx viWy:!firefox -new-tab <C-R>"<CR><CR>
+"  ##    FORVO-MAP  ,fo    glaube uisce  Pronounciation Dictionary
+"SÖK BOKSTAV/TECKEN I WIKTIONARY
+vnoremap <silent> <leader>wk y:!firefox -new-tab https://en.wiktionary.org/wiki/<C-R>"<CR><CR>
 
-vnoremap <leader>fo y:!firefox -new-tab https://forvo.com/search/<C-R>"/<CR><CR>
-"" open word in Babel (translate)
-" nnoremap <leader>tr viwy:!firefox -new-tab http://sv.bab.la/lexikon/engelsk-svensk/<C-R>"<CR><CR>
-" nnoremap <leader>et viwy:!firefox -new-tab http://www.etymonline.com/index.php?term=<C-R>"&allowed_in_frame=0<CR><CR>
+nnoremap <silent> <leader>fo yiw:!firefox -new-tab https://forvo.com/search/<C-R>"/<CR><CR>
+nnoremap <silent> <leader>et yiw:!firefox -new-tab http://www.etymonline.com/index.php?term=<C-R>"&allowed_in_frame=0<CR><CR>
 " Open Video
 nnoremap <leader>mp yiW:!mpv <C-R>" &<CR><CR>
 " nnoremap <leader>ac viWy:!audacity <C-R>" &<CR><CR>
@@ -444,6 +448,7 @@ nnoremap <leader>th yiW:!thunar <C-R>" &<CR><CR>
 nnoremap <leader>tH $F/vBy:!thunar <C-R>" &<CR><CR>
 "SÖK BOKSTAV/TECKEN I WIKTIONARY
 " nnoremap <leader>tk vy:!firefox -new-tab https://en.wiktionary.org/wiki/<C-R>"<CR><CR>
+
 "}}}
 
 " Windows, Splits, Tabs  __
@@ -549,24 +554,26 @@ nnoremap ö .nzz
 " Run latest macro/cli-command, jump to next search-match + center
 nnoremap zö @@nzz
 
-" "" TRANSLATE-SHELL MAPS
-" noremap <silent> <leader>TR :Trans<CR>
-" inoremap <silent> <leader>TR <ESC>:Trans<CR>
-" noremap <silent> <leader>TT :Trans -brief<CR>
-" inoremap <silent> <leader>TT <ESC>:Trans -brief<CR>
-" noremap <silent> <leader>TQ :Trans -brief :en+sv<CR>
-" inoremap <silent> <leader>TQ <ESC>:Trans -brief :en+sv<CR>
-" nnoremap <silent> <leader>TE vg_:Trans -brief<CR>
-" nnoremap <silent> <leader>TS vis:Trans -brief<CR>
-" "   \ yy<CTRL-W><CTRL-W>p
-" "   \ <CTRL-W>o
-" noremap <leader>TL :Trans -brief :
-" noremap <leader>TP :Trans :
-" 
-" nnoremap <leader>DL :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
-" 
-"" Set translate-shell transation-language
-" nnoremap <leader>LA :let g:trans_default_direction = ":en+sv
+" TRANSLATE-SHELL MAPS
+let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"
+noremap <silent> <leader>tr :Trans<CR>
+inoremap <silent> <leader>tr <ESC>:Trans<CR>
+noremap <silent> <leader>tt :Trans -brief<CR>
+inoremap <silent> <leader>tt <ESC>:Trans -brief<CR>
+" noremap <silent> <leader>tq :Trans -brief :en+sv<CR>
+" inoremap <silent> <leader>tq <ESC>:Trans -brief :en+sv<CR>
+" nnoremap <silent> <leader>te vg_:Trans -brief<CR>
+nnoremap <silent> <leader>ts vis:Trans -brief<CR>
+"   \ yy<CTRL-W><CTRL-W>p
+"   \ <CTRL-W>o
+" noremap <leader>tl :Trans -brief :
+" noremap <leader>tp :Trans :
+ 
+" Set translate-shell transation-language
+nnoremap <leader>la :let g:trans_default_direction = ":en+sv
+" Reset to default language-set
+nnoremap <leader>ld :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
+
 
 " Cleaning, Filtering, Post Ocr-Extraction etc
 " MATA IN REFERENSDOKS SIDNUMMER I TEXTFIL + INCREM. ****** ('put/push')
@@ -578,31 +585,62 @@ nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
 " ========================================
 " ~/SyncThing/scratch/shorth-tools.vim
 " ========================================
-vnoremap <silent> <F9> y:!evince -l '<C-R>"' ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf &<CR>gv
-vnoremap <silent> <F12> y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf &<CR>gv
-vnoremap <silent> <S-F12> y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf &<CR>gv
-
-" ------
-" [ ] SEARCH MARKED WORD                                        pdf
+" [x] SEARCH MARKED WORD                                        pdf
 "       (v) S1 S2 S3
 "       (v) Ss/Sr Sg Sp
-" [ ] OPEN SHORTH-REFS                                          txt
+vnoremap <silent> Ss y:!evince -l '<C-R>"' ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf &<CR>gv
+vnoremap <silent> Sg y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf &<CR>gv
+vnoremap <silent> Sp y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf &<CR>gv
+" [ ] Search Longest Match                                      txt
+"       (v) Search longest match
+" noremap Sls / Sle <Esc>yiw:vimgrep /<C-R>"/ % <bar> copen <bar> resize<CR>
+"   vimgrep /@/ % | copen | resize
+"               |
+"             en-file / sv-file
+"   ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
+"   ~/Dropbox/config/vim/short.en.gregg.snippets.vim
+"   TODO: STRIP OUT 'ABBREV + Left'-PART
+" [/] OPEN SHORTH-REFS                                          txt
 "           Sr/SR  Srp[=pdf] Srt[=txt]
-" [ ] INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)          txt
+nnoremap Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf
+    \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf
+    \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf
+    \ ~/Empire/Doks/Lang/Shorth/ir/gregg-irish.pdf &<CR>
+
+" TODO: MAY WANT TO IMPLEMENT SQLITE-SOLUTION FOR FUTURE
+" [ ] INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)   ____   txt
 "       (v) Ki (??) / KI  Kis/Kie
 "                + Fkey: (=Mark text; Insert keystring) * N
-
+"    - set mark at: end of search-word/words, line at top of win
+"   - Copy word/words to be searched for
+"   - Open reffile (with :edit)
+"   - search for: search-words  \zsREST
+"   - Copy
+"   - Pull back to orig-file with C-O
+"    - set back prev. win top-line as top
+"   - Insert '[]' at end of word + insert found key-string
+" [ ]! Ripple-Fetch key-string for v-marked, +=v-mark next word  (v) F4/9
+" +TODO: ADD A-RIGHT/LEFT AS V-BINDINGS (MOVE V-MARK TO NEXT/PREV WORD)
+"
 " [ ] SEARCH BY KEYSTRING (i.e. [\'här'] / ^\'här'$ = hur)      txt / pdf
 "           Kss/Kse
 
 " [ ] PRACTICE-DECKS:                                           txt
-"       image / key  2  word
-"       word  2  image / key    (=4 permutations)
+"       image  2  word
+"                   image-link hidden inside fold
+"                   (+command: open image hidden in fold via termux-api)
+"       key    2  word
+"                   easy: use text2text from txt ref-file
+"       word   2  image
+"                   bare image-link (+open image via termux-api)
+"       word   2  key
+"                   easy: use text2text from txt ref-file
 "   ~/dropbox-legacy/ankiimages-steno_rskrift/
 
 " < > <<SEARCH WORDS/ABBREVS-(=txt)LIST (IN SPLIT-WINDOW)       txt>>
 " < > ** Give suggestion for Sh-Grob to learn (basis: word often written when writing text in a text-document on the computer)
 " [ ] [LANGS ABBREVS-LIST (FEDERATED)]                          txt
+"    = Fetch from main Shorth Index-list[!?]
 
 
 inoremap <leader>ti <Esc>:r !date +"\%Y-\%m-\%d"<CR>A 
