@@ -578,29 +578,32 @@ nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
 " ========================================
 " ~/SyncThing/scratch/shorth-tools.vim
 " ========================================
-" vnoremap <silent> <F5> y:!evince --find='"' ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf &<CR>
 vnoremap <silent> <F9> y:!evince -l '<C-R>"' ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf &<CR>gv
 vnoremap <silent> <F12> y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf &<CR>gv
 vnoremap <silent> <S-F12> y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf &<CR>gv
+
 " ------
-" SEARCH MARKED WORD                                        pdf
-"   (v) S1 S2 S3
-"   (v) Ss Sg Sp
-" SEARCH BY KEYSTRING (i.e. [\'här'] / ^\'här'$ = hur)      txt / pdf
-"   
-" SEARCH LONGEST PHRASE-MATCH                               txt  # via vimgrep
-"       Sl / SL
-" INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)          txt
-"       Ki (??)
-" PRACTICE-DECKS:                                           txt
-"   image / key  2  word
-"   word  2  image / key    (=4 permutations)
-"
-" OPEN SHORTH-REFS                                          txt
-"       Sr/SR
-" <<SEARCH WORDS/ABBREVS-(=txt)LIST (IN SPLIT-WINDOW)       txt>>
-"   ** Give suggestion for Sh-Grob to learn (basis: word often written when writing text in a text-document on the computer)
-" [LANGS ABBREVS-LIST (FEDERATED)]                          txt
+" [ ] SEARCH MARKED WORD                                        pdf
+"       (v) S1 S2 S3
+"       (v) Ss/Sr Sg Sp
+" [ ] OPEN SHORTH-REFS                                          txt
+"           Sr/SR  Srp[=pdf] Srt[=txt]
+" [ ] INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)          txt
+"       (v) Ki (??) / KI  Kis/Kie
+"                + Fkey: (=Mark text; Insert keystring) * N
+
+" [ ] SEARCH BY KEYSTRING (i.e. [\'här'] / ^\'här'$ = hur)      txt / pdf
+"           Kss/Kse
+
+" [ ] PRACTICE-DECKS:                                           txt
+"       image / key  2  word
+"       word  2  image / key    (=4 permutations)
+"   ~/dropbox-legacy/ankiimages-steno_rskrift/
+
+" < > <<SEARCH WORDS/ABBREVS-(=txt)LIST (IN SPLIT-WINDOW)       txt>>
+" < > ** Give suggestion for Sh-Grob to learn (basis: word often written when writing text in a text-document on the computer)
+" [ ] [LANGS ABBREVS-LIST (FEDERATED)]                          txt
+
 
 inoremap <leader>ti <Esc>:r !date +"\%Y-\%m-\%d"<CR>A 
 " inoremap <leader>ti <C-o>:r !date +"\%Y-\%m-\%d"<CR>
