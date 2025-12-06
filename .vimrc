@@ -188,10 +188,12 @@ nnoremap <silent> <A-?> :echo "Current Fontsize: " . g:currFontSize<CR>
 nnoremap <silent> <A-0> :call DefaultFontsize()<CR>
 "}}}
 
+" TODO: SYNTAX TOGGLE:  ST (??)
 nnoremap Sy<Space> :set syntax=
 nnoremap So<Space> :source 
 nnoremap Se<Space> :set 
 " TODO: Toggle (+option/common option to toggle)
+" nnoremap <leader>to 
 "  / Pop-up menu with option/common option to toggle
 
 " Folding  __
@@ -416,12 +418,6 @@ nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
 " ----
 "" Run with external program (or use gx) {{{
 nnoremap <silent> <leader>fx viWy:!firefox -new-tab <C-R>"<CR><CR>
-"  ##    FORVO-MAP  ,fo    glaube uisce  Pronounciation Dictionary
-"SÖK BOKSTAV/TECKEN I WIKTIONARY
-vnoremap <silent> <leader>wk y:!firefox -new-tab https://en.wiktionary.org/wiki/<C-R>"<CR><CR>
-
-nnoremap <silent> <leader>fo yiw:!firefox -new-tab https://forvo.com/search/<C-R>"/<CR><CR>
-nnoremap <silent> <leader>et yiw:!firefox -new-tab http://www.etymonline.com/index.php?term=<C-R>"&allowed_in_frame=0<CR><CR>
 " Open Video
 nnoremap <leader>mp yiW:!mpv <C-R>" &<CR><CR>
 " nnoremap <leader>ac viWy:!audacity <C-R>" &<CR><CR>
@@ -554,6 +550,13 @@ nnoremap ö .nzz
 " Run latest macro/cli-command, jump to next search-match + center
 nnoremap zö @@nzz
 
+
+""" ==== ==== LANG-TOOLS ==== ====
+" Search Char/Word(s) in Wiktionary
+vnoremap <silent> <leader>wk y:!firefox -new-tab https://en.wiktionary.org/wiki/<C-R>"<CR><CR>
+"  ##    FORVO-MAP  ,fo    glaube uisce  Pronounciation Dictionary
+nnoremap <silent> <leader>fo yiw:!firefox -new-tab https://forvo.com/search/<C-R>"/<CR><CR>
+nnoremap <silent> <leader>et yiw:!firefox -new-tab http://www.etymonline.com/index.php?term=<C-R>"&allowed_in_frame=0<CR><CR>
 " TRANSLATE-SHELL MAPS
 let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"
 noremap <silent> <leader>tr :Trans<CR>
@@ -568,19 +571,18 @@ nnoremap <silent> <leader>ts vis:Trans -brief<CR>
 "   \ <CTRL-W>o
 " noremap <leader>tl :Trans -brief :
 " noremap <leader>tp :Trans :
+
+" TODO: OPEN V-MARKED TEXT IN NEW GVIM-WINDOW
+"       (WITH RL OR NORL APPLIED + GREATLY ENLARGED)  TODO TODO
+" [= Primary Use: Displaying Arabic, Farsi etc ]
+" [- Secondary Use: Display Cuneiform etc (=Needs Great Enlargement) ]
  
 " Set translate-shell transation-language
 nnoremap <leader>la :let g:trans_default_direction = ":en+sv
 " Reset to default language-set
 nnoremap <leader>ld :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
 
-
-" Cleaning, Filtering, Post Ocr-Extraction etc
-" MATA IN REFERENSDOKS SIDNUMMER I TEXTFIL + INCREM. ****** ('put/push')
-"nnoremap <leader>pu o<Esc>"pp<C-A>"pyyo<Esc>.
-nnoremap <leader>ppu "pp<C-A>"pyyo<Esc>kzt
-nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
-
+" Highlight [ ]-lines: " \[.\].*
 " TODO TODO TODO = Integrate
 " ========================================
 " ~/SyncThing/scratch/shorth-tools.vim
@@ -597,21 +599,30 @@ vnoremap <silent> Sp y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogre
 "   vimgrep /@/ % | copen | resize
 "               |
 "             en-file / sv-file
+"   ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt  //
 "   ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
+"   --
+"   ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt  //
 "   ~/Dropbox/config/vim/short.en.gregg.snippets.vim
-"   TODO: STRIP OUT 'ABBREV + Left'-PART
+"   TODO: COPY TO NEW FILES + STRIP OUT 'ABBREV + Left'-PART == NO INDENTATION
 " [/] OPEN SHORTH-REFS                                          txt
 "           Sr/SR  Srp[=pdf] Srt[=txt]
-nnoremap Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf
-    \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf
-    \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf
-    \ ~/Empire/Doks/Lang/Shorth/ir/gregg-irish.pdf &<CR>
+nnoremap <silent> Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf
+                    \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf
+                    \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf
+                    \ ~/Empire/Doks/Lang/Shorth/ir/gregg-irish.pdf &<CR><CR>
 
-" TODO: MAY WANT TO IMPLEMENT SQLITE-SOLUTION FOR FUTURE
+" TODO: MAY WANT TO IMPLEMENT SQLITE-SOLUTION IN THE FUTURE
 " [ ] INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)   ____   txt
+"   ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt  //
+"   ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
+"   --
+"   ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt  //
+"   ~/Dropbox/config/vim/short.en.gregg.snippets.vim
+"
 "       (v) Ki (??) / KI  Kis/Kie
 "                + Fkey: (=Mark text; Insert keystring) * N
-"    - set mark at: end of search-word/words, line at top of win
+"    - set mark at: end of search-word/words + in line at top of win
 "   - Copy word/words to be searched for
 "   - Open reffile (with :edit)
 "   - search for: search-words  \zsREST
@@ -620,10 +631,10 @@ nnoremap Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf
 "    - set back prev. win top-line as top
 "   - Insert '[]' at end of word + insert found key-string
 " [ ]! Ripple-Fetch key-string for v-marked, +=v-mark next word  (v) F4/9
-" +TODO: ADD A-RIGHT/LEFT AS V-BINDINGS (MOVE V-MARK TO NEXT/PREV WORD)
 "
 " [ ] SEARCH BY KEYSTRING (i.e. [\'här'] / ^\'här'$ = hur)      txt / pdf
-"           Kss/Kse
+"     [e.g. 'Is keystring taken?']
+"       (v) Kss/Kse
 
 " [ ] PRACTICE-DECKS:                                           txt
 "       image  2  word
@@ -643,8 +654,21 @@ nnoremap Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf
 "    = Fetch from main Shorth Index-list[!?]
 
 
+" Cleaning, Filtering, Post Ocr-Extraction etc MATA IN REFERENSDOKS SIDNUMMER
+" I TEXTFIL + INCREM. ****** ('put/push')
+"nnoremap <leader>pu o<Esc>"pp<C-A>"pyyo<Esc>.
+nnoremap <leader>ppu "pp<C-A>"pyyo<Esc>kzt nnoremap <leader>pu
+"pp<C-A>"pyyo<Esc>kzt:up<CR>
+" ----
+" Dashify loose word-couplings: "pull request" --> "pull-request"
+command! -nargs=0 GlobalWordcoupler rviminfo
+$HOME/conf/global_wordcoupler.viminfo
+
 inoremap <leader>ti <Esc>:r !date +"\%Y-\%m-\%d"<CR>A 
 " inoremap <leader>ti <C-o>:r !date +"\%Y-\%m-\%d"<CR>
 
-" SYNTAX TOGGLE:  ST (??)
+" Calculate numeric expression à la '3+4/5'
+" (note: Vim computing-register uses strict left2right-evaluation
+"   = force order with parentheses)
+inoremap <leader>ca <Esc>viWyA=<C-R>=<C-R>"<CR>
 
