@@ -46,7 +46,7 @@ silent! mapclear!
 " ___TranslShell_Langs
 let mapleader = ","
 
-
+" Plugins {{{
 " TODO: ADD 'THE TWO GIT-RELATED PLUGINS'  __ __
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -110,6 +110,11 @@ Plug 'pigpigyyy/yuescript-vim'
 " Plugin 'edwinb/idris2-vim'
 Plug 'hylang/vim-hy'
 
+" SparQL
+Plug 'Rob-Vesse/vim-sparql-thing-itself'
+" Plug 'vim-scripts/sparql.vim'
+" Plug 'Omer/vim-sparql'
+
 " The main Git wrapper
 Plug 'tpope/vim-fugitive'
 " Shows diff signs in the gutter
@@ -117,8 +122,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Initialize plugin system
 call plug#end()
-
-
+" }}}
 " " --- FZF Plugin Configuration ---
     " " Disable the preview window to save space on small screens
     " let g:fzf_preview_window = []

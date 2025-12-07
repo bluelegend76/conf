@@ -75,6 +75,11 @@ Plug 'hylang/vim-hy'
 " Plugin 'edwinb/idris2-vim'
 Plug 'pigpigyyy/yuescript-vim'
 
+" SparQL
+Plug 'Rob-Vesse/vim-sparql-thing-itself'
+" Plug 'vim-scripts/sparql.vim'
+" Plug 'Omer/vim-sparql'
+
 " The main Git wrapper
 Plug 'tpope/vim-fugitive'
 " Shows diff signs in the gutter
@@ -661,8 +666,7 @@ nnoremap <leader>ppu "pp<C-A>"pyyo<Esc>kzt nnoremap <leader>pu
 "pp<C-A>"pyyo<Esc>kzt:up<CR>
 " ----
 " Dashify loose word-couplings: "pull request" --> "pull-request"
-command! -nargs=0 GlobalWordcoupler rviminfo
-$HOME/conf/global_wordcoupler.viminfo
+command! -nargs=0 GlobalWordcoupler rviminfo $HOME/conf/global_wordcoupler.viminfo
 
 inoremap <leader>ti <Esc>:r !date +"\%Y-\%m-\%d"<CR>A 
 " inoremap <leader>ti <C-o>:r !date +"\%Y-\%m-\%d"<CR>
