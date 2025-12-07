@@ -76,8 +76,8 @@ Plug 'hylang/vim-hy'
 Plug 'pigpigyyy/yuescript-vim'
 
 " SparQL
-Plug 'Rob-Vesse/vim-sparql-thing-itself'
-" Plug 'vim-scripts/sparql.vim'
+Plug 'vim-scripts/sparql.vim'
+" Plug 'Rob-Vesse/vim-sparql-thing-itself'
 " Plug 'Omer/vim-sparql'
 
 " The main Git wrapper
