@@ -61,9 +61,6 @@ Plug 'mechatroner/rainbow_csv'
 " :RainbowAlign
 " Plugin 'vimoutliner/vimoutliner'
 " Plugin 'neo4j-contrib/cypher-vim-syntax'
-" Plugin 'vim-scripts/sparql.vim'
-"Plugin 'Omer/vim-sparql'
-"Plugin 'vim-scripts/sparql.vim'
 "Plugin 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
@@ -79,6 +76,7 @@ Plug 'pigpigyyy/yuescript-vim'
 Plug 'vim-scripts/sparql.vim'
 " Plug 'Rob-Vesse/vim-sparql-thing-itself'
 " Plug 'Omer/vim-sparql'
+Plug 'FStarLang/VimFStar', {'for': 'fstar'}
 
 " The main Git wrapper
 Plug 'tpope/vim-fugitive'
@@ -626,11 +624,12 @@ vnoremap <silent> Sp y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogre
 "   vimgrep /@/ % | copen | resize
 "               |
 "             en-file / sv-file
-"   ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt  //
-"   ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
-"   --
-"   ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt  //
-"   ~/Dropbox/config/vim/short.en.gregg.snippets.vim
+" ~/Dropbox/rsc/data/lists/ref/shorth/
+"   words-phrases_sv-rapidskr.list.txt
+"   words-phrases_en-gregg.list.txt
+" ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
+" ~/Dropbox/config/vim/short.en.gregg.snippets.vim
+"
 "   TODO: COPY TO NEW FILES + STRIP OUT 'ABBREV + Left'-PART == NO INDENTATION
 " [/] OPEN SHORTH-REFS                                          txt
 "           Sr/SR  Srp[=pdf] Srt[=txt]
@@ -638,14 +637,18 @@ nnoremap <silent> Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.
                     \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf
                     \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf
                     \ ~/Empire/Doks/Lang/Shorth/ir/gregg-irish.pdf &<CR><CR>
+"
+" Txt-Refs:
+"   ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt  //
+"   ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt  //
 
 " TODO: MAY WANT TO IMPLEMENT SQLITE-SOLUTION IN THE FUTURE
 " [ ] INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)   ____   txt
 "   ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt  //
-"   ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
-"   --
 "   ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt  //
-"   ~/Dropbox/config/vim/short.en.gregg.snippets.vim
+"   --
+"       ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
+"       ~/Dropbox/config/vim/short.en.gregg.snippets.vim
 "
 "       (v) Ki (??) / KI  Kis/Kie
 "                + Fkey: (=Mark text; Insert keystring) * N
@@ -661,6 +664,7 @@ nnoremap <silent> Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.
 "
 " [ ] SEARCH BY KEYSTRING (i.e. [\'här'] / ^\'här'$ = hur)      txt / pdf
 "     [e.g. 'Is keystring taken?']
+"   '  \zsPattern'
 "       (v) Kss/Kse
 
 " [ ] PRACTICE-DECKS:                                           txt
@@ -679,16 +683,20 @@ nnoremap <silent> Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.
 " < > ** Give suggestion for Sh-Grob to learn (basis: word often written when writing text in a text-document on the computer)
 " [ ] [LANGS ABBREVS-LIST (FEDERATED)]                          txt
 "    = Fetch from main Shorth Index-list[!?]
+" ~/dropbox-legacy/engstenogregg--REF_förkortningar.txt
+" --
+" ~/dropbox-legacy/tysteno--REF_förkortningar.txt ___abbrevs=german
+" ~/Dropbox/shorthdoks.comp/frasteno.fr.txt ___abbrevs=french
+" ~/dropbox-legacy/frasteno--REF_förkortningar.txt ___abbrevs=french
 
 
 " Cleaning, Filtering, Post Ocr-Extraction etc MATA IN REFERENSDOKS SIDNUMMER
 " I TEXTFIL + INCREM. ****** ('put/push')
 nnoremap <leader>ppu "pp<C-A>"pyyo<Esc>kzt
 nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
-" nnoremap <leader>pu o<Esc>"pp<C-A>"pyyo<Esc>.
-"pp<C-A>"pyyo<Esc>kzt:up<CR>
 " ----
-" Dashify loose word-couplings: "pull request" --> "pull-request"
+" 'Dashify' loose word-couplings globally in a file:
+"   "pull request" --> "pull-request"
 command! -nargs=0 GlobalWordcoupler rviminfo $HOME/conf/global_wordcoupler.viminfo
 
 inoremap <leader>ti <Esc>:r !date +"\%Y-\%m-\%d"<CR>A 

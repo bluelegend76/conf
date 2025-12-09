@@ -112,8 +112,9 @@ Plug 'hylang/vim-hy'
 
 " SparQL
 Plug 'vim-scripts/sparql.vim'
-" Plug 'Rob-Vesse/vim-sparql-thing-itself'
-" Plug 'Omer/vim-sparql'
+  " Plug 'Rob-Vesse/vim-sparql-thing-itself'
+  " Plug 'Omer/vim-sparql'
+Plug 'FStarLang/VimFStar', {'for': 'fstar'}
 
 " The main Git wrapper
 Plug 'tpope/vim-fugitive'
