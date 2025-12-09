@@ -194,6 +194,16 @@ nnoremap <silent> <A-0> :call DefaultFontsize()<CR>
 "}}}
 
 " TODO: SYNTAX TOGGLE:  ST (??)
+"   nnoremap St :execute exists("g:syntax_on") ? 'syntax off' : 'syntax on'<CR>
+"   command SyntaxToggle if exists("g:syntax_on") | syntax off | else | syntax enable | endif
+"
+" nnoremap <silent> St
+"              \ : if exists("syntax_on") <BAR>
+"              \    syntax off <BAR>
+"              \ else <BAR>  
+"              \    syntax enable <BAR>
+"              \ endif<CR>   
+
 nnoremap Sy<Space> :set syntax=
 nnoremap So<Space> :source 
 nnoremap Se<Space> :set 
@@ -562,6 +572,7 @@ vnoremap <silent> <leader>wk y:!firefox -new-tab https://en.wiktionary.org/wiki/
 "  ##    FORVO-MAP  ,fo    glaube uisce  Pronounciation Dictionary
 nnoremap <silent> <leader>fo yiw:!firefox -new-tab https://forvo.com/search/<C-R>"/<CR><CR>
 nnoremap <silent> <leader>et yiw:!firefox -new-tab http://www.etymonline.com/index.php?term=<C-R>"&allowed_in_frame=0<CR><CR>
+
 " TRANSLATE-SHELL MAPS
 let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"
 noremap <silent> <leader>tr :Trans<CR>
@@ -586,6 +597,17 @@ nnoremap <silent> <leader>ts vis:Trans -brief<CR>
 nnoremap <leader>la :let g:trans_default_direction = ":en+sv
 " Reset to default language-set
 nnoremap <leader>ld :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
+
+" TODO: OPEN NEW GVIM-WIN ON TINY CHARACTERS
+" ,ol / ,or
+" (arabic/farsi      with rl set
+" egyp, cuneif, etc  without rl set
+"
+" - cut v-marked text to "+
+" - Open new gvim-win + set MUCH larger fontsize
+"  - set rl
+" - paste "+-text
+
 
 " Highlight [ ]-lines: " \[.\].*
 " TODO TODO TODO = Integrate
@@ -661,8 +683,9 @@ nnoremap <silent> Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.
 
 " Cleaning, Filtering, Post Ocr-Extraction etc MATA IN REFERENSDOKS SIDNUMMER
 " I TEXTFIL + INCREM. ****** ('put/push')
-"nnoremap <leader>pu o<Esc>"pp<C-A>"pyyo<Esc>.
-nnoremap <leader>ppu "pp<C-A>"pyyo<Esc>kzt nnoremap <leader>pu
+nnoremap <leader>ppu "pp<C-A>"pyyo<Esc>kzt
+nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
+" nnoremap <leader>pu o<Esc>"pp<C-A>"pyyo<Esc>.
 "pp<C-A>"pyyo<Esc>kzt:up<CR>
 " ----
 " Dashify loose word-couplings: "pull request" --> "pull-request"
