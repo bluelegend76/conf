@@ -1108,6 +1108,12 @@ jshell
 # yay -S neo4j-desktop
 yay -S neo4j-community
 yay -S cypher-shell
+sudo chown -R neo4j:neo4j /var/lib/neo4j
+sudo chown -R neo4j:neo4j /var/log/neo4j
+# using: sudo systemctl start neo4j && sudo systemctl status neo4j
+# cypher-shell -u neo4j
+# default 1st time password: neo4j (+specify new password)
+# Use the web-based Neo4j browser-IDE: http://localhost:7474
 # ¤¤? (**) neo4j ubuntu {{{
 #   https://neo4j.com/docs/operations-manual/current/installation/linux/debian/
 #

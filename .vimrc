@@ -60,7 +60,9 @@ Plug 'tpope/vim-commentary'
 Plug 'mechatroner/rainbow_csv'
 " :RainbowAlign
 " Plugin 'vimoutliner/vimoutliner'
-" Plugin 'neo4j-contrib/cypher-vim-syntax'
+Plug 'memgraph/cypher.vim'
+" SparQL
+Plug 'vim-scripts/sparql.vim'
 "Plugin 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
@@ -71,11 +73,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'hylang/vim-hy'
 " Plugin 'edwinb/idris2-vim'
 Plug 'pigpigyyy/yuescript-vim'
+" TODO: Plug 'github/codeql-vim'
 
-" SparQL
-Plug 'vim-scripts/sparql.vim'
-" Plug 'Rob-Vesse/vim-sparql-thing-itself'
-" Plug 'Omer/vim-sparql'
 Plug 'FStarLang/VimFStar', {'for': 'fstar'}
 
 " The main Git wrapper
@@ -431,21 +430,23 @@ nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
 " ----
 "" Run with external program (or use gx) {{{
 nnoremap <silent> <leader>fx viWy:!firefox -new-tab <C-R>"<CR><CR>
+" Open file with Tuxguitar
+nnoremap <silent> <leader>tu yiW:!tuxguitar <C-R>" &<CR><CR>
 " Open Video
 nnoremap <leader>mp yiW:!mpv <C-R>" &<CR><CR>
 " nnoremap <leader>ac viWy:!audacity <C-R>" &<CR><CR>
 "" Image-program
-nnoremap <leader>ri viWy:!ristretto <C-R>" &<CR><CR>
+nnoremap <leader>ri yiW:!ristretto <C-R>" &<CR><CR>
 "" Pdf-viewer
-nnoremap <leader>ev viWy:!evince <C-R>" &<CR><CR>
+nnoremap <leader>ev yiW:!evince <C-R>" &<CR><CR>
 "" open with Inkscape
-nnoremap <leader>ik viWy:!inkscape <C-R>" &<CR><CR>
+nnoremap <leader>ik yiW:!inkscape <C-R>" &<CR><CR>
 "" open with Gimp
-nnoremap <leader>gi viWy:!gimp <C-R>" &<CR><CR>
+nnoremap <leader>gi yiW:!gimp <C-R>" &<CR><CR>
 "" open with gvim
-nnoremap <leader>gm viWy:!gvim <C-R>"<CR><CR>
+nnoremap <leader>gm yiW:!gvim <C-R>"<CR><CR>
 "" open with Emacs
-nnoremap <leader>em viWy:!emacs <C-R>" &<CR><CR>
+nnoremap <leader>em yiW:!emacs <C-R>" &<CR><CR>
 "" open with timidity**** +TEMPOMARKERING
 " nnoremap <leader>ti ^f/viW"tyWyiw:!timidity -T <C-R>" <C-R>t <CR><CR>
 "" open with timidity** (=enkel)
@@ -612,56 +613,81 @@ nnoremap <leader>ld :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+u
 " ========================================
 " ~/SyncThing/scratch/shorth-tools.vim
 " ========================================
-" [x] SEARCH MARKED WORD                                        pdf
+" [X] SEARCH MARKED WORD                                        pdf
 "       (v) S1 S2 S3
 "       (v) Ss/Sr Sg Sp
 vnoremap <silent> Ss y:!evince -l '<C-R>"' ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf &<CR>gv
 vnoremap <silent> Sg y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf &<CR>gv
 vnoremap <silent> Sp y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf &<CR>gv
-" [ ] Search Longest Match                                      txt
+" [x] Search Longest Match                                      txt
 "       (v) Search longest match
-" noremap Sls / Sle <Esc>yiw:vimgrep /<C-R>"/ % <bar> copen <bar> resize<CR>
+vnoremap Sle y:vimgrep /<C-R>"/
+    \ ~/Dropbox/rsc/data/lists/ref/shorth/words-phrases_en-gregg.list.txt
+    \ <bar> copen<CR>
+"            ^-- cwindow
+" <bar> resize<CR>
+"
+"" " Change CWD to the directory containing your file before running the search
+"" vnoremap Sls y:lcd ~/Dropbox/rsc/data/lists/ref/shorth<CR>
+""     \ :execute 'gvimgrep /\\V\C' . escape(@", '\') . '/ words-phrases_sv-rapidskr.list.txt' <bar> copen<CR>
+
+vnoremap Sls y:gvimgrep /<C-R>"/
+    \ ~/Dropbox/rsc/data/lists/ref/shorth/words-phrases_sv-rapidskr.list.txt
+    \ <bar> copen
+" <bar> resize<CR>
+"
 "   vimgrep /@/ % | copen | resize
 "               |
 "             en-file / sv-file
-" ~/Dropbox/rsc/data/lists/ref/shorth/
-"   words-phrases_sv-rapidskr.list.txt
-"   words-phrases_en-gregg.list.txt
-" ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
-" ~/Dropbox/config/vim/short.en.gregg.snippets.vim
-"
+" TODO:
+" - Not change file
+" - Cut path of target, or (if possible) cut path + filename[!!]
+"  - maybe use location-list
+" - increase size of cwindow to (minimum) 1/3rd of screenheight (or so)
+
 "   TODO: COPY TO NEW FILES + STRIP OUT 'ABBREV + Left'-PART == NO INDENTATION
-" [/] OPEN SHORTH-REFS                                          txt
+" [X] OPEN SHORTH-REFS                                          txt
 "           Sr/SR  Srp[=pdf] Srt[=txt]
 nnoremap <silent> Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf
-                    \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf
-                    \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf
-                    \ ~/Empire/Doks/Lang/Shorth/ir/gregg-irish.pdf &<CR><CR>
-"
-" Txt-Refs:
-"   ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt  //
-"   ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt  //
+            \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf
+            \ ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf
+            \ ~/Empire/Doks/Lang/Shorth/ir/gregg-irish.pdf &<CR><CR>
+
+nnoremap <silent> Srt :execute "vertical botright split
+        \ ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt" .
+        \ "\<Bar> rightbelow split
+        \ ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt"<CR><C-W>w
 
 " TODO: MAY WANT TO IMPLEMENT SQLITE-SOLUTION IN THE FUTURE
 " [ ] INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)   ____   txt
-"   ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt  //
-"   ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt  //
-"   --
 "       ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
 "       ~/Dropbox/config/vim/short.en.gregg.snippets.vim
 "
+" TODO: PROBABLY WANT TO PUT IN FUNCTION (=CAN BE RERUN FOR 'RIPPLE-FETCH')
 "       (v) Ki (??) / KI  Kis/Kie
 "                + Fkey: (=Mark text; Insert keystring) * N
+" y
+" emm
+" :normal! H<CR>mT
 "    - set mark at: end of search-word/words + in line at top of win
 "   - Copy word/words to be searched for
+" :e -c '/<C-R>"  \zs.*$' ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
+" :e -c '/<C-R>"  \zs.*$' ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt<CR>
+"   --
 "   - Open reffile (with :edit)
 "   - search for: search-words  \zsREST
+" TODO: MAY WANT TO PUT [] AND [[]] AROUND KEYSTRING-ENTRIES
+" # [] = Official  [[]] = Proposed/Custom
+" y$
 "   - Copy
+" 'T`ma[]<Esc>i<C-R>"<Esc>
 "   - Pull back to orig-file with C-O
 "    - set back prev. win top-line as top
 "   - Insert '[]' at end of word + insert found key-string
 " [ ]! Ripple-Fetch key-string for v-marked, +=v-mark next word  (v) F4/9
 "
+" F2
+
 " [ ] SEARCH BY KEYSTRING (i.e. [\'här'] / ^\'här'$ = hur)      txt / pdf
 "     [e.g. 'Is keystring taken?']
 "   '  \zsPattern'
@@ -683,8 +709,7 @@ nnoremap <silent> Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.
 " < > ** Give suggestion for Sh-Grob to learn (basis: word often written when writing text in a text-document on the computer)
 " [ ] [LANGS ABBREVS-LIST (FEDERATED)]                          txt
 "    = Fetch from main Shorth Index-list[!?]
-" ~/dropbox-legacy/engstenogregg--REF_förkortningar.txt
-" --
+" ~/dropbox-legacy/engstenoref_alla-engelska-förkortningar.txt
 " ~/dropbox-legacy/tysteno--REF_förkortningar.txt ___abbrevs=german
 " ~/Dropbox/shorthdoks.comp/frasteno.fr.txt ___abbrevs=french
 " ~/dropbox-legacy/frasteno--REF_förkortningar.txt ___abbrevs=french
@@ -694,7 +719,8 @@ nnoremap <silent> Srp :!evince ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.
 " I TEXTFIL + INCREM. ****** ('put/push')
 nnoremap <leader>ppu "pp<C-A>"pyyo<Esc>kzt
 nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
-" ----
+
+" "Dashing"
 " 'Dashify' loose word-couplings globally in a file:
 "   "pull request" --> "pull-request"
 command! -nargs=0 GlobalWordcoupler rviminfo $HOME/conf/global_wordcoupler.viminfo

@@ -95,10 +95,9 @@ Plug 'tpope/vim-commentary'
 Plug 'mechatroner/rainbow_csv'
 " :RainbowAlign
 " Plugin 'vimoutliner/vimoutliner'
-" Plugin 'neo4j-contrib/cypher-vim-syntax'
-" Plugin 'vim-scripts/sparql.vim'
-"Plugin 'Omer/vim-sparql'
-"Plugin 'vim-scripts/sparql.vim'
+Plug 'memgraph/cypher.vim'
+" SparQL
+Plug 'vim-scripts/sparql.vim'
 "Plugin 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
@@ -109,11 +108,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'pigpigyyy/yuescript-vim'
 " Plugin 'edwinb/idris2-vim'
 Plug 'hylang/vim-hy'
+" TODO: Plug 'github/codeql-vim'
 
-" SparQL
-Plug 'vim-scripts/sparql.vim'
-  " Plug 'Rob-Vesse/vim-sparql-thing-itself'
-  " Plug 'Omer/vim-sparql'
 Plug 'FStarLang/VimFStar', {'for': 'fstar'}
 
 " The main Git wrapper
