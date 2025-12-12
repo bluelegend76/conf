@@ -9,6 +9,20 @@
    (expand-file-name sub-dir user-emacs-directory)))
 
 (server-start)
+
+;; Initialize package sources
+(require 'package)
+(package-initialize)
+
+(unless package-archive-contents
+ (package-refresh-contents))
+
+;; Initialize use-package on non-Linux platforms
+(unless (package-installed-p 'use-package)
+   (package-install 'use-package))
+(require 'use-package)
+(setq use-package-always-ensure t)
+
 (defvar package-archives)               ;TODO: set INITVALUE to next line
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("elpa" . "https://elpa.gnu.org/packages/")
@@ -22,9 +36,7 @@
                          ;; ("marmalade" . "https://marmalade-repo.org/packages/")
                          ))
 
-
 (setq inhibit-startup-message t)
-
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 ;(tooltip-mode -1)
@@ -32,35 +44,27 @@
 (set-fringe-mode 10)
 ;(setq visible-bell t)
 (blink-cursor-mode 0)
-
 ;(load-theme 'wombat)
 ;; (load-theme 'doom-solarized-dark-high-contrast)
 ; (load-theme 'deeper-blue)
 ; (load-theme 'tango-dark)
-(load-theme 'doom-ir-black)
+
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-ir-black t)
+  (setq custom-enabled-themes '(doom-ir-black)))
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 10)))
+
 ;(set-face-attribute 'default nil :font "Fira Code Retina" :height 100)
 
 ; c-x c-e  ||  a-x eval-buffer
 ;----
 ;; swiper (fuzzy match over lines in buffer)
-
-;; Initialize package sources
-(require 'package)
-
-;;  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-;;  						 ("org" . "https://orgmode.org/elpa/")
-;;  						 ("elpa" . "https://elpa.gnu.org/packages/")))
-
-(package-initialize)
-(unless package-archive-contents
- (package-refresh-contents))
-
-;; Initialize use-package on non-Linux platforms
-(unless (package-installed-p 'use-package)
-   (package-install 'use-package))
-
-(require 'use-package)
-(setq use-package-always-ensure t)
 
 ;(use-package command-log-mode)
 
@@ -90,12 +94,6 @@
 ;; Enable Evil
 (require 'evil)
 (evil-mode 1)
-
-(use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 10)))
-(use-package doom-themes)
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))

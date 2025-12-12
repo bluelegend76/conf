@@ -51,26 +51,77 @@
 # --
 # TODO: Set Login-Menu to Svorak
 
+git clone https://github.com/bluelegend76/conf.git ~/conf/
+mkdir ~/repos/
+git clone https://github.com/bluelegend76/at.git ~/repos/at/
+git clone https://github.com/bluelegend76/vtouch-vanki.git ~/repos/vtouch-vanki/
+git clone https://github.com/bluelegend76/utils.git ~/repos/utils/
+
+# TODO TODO: RECONSTITUTE WITH PLUG[!!]
+echo "Installing Vims + linking up vim settings: ..."
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+sudo pacman -S gvim neovim
+# FIXME __ :
+echo "Now linking up vimrc..."
+ln -s ~/conf/.vimrc ~/.vimrc
+read -p "Do a ':PluginInstall' in gvim, then press 'Enter' here to continue: "
+# sudo apt-get install neovim-qt neovide
+# rm -f ~/.vim/{colors,plugin,spell}/
+ln -s ~/conf/vim/colors ~/.vim/colors
+ln -s ~/conf/vim/plugin ~/.vim/plugin
+ln -s ~/conf/vim/spell ~/.vim/spell
+sudo pacman -S translate-shell
+
+# ____ 
+# TODO TODO: CHANGE MAJOR CONFIG-PATH TO GITHUB/BLUELEGEND76
+echo "Now linking up bashrc, inputrc: ..."
+rm -f ~/.bashrc ~/.inputrc ~/.profile
+# ln -s ~/Dropbox/config/.bashrc
+# ln -s ~/Dropbox/config/.inputrc
+# ln -s ~/Dropbox/config/.profile
+ln -s ~/conf/.bashrc ~/.bashrc
+ln -s ~/conf/.inputrc ~/.inputrc
+ln -s ~/conf/.profile ~/.profile
+## ln -s ~/SyncThing/config/.viminfo ~/.viminfo
+# For Keyb3: Alt-gr + Lessthan/GreaterThan
+## ln -s ~/Dropbox/config/keymap/.keyb3_altgr-lessgreater.xmodmap
+# Frescobaldi, Isabelle Prover (etc)  Interface Color-Theme CSS/Style 
+ln -s ~/repos/scripts/ ~/.local/bin/scripts/
+find ~/repos/scripts/ -maxdepth 1 -type f -exec ln -s "{}" ~/.local/bin/ \;
+
+
 sudo pacman -S --needed base-devel git
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-cd
-git clone https://github.com/bluelegend76/conf.git ~/conf/
-mkdir ~/repos/
-git clone https://github.com/bluelegend76/vtouch-vanki.git ~/repos/vtouch-vanki/
-git clone https://github.com/bluelegend76/scripts.git ~/repos/scripts/
-
 sudo pacman -S \
     noto-fonts \
     noto-fonts-cjk \
     && fc-cache -fv
+# sudo gvim /etc/locale.gen 
+# Uncomment the line for ja_JP.UTF-8
+# sudo locale-gen
+# sudo update-locale LANG=ja_JP.UTF-8
+# .vimrc ----
+# set encoding=utf-8
+# set fileencodings=utf-8,ucs-bom,latin1
+# set fileencoding=utf-8
+# sudo pacman -S ttf-liberation ttf-japanese-gothic noto-fonts-cjk
 
 cd
 yay -Syu dropbox
 dropbox start
 dropbox start &
+
+# TODO: SET FOR MANUAL DOWNLOAD(!!)
+yay -S insync
+#@@__ read -p "Next: Downloading Insync [22.04] (with info 'trulystrange' and 'i0...'): "
+#@@__ wget https://cdn.insynchq.com/builds/linux/insync_3.8.4.50481-jammy_amd64.deb
+#@@__ sudo dpkg -i insync_3.8.4.50481-jammy_amd64.deb
+#@@__ echo "(Slight pause +) Starting Insync: ..."
+#@@__ sleep 8
+#@@__ insync start
 
 sudo pacman -S syncthing
 
@@ -80,6 +131,30 @@ read -p "[Pre 1/3] Start off with a done Dropbox and Fluxbox install. Ready?: "
 read -p "[Pre 2/3] The two Main(=Ext Hds) should be hooked up and Mounted?: Done?: "
 read -p "[Pre 3/3] You should be positioned in the Home Folder. Clear?: "
 read -p "Start?: "
+
+echo "Creating and linking up some directories: ..."
+ln -s ~/Dropbox/bin/ ~/
+mkdir -p ~/processdir/{compile,rds}/
+mkdir ~/dwhelper/
+read -p "Connect and mount External Main HDDrive 1(!), then Press Enter: "
+# connect external drive 1  + below = CREATE MANUALLY
+ln -s /run/media/bluelegend/${EXTHD1}/legacy/dropboxlegacy_pre2021/ dropbox-legacy
+ln -s /run/media/bluelegend/${EXTHD1}/Empire/
+ln -s /run/media/bluelegend/${EXTHD1}/legacy/
+ln -s /run/media/bluelegend/${EXTHD1}/SyncThing
+
+sudo pacman -S keepassxc
+
+echo "Now linking up emacs inits: ..."
+# If using next line: Add gitignore (for Emacs system-dirs) to Git-repo
+mkdir .emacs.d
+# ln -s ~/conf/.emacs.d ~/.emacs.d
+ln -s ~/conf/.emacs.d/init.el ~/.emacs.d/init.el
+## ln -s ~/conf/.emacs.d/lilypond/ ~/.emacs.d/lilypond
+
+sudo pacman -S blueman
+# +On startup: sudo systemctl start bluetooth
+
 
 # read -p "Now installing nm-tray: "
 # pacman -S nm-tray
@@ -107,34 +182,6 @@ read -p "Start nm-tray(=applet) and make sure Network is up and Connected. +Pres
 #
 # sudo systemctl restart lightdm
 
-# sudo gvim /etc/locale.gen 
-# Uncomment the line for ja_JP.UTF-8
-# sudo locale-gen
-# sudo update-locale LANG=ja_JP.UTF-8
-# .vimrc ----
-# set encoding=utf-8
-# set fileencodings=utf-8,ucs-bom,latin1
-# set fileencoding=utf-8
-sudo pacman -S noto-fonts-cjk
-# sudo pacman -S ttf-liberation ttf-japanese-gothic noto-fonts-cjk
-
-# ____ 
-# TODO TODO: CHANGE MAJOR CONFIG-PATH TO GITHUB/BLUELEGEND76
-echo "Now linking up bashrc, inputrc: ..."
-rm -f ~/.bashrc ~/.inputrc ~/.profile
-# ln -s ~/Dropbox/config/.bashrc
-# ln -s ~/Dropbox/config/.inputrc
-# ln -s ~/Dropbox/config/.profile
-ln -s ~/conf/.bashrc ~/.bashrc
-ln -s ~/conf/.inputrc ~/.inputrc
-ln -s ~/conf/.profile ~/.profile
-## ln -s ~/SyncThing/config/.viminfo ~/.viminfo
-# For Keyb3: Alt-gr + Lessthan/GreaterThan
-## ln -s ~/Dropbox/config/keymap/.keyb3_altgr-lessgreater.xmodmap
-# Frescobaldi, Isabelle Prover (etc)  Interface Color-Theme CSS/Style 
-ln -s ~/repos/scripts/ ~/.local/bin/scripts/
-find ~/repos/scripts/ -maxdepth 1 -type f -exec ln -s "{}" ~/.local/bin/ \;
-
 # echo "Linking up flux-settings: ..."
 # read -p "[Tip Fluxbox: Good menus theme ='Squared Blue': "
 # rm -f ~/.fluxbox/startup ~/.fluxbox/keys
@@ -147,52 +194,20 @@ sudo pacman -S gnome-clocks
 # --
 # read -p "Tip: Now try Refreshing Fluxbox: "
 
+# Updating pacman mirror-lists
+sudo pacman -S reflector
+
 echo "Installing some Git-tools ... "
 sudo pacman -S meld diffuse
 # yay -S gitkraken
 # git-gui
 # git
 
-echo "Creating and linking up some directories: ..."
-ln -s ~/Dropbox/bin/ ~/
-mkdir -p ~/processdir/{compile,rds}/
-mkdir ~/dwhelper/
-read -p "Connect and mount External Main HDDrive 1(!), then Press Enter: "
-# connect external drive 1  + below = CREATE MANUALLY
-ln -s /run/media/bluelegend/${EXTHD1}/legacy/dropboxlegacy_pre2021/ dropbox-legacy
-ln -s /run/media/bluelegend/${EXTHD1}/Empire/
-ln -s /run/media/bluelegend/${EXTHD1}/legacy/
-
 # echo "Now cloning down own (=bluelegend76) Git repos: ..."
 # mkdir ~/git && \
 #   git clone https://github.com/bluelegend76/komvux2023-cpp.git ~/git/komvux2023-cpp && \
 #   git clone https://github.com/bluelegend76/lilyblock-render.git ~/git/lilyblock-render
 #   # TODO: Convert to for-loop on list of the repo names(!!)
-
-# TODO TODO: RECONSTITUTE WITH PLUG[!!]
-echo "Installing Vims + linking up vim settings: ..."
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# mkdir -p ~/.vim/bundle
-sudo pacman -S gvim neovim
-# sudo apt-get install neovim-qt
-## emacs
-# git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-# TODO: rm: cannot remove 'x/': Is a directory === TODO ===
-# rm -f ~/.vim/{colors,plugin,spell}/
-# OR, USE RMDIR(!!)
-# OR(!!!!) OPEN .VIM-DIR WITH THUNAR/DOLPHIN, AND REMOVE BY HAND
-ln -s ~/conf/vim/colors ~/.vim/colors  #TODO TODO
-ln -s ~/conf/vim/plugin ~/.vim/plugin
-ln -s ~/conf/vim/spell ~/.vim/spell
-
-# FIXME __ :
-echo "Now linking up vimrc and emacs inits: ..."
-ln -s ~/conf/.vimrc ~/.vimrc
-# If using next line: Add gitignore (for Emacs system-dirs) to Git-repo
-# mkdir .emacs.d
-# ln -s ~/conf/.emacs.d ~/.emacs.d
-ln -s ~/conf/.emacs.d/init.el ~/.emacs.d/init.el
-## ln -s ~/conf/.emacs.d/lilypond/ ~/.emacs.d/lilypond
 
 # helix editor {{{
 #  sudo add-apt-repository ppa:maveonair/helix-editor
@@ -201,22 +216,8 @@ ln -s ~/conf/.emacs.d/init.el ~/.emacs.d/init.el
 # }}}
 # yi editor
 
-# NOTe: MAY ALREADY BE INSTALLED BY DEFAULT ON ARCH
-sudo pacman -S syncthing
-
-read -p "Do a ':PluginInstall' in gvim, then press 'Enter' here to continue: "
-
 echo "Creating directory for Gdrive: ..."
 mkdir gdrive
-
-# TODO: SET FOR MANUAL DOWNLOAD(!!)
-yay -S insync
-#@@__ read -p "Next: Downloading Insync [22.04] (with info 'trulystrange' and 'i0...'): "
-#@@__ wget https://cdn.insynchq.com/builds/linux/insync_3.8.4.50481-jammy_amd64.deb
-#@@__ sudo dpkg -i insync_3.8.4.50481-jammy_amd64.deb
-#@@__ echo "(Slight pause +) Starting Insync: ..."
-#@@__ sleep 8
-#@@__ insync start
 
 clear
 echo "Installing some utilities (curl, rename, tree, ag/agrep, scrot, tesseract): ..."
@@ -236,25 +237,20 @@ sudo pacman -S scrot tree
 sudo pacman -S unzip # zip
 sudo pacman -S tre
   # i.e. includes agrep
-silversearcher-ag
+# silversearcher-ag
 # pacman -S tracker  #='tracker3 --help'
 # localsearch tinysparql
 sudo pacman -S ripgrep-all  # rg
 sudo pacman -S tealdeer     # tldr (written in Rust)
 sudo pacman -S tesseract
 ## 30 = Eng
-sudo pacman -S translate-shell
 
 # TODO
 sudo gvim -c '/rights="\zsnone\ze.*pattern="PDF"' /etc/ImageMagick-6/policy.xml
 clear
 read -p "Opening Imagick policy.xml, +Change 'rights' to 'read|write' [+Comment out 6 Policymap lines (=restricting memory-usage)]. Press 'Enter' when done: "
 
-sudo pacman -S blueman
-# +On startup: sudo systemctl start bluetooth
-
 echo "Installing some Mu and Media packages/utils: ..."
-sudo pacman -S keepassxc
   # gydl (??)
 # sudo apt-get install anki
 # pavucontrol  Already Installed (+Extra Music-Mixer)
@@ -306,7 +302,7 @@ sudo pacman -S csound
 sudo pacman -S csoundqt
 sudo pacman -S faust
 # csound-plugins
-yay -S csound-blue
+# yay -S csound-blue
 # https://github.com/kunstmusik/blue/releases/download/2.9.1/blue-linux-2.9.1.zip
 # +TODO: SET+UPDATE LINKS TO CUSTOM SHOTWELL DB:S
 #   (=stored in Drop|Empire-dirs)
@@ -322,7 +318,8 @@ sudo pacman -S kdenlive
 echo "Installing some media-utils, Dok/Pdf-readers, etc: ..."
 sudo pacman -S gimp gimp-plugin-gmic inkscape
 #--
-sudo pacman -S obsidian  #joplin
+# sudo pacman -S obsidian
+yay -S joplin
 sudo pacman -S scribus
 sudo pacman -S qrencode
 sudo pacman -S thunar ristretto
@@ -332,7 +329,7 @@ sudo pacman -S calibre
 #@@__ sudo apt-get install djvulibre-bin
 # wget https://0x2a.at/site/projects/djvu2pdf/djvu2pdf_0.9.2-1_all.deb
 sudo pacman -S nyxt
-teams (aur)
+# teams (aur)
 sudo pacman -S pandoc enscript
 sudo pacman -S festival
 # Chrome
@@ -348,9 +345,9 @@ sudo pacman -Syu warp-terminal
 # Zed-editor
 sudo vim /etc/pacman.conf
 ## Add the following lines to the very end of the file:
-[zed-editor]
-SigLevel = Optional TrustAll
-Server = https://zed.dev/releases/archlinux
+# [zed-editor]
+# SigLevel = Optional TrustAll
+# Server = https://zed.dev/releases/archlinux
 #---
 sudo pacman -Syu zed
 
@@ -507,19 +504,18 @@ echo "Installing some Programming(and media)-related packages: ..."
     # https://github.com/Kitware/CMake/releases/download/v3.26.1/cmake-3.26.1.tar.gz
 # sudo apt install spyder (??)
     #sudo apt-get install youtube-dl
-sudo pacman -S bpython
-sudo pacman -S ipython
+sudo pacman -S bpython ipython
 # sudo pacman -S python3-pip jupyter
 sudo pacman -S python-pip jupyterlab
 sudo pacman -S python3-virtualenv
-pip3
+# pip3
 sudo pacman -S yt-dlp  # __??
 sudo pacman -S qutebrowser
 ln -s ~/Dropbox/config/qutebrowser/config.py ~/.config/qutebrowser/config.py
 # ln -s ~/Dropbox/config/fluxbox/startup ~/.fluxbox/startup
 # tip: Test running with 'bpython3'
 sudo pacman -S npm  #+Perhaps replace with Newer Pmanager[!!]
-sudo pacman -S lua5.4 luarocks
+sudo pacman -S lua luarocks
 sudo pacman -S guix
 sudo pacman -S nix
 brew
@@ -531,7 +527,7 @@ brew
 echo "(Installing some games etc: ...)"
 sudo pacman -S fceux
 read -p "Fceux Tip: gamepad config -- a,b = u,e"
-freesweep
+yay -S freesweep
 read -p "(Tip Freesweep Board: 50x50, 350 mines)"
 # xabacus: =chinese suanpan (=5 lower + 2 higher beads)
 
@@ -853,6 +849,7 @@ sudo pacman -S code
 # }}}
 # sweet-mars, candy-icons  .themes, .icons
 # ==== TODO: install t-browser ubuntu:  https://ubuntuhandbook.org/index.php/2021/01/install-tor-tor-browser-ubuntu-20-10-20-04/ {{{
+sudo pacman -S torbrowser-launcher
 #### sudo apt install apt-transport-https  (+su-password)
 # sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org $(jammy -sc) main" >> /etc/apt/sources.list.d/tor-project.list'
 # --
@@ -913,7 +910,7 @@ sudo pacman -S code
 #   http://thedarnedestthing.com/vimwiki%20cheatsheet
 #   https://vimwiki.github.io/
 # }}}
-vim-latexsuite
+## vim-latexsuite
 texlive-basic texlive-context
 # ¤¤ *** -- install latex / context {{{
 # sudo apt-get install context
@@ -1029,6 +1026,7 @@ texlive-basic texlive-context
 # ReasonML / ReScript ***
 # -- https://reasonml-old.github.io/guide/javascript/syntax-cheatsheet/
 # Node, Yarn, etc
+# pnpm, bun
 #   https://classic.yarnpkg.com/en/
 # Mermaid
 ### npm install -g mermaid
@@ -1075,14 +1073,16 @@ sudo pacman -S xmlstarlet
 # ps2pdf (or ascii, etc)
 #  https://stackoverflow.com/questions/38200159/converting-postscript-to-pdf
 # }}}
-cmake
+## cmake
  # cmake [=installed by default]
 # Python  bpython / ipython
 # ** guile-2.2 guile-3.0
-sudo pacman -S clojure leiningen
+sudo pacman -S clojure rlwrap
+mkdir ~/.clojure/
+ln -s ~/conf/deps.edn ~/.clojure/deps.edn
 # run with 'lein repl' or 'clj'
 # install further Cloj libraries: clj -Sdeps
-jshell
+## jshell
 # ¤¤ *** Clojure Ubuntu + ====TODO Cljfx[!] {{{
 # https://clojureverse.org/
 #   https://clojurescript.org/guides/quick-start
@@ -1114,35 +1114,6 @@ sudo chown -R neo4j:neo4j /var/log/neo4j
 # cypher-shell -u neo4j
 # default 1st time password: neo4j (+specify new password)
 # Use the web-based Neo4j browser-IDE: http://localhost:7474
-# ¤¤? (**) neo4j ubuntu {{{
-#   https://neo4j.com/docs/operations-manual/current/installation/linux/debian/
-#
-# https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-neo4j-on-ubuntu-22-04
-# https://www.techrepublic.com/article/how-to-install-neo4j-ubuntu-server/
-#  https://www.howtoforge.com/how-to-install-and-configure-neo4j-on-ubuntu-22-04/
-# https://github.com/neo4j/neo4j/issues/5444  #=what is the default password
-#
-#   sudo apt-get update && sudo apt-get upgrade -y
-#   sudo apt-get install wget curl nano software-properties-common dirmngr apt-transport-https gnupg gnupg2 ca-certificates lsb-release ubuntu-keyring unzip -y
-
-# curl -fsSL https://debian.neo4j.com/neotechnology.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/neo4j.gpg
-    # echo "deb [signed-by=/usr/share/keyrings/neo4j.gpg] https://debian.neo4j.com stable 4.1" | sudo tee -a /etc/apt/sources.list.d/neo4j.list
-# echo "deb [signed-by=/usr/share/keyrings/neo4j.gpg] https://debian.neo4j.com stable latest" | sudo tee -a /etc/apt/sources.list.d/neo4j.list
-# sudo apt update
-# sudo apt install neo4j
-# sudo systemctl enable --now neo4j
-# --
-# sudo systemctl enable neo4j  #.service
-# sudo systemctl start neo4j   #.service
-# sudo systemctl status neo4j  #.service
-
-# Testing the installation:
-# cypher-shell
-# default user: neo4j  default password: neo4j
-# (+prompted to change to new password)
-# Help: ':help'
-# Exit prompt/program: ':exit'
-# }}}
 
 # Install Dotnet SDK
 sudo pacman -S dotnet-sdk dotnet-runtime
@@ -1297,13 +1268,11 @@ sbcl --load ~/.quicklisp/setup.lisp --eval '(ql:add-to-init-file)' --eval '(quit
 #  = 'jdk has everything the jre has, +(!) javac and tools like javadoc and jdb'
 # }}}
 # gobjc, gobjc++ (+maybe version number)
-# Jetbrains Webstorm
 # --
 rust rustup (cargo)
 # Rust {{{
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # }}}
-luarocks
 # ¤¤ install Lua  # (+moonscript) {{{
 # lua5.3  (lua5.4)
 #      https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-Unix
@@ -1312,7 +1281,6 @@ luarocks
 #   sudo luarocks install alt-getopt
 # sudo luarocks install moonscript
 #   = moon, moonc
-
 # sudo luarocks install tl
 # sudo luarocks install cyan
 # }}}
@@ -1337,6 +1305,7 @@ sudo pacman -S elixir
 # https://github.com/elixir-lang/elixir/releases/download/v1.14.3/elixir-otp-25.zip
 
 # }}}
+# sudo pacman -S ghc cabal-install
 # ¤¤ **(*)(??) Haskell {{{
 #     https://www.haskell.org/ghcup/
 # sudo apt-get install libffi-dev libncurses5 libtinfo5
@@ -1352,18 +1321,6 @@ sudo pacman -S elixir
 #   https://www.freecodecamp.org/news/haskell-programming-language-introduction/
 # https://docs.haskellstack.org/en/stable/install_and_upgrade/
 # https://installati.one/install-haskell-platform-ubuntu-20-04/
-# }}}
-# [**] ((==== TODO )) install Scala ubuntu {{{
-#  curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
-#    #+log in and out (of bash?) for changes to take effect
-# TODO: https://docs.scala-lang.org/getting-started/index.html
-# TODO: https://docs.scala-lang.org/scala3/book/introduction.html
-# TODO: https://www.scala-sbt.org/download.html
-#   https://docs.scala-lang.org/overviews/jdk-compatibility/overview.html
-
-# https://scastie.scala-lang.org/pEBYc5VMT02wAGaDrfLnyw  #=online scala repl
-# --  https://docs.scala-lang.org/getting-started/index.html  #=explaining the compiler etc
-# curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
 # }}}
 # ¤¤ ** install gambit ubuntu  [gambc]  +Chicken scheme {{{
 # ! sudo apt install gambc  /  choco install gambit  /  brew install gambit-scheme
@@ -1389,7 +1346,14 @@ sudo pacman -S racket
 
 # sudo snap install powershell --classic
 # }}}
-ocaml dune opam
+sudo pacman -S ocaml dune opam
+opam init
+eval $(opam env)
+# choose option 1 (update Bash-profile for Ocaml/Opam)
+# Sourcing the profile
+source ~/.bash_profile
+# Update the current shell-environment
+eval $(opam env --switch=default)
 # ¤[¤] *(*) Ocaml {{{
 #  bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
 #  opam init
@@ -1402,28 +1366,30 @@ ocaml dune opam
 # --
 # https://github.com/FStarLang/FStar/blob/master/INSTALL.md#prerequisites-working-ocaml-setup
 
-#### yay -Ss mongodb-compass
-yay -S mongodb-compass
-# mongodb-compass &
-
-
 # opam update
 # opam upgrade
 # [!!] opam install core ****!!
 #      opam install utop
 
 # }}}
+#### yay -Ss mongodb-compass
+yay -S mongodb-compass
+# mongodb-compass &
+
 # (**) Install Golang Ubuntu {{{
+# sudo pacman -S go
+# yay -S gvm  (go version-manager)
 #   https://go.dev/doc/install
 # }}}
 sudo pacman -S supercollider sc3-plugins
-scide ~/conf/scoll_scel-install.scd &
+## scide ~/conf/scoll_scel-install.scd &
 # TODO: START/RUN EMACS WITH:
 #   emacs -f sclang-start
 #     sclang-start
 #     sclang-eval-buffer
 #     sclang-stop
 
+sudo pacman -S csound
 # ¤[¤] ==== TODO: (**) Csound vim, Supercollider, ChucK {{{
 # CSOUND:
 # https://github.com/luisjure/csound-vim
@@ -1462,7 +1428,7 @@ scide ~/conf/scoll_scel-install.scd &
 # 
 # https://waaw.csound.com/
 # }}}
-# --
+
 # SUPERCOLLIDER:
 # sudo apt-get install supercollider
 # https://github.com/supercollider/scvim    https://github.com/wsdjeg/vim-supercollider
@@ -1518,7 +1484,8 @@ sudo pacman -S smlnj
 # install F* {{{
 # http://fstar-lang.org/#download
 #  https://github.com/FStarLang/FStar/releases/download/v2021.06.06/fstar_2021.06.06_Linux_x86_64.tar.gz
-# [ocaml] opam install fstar  //  opam pin add fstar --dev-repo
+# //  opam pin add fstar --dev-repo
+opam install fstar
 # }}}
 # [¤¤] (**) install vlang ubuntu(!!) {{{
 #   evince -p 84 ~/Empire/Doks/Comp/lang/go-v/vlang.pdf &
@@ -1555,7 +1522,7 @@ sudo pacman -S smlnj
 # }}}
 # --
 # Knuth Mix {{{
-#  sudo apt-get install mdk
+yay -Ss mmixware
 # https://www.gnu.org/software/mdk/manual/html_node/Emacs-support.html
 # }}}
 
@@ -1563,7 +1530,9 @@ sudo pacman -S smlnj
 #   https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04
 # https://tech.ingrid.com/sql-as-graph-database/
 # }}}
-# sudo apt-get install sqlite3 sqlitebrowser csvtool
+# Sqlite3
+# + q / q-text-as-data
+sudo pacman -S sqlitebrowser csvkit
 # basedir sqlite3 database
 #   ~/.local/share/shotwell/data/photo.db
 #   https://wiki.gnome.org/Apps/Shotwell/FAQ  #Backup
@@ -1581,6 +1550,7 @@ sudo pacman -S smlnj
 # https://redis.io/docs/stack/graph/
 # }}}
 #  https://en.wikipedia.org/wiki/NoSQL
+# ARANGODB (+AQL)
 # Gremlin (etc?) {{{
 #    https://en.wikipedia.org/wiki/Gremlin_(query_language)
 # https://www.gremlin.com/docs/getting-started/install-virtual-machine/
@@ -1670,13 +1640,6 @@ sudo pacman -S smlnj
 
 # http://mozart2.org/documentation/
 #   https://en.wikipedia.org/wiki/Oz_%28programming_language%29
-# }}}
-# **(?) ---- install intellij idea / Rider {{{
-# snap install rider --classic
-# wget https://download.jetbrains.com/idea/ideaIU-2023.2.2.tar.gz
-# sudo tar -xvzf ideaIC-2023.2.2.tar.gz -C /opt
-# cd /opt/ideaIC-2023.2.2.tar.gz/bin/; sudo ./bin/idea.sh
-# =Change to better Name + Dir
 # }}}
 # sudo snap install node --classic --channel=21
 # sudo apt update && sudo apt install -y dotnet-sdk-8.0
@@ -1797,6 +1760,7 @@ sudo pacman -S haxe
 # }}}
 # ** install octave ubuntu
 sudo pacman -S swi-prolog
+# Yap Prolog
 # (¤¤) (??) install prolog ubuntu {{{
 # sudo apt-add-repository ppa:swi-prolog/stable
 # sudo apt-get update
