@@ -670,32 +670,61 @@ nnoremap <silent> Srt :execute "vertical botright split
 " [ ] INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)   ____   txt
 " TODO: PROBABLY WANT TO PUT IN FUNCTION (=CAN BE RERUN FOR 'RIPPLE-FETCH')
 "       (v) Ki (??) / KI  Kis/Kie
-"                + Fkey: (=Mark text; Insert keystring) * N
-" y
-" emm
-" :normal! H<CR>mT
+" TODO: ABILITY TO MOVE FROM UNSAVED ORIG-FILE[!!!]
+" TODO: INSERT TRY-CATCH MECHANISM (=SILENTLY GO BACK IF NO MATCH FOUND)
+vnoremap Kis y`>mm:normal! H<CR>mT
+    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
+    \ zi/\v<C-R>".{-}  \zs.{-}\ze  <CR>
+    \ ygn
+    \ 'Tzt`ma[]<Esc>i<C-R>"<Esc>
+    \ W:up<CR>
+
+vnoremap Kie y`>mm:normal! H<CR>mT
+    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
+    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt<CR>
+    \ zi/___refstart<CR>
+    \ /\v  <C-R>"  \zs.{-}\ze  <CR>
+    \ ygn
+    \ 'Tzt`ma[]<Esc>i<C-R>"<Esc>
+    \ W:up<CR>
+
+" Temporary Hack: Back (if no match found)
+nnoremap <leader>aa 'Tzt`mW
+
+" # [] = Official  [[]] = Proposed/Custom
+"
 "    - set mark at: end of search-word/words + in line at top of win
 "   - Copy word/words to be searched for
-" :e -c '/<C-R>"  \zs.*$' ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
-" :e -c '/<C-R>"  \zs.*$' ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt<CR>
 "   --
 "   - Open reffile (with :edit)
 "   - search for: search-words  \zsREST
 " TODO: MAY WANT TO PUT [] AND [[]] AROUND KEYSTRING-ENTRIES
-" # [] = Official  [[]] = Proposed/Custom
-" y$
 "   - Copy
-" 'Tzt`ma[]<Esc>i<C-R>"<Esc>
 "   - Pull back to orig-file
 "    - set back prev. win top-line as top
 "   - Insert '[]' at end of word + insert found key-string
+"
 " TODO: REPLACE '[' AND ']' IN GREGGREF-STRINGS WITH '{' AND '}'
 "   (I.E. OPENS POSSIBILITY OF USING [ AND [[ DELIMITER
 "    FOR 'CANONICAL' VS 'CUSTOM' KEYSTRING)
 
+" HACK: REFACTOR OUT ORIGINAL CODE TO FUNCTION
 " [ ]! Ripple-Fetch key-string for v-marked, +=v-mark next word  (v) F4/9
-"
-" F2
+vnoremap <F9> y`>mm:normal! H<CR>mT
+    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
+    \ zi/\v<C-R>".{-}  \zs.{-}\ze  <CR>
+    \ ygn
+    \ 'Tzt`ma[]<Esc>i<C-R>"<Esc>
+    \ W:up<CR>viw
+
+vnoremap <F12> y`>mm:normal! H<CR>mT
+    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
+    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt<CR>
+    \ zi/___refstart<CR>
+    \ /\v  <C-R>"  \zs.{-}\ze  <CR>
+    \ ygn
+    \ 'Tzt`ma[]<Esc>i<C-R>"<Esc>
+    \ W:up<CR>viw
 
 " [ ] SEARCH BY KEYSTRING (i.e. [\'här'] / ^\'här'$ = hur)      txt / pdf
 "     [e.g. 'Is keystring taken?']
