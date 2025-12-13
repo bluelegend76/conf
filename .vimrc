@@ -597,15 +597,20 @@ nnoremap <leader>la :let g:trans_default_direction = ":en+sv
 " Reset to default language-set
 nnoremap <leader>ld :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
 
-" TODO: OPEN NEW GVIM-WIN ON TINY CHARACTERS
-" ,ol / ,or
+" OPEN NEW GVIM-WIN ON TINY CHARACTERS
 " (arabic/farsi      with rl set
 " egyp, cuneif, etc  without rl set
-"
-" - cut v-marked text to "+
-" - Open new gvim-win + set MUCH larger fontsize
-"  - set rl
-" - paste "+-text
+vnoremap <silent> <leader>or "+y:!gvim
+    \ -c 'set guifont=Monospace\ Regular\ 70'
+    \ -c 'set rl'
+    \ -c 'normal "+p'<CR><CR>
+vnoremap <silent> <leader>ol "+y:!gvim
+    \ -c 'set guifont=Monospace\ Regular\ 60'
+    \ -c 'normal "+p'<CR><CR>
+vnoremap <silent> <leader>ob "+y:!gvim
+    \ -c 'set guifont=Monospace\ Regular\ 60'
+    \ -c 'normal "+p'
+    \ -c 's/[^ ]\zs\ze[^ ]/  /g'<CR><CR>
 
 
 " Highlight [ ]-lines: " \[.\].*
@@ -660,9 +665,6 @@ nnoremap <silent> Srt :execute "vertical botright split
 
 " TODO: MAY WANT TO IMPLEMENT SQLITE-SOLUTION IN THE FUTURE
 " [ ] INSERT KEYSTRING AFTER NORMAL(=Fulltext) WORD(S)   ____   txt
-"       ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
-"       ~/Dropbox/config/vim/short.en.gregg.snippets.vim
-"
 " TODO: PROBABLY WANT TO PUT IN FUNCTION (=CAN BE RERUN FOR 'RIPPLE-FETCH')
 "       (v) Ki (??) / KI  Kis/Kie
 "                + Fkey: (=Mark text; Insert keystring) * N
@@ -680,10 +682,14 @@ nnoremap <silent> Srt :execute "vertical botright split
 " # [] = Official  [[]] = Proposed/Custom
 " y$
 "   - Copy
-" 'T`ma[]<Esc>i<C-R>"<Esc>
-"   - Pull back to orig-file with C-O
+" 'Tzt`ma[]<Esc>i<C-R>"<Esc>
+"   - Pull back to orig-file
 "    - set back prev. win top-line as top
 "   - Insert '[]' at end of word + insert found key-string
+" TODO: REPLACE '[' AND ']' IN GREGGREF-STRINGS WITH '{' AND '}'
+"   (I.E. OPENS POSSIBILITY OF USING [ AND [[ DELIMITER
+"    FOR 'CANONICAL' VS 'CUSTOM' KEYSTRING)
+
 " [ ]! Ripple-Fetch key-string for v-marked, +=v-mark next word  (v) F4/9
 "
 " F2
@@ -713,6 +719,10 @@ nnoremap <silent> Srt :execute "vertical botright split
 " ~/dropbox-legacy/tysteno--REF_förkortningar.txt ___abbrevs=german
 " ~/Dropbox/shorthdoks.comp/frasteno.fr.txt ___abbrevs=french
 " ~/dropbox-legacy/frasteno--REF_förkortningar.txt ___abbrevs=french
+"
+"
+"       ~/Dropbox/config/vim/short.sv.rskrift.snippets.vim
+"       ~/Dropbox/config/vim/short.en.gregg.snippets.vim
 
 
 " Cleaning, Filtering, Post Ocr-Extraction etc MATA IN REFERENSDOKS SIDNUMMER

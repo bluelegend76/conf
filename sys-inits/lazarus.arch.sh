@@ -57,6 +57,8 @@ git clone https://github.com/bluelegend76/at.git ~/repos/at/
 git clone https://github.com/bluelegend76/vtouch-vanki.git ~/repos/vtouch-vanki/
 git clone https://github.com/bluelegend76/utils.git ~/repos/utils/
 
+sudo pacman -S firefox torbrowser-launcher
+
 # TODO TODO: RECONSTITUTE WITH PLUG[!!]
 echo "Installing Vims + linking up vim settings: ..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -114,11 +116,10 @@ yay -Syu dropbox
 dropbox start
 dropbox start &
 
+mkdir ~/gdrive/
 # TODO: SET FOR MANUAL DOWNLOAD(!!)
 yay -S insync
 #@@__ read -p "Next: Downloading Insync [22.04] (with info 'trulystrange' and 'i0...'): "
-#@@__ wget https://cdn.insynchq.com/builds/linux/insync_3.8.4.50481-jammy_amd64.deb
-#@@__ sudo dpkg -i insync_3.8.4.50481-jammy_amd64.deb
 #@@__ echo "(Slight pause +) Starting Insync: ..."
 #@@__ sleep 8
 #@@__ insync start
@@ -151,6 +152,8 @@ mkdir .emacs.d
 # ln -s ~/conf/.emacs.d ~/.emacs.d
 ln -s ~/conf/.emacs.d/init.el ~/.emacs.d/init.el
 ## ln -s ~/conf/.emacs.d/lilypond/ ~/.emacs.d/lilypond
+sudo pacman -S emacs
+# emacs-wayland
 
 sudo pacman -S blueman
 # +On startup: sudo systemctl start bluetooth
@@ -222,18 +225,19 @@ mkdir gdrive
 clear
 echo "Installing some utilities (curl, rename, tree, ag/agrep, scrot, tesseract): ..."
 sudo pacman -S man-db man-pages
-sudo mandb
+# sudo mandb
+sudo pacman -S scrot tree
 ## pacman -S curl
 sudo pacman -S rsync
 sudo pacman -S yq
 sudo pacman -S bash-completion
 sudo pacman -S mc
 sudo pacman -S cmake cgdb
+# umbrello
 sudo pacman -S renameutils
 # pacman -S ncal  =??
 #acpi rar
 sudo pacman -S unrar
-sudo pacman -S scrot tree
 sudo pacman -S unzip # zip
 sudo pacman -S tre
   # i.e. includes agrep
@@ -290,7 +294,8 @@ ln -s ~/{conf,.config/neomutt}/vim-keys.rc
   # msmtp-mta  Needed if using other mail-programs than NeoMutt
   sudo pacman -S notmuch urlview w3m lynx
   sudo pacman -S pass python-gobject
-sudo pacman -S pdftk xsane
+sudo pacman -S pdftk
+# xsane
 sudo pacman -S timidity++ midish
 sudo pacman -S shotwell
 sudo pacman -S libreoffice-still    #stable
@@ -299,7 +304,7 @@ sudo pacman -S libreoffice-still    #stable
 sudo pacman -S seq24
 sudo pacman -S soundstretch mma
 sudo pacman -S csound
-sudo pacman -S csoundqt
+# sudo pacman -S csoundqt
 sudo pacman -S faust
 # csound-plugins
 # yay -S csound-blue
@@ -316,7 +321,8 @@ sudo pacman -S kdenlive
 # sudo pacman -S davinci-resolve
 
 echo "Installing some media-utils, Dok/Pdf-readers, etc: ..."
-sudo pacman -S gimp gimp-plugin-gmic inkscape
+sudo pacman -S inkscape gimp imagemagick
+  # gimp-plugin-gmic
 #--
 # sudo pacman -S obsidian
 yay -S joplin
@@ -505,20 +511,33 @@ echo "Installing some Programming(and media)-related packages: ..."
 # sudo apt install spyder (??)
     #sudo apt-get install youtube-dl
 sudo pacman -S bpython ipython
+  # tip: Test running with 'bpython3'
 # sudo pacman -S python3-pip jupyter
 sudo pacman -S python-pip jupyterlab
 sudo pacman -S python3-virtualenv
 # pip3
 sudo pacman -S yt-dlp  # __??
 sudo pacman -S qutebrowser
+# TODO: ADD ALEX QUTEBROWSER-CONFIG
 ln -s ~/Dropbox/config/qutebrowser/config.py ~/.config/qutebrowser/config.py
-# ln -s ~/Dropbox/config/fluxbox/startup ~/.fluxbox/startup
-# tip: Test running with 'bpython3'
+  # ln -s ~/Dropbox/config/fluxbox/startup ~/.fluxbox/startup
 sudo pacman -S npm  #+Perhaps replace with Newer Pmanager[!!]
 sudo pacman -S lua luarocks
+# luarocks install fennel  yuescript fennel
+# ¤¤ install Lua  # (+moonscript) {{{
+# lua5.3  (lua5.4)
+#      https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-Unix
+#   sudo apt-get install lua-lpeg
+#   sudo apt-get install lua-filesystem
+#   sudo luarocks install alt-getopt
+# sudo luarocks install moonscript
+#   = moon, moonc
+# sudo luarocks install tl
+# sudo luarocks install cyan
+# }}}
 sudo pacman -S guix
 sudo pacman -S nix
-brew
+#  brew
 # Firefox Tampermonkey [**]
 # Ada/Gnat/Spark ----
 # gnatstudio  (=download +run linux installer with sudo)
@@ -577,7 +596,7 @@ yay -S muse-sounds-manager-bin
 #  gstreamer1.0-doc
 # }}}
 sudo pacman -S csoundqt nyquist
-echo "(Nyquist is started with 'ny': )"
+# echo "(Nyquist is started with 'ny': )"
 # TODO: Add installation for Csound Blue
 
 echo "(Installing some media Extras)"
@@ -585,8 +604,7 @@ sudo pacman -S discord
 # 2.2 'Discord asks for Update'  https://wiki.archlinux.org/title/Discord
 sudo pacman -S pidgin
 
-echo "Installing speech-dispatcher (=for Firefox speech synthesis): "
-sudo apt install speech-dispatcher
+# sudo apt install speech-dispatcher
 # testing that it works:
 # spd-say hi 
 
@@ -889,7 +907,7 @@ sudo pacman -S torbrowser-launcher
 # acrordrdc  ##
 # }}}
 # doxygen
-#  sudo apt-get -y install doxygen
+sudo pacman -S doxygen
 
 # **** INSTALL UBUNTU TOUCH ON ANDROID PHONE {{{
 #  https://www.ubuntupit.com/how-to-install-ubuntu-touch-on-android-device-an-easy-tutorial-for-newbie/
@@ -1080,6 +1098,10 @@ sudo pacman -S xmlstarlet
 sudo pacman -S clojure rlwrap
 mkdir ~/.clojure/
 ln -s ~/conf/deps.edn ~/.clojure/deps.edn
+# Choose latest stable version of jdk (2025: jdk-21)
+# + managing different Java-versions in Arch:
+#   archlinux-java status
+#   sudo archlinux-java set java-17-openjdk
 # run with 'lein repl' or 'clj'
 # install further Cloj libraries: clj -Sdeps
 ## jshell
@@ -1180,44 +1202,7 @@ sudo pacman -S sbcl emacs-slime
 curl -O https://beta.quicklisp.org/quicklisp.lisp
 sbcl --load quicklisp.lisp --eval '(quicklisp-quickstart:install :path "~/.quicklisp/")' --eval '(quit)'
 sbcl --load ~/.quicklisp/setup.lisp --eval '(ql:add-to-init-file)' --eval '(quit)'
-# *(*)? install CLisp (+slime) Ubuntu(!) [@@@@ TODO] {{{
-# sudo apt-get install sbcl
-# shell: =
-#    sudo apt-get -y install cl-quicklisp
-# Next:
-# curl -o /tmp/ql.lisp http://beta.quicklisp.org/quicklisp.lisp
-# sbcl --no-sysinit --no-userinit --load /tmp/ql.lisp \
-#      --eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
-#      --eval '(ql:add-to-init-file)' \
-#      --quit
-# -- +Run:
-# sbcl --eval '(ql:quickload :quicklisp-slime-helper)' --quit
-#
-# REPL: run 'sbcl' in shell (**)
-
-# emacs:
-#     a-x slime  ||  sudo apt-get install slime
-# [+recommended plugins:
-# paredit, auto-complete, smartparens
-
-# TODO: https://installati.one/install-cl-quicklisp-ubuntu-20-04/
-# TODO: --
-# TODO: https://lisp-lang.org/learn/getting-started/
-# TODO: https://lisp-lang.org/learn/functions
-# TODO: https://portacle.github.io/
-# TODO: http://www.sbcl.org/manual/#Compiler
-# TODO: https://slime.common-lisp.dev/
-# TODO:
-# TODO: https://www.emacswiki.org/emacs/SlimeMode
-# TODO:   https://stackoverflow.com/questions/33003993/how-to-get-emacs-slime-sbcl-to-recognize-quicklisp-packages
-# TODO:
-# TODO: https://astraybi.wordpress.com/2015/08/02/how-to-install-slimesbclquicklisp-into-emacs/ __ __ __ __ __ ******
-
-# https://lisp-lang.org/learn/getting-started/
-#  sbcl, quicklisp(=packman), emacs + slime
-#     https://www.ridvanbaluyos.com/how-to-install-common-lisp-on-ubuntu/
-# https://askubuntu.com/questions/670304/what-is-the-install-routine-for-common-lisp-slime-sbcl-quicklisp-on-ubuntu#670362
-# }}}
+sbcl --load ~/.quicklisp/setup.lisp --eval '(ql:quickload "quicklisp-slime-helper")' --eval '(quit)'
 # Install Jdk 19 Ubuntu / Oracle Java [!!] + Netbeans  | JavaFX(openjfx)/Fxml {{{
 # https://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm
 # Netbeans Javafx {{{
@@ -1269,20 +1254,9 @@ sbcl --load ~/.quicklisp/setup.lisp --eval '(ql:add-to-init-file)' --eval '(quit
 # }}}
 # gobjc, gobjc++ (+maybe version number)
 # --
-rust rustup (cargo)
+## rust rustup (cargo)
 # Rust {{{
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# }}}
-# ¤¤ install Lua  # (+moonscript) {{{
-# lua5.3  (lua5.4)
-#      https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-Unix
-#   sudo apt-get install lua-lpeg
-#   sudo apt-get install lua-filesystem
-#   sudo luarocks install alt-getopt
-# sudo luarocks install moonscript
-#   = moon, moonc
-# sudo luarocks install tl
-# sudo luarocks install cyan
 # }}}
 # sudo npm install -g sass
 # ( sudo dpkg -i koala_2.3.0_x86_64.deb )
