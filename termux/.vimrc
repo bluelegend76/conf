@@ -61,6 +61,9 @@ Plug 'sheerun/vim-polyglot'
 " Allows you to search for visual selections
 Plug 'thinca/vim-visualstar'
 
+" The classic matchit enhanced
+Plug 'andymass/vim-matchup'
+
 " A fast fuzzy file finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
