@@ -74,8 +74,6 @@ ln -s ~/conf/vim/plugin ~/.vim/plugin
 ln -s ~/conf/vim/spell ~/.vim/spell
 sudo pacman -S translate-shell
 
-# ____ 
-# TODO TODO: CHANGE MAJOR CONFIG-PATH TO GITHUB/BLUELEGEND76
 echo "Now linking up bashrc, inputrc: ..."
 rm -f ~/.bashrc ~/.inputrc ~/.profile
 # ln -s ~/Dropbox/config/.bashrc
@@ -261,7 +259,7 @@ echo "Installing some Mu and Media packages/utils: ..."
 sudo pacman -S vlc mpv audacious
 # +python-mpv
 # +playerctl ?
-gtick
+## gtick
 sudo pacman -S lilypond
 yay -S mma
 sudo pacman -S frescobaldi
@@ -271,7 +269,8 @@ sudo pacman -S qpwgraph
 sudo pacman -S qtractor lmms
 # ----
 sudo pacman -S reaper
-# + python-ly
+# + python-ly abjad
+
 git clone https://aur.archlinux.org/snapd.git
 cd snapd
 makepkg -si
@@ -1258,6 +1257,7 @@ sbcl --load ~/.quicklisp/setup.lisp --eval '(ql:quickload "quicklisp-slime-helpe
 # Rust {{{
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # }}}
+sudo pacman -S sass
 # sudo npm install -g sass
 # ( sudo dpkg -i koala_2.3.0_x86_64.deb )
 # ( koala & )
@@ -1279,6 +1279,7 @@ sudo pacman -S elixir
 # https://github.com/elixir-lang/elixir/releases/download/v1.14.3/elixir-otp-25.zip
 
 # }}}
+# Haskell
 # sudo pacman -S ghc cabal-install
 # ¤¤ **(*)(??) Haskell {{{
 #     https://www.haskell.org/ghcup/
@@ -1349,6 +1350,7 @@ eval $(opam env --switch=default)
 #### yay -Ss mongodb-compass
 yay -S mongodb-compass
 # mongodb-compass &
+yay -S urweb
 
 # (**) Install Golang Ubuntu {{{
 # sudo pacman -S go
@@ -1455,11 +1457,11 @@ sudo pacman -S smlnj
 #    polyml-modules - modules for Poly/ML, a compiler for Standard ML
 #    smlsharp - Standard ML compiler with practical extensions
 #}}}
+opam install fstar
 # install F* {{{
 # http://fstar-lang.org/#download
 #  https://github.com/FStarLang/FStar/releases/download/v2021.06.06/fstar_2021.06.06_Linux_x86_64.tar.gz
 # //  opam pin add fstar --dev-repo
-opam install fstar
 # }}}
 # [¤¤] (**) install vlang ubuntu(!!) {{{
 #   evince -p 84 ~/Empire/Doks/Comp/lang/go-v/vlang.pdf &
@@ -1496,7 +1498,7 @@ opam install fstar
 # }}}
 # --
 # Knuth Mix {{{
-yay -Ss mmixware
+yay -S mmixware
 # https://www.gnu.org/software/mdk/manual/html_node/Emacs-support.html
 # }}}
 

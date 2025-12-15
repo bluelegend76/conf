@@ -718,7 +718,6 @@ vnoremap <F9> y`>mm:normal! H<CR>mT
     \ W:up<CR>viw
 
 vnoremap <F12> y`>mm:normal! H<CR>mT
-    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
     \ :e ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt<CR>
     \ zi/___refstart<CR>
     \ /\v  <C-R>"  \zs.{-}\ze  <CR>

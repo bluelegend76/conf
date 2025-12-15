@@ -1,3 +1,4 @@
+; __
 (defun append-to-load-path (dir)
   "Append DIR to the list variable ‘load-path’ only if it exist."
   (if (file-directory-p dir)
@@ -49,6 +50,8 @@
 ; (load-theme 'deeper-blue)
 ; (load-theme 'tango-dark)
 
+
+;;; Doom __
 (use-package doom-themes
   :ensure t
   :config
@@ -86,6 +89,8 @@
 ;   :config
 ;   (ivy-mode 1)) }}}
 
+
+;;; Evil __
 ; https://github.com/emacs-evil/evil (+directions for installing)
 ;; Download Evil
 (unless (package-installed-p 'evil)
@@ -124,7 +129,7 @@
 (global-font-lock-mode t)
 
 
-;;; Slime ----
+;;; Slime __
 ; (add-to-list 'load-path "/usr/share/quicklisp")
 ; (load "/usr/share/quicklisp/quicklisp.lisp")
 ; 
@@ -145,8 +150,7 @@
 ; (setq inferior-lisp-program "sbcl")
 
 
-;;; ===========================================================================
-;;; LilyPond
+;;; LilyPond __
 
 (when (append-to-load-path (elsub "lilypond"))
   (load-file (file-name-concat (elsub "lilypond") "lilypond-init.el"))
@@ -171,22 +175,16 @@
 (global-set-key [(f11)] 'compile)
 (global-set-key [(control f11)] 'recompile)
 
-;;; Eclipse Style bindings
+
+;;; Eclipse Style bindings __
 (global-set-key [(control meta ?,)] 'previous-error)
 (global-set-key [(control meta ?.)] 'next-error)
 
 
-; (unless (package-installed-p 'evil)
-;   (package-install 'evil))
-; 
-; ;; Enable Evil
-; (require 'evil)
-
-
+;;; Csound Mode Configuration __
 (unless (package-installed-p 'csound-mode)
   (package-install 'csound-mode))
 
-;;; Csound Mode Configuration
 (use-package csound-mode
 :ensure t
 :mode (("\\.orc\\'" . csound-mode)
@@ -198,12 +196,14 @@
 )
 
 
+;;; SuperCollider __
 ; (unless (package-installed-p 'scel)
 ;   (package-install 'scel))
 
 ; (unless (package-installed-p 'sclang)
 ;   (package-install 'sclang))
 ; (require 'sclang)
+
 
 ; ;; Bootstrap straight.el
 ; (defvar bootstrap-version)
@@ -304,7 +304,7 @@
 ;; Add any other general Emacs-configurations below this line
 
 
-;;; Clojure
+;;; Clojure __
 ;; Load use-package if it's not already loaded
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -343,6 +343,7 @@
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 
 
+;;; TODO: Toggle Themes __
 (defun next-theme ()
   "Load the next theme from the custom-enabled-themes list."
   (interactive)
@@ -359,6 +360,7 @@
 ; (global-set-key (kbd "C-F8") 'next-theme)
 
 
+;;; Org Mode Extras __
 ; ;; Silence the double theme reload prompt
 ; (setq doom-theme-silently-reload t)
 
