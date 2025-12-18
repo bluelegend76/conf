@@ -356,6 +356,8 @@ let @r='@c@e'
 " DASH_NEXT / DASH_PREV
 noremap <Leader>E <Esc>f s-<Esc>
 noremap <Leader>B <Esc>k:s/\n/-/<CR>:nohl<CR>
+" Remove next binding dash
+nnoremap <Leader>D f-r 
 
 " FIXME
 " Input, a comma at the end of vmarked text

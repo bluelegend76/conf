@@ -146,9 +146,10 @@ sudo pacman -S keepassxc
 
 echo "Now linking up emacs inits: ..."
 # If using next line: Add gitignore (for Emacs system-dirs) to Git-repo
-mkdir .emacs.d
+# mkdir .emacs.d
+ln -s ~/conf/.emacs.d/ ~/.emacs.d/
 # ln -s ~/conf/.emacs.d ~/.emacs.d
-ln -s ~/conf/.emacs.d/init.el ~/.emacs.d/init.el
+# ln -s ~/conf/.emacs.d/init.el ~/.emacs.d/init.el
 ## ln -s ~/conf/.emacs.d/lilypond/ ~/.emacs.d/lilypond
 sudo pacman -S emacs
 # emacs-wayland
@@ -369,10 +370,11 @@ yay -S javafx-scenebuilder
 ## TODO: ADD XFCE DESKTOP KEYBOARD SETTINGS (=directory of xml-files)
 
 # STEAM
-sudo gvim /etc/pacman.conf
-clear
-read -p "Uncomment '[multilib] + mirrorlist'-line: "
+# sudo gvim /etc/pacman.conf
+# clear
+# read -p "Uncomment '[multilib] + mirrorlist'-line: "
 # https://linuxgenie.net/download-install-steam-arch-linux/
+sudo pacman -S steam
 sudo pacman -S signal-desktop
 # https://wiki.archlinux.org/title/WhatsApp  (WhatsApp Web)
 # WHATSAPP

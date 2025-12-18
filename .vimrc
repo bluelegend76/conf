@@ -610,10 +610,16 @@ vnoremap <silent> <leader>or "+y:!gvim
 vnoremap <silent> <leader>ol "+y:!gvim
     \ -c 'set guifont=Monospace\ Regular\ 60'
     \ -c 'normal "+p'<CR><CR>
+" SPACING OUT (=for unicode-fonts otherwise too cramped
+"                 i.e. hieroglyphs, cuneiform, etc)
 vnoremap <silent> <leader>ob "+y:!gvim
     \ -c 'set guifont=Monospace\ Regular\ 60'
     \ -c 'normal "+p'
     \ -c 's/[^ ]\zs\ze[^ ]/  /g'<CR><CR>
+"
+" NEW/TODO: SWITCH BETWEEN RL/NORL
+noremap <silent> <C-S-Right> :set rl <bar> set guifont=Monospace\ Regular\ 60<CR>
+noremap <silent> <C-S-Left> :set norl <bar> set guifont=Monospace\ Regular\ 14<CR>
 
 
 " Highlight [ ]-lines: " \[.\].*
@@ -627,6 +633,7 @@ vnoremap <silent> <leader>ob "+y:!gvim
 vnoremap <silent> Ss y:!evince -l '<C-R>"' ~/Dropbox/rsc/Doks/Lang/Shorth/sv/rskrift.empire.pdf &<CR>gv
 vnoremap <silent> Sg y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-dictionary.pdf &<CR>gv
 vnoremap <silent> Sp y:!evince -l '<C-R>"' ~/Empire/Doks/Lang/Shorth/en/stenogregg-phrasebook.pdf &<CR>gv
+
 " [x] Search Longest Match                                      txt
 "       (v) Search longest match
 vnoremap Sle y:vimgrep /<C-R>"/
@@ -639,7 +646,8 @@ vnoremap Sle y:vimgrep /<C-R>"/
 "" vnoremap Sls y:lcd ~/Dropbox/rsc/data/lists/ref/shorth<CR>
 ""     \ :execute 'gvimgrep /\\V\C' . escape(@", '\') . '/ words-phrases_sv-rapidskr.list.txt' <bar> copen<CR>
 
-vnoremap Sls y:gvimgrep /<C-R>"/
+" vnoremap Sls y:gvimgrep /<C-R>"/
+vnoremap Sls y:vimgrep! /<C-R>"/
     \ ~/Dropbox/rsc/data/lists/ref/shorth/words-phrases_sv-rapidskr.list.txt
     \ <bar> copen
 " <bar> resize<CR>
@@ -649,6 +657,7 @@ vnoremap Sls y:gvimgrep /<C-R>"/
 "             en-file / sv-file
 " TODO:
 " - Not change file
+" ----
 " - Cut path of target, or (if possible) cut path + filename[!!]
 "  - maybe use location-list
 " - increase size of cwindow to (minimum) 1/3rd of screenheight (or so)
@@ -673,15 +682,14 @@ nnoremap <silent> Srt :execute "vertical botright split
 " TODO: ABILITY TO MOVE FROM UNSAVED ORIG-FILE[!!!]
 " TODO: INSERT TRY-CATCH MECHANISM (=SILENTLY GO BACK IF NO MATCH FOUND)
 vnoremap Kis y`>mm:normal! H<CR>mT
-    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
+    \ :hide edit ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
     \ zi/\v<C-R>".{-}  \zs.{-}\ze  <CR>
     \ ygn
     \ 'Tzt`ma[]<Esc>i<C-R>"<Esc>
     \ W:up<CR>
 
 vnoremap Kie y`>mm:normal! H<CR>mT
-    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/rapidskr.txt<CR>
-    \ :e ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt<CR>
+    \ :hide edit ~/Dropbox/rsc/data/lists/ref/shorth/gregg.txt<CR>
     \ zi/___refstart<CR>
     \ /\v  <C-R>"  \zs.{-}\ze  <CR>
     \ ygn
