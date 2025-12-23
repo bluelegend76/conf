@@ -24,7 +24,7 @@
 # Search for a package in the repos (e.g. Firefox):
 #  pacman -Ss firefox
 
-# Other Useful Pacman Search Options:
+# Other Useful Pacman Search-Options:
 # - pacman -Si firefox
 #     Show detailed information about specific package (if it exists in the repositories)
 #     = equivalent to apt-cache show firefox.
@@ -512,10 +512,24 @@ echo "Installing some Programming(and media)-related packages: ..."
 # sudo apt install spyder (??)
     #sudo apt-get install youtube-dl
 sudo pacman -S bpython ipython
+sudo pacman -S python-kivy
   # tip: Test running with 'bpython3'
 # sudo pacman -S python3-pip jupyter
-sudo pacman -S python-pip jupyterlab
+sudo pacman -S python-pip uv python-matplotlib python-pandas
+# Core graphics and windowing providers for Kivy
+# sudo pacman -S --needed sdl2_image sdl2_mixer sdl2_ttf
+# Install Hy with all the "extras" injected into its environment
+uv tool install hy --with hyrule --with kivy --with numpy --with pandas --with matplotlib --force
+## uv tool update-shell
+# = fixing conf-files so local tools take priority over system ones
+# Updated command including the visual REPL and shell setup
+# uv tool install hy --with hyrule --with kivy --with pandas --with matplotlib --with ptpython --force
+uv tool update-shell
+sudo pacman -S jupyterlab
+# sphinx + sphinx-autogen (for doxygen) installed by default
+sudo pacman -S python-sphinx-autobuild
 sudo pacman -S python3-virtualenv
+# pipx
 # pip3
 sudo pacman -S yt-dlp  # __??
 sudo pacman -S qutebrowser
@@ -1310,12 +1324,9 @@ sudo pacman -S elixir
 #   chicken//csc  compiler
 # }}}
 sudo pacman -S racket
-# ¤ **[!] Racket Scheme {{{
-# https://racket-lang.org/download/
-#
-# wget https://download.racket-lang.org/installers/8.8/racket-8.8-x86_64-linux-cs.sh
-# sudo sh racket-8.8-x86_64-linux-cs.sh
-# }}}
+raco pkg config --set default-scope user
+raco pkg install --auto gui-easy
+# raco 'install' gui-easy
 # Odoo Ubuntu
 #   https://www.howtoforge.com/how-to-install-odoo-16-on-ubuntu-22-04/
 # ?? install Powershell Ubuntu {{{
@@ -1499,11 +1510,8 @@ opam install fstar
 # https://groups.google.com/forum/#!forum/ring-lang
 # }}}
 # --
-# Knuth Mix {{{
 yay -S mmixware
 # https://www.gnu.org/software/mdk/manual/html_node/Emacs-support.html
-# }}}
-
 # PostgreSQL: current lists version =14, current latest =15 {{{
 #   https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04
 # https://tech.ingrid.com/sql-as-graph-database/
@@ -1750,6 +1758,7 @@ sudo pacman -S swi-prolog
 #   https://us.swi-prolog.org/build/PPA.html
 #   android =Termux: swi-prolog
 # }}}
+yay -S mercury
 # *(???) install Mercury ubuntu {{{
 # https://dl.mercurylang.org/deb/ ***** ___SEEMORE
 # .m

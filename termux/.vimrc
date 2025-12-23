@@ -112,8 +112,8 @@ Plug 'pigpigyyy/yuescript-vim'
 " Plugin 'edwinb/idris2-vim'
 Plug 'hylang/vim-hy'
 " TODO: Plug 'github/codeql-vim'
-
 Plug 'FStarLang/VimFStar', {'for': 'fstar'}
+Plug 'stewy33/mercury-vim'
 
 " The main Git wrapper
 Plug 'tpope/vim-fugitive'

@@ -77,8 +77,8 @@ Plug 'hylang/vim-hy'
 " Plugin 'edwinb/idris2-vim'
 Plug 'pigpigyyy/yuescript-vim'
 " TODO: Plug 'github/codeql-vim'
-
 Plug 'FStarLang/VimFStar', {'for': 'fstar'}
+Plug 'stewy33/mercury-vim'
 
 " The main Git wrapper
 Plug 'tpope/vim-fugitive'
@@ -432,6 +432,9 @@ nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
 " ^yg_:<C-R>"<CR><CR>'tzt'm
 " ----
 "" Run with external program (or use gx) {{{
+" Generate qr-code for word/text/url under cursor + show with imagick
+nnoremap <silent> <leader>qr yiW:!qrencode -o /tmp/qrcode.png '<C-R>"'<CR>\|:!magick display /tmp/qrcode.png &<CR><CR>
+" Open with web-browser (Firefox)
 nnoremap <silent> <leader>fx viWy:!firefox -new-tab <C-R>"<CR><CR>
 " Open file with Tuxguitar
 nnoremap <silent> <leader>tu yiW:!tuxguitar <C-R>" &<CR><CR>
@@ -772,7 +775,7 @@ nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
 " "Dashing"
 " 'Dashify' loose word-couplings globally in a file:
 "   "pull request" --> "pull-request"
-command! -nargs=0 GlobalWordcoupler rviminfo $HOME/conf/global_wordcoupler.viminfo
+command! -nargs=0 GlobalWordcoupler rviminfo! $HOME/conf/global_wordcoupler.viminfo
 
 inoremap <leader>ti <Esc>:r !date +"\%Y-\%m-\%d"<CR>A 
 " inoremap <leader>ti <C-o>:r !date +"\%Y-\%m-\%d"<CR>
