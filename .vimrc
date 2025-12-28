@@ -772,6 +772,11 @@ vnoremap <F12> y`>mm:normal! H<CR>mT
 nnoremap <leader>ppu "pp<C-A>"pyyo<Esc>kzt
 nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
 
+
+" VANKI-TOOLS ----
+" Highlight custom vanki-tags (à la T@, N@T@n@, etc)
+nnoremap <silent> <leader>hi /\v(%(<([a-zA-Z])\2{0,4})\@)+<CR>
+
 " "Dashing"
 " 'Dashify' loose word-couplings globally in a file:
 "   "pull request" --> "pull-request"

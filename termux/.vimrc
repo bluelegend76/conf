@@ -350,7 +350,7 @@ inoremap ZX <Esc>
 "
 " OMNI DASHIFY [Moved here from vtd.Tagging] ----
 let @c='viw"aywviw"by'
-let @e='ma:.,$s/\vasb/-/g`a'
+let @e='ma:.,$s/\vasb>/-/g`a'
 let @s='\zs( |\n\s*)\ze'
 let @r='@c@e'
 " DASH_NEXT / DASH_PREV

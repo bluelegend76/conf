@@ -228,7 +228,8 @@ sudo pacman -S man-db man-pages
 sudo pacman -S scrot tree
 ## pacman -S curl
 sudo pacman -S rsync
-sudo pacman -S yq
+# yq = yaml, toml  (= 'Manually writing Json')
+sudo pacman -S jq yq
 sudo pacman -S bash-completion
 sudo pacman -S mc
 sudo pacman -S cmake cgdb
@@ -922,7 +923,7 @@ sudo pacman -S torbrowser-launcher
 # acrordrdc  ##
 # }}}
 # doxygen
-sudo pacman -S doxygen
+sudo pacman -S doxygen graphviz
 
 # **** INSTALL UBUNTU TOUCH ON ANDROID PHONE {{{
 #  https://www.ubuntupit.com/how-to-install-ubuntu-touch-on-android-device-an-easy-tutorial-for-newbie/
