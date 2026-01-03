@@ -2,7 +2,6 @@
 " Linux Vimrc
 
 " TODO: Add Leader-u as Redo
-
 " TODO: ADD MODIFIED VIS-NAVIGATION (= v-right/left
 
 " ??TODO: Add extended _vimrc
@@ -74,6 +73,7 @@ Plug 'junegunn/vim-easy-align'
 " MATCHIT(xml mm) **
 " Plugin 'LhKipp/nvim-nu'
 Plug 'hylang/vim-hy'
+Plug 'lfe-support/vim-lfe'
 " Plugin 'edwinb/idris2-vim'
 Plug 'pigpigyyy/yuescript-vim'
 " TODO: Plug 'github/codeql-vim'
@@ -90,7 +90,6 @@ call plug#end()
 "}}}
 
 set ignorecase
-
 "---- __
 colorscheme ron
 set guicursor+=a:blinkon0
@@ -776,6 +775,9 @@ nnoremap <leader>pu "pp<C-A>"pyyo<Esc>kzt:up<CR>
 " VANKI-TOOLS ----
 " Highlight custom vanki-tags (à la T@, N@T@n@, etc)
 nnoremap <silent> <leader>hi /\v(%(<([a-zA-Z])\2{0,4})\@)+<CR>
+" Set quick/default tags with space (=reading through text
+"   + navigating with right/left for vmark sentence highlighting)
+vnoremap <Space> <Esc>iN@Q@<Esc>:up<CR>gv
 
 " "Dashing"
 " 'Dashify' loose word-couplings globally in a file:

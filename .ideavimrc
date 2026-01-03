@@ -1,9 +1,10 @@
 let mapleader=","
 set hlsearch
 set incsearch
+set clipboard+=unnamed
 
-" nnoremap <A-H> <Action>(ToggleInlayHintsGloballyAction)
-" nnoremap <A-A> <Action>(VimFindActionIdAction)
+" noremap <A-H> <Action>(ToggleInlayHintsGloballyAction)
+" noremap <A-A> <Action>(VimFindActionIdAction)
 
 " logical undo
 nnoremap U <C-R>
@@ -49,7 +50,8 @@ noremap <leader>ic /\c
 noremap <leader>uc ?\c
 " --
 " HACK: Change to nzzb / Nzzb
-nnoremap n nzzh | nnoremap N Nzz
+nnoremap n nzzh
+nnoremap N Nzz
 
 " Cutting/Pasting (from two system clipboards)  __
 inoremap <leader>ii +

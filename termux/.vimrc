@@ -111,6 +111,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'pigpigyyy/yuescript-vim'
 " Plugin 'edwinb/idris2-vim'
 Plug 'hylang/vim-hy'
+Plug 'lfe-support/vim-lfe'
 " TODO: Plug 'github/codeql-vim'
 Plug 'FStarLang/VimFStar', {'for': 'fstar'}
 Plug 'stewy33/mercury-vim'
@@ -361,7 +362,7 @@ nnoremap <Leader>D f-r
 
 " FIXME
 " Input, a comma at the end of vmarked text
-vnoremap a <Esc>a,<Esc>gv
+vnoremap aa <Esc>a,<Esc>gv
 
 " Join current line with next
 nnoremap <Leader>J :norm! J<CR>

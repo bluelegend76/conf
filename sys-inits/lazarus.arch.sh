@@ -1,5 +1,8 @@
 # vim:fdm=marker:
 # TODO ____
+# sudo pacman -S hugo
+# sudo pacman -S tcc
+# extra/entr 5.7-1 - Run arbitrary commands when files change
 # ========================================================
 # ---------------- "Let There be ..."  -------------------
 # ========================================================
@@ -16,13 +19,10 @@
 
 # Main/Daily updating via Pacman/Yay:
 # sudo pacman -Syu; yay -Syu
-
+# --
 # Format external drive to ExFat (Lin/Win/Mac compatability):
 # sudo pacman -S exfat-utils
 # sudo mkfs.exfat /dev/sdb1
-
-# Search for a package in the repos (e.g. Firefox):
-#  pacman -Ss firefox
 
 # Other Useful Pacman Search-Options:
 # - pacman -Si firefox
