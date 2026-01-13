@@ -1,0 +1,46 @@
+{
+    "config-path": "~/.config/Code/User/settings.json",
+
+    "workbench.colorTheme": "Default High Contrast",
+
+    "vim.leader": ",",
+    "vim.incsearch": true,
+    "editor.stickyScroll.maxLineCount": 1,
+    "editor.stickyScroll.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "git.autofetch": true,
+    "php.debug.executablePath": "",
+    "window.zoomLevel": 1,
+    "editor.codeActionsOnSave": {
+        
+    },
+    "vim.insertModeKeyBindings": [
+      {
+        "before": ["<leader>", "j"],
+        "after": ["<Esc>"]
+      },
+      {
+        "before": ["<leader>", "."],
+        "after": [":update"]
+      }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["H"],
+        "after": ["0"]
+      },
+      {
+        "before": ["L"],
+        "after": ["$"]
+      },
+      {
+        "before": ["g", "g"],
+        "after": ["g", ";"]
+      },
+      {
+        "before": ["Q"],
+        "after": ["@", "@"]
+      }
+    ]
+}

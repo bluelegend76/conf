@@ -45,10 +45,6 @@
 (set-fringe-mode 10)
 ;(setq visible-bell t)
 (blink-cursor-mode 0)
-;(load-theme 'wombat)
-;; (load-theme 'doom-solarized-dark-high-contrast)
-; (load-theme 'deeper-blue)
-; (load-theme 'tango-dark)
 
 
 ;;; Doom __
@@ -56,6 +52,10 @@
   :ensure t
   :config
   (load-theme 'doom-ir-black t)
+  ;(load-theme 'wombat)
+  ;; (load-theme 'doom-solarized-dark-high-contrast)
+  ; (load-theme 'deeper-blue)
+  ; (load-theme 'tango-dark)
   (setq custom-enabled-themes '(doom-ir-black)))
 
 (use-package doom-modeline

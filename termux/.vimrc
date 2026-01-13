@@ -101,6 +101,7 @@ Plug 'mechatroner/rainbow_csv'
 Plug 'memgraph/cypher.vim'
 " SparQL
 Plug 'vim-scripts/sparql.vim'
+Plug 'lfe-support/vim-lfe'
 "Plugin 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'

@@ -896,7 +896,7 @@ $
 |3,0,13,0,1,0,1760606940,"}dd"
 "e	CHAR	0
 	ma:.,$s/\vasb>/-/g`a
-|3,0,14,0,1,0,1764879753,"ma:.,$s/\\vasb>/-/g`a"
+|3,0,14,0,1,0,1764879753,"ma:.,$s/\\v<asb>/-/g`a"
 "f	CHAR	0
 	yyp:s/.*\zeSyncThing\/rsc\//mv \~\//:s/\vrsc\/.+\ze\//collect/A ~/SyncThing/rsc/Doks/Comp/BB:!ls -sh 
 |3,0,15,0,1,0,1760321209,"yyp:s/.*\\zeSyncThing\\/rsc\\//mv \\~\\//:s/\\vrsc\\/.+\\ze\\//collect/A ~/SyncThing/rsc/Doks/Comp/BB:!ls -sh "

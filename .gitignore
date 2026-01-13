@@ -1,9 +1,16 @@
 
 # Exclude Vim swap files
 *.swp
-
 *.xml
 
-# Exclude Emacs Doom config-files
-.emacs.d/elpa/**
+# Emacs artifacts
+.emacs.d/auto-save-list/
+.emacs.d/eln-cache/
+.emacs.d/elpa/
+# Some Emacs-extras
+.emacs.d/url/
+.emacs.d/bookmarks
+.emacs.d/tramp
+*~
+\#*\#
 

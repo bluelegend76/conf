@@ -65,6 +65,7 @@ Plug 'mechatroner/rainbow_csv'
 Plug 'memgraph/cypher.vim'
 " SparQL
 Plug 'vim-scripts/sparql.vim'
+Plug 'lfe-support/vim-lfe'
 "Plugin 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
@@ -113,6 +114,7 @@ syntax on
 " + Change to filetype off when introducing Vundle
 
 set scrolloff=0
+
 " size of a hard tabstop
 set tabstop=4
 " size of an "indent"

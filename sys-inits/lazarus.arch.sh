@@ -3,6 +3,8 @@
 # sudo pacman -S hugo
 # sudo pacman -S tcc
 # extra/entr 5.7-1 - Run arbitrary commands when files change
+# ghidra - reverse-engineering framework
+# yay -S visual-studio-code-bin
 # ========================================================
 # ---------------- "Let There be ..."  -------------------
 # ========================================================
@@ -24,32 +26,8 @@
 # sudo pacman -S exfat-utils
 # sudo mkfs.exfat /dev/sdb1
 
-# Other Useful Pacman Search-Options:
-# - pacman -Si firefox
-#     Show detailed information about specific package (if it exists in the repositories)
-#     = equivalent to apt-cache show firefox.
-# - pacman -Qs firefox
-#     Search for installed packages
-#     = equivalent to dpkg -l | grep firefox.
-# - pacman -F firefox
-#     Search for files within packages
-#     = similar to dpkg -S firefox.
-
-
-# usb-creator-kde || dd (**)  ##=find old setup
-# ----
-# cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-#     (+Next, run the Dropbox daemon from the newly created .dropbox-dist folder.)
-# ~/.dropbox-dist/dropboxd &
-#     Let Dropbox download completely
-# sudo apt-get install fluxbox
-#     Now log over to fluxbox and run the script
-#     --
-# dropbox.py start       #trulystrange@_i3
-
 # TODO TODO: Set System-lang to En-Us
-# --
-# TODO: Set Login-Menu to Svorak
+# Set keyboard-layout to Se+Dvorak (==Svorak)
 
 git clone https://github.com/bluelegend76/conf.git ~/conf/
 mkdir ~/repos/
@@ -59,13 +37,14 @@ git clone https://github.com/bluelegend76/utils.git ~/repos/utils/
 
 sudo pacman -S firefox torbrowser-launcher
 
-# TODO TODO: RECONSTITUTE WITH PLUG[!!]
+# ln -s ~/Dropbox/config/fluxbox/startup ~/.fluxbox/startup
+
 echo "Installing Vims + linking up vim settings: ..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-sudo pacman -S gvim neovim
-# FIXME __ :
+sudo pacman -S gvim neovim neovide
 echo "Now linking up vimrc..."
 ln -s ~/conf/.vimrc ~/.vimrc
+clear
 read -p "Do a ':PluginInstall' in gvim, then press 'Enter' here to continue: "
 # sudo apt-get install neovim-qt neovide
 # rm -f ~/.vim/{colors,plugin,spell}/
@@ -76,19 +55,13 @@ sudo pacman -S translate-shell
 
 echo "Now linking up bashrc, inputrc: ..."
 rm -f ~/.bashrc ~/.inputrc ~/.profile
-# ln -s ~/Dropbox/config/.bashrc
-# ln -s ~/Dropbox/config/.inputrc
-# ln -s ~/Dropbox/config/.profile
 ln -s ~/conf/.bashrc ~/.bashrc
 ln -s ~/conf/.inputrc ~/.inputrc
 ln -s ~/conf/.profile ~/.profile
-## ln -s ~/SyncThing/config/.viminfo ~/.viminfo
 # For Keyb3: Alt-gr + Lessthan/GreaterThan
 ## ln -s ~/Dropbox/config/keymap/.keyb3_altgr-lessgreater.xmodmap
-# Frescobaldi, Isabelle Prover (etc)  Interface Color-Theme CSS/Style 
 ln -s ~/repos/scripts/ ~/.local/bin/scripts/
 find ~/repos/scripts/ -maxdepth 1 -type f -exec ln -s "{}" ~/.local/bin/ \;
-
 
 sudo pacman -S --needed base-devel git
 git clone https://aur.archlinux.org/yay.git
@@ -99,15 +72,6 @@ sudo pacman -S \
     noto-fonts \
     noto-fonts-cjk \
     && fc-cache -fv
-# sudo gvim /etc/locale.gen 
-# Uncomment the line for ja_JP.UTF-8
-# sudo locale-gen
-# sudo update-locale LANG=ja_JP.UTF-8
-# .vimrc ----
-# set encoding=utf-8
-# set fileencodings=utf-8,ucs-bom,latin1
-# set fileencoding=utf-8
-# sudo pacman -S ttf-liberation ttf-japanese-gothic noto-fonts-cjk
 
 cd
 yay -Syu dropbox
@@ -134,9 +98,8 @@ read -p "Start?: "
 echo "Creating and linking up some directories: ..."
 ln -s ~/Dropbox/bin/ ~/
 mkdir -p ~/processdir/{compile,rds}/
-mkdir ~/dwhelper/
+clear
 read -p "Connect and mount External Main HDDrive 1(!), then Press Enter: "
-# connect external drive 1  + below = CREATE MANUALLY
 ln -s /run/media/bluelegend/${EXTHD1}/legacy/dropboxlegacy_pre2021/ dropbox-legacy
 ln -s /run/media/bluelegend/${EXTHD1}/Empire/
 ln -s /run/media/bluelegend/${EXTHD1}/legacy/
@@ -146,80 +109,20 @@ sudo pacman -S keepassxc
 
 echo "Now linking up emacs inits: ..."
 # If using next line: Add gitignore (for Emacs system-dirs) to Git-repo
-# mkdir .emacs.d
 ln -s ~/conf/.emacs.d/ ~/.emacs.d/
-# ln -s ~/conf/.emacs.d ~/.emacs.d
-# ln -s ~/conf/.emacs.d/init.el ~/.emacs.d/init.el
-## ln -s ~/conf/.emacs.d/lilypond/ ~/.emacs.d/lilypond
 sudo pacman -S emacs
 # emacs-wayland
 
 sudo pacman -S blueman
-# +On startup: sudo systemctl start bluetooth
 
-
-# read -p "Now installing nm-tray: "
-# pacman -S nm-tray
-# sudo pacman -S nm-tray
-# network-manager-applet
-
-read -p "Start nm-tray(=applet) and make sure Network is up and Connected. +Press enter when Done(!)(=to continue): "
-
-# sudo gvim -c '/en_US\.UTF-8' /etc/locale.gen
-# sudo locale-gen
-## Edit Systemd
-# sudo systemctl edit systemd-localeapplications.service
-## Add following to the service-file
-# [Service]
-# ExecStartPost=/usr/bin/localectl set-locale LANG=en_US.UTF-8
-## Restart the service
-# sudo systemctl daemon-reload
-# sudo systemctl restart systemd-localeapplications.service
-# (+log in and out)
-
-# sudo gvim /usr/share/lightdm/lightdm.conf.d/50-user.conf
-# Add lines to file
-# [SeatDefaults]
-# keyboard-layout=sv,variant=dvorak 
-#
-# sudo systemctl restart lightdm
-
-# echo "Linking up flux-settings: ..."
-# read -p "[Tip Fluxbox: Good menus theme ='Squared Blue': "
-# rm -f ~/.fluxbox/startup ~/.fluxbox/keys
-# ln -s ~/Dropbox/config/fluxbox/startup ~/.fluxbox/startup
-# ln -s ~/Dropbox/config/fluxbox/keys ~/.fluxbox/keys
-
-# echo "(Installing some dockapps): ..."
-# # pacman -S wmmoonclock wmnd wmcpuload wmtime wmbattery
 sudo pacman -S gnome-clocks
-# --
-# read -p "Tip: Now try Refreshing Fluxbox: "
 
 # Updating pacman mirror-lists
 sudo pacman -S reflector
 
 echo "Installing some Git-tools ... "
-sudo pacman -S meld diffuse
-# yay -S gitkraken
+sudo pacman -S github-cli meld diffuse
 # git-gui
-# git
-
-# echo "Now cloning down own (=bluelegend76) Git repos: ..."
-# mkdir ~/git && \
-#   git clone https://github.com/bluelegend76/komvux2023-cpp.git ~/git/komvux2023-cpp && \
-#   git clone https://github.com/bluelegend76/lilyblock-render.git ~/git/lilyblock-render
-#   # TODO: Convert to for-loop on list of the repo names(!!)
-
-# helix editor {{{
-#  sudo add-apt-repository ppa:maveonair/helix-editor
-#  sudo apt update
-#  sudo apt install helix
-# }}}
-# yi editor
-
-echo "Creating directory for Gdrive: ..."
-mkdir gdrive
 
 clear
 echo "Installing some utilities (curl, rename, tree, ag/agrep, scrot, tesseract): ..."
@@ -235,33 +138,20 @@ sudo pacman -S mc
 sudo pacman -S cmake cgdb
 # umbrello
 sudo pacman -S renameutils
-# pacman -S ncal  =??
 #acpi rar
 sudo pacman -S unrar
 sudo pacman -S unzip # zip
 sudo pacman -S tre
   # i.e. includes agrep
-# silversearcher-ag
-# pacman -S tracker  #='tracker3 --help'
-# localsearch tinysparql
 sudo pacman -S ripgrep-all  # rg
 sudo pacman -S tealdeer     # tldr (written in Rust)
 sudo pacman -S tesseract
-## 30 = Eng
-
-# TODO
-sudo gvim -c '/rights="\zsnone\ze.*pattern="PDF"' /etc/ImageMagick-6/policy.xml
-clear
-read -p "Opening Imagick policy.xml, +Change 'rights' to 'read|write' [+Comment out 6 Policymap lines (=restricting memory-usage)]. Press 'Enter' when done: "
+# 30 = Eng
 
 echo "Installing some Mu and Media packages/utils: ..."
-  # gydl (??)
-# sudo apt-get install anki
-# pavucontrol  Already Installed (+Extra Music-Mixer)
+# anki
 sudo pacman -S vlc mpv audacious
-# +python-mpv
-# +playerctl ?
-## gtick
+# + python-mpv
 sudo pacman -S lilypond
 yay -S mma
 sudo pacman -S frescobaldi
@@ -270,8 +160,8 @@ sudo pacman -S rosegarden
 sudo pacman -S qpwgraph
 sudo pacman -S qtractor lmms
 # ----
-sudo pacman -S reaper
-# + python-ly abjad
+# +python-ly abjad
+# sudo pacman -S reaper
 
 git clone https://aur.archlinux.org/snapd.git
 cd snapd
@@ -284,17 +174,16 @@ sudo ln -s /var/lib/snapd/snap /snap
 # Either log out and back in again, or restart your system, to ensure snap’s paths are updated correctly.
 # Install n-Track Studio
 sudo snap install n-trackstudio
-# ____
 yay -S tuxguitar
 sudo pacman -S evince fontforge
-mkdir -p ~/{.config,.cache}/neomutt/
-sudo pacman -S neomutt msmtp{,-mta} isync abook
-ln -s ~/{conf,.config/neomutt}/neomuttrc
-ln -s ~/{conf,.config/neomutt}/vim-keys.rc
+# mkdir -p ~/{.config,.cache}/neomutt/
+# sudo pacman -S neomutt msmtp{,-mta} isync abook
+# ln -s ~/{conf,.config/neomutt}/neomuttrc
+# ln -s ~/{conf,.config/neomutt}/vim-keys.rc
 
-  # msmtp-mta  Needed if using other mail-programs than NeoMutt
-  sudo pacman -S notmuch urlview w3m lynx
-  sudo pacman -S pass python-gobject
+# msmtp-mta  Needed if using other mail-programs than NeoMutt
+#  sudo pacman -S notmuch urlview w3m lynx
+#  sudo pacman -S pass python-gobject
 sudo pacman -S pdftk
 # xsane
 sudo pacman -S timidity++ midish
@@ -305,43 +194,34 @@ sudo pacman -S libreoffice-still    #stable
 sudo pacman -S seq24
 sudo pacman -S soundstretch mma
 sudo pacman -S csound
-# sudo pacman -S csoundqt
+sudo pacman -S csoundqt
 sudo pacman -S faust
 # csound-plugins
-# yay -S csound-blue
-# https://github.com/kunstmusik/blue/releases/download/2.9.1/blue-linux-2.9.1.zip
 # +TODO: SET+UPDATE LINKS TO CUSTOM SHOTWELL DB:S
 #   (=stored in Drop|Empire-dirs)
-# --
-## https://community.kde.org/Amarok/GettingStarted/Download/Source
 # pmidi
   #start w. 'timidity -ia {files}' ***
 
-sudo pacman -S openshot
+# sudo pacman -S openshot
 sudo pacman -S kdenlive
 # sudo pacman -S davinci-resolve
 
 echo "Installing some media-utils, Dok/Pdf-readers, etc: ..."
 sudo pacman -S inkscape gimp imagemagick
-  # gimp-plugin-gmic
-#--
 # sudo pacman -S obsidian
 yay -S joplin
 sudo pacman -S scribus
 sudo pacman -S qrencode
 sudo pacman -S thunar ristretto
 sudo pacman -S a2ps okular xchm
-# TODO: Add installation for Obsidian
 sudo pacman -S calibre
-#@@__ sudo apt-get install djvulibre-bin
-# wget https://0x2a.at/site/projects/djvu2pdf/djvu2pdf_0.9.2-1_all.deb
 sudo pacman -S nyxt
 # teams (aur)
 sudo pacman -S pandoc enscript
 sudo pacman -S festival
 # Chrome
 sudo pacman -S chromium-browser  #maybe not needed with official install
-sudo pacman -S freeplane
+# sudo pacman -S freeplane
 sudo pacman -S tj3 vim-tjp
 
 # Warp-terminal
@@ -359,22 +239,9 @@ sudo vim /etc/pacman.conf
 sudo pacman -Syu zed
 
 pacman -S go-yq  # yq: convert yaml to json (etc)
-yay -S graphql-playground-electron
+# yay -S graphql-playground-electron
 yay -S javafx-scenebuilder
 
-# Protege
-# Apache Jena
-#   https://jena.apache.org/download/
-#   https://downloads.apache.org/jena/binaries/
-
-
-## TODO: ADD XFCE DESKTOP KEYBOARD SETTINGS (=directory of xml-files)
-
-# STEAM
-# sudo gvim /etc/pacman.conf
-# clear
-# read -p "Uncomment '[multilib] + mirrorlist'-line: "
-# https://linuxgenie.net/download-install-steam-arch-linux/
 sudo pacman -S steam
 sudo pacman -S signal-desktop
 # https://wiki.archlinux.org/title/WhatsApp  (WhatsApp Web)
@@ -384,7 +251,7 @@ sudo pacman -S nmap && yay -S zenmap
 sudo pacman -S kdeconnect
 # sudo pacman -S libmtp simple-mtpfs android-tools gvfs
 sudo pacman -S android-tools
-#
+# {{{
 # If I would like to have good support for
 # mounting and accessing my Android phone
 # from the computer, are there any recommended
@@ -494,7 +361,9 @@ sudo pacman -S android-tools
 # Always refer to the official documentation
 # for simple-mtpfs and libmtp for the most
 # up-to-date information and advanced usage options.
+# }}}
 
+## TODO: ADD XFCE DESKTOP KEYBOARD SETTINGS (=directory of xml-files)
 echo "Installing xfce4-terminal"
 #@@__ pacman -S xfce4-terminal
 rm -i ~/Dropbox/config/xfce4-term/accels.scm
@@ -502,20 +371,12 @@ ln -s ~/Dropbox/config/xfce4-term/accels.scm ~/.config/xfce4/terminal/accels.scm
 sudo update-alternatives --config x-terminal-emulator
 clear
 read -p "Press enter to continue: "
-# rm -f ~/.config/xfce4/terminal/accels.scm
-# TODO: Create ~/Dropbox/config/xfce4-terminal/accels.scm
-# ln -s ~/Dropbox/config/xfce4-terminal/accels.scm ~/.config/xfce4/terminal/accels.scm
 
 echo "Installing some Programming(and media)-related packages: ..."
 # clang??
-# https://github.com/Kitware/CMake/releases/download/v3.26.1/cmake-3.26.1-linux-x86_64.tar.gz
-    # https://github.com/Kitware/CMake/releases/download/v3.26.1/cmake-3.26.1.tar.gz
-# sudo apt install spyder (??)
-    #sudo apt-get install youtube-dl
 sudo pacman -S bpython ipython
 sudo pacman -S python-kivy
   # tip: Test running with 'bpython3'
-# sudo pacman -S python3-pip jupyter
 sudo pacman -S python-pip uv python-matplotlib python-pandas
 # Core graphics and windowing providers for Kivy
 # sudo pacman -S --needed sdl2_image sdl2_mixer sdl2_ttf
@@ -530,16 +391,14 @@ sudo pacman -S jupyterlab
 # sphinx + sphinx-autogen (for doxygen) installed by default
 sudo pacman -S python-sphinx-autobuild
 sudo pacman -S python3-virtualenv
-# pipx
-# pip3
-sudo pacman -S yt-dlp  # __??
+# pipx pip3 ??
+sudo pacman -S yt-dlp
 sudo pacman -S qutebrowser
 # TODO: ADD ALEX QUTEBROWSER-CONFIG
 ln -s ~/Dropbox/config/qutebrowser/config.py ~/.config/qutebrowser/config.py
-  # ln -s ~/Dropbox/config/fluxbox/startup ~/.fluxbox/startup
 sudo pacman -S npm  #+Perhaps replace with Newer Pmanager[!!]
 sudo pacman -S lua luarocks
-# luarocks install fennel  yuescript fennel
+# luarocks install fennel  yuescript tl cyan
 # ¤¤ install Lua  # (+moonscript) {{{
 # lua5.3  (lua5.4)
 #      https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-Unix
@@ -553,7 +412,6 @@ sudo pacman -S lua luarocks
 # }}}
 sudo pacman -S guix
 sudo pacman -S nix
-#  brew
 # Firefox Tampermonkey [**]
 # Ada/Gnat/Spark ----
 # gnatstudio  (=download +run linux installer with sudo)
@@ -562,9 +420,6 @@ sudo pacman -S nix
 echo "(Installing some games etc: ...)"
 sudo pacman -S fceux
 read -p "Fceux Tip: gamepad config -- a,b = u,e"
-yay -S freesweep
-read -p "(Tip Freesweep Board: 50x50, 350 mines)"
-# xabacus: =chinese suanpan (=5 lower + 2 higher beads)
 
 read -p "Syncing down Music (=work-relax_list) to internal drive: "
 rsync-empire_exthd1Mu-to-Music.bash
@@ -579,9 +434,7 @@ read -p "Continuing with Full Media install? (ie. Rosegarden, MScore 4 (etc)): "
 read -p "Again, only continue for full Music/Media install. Continue?: "
 
 sudo pacman -S rosegarden
-# Audacity __
-# musescore: = runs with 'mscore'
-sudo pacman -S musescore
+# install using custom appimage: # sudo pacman -S musescore
 yay -S muse-sounds-manager-bin
 # TODO: MUSESCORE 4 (+MScore4 Hub)
 # wget https://musescore.org/en/download/musescore-x86_64.AppImage \
@@ -611,9 +464,8 @@ yay -S muse-sounds-manager-bin
 #  gstreamer1.0-plugins-ugly
 #  gstreamer1.0-doc
 # }}}
-sudo pacman -S csoundqt nyquist
+sudo pacman -S csoundqt
 # echo "(Nyquist is started with 'ny': )"
-# TODO: Add installation for Csound Blue
 
 echo "(Installing some media Extras)"
 sudo pacman -S discord
@@ -623,7 +475,6 @@ sudo pacman -S pidgin
 # sudo apt install speech-dispatcher
 # testing that it works:
 # spd-say hi 
-
 
 sudo pacman -S tigervnc
 
@@ -711,12 +562,10 @@ sudo pacman -S nushell
 sudo pacman -S virtualbox
 # install windows 10 in linux virtualbox:
 # https://www.youtube.com/watch?v=2oO9CeZXjTY
-# ytdlp
 # Markdown + Reveal.js {{{
 # sudo npm -g install instant-markdown-d
 # yay -S vim-instant-markdown
 # }}}
-# per n. emacs-install
 # Install Latest Docker Ubuntu {{{
   ### sudo apt install apt-transport-https ca-certificates curl software-properties-common  #=already installed
 # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -767,14 +616,11 @@ sudo pacman -S virtualbox
 # Linux Anbox Alternatives[!!] {{{
 #  https://alternativeto.net/software/anbox/?platform=linux
 # }}}
-# Lineage OS
+# PostmarketOS install-tools
 # Google Chrome (+text to speech, speech to multilang-text
 # install 'speech to text' [******] __
 #   https://chrome.google.com/webstore/detail/speech-to-text-voice-reco/kcgloaobfaiejoiahlhnfaolfcifjjho/related?utm_source=ext_app_menu
-# openvpn {{{
-#  https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04  =22.04
-# }}}
-
+# open vpn
 
 # installing lampstack
 # Php (+VS Code / PhpStorm) aaaa {{{
@@ -874,33 +720,10 @@ sudo pacman -S code
 # }}}
     # konqueror, qutebrowser
     # qutebrowser:
-# Run Linux From Usb Stick {{{
-#   https://www.wikihow.com/Boot-Linux-from-a-USB-on-Windows-10
-# https://www.techradar.com/best/best-usb-bootable-distros
-# }}}
 # puppy linux {{{
 # https://www.wikihow.com/Install-Puppy-Linux
 # }}}
 # sweet-mars, candy-icons  .themes, .icons
-# ==== TODO: install t-browser ubuntu:  https://ubuntuhandbook.org/index.php/2021/01/install-tor-tor-browser-ubuntu-20-10-20-04/ {{{
-sudo pacman -S torbrowser-launcher
-#### sudo apt install apt-transport-https  (+su-password)
-# sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org $(jammy -sc) main" >> /etc/apt/sources.list.d/tor-project.list'
-# --
-# ++ for ubuntu-systems:
-#   # = replace $(lsb_release -sc) in the command with the Ubuntu code-name (e.g, focal, bionic, jammy) that your system based on.
-# https://deb.torproject.org/torproject.org/pool/main/d/deb.torproject.org-keyring/  (=download latest keyring)
-
-# +install the keyring via: https://deb.torproject.org/torproject.org/pool/main/d/deb.torproject.org-keyring/
-# sudo apt update
-# sudo apt install tor
-# -- +check the installation:
-# tor --version
-# systemctl status tor
-# ---- installing the tor browser
-# sudo apt install torbrowser-launcher  #+see base page if there is problem on 22.04
-# (+test launching  +instructions for removing the t-browser)
-# }}}
 # drawio {{{
 #   sudo snap install drawio
 # }}}
@@ -924,18 +747,7 @@ sudo pacman -S torbrowser-launcher
 # }}}
 # doxygen
 sudo pacman -S doxygen graphviz
-
-# **** INSTALL UBUNTU TOUCH ON ANDROID PHONE {{{
-#  https://www.ubuntupit.com/how-to-install-ubuntu-touch-on-android-device-an-easy-tutorial-for-newbie/
-# https://ubuntu-touch.io/
-# https://open-store.io/
-# }}}
-
-# Vim 8 / NeoVim  Package Manager (**) {{{
-#   https://vi.stackexchange.com/questions/9522/what-is-the-vim8-package-feature-and-how-should-i-use-it
-# https://stackoverflow.com/questions/48700563/how-do-i-install-plugins-in-neovim-correctly
-#     https://github.com/junegunn/vim-plug
-# }}}
+# Ubuntu Touch on phone / tablet
 # VimWiki {{{
 #   https://github.com/vimwiki/vimwiki
 #   https://codeberg.org/irongeek/vimwikicheatsheet/src/branch/master/cheatsheet.md
@@ -945,112 +757,8 @@ sudo pacman -S doxygen graphviz
 #   https://vimwiki.github.io/
 # }}}
 ## vim-latexsuite
-texlive-basic texlive-context
-# ¤¤ *** -- install latex / context {{{
-# sudo apt-get install context
-#       texstudio
-#       texworks
-# https://linuxconfig.org/how-to-install-latex-on-ubuntu-20-04-focal-fossa-linux
-# texlive-base - 160 MB
-# texlive-latex-recommended - 203 MB
-# texlive - 269 MB          **
-# texlive-latex-extra - 464 MB
-# texlive-full - 5903 MB    *
-#
-# +
-# texlive-publishers
-# texlive-science
-# texlive-pstricks
-# texlive-pictures
-# texlive-metapost
-# texlive-music
-# texlive-xetex
-# texlive-luatex
-# texlive-games
-# texlive-humanities
-
-#    ReStructured Tex
-# ConText(Tex) + lilypond {{{
-#   https://wiki.contextgarden.net/LilyPond
-# 
-#   https://wiki.contextgarden.net/Main_Page
-#   https://wiki.contextgarden.net/Programming_in_LuaTeX
-# https://wiki.contextgarden.net/Documentation
-#   https://raw.githubusercontent.com/contextgarden/not-so-short-introduction-to-context/main/en/introCTX_eng_s.pdf
-# 
-# }}}
-# LATEX, CONTEXT, LUATEX, XETEX  MikTex, pdflatex, Otf, fontspec {{{
-#   pdflatex,  pdftex  #pdf output from tex/latex
-# 
-#   Texstudio  (+Texworks)
-#     https://tex.stackexchange.com/questions/289458/download-and-installation-of-latex-for-linux-ubuntu
-# 
-#   https://tex.stackexchange.com/questions/20036/what-are-the-advantages-of-tex-live-over-miktex
-#     https://superuser.com/questions/123062/what-are-the-differences-between-miktex-and-texlive
-# 
-#   https://www.overleaf.com/learn/latex/Articles/The_TeX_family_tree%3A_LaTeX%2C_pdfTeX%2C_XeTeX%2C_LuaTeX_and_ConTeXt
-# 
-#   https://tug.org/FontCatalogue/allfonts.html
-# 
-#   https://tex.stackexchange.com/questions/3393/what-is-xetex-exactly-and-why-should-i-use-it
-#     https://en.wikipedia.org/wiki/XeTeX
-#     blackletter
-#       https://tex.stackexchange.com/questions/95327/displaying-medieval-scriptures-and-neumes-in-tex#100943
-#     https://tex.stackexchange.com/questions/68007/typesetting-an-old-latin-ligature-with-pdftex **
-#     https://tex.stackexchange.com/questions/60360/how-to-use-fraktur-gothic-fonts-in-text-mode#60367
-# 
-#   https://wiki.contextgarden.net/Use_the_fonts_you_want
-# 
-#   https://design.tutsplus.com/articles/43-best-medieval-fonts-gothic-and-writing-style-fonts--cms-37821
-#   
-# 
-#       http://luatex.org/
-#       https://www.mankier.com/1/luatex
-#   https://www.overleaf.com/learn/latex/Articles/An_Introduction_to_LuaTeX_(Part_1)%3A_What_is_it%E2%80%94and_what_makes_it_so_different%3F **
-#     https://tex.stackexchange.com/questions/24116/how-can-one-get-a-list-of-the-available-functions-in-lualatex
-#   https://docslib.org/doc/1506319/a-guide-to-lualatex
-#     https://www.luatex.org/documentation.html
-#   --
-#   https://www.alanshawn.com/tech/2020/06/20/luatex-intro.html
-#           https://eudml.org/doc/298661
-#       https://dml.cz/bitstream/handle/10338.dmlcz/150183/ZpravodajCSTUG_021-2011-2_9.pdf
-#       http://wiki.luatex.org/index.php/Documentation_and_help
-#       https://miktex.org/howto/lua53tex
-#   http://wiki.luatex.org/index.php/Writing_Lua_in_TeX
-#     https://manualzz.com/doc/34567480/luatex-reference
-#   https://tex.stackexchange.com/questions/70/what-is-a-simple-example-of-something-you-can-do-with-luatex
-#   https://tex.stackexchange.com/questions/386910/my-first-lualatex-example
-# 
-#   https://wiki.contextgarden.net/Programming_in_LuaTeX
-# 
-# 
-# context, mtx-context
-#         https://tex.stackexchange.com/questions/49464/how-do-i-install-context-modules-in-the-ubuntu-distribution-of-context
-#     https://wiki.contextgarden.net/Ubuntu
-#   https://tex.stackexchange.com/questions/448812/the-definitive-guide-to-context-mkiv-and-lmtx-documentation __ __ __ ******
-#   https://wiki.contextgarden.net/First_Document **
-#   --
-#        https://wiki.contextgarden.net/Basics
-#        https://wiki.contextgarden.net/Sample_documents
-#        https://wiki.contextgarden.net/Curriculum_Vitae
-#     https://codeberg.org/fiee/context-tools/
-#   https://wiki.contextgarden.net/Main_Page
-#     https://wiki.contextgarden.net/Running_ConTeXt
-#   mtx-context examples
-#     convert context tex document to pdf
-#     --
-#     texexec
-# https://tex.stackexchange.com/questions/94772/how-do-i-install-context-alongside-miktex#94776
-#   https://wiki.contextgarden.net/TeXExec
-#     https://tex.stackexchange.com/questions/383323/replacing-texexec-with-context-when-compiling-from-auctex
-#   --
-#     https://wiki.contextgarden.net/Project_structure
-# 
-# 
-#   https://tex.stackexchange.com/questions/45106/how-to-make-interactive-pdf-documents-with-tex
-# 
-# }}}
-# }}}
+# texlive-basic texlive-context
+# context
 # https://jdhao.github.io/2019/05/30/markdown2pdf_pandoc/  #Markdown to Beautif. Pdf with Pandoc
 # https://www.youtube.com/watch?v=PodcwH83zvc __ ********  reveal.js Slides with Markdown and Pandoc __ __
 # --
@@ -1107,9 +815,7 @@ sudo pacman -S xmlstarlet
 # ps2pdf (or ascii, etc)
 #  https://stackoverflow.com/questions/38200159/converting-postscript-to-pdf
 # }}}
-## cmake
- # cmake [=installed by default]
-# Python  bpython / ipython
+# cmake [=installed by default]
 # ** guile-2.2 guile-3.0
 sudo pacman -S clojure rlwrap
 mkdir ~/.clojure/
@@ -1121,27 +827,8 @@ ln -s ~/conf/deps.edn ~/.clojure/deps.edn
 # run with 'lein repl' or 'clj'
 # install further Cloj libraries: clj -Sdeps
 ## jshell
-# ¤¤ *** Clojure Ubuntu + ====TODO Cljfx[!] {{{
-# https://clojureverse.org/
-#   https://clojurescript.org/guides/quick-start
-# ----
-# https://clojure.org/guides/install_clojure
-#
-# curl -O https://download.clojure.org/install/linux-install-1.11.1.1237.sh
-# chmod +x linux-install-1.11.1.1237.sh
-# sudo ./linux-install-1.11.1.1237.sh
-#   +maybe: sudo apt-get install rlwrap
-# --
-# clj  #=clojure repl
-#
-# --
-# https://dev.to/goober99/learn-clojure-by-example-javafx-gui-with-cljfx-2f3b
-# https://github.com/cljfx/cljfx
-# }}}
 # Kotlin  (= sudo apt install kotlin (?))
-# ==== TODO ====: clojurescript + tools (=slime, figwheel etc) {{{
-
-# }}}
+# ==== TODO ====: clojurescript + tools (=slime, figwheel etc)
 # --
 # yay -S neo4j-desktop
 yay -S neo4j-community
@@ -1219,55 +906,7 @@ curl -O https://beta.quicklisp.org/quicklisp.lisp
 sbcl --load quicklisp.lisp --eval '(quicklisp-quickstart:install :path "~/.quicklisp/")' --eval '(quit)'
 sbcl --load ~/.quicklisp/setup.lisp --eval '(ql:add-to-init-file)' --eval '(quit)'
 sbcl --load ~/.quicklisp/setup.lisp --eval '(ql:quickload "quicklisp-slime-helper")' --eval '(quit)'
-# Install Jdk 19 Ubuntu / Oracle Java [!!] + Netbeans  | JavaFX(openjfx)/Fxml {{{
-# https://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm
-# Netbeans Javafx {{{
-
-# wget https://dlcdn.apache.org/netbeans/netbeans-installers/12.6/Apache-NetBeans-12.6-bin-linux-x64.sh
-# sudo sh Apache-NetBeans-12.6-bin-linux-x64.sh 
-# -- //
-# wget https://downloads.apache.org/netbeans/netbeans/12.2/Apache-NetBeans-12.2-bin-linux-x64.sh
-# sudo sh Apache-NetBeans-12.2-bin-linux-x64.sh 
-# -- //
-
-
-# wget https://dlcdn.apache.org/netbeans/netbeans-installers/18/apache-netbeans_18-1_all.deb
-# sudo dpkg -i apache-netbeans_18-1_all.deb
-
-
-# wget https://dlcdn.apache.org/netbeans/netbeans-installers/18/Apache-NetBeans-18-bin-linux-x64.sh
-# chmod 700 Apache-NetBeans-*-bin-linux-x64.sh
-# sudo ./Apache-NetBeans-*-bin-linux-x64.sh
-# sudo ln -sf /usr/local/netbeans-18/netbeans/bin/netbeans /usr/bin/netbeans
-
-# https://netbeans.apache.org/download/nb17/index.html
-# -- --
-
-# https://openjfx.io/openjfx-docs/
-# https://openjfx.io/openjfx-docs/#IDE-NetBeans
-
-# https://openjfx.io/javadoc/15/index.html
-# }}}
-
-# oracle java(??) {{{
-# https://www.java.com/en/download/
-# https://javadl.oracle.com/webapps/download/AutoDL?BundleId=247938_0ae14417abb444ebb02b9815e2103550
-# https://www.java.com/en/download/help/linux_x64_install.html
-# }}}
-
-# sudo apt-get install openjdk-19-jdk
-# * java + Java Repl (=JShell) {{{
-#   https://teamtreehouse.com/community/installing-java-repl
-#  =JShell is included in java 19 jdk[!!]
-#     https://docs.oracle.com/en/java/javase/11/jshell/introduction-jshell.html#GUID-630F27C8-1195-4989-9F6B-2C51D46F52C8 ****[!!]
-# }}}
-
-#   https://www.linuxcapable.com/how-to-install-openjdk-17-on-ubuntu-linux/
-# https://orcacore.com/set-up-openjdk-19-ubuntu-22-04/ **
-# https://askubuntu.com/questions/1430509/how-to-install-jdk-19-on-ubuntu-22-04-lts **
-# https://theubuntulinux.com/faq/how-to-install-the-java-runtime-environment-jre-on-ubuntu-22-04/
-#  = 'jdk has everything the jre has, +(!) javac and tools like javadoc and jdb'
-# }}}
+yay -S common-lisp-hyperspec
 # gobjc, gobjc++ (+maybe version number)
 # --
 ## rust rustup (cargo)
