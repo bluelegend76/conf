@@ -15,11 +15,12 @@
       specialArgs = { inherit inputs; };
       modules = [
         # Point to your existing config
-        /etc/nixos/configuration.nix
+        ./hosts/high-end/bt-desktop/configuration.nix
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
           home-manager.users.bluelegend = import ./home.nix;
         }
       ];

@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./bt-hardware.nix
     ];
 
   # Bootloader.
@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "bt-nixos"; # Define your hostname.
+  networking.hostName = "high-end"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -68,8 +68,11 @@
   services.printing.enable = true;
 
   # 1. The Core Infrastructure (The "Must-Haves")
+  # TODO programs.bash.enable = true;
   programs.git.enable = true;
+  programs.xfconf.enable = true;   # necessary for xfce-apps like Thunar
   programs.starship.enable = true; # Our "Nifty" prompt
+  programs.kdeconnect.enable = true;
 
   # 2. Multimedia & PipeWire (Creative Audio)
   # Enable sound with pipewire.
@@ -139,6 +142,8 @@
     NIXOS_OZONE_WL = "1";
     GBM_BACKEND = "nvidia-drm"; # Good for Nvidia+Wayland
     # _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true";
+    EDITOR = "gvim -f";
+    VISUAL = "gvim -f";
   };
 
   # List packages installed in system profile. To search, run:
@@ -150,18 +155,20 @@
     syncthing    # Workspace sync
     dropbox
     # insync
-    vim-full          # The classic editor
+    vim-full     # The classic editor
     neovim
     neovide      # GPU-accelerated Neovim
     translate-shell
     evince
-    # thunar
+    thunar
+    ristretto
+    # shotwell
     libreoffice-fresh
     gitFull      # Includes git-gui for visual commits
     wget curl htop
-    scrot
+    # TODO scrot =FOR FLUXBOX/ICEWM-ENVIRONMENT
     #  yt-dlp
-    # doxygen
+      # doxygen
     keepassxc
     # nushell
     # xonsh
@@ -172,9 +179,9 @@
     (tesseract.override { enableLanguages = [ "eng" "swe" ]; }) # Example: Add English + Swedish
     vesktop
     signal-desktop
-    dotnet-sdk_8
-    jetbrains.rider
-    ardour
+    # dotnet-sdk_8                    # TODO: MOVE TO DEV-PROFILE
+    jetbrains.rider                 # TODO: MOVE TO DEV-PROFILE
+    # ardour                          # TODO: MOVE TO MUSIC-PROFILE
     vlc
     mpv
     audacious
@@ -182,11 +189,11 @@
     # appimage-run # For MuseScore
     qpwgraph  # The "patch-bay" for PipeWire
 
-    csound
+    # csound                          # TODO: MOVE TO MUSIC-PROFILE
     # csoundqt
-    supercollider-with-sc3-plugins
+    # supercollider-with-sc3-plugins  # TODO: MOVE TO MUSIC-PROFILE
     # ----
-    # lilypond
+    # lilypond                      # TODO: MOVE TO MUSIC-PROFILE
     tuxguitar
     # fluid-soundfont-gm # OR MORE ADVANCED
     # ardour
@@ -194,10 +201,10 @@
 
     # TODO: WakeOnLan (use Bt-Desktop as builder/compiler!!)
 
-    # jetbrains.clion
-    # jetbrains.webstorm
-    # jetbrains.pycharm-community
-    # jetbrains.idea-community
+    # jetbrains.clion               # TODO: MOVE TO DEV-PROFILE
+    # jetbrains.webstorm            # TODO: MOVE TO DEV-PROFILE
+    # jetbrains.pycharm-community   # TODO: MOVE TO DEV-PROFILE
+    # jetbrains.idea-community      # TODO: MOVE TO DEV-PROFILE
 
     # TODO emacs
     # TODO sbcl
