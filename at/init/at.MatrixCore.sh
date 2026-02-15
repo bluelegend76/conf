@@ -2,7 +2,7 @@
 # at.areastopics-index.sh
 # TODO: Perhaps add charAlfa to/at LangDoks
 
-source "$HOME/repos/at/utils/check-env.sh"
+source "$HOME/conf/at/utils/check-env.sh"
 
 # TODO: maybe add Slang to langs
 ${EDITOR} \
