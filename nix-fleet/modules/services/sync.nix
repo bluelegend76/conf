@@ -14,7 +14,7 @@
 
       # folders."npnyf-i4ksn" = {
       folders = {
-        "SyncThing" = {
+        "npnyf-i4ksn" = {
           path = "/home/bluelegend/SyncThing";
           devices = [ "black-tower" "galaxy-s24" ];
           label = "Main SyncThing Dir";

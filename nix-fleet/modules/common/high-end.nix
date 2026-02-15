@@ -5,6 +5,7 @@
     slurp
     
     # Heavy Apps
+    # okular
     vesktop
     signal-desktop
     libreoffice-fresh
