@@ -16,7 +16,7 @@
     EDITOR = "gvim -f";
     VISUAL = "gvim -f";
     GVIM_ENABLE_WAYLAND = "1";
-    NIXOS_OZONE_WL = "1"; # Critical for Wayland + Electron/Chrome
+    # NIXOS_OZONE_WL = "1"; # Critical for Wayland + Electron/Chrome
   };
 
   # Managed Bash & the "Fleet Control" alias

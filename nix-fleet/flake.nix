@@ -1,5 +1,5 @@
 {
-  description = "Empire Fleet - Step 1";
+  description = "Empire Fleet - Black Tower Edition";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -21,7 +21,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.bluelegend = import ./home.nix;
+          home-manager.users.bluelegend = import ./home/bluelegend.nix;
         }
       ];
     };
