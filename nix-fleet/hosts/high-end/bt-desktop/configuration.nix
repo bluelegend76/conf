@@ -166,10 +166,11 @@
     libreoffice-fresh
     gitFull      # Includes git-gui for visual commits
     wget curl htop
+    tree
     # TODO scrot =FOR FLUXBOX/ICEWM-ENVIRONMENT
     #  yt-dlp
       # doxygen
-    keepassxc
+    ## keepassxc
     # nushell
     # xonsh
 
@@ -177,17 +178,17 @@
     # inkscape
 
     (tesseract.override { enableLanguages = [ "eng" "swe" ]; }) # Example: Add English + Swedish
-    vesktop
-    signal-desktop
+    ## vesktop
+    ## signal-desktop
     # dotnet-sdk_8                    # TODO: MOVE TO DEV-PROFILE
     jetbrains.rider                 # TODO: MOVE TO DEV-PROFILE
     # ardour                          # TODO: MOVE TO MUSIC-PROFILE
-    vlc
-    mpv
+    ## vlc
+    ## mpv
     audacious
     pavucontrol
     # appimage-run # For MuseScore
-    qpwgraph  # The "patch-bay" for PipeWire
+    ## qpwgraph  # The "patch-bay" for PipeWire
 
     # csound                          # TODO: MOVE TO MUSIC-PROFILE
     # csoundqt

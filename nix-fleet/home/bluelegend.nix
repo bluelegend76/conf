@@ -4,6 +4,11 @@
   # Import the Emacs module we're about to create
   imports = [
     ../modules/editors/emacs.nix
+    ../modules/desktop/wayland-wm.nix
+  ];
+
+  home.sessionPath = [
+    "$HOME/repos/at"
   ];
 
   # The "Persona" variables
