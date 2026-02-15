@@ -1,278 +1,51 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+{ config, pkgs, ... }: {
+  imports = [ ./bt-hardware.nix ];
 
-{ config, pkgs, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./bt-hardware.nix
-    ];
-
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
-
-  networking.hostName = "high-end"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  # System essentials (Boot, Net, Time)
+  boot.loader.grub = { enable = true; device = "/dev/sda"; useOSProber = true; };
+  networking.hostName = "high-end";
   networking.networkmanager.enable = true;
-
-  # Set your time zone.
   time.timeZone = "Europe/Stockholm";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "sv_SE.UTF-8";
-    LC_IDENTIFICATION = "sv_SE.UTF-8";
-    LC_MEASUREMENT = "sv_SE.UTF-8";
-    LC_MONETARY = "sv_SE.UTF-8";
-    LC_NAME = "sv_SE.UTF-8";
-    LC_NUMERIC = "sv_SE.UTF-8";
-    LC_PAPER = "sv_SE.UTF-8";
-    LC_TELEPHONE = "sv_SE.UTF-8";
-    LC_TIME = "sv_SE.UTF-8";
-  };
-
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
+  # Desktop Environment
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = { enable = true; wayland.enable = true; };
   services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "se";
-    variant = "dvorak";
-  };
-
-  # Configure console keymap
+  services.xserver.xkb = { layout = "se"; variant = "dvorak"; };
   console.keyMap = "sv-latin1";
 
+  # Hardware & Drivers
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true; # Powers it up automatically
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # 1. The Core Infrastructure (The "Must-Haves")
-  # TODO programs.bash.enable = true;
-  programs.git.enable = true;
-  programs.xfconf.enable = true;   # necessary for xfce-apps like Thunar
-  programs.starship.enable = true; # Our "Nifty" prompt
-  programs.kdeconnect.enable = true;
-
-  # 2. Multimedia & PipeWire (Creative Audio)
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true; # Bridges Ardour/Lilypond to PipeWire
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-    # Nifty low-latency "tweak" for your musician persona
-    extraConfig.pipewire."92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 1024;
-        "default.clock.min-quantum" = 32;
-      };
-    };
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.bluelegend = {
-    isNormalUser = true;
-    description = "Daniel Albertsson";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
-  };
-
-  # --- HARDWARE & GRAPHICS ---
-  # Put your Nvidia block here. It's the "foundation" for the display.
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
+  hardware.graphics = { enable = true; enable32Bit = true; };
   services.xserver.videoDrivers = [ "nvidia" ];
-
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false; 
-    open = false; # Keep this FALSE. Maxwell cards (GTX 960) don't support the open kernel module.
-    nvidiaSettings = true;
-    # Force the 535 or 550+ series drivers which are best for the 960
+    open = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # --- PROGRAMS AND BENCHMARKS ---
-  programs.firefox.enable = true;
+  # System-wide Services & Programs
+  services.pipewire = { 
+    enable = true; alsa.enable = true; alsa.support32Bit = true; 
+    pulse.enable = true; jack.enable = true; 
+  };
+  services.guix.enable = true;
+  services.openssh.enable = true;
   programs.steam.enable = true;
-
-  # Allow unfree packages
+  programs.firefox.enable = true;
   nixpkgs.config.allowUnfree = true;
 
-  environment.variables = {
-    GVIM_ENABLE_WAYLAND = "1";
-    NIXOS_OZONE_WL = "1";
-    GBM_BACKEND = "nvidia-drm"; # Good for Nvidia+Wayland
-    # _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true";
-    EDITOR = "gvim -f";
-    VISUAL = "gvim -f";
+  # Only keep essential SYSTEM tools here
+  environment.systemPackages = with pkgs; [
+    vim-full gitFull wget curl htop tree stow tailscale syncthing
+  ];
+
+  users.users.bluelegend = {
+    isNormalUser = true;
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # NeoMutt
-    stow         # For your "Lazarus" handshake
-    tailscale    # The "Secure Tunnel" for remote access
-    syncthing    # Workspace sync
-    dropbox
-    # insync
-    vim-full     # The classic editor
-    neovim
-    neovide      # GPU-accelerated Neovim
-    translate-shell
-    evince
-    thunar
-    ristretto
-    # shotwell
-    libreoffice-fresh
-    gitFull      # Includes git-gui for visual commits
-    wget curl htop
-    tree
-    # TODO scrot =FOR FLUXBOX/ICEWM-ENVIRONMENT
-    #  yt-dlp
-      # doxygen
-    ## keepassxc
-    # nushell
-    # xonsh
-
-    gimp
-    # inkscape
-
-    (tesseract.override { enableLanguages = [ "eng" "swe" ]; }) # Example: Add English + Swedish
-    ## vesktop
-    ## signal-desktop
-    # dotnet-sdk_8                    # TODO: MOVE TO DEV-PROFILE
-    jetbrains.rider                 # TODO: MOVE TO DEV-PROFILE
-    # ardour                          # TODO: MOVE TO MUSIC-PROFILE
-    ## vlc
-    ## mpv
-    audacious
-    pavucontrol
-    # appimage-run # For MuseScore
-    ## qpwgraph  # The "patch-bay" for PipeWire
-
-    # csound                          # TODO: MOVE TO MUSIC-PROFILE
-    # csoundqt
-    # supercollider-with-sc3-plugins  # TODO: MOVE TO MUSIC-PROFILE
-    # ----
-    # lilypond                      # TODO: MOVE TO MUSIC-PROFILE
-    tuxguitar
-    # fluid-soundfont-gm # OR MORE ADVANCED
-    # ardour
-    # MuseScore (+MuseHub)
-
-    # TODO: WakeOnLan (use Bt-Desktop as builder/compiler!!)
-
-    # jetbrains.clion               # TODO: MOVE TO DEV-PROFILE
-    # jetbrains.webstorm            # TODO: MOVE TO DEV-PROFILE
-    # jetbrains.pycharm-community   # TODO: MOVE TO DEV-PROFILE
-    # jetbrains.idea-community      # TODO: MOVE TO DEV-PROFILE
-
-    # TODO emacs
-    # TODO sbcl
-    # TODO lispPackages.quicklisp  # Quicklisp setup-helper
-    # TODO common-lisp-hyperspec
-    # 'The global way': gcc, gnumake, python3, nodejs
-    # +later: FHS-Environments (=run the IDEs inside a "shell")
-    # gcc
-    # gnumake
-    #  Cmake
-    # python3
-    # go
-    # elixir
-    # nodejs_20
-    # openjdk_21
-    ## jdk17 # OR HIGHER
-
-    # gopls lexical
-    # scenebuilder
-    # maven gradle
-    # nodePackages.typescript-language-server
-    # beam.packages.erlang.erlang
-  # guix install clojure
-  # Python + Lua
-  ];
-
-  # 4. Benchmarks (Iteration 1)
-  # environment.systemPackages = with pkgs; [
-  #   (tesseract.override { enableLanguages = [ "eng" "swe" ]; }) # Example: Add English + Swedish
-  #   dotnet-sdk_8
-  #   jetbrains.rider
-  #   ardour
-  #   vlc
-  #   mpv
-  #   pavucontrol
-  # ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  services.guix.enable = true;
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
-
-  swapDevices = [
-    { device = "/var/lib/swapfile"; size = 16384; }
-  ];
-
+  system.stateVersion = "25.11";
+  swapDevices = [ { device = "/var/lib/swapfile"; size = 16384; } ];
 }
