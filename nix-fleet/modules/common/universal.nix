@@ -18,6 +18,12 @@
     # insync
   ];
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true; # Makes it lightning-fast for Nix-flakes
+    enableBashIntegration = true;
+  };
+
   # The Git-aware prompt you were likely using
   programs.starship = {
     enable = true;
