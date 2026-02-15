@@ -2,6 +2,8 @@
   home.packages = with pkgs; [
     evince
     ristretto
+    # pdftk
+    img2pdf
     thunar
     mpv
     vlc
