@@ -1,8 +1,18 @@
 { pkgs, ... }: {
   home.stateVersion = "25.11";
-  imports = [ ../modules/editors/emacs.nix ../modules/desktop/wayland-wm.nix ];
 
-  home.sessionPath = [ "$HOME/conf/at" "$HOME/conf/at/init" ];
+  imports = [
+    ../modules/common/universal.nix
+    ../modules/common/high-end.nix
+    ../modules/editors/emacs.nix
+    ../modules/desktop/wayland-wm.nix
+    ../modules/services/sync.nix
+  ];
+
+  home.sessionPath = [
+    "$HOME/conf/at"
+    "$HOME/conf/at/init"
+  ];
 
   home.sessionVariables = {
     EDITOR = "gvim -f";
@@ -16,9 +26,4 @@
       e = "emacsclient -c -a 'emacs'"; 
     };
   };
-
-  home.packages = with pkgs; [
-    keepassxc signal-desktop vesktop vlc mpv qpwgraph
-    libreoffice-fresh gimp jetbrains.rider audacious pavucontrol
-  ];
 }
