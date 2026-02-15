@@ -12,7 +12,8 @@
         "galaxy-s24" = { id = "KD5KIWQ-GEWUGVI-WPHH4YN-NX7W2AC-UHR66IF-UTGI6U4-F2YQXFB-AS2KEQC"; };
       };
 
-      folders."npnyf-i4ksn" = {
+      # folders."npnyf-i4ksn" = {
+      folders = {
         "SyncThing" = {
           path = "/home/bluelegend/SyncThing";
           devices = [ "black-tower" "galaxy-s24" ];
