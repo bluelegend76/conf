@@ -22,15 +22,19 @@ in {
     viAlias = true;
     # setting to true might conflict with "gvim -f"
     defaultEditor = false;
-    ## extraConfig = builtins.readFile "${config.home.homeDirectory}/conf/vim/.vimrc";
-    extraConfig = builtins.readFile ../../vim/.vimrc;
+    # extraConfig = builtins.readFile "${config.home.homeDirectory}/conf/.vimrc";
+    # extraConfig = builtins.readFile ../../../.vimrc;
+    extraConfig = "source ~/.vimrc";
   };
 
-  programs.vim = {
-    enable = true;
-    # Read plus inject existing .vimrc-file into Nix-configuration
-    extraConfig = builtins.readFile ../../vim/.vimrc;
-  };
+  # home.file.".vimrc".text = builtins.readFile vimrcPath;
+
+  # programs.vim = {
+  #   enable = true;
+  #   package = pkgs.vim-full;
+  #   # Read plus inject existing .vimrc-file into Nix-configuration
+  #   extraConfig = builtins.readFile ../../../.vimrc;
+  # };
 
   # plugins = with pkgs.vimPlugins; [
   #   # We can add Nix-managed plugins here later
@@ -39,10 +43,11 @@ in {
   # ];
 
   # Ensure GVim and NeoVide are available
-  home.packages = with pkgs; [
-    vim-full
+  home.packages = [
+    pkgs.vim-full
+    # Temporary addition to make NeoVim understand current .vimrc
+    pkgs.vimPlugins.vim-plug
   ] ++ lib.optionals (!isMobile) [
-    neovide  # Use NeoVide only on non-mobile devices
+    pkgs.neovide  # Use NeoVide only on non-mobile devices
   ];
-
 }
