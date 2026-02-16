@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 let
-  # Detect presence of ARM-based mobile device
+  # Detect presence of ARM-based mobile-device
   isMobile = pkgs.stdenv.hostPlatform.isAarch64;
 in {
   # Environment Variables (Paths & Editor)
