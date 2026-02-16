@@ -16,7 +16,7 @@ ${EDITOR} \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/cmp.sv.dict.sv2en-prsm.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/sv.words.saol11-1991.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/sv.thes.svsyn.txt \
-    ${SYNCTHING_DIR}/rsc/Doks/Lang/En/En-IdiomDict.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/En-IdiomDict.txt
     ${SYNCTHING_DIR}/rsc/data/lists/at/Litt-poetry.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/Quotes.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/todo/econ-shoplist-acquisition-inköp.txt \
