@@ -4,6 +4,7 @@
   imports = [
     ../modules/common/universal.nix
     ../modules/common/high-end.nix
+    ../modules/editors/vim.nix
     ../modules/editors/emacs.nix
     ../modules/desktop/wayland-wm.nix
     ../modules/services/sync.nix
