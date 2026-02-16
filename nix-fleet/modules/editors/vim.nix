@@ -2,17 +2,27 @@
 let
   # Detect presence of ARM-based mobile-device
   isMobile = pkgs.stdenv.hostPlatform.isAarch64;
+  # The "Universal Path" logic
+  syncPath = if isMobile
+             then "/storage/emulated/0/SyncThing"
+             else "${config.home.homeDirectory}/SyncThing";
 in {
   # Environment Variables (Paths & Editor)
   home.sessionVariables = {
     # The "Universal Path" logic
-    SYNC_BASE = if isMobile
-                then "/storage/emulated/0/SyncThing"
-                else "${config.home.homeDirectory}/SyncThing";
-
+    SYNC_BASE = syncPath;
     # Use gvim as default editor in the terminal
     EDITOR = "gvim -f";
     VISUAL = "gvim -f";
+  };
+
+  # This ensures that even if 'home.sessionVariables' fails to source,
+  # the variable is hard-coded into your shell profile.
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      export SYNC_BASE="${syncPath}"
+    '';
   };
 
   programs.neovim = {
@@ -22,12 +32,10 @@ in {
     viAlias = true;
     # setting to true might conflict with "gvim -f"
     defaultEditor = false;
-    # extraConfig = builtins.readFile "${config.home.homeDirectory}/conf/.vimrc";
-    # extraConfig = builtins.readFile ../../../.vimrc;
+      # extraConfig = builtins.readFile "${config.home.homeDirectory}/conf/.vimrc";
+      # extraConfig = builtins.readFile ../../../.vimrc;
     extraConfig = "source ~/.vimrc";
   };
-
-  # home.file.".vimrc".text = builtins.readFile vimrcPath;
 
   # programs.vim = {
   #   enable = true;
