@@ -1,10 +1,10 @@
 { pkgs, ... }: {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  environment.systemPackages = [
-    pkgs.sops
-    pkgs.age
-  ];
+  # environment.systemPackages = [
+  #   pkgs.sops
+  #   pkgs.age
+  # ];
 
   # imports = [
   #   inputs.sops-nix.homeManagerModules.sops
@@ -24,6 +24,8 @@
 
   # TODO: MIGHT BE BETTER TO MOVE TO home/bluelegend.nix LATER ON
   home.packages = with pkgs; [
+    sops
+    age
     evince
     ristretto
     # pdftk

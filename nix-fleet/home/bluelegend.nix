@@ -1,4 +1,4 @@
-{ pkgs, inputs, pkgs, ... }: {
+{ pkgs, config, inputs, ... }: {
   home.stateVersion = "25.11";
 
   imports = [
@@ -15,18 +15,18 @@
   sops = {
     # Point to the vault (relative to this file)
     defaultSopsFile = ../secrets/secrets.yaml;
-    
     # Point to your physical Age key
-    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-    
+    age.keyFile = "/home/bluelegend/.config/sops/age/keys.txt";
     secrets = {
       # This tells Nix to create the SSH key file from the vault
       ssh_private_key = {
-        path = "${config.home.homeDirectory}/.ssh/id_ed25519";
+        path = "/home/bluelegend/.ssh/id_ed25519";
         mode = "0600";
       };
       # Just creating the secret for use in Git/Scripts
-      git_email = {};
+      git_email = {
+        path = "/home/bluelegend/.config/sops/git_email";
+      };
     };
   };
 
@@ -38,7 +38,7 @@
   home.sessionVariables = {
     EDITOR = "gvim -f";
     VISUAL = "gvim -f";
-    GIT_AUTHOR_EMAIL = config.sops.placeholder.git_email;
+    GIT_AUTHOR_EMAIL = "$(cat /home/bluelegend/.config/sops/git_email)";
   };
 
   programs.bash = {
@@ -47,5 +47,10 @@
       fleet-up = "sudo nixos-rebuild switch --flake ~/conf/nix-fleet#high-end";
       e = "emacsclient -c -a 'emacs'"; 
     };
+    initExtra = ''
+      if [ -f /home/bluelegend/.config/sops/git_email ]; then
+        export GIT_AUTHOR_EMAIL=$(cat /home/bluelegend/.config/sops/git_email)
+      fi
+    '';
   };
 }

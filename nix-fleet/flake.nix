@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -21,6 +22,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
+          home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.bluelegend = import ./home/bluelegend.nix;
         }
       ];
