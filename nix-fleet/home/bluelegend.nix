@@ -1,6 +1,14 @@
 { pkgs, config, inputs, ... }: {
   home.stateVersion = "25.11";
 
+  # TODO: CREATE SYMLINKS FOR HOME TOWARDS EXTERNAL USB-DRIVE
+  # home.file."at-data".source = config.lib.file.mkOutOfStoreSymlink "/run/media/bluelegend/MY_USB/at-data";
+# EXTHD1='3a7592f8-41d6-4c29-b6d0-53533881b86a'
+# ln -s /run/media/bluelegend/${EXTHD1}/legacy/dropboxlegacy_pre2021/ dropbox-legacy
+# ln -s /run/media/bluelegend/${EXTHD1}/Empire/
+# ln -s /run/media/bluelegend/${EXTHD1}/legacy/
+# ln -s /run/media/bluelegend/${EXTHD1}/SyncThing
+
   imports = [
     ../modules/common/universal.nix
     ../modules/common/high-end.nix
@@ -50,7 +58,23 @@
     initExtra = ''
       if [ -f /home/bluelegend/.config/sops/git_email ]; then
         export GIT_AUTHOR_EMAIL=$(cat /home/bluelegend/.config/sops/git_email)
+        export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
       fi
+
+      if [ -f /home/bluelegend/.config/sops/git_name ]; then
+        export GIT_AUTHOR_NAME=$(cat /home/bluelegend/.config/sops/git_name)
+        export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
+      fi
+
+      # The "Heavy-Tools-on-Demand" Engine
+      eval "$(direnv hook bash)"
     '';
   };
+
+  # This part goes outside the programs.bash block, but inside your home-manager config
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
 }
