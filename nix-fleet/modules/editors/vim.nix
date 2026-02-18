@@ -37,25 +37,54 @@ in {
     extraConfig = "source ~/.vimrc";
   };
 
-  # programs.vim = {
-  #   enable = true;
-  #   package = pkgs.vim-full;
-  #   # Read plus inject existing .vimrc-file into Nix-configuration
-  #   extraConfig = builtins.readFile ../../../.vimrc;
-  # };
+  programs.vim = {
+    enable = true;
 
-  # plugins = with pkgs.vimPlugins; [
-  #   # We can add Nix-managed plugins here later
-  #   vim-nix
-  #   nord-vim
-  # ];
+    # package = pkgs.vim-full;
+    # # Read plus inject existing .vimrc-file into Nix-configuration
+    # extraConfig = builtins.readFile ../../../.vimrc;
+    plugins = with pkgs.vimPlugins; [
+      # We can add Nix-managed plugins here later
+      # vim-nix
+      # nord-vim
+      vim-sensible
+      vim-polyglot
+      vim-matchup
+      fzf-vim
+      vim-vinegar
+      vim-surround
+      translate-shell-vim
+      srcery-vim
+      vim-json
+      vim-commentary
+      rainbow_csv
+      tabular
+      vim-easy-align
+      vim-hy
+      vim-fugitive
+      vim-gitgutter
+    ];
+
+    extraConfig = ''
+        ${builtins.readFile ./vimrc-core.vim}
+    '';
+  };
+
 
   # Ensure GVim and NeoVide are available
-  home.packages = [
-    pkgs.vim-full
+  home.packages = with pkgs; [
+    vim-full
+    qrencode
+    imagemagick
+    firefox
+    mpv
+    evince
+    ristretto
+    thunar
+    translate-shell
     # Temporary addition to make NeoVim understand current .vimrc
-    pkgs.vimPlugins.vim-plug
+    # pkgs.vimPlugins.vim-plug
   ] ++ lib.optionals (!isMobile) [
-    pkgs.neovide  # Use NeoVide only on non-mobile devices
+    neovide  # Use NeoVide only on non-mobile devices
   ];
 }
