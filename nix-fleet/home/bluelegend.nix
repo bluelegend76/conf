@@ -3,6 +3,7 @@
 
   # TODO: CREATE SYMLINKS FOR HOME TOWARDS EXTERNAL USB-DRIVE
   # home.file."at-data".source = config.lib.file.mkOutOfStoreSymlink "/run/media/bluelegend/MY_USB/at-data";
+  # Add .vim
 # EXTHD1='3a7592f8-41d6-4c29-b6d0-53533881b86a'
 # ln -s /run/media/bluelegend/${EXTHD1}/legacy/dropboxlegacy_pre2021/ dropbox-legacy
 # ln -s /run/media/bluelegend/${EXTHD1}/Empire/
