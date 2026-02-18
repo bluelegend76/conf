@@ -6,6 +6,8 @@
     
     # Heavy Apps
     # okular
+    nyxt
+    logseq
     vesktop
     signal-desktop
     libreoffice-fresh
