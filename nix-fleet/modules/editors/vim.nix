@@ -39,8 +39,8 @@ in {
 
   programs.vim = {
     enable = true;
+    ## FIXME: package = pkgs.vim-full;
 
-    # package = pkgs.vim-full;
     # # Read plus inject existing .vimrc-file into Nix-configuration
     # extraConfig = builtins.readFile ../../../.vimrc;
     plugins = with pkgs.vimPlugins; [
@@ -53,8 +53,8 @@ in {
       fzf-vim
       vim-vinegar
       vim-surround
-      translate-shell-vim
-      srcery-vim
+      # "translate-shell-vim"
+      # srcery-vim
       vim-json
       vim-commentary
       rainbow_csv
@@ -73,7 +73,9 @@ in {
 
   # Ensure GVim and NeoVide are available
   home.packages = with pkgs; [
-    vim-full
+    ## FIXME: vim-full
+    (lib.hiPrio vim-full)
+
     qrencode
     imagemagick
     firefox

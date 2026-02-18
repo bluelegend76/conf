@@ -61,7 +61,7 @@
   # TODO: MIGHT BE BETTER TO MOVE TO home/bluelegend.nix LATER ON
   programs.git = {
     enable = true;
-    userName = "Daniel Albertsson";
+    settings.user.name = "Daniel Albertsson";
     # Note: Handled by Sops instead ====
     ## userEmail = "trulystrange@gmail.com";
     ## settings.user.email = "trulystrange@gmail.com";
