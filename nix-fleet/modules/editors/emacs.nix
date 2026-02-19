@@ -36,9 +36,9 @@ in {
 
       # "Smart Syntax" (Highlighting only; No binaries)
       markdown-mode
-      lilypond-mode
+      # lilypond
       clojure-mode
-      cider-mode
+      cider
       lua-mode
       nix-mode
 
@@ -48,16 +48,22 @@ in {
     extraConfig = ''
       ;; --- 1. CORE UI ---
       (setq inhibit-startup-message t)
+      (setq inhibit-splash-screen t)
+      (setq initial-scratch-message nil) ; or ""
+
+      (setq initial-major-mode 'fundamental-mode) ; For a quick startup
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
       (blink-cursor-mode 0)
 
       ;; --- 2. VIM EXPAT TRIFECTA ---
-      (require 'evil)
       (setq evil-want-keybinding nil)
+      (require 'evil)
       (evil-mode 1)
+
       (require 'evil-collection)
       (evil-collection-init)
+
       (require 'which-key)
       (which-key-mode)
 
