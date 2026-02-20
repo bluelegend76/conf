@@ -1,92 +1,62 @@
 { pkgs, lib, config, ... }:
 let
-  # Detect presence of ARM-based mobile-device
   isMobile = pkgs.stdenv.hostPlatform.isAarch64;
-  # The "Universal Path" logic
   syncPath = if isMobile
-             then "/storage/emulated/0/SyncThing"
-             else "${config.home.homeDirectory}/SyncThing";
+               then "/storage/emulated/0/SyncThing"
+               else "${config.home.homeDirectory}/SyncThing";
+
+  # This creates ONE single package containing all your plugins
+  # without the 'doc/tags' collision error.
+  myVimPlugins = pkgs.linkFarm "my-vim-plugins" [
+    { name = "pack/bundle/start/vim-sensible"; path = pkgs.vimPlugins.vim-sensible; }
+    { name = "pack/bundle/start/vim-polyglot"; path = pkgs.vimPlugins.vim-polyglot; }
+    { name = "pack/bundle/start/vim-matchup"; path = pkgs.vimPlugins.vim-matchup; }
+    { name = "pack/bundle/start/fzf-vim"; path = pkgs.vimPlugins.fzf-vim; }
+    { name = "pack/bundle/start/vim-vinegar"; path = pkgs.vimPlugins.vim-vinegar; }
+    { name = "pack/bundle/start/vim-surround"; path = pkgs.vimPlugins.vim-surround; }
+    { name = "pack/bundle/start/vim-json"; path = pkgs.vimPlugins.vim-json; }
+    { name = "pack/bundle/start/vim-commentary"; path = pkgs.vimPlugins.vim-commentary; }
+    { name = "pack/bundle/start/rainbow_csv"; path = pkgs.vimPlugins.rainbow_csv; }
+    { name = "pack/bundle/start/tabular"; path = pkgs.vimPlugins.tabular; }
+    { name = "pack/bundle/start/vim-easy-align"; path = pkgs.vimPlugins.vim-easy-align; }
+    { name = "pack/bundle/start/vim-hy"; path = pkgs.vimPlugins.vim-hy; }
+    { name = "pack/bundle/start/vim-fugitive"; path = pkgs.vimPlugins.vim-fugitive; }
+    { name = "pack/bundle/start/vim-gitgutter"; path = pkgs.vimPlugins.vim-gitgutter; }
+    { name = "pack/bundle/start/vim-nix"; path = pkgs.vimPlugins.vim-nix; }
+  ];
+
 in {
-  # Environment Variables (Paths & Editor)
   home.sessionVariables = {
-    # The "Universal Path" logic
     SYNC_BASE = syncPath;
-    # Use gvim as default editor in the terminal
     EDITOR = "gvim -f";
     VISUAL = "gvim -f";
   };
 
-  # This ensures that even if 'home.sessionVariables' fails to source,
-  # the variable is hard-coded into your shell profile.
-  programs.bash = {
-    enable = true;
-    initExtra = ''
-      export SYNC_BASE="${syncPath}"
-    '';
-  };
+  # 1. Disable the stubborn module again
+  programs.vim.enable = false;
 
-  programs.neovim = {
-    enable = true;
-    # false means using classic Vim in terminal-session
-    vimAlias = true;
-    viAlias = true;
-    # setting to true might conflict with "gvim -f"
-    defaultEditor = false;
-      # extraConfig = builtins.readFile "${config.home.homeDirectory}/conf/.vimrc";
-      # extraConfig = builtins.readFile ../../../.vimrc;
-    extraConfig = "source ~/.vimrc";
-  };
+  # 2. Place the .vimrc and point it to our joined plugins
+  home.file.".vimrc".text = ''
+    set nocompatible
+    
+    " Tell Vim to look in our joined Nix store path for plugins
+    set packpath^=${myVimPlugins}
+    " Manually trigger the loading of the 'start' packages
+    packloadall
+    
+    ${builtins.readFile ./vimrc-core.vim}
+    
+    " Data Sanctuary
+    " set directory=$HOME/.vim/swap//
+    " set backupdir=$HOME/.vim/backup//
+    " set undodir=$HOME/.vim/undo//
+  '';
 
-  programs.vim = {
-    enable = true;
-    ## FIXME: package = pkgs.vim-full;
-
-    # # Read plus inject existing .vimrc-file into Nix-configuration
-    # extraConfig = builtins.readFile ../../../.vimrc;
-    plugins = with pkgs.vimPlugins; [
-      # We can add Nix-managed plugins here later
-      # vim-nix
-      # nord-vim
-      vim-sensible
-      vim-polyglot
-      vim-matchup
-      fzf-vim
-      vim-vinegar
-      vim-surround
-      # "translate-shell-vim"
-      # srcery-vim
-      vim-json
-      vim-commentary
-      rainbow_csv
-      tabular
-      vim-easy-align
-      vim-hy
-      vim-fugitive
-      vim-gitgutter
-    ];
-
-    extraConfig = ''
-        ${builtins.readFile ./vimrc-core.vim}
-    '';
-  };
-
-
-  # Ensure GVim and NeoVide are available
   home.packages = with pkgs; [
-    ## FIXME: vim-full
-    (lib.hiPrio vim-full)
-
-    qrencode
-    imagemagick
-    firefox
-    mpv
-    evince
-    ristretto
-    thunar
-    translate-shell
-    # Temporary addition to make NeoVim understand current .vimrc
-    # pkgs.vimPlugins.vim-plug
+    vim-full
+    fzf
+    qrencode imagemagick firefox mpv evince ristretto thunar translate-shell
   ] ++ lib.optionals (!isMobile) [
-    neovide  # Use NeoVide only on non-mobile devices
+    neovide
   ];
 }
