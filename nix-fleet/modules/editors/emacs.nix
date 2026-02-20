@@ -13,6 +13,11 @@ in {
       evil evil-collection which-key general
       doom-themes doom-modeline magit
       nix-mode markdown-mode
+      # New syntax support
+      php-mode
+      d-mode
+      typescript-mode
+      web-mode
     ];
   };
 
@@ -36,6 +41,12 @@ in {
     (require 'doom-themes)
     (load-theme 'doom-ir-black t)
 
+
+    ;; --- LANGUAGE MAPPINGS ---
+    (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+    (add-to-list 'auto-mode-alist '("\\.di?\\'" . d-mode))
+    (add-to-list 'auto-mode-alist '("\\.mdx\\'" . web-mode))
+
     (require 'which-key)
     (which-key-mode)
 
@@ -54,7 +65,9 @@ in {
     package = myEmacs;
   };
 
-  home.shellAliases = {
-    emacs = "emacsclient -c -a ''";
-  };
+  # TODO Not in last variant, but may
+  # want to reactive in next iteration
+  # home.shellAliases = {
+  #   emacs = "emacsclient -c -a ''";
+  # };
 }
