@@ -25,16 +25,43 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  # 'JetBrains / Unpatched Binary Support'
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    fuse3
+    icu
+    nss
+    openssl
+    curl
+    expat
+    libxml2
+    libsecret
+  ];
+
   # System-wide Services & Programs
   services.pipewire = { 
-    enable = true; alsa.enable = true; alsa.support32Bit = true; 
-    pulse.enable = true; jack.enable = true; 
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true; 
+    pulse.enable = true;
+    jack.enable = true; 
   };
   services.guix.enable = true;
   services.openssh.enable = true;
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    # Open ports in the firewall for Steam Remote Play
+    remotePlay.openFirewall = true;
+    # Open ports in the firewall for Source Dedicated Server
+    dedicatedServer.openFirewall = true;
+  };
   programs.firefox.enable = true;
   nixpkgs.config.allowUnfree = true;
+
+  # Essential for the Tuf's performance
+  ## programs.gamemode.enable = true;
 
   # Only keep essential SYSTEM tools here
   environment.systemPackages = with pkgs; [
