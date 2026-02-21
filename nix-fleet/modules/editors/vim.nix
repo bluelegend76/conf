@@ -52,6 +52,19 @@ in {
     " set undodir=$HOME/.vim/undo//
   '';
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = false;
+    viAlias = false;
+    vimAlias = true;
+
+    # withNodeJs = true;
+    # withPython3 = true;
+
+    extraConfig = ''
+    '';
+  };
+
   home.packages = with pkgs; [
     vim-full
     fzf
