@@ -32,5 +32,6 @@
   home.packages = with pkgs; [
     syncthingtray-minimal
     insync
+    # TODO dropbox
   ];
 }
