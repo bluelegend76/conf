@@ -33,6 +33,7 @@
     thunar
     mpv
     vlc
+    tuxguitar
     audacious
     pavucontrol
     keepassxc
