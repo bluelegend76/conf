@@ -12,6 +12,7 @@ in {
     extraPackages = epkgs: with epkgs; [
       evil evil-collection which-key general
       doom-themes doom-modeline magit
+      slime
       nix-mode markdown-mode
       # New syntax support
       php-mode
@@ -40,6 +41,12 @@ in {
 
     (require 'doom-themes)
     (load-theme 'doom-ir-black t)
+
+    (use-package slime
+      :ensure t
+      :config
+      (setq inferior-lisp-program "sbcl")
+      (slime-setup '(slime-fancy slime-quicklisp slime-asdf)))
 
 
     ;; --- LANGUAGE MAPPINGS ---

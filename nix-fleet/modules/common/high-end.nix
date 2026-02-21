@@ -13,5 +13,12 @@
     libreoffice-fresh
     jetbrains.rider
     qpwgraph
+
+    sbcl
+    # cl-hyperspec
+    # FIXME: Handle Slime with Emacs instead
+    # sbclPackages.quicklisp-starter
+    # sbclPackages.quicklisp-slime-helper
+    # sbclPackages.hyperspec
   ];
 }
