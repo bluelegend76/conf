@@ -15,7 +15,9 @@
     qpwgraph
 
     sbcl
-    # cl-hyperspec
+    # Install CL Hyperspec
+    # (ql:quickload "cl-hyperspec")
+
     # FIXME: Handle Slime with Emacs instead
     # sbclPackages.quicklisp-starter
     # sbclPackages.quicklisp-slime-helper
