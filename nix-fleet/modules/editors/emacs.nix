@@ -22,6 +22,10 @@ in {
     ];
   };
 
+  # TODO: ADD PDF-TOOLS, IMAGE-DIRED
+  # Ivy, dired+Icicles
+  # Org-Roam(+org-drill)
+  # vimish-folds(?)
   # This is the "Bypass" - Writing the file directly to the config path
   xdg.configFile."emacs/init.el".text = ''
     ;; --- THE TOWER CORE ---
@@ -47,7 +51,6 @@ in {
       :config
       (setq inferior-lisp-program "sbcl")
       (slime-setup '(slime-fancy slime-quicklisp slime-asdf)))
-
 
     ;; --- LANGUAGE MAPPINGS ---
     (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
