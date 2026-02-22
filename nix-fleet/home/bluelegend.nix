@@ -1,14 +1,17 @@
 { pkgs, config, inputs, ... }: {
   home.stateVersion = "25.11";
 
-  # TODO: CREATE SYMLINKS FOR HOME TOWARDS EXTERNAL USB-DRIVE
+# TODO: CREATE SYMLINKS FOR HOME TOWARDS EXTERNAL USB-DRIVE
   # home.file."at-data".source = config.lib.file.mkOutOfStoreSymlink "/run/media/bluelegend/MY_USB/at-data";
   # Add .vim
-# EXTHD1='3a7592f8-41d6-4c29-b6d0-53533881b86a'
-# ln -s /run/media/bluelegend/${EXTHD1}/legacy/dropboxlegacy_pre2021/ dropbox-legacy
-# ln -s /run/media/bluelegend/${EXTHD1}/Empire/
-# ln -s /run/media/bluelegend/${EXTHD1}/legacy/
-# ln -s /run/media/bluelegend/${EXTHD1}/SyncThing
+
+let
+  extHd1 = "3a7592f8-41d6-4c29-b6d0-53533881b86a";
+in {
+  home.file."dropbox-legacy".source = config.lib.file.mkOutOfStoreSymlink "/run/media/bluelegend/${extHd1}/legacy/dropboxlegacy_pre2021";
+  home.file."Empire".source = config.lib.file.mkOutOfStoreSymlink "/run/media/bluelegend/${extHd1}/Empire";
+  home.file."legacy".source = config.lib.file.mkOutOfStoreSymlink "/run/media/bluelegend/${extHd1}/legacy";
+}
 
   imports = [
     ../modules/common/universal.nix
