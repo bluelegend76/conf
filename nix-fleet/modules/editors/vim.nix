@@ -7,6 +7,7 @@ let
 
   # This creates ONE single package containing all your plugins
   # without the 'doc/tags' collision error.
+  # TODO: ADD TRANSLATE-SHELL-VIM(!!)
   myVimPlugins = pkgs.linkFarm "my-vim-plugins" [
     { name = "pack/bundle/start/vim-sensible"; path = pkgs.vimPlugins.vim-sensible; }
     { name = "pack/bundle/start/vim-polyglot"; path = pkgs.vimPlugins.vim-polyglot; }
