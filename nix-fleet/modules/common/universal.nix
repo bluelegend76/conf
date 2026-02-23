@@ -59,6 +59,9 @@
     enableBashIntegration = true;
   };
 
+  # Enable the system-wide SSH agent
+  # FIXME = Remove: programs.ssh.startAgent = true;
+
   # TODO: MIGHT BE BETTER TO MOVE TO home/bluelegend.nix LATER ON
   programs.git = {
     enable = true;

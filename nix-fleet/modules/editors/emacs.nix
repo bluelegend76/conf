@@ -19,13 +19,27 @@ in {
       d-mode
       typescript-mode
       web-mode
+      # pdf-tools
+      # vimish folds
+      # ivy
+      # swiper
+      # counsel
+      # dired-subtree
+      # org-roam
+      # org-drill
+      # Aesthetics ----
+      # org-modern
+      # org-appear
+      # org-superstar  # Alternative to org-modern for pretty bullets
+      # Literate Programming ----
+      # ob-restclient  # Great for API work
+      # ob-go          # If you ever touch Go
+      # Knowledge Management ----
+      # org-roam-ui
+      # gptel          # (Optional) If you want to use LLMs inside Org buffers
     ];
   };
 
-  # TODO: ADD PDF-TOOLS, IMAGE-DIRED
-  # Ivy, dired+Icicles
-  # Org-Roam(+org-drill)
-  # vimish-folds(?)
   # This is the "Bypass" - Writing the file directly to the config path
   xdg.configFile."emacs/init.el".text = ''
     ;; --- THE TOWER CORE ---
