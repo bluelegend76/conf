@@ -48,6 +48,8 @@
     EDITOR = "gvim -f";
     VISUAL = "gvim -f";
     GIT_AUTHOR_EMAIL = "$(cat /home/bluelegend/.config/sops/git_email)";
+    # This points your shell to the systemd-managed agent
+    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
   };
 
   programs.bash = {
@@ -84,8 +86,10 @@
       "github.com" = {
         hostname = "github.com";
         user = "git";
-        # identityFile = "~/.ssh/id_ed25519";
-        identityFile = "~/.ssh/id_ed25519";
+        ## identityFile = "~/.ssh/id_ed25519";
+        # identityFile = "/run/user/1000/secrets.d/71/ssh_private_key";
+        # Permanent fix for relative path
+        identityFile = "~/.config/sops-nix/secrets/ssh_private_key";
       };
     };
   };
@@ -94,6 +98,34 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+
+    stdlib = ''
+      use_guix() {
+        # 1. Environment Loading
+        if [[ -f manifest.scm ]]; then
+          echo "🌐 Lattice: Loading project manifest..."
+          eval "$(guix shell --manifest=manifest.scm --search-paths)"
+        else
+          # If no manifest, we only load what's explicitly asked for in the .envrc
+          # e.g., 'use guix python'
+          if [[ $# -gt 0 ]]; then
+            echo "🌐 Lattice: Loading ad-hoc environment: $*"
+            eval "$(guix shell "$@" nss-certs --search-paths)"
+          fi
+        fi
+
+        # 2. Universal SSL Bridge (Safe for all languages)
+        if [[ -n "$GUIX_ENVIRONMENT" ]]; then
+          export SSL_CERT_FILE="$GUIX_ENVIRONMENT/etc/ssl/certs/ca-certificates.crt"
+          export GIT_SSL_CAINFO="$SSL_CERT_FILE"
+        fi
+
+        # 3. Smart Pathing (Only adds what exists)
+        [[ -d node_modules/.bin ]] && PATH_add node_modules/.bin
+        [[ -d .venv/bin ]] && PATH_add .venv/bin
+        [[ -d bin ]] && PATH_add bin
+      }
+    '';
   };
 
 }
