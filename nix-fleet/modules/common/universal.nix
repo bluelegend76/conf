@@ -59,15 +59,19 @@
     enableBashIntegration = true;
   };
 
-  # Enable the system-wide SSH agent
-  # FIXME = Remove: programs.ssh.startAgent = true;
-
   # TODO: MIGHT BE BETTER TO MOVE TO home/bluelegend.nix LATER ON
   programs.git = {
     enable = true;
-    settings.user.name = "Daniel Albertsson";
-    # Note: Handled by Sops instead ====
-    ## userEmail = "trulystrange@gmail.com";
-    ## settings.user.email = "trulystrange@gmail.com";
+    # Note: Mail handled by Sops
+
+    settings = {
+      user.name = "Daniel Albertsson";
+
+      # This is the "Safety Rail" for SSH
+      url."git@github.com:".insteadOf = "https://github.com/";
+      
+      # This locks in your preferred branch name
+      init.defaultBranch = "main";
+    };
   };
 }
