@@ -16,7 +16,7 @@
       folders = {
         "npnyf-i4ksn" = {
           path = "/home/bluelegend/SyncThing";
-          devices = [ "black-tower" "galaxy-s24" ];
+          devices = [ "black-tower" "galaxy-s24" ];  # Update with Tuf laptop
           label = "Main SyncThing Dir";
         };
       };

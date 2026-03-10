@@ -523,7 +523,7 @@ nnoremap <silent> <leader>ts vis:Trans -brief<CR>
 "       (WITH RL OR NORL APPLIED + GREATLY ENLARGED)  TODO TODO
 " [= Primary Use: Displaying Arabic, Farsi etc ]
 " [- Secondary Use: Display Cuneiform etc (=Needs Great Enlargement) ]
- 
+
 " Set translate-shell transation-language
 nnoremap <leader>la :let g:trans_default_direction = ":en+sv
 " Reset to default language-set

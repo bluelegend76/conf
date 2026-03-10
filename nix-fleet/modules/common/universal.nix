@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # sops-block duplicate? {{{
   # environment.systemPackages = [
   #   pkgs.sops
   #   pkgs.age
@@ -21,30 +22,21 @@
   #   secrets.test_secret = {};
   #   secrets.git_email = {};
   # };
+  # }}}
 
   # TODO: MIGHT BE BETTER TO MOVE TO home/bluelegend.nix LATER ON
   home.packages = with pkgs; [
-    sops
-    age
-    evince
-    ristretto
+    sops age
+    thunar pavucontrol keepassxc
+    evince ristretto img2pdf
     # pdftk
-    img2pdf
-    thunar
-    mpv
-    vlc
-    tuxguitar
-    audacious
-    pavucontrol
-    keepassxc
+    vlc mpv audacious
     yt-dlp
-    htop
-    tree
+    tree htop ripgrep fd  # fd: modern faster 'find'
     translate-shell
-    ripgrep
-    fd
     gimp
-    # insync
+    tuxguitar
+    freesweep
   ];
 
   programs.direnv = {
@@ -69,7 +61,7 @@
 
       # This is the "Safety Rail" for SSH
       url."git@github.com:".insteadOf = "https://github.com/";
-      
+
       # This locks in your preferred branch name
       init.defaultBranch = "main";
     };

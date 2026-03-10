@@ -17,23 +17,28 @@ in {
       slime
       dired-subtree magit projectile
       vertico marginalia orderless consult
+      cape
+      embark embark-consult
       pdf-tools
-      # TODO - Logseq: logseq-mode
-      # ORG-ROAM
-      # ORG-DRILL
-      # vimish folds
-      # ivy swiper counsel
-
+      corfu
       # Aesthetics ----
       org-modern  # TODO: Add hiding of start/end tag for fenced code-blocks
       org-appear
       # org-superstar  # Alternative to org-modern for pretty bullets
+      # Knowledge Management ----
+      org-roam org-roam-ui
+      org-drill
+      sqlite3
+      # TODO - Logseq: logseq-mode
+      # logseq-mode outline-indent-mode origami
+      # gptel          # (Optional) If you want to use LLMs inside Org buffers
+      # vimish folds
+      # avy
+      # ivy swiper counsel
+
       # Literate Programming ----
       # ob-restclient  # Great for API work
       # ob-go          # If you ever touch Go
-      # Knowledge Management ----
-      # org-roam-ui
-      # gptel          # (Optional) If you want to use LLMs inside Org buffers
 
       # New syntax support
       nix-mode markdown-mode
@@ -46,6 +51,8 @@ in {
 
   # This is the "Bypass" - Writing the file directly to the config path
   xdg.configFile."emacs/init.el".text = ''
+    (require 'use-package)
+
     ;; --- THE TOWER CORE ---
     (setq inhibit-startup-screen t
           inhibit-startup-message t
@@ -74,28 +81,60 @@ in {
       (define-key pdf-view-mode-map (kbd "j") 'pdf-view-next-line-or-next-page)
       (define-key pdf-view-mode-map (kbd "k") 'pdf-view-previous-line-or-previous-page))
 
-      (use-package org-modern
-        :hook (org-mode . org-modern-mode)
-        :config
-        (setq 
-         ;; Use elegant bars for the vertical lines in blocks
-         org-modern-block-fringe 2
-         ;; Customize your "High-End" bullets
-         org-modern-star '("◉" "○" "◈" "◇" "✳")
-         ;; Make checkboxes look like modern UI elements
-         org-modern-checkbox 
-         '((?X . "󰄲")
-           (?- . "󰡖")
-           (?\  . "󰄱")))
-        (global-org-modern-mode))
+    (use-package org-modern
+      :hook (org-mode . org-modern-mode)
+      :config
+      (setq 
+       ;; Use elegant bars for the vertical lines in blocks
+       org-modern-block-fringe 2
+       ;; Customize your "High-End" bullets
+       org-modern-star '("◉" "○" "◈" "◇" "✳")
+       ;; Make checkboxes look like modern UI elements
+       org-modern-checkbox 
+       '((?X . "󰄲")
+         (?- . "󰡖")
+         (?\  . "󰄱")))
+      (global-org-modern-mode))
 
-      (use-package org-appear
-        :hook (org-mode . org-appear-mode)
-        :config
-        ;; Only show the "clutter" when the cursor is literally on the word
-        (setq org-appear-autoemphasis t
-              org-appear-autolinks t
-              org-appear-autosubmarkers t))
+    (use-package org-appear
+      :hook (org-mode . org-appear-mode)
+      :config
+      ;; Only show the "clutter" when the cursor is literally on the word
+      (setq org-appear-autoemphasis t
+            org-appear-autolinks t
+            org-appear-autosubmarkers t))
+
+    (use-package org-roam
+      :custom
+      (org-roam-directory (file-truename "~/org-roam"))
+      :bind (("C-c n l" . org-roam-buffer-toggle)
+             ("C-c n f" . org-roam-node-find)
+             ("C-c n g" . org-roam-graph)
+             ("C-c n i" . org-roam-node-insert)
+             ("C-c n c" . org-roam-capture)
+             ;; Dailies
+             ("C-c n j" . org-roam-dailies-capture-today))
+      :config
+      ;; If you're using the standard emacs-overlay or home-manager, 
+      ;; the connector is usually built-in, but this ensures it:
+      (org-roam-db-autosync-mode))
+
+    (use-package org-roam-ui
+      :after org-roam
+      :config
+      (setq org-roam-ui-sync-ui t
+            org-roam-ui-follow t
+            org-roam-ui-update-on-save t
+            org-roam-ui-open-on-start nil))
+
+    (use-package org-drill
+      :after org)
+
+    ;; --- VTERM (The High-End Terminal) ---
+    (use-package vterm
+      :commands vterm
+      :config
+      (setq vterm-max-scrollback 10000))
 
     ;; UI QoL
     (use-package consult
@@ -119,6 +158,57 @@ in {
 
     (use-package marginalia
       :init (marginalia-mode))
+
+    (use-package embark
+      :bind
+      (("C-." . embark-act)         ;; pick some comfortable bindings
+       ("C-;" . embark-dwim)        ;; Good for 'Do What I Mean'
+       ("C-h B" . embark-bindings)) ;; alternative for help-lines
+      :init
+      ;; Optionally replace the describe-prefix-help with embark-prefix-help-command
+      (setq prefix-help-command #'embark-prefix-help-command))
+
+    (use-package embark-consult
+      :after (embark consult)
+      :demand t
+      ;; if you want to have embark-consult to automatically hooks into consult
+      :hook
+      (embark-collect-mode . consult-preview-at-point-mode))
+
+    ;; --- CORFU (The Completion Engine) ---
+    (use-package corfu
+      :custom
+      (corfu-auto t)                 ;; Enable auto-completion
+      (corfu-auto-delay 0.1)         ;; Fast popup
+      (corfu-auto-prefix 2)          ;; Start after 2 chars
+      :init
+      (global-corfu-mode))
+
+    ; (use-package gptel
+    ;   :config
+    ;   ;; 1. Load your local secrets safely
+    ;   (let ((secrets-file (expand-file-name "~/.emacs.secrets")))
+    ;     (when (file-exists-p secrets-file)
+    ;       (load secrets-file)))
+
+    ;   ;; 2. Configure Anthropic (Claude)
+    ;   (setq-default gptel-backend 
+    ;     (gptel-make-anthropic "Claude"
+    ;       :key (bound-and-true-p my-anthropic-key)
+    ;       :stream t))
+
+    ;   ;; 3. Configure Gemini (Google)
+    ;   (gptel-make-gemini "Gemini" 
+    ;     :key (bound-and-true-p my-gemini-key)
+    ;     :stream t)
+
+    ;   ;; 4. Set sensible defaults
+    ;   (setq gptel-model 'claude-3-5-sonnet-latest  ;; Use Claude as the primary 'Brain'
+    ;         gptel-default-mode 'org-mode)          ;; AI responses formatted as Org
+    ;   
+    ;   ;; This ensures your 'Vim-style' C-n completion (Cape) 
+    ;   ;; works inside the chat buffers too.
+    ;   (add-hook 'gptel-mode-hook 'corfu-mode))
 
     (use-package dired-subtree
       :after dired

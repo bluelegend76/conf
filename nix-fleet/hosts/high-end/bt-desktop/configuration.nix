@@ -23,6 +23,7 @@
     modesetting.enable = true;
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+    powerManagement.enable = false;  # Not included in original conf; = May want to take out later on
   };
 
   # 'JetBrains / Unpatched Binary Support'
@@ -57,7 +58,44 @@
     # Open ports in the firewall for Source Dedicated Server
     dedicatedServer.openFirewall = true;
   };
+
   programs.firefox.enable = true;
+  # TODO: ADD STANDARD FIREFOX-INSTALLATION {{{
+  # programs.firefox = {
+  #   enable = true;
+  #   
+  #   profiles.default = {
+  #     id = 0;
+  #     name = "default";
+  #     isDefault = true;
+
+  #     # 1. Search Engine Preference
+  #     search = {
+  #       force = true;
+  #       default = "DuckDuckGo";
+  #       order = [ "DuckDuckGo" "Google" ];
+  #     };
+
+  #     # 2. Extensions (Using standard IDs)
+  #     # Note: Nix will download these from the Mozilla Add-ons store
+  #     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+  #       ublock-origin
+  #       darkreader
+  #       vimium-c
+  #     ];
+
+  #     # 3. Custom 'about:config' tweaks for a "High-End" experience
+  #     settings = {
+  #       "browser.startup.homepage" = "https://duckduckgo.com";
+  #       "browser.newtabpage.enabled" = false; # Clean new tab
+  #       "extensions.pocket.enabled" = false;  # No Pocket clutter
+  #       "browser.topsites.contile.enabled" = false; # No sponsored shortcuts
+  #       "browser.formfill.enable" = false;    # Don't save form data (privacy)
+  #     };
+  #   };
+  # };
+  # }}}
+
   nixpkgs.config.allowUnfree = true;
 
   # Essential for the Tuf's performance
@@ -71,6 +109,12 @@
   users.users.bluelegend = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+  users.users.testuser = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ];
+    password = "test";
   };
 
   system.stateVersion = "25.11";

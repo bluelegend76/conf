@@ -39,19 +39,27 @@ in {
   # 2. Place the .vimrc and point it to our joined plugins
   home.file.".vimrc".text = ''
     set nocompatible
-    
+
     " Tell Vim to look in our joined Nix store path for plugins
     set packpath^=${myVimPlugins}
     " Manually trigger the loading of the 'start' packages
     packloadall
-    
+
     ${builtins.readFile ./vimrc-core.vim}
-    
+
     " Data Sanctuary
     " set directory=$HOME/.vim/swap//
     " set backupdir=$HOME/.vim/backup//
     " set undodir=$HOME/.vim/undo//
   '';
+
+  # # Map your custom color schemes
+  # xdg.configFile."nvim/colors".source = ./path/to/your/conf/vim/colors;
+  # # Map your spelling files
+  # xdg.configFile."nvim/spell".source = ./path/to/your/conf/vim/spell;
+  # # If you still use classic Vim alongside Neovim:
+  # home.file.".vim/colors".source = ./path/to/your/conf/vim/colors;
+  # home.file.".vim/spell".source = ./path/to/your/conf/vim/spell;
 
   programs.neovim = {
     enable = true;

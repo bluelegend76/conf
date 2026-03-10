@@ -218,7 +218,7 @@ echo "(Installing some games etc: ...)"
 sudo apt-get install fceux
 read -p "Fceux Tip: gamepad config -- a,b = u,e"
 sudo apt-get install freesweep
-read -p "(Tip Freesweep Board: 50x50, 350 mines)"
+read -p "(Tip Freesweep Board: 50x50, 350 mines (=ca 12%) >>25%)"
 # xabacus: =chinese suanpan (=5 lower + 2 higher beads)
 
 read -p "Syncing down Music (=work-relax_list) to internal drive: "
