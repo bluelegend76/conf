@@ -16,6 +16,10 @@
   # users.users.bluelegend.extraGroups = [ "libvirtd" ];
   # }}}
 
+  #@ environment.systemPackages = with pkgs; [
+  #@   appimage-run
+  #@ ];
+
   programs.nushell = {
     enable = true;
     # Optional: If you want to keep your environment variables in sync
@@ -38,6 +42,8 @@
     slurp
     # TODO: ADD KDE-CONNECT + ANDROID-TOOLS
 
+    appimage-run
+
     xonsh
     # (xonsh.withPackages (ps: with ps; [ 
     #   # Add any Python libraries you want available in your shell here
@@ -45,6 +51,11 @@
     # ]))
 
     carapace  # Adds completion for Nushell
+
+
+    (writeShellScriptBin "mscore4" ''
+      ${appimage-run}/bin/appimage-run /home/bluelegend/Downloads/MuseScore-Studio-4.6.5.253511702-x86_64.AppImage
+    '')
 
     # Kde Connect (or maybe use on frugal too)
     # Heavy Apps
