@@ -26,6 +26,12 @@
     powerManagement.enable = false;  # Not included in original conf; = May want to take out later on
   };
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";   # Best compression ratio
+    memoryPercent = 50;   # Can use up to 50% of your RAM as a compressed "overflow"
+  };
+
   # 'JetBrains / Unpatched Binary Support'
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -105,6 +111,16 @@
   environment.systemPackages = with pkgs; [
     vim-full gitFull wget curl htop tree stow tailscale syncthing
   ];
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+    # comment out for first version
+    package = pkgs.appimage-run.override {
+      # helpful for audio-apps
+      extraPkgs = pkgs: [pkgs.libjack2 pkgs.alsa-lib ];
+    };
+  };
 
   users.users.bluelegend = {
     isNormalUser = true;
