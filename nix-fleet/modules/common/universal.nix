@@ -35,6 +35,7 @@
     tree htop ripgrep fd  # fd: modern faster 'find'
     translate-shell
     gimp
+    inkscape
     tuxguitar
     freesweep
   ];
