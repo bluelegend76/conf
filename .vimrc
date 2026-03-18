@@ -460,6 +460,7 @@ nnoremap <leader>em yiW:!emacs <C-R>" &<CR><CR>
 " nnoremap <leader>tm yiW:!timidity -ia <C-R>"<CR><CR>
 "" open with audacious***
 nnoremap <leader>au viWy:!audacious <C-R>" &<CR><CR>
+nnoremap <leader>ms viWy:!mscore4 <C-R>" &<CR><CR>
 "" open with file-browser **
 nnoremap <leader>th yiW:!thunar <C-R>" &<CR><CR>
 nnoremap <leader>tH $F/vBy:!thunar <C-R>" &<CR><CR>
