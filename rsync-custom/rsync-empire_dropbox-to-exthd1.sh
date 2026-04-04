@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ~/bin/scripts/rsync-empire_dropbox-to-exthd1.bash
 # TODO: Change name to Clouddirs(??)
 

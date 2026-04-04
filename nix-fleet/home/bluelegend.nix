@@ -41,6 +41,7 @@
 
   home.sessionPath = [
     "$HOME/conf/at"
+    "$HOME/conf/rsync-custom"
     "$HOME/conf/at/init"
   ];
 

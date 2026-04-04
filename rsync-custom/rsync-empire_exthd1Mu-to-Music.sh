@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ~/bin/scripts/rsync-empire_exthd1Mu-to-Music.bash
 
 read -p "You are about to copy ext-hd1 Music --> home/Music. Proceed?: "

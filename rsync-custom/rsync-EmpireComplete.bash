@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ~/conf/rsync/rsync-empire_dropbox-to-exthds.bash
 # Wrapper-script to run Complete EmpireFleet-Sync
 
@@ -17,10 +17,10 @@ sudo rsync -av --progress --delete /home/bluelegend/conf/ /run/media/bluelegend/
 # FIXME: May want to check and update (back to USB-disk)
 #        only the repos that have been downloaded
 # sudo rsync -av --progress --delete /home/bluelegend/conf/ /run/media/bluelegend/3a7592f8-41d6-4c29-b6d0-53533881b86a/repos
-# TODO REACTIVATE AFTER NIX-FLEET SETUP TODO rsync-empire_dropbox-to-exthd1.bash
+rsync-empire_dropbox-to-exthd1.sh
 # TODO=REACTIVATE rsync-empire_gdrive-to-exthd1.bash
-rsync-empire_exthd1Mu-to-Music.bash
-rsync-empire_exthd1-to-exthd2seccop.bash
+rsync-empire_exthd1Mu-to-Music.sh
+rsync-empire_exthd1-to-exthd2seccop.sh
 # --
 audacious ~/Dropbox/rsc/media/au/sfx/ding.sfx.mp3 &
 
