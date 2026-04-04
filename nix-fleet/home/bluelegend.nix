@@ -43,6 +43,7 @@
     "$HOME/conf/at"
     "$HOME/conf/rsync-custom"
     "$HOME/conf/at/init"
+    "$HOME/conf/at/utils/"
   ];
 
   home.sessionVariables = {
