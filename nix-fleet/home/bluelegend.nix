@@ -58,7 +58,7 @@
     enable = true;
     shellAliases = {
       fleet-up = "sudo nixos-rebuild switch --flake ~/conf/nix-fleet#high-end";
-      e = "emacsclient -c -a 'emacs'"; 
+      e = "emacsclient -c -a 'emacs'";
     };
     initExtra = ''
       if [ -f /home/bluelegend/.config/sops/git_email ]; then
