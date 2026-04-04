@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # at.wordsDict.l.sh
 
-source "$HOME/repos/at/utils/check-env.sh"
+source "$HOME/conf/at/utils/check-env.sh"
 
 # TODO TODO: CREATE 4-5 TABS WITH VERT-SPLITS FOR 'DUALS'(sv-thes, en-sv etc)
 # TODO tabs on desktop

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # at.shorth.l.sh
 
-source "$HOME/repos/at/utils/check-env.sh"
+source "$HOME/conf/at/utils/check-env.sh"
 
 ${EDITOR} \
     ${SYNCTHING_DIR}/rsc/data/lists/at/shorth.l.txt \

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # at.langDb.sh
 
-source "$HOME/repos/at/utils/check-env.sh"
+source "$HOME/conf/at/utils/check-env.sh"
 
 # Todo 2023: read in viminfo(?) file with langdb-tags[!!]
 ${EDITOR} -p \

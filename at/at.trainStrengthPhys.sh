@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "$HOME/repos/at/utils/check-env.sh"
+source "$HOME/conf/at/utils/check-env.sh"
 
 ${EDITOR} -p \
     ${SYNCTHING_DIR}/rsc/data/lists/allm-a/train-nutr/strength-weightsprogram.txt \
