@@ -315,7 +315,6 @@ cnoremap <leader>J <Esc>
 
 " Searching / Substitute, Global  __
 " Toggle ignorecase ***
-" Toggle ignorecase ***
 nnoremap <leader>ic :set ic!<CR>:set ic?<CR>
 noremap <leader>ii /
 noremap <leader>uu ?
@@ -329,9 +328,16 @@ noremap <leader>uc ?\c
 nnoremap * *N:%s///gn<CR>
 nnoremap # #N:%s///gn<CR>
 " --
-" HACK: Change to nzzb / Nzzb
 nnoremap n nzz
 nnoremap N Nzz
+" DONE No-plugin multibuffer Search ----
+" +RESEARCH: SearchInRuntime, vim-indexed-search; vim-sneak, incsearch.vim
+nnoremap <leader>b2 :argadd b*<CR>
+" or set to b2a
+nnoremap gs :vimgrep // ##<CR>
+" nnoremap gs :vimgrep // `ls -b`<CR>
+nnoremap <silent> <leader>e :cn<CR>
+nnoremap <silent> <leader>a :cp<CR>
 " --
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
