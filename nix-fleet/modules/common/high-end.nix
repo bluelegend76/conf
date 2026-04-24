@@ -37,10 +37,17 @@
   # }}}
 
   home.packages = with pkgs; [
-    # Wayland Screenshots
+    # Wayland Screenshotting
+    # TODO may want to use 'spectacle -bnf' instead
     grim 
     slurp
     # TODO: ADD KDE-CONNECT + ANDROID-TOOLS
+
+    imagemagick
+    (tesseract.override {
+      enableLanguages = [ "eng" "swe" ];
+    })
+    parallel
 
     appimage-run
 
