@@ -1,5 +1,5 @@
 {
-  description = "Empire Fleet - Black Tower Edition";
+  description = "Empire Fleet - Multi-Device Infrastructure";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
