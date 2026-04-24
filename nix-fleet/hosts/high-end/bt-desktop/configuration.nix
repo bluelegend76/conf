@@ -110,6 +110,8 @@
   # Only keep essential SYSTEM tools here
   environment.systemPackages = with pkgs; [
     vim-full gitFull wget curl htop tree stow tailscale syncthing
+    sqlite sqlitebrowser
+    muse-sounds-manager
   ];
 
   programs.appimage = {
