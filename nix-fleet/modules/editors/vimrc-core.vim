@@ -253,6 +253,9 @@ nnoremap <C-Up> [`
 nnoremap <C-Down> ]`
 " nnoremap <Up> [`
 " nnoremap <Down> ]`
+" NEXT QUICKFIXLIST ENTRY
+nnoremap <S-A-Right> :cn<CR>zO
+nnoremap <S-A-Left> :cp<CR>zO
 " --
 nnoremap <leader>gg gg
 
@@ -330,18 +333,21 @@ nnoremap # #N:%s///gn<CR>
 " --
 nnoremap n nzz
 nnoremap N Nzz
-" DONE No-plugin multibuffer Search ----
+
+" MULTIBUFFER SEARCH (NO-PLUGIN) ----
 " +RESEARCH: SearchInRuntime, vim-indexed-search; vim-sneak, incsearch.vim
 nnoremap <leader>b2 :argadd b*<CR>
 " or set to b2a
 nnoremap gs :vimgrep // ##<CR>
+nnoremap <S-A-Up> :copen<CR>
 " nnoremap gs :vimgrep // `ls -b`<CR>
-nnoremap <silent> <leader>e :cn<CR>
-nnoremap <silent> <leader>a :cp<CR>
+nnoremap <silent> <leader>ö :cn<CR>
+nnoremap <silent> <leader>ä :cp<CR>
 " --
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 " ----
+
 " Start Substitution-Line *** {{{
 nnoremap <leader>sa :%s///gc<Left><Left><Left>
 nnoremap <leader>sj :.,$s///gc<Left><Left><Left>
@@ -510,30 +516,48 @@ vnoremap <silent> <leader>wk y:!firefox -new-tab https://en.wiktionary.org/wiki/
 nnoremap <silent> <leader>fo yiw:!firefox -new-tab https://forvo.com/search/<C-R>"/<CR><CR>
 nnoremap <silent> <leader>et yiw:!firefox -new-tab http://www.etymonline.com/index.php?term=<C-R>"&allowed_in_frame=0<CR><CR>
 
+
 " TRANSLATE-SHELL MAPS
-let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"
-noremap <silent> <leader>tr :Trans<CR>
-inoremap <silent> <leader>tr <ESC>:Trans<CR>
-noremap <silent> <leader>tt :Trans -brief<CR>
-inoremap <silent> <leader>tt <ESC>:Trans -brief<CR>
+" Setting default translation-languages
+let g:target_langs = "en+sv+da+is+fr+de+ar+fa+es+ru+uk"
+"" noremap <silent> <leader>tr :Trans<CR>
+" -b = brief, -t = target languages
+nnoremap <silent> <leader>tr yiw:r !trans -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+"" inoremap <silent> <leader>tr <ESC>:Trans<CR>
+inoremap <silent> <leader>tr <ESC>yiw:r !trans -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+"" noremap <silent> <leader>tt :Trans -brief<CR>
+nnoremap <silent> <leader>tt yiw:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+"" inoremap <silent> <leader>tt <ESC>:Trans -brief<CR>
+inoremap <silent> <leader>tt <ESC>yiw:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
 " noremap <silent> <leader>tq :Trans -brief :en+sv<CR>
 " inoremap <silent> <leader>tq <ESC>:Trans -brief :en+sv<CR>
 " nnoremap <silent> <leader>te vg_:Trans -brief<CR>
-nnoremap <silent> <leader>ts vis:Trans -brief<CR>
+"" nnoremap <silent> <leader>ts vis:Trans -brief<CR>
 "   \ yy<CTRL-W><CTRL-W>p
 "   \ <CTRL-W>o
 " noremap <leader>tl :Trans -brief :
 " noremap <leader>tp :Trans :
 
+" Visual mode: Translate selection and replace it (or paste below)
+vnoremap <leader>tt y:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+" Translate the current line and read it in below
+" -b = brief, -t = target languages
+nnoremap <silent> <leader>tl :r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>."<CR>
+" Translate sentence
+vnoremap <leader>ts yis:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+
+" Toggle specific language mode (English + Swedish)
+nnoremap <leader>la :let g:target_langs = "en+sv"<CR>
+""" nnoremap <leader>la :let g:target_langs = ":en+sv
+" Reset to full set
+nnoremap <leader>ld :let g:target_langs = "en+sv+da+is+fr+de+ar+fa+es+ru+uk"<CR>
+" Reset to default language-set
+"" nnoremap <leader>ld :let g:target_langs = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
+
 " TODO: OPEN V-MARKED TEXT IN NEW GVIM-WINDOW
 "       (WITH RL OR NORL APPLIED + GREATLY ENLARGED)  TODO TODO
 " [= Primary Use: Displaying Arabic, Farsi etc ]
 " [- Secondary Use: Display Cuneiform etc (=Needs Great Enlargement) ]
-
-" Set translate-shell transation-language
-nnoremap <leader>la :let g:trans_default_direction = ":en+sv
-" Reset to default language-set
-nnoremap <leader>ld :let g:trans_default_direction = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
 
 " OPEN NEW GVIM-WIN ON TINY CHARACTERS
 " (arabic/farsi      with rl set
