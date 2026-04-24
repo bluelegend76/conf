@@ -10,7 +10,8 @@ ${EDITOR} -p \
     ${SYNCTHING_DIR}/scratch/langdoks-aux.samples.txt \
       ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/langdb.orig.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/dandict2mini.txt \
-    -c 'normal 5gt' \
+
+#   -c 'normal 5gt' \
 
     # -c 'rviminfo ~/Dropbox/config/vim/langdb.empire.viminfo' \
     ## no 3: ~/Dropbox/rsc/data/lists/ref/lang/langdb-aux_freqlists.txt \

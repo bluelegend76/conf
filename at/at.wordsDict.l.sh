@@ -7,7 +7,6 @@ source "$HOME/conf/at/utils/check-env.sh"
 # TODO tabs on desktop
 # TODO buffers in Termux
 ${EDITOR} -p \
-    ${SYNCTHING_DIR}/rsc/data/lists/at/jokeswit.soc.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/sv.words.saol11-1991.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/cmp.en.dict.en2sv-prsm.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/theinstantintell-words.txt \
@@ -21,6 +20,7 @@ ${EDITOR} -p \
     ${SYNCTHING_DIR}/rsc/Doks/Lang/Sv/gulacitatbok-tidens.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/slangordb.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/wordsDict.l.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/at/jokeswit.soc.txt \
     -c 'normal gt' \
     -c 'botright split ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/sv.thes.svsyn.txt' \
     -c 'normal gt' \
