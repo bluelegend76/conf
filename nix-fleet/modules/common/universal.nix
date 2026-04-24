@@ -33,11 +33,15 @@
     vlc mpv audacious
     yt-dlp
     tree htop ripgrep fd  # fd: modern faster 'find'
+    soundtouch poppler-utils  # e.g. pdftotext
     translate-shell
+    ffmpeg
+    # soundstretch
     gimp
     inkscape
     tuxguitar
     freesweep
+    # fceux (+More/Extra emulators)
   ];
 
   programs.direnv = {
