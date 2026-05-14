@@ -20,6 +20,7 @@
 gvim \
     ~/Dropbox/rsc/data/lists/ref/lang/en.words.inet1.txt \
     ~/SyncThing/rsc/data/lists/at/shorth.l.txt \
+    ~/Dropbox/rsc/Doks/Lang/Shorth/sv/anttekn-stenografi.txt \
     ~/Dropbox/rsc/data/lists/ref/lang/sv.freq.main.txt \
     ~/Dropbox/rsc/data/lists/ref/lang/en.freq.main.txt \
     ~/SyncThing/rsc/data/lists/ref/lang/sv.words.saol11-1991.txt \
@@ -52,6 +53,7 @@ gvim \
     ~/SyncThing/rsc/data/lists/at/jokeswit.soc.txt \
     ~/Empire/Doks/allm-a/soc/jokes/mallgr.txt \
     ~/SyncThing/rsc/data/lists/ref/lang/beving.txt \
+    ~/Empire/Doks/Litt/oped/självskrivet-atolsson.txt \
     ~/SyncThing/rsc/data/lists/ref/lang/CIT_orred.txt \
     ~/SyncThing/rsc/Doks/Lang/Sv/citat_littlered.txt \
     ~/SyncThing/rsc/Doks/Lang/Sv/gulacitatbok-tidens.txt \
