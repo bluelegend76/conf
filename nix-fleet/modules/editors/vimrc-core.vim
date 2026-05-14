@@ -290,12 +290,12 @@ nnoremap U <C-R>
 noremap tt zt
 noremap TT zb
 " end/start of line
-noremap L $
-noremap H 0
+noremap L g_
+noremap H ^
+noremap gL $
+noremap gH 0
 onoremap L $
 onoremap H 0
-noremap gL g_
-noremap gH ^
 onoremap gL g_
 onoremap gH ^
 
@@ -448,7 +448,8 @@ nnoremap <leader>rm :!rm <C-R><C-A>
 " nnoremap <leader>tva :%d<CR>"+p:w! ~/Dropbox/aaa/0000_valoudreader-temp.txt
 " 
 " " GENERAL UTILITIES: FIND
-nnoremap <leader>fi :read !find -type f -name '<C-R><C-A>' 2>/dev/null<CR><CR>
+nnoremap <leader>fi :read !find -type f -name '<C-R><C-A>' 2>/dev/null;
+    \ mpv ~/Dropbox/rsc/media/au/sfx/ding.sfx.mp3 > /dev/null 2>&1 &<CR><CR>
 " " pull latest mv-filename_tail ***
 " nnoremap <leader>fmv ":pF~dF!
 " " GENERAL UTILITIES: COPY/COPY HERE
@@ -516,43 +517,36 @@ vnoremap <silent> <leader>wk y:!firefox -new-tab https://en.wiktionary.org/wiki/
 nnoremap <silent> <leader>fo yiw:!firefox -new-tab https://forvo.com/search/<C-R>"/<CR><CR>
 nnoremap <silent> <leader>et yiw:!firefox -new-tab http://www.etymonline.com/index.php?term=<C-R>"&allowed_in_frame=0<CR><CR>
 
-
 " TRANSLATE-SHELL MAPS
+" -b = brief, -t = target languages
+"
 " Setting default translation-languages
-let g:target_langs = "en+sv+da+is+fr+de+ar+fa+es+ru+uk"
-"" noremap <silent> <leader>tr :Trans<CR>
-" -b = brief, -t = target languages
-nnoremap <silent> <leader>tr yiw:r !trans -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
-"" inoremap <silent> <leader>tr <ESC>:Trans<CR>
-inoremap <silent> <leader>tr <ESC>yiw:r !trans -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
-"" noremap <silent> <leader>tt :Trans -brief<CR>
-nnoremap <silent> <leader>tt yiw:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
-"" inoremap <silent> <leader>tt <ESC>:Trans -brief<CR>
-inoremap <silent> <leader>tt <ESC>yiw:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
-" noremap <silent> <leader>tq :Trans -brief :en+sv<CR>
-" inoremap <silent> <leader>tq <ESC>:Trans -brief :en+sv<CR>
-" nnoremap <silent> <leader>te vg_:Trans -brief<CR>
-"" nnoremap <silent> <leader>ts vis:Trans -brief<CR>
-"   \ yy<CTRL-W><CTRL-W>p
-"   \ <CTRL-W>o
-" noremap <leader>tl :Trans -brief :
-" noremap <leader>tp :Trans :
-
-" Visual mode: Translate selection and replace it (or paste below)
-vnoremap <leader>tt y:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
-" Translate the current line and read it in below
-" -b = brief, -t = target languages
-nnoremap <silent> <leader>tl :r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>."<CR>
-" Translate sentence
-vnoremap <leader>ts yis:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
-
+let g:target_langs = "en+sv+da+is+fr+de+es+ru+uk+ar+fa"
 " Toggle specific language mode (English + Swedish)
 nnoremap <leader>la :let g:target_langs = "en+sv"<CR>
-""" nnoremap <leader>la :let g:target_langs = ":en+sv
 " Reset to full set
-nnoremap <leader>ld :let g:target_langs = "en+sv+da+is+fr+de+ar+fa+es+ru+uk"<CR>
-" Reset to default language-set
-"" nnoremap <leader>ld :let g:target_langs = ":en+is+da+sv+fr+de+es+ru+uk"<CR>
+nnoremap <leader>ld :let g:target_langs = "en+sv+da+is+fr+de+es+ru+uk+ar+fa"<CR>
+
+" Translate sentence
+nnoremap <leader>ts yis:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+
+" translate full
+nnoremap <silent> <leader>tr yiw:r !trans -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+inoremap <silent> <leader>tr <ESC>yiw:r !trans -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+vnoremap <silent> <leader>tr y:r !trans -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+
+" translate brief
+nnoremap <silent> <leader>tb yiw:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+inoremap <silent> <leader>tb <ESC>yiw:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+vnoremap <silent> <leader>tb y:r !trans -b -t <C-r>=g:target_langs<CR> "<C-r>0"<CR>
+
+" translate to 'quicklangs' (en+sv)
+nnoremap <silent> <leader>tt yiw:r !trans -b -t en+sv "<C-r>0"<CR>
+"" inoremap <silent> <leader>tt <ESC>:Trans -brief<CR>
+inoremap <silent> <leader>tt <ESC>yiw:r !trans -b -t en+sv "<C-r>0"<CR>
+vnoremap <silent> <leader>tt y:r !trans -b -t en+sv "<C-r>0"<CR>
+
+nnoremap <leader>tl y:r !trans -b -t 
 
 " TODO: OPEN V-MARKED TEXT IN NEW GVIM-WINDOW
 "       (WITH RL OR NORL APPLIED + GREATLY ENLARGED)  TODO TODO
