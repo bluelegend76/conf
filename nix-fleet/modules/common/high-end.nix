@@ -26,7 +26,7 @@
     # across shells, we can use a tool called 'nix-your-shell'
   };
 
-  # TODO: WARK-TERMINAL (AND/OR GHOSTTY) {{{
+  # TODO: WARP-TERMINAL (AND/OR GHOSTTY) {{{
   # environment.systemPackages = [
   #   pkgs.warp-terminal
   # ];
@@ -42,6 +42,7 @@
     grim 
     slurp
     # TODO: ADD KDE-CONNECT + ANDROID-TOOLS
+    audacity
 
     imagemagick
     (tesseract.override {
