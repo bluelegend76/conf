@@ -144,8 +144,20 @@
   # Only keep essential SYSTEM tools here
   environment.systemPackages = with pkgs; [
     vim-full gitFull wget curl htop tree stow tailscale syncthing
+    mc
     sqlite sqlitebrowser
-    muse-sounds-manager
+    muse-sounds-manager  # TODO: Move to High-End
+
+    (pkgs.weechat.override {
+      configure = { availablePlugins, ... }: {
+        plugins = with availablePlugins; [
+          guile  # This is the magic word
+          python
+          lua
+          # ... other plugins
+        ];
+      };
+    })
   ];
 
   programs.appimage = {
