@@ -8,13 +8,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
+    musnix.url = "github:musnix/musnix";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  # outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, musnix, ... }@inputs: {
     nixosConfigurations.high-end = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+        musnix.nixosModules.musnix
+
         # Point to your existing config
         ./hosts/high-end/bt-desktop/configuration.nix
 

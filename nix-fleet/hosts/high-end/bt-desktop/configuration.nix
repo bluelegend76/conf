@@ -47,6 +47,25 @@
     libsecret
   ];
 
+  musnix = {
+    enable = true;
+    # Real-time kernel is optional. If you want the lowest latency 
+    # for Ardour, uncomment the next line. Warning: This will trigger a kernel rebuild!
+    # kernel.realtime = true; 
+    
+    # Optimizes system for audio (RT priorities, etc.)
+    rtcqs.enable = true; 
+
+    ## Legacy/Implicated: soundcardPrio = 95;
+    # This enables the 'rtirq' service, which prioritizes the IRQs 
+    # of your soundcards specifically.
+    rtirq.enable = true;
+  };
+
+  # Ensure your user is in the audio group (Required by musnix)
+  # users.users.bluelegend.extraGroups = [ "audio" ];
+  # +TODO: Possibly add video-group as well
+
   # System-wide Services & Programs
   services.pipewire = { 
     enable = true;
@@ -55,6 +74,18 @@
     pulse.enable = true;
     jack.enable = true; 
   };
+
+  # EXTRA FIXES for the 'WARNING' list:
+  services.udev.extraRules = ''
+    # Grant audio group access to CPU DMA latency for Ardour/Reaper
+    KERNEL=="cpu_dma_latency", GROUP="audio", MODE="0660"
+  '';
+  
+  # FIX: The "Preempt RT" & Threaded IRQs warning
+  # You don't necessarily need a full Real-time kernel yet, 
+  # but "threadirqs" helps immensely with internal soundcard stability.
+  boot.kernelParams = [ "threadirqs" ];
+
   services.guix.enable = true;
   services.openssh.enable = true;
   programs.steam = {
@@ -64,6 +95,9 @@
     # Open ports in the firewall for Source Dedicated Server
     dedicatedServer.openFirewall = true;
   };
+
+  # TODO: Perhaps move up to sound/music/rt-block(!)
+  security.rtkit.enable = true; # Necessary for Pipewire/Musnix handshake
 
   programs.firefox.enable = true;
   # TODO: ADD STANDARD FIREFOX-INSTALLATION {{{
@@ -126,7 +160,7 @@
 
   users.users.bluelegend = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
   };
 
   users.users.testuser = {
