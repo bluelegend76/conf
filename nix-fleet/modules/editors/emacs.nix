@@ -264,6 +264,13 @@ in {
       "ff" 'find-file
       "bb" 'switch-to-buffer)
 
+    ;; --- The Guix Specialist Bridge ---
+    (let ((guix-bridge (expand-file-name "~/.emacs.d/guix-clusters.el")))
+      (when (file-exists-p guix-bridge)
+        (condition-case err
+            (load guix-bridge)
+          (error (message "Error loading Guix clusters: %s" (error-message-string err))))))
+    
     (message "--- THE TOWER IS FINALLY ONLINE ---")
   '';
 

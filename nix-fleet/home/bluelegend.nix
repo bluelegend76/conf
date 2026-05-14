@@ -13,6 +13,7 @@
   imports = [
     ../modules/common/universal.nix
     ../modules/common/high-end.nix
+    ../modules/services/guix-bridge.nix
     ../modules/editors/vim.nix
     ../modules/editors/emacs.nix
     ../modules/desktop/wayland-wm.nix
@@ -57,7 +58,7 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      fleet-up = "sudo nixos-rebuild switch --flake ~/conf/nix-fleet#high-end";
+      fleet-up = "sudo nixos-rebuild switch --flake ~/conf/nix-fleet#high-end && ~/conf/nix-fleet/scripts/guix-sync.sh";
       e = "emacsclient -c -a 'emacs'";
       # ding = "mpv /home/bluelegend/Dropbox/rsc/media/au/sfx/ding.sfx.mp3 &";
       ding = "mpv /home/bluelegend/Dropbox/rsc/media/au/sfx/ding.sfx.mp3 > /dev/null 2>&1 &";
