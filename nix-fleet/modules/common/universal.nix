@@ -31,15 +31,20 @@
     evince ristretto img2pdf
     # pdftk
     vlc mpv audacious
-    yt-dlp
+    yt-dlp yewtube
     tree htop ripgrep fd  # fd: modern faster 'find'
     soundtouch poppler-utils  # e.g. pdftotext
     translate-shell
     ffmpeg
     # soundstretch
+    img2pdf  # convert images to pdf
+    qpdf     # or pdfmixup
+    # librsvg =convert svg to pdf (with rsvg-convert)
+    # ghostscript =convert ps to pdf (with ps2pdf)
     gimp
     inkscape
     tuxguitar
+    lilypond
     freesweep
     # fceux (+More/Extra emulators)
   ];
