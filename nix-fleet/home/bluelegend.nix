@@ -59,6 +59,9 @@
     shellAliases = {
       fleet-up = "sudo nixos-rebuild switch --flake ~/conf/nix-fleet#high-end";
       e = "emacsclient -c -a 'emacs'";
+      # ding = "mpv /home/bluelegend/Dropbox/rsc/media/au/sfx/ding.sfx.mp3 &";
+      ding = "mpv /home/bluelegend/Dropbox/rsc/media/au/sfx/ding.sfx.mp3 > /dev/null 2>&1 &";
+      au = "mpv --no-video --term-osd-bar";
     };
     initExtra = ''
       if [ -f /home/bluelegend/.config/sops/git_email ]; then
