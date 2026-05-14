@@ -67,9 +67,23 @@
     # Kde Connect (or maybe use on frugal too)
     # Heavy Apps
     # okular
-    nyxt
+    ## environment.systemPackages = [
+    (pkgs.symlinkJoin {
+      name = "nyxt-wrapped";
+      paths = [ pkgs.nyxt ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/nyxt \
+          --set WEBKIT_DISABLE_COMPOSITING_MODE "1" \
+          --set GDK_BACKEND "x11"
+      '';
+    })
+    ## ];
     logseq
-    vesktop
+    anki
+    (discord.override {
+      withVencord = true;
+    })
     signal-desktop
     libreoffice-fresh
     jetbrains.rider
