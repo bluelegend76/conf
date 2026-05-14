@@ -12,7 +12,13 @@ in {
     extraPackages = epkgs: with epkgs; [
       use-package
       envrc
-      evil evil-collection which-key general
+      evil evil-collection which-key
+      general  # newer replacement for evil-leader
+      evil-org  # adds evil-bindings for Org-Mode
+      # evil-surround (e.g. cs")
+      # evil-commentary (gc, gcc)
+      # evil-numbers (i.e. c-a, c-x)
+        # evil-goggles
       doom-themes doom-modeline magit
       slime
       dired-subtree magit projectile
