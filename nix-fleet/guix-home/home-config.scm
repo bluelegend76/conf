@@ -56,6 +56,10 @@ fi
 
 # The Direnv Hook
 eval \"$(direnv hook bash)\"
+
+# --- THE STARSHIP PROMPT ---
+# This activates your Starship config managed by Nix
+eval \"$(starship init bash)\"
 ")))))
 
    ;; --- 2. EMACS CLUSTER BRIDGE ---

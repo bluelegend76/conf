@@ -52,13 +52,13 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true; # Makes it lightning-fast for Nix-flakes
-    enableBashIntegration = true;
+    enableBashIntegration = false;
   };
 
   # The Git-aware prompt you were likely using
   programs.starship = {
     enable = true;
-    enableBashIntegration = true;
+    enableBashIntegration = false;
   };
 
   # TODO: MIGHT BE BETTER TO MOVE TO home/bluelegend.nix LATER ON
