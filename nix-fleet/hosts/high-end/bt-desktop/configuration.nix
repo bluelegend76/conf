@@ -1,5 +1,8 @@
 { config, pkgs, ... }: {
-  imports = [ ./bt-hardware.nix ];
+  imports = [
+    ./bt-hardware.nix
+    ../../../modules/services/guix-bridge.nix
+  ];
 
   # System essentials (Boot, Net, Time)
   boot.loader.grub = { enable = true; device = "/dev/sda"; useOSProber = true; };

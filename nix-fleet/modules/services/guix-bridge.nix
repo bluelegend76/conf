@@ -11,6 +11,7 @@ in
     description = "Sync Guix Home with nix-fleet repository";
     after = [ "network.target" "guix-daemon.service" ];
     requires = [ "guix-daemon.service" ];
+    # TODO: May want to comment out next line
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
