@@ -3,7 +3,7 @@
 
 source "$HOME/conf/at/utils/check-env.sh"
 
-gvim -p \
+${EDITOR} \
     ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/DECK.dailies.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/DECK.MASTER.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/learnmemo-qna.txt \
