@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # at.META.Graf.bash
 
-cd
+# cd
 
 at.Grafinspir.g.bash
 at.Gimp.g.bash
