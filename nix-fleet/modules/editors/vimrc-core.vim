@@ -378,6 +378,7 @@ nnoremap <silent> <leader>fx viWy:!firefox -new-tab <C-R>"<CR><CR>
 nnoremap <silent> <leader>tu yiW:!tuxguitar <C-R>" &<CR><CR>
 " Open Video
 nnoremap <leader>mp yiW:!mpv <C-R>" &<CR><CR>
+nnoremap <leader>ma yiW:!mpv --no-video --term-osd-bar <C-R>"<CR>
 " nnoremap <leader>ac viWy:!audacity <C-R>" &<CR><CR>
 "" Image-program
 nnoremap <leader>ri yiW:!ristretto <C-R>" &<CR><CR>
