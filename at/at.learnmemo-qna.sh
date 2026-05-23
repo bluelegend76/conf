@@ -3,12 +3,14 @@
 
 source "$HOME/conf/at/utils/check-env.sh"
 
-${EDITOR} \
+${EDITOR} -p \
+    ${SYNCTHING_DIR}/rsc/data/lists/at/learnmemo-qna.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/DECK.dailies.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/DECK.MASTER.txt \
-    ${SYNCTHING_DIR}/rsc/data/lists/at/learnmemo-qna.txt \
     ${SYNCTHING_DIR}/rsc/Doks/learn/ankidef22.vdeck.txt \
+    ${SYNCTHING_DIR}/rsc/Doks/learn/ankiman2021plus.Tags1.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/dokid-shortcodes.txt \
+    ${SYNCTHING_DIR}/rsc/phonedoks-lgc/inits/init.vt-termux.vim \
 
     # -c 'normal 1gt' \
     # -c 'lcd %:h' \

@@ -35,6 +35,7 @@ gvim \
     ~/SyncThing/rsc/data/lists/ref/lang/dandict2mini.txt \
     ~/SyncThing/rsc/data/lists/ref/lang/freq/freq_dan.txt \
     ~/Dropbox/rsc/data/lists/ref/lang/svisldict.txt \
+    ~/SyncThing/rsc/Doks/Lang/isl/isl-tys.txt \
     ~/Dropbox/rsc/data/lists/ref/lang/freq/freq_no-bokm.txt \
     ~/SyncThing/rsc/data/lists/ref/lang/freq/freq_isl.txt \
     ~/SyncThing/rsc/Doks/Udt/rsc/doks/lang/freq-pack1/freq_lat.txt \

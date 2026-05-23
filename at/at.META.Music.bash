@@ -4,8 +4,8 @@
 at.muAdmin.sh
 gvim ~/dropbox-legacy/egnalåtar-dfs-blackandblueletsgo.txt
   # legacy.runscript.bash dfs_THEDOCTOR.bash
-at.melDb.transcr.bash
-at.arrCompose.bash
+at.melDb.transcr.sh
+at.arrCompose.sh
 # at.muTeach.sh
 # --
 at.lilypond.mu.sh
