@@ -272,6 +272,28 @@ in {
           (condition-case err
               (load guix-bridge)
             (error (message "Error loading Guix clusters: %s" (error-message-string err))))))
+
+      ;; =====================================================================
+      ;; DYNAMIC ENVIRONMENT EXTENSION GATEWAY
+      ;; =====================================================================
+      ;; Instructs Emacs to read the parent terminal shell's environment.
+      ;; If a project-local EMACSLOADPATH exists, parse and prepend it so 
+      ;; local Guix-installed language modes are seamlessly inherited.
+
+      (when (getenv "EMACSLOADPATH")
+        (setq load-path
+              (append (split-string (getenv "EMACSLOADPATH") path-separator)
+                      load-path)))
+
+        ;; SPARQL-Association
+          (with-eval-after-load 'sparql-mode
+            (add-to-list 'auto-mode-alist '("\\.rq\\'" . sparql-mode))
+            (add-to-list 'auto-mode-alist '("\\.sparql\\'" . sparql-mode))))
+
+        ;; Cypher Association
+          (with-eval-after-load 'cypher-mode
+            (add-to-list 'auto-mode-alist '("\\.cyp\\'" . cypher-mode))
+            (add-to-list 'auto-mode-alist '("\\.cypher\\'" . cypher-mode))))
       
       (message "--- THE TOWER IS FINALLY ONLINE ---")
     '';
