@@ -146,9 +146,12 @@
 
   # Only keep essential SYSTEM tools here
   environment.systemPackages = with pkgs; [
-    vim-full gitFull wget curl htop tree stow tailscale syncthing
+    vim-full gitFull wget curl htop tree tailscale syncthing
     mc
+    gh # the GitHub CLI
     sqlite sqlitebrowser
+    # lua51Packages.yuescript
+
     muse-sounds-manager  # TODO: Move to High-End
 
     (pkgs.weechat.override {
