@@ -20,6 +20,20 @@
   #@   appimage-run
   #@ ];
 
+  # Configuration: fcitx5-configtool
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-gtk             # Support for GTK apps
+      fcitx5-mozc            # Japanese (if you need it)
+      fcitx5-rime            # Great for Chinese or custom tables
+      fcitx5-lua             # Useful for scripting your own inputs
+      # TODO/IDEA: USE FOR MATHEMATICAL (ETC) INPUT
+      fcitx5-m17n          # Essential for many "smaller" or historical languages
+    ];
+  };
+
   programs.nushell = {
     enable = true;
     # Optional: If you want to keep your environment variables in sync
