@@ -26,6 +26,7 @@
 
   # TODO: MIGHT BE BETTER TO MOVE TO home/bluelegend.nix LATER ON
   home.packages = with pkgs; [
+    ed
     sops age
     thunar pavucontrol keepassxc
     evince ristretto img2pdf
