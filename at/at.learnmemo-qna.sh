@@ -5,6 +5,7 @@ source "$HOME/conf/at/utils/check-env.sh"
 
 ${EDITOR} -p \
     ${SYNCTHING_DIR}/rsc/data/lists/at/learnmemo-qna.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/learnqna/learningareas-tagstree_wanki.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/DECK.dailies.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/DECK.MASTER.txt \
     ${SYNCTHING_DIR}/rsc/Doks/learn/ankidef22.vdeck.txt \
