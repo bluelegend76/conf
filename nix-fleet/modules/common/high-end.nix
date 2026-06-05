@@ -21,18 +21,18 @@
   #@ ];
 
   # Configuration: fcitx5-configtool
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-gtk             # Support for GTK apps
-      fcitx5-mozc            # Japanese (if you need it)
-      fcitx5-rime            # Great for Chinese or custom tables
-      fcitx5-lua             # Useful for scripting your own inputs
-      # TODO/IDEA: USE FOR MATHEMATICAL (ETC) INPUT
-      fcitx5-m17n          # Essential for many "smaller" or historical languages
-    ];
-  };
+  ## i18n.inputMethod = {
+  ##   enable = true;
+  ##   type = "fcitx5";
+  ##   fcitx5.addons = with pkgs; [
+  ##     fcitx5-gtk             # Support for GTK apps
+  ##     fcitx5-mozc            # Japanese (if you need it)
+  ##     fcitx5-rime            # Great for Chinese or custom tables
+  ##     fcitx5-lua             # Useful for scripting your own inputs
+  ##     # TODO/IDEA: USE FOR MATHEMATICAL (ETC) INPUT
+  ##     fcitx5-m17n          # Essential for many "smaller" or historical languages
+  ##   ];
+  ## };
 
   programs.nushell = {
     enable = true;
@@ -72,6 +72,7 @@
     #   # requests 
     # ]))
 
+    kdePackages.umbrello
     carapace  # Adds completion for Nushell
 
 
@@ -102,14 +103,21 @@
     signal-desktop
     libreoffice-fresh
     jetbrains.rider
-    # jetbrains.clion
-    # jetbrains.pycharm-oss
     # jetbrains.idea-oss
+      # jetbrains.idea
+    # jetbrains.clion
+    # jetbrains.pycharm -oss
     # jetbrains.webstorm
     qpwgraph
 
-    sbcl
-    # Install CL Hyperspec
-    # (ql:quickload "cl-hyperspec")
+    (sbcl.withPackages (ps: with ps; [
+      alexandria
+      cl-json
+      slynk
+      # Old Note: Install CL Hyperspec
+      # (ql:quickload "cl-hyperspec")
+    ]))
+
+    # sbclPackages.hyperspec
   ];
 }
