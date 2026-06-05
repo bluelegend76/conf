@@ -90,6 +90,7 @@
   boot.kernelParams = [ "threadirqs" ];
 
   services.guix.enable = true;
+
   services.openssh.enable = true;
   programs.steam = {
     enable = true;
@@ -141,6 +142,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # In your NixOS configuration.nix
+  nixpkgs.overlays = [
+    (import ../../../overlays/yuescript.nix)
+  ];
+
   # Essential for the Tuf's performance
   ## programs.gamemode.enable = true;
 
@@ -151,6 +157,7 @@
     gh # the GitHub CLI
     sqlite sqlitebrowser
     # lua51Packages.yuescript
+    yuescript
 
     muse-sounds-manager  # TODO: Move to High-End
 
