@@ -7,10 +7,11 @@ let
 
   # This creates ONE single package containing all your plugins
   # without the 'doc/tags' collision error.
-  # TODO: ADD THE EMMET.VIM PLUGIN (+CHANGE TRIGGER-KEY TO C-H)
+  # TODO: Add Mercury syntax-support
 
-  # TODO: ADD TRANSLATE-SHELL-VIM(!!)
   myVimPlugins = pkgs.linkFarm "my-vim-plugins" [
+    # { name = "pack/bundle/start/emmet-vim"; path = pkgs.vimPlugins.emmet-vim; }
+    { name = "pack/bundle/start/vim-visualstar"; path = pkgs.vimPlugins.vim-visualstar; }
     { name = "pack/bundle/start/vim-sensible"; path = pkgs.vimPlugins.vim-sensible; }
     { name = "pack/bundle/start/vim-polyglot"; path = pkgs.vimPlugins.vim-polyglot; }
     { name = "pack/bundle/start/vim-matchup"; path = pkgs.vimPlugins.vim-matchup; }
@@ -26,6 +27,20 @@ let
     { name = "pack/bundle/start/vim-fugitive"; path = pkgs.vimPlugins.vim-fugitive; }
     { name = "pack/bundle/start/vim-gitgutter"; path = pkgs.vimPlugins.vim-gitgutter; }
     { name = "pack/bundle/start/vim-nix"; path = pkgs.vimPlugins.vim-nix; }
+    { name = "pack/bundle/start/vim-teal"; path = pkgs.vimPlugins.vim-teal; }
+    { name = "pack/bundle/start/scnvim"; path = pkgs.vimPlugins.scnvim; }
+
+    # Add YueScript syntax-support
+    {
+      name = "pack/bundle/start/vim-yuescript";
+      path = pkgs.fetchFromGitHub {
+        owner = "pigpigyyy";
+        repo = "yuescript-vim";
+        rev = "master"; # Or a specific commit hash for reproducibility
+        sha256 = "sha256-+IlWg5Z0Ca5kQ8j+mQgdK9N9OqVlOYePg1TpqFUBAYk="; 
+        # sha256 = pkgs.lib.fakeHash; 
+      };
+    }
   ];
 
 in {
@@ -53,6 +68,9 @@ in {
     " set directory=$HOME/.vim/swap//
     " set backupdir=$HOME/.vim/backup//
     " set undodir=$HOME/.vim/undo//
+
+    " let g:user_emmet_install_global = 0
+    " autocmd FileType html,css,scss,javascript.jsx,typescriptreact EmmetInstall
   '';
 
   # # Map your custom color schemes
