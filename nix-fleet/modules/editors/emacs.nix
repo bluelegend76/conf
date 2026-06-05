@@ -20,7 +20,9 @@ in {
       # evil-numbers (i.e. c-a, c-x)
         # evil-goggles
       doom-themes doom-modeline magit
-      slime
+      # slime
+      # TODO: OR TEST OUT INSTEAD
+      # sly: cl-slynk clasp-slynk ecl-slynk
       dired-subtree magit projectile
       vertico marginalia orderless consult
       cape
@@ -44,21 +46,45 @@ in {
 
       # Literate Programming ----
       # ob-restclient  # Great for API work
+      # TODO IMPORTANT: INSTALL 'ORG BABEL {PACKAGE}' TO USE BABEL IN ORG(!)
       # ob-go          # If you ever touch Go
 
+      exec-path-from-shell
+      lsp-mode
+      # TODO: emacs-guix
       # New syntax support
-      nix-mode markdown-mode
-      php-mode
-      d-mode
-      typescript-mode
+      nix-mode
+      markdown-mode
       web-mode
+      rescript-mode
+      lfe-mode
+      clojure-mode
+      cider
+      hy-mode
+      php-mode
+      typescript-mode
+      kotlin-mode
+      # TODO: java-mode
+      tuareg
+      d-mode
+      # ----
+      csound-mode
+      # supercollider_scel
+      faust-mode
+
+      # This instructs Nix to compile and symlink the shared objects right into Emacs' store path
+      treesit-grammars.with-all-grammars
+      # treesit-grammars.tree-sitter-go
     ];
   };
 
-  # This is the "Bypass" - Writing the file directly to the config path
+  # This is the "Bypass" - Writing the file directly to the config-path
   xdg.configFile."emacs/init.el" = {
     force = true;
     text = ''
+      (setq site-run-file nil)
+      (put 'eval 'safe-local-variable 'always)
+
       (require 'use-package)
 
       ;; --- THE TOWER CORE ---
@@ -76,15 +102,18 @@ in {
       (setq evil-want-keybinding nil)
       (evil-mode 1)
 
+      (with-eval-after-load 'evil-org
+        (evil-define-key 'normal evil-org-mode-map
+          (kbd "SPC")   'org-cycle
+          (kbd "C-SPC") 'org-shifttab))
+
       (require 'doom-themes)
       (load-theme 'doom-ir-black t)
 
       (use-package pdf-tools
         :mode ("\\.pdf\\'" . pdf-view-mode)
         :config
-        ;; This "installs" the epdfinfo server logic
         (pdf-tools-install :no-query)
-        ;; Optional: Nice QoL for PDFs
         (setq-default pdf-view-display-size 'fit-page)
         (define-key pdf-view-mode-map (kbd "j") 'pdf-view-next-line-or-next-page)
         (define-key pdf-view-mode-map (kbd "k") 'pdf-view-previous-line-or-previous-page))
@@ -93,11 +122,8 @@ in {
         :hook (org-mode . org-modern-mode)
         :config
         (setq 
-         ;; Use elegant bars for the vertical lines in blocks
          org-modern-block-fringe 2
-         ;; Customize your "High-End" bullets
          org-modern-star '("◉" "○" "◈" "◇" "✳")
-         ;; Make checkboxes look like modern UI elements
          org-modern-checkbox 
          '((?X . "󰄲")
            (?- . "󰡖")
@@ -107,7 +133,6 @@ in {
       (use-package org-appear
         :hook (org-mode . org-appear-mode)
         :config
-        ;; Only show the "clutter" when the cursor is literally on the word
         (setq org-appear-autoemphasis t
               org-appear-autolinks t
               org-appear-autosubmarkers t))
@@ -120,11 +145,8 @@ in {
                ("C-c n g" . org-roam-graph)
                ("C-c n i" . org-roam-node-insert)
                ("C-c n c" . org-roam-capture)
-               ;; Dailies
                ("C-c n j" . org-roam-dailies-capture-today))
-        :config
-        ;; If you're using the standard emacs-overlay or home-manager, 
-        ;; the connector is usually built-in, but this ensures it:
+      :config
         (org-roam-db-autosync-mode))
 
       (use-package org-roam-ui
@@ -138,22 +160,16 @@ in {
       (use-package org-drill
         :after org)
 
-      ;; --- VTERM (The High-End Terminal) ---
       (use-package vterm
         :commands vterm
         :config
         (setq vterm-max-scrollback 10000))
 
-      ;; UI QoL
       (use-package consult
-        :bind (;; This is your "Swiper" replacement
-               ("C-s" . consult-line)
-               ;; High-end buffer switching with previews
+        :bind (("C-s" . consult-line)
                ("C-x b" . consult-buffer)
-               ;; Search for headings in your MDX/Docusaurus files
                ("M-g o" . consult-outline))
         :config
-        ;; Enable live previews (The "Black Tower" visual check)
         (setq consult-preview-key 'any))
 
       (use-package orderless
@@ -169,54 +185,25 @@ in {
 
       (use-package embark
         :bind
-        (("C-." . embark-act)         ;; pick some comfortable bindings
-         ("C-;" . embark-dwim)        ;; Good for 'Do What I Mean'
-         ("C-h B" . embark-bindings)) ;; alternative for help-lines
+        (("C-." . embark-act)
+         ("C-;" . embark-dwim)
+         ("C-h B" . embark-bindings))
         :init
-        ;; Optionally replace the describe-prefix-help with embark-prefix-help-command
         (setq prefix-help-command #'embark-prefix-help-command))
 
       (use-package embark-consult
         :after (embark consult)
         :demand t
-        ;; if you want to have embark-consult to automatically hooks into consult
         :hook
         (embark-collect-mode . consult-preview-at-point-mode))
 
-      ;; --- CORFU (The Completion Engine) ---
       (use-package corfu
         :custom
-        (corfu-auto t)                 ;; Enable auto-completion
-        (corfu-auto-delay 0.1)         ;; Fast popup
-        (corfu-auto-prefix 2)          ;; Start after 2 chars
+        (corfu-auto t)
+        (corfu-auto-delay 0.1)
+        (corfu-auto-prefix 2)
         :init
         (global-corfu-mode))
-
-      ; (use-package gptel
-      ;   :config
-      ;   ;; 1. Load your local secrets safely
-      ;   (let ((secrets-file (expand-file-name "~/.emacs.secrets")))
-      ;     (when (file-exists-p secrets-file)
-      ;       (load secrets-file)))
-
-      ;   ;; 2. Configure Anthropic (Claude)
-      ;   (setq-default gptel-backend 
-      ;     (gptel-make-anthropic "Claude"
-      ;       :key (bound-and-true-p my-anthropic-key)
-      ;       :stream t))
-
-      ;   ;; 3. Configure Gemini (Google)
-      ;   (gptel-make-gemini "Gemini" 
-      ;     :key (bound-and-true-p my-gemini-key)
-      ;     :stream t)
-
-      ;   ;; 4. Set sensible defaults
-      ;   (setq gptel-model 'claude-3-5-sonnet-latest  ;; Use Claude as the primary 'Brain'
-      ;         gptel-default-mode 'org-mode)          ;; AI responses formatted as Org
-      ;   
-      ;   ;; This ensures your 'Vim-style' C-n completion (Cape) 
-      ;   ;; works inside the chat buffers too.
-      ;   (add-hook 'gptel-mode-hook 'corfu-mode))
 
       (use-package dired-subtree
         :after dired
@@ -227,7 +214,6 @@ in {
       (use-package magit
         :bind ("C-x g" . magit-status)
         :config
-        ;; This ensures Magit doesn't hang if a process takes a while
         (setq magit-refresh-status-buffer nil))
 
       (use-package projectile
@@ -236,25 +222,239 @@ in {
         :bind-keymap
         ("C-c p" . projectile-command-map)
         :config
-        ;; Automatically find projects in your processdir
-        (setq projectile-project-search-path '("~/processdir"))
-        ;; Sort projects by "recently opened"
-        (setq projectile-sort-order 'recentf))
+        (setq projectile-project-search-path '("~/processdir")
+              projectile-sort-order 'recentf))
 
-      (use-package slime
+      ; (use-package slime
+      ;   :ensure t
+      ;   :config
+      ;   (setq inferior-lisp-program "sbcl")
+      ;   (slime-setup '(slime-fancy slime-quicklisp slime-asdf)))
+
+      (use-package sly
         :ensure t
+        :init
+        ;; Tell SLY to use your Nix-wrapped SBCL binary as the default engine
+        (setq inferior-lisp-program "sbcl"
+              sly-lisp-implementations '((sbcl ("sbcl") :coding-system utf-8-unix)))
         :config
-        (setq inferior-lisp-program "sbcl")
-        (slime-setup '(slime-fancy slime-quicklisp slime-asdf)))
+        ;; Point SLY to your native, offline Nix HyperSpec documentation
+        (setq common-lisp-hyperspec-root 
+              "http://www.lispworks.com/documentation/HyperSpec/")
 
+        ;; Force documentation lookups to render purely inside an Emacs window frame
+        ;;;; (setq browse-url-browser-function 'eww-browse-url)
+        
+        ;; Ensure smooth UTF-8 communication over the local network socket
+        (setq sly-net-coding-system 'utf-8-unix))
+
+
+      ;; --- THE HIGH-END ENVIRONMENT HANDSHAKE ---
       (use-package envrc
-        ; :ensure t
-        :hook (after-init . envrc-global-mode))
+        :init
+        (add-hook 'after-init (lambda () (envrc-global-mode 1))))
 
-      ;; --- LANGUAGE MAPPINGS ---
+      ;; --- LSP & COMPLETION SETUP ---
+      (require 'exec-path-from-shell)
+      (when (memq window-system '(mac ns x))
+        (exec-path-from-shell-initialize))
+
+      ;; Systems C Integration (Tree-sitter + LSP via Eglot)
+      (use-package c-ts-mode
+        :ensure nil
+        ;; :mode ("\\.c\\'" . c-ts-mode)
+        :init
+        ;; Remap the old C major modes to their modern TS equivalents completely
+        (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
+        (add-to-list 'major-mode-remap-alist '(c++-mode . c-ts-mode))
+        :config
+        ;; Automatically launch Eglot when entering C structural buffers
+        (add-hook 'c-ts-mode-hook #'eglot-ensure))
+
+      ;; Go Development Integration (Tree-sitter + LSP via Eglot)
+      (use-package go-ts-mode
+        :ensure nil
+        :mode "\\.go\\'"
+        ;; :init
+        ;; ;; 1. Register the Tree-sitter grammar location for Go
+        ;; (add-to-list 'treesit-language-source-alist
+        ;;              '(go "https://github.com/tree-sitter/tree-sitter-go"))
+        :config
+        ;; 2. Automatically launch the LSP client (Eglot) when entering Go files
+        (add-hook 'go-ts-mode-hook #'eglot-ensure)
+        
+        ;; 3. Optional: Auto-format code and optimize imports on save
+        (add-hook 'before-save-hook
+                  (lambda ()
+                    (when (derived-mode-p 'go-ts-mode)
+                      (ignore-errors (eglot-format-buffer))))))
+
+      ;; OCaml Setup
+      (use-package tuareg
+        :commands tuareg-mode)
+        ;; :hook (tuareg-mode . lsp-deferred)) ;; Automatically wake up LSP when a file opens
+
+      ;; TypeScript & TSX Framework Support
+      (use-package typescript-ts-mode
+        :ensure nil
+        :mode (("\\.ts\\'" . typescript-ts-mode)
+               ("\\.tsx\\'" . tsx-ts-mode))
+        :config
+        (add-hook 'typescript-ts-mode-hook #'eglot-ensure)
+        (add-hook 'tsx-ts-mode-hook #'eglot-ensure))
+      ; ----
+      ;; MDX Interactive Markdown Support
+      ;; (use-package mdx-mode
+      ;;   :ensure t
+      ;;   :mode "\\.mdx\\'")
+      ; ----
+      ;; ReScript / ReasonML Support
+      (use-package rescript-mode
+        :ensure t
+        :mode "\\.res\\'"
+        :config
+        ;; Optional: hook up rescript-vscode's LSP server if downloaded locally via npm
+        (add-hook 'rescript-mode-hook #'eglot-ensure))
+
+      ;; Clojure Integration (Native clojure-lsp Configuration via Eglot)
+      (use-package clojure-mode
+        :ensure nil
+        :mode "\\.clj[sx]?\\'"
+      ; ----
+        :config
+        (with-eval-after-load 'eglot
+          ;; Bind Clojure, ClojureScript, and Common files natively to clojure-lsp
+          (add-to-list 'eglot-server-programs
+                       '((clojure-mode clojurescript-mode clojurec-mode) . ("clojure-lsp"))))
+        ; ----
+        ;; Automatically invoke Eglot diagnostics when jumping into a Clojure source file
+        (add-hook 'clojure-mode-hook #'eglot-ensure))
+
+      ;; Python Integration (The Static Head of the Hy VM Cluster)
+      (use-package python
+        :ensure nil
+        :mode "\\.py\\'"
+        :config
+        (with-eval-after-load 'eglot
+          ;; Ensure Eglot maps Python buffers natively to your flake's Pyright server
+          (add-to-list 'eglot-server-programs
+                       '(python-mode . ("pyright-langserver" "--stdio"))))
+        
+        ;; Automatically launch Eglot diagnostics when jumping into a Python file
+        (add-hook 'python-mode-hook #'eglot-ensure))
+      ; ----
+      ;; HyLang Integration (Lisp Syntax mapping to Pyright LSP)
+      (use-package hy-mode
+        :ensure nil
+        :mode "\\.hy\\'"
+        :init
+        ;; Ensure font-lock hooks run instantly when a Hy-file is loaded
+        (add-hook 'hy-mode-hook #'font-lock-mode)
+        :config
+        ;; Set up classic Lisp indentations and safe structural parameters
+        (setq hy-shell-interpreter "hy")
+      ; ----
+        (add-hook 'hy-mode-hook
+                  (lambda ()
+                    (setq-local eldoc-documentation-function #'hy-shell-eldoc-function)
+                    (add-hook 'completion-at-point-functions #'hy-shell-completion-at-point-function nil t)))
+      ; ----
+        ;; Ergonomic Hook: Automatically ensure syntax colors refresh on entry
+    ;@@ (add-hook 'hy-mode-hook (lambda () (font-lock-update))))
+        ;; 2. Drives visual Corfu popups inside the INTERACTIVE REPL buffer itself (M-x run-hy)
+        (add-hook 'hy-shell-mode-hook
+                  (lambda ()
+                    ;; Force the shell parser to use Hy's native completion engine
+                    (setq-local completion-at-point-functions '(hy-shell-completion-at-point-function))
+                    
+                    ;; Turn on Corfu locally for this specific interactive console buffer
+                    (when (fboundp 'corfu-mode)
+                      (setq-local corfu-auto t) ; Ensure autocomplete pops up automatically as you type
+                      (corfu-mode 1)))))
+
+    ;;; ====
+    ;;  ; (with-eval-after-load 'eglot
+    ;;  ;   ;; Bind Hy buffers to route structural metadata through Pyright
+    ;;  ;   (add-to-list 'eglot-server-programs
+    ;;  ;                '(hy-mode . ("pyright-langserver" "--stdio"))))
+    ;;; ----
+    ;;; ;; Ensure Eglot wakes up automatically when a Hy file is loaded
+    ;;; (add-hook 'hy-mode-hook #'eglot-ensure))
+
+      ;; Kotlin Setup
+      (use-package lsp-mode
+        :commands lsp
+        :hook (kotlin-mode . lsp-deferred)
+        :config
+        (setq lsp-kotlin-server-command '("kotlin-language-server")))
+
+      ;; Elixir & Phoenix Integration (Official Unified Expert LSP Setup)
+      (use-package elixir-ts-mode
+        :ensure nil
+        :mode ("\\.ex\\'" "\\.exs\\'")
+        :init
+        (add-to-list 'major-mode-remap-alist '(elixir-mode . elixir-ts-mode))
+        :config
+        (with-eval-after-load 'eglot
+          ;; Provide the mandatory --stdio transport argument to the binary list
+          (add-to-list 'eglot-server-programs
+                       '((elixir-mode elixir-ts-mode) . ("expert" "--stdio"))))
+        
+        (add-hook 'elixir-mode-hook #'eglot-ensure)
+        (add-hook 'elixir-ts-mode-hook #'eglot-ensure))
+      ; ----
+      ;; Lisp Flavoured Erlang Integration
+      (use-package lfe-mode
+        :ensure nil
+        :mode "\\.lfe\\'"
+        :config
+        (with-eval-after-load 'eglot
+          ;; Route LFE to the dedicated Erlang engine instead of Expert
+          (add-to-list 'eglot-server-programs
+                       '(lfe-mode . ("expert" "--stdio"))))
+        
+        (add-hook 'lfe-mode-hook #'eglot-ensure))
+
+      ;; Automatically start the LSP engine when entering standard or tree-sitter C++ buffers
+      (add-hook 'c++-mode-hook #'lsp-deferred)
+      (add-hook 'c++-ts-mode-hook #'lsp-deferred)
+
+      ;; Prolog Configuration (SWI-Prolog Integration)
+      (use-package prolog
+        :ensure nil ; Built-in core mode
+        :mode (("\\.pl\\'" . prolog-mode)
+               ("\\.m\\'" . prolog-mode)) ; Route Mercury-files her too
+        :config
+        (setq prolog-system 'swi))
+      ; ----
+      ;; Mercury Language Integration
+      ; (use-package mercury-mode
+      ;   :ensure t
+      ;   :mode "\\.m\\'"
+      ;   :init
+      ;   ;; Ensure Mercury takes precedence over Objective-C/Matlab for .m files
+      ;   (add-to-list 'auto-mode-alist '("\\.m\\'" . mercury-mode)))
+
+      ;; --- MUSIC CODING CLUSTER ---
+      ;; SuperCollider (scel) configuration
+      (use-package sclang
+        :defer t
+        :config
+        (setq sclang-show-workspace-on-startup nil))
+      ; ----
+      ;; Csound Mode configuration
+      (use-package csound-mode
+        :mode ("\\.csd\\'" "\\.orc\\'" "\\.sco\\'"))
+      ; ----
+      ;; Faust Mode configuration
+      (use-package faust-mode
+        :mode "\\.dsp\\'")
+
+      ;; --- GLOBAL LANGUAGE MAPPINGS ---
       (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
       (add-to-list 'auto-mode-alist '("\\.di?\\'" . d-mode))
       (add-to-list 'auto-mode-alist '("\\.mdx\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.ml\\'" . tuareg-mode))
 
       (require 'which-key)
       (which-key-mode)
@@ -266,13 +466,6 @@ in {
         "ff" 'find-file
         "bb" 'switch-to-buffer)
 
-      ;; --- The Guix Specialist Bridge ---
-      (let ((guix-bridge (expand-file-name "~/.config/emacs/guix-clusters.el")))
-        (when (file-exists-p guix-bridge)
-          (condition-case err
-              (load guix-bridge)
-            (error (message "Error loading Guix clusters: %s" (error-message-string err))))))
-      
       (message "--- THE TOWER IS FINALLY ONLINE ---")
     '';
   };
@@ -281,10 +474,4 @@ in {
     enable = true;
     package = myEmacs;
   };
-
-  # TODO Not in last variant, but may
-  # want to reactive in next iteration
-  # home.shellAliases = {
-  #   emacs = "emacsclient -c -a ''";
-  # };
 }
