@@ -53,7 +53,7 @@
   home.packages = with pkgs; [
     # Wayland Screenshotting
     # TODO may want to use 'spectacle -bnf' instead
-    grim 
+    grim
     slurp
     # TODO: ADD KDE-CONNECT + ANDROID-TOOLS
     audacity
