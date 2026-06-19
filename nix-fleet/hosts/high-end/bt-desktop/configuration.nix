@@ -50,6 +50,11 @@
     libsecret
   ];
 
+  # Set flag to 1 if wanting to use 'rr' with gdb
+  # boot.kernel.sysctl."kernel.perf_event_paranoid" = 1;
+  boot.kernel.sysctl."kernel.perf_event_paranoid" = 0;
+  # Tip: Set to -1 for getting maximum profiling-data
+
   musnix = {
     enable = true;
     # Real-time kernel is optional. If you want the lowest latency 
@@ -160,6 +165,8 @@
     sqlite sqlitebrowser
     # lua51Packages.yuescript
     yuescript
+
+    config.boot.kernelPackages.perf
 
     muse-sounds-manager  # TODO: Move to High-End
 
