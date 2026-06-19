@@ -65,6 +65,8 @@ in {
       php-mode
       typescript-mode
       kotlin-mode
+      fsharp-mode apheleia
+      color-theme-buffer-local
       # TODO: java-mode
       tuareg
       d-mode
@@ -274,6 +276,10 @@ in {
         ;; Automatically launch Eglot when entering C structural buffers
         (add-hook 'c-ts-mode-hook #'eglot-ensure))
 
+      ;; Automatically start the LSP engine when entering standard or tree-sitter C++ buffers
+      (add-hook 'c++-mode-hook #'lsp-deferred)
+      (add-hook 'c++-ts-mode-hook #'lsp-deferred)
+
       ;; Go Development Integration (Tree-sitter + LSP via Eglot)
       (use-package go-ts-mode
         :ensure nil
@@ -296,6 +302,65 @@ in {
       (use-package tuareg
         :commands tuareg-mode)
         ;; :hook (tuareg-mode . lsp-deferred)) ;; Automatically wake up LSP when a file opens
+
+      ;; ==========================================
+      ;; .NET CLUSTER CONFIGURATION (C# & F#)
+      ;; ==========================================
+        ; ----
+      ;; 1. F# Language Core and REPL Integration
+      (use-package fsharp-mode
+        :ensure t
+        :defer t
+        :mode ("\\.fs[ix]?\\'")
+        :commands (fsharp-run-process-if-needed fsharp-eval-region fsharp-eval-phrase)
+        :config
+        ;; Standard F# compilation shortcuts
+        (define-key fsharp-mode-map (kbd "C-c C-r") 'fsharp-eval-region)
+        (define-key fsharp-mode-map (kbd "C-M-x")   'fsharp-eval-phrase))
+        ; ----
+      ;; 2. C# Language Core
+      (use-package csharp-mode
+        :ensure t
+        :defer t)
+        ; ----
+      ;; 3. Modern Language Server Automation (Eglot)
+      (use-package eglot
+        :ensure t
+        :hook ((fsharp-mode . eglot-ensure)
+               (csharp-mode . eglot-ensure))
+        :config
+        ;; A. Register C# cleanly
+        (add-to-list 'eglot-server-programs
+                     '(csharp-mode . ("Microsoft.CodeAnalysis.LanguageServer" "--stdio")))
+
+        ;; B. Register F# WITHOUT the dead --background-service flag,
+        ;; and embed the initialization parameters directly into the launcher array.
+        (setf (alist-get 'fsharp-mode eglot-server-programs)
+              '("fsautocomplete" 
+                :initializationOptions 
+                (:automaticWorkspaceInit t 
+                 :preloadProjectByFile t 
+                 :keywordsAutocomplete t))))
+        ; ----
+      ;; 4. Automatic Formatting via Fantomas (F#)
+      (use-package apheleia
+        :ensure t
+        :config
+        ;; Maps localized or system-wide formatters elegantly on save
+        (setf (alist-get 'fsharp-mode apheleia-mode-alist) 'fantomas)
+        (apheleia-global-mode +1))
+        ; ----
+    ; ;; 5. Dynamic Buffer-Local Visual Context Swapping
+    ; (use-package load-theme-buffer-local
+    ;   :ensure t
+    ;   :config
+    ;   ;; Define a helper function to change the theme locally via a major-mode hook
+    ;   (defun my-set-buffer-theme (theme)
+    ;     (load-theme-buffer-local theme (current-buffer)))
+
+    ;   ;; Hook them into your specific language modes
+    ;   (add-hook 'fsharp-mode-hook (lambda () (my-set-buffer-theme 'tango-dark)))
+    ;   (add-hook 'csharp-mode-hook (lambda () (my-set-buffer-theme 'misterioso))))
 
       ;; TypeScript & TSX Framework Support
       (use-package typescript-ts-mode
@@ -322,67 +387,89 @@ in {
       ;; Clojure Integration (Native clojure-lsp Configuration via Eglot)
       (use-package clojure-mode
         :ensure nil
-        :mode "\\.clj[sx]?\\'"
+        :mode (("\\.clj[sx]?\\'" . clojure-mode)
+               ("\\.edn\\'"      . clojure-mode))
       ; ----
         :config
         (with-eval-after-load 'eglot
           ;; Bind Clojure, ClojureScript, and Common files natively to clojure-lsp
           (add-to-list 'eglot-server-programs
                        '((clojure-mode clojurescript-mode clojurec-mode) . ("clojure-lsp"))))
-        ; ----
         ;; Automatically invoke Eglot diagnostics when jumping into a Clojure source file
         (add-hook 'clojure-mode-hook #'eglot-ensure))
 
-      ;; Python Integration (The Static Head of the Hy VM Cluster)
+      ;; High-Performance Dynamic REPL Engine
+      (use-package cider
+        :ensure nil
+        :defer t
+        :config
+        ;; CRITICAL: Tell CIDER not to compete with Eglot/LSP for code intelligence
+        (setq cider-eldoc-display-for-symbol-at-point nil) ; Let Eglot handle documentation hovers
+        (setq cider-font-lock-dynamically nil)             ;; Let clojure-mode/LSP handle coloring
+        (setq cider-completion-tool 'none)                  ;; Force CIDER to hand autocompletion to Eglot
+        
+        ;; Ergonomic Tweaks for the REPL buffer itself
+        (setq cider-repl-pop-to-buffer-on-connect t)       ;; Pop up the REPL window instantly on connect
+        (setq cider-repl-display-help nil))                ;; Keep the REPL buffer clean and minimalist
+
+
+      ;; ============================================================
+      ;; PYTHON — Eglot + Pyright
+      ;; ============================================================
       (use-package python
         :ensure nil
         :mode "\\.py\\'"
+        :hook (python-mode . eglot-ensure)
         :config
         (with-eval-after-load 'eglot
-          ;; Ensure Eglot maps Python buffers natively to your flake's Pyright server
           (add-to-list 'eglot-server-programs
-                       '(python-mode . ("pyright-langserver" "--stdio"))))
-        
-        ;; Automatically launch Eglot diagnostics when jumping into a Python file
-        (add-hook 'python-mode-hook #'eglot-ensure))
-      ; ----
-      ;; HyLang Integration (Lisp Syntax mapping to Pyright LSP)
+                       '(python-mode . ("pyright-langserver" "--stdio")))))
+
+      ;; ============================================================
+      ;; CORFU — completion UI (shared by Python and Hy)
+      ;; ============================================================
+      (use-package corfu
+        :ensure t
+        :custom
+        (corfu-auto t)
+        (corfu-auto-delay 0.2)
+        (corfu-auto-prefix 2)
+        :hook
+        (prog-mode        . corfu-mode)
+        (inferior-hy-mode . corfu-mode))
+
+      ;; ============================================================
+      ;; EGLOT — register hyuga as the Hy LSP server
+      ;; ============================================================
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '(hy-mode . ("hyuga"))))
+
+      ;; ============================================================
+      ;; HY-MODE — syntax highlighting + REPL
+      ;; ============================================================
       (use-package hy-mode
         :ensure nil
         :mode "\\.hy\\'"
         :init
-        ;; Ensure font-lock hooks run instantly when a Hy-file is loaded
-        (add-hook 'hy-mode-hook #'font-lock-mode)
+        ;; jedhy is incompatible with Hy 1.x — disable entirely
+        (setq hy-jedhy--enable? nil)
         :config
-        ;; Set up classic Lisp indentations and safe structural parameters
-        (setq hy-shell-interpreter "hy")
-      ; ----
-        (add-hook 'hy-mode-hook
-                  (lambda ()
-                    (setq-local eldoc-documentation-function #'hy-shell-eldoc-function)
-                    (add-hook 'completion-at-point-functions #'hy-shell-completion-at-point-function nil t)))
-      ; ----
-        ;; Ergonomic Hook: Automatically ensure syntax colors refresh on entry
-    ;@@ (add-hook 'hy-mode-hook (lambda () (font-lock-update))))
-        ;; 2. Drives visual Corfu popups inside the INTERACTIVE REPL buffer itself (M-x run-hy)
-        (add-hook 'hy-shell-mode-hook
-                  (lambda ()
-                    ;; Force the shell parser to use Hy's native completion engine
-                    (setq-local completion-at-point-functions '(hy-shell-completion-at-point-function))
-                    
-                    ;; Turn on Corfu locally for this specific interactive console buffer
-                    (when (fboundp 'corfu-mode)
-                      (setq-local corfu-auto t) ; Ensure autocomplete pops up automatically as you type
-                      (corfu-mode 1)))))
+        (setq hy-shell--interpreter "hy")
 
-    ;;; ====
-    ;;  ; (with-eval-after-load 'eglot
-    ;;  ;   ;; Bind Hy buffers to route structural metadata through Pyright
-    ;;  ;   (add-to-list 'eglot-server-programs
-    ;;  ;                '(hy-mode . ("pyright-langserver" "--stdio"))))
-    ;;; ----
-    ;;; ;; Ensure Eglot wakes up automatically when a Hy file is loaded
-    ;;; (add-hook 'hy-mode-hook #'eglot-ensure))
+        ;; Patch the prompt check so the REPL doesn't crash on startup
+        (with-eval-after-load 'hy-shell
+          (defun hy-shell--redirect-check-prompt-regexp ()
+            "Patched: no-op when internal process not yet live."
+            (when (and comint-redirect-perform-sanity-check
+                       (hy-shell--live-internal?))
+              (save-excursion
+                (goto-char (point-max))
+                (or (re-search-backward comint-prompt-regexp nil t)
+                    (error "No prompt found or `comint-prompt-regexp' not set properly"))))))
+
+        (add-hook 'hy-mode-hook #'eglot-ensure))
+
 
       ;; Kotlin Setup
       (use-package lsp-mode
@@ -418,10 +505,6 @@ in {
         
         (add-hook 'lfe-mode-hook #'eglot-ensure))
 
-      ;; Automatically start the LSP engine when entering standard or tree-sitter C++ buffers
-      (add-hook 'c++-mode-hook #'lsp-deferred)
-      (add-hook 'c++-ts-mode-hook #'lsp-deferred)
-
       ;; Prolog Configuration (SWI-Prolog Integration)
       (use-package prolog
         :ensure nil ; Built-in core mode
@@ -439,11 +522,22 @@ in {
       ;   (add-to-list 'auto-mode-alist '("\\.m\\'" . mercury-mode)))
 
       ;; --- MUSIC CODING CLUSTER ---
-      ;; SuperCollider (scel) configuration
-      (use-package sclang
-        :defer t
-        :config
-        (setq sclang-show-workspace-on-startup nil))
+      (let ((scel-path (expand-file-name ".scel-links"
+                         (or (getenv "PRJ_ROOT")
+                             (locate-dominating-file default-directory "flake.nix")
+                             default-directory))))
+        (when (file-directory-p scel-path)
+          (add-to-list 'load-path scel-path)
+          (require 'sclang)
+          (use-package sclang
+            :ensure nil
+            :config
+            (setq sclang-show-workspace-on-startup nil)
+            ;; Register file-associations — sclang-mode doesn't do this automatically
+            (add-to-list 'auto-mode-alist '("\\.scd\\'" . sclang-mode))
+            (add-to-list 'auto-mode-alist '("\\.sc\\'" . sclang-mode))
+            (setq sclang-program
+                  (or (executable-find "sclang") "sclang")))))
       ; ----
       ;; Csound Mode configuration
       (use-package csound-mode
