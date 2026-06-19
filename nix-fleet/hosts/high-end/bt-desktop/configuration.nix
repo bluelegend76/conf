@@ -153,6 +153,8 @@
   # Only keep essential SYSTEM tools here
   environment.systemPackages = with pkgs; [
     vim-full gitFull wget curl htop tree tailscale syncthing
+    jq yq
+    ugrep # agrep ack ag
     mc
     gh # the GitHub CLI
     sqlite sqlitebrowser
