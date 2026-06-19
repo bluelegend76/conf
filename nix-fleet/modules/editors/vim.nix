@@ -29,7 +29,6 @@ let
     { name = "pack/bundle/start/vim-nix"; path = pkgs.vimPlugins.vim-nix; }
     { name = "pack/bundle/start/vim-teal"; path = pkgs.vimPlugins.vim-teal; }
     { name = "pack/bundle/start/scnvim"; path = pkgs.vimPlugins.scnvim; }
-
     # Add YueScript syntax-support
     {
       name = "pack/bundle/start/vim-yuescript";
@@ -39,6 +38,16 @@ let
         rev = "master"; # Or a specific commit hash for reproducibility
         sha256 = "sha256-+IlWg5Z0Ca5kQ8j+mQgdK9N9OqVlOYePg1TpqFUBAYk="; 
         # sha256 = pkgs.lib.fakeHash; 
+      };
+    }
+    # Cypher syntax-support
+    {
+      name = "pack/bundle/start/cypher-vim-syntax";
+      path = pkgs.fetchFromGitHub {
+        owner = "neo4j-contrib";
+        repo = "cypher-vim-syntax";
+        rev = "master"; # Or use a specific commit hash
+        sha256 = "sha256-iJLl5BPM5KV+WcnmYV0HSfYyBePXkPYy2nWeqy2VU+o=";
       };
     }
   ];
@@ -77,9 +86,11 @@ in {
   # xdg.configFile."nvim/colors".source = ./path/to/your/conf/vim/colors;
   # # Map your spelling files
   # xdg.configFile."nvim/spell".source = ./path/to/your/conf/vim/spell;
+
   # # If you still use classic Vim alongside Neovim:
   # home.file.".vim/colors".source = ./path/to/your/conf/vim/colors;
   # home.file.".vim/spell".source = ./path/to/your/conf/vim/spell;
+  # home.file.".vim/keymap".source = ./path/to/your/conf/vim/keymap;
 
   programs.neovim = {
     enable = true;
