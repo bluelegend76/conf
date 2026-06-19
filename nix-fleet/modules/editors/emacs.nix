@@ -83,6 +83,8 @@ in {
   xdg.configFile."emacs/init.el" = {
     force = true;
     text = ''
+      (setq debug-on-error t)
+
       (setq site-run-file nil)
       (put 'eval 'safe-local-variable 'always)
 
