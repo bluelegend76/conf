@@ -19,7 +19,8 @@ in {
       # evil-commentary (gc, gcc)
       # evil-numbers (i.e. c-a, c-x)
         # evil-goggles
-      doom-themes doom-modeline magit
+      doom-themes doom-modeline
+      magit
       # slime
       # TODO: OR TEST OUT INSTEAD
       # sly: cl-slynk clasp-slynk ecl-slynk
