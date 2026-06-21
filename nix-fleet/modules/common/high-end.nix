@@ -76,6 +76,7 @@
     carapace  # Adds completion for Nushell
 
 
+    # TODO: Might want to change root-location to /home/bluelegend/.local/bin/
     (writeShellScriptBin "mscore4" ''
       ${appimage-run}/bin/appimage-run /home/bluelegend/Downloads/MuseScore-Studio-4.6.5.253511702-x86_64.AppImage
     '')
