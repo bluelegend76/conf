@@ -6,7 +6,7 @@
   #  Musik-Projektet (=linkfolders for all the different moods) + (playlists with the different moods)  **(**)
 
 # TODO: ADD CHECKS FOR WHAT IS MOUNTED[!!]
-# Ubuntu: /media/{username}
+# Ubuntu: /media/{username} 
 # Arch: /run/media/{username}
 read -p "About to run syncing (via rsync). Press Enter to continue: "
 read -p "(Make sure the two external USB-drives are connected, then press Enter): "
