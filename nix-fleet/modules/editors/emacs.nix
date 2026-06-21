@@ -1,4 +1,5 @@
 { pkgs, config, ... }:
+# ____
 
 let
   myEmacs = (pkgs.emacs30.override {
@@ -66,6 +67,7 @@ in {
       typescript-mode
       kotlin-mode
       fsharp-mode apheleia
+      graphql-mode verb
       color-theme-buffer-local
       # TODO: java-mode
       tuareg
@@ -153,6 +155,8 @@ in {
                ("C-c n j" . org-roam-dailies-capture-today))
       :config
         (org-roam-db-autosync-mode))
+
+      ; TODO: ADD ORG-QL !!  ____
 
       (use-package org-roam-ui
         :after org-roam
@@ -362,27 +366,95 @@ in {
     ;   (add-hook 'fsharp-mode-hook (lambda () (my-set-buffer-theme 'tango-dark)))
     ;   (add-hook 'csharp-mode-hook (lambda () (my-set-buffer-theme 'misterioso))))
 
-      ;; TypeScript & TSX Framework Support
-      (use-package typescript-ts-mode
-        :ensure nil
-        :mode (("\\.ts\\'" . typescript-ts-mode)
-               ("\\.tsx\\'" . tsx-ts-mode))
-        :config
-        (add-hook 'typescript-ts-mode-hook #'eglot-ensure)
-        (add-hook 'tsx-ts-mode-hook #'eglot-ensure))
-      ; ----
-      ;; MDX Interactive Markdown Support
-      ;; (use-package mdx-mode
-      ;;   :ensure t
-      ;;   :mode "\\.mdx\\'")
-      ; ----
-      ;; ReScript / ReasonML Support
-      (use-package rescript-mode
-        :ensure t
-        :mode "\\.res\\'"
-        :config
-        ;; Optional: hook up rescript-vscode's LSP server if downloaded locally via npm
-        (add-hook 'rescript-mode-hook #'eglot-ensure))
+
+      ;@ ;; ============================================================
+      ;@ ;; JAVASCRIPT/TYPESCRIPT - tree-sitter modes + Eglot + vtsls
+      ;@ ;; ============================================================
+
+      ;@ ;; Install tree-sitter grammars on first load
+      ;@ (use-package treesit
+      ;@   :ensure nil
+      ;@   :config
+      ;@   (setq treesit-language-source-alist
+      ;@         '((javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"
+      ;@                          "master" "src"))
+      ;@           (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript"
+      ;@                          "master" "typescript/src"))
+      ;@           (tsx        . ("https://github.com/tree-sitter/tree-sitter-typescript"
+      ;@                          "master" "tsx/src"))
+      ;@           (json       . ("https://github.com/tree-sitter/tree-sitter-json"
+      ;@                          "master" "src"))
+      ;@           (css        . ("https://github.com/tree-sitter/tree-sitter-css"
+      ;@                          "master" "src"))
+      ;@           (html       . ("https://github.com/tree-sitter/tree-sitter-html"
+      ;@                          "master" "src"))))
+
+      ;@   ;; Install any grammars not yet compiled
+      ;@   (dolist (lang '(javascript typescript tsx json css html))
+      ;@     (unless (treesit-language-available-p lang)
+      ;@       (treesit-install-language-grammar lang))))
+
+      ;@ ;; File associations - prefer tree-sitter modes where available
+      ;@ (add-to-list 'auto-mode-alist '("\\.js\\'"  . js-ts-mode))
+      ;@ (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
+      ;@ (add-to-list 'auto-mode-alist '("\\.ts\\'"  . typescript-ts-mode))
+      ;@ (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+      ;@ (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
+      ;@ (add-to-list 'auto-mode-alist '("\\.css\\'"  . css-ts-mode))
+
+      ;@ ;; ============================================================
+      ;@ ;; EGLOT - LSP server registrations
+      ;@ ;; ============================================================
+      ;@ (with-eval-after-load 'eglot
+      ;@   ;; vtsls for JS and TS - faster than typescript-language-server
+      ;@   (add-to-list 'eglot-server-programs
+      ;@                '((js-ts-mode typescript-ts-mode tsx-ts-mode) .
+      ;@                  ("vtsls" "--stdio")))
+      ;@   ;; HTML/CSS/JSON via vscode-langservers-extracted
+      ;@   (add-to-list 'eglot-server-programs
+      ;@                '(html-mode . ("vscode-html-language-server" "--stdio")))
+      ;@   (add-to-list 'eglot-server-programs
+      ;@                '(css-ts-mode . ("vscode-css-language-server" "--stdio")))
+      ;@   (add-to-list 'eglot-server-programs
+      ;@                '(json-ts-mode . ("vscode-json-language-server" "--stdio")))
+      ;@   ;; ReScript
+      ;@   (add-to-list 'eglot-server-programs
+      ;@                '(rescript-mode . ("rescript-language-server" "--stdio"))))
+
+      ;@ ;; Auto-start Eglot in all relevant modes
+      ;@ (dolist (hook '(js-ts-mode-hook
+      ;@                 typescript-ts-mode-hook
+      ;@                 tsx-ts-mode-hook
+      ;@                 css-ts-mode-hook
+      ;@                 json-ts-mode-hook))
+      ;@   (add-hook hook #'eglot-ensure))
+
+      ;@ ;; ============================================================
+      ;@ ;; RESCRIPT - syntax highlighting and mode
+      ;@ ;; ============================================================
+      ;@ (use-package rescript-mode
+      ;@   :ensure t
+      ;@   :hook (rescript-mode . eglot-ensure))
+
+      ;@ ;; ============================================================
+      ;@ ;; MDX - treat as a mix of markdown and JSX
+      ;@ ;; ============================================================
+      ;@ (use-package markdown-mode
+      ;@   :ensure t)
+
+      ;@ (add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
+
+      ;@ ;; ============================================================
+      ;@ ;; PRETTIER - auto-format on save
+      ;@ ;; ============================================================
+      ;@ (use-package prettier
+      ;@   :ensure t
+      ;@   :hook ((js-ts-mode
+      ;@           typescript-ts-mode
+      ;@           tsx-ts-mode
+      ;@           css-ts-mode
+      ;@           json-ts-mode
+      ;@           rescript-mode) . prettier-mode))
 
       ;; Clojure Integration (Native clojure-lsp Configuration via Eglot)
       (use-package clojure-mode
@@ -504,6 +576,22 @@ in {
                        '(lfe-mode . ("expert" "--stdio"))))
         
         (add-hook 'lfe-mode-hook #'eglot-ensure))
+
+      ; TODO: DATABASES, GRAPHS, SEM. WEB + ONTOL, GraphQL  ____
+      (use-package graphql-mode)
+      ;
+      (use-package lsp-mode
+        :commands (lsp lsp-deferred)
+        :hook (graphql-mode . lsp-deferred)
+        :custom
+        (lsp-completion-provider :none))
+      ;
+      (use-package verb
+        :config
+        (defun verb-github-auth (rs)
+          (verb-headers-set rs "Authorization"
+                             (concat "Bearer " (getenv "GITHUB_TOKEN")))
+          rs))
 
       ;; Prolog Configuration (SWI-Prolog Integration)
       (use-package prolog
