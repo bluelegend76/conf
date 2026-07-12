@@ -4,6 +4,8 @@
     ../../../modules/services/guix-bridge.nix
   ];
 
+  boot.kernelModules = ["snd-seq" "snd-rawmidi" ];
+
   # System essentials (Boot, Net, Time)
   boot.loader.grub = { enable = true; device = "/dev/sda"; useOSProber = true; };
   networking.hostName = "high-end";
@@ -78,9 +80,12 @@
   services.pipewire = { 
     enable = true;
     alsa.enable = true;
-    alsa.support32Bit = true; 
+    alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true; 
+    # Allows Qsynth to communicate directly
+    #  with audio-hardware with low latency
+    jack.enable = true;
+    wireplumber.enable = true;
   };
 
   # EXTRA FIXES for the 'WARNING' list:
@@ -157,6 +162,7 @@
 
   # Only keep essential SYSTEM tools here
   environment.systemPackages = with pkgs; [
+    fluxbox
     vim-full gitFull wget curl htop tree tailscale syncthing
     jq yq
     ugrep # agrep ack ag
