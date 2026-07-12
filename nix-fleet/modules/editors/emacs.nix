@@ -37,19 +37,28 @@ in {
       # org-superstar  # Alternative to org-modern for pretty bullets
       # Knowledge Management ----
       org-roam org-roam-ui
-      org-drill
+      org-ql org-drill
       sqlite3
+      ## graphviz
       # TODO - Logseq: logseq-mode
       # logseq-mode outline-indent-mode origami
       # gptel          # (Optional) If you want to use LLMs inside Org buffers
-      # vimish folds
+      ## vimish folds
       # avy
       # ivy swiper counsel
 
       # Literate Programming ----
+      jupyter
+      zmq
+      envrc
+      # ORG-JUPYTER (+Callysto)
       # ob-restclient  # Great for API work
       # TODO IMPORTANT: INSTALL 'ORG BABEL {PACKAGE}' TO USE BABEL IN ORG(!)
       # ob-go          # If you ever touch Go
+      # ob-lisp
+      # ob-elixir
+      # ob-graphql
+      # ob-rust
 
       exec-path-from-shell
       lsp-mode
@@ -62,13 +71,14 @@ in {
       lfe-mode
       clojure-mode
       cider
+      rustic
       hy-mode
       php-mode
       typescript-mode
       kotlin-mode
       fsharp-mode apheleia
       graphql-mode verb
-      color-theme-buffer-local
+      # color-theme-buffer-local
       # TODO: java-mode
       tuareg
       d-mode
@@ -83,11 +93,21 @@ in {
     ];
   };
 
+  home.packages = with pkgs; [
+    # sqlite    # Critical back-end binary for Org Roam's database indexer
+    graphviz  # Allows Org Roam to visually render local node graphs via Graphviz
+  ];
+
   # This is the "Bypass" - Writing the file directly to the config-path
   xdg.configFile."emacs/init.el" = {
     force = true;
     text = ''
-      (setq debug-on-error t)
+      (setq debug-on-error nil)
+
+      ;; Disable onTypeFormatting entirely — it's what's causing the freeze
+      ;; since Eglot waits for a response that vtsls can't provide
+      (setq eglot-ignored-server-capabilities
+            '(:documentOnTypeFormattingProvider))
 
       (setq site-run-file nil)
       (put 'eval 'safe-local-variable 'always)
@@ -156,8 +176,6 @@ in {
       :config
         (org-roam-db-autosync-mode))
 
-      ; TODO: ADD ORG-QL !!  ____
-
       (use-package org-roam-ui
         :after org-roam
         :config
@@ -166,8 +184,26 @@ in {
               org-roam-ui-update-on-save t
               org-roam-ui-open-on-start nil))
 
+      ; TODO: ADD ORG-QL !!  ____
+      ;; 4. Org Query Language Core Configuration
+      (use-package org-ql
+        :ensure nil)
+
       (use-package org-drill
         :after org)
+
+      (use-package org
+        :config
+        (org-babel-do-load-languages
+         'org-babel-load-languages
+         '((emacs-lisp . t) ;; usually on by default, but explicit is fine
+           (python . t)
+           (jupyter . t))) ;; jupyter loaded last, per emacs-jupyter's own recommendation
+        (setq org-confirm-babel-evaluate nil) ;; skip "Really evaluate?" — see note above
+        (setq org-babel-default-header-args:jupyter-python
+              '((:async . "yes")
+                (:session . "hylang-jupyter")
+                (:kernel . "hylang-jupyter"))))
 
       (use-package vterm
         :commands vterm
@@ -239,9 +275,8 @@ in {
       ;   :config
       ;   (setq inferior-lisp-program "sbcl")
       ;   (slime-setup '(slime-fancy slime-quicklisp slime-asdf)))
-
       (use-package sly
-        :ensure t
+        ; :ensure t
         :init
         ;; Tell SLY to use your Nix-wrapped SBCL binary as the default engine
         (setq inferior-lisp-program "sbcl"
@@ -253,7 +288,7 @@ in {
 
         ;; Force documentation lookups to render purely inside an Emacs window frame
         ;;;; (setq browse-url-browser-function 'eww-browse-url)
-        
+
         ;; Ensure smooth UTF-8 communication over the local network socket
         (setq sly-net-coding-system 'utf-8-unix))
 
@@ -267,6 +302,67 @@ in {
       (require 'exec-path-from-shell)
       (when (memq window-system '(mac ns x))
         (exec-path-from-shell-initialize))
+
+
+      ;; ============================================================
+      ;; HASKELL — haskell-mode + HLS via Eglot
+      ;; ============================================================
+      (use-package haskell-mode
+        :ensure t
+        :mode (("\\.hs\\'"  . haskell-mode)
+               ("\\.lhs\\'" . haskell-literate-mode))
+        :hook
+        (haskell-mode . haskell-indentation-mode)
+        (haskell-mode . eglot-ensure)
+        (haskell-mode . haskell-doc-mode)
+        :config
+        (setq haskell-process-type 'cabal-repl)
+        (setq haskell-process-suggest-remove-import-lines t)
+        (setq haskell-process-auto-import-loaded-modules t))
+
+      ;; HLS via Eglot
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '(haskell-mode . ("haskell-language-server-wrapper" "--lsp"))))
+
+      ;; ============================================================
+      ;; RUST — rust-analyzer via Eglot + rustic
+      ;; ============================================================
+      (use-package rustic
+        :ensure nil
+        :mode ("\\.rs\\'" . rustic-mode)
+        :config
+        ;; Use Eglot as the LSP backend (instead of lsp-mode)
+        (setq rustic-lsp-client 'eglot)
+        ;; Use rustfmt for formatting
+        (setq rustic-format-on-save t)
+        ;; Don't auto-install rust tools — we manage via Nix/fenix
+        (setq rustic-rustfmt-bin "rustfmt")
+        (setq rustic-cargo-bin "cargo"))
+
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '(rustic-mode . ("rust-analyzer"))))
+
+      ;; Auto-start Eglot in Rust buffers
+      (add-hook 'rustic-mode-hook #'eglot-ensure)
+
+      ;; Tell rust-analyzer where to find the stdlib source
+      ;; RUST_SRC_PATH is set by the flake shellHook
+      (with-eval-after-load 'eglot
+        (when (getenv "RUST_SRC_PATH")
+          ; (setq-default eglot-workspace-configuration
+          ;               `(:rust-analyzer
+          ;                 (:rustcSource ,(getenv "RUST_SRC_PATH"))
+          ;                 (:checkOnSave (:command "clippy"))
+          ;                 (:cargo (:allFeatures t))))))
+          ;; Correct format for rust-analyzer workspace config
+          (setq-default eglot-workspace-configuration
+                        '(:rust-analyzer
+                          (:checkOnSave (:command "clippy")
+                           :cargo (:loadOutDirsFromCheck t)
+                           :procMacro (:enable t))))))
+
 
       ;; Systems C Integration (Tree-sitter + LSP via Eglot)
       (use-package c-ts-mode
@@ -367,94 +463,92 @@ in {
     ;   (add-hook 'csharp-mode-hook (lambda () (my-set-buffer-theme 'misterioso))))
 
 
-      ;@ ;; ============================================================
-      ;@ ;; JAVASCRIPT/TYPESCRIPT - tree-sitter modes + Eglot + vtsls
-      ;@ ;; ============================================================
+      ;; ============================================================
+      ;; JAVASCRIPT/TYPESCRIPT - tree-sitter modes + Eglot + vtsls
+      ;; ============================================================
 
-      ;@ ;; Install tree-sitter grammars on first load
-      ;@ (use-package treesit
-      ;@   :ensure nil
-      ;@   :config
-      ;@   (setq treesit-language-source-alist
-      ;@         '((javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"
-      ;@                          "master" "src"))
-      ;@           (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript"
-      ;@                          "master" "typescript/src"))
-      ;@           (tsx        . ("https://github.com/tree-sitter/tree-sitter-typescript"
-      ;@                          "master" "tsx/src"))
-      ;@           (json       . ("https://github.com/tree-sitter/tree-sitter-json"
-      ;@                          "master" "src"))
-      ;@           (css        . ("https://github.com/tree-sitter/tree-sitter-css"
-      ;@                          "master" "src"))
-      ;@           (html       . ("https://github.com/tree-sitter/tree-sitter-html"
-      ;@                          "master" "src"))))
+      ;; Install tree-sitter grammars on first load
+      (use-package treesit
+        :ensure nil
+        :config
+        (setq treesit-language-source-alist
+              '((javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"
+                               "master" "src"))
+                (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript"
+                               "master" "typescript/src"))
+                (tsx        . ("https://github.com/tree-sitter/tree-sitter-typescript"
+                               "master" "tsx/src"))
+                (json       . ("https://github.com/tree-sitter/tree-sitter-json"
+                               "master" "src"))
+                (css        . ("https://github.com/tree-sitter/tree-sitter-css"
+                               "master" "src"))
+                (html       . ("https://github.com/tree-sitter/tree-sitter-html"
+                               "master" "src"))))
 
-      ;@   ;; Install any grammars not yet compiled
-      ;@   (dolist (lang '(javascript typescript tsx json css html))
-      ;@     (unless (treesit-language-available-p lang)
-      ;@       (treesit-install-language-grammar lang))))
+        ;; Install any grammars not yet compiled
+        (dolist (lang '(javascript typescript tsx json css html))
+          (unless (treesit-language-available-p lang)
+            (treesit-install-language-grammar lang))))
 
-      ;@ ;; File associations - prefer tree-sitter modes where available
-      ;@ (add-to-list 'auto-mode-alist '("\\.js\\'"  . js-ts-mode))
-      ;@ (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
-      ;@ (add-to-list 'auto-mode-alist '("\\.ts\\'"  . typescript-ts-mode))
-      ;@ (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
-      ;@ (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
-      ;@ (add-to-list 'auto-mode-alist '("\\.css\\'"  . css-ts-mode))
+      ;; File associations - prefer tree-sitter modes where available
+      (add-to-list 'auto-mode-alist '("\\.js\\'"  . js-ts-mode))
+      (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
+      (add-to-list 'auto-mode-alist '("\\.ts\\'"  . typescript-ts-mode))
+      (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+      (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
+      (add-to-list 'auto-mode-alist '("\\.css\\'"  . css-ts-mode))
 
-      ;@ ;; ============================================================
-      ;@ ;; EGLOT - LSP server registrations
-      ;@ ;; ============================================================
-      ;@ (with-eval-after-load 'eglot
-      ;@   ;; vtsls for JS and TS - faster than typescript-language-server
-      ;@   (add-to-list 'eglot-server-programs
-      ;@                '((js-ts-mode typescript-ts-mode tsx-ts-mode) .
-      ;@                  ("vtsls" "--stdio")))
-      ;@   ;; HTML/CSS/JSON via vscode-langservers-extracted
-      ;@   (add-to-list 'eglot-server-programs
-      ;@                '(html-mode . ("vscode-html-language-server" "--stdio")))
-      ;@   (add-to-list 'eglot-server-programs
-      ;@                '(css-ts-mode . ("vscode-css-language-server" "--stdio")))
-      ;@   (add-to-list 'eglot-server-programs
-      ;@                '(json-ts-mode . ("vscode-json-language-server" "--stdio")))
-      ;@   ;; ReScript
-      ;@   (add-to-list 'eglot-server-programs
-      ;@                '(rescript-mode . ("rescript-language-server" "--stdio"))))
+      ;; ============================================================
+      ;; EGLOT - LSP server registrations
+      ;; ============================================================
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '((js-ts-mode typescript-ts-mode tsx-ts-mode) .
+                       ("typescript-language-server" "--stdio")))
+        (add-to-list 'eglot-server-programs
+                     '(html-mode . ("vscode-html-language-server" "--stdio")))
+        (add-to-list 'eglot-server-programs
+                     '(css-ts-mode . ("vscode-css-language-server" "--stdio")))
+        (add-to-list 'eglot-server-programs
+                     '(json-ts-mode . ("vscode-json-language-server" "--stdio")))
+        (add-to-list 'eglot-server-programs
+                     '(rescript-mode . ("rescript-language-server" "--stdio"))))
 
-      ;@ ;; Auto-start Eglot in all relevant modes
-      ;@ (dolist (hook '(js-ts-mode-hook
-      ;@                 typescript-ts-mode-hook
-      ;@                 tsx-ts-mode-hook
-      ;@                 css-ts-mode-hook
-      ;@                 json-ts-mode-hook))
-      ;@   (add-hook hook #'eglot-ensure))
+      (dolist (hook '(js-ts-mode-hook
+                      typescript-ts-mode-hook
+                      tsx-ts-mode-hook
+                      css-ts-mode-hook
+                      json-ts-mode-hook))
+        (add-hook hook #'eglot-ensure))
 
-      ;@ ;; ============================================================
-      ;@ ;; RESCRIPT - syntax highlighting and mode
-      ;@ ;; ============================================================
-      ;@ (use-package rescript-mode
-      ;@   :ensure t
-      ;@   :hook (rescript-mode . eglot-ensure))
+      ;; ============================================================
+      ;; RESCRIPT - syntax highlighting and mode
+      ;; ============================================================
+      (use-package rescript-mode
+        :ensure t
+        :hook (rescript-mode . eglot-ensure))
 
-      ;@ ;; ============================================================
-      ;@ ;; MDX - treat as a mix of markdown and JSX
-      ;@ ;; ============================================================
-      ;@ (use-package markdown-mode
-      ;@   :ensure t)
+      ;; ============================================================
+      ;; MDX - treat as a mix of markdown and JSX
+      ;; ============================================================
+      (use-package markdown-mode
+        :ensure t)
 
-      ;@ (add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
+      (add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
 
-      ;@ ;; ============================================================
-      ;@ ;; PRETTIER - auto-format on save
-      ;@ ;; ============================================================
-      ;@ (use-package prettier
-      ;@   :ensure t
-      ;@   :hook ((js-ts-mode
-      ;@           typescript-ts-mode
-      ;@           tsx-ts-mode
-      ;@           css-ts-mode
-      ;@           json-ts-mode
-      ;@           rescript-mode) . prettier-mode))
+      ;; ============================================================
+      ;; PRETTIER - auto-format on save
+      ;; ============================================================
+      ; @ (use-package prettier
+      ; @   :ensure nil
+      ; @   :if (executable-find "prettier")
+      ; @   :hook ((js-ts-mode
+      ; @           typescript-ts-mode
+      ; @           tsx-ts-mode
+      ; @           css-ts-mode
+      ; @           json-ts-mode
+      ; @           rescript-mode) . prettier-mode))
+
 
       ;; Clojure Integration (Native clojure-lsp Configuration via Eglot)
       (use-package clojure-mode
@@ -490,7 +584,7 @@ in {
       ;; ============================================================
       (use-package python
         :ensure nil
-        :mode "\\.py\\'"
+        :mode ("\\.py\\'" . python-mode)
         :hook (python-mode . eglot-ensure)
         :config
         (with-eval-after-load 'eglot
@@ -576,6 +670,17 @@ in {
                        '(lfe-mode . ("expert" "--stdio"))))
         
         (add-hook 'lfe-mode-hook #'eglot-ensure))
+      ;;
+      ;; Gleam
+      ; TODO:
+      ;@@ (use-package gleam-ts-mode
+      ;@@   :ensure t
+      ;@@   :mode "\\.gleam\\'"
+      ;@@   :hook (gleam-ts-mode . eglot-ensure))
+
+      ;@@ (with-eval-after-load 'eglot
+      ;@@   (add-to-list 'eglot-server-programs
+      ;@@                '(gleam-ts-mode . ("gleam" "lsp"))))
 
       ; TODO: DATABASES, GRAPHS, SEM. WEB + ONTOL, GraphQL  ____
       (use-package graphql-mode)
@@ -597,7 +702,7 @@ in {
       (use-package prolog
         :ensure nil ; Built-in core mode
         :mode (("\\.pl\\'" . prolog-mode)
-               ("\\.m\\'" . prolog-mode)) ; Route Mercury-files her too
+               ("\\.m\\'" . prolog-mode)) ; Route Mercury-files here too
         :config
         (setq prolog-system 'swi))
       ; ----
@@ -646,10 +751,14 @@ in {
 
       (require 'general)
       (general-define-key
-        :states '(normal insert visual emacs)
+        :states '(normal visual emacs)
         :prefix ","
+
         "ff" 'find-file
         "bb" 'switch-to-buffer)
+
+      (require 'envrc)
+      (envrc-global-mode)
 
       (message "--- THE TOWER IS FINALLY ONLINE ---")
     '';
