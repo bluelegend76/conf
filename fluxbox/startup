@@ -1,0 +1,104 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+#Table of Screen Resolutions
+# black tower: 1280 x 1024
+# little white: 1024 x 600
+# black laptop(asus): 1366 x 768
+# grey laptop mskolan: 
+# grey laptop wae: 
+
+#fbsetbg -f ~/Dropbox/wallpaper/brownabstractbook-wallpaper.jpg &
+#fbsetbg -f ~/Dropbox/wallpaper/greenabstract-tech.jpg
+#fbsetbg -f ~/Dropbox/wallpaper/abstractblue1280x1024bt.jpg
+#fbsetbg -f ~/Dropbox/wallpaper/abstractblue1024x768bt.jpg &  ********=standard*
+#fbsetbg -f ~/Dropbox/wallpaper/blueabstract1024x600bluelegend-sw.jpg &  #smallwhite
+# fbsetbg -f ~/Downloads/gdrive-cleanlast-2021/20210412_192949.jpg &
+#
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210424_202007.jpg &
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20201010_180155.jpg &
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210424_191835.jpg &
+##fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210426_193422.jpg &
+
+#[bt_standard!!]
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210426_185223.jpg &
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210424_195450.jpg &
+# fbsetbg -f    ~/Dropbox/rsc/media/pic-graphics/wallp/20201010_180141.jpg
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210117_000006.jpg
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210117_000013.jpg
+# --
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210406_201910.jpg
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210412_192908.jpg
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210412_192913.jpg
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210412_192949.jpg
+# fbsetbg -f  ~/Dropbox/rsc/media/pic-graphics/wallp/20210412_193204.jpg
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210413_182119.jpg
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210423_200925.jpg
+# fbsetbg -f   ~/Dropbox/rsc/media/pic-graphics/wallp/20210424_192139.jpg
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210426_193344.jpg
+
+# stonewall
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210426_194511.jpg
+# bridge + sun-rays
+#@@@@ fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210412_192949.jpg
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/maskoffreedom.wallp.png
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/voiceoffreedom2.png
+fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/voiceoffreedom5.png
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/voiceoffreedom.png
+# fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/cyclosys-bare_1280x1024.jpg
+#   fbsetbg -f ~/Dropbox/rsc/media/pic-graphics/wallp/20210412_192913.jpg
+
+#
+#  ~/Dropbox/wallpaper/water-blue-dark-linux-debian-brands-logos-new-hd-wallpaper.jpg
+#fbsetbg -f ~/Dropbox/wallpaper/1024x768-beautiful-natural-scenery-wallpaper-wallpaper-download-re.jpg &
+# +fluxstyle: squared_blue
+# ------
+# fbsetbg -f ~/Dropbox/wallpaper/Milky_Way_over_Monument_Rocks,_Kansas,_USA.jpg &
+
+# orig = just 'dropbox start'
+## or ~/bin/scripts/./dropbox.py start
+# nm-applet &
+nm-tray &
+alarm-clock-applet &
+###### blueman-applet &
+
+#dockapps
+wmmoonclock &
+wmnd &
+wmcpuload &
+wmtime &
+wmbattery &
+# +också   mixer, audacious, mer grafisk cpuloader
+
+# Change your keymap:
+xmodmap "/home/bluelegend/.Xmodmap"
+
+dropbox.py stop
+sleep 25
+dropbox.py start
+insync start
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+#
+# Debian-local change:
+#   - fbautostart has been added with a quick hack to check to see if it
+#     exists. If it does, we'll start it up by default.
+which fbautostart > /dev/null
+if [ $? -eq 0 ]; then
+    fbautostart
+fi
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+exec fluxbox
+# or if you want to keep a log:
+# exec fluxbox -log "/home/bluelegend/.fluxbox/log"
