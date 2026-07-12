@@ -5,6 +5,7 @@
 #  rsync 'curr. Videos' to device (!! (****))
   #  Musik-Projektet (=linkfolders for all the different moods) + (playlists with the different moods)  **(**)
 
+sudo rsync -av --progress --delete /home/bluelegend/conf/vim/keymap/ /home/bluelegend/.vim/keymap
 # TODO: ADD CHECKS FOR WHAT IS MOUNTED[!!]
 # Ubuntu: /media/{username} 
 # Arch: /run/media/{username}
