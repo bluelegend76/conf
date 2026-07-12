@@ -46,6 +46,8 @@
     inkscape
     tuxguitar
     lilypond
+    # TODO: Or move Qsynth to high-end
+    timidity fluidsynth qsynth
     freesweep
     # fceux (+More/Extra emulators)
   ];
