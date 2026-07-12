@@ -6,7 +6,7 @@ gvim ~/dropbox-legacy/egnalåtar-dfs-blackandblueletsgo.txt
   # legacy.runscript.bash dfs_THEDOCTOR.bash
 at.melDb.transcr.sh
 at.arrCompose.sh
-# at.muTeach.sh
+at.muTeach.sh
 # --
 at.lilypond.mu.sh
 at.pitchGehör.mu.sh
