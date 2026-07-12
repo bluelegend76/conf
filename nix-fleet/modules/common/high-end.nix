@@ -81,6 +81,9 @@
       ${appimage-run}/bin/appimage-run /home/bluelegend/Downloads/MuseScore-Studio-4.6.5.253511702-x86_64.AppImage
     '')
 
+    openmw
+    # portmod  # Installing third-party mods/plugins for OpenMW
+
     # Kde Connect (or maybe use on frugal too)
     # Heavy Apps
     # okular
