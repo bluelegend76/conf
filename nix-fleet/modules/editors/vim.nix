@@ -6,7 +6,7 @@ let
                else "${config.home.homeDirectory}/SyncThing";
 
   # This creates ONE single package containing all your plugins
-  # without the 'doc/tags' collision error.
+  # without the 'doc/tags' collision-error.
   # TODO: Add Mercury syntax-support
 
   myVimPlugins = pkgs.linkFarm "my-vim-plugins" [
@@ -23,6 +23,11 @@ let
     { name = "pack/bundle/start/rainbow_csv"; path = pkgs.vimPlugins.rainbow_csv; }
     { name = "pack/bundle/start/tabular"; path = pkgs.vimPlugins.tabular; }
     { name = "pack/bundle/start/vim-easy-align"; path = pkgs.vimPlugins.vim-easy-align; }
+    { name = "pack/bundle/start/vimoutliner"; path = pkgs.vimPlugins.vimoutliner; }
+    { name = "pack/bundle/start/vimwiki"; path = pkgs.vimPlugins.vimwiki; }
+    # pkgs.vimwiki-markdown (0.4.1)
+
+    # Plugins for Programming-Languages
     { name = "pack/bundle/start/vim-hy"; path = pkgs.vimPlugins.vim-hy; }
     { name = "pack/bundle/start/vim-fugitive"; path = pkgs.vimPlugins.vim-fugitive; }
     { name = "pack/bundle/start/vim-gitgutter"; path = pkgs.vimPlugins.vim-gitgutter; }
