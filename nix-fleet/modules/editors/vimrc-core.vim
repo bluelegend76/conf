@@ -364,6 +364,7 @@ cnoremap <leader>e \ze
 
 "" 'RUN', Line etc = with Ext.Progr/Ex  ,ex/,ru
 nnoremap <leader>ru ^yg_:!<C-R>"<CR><CR>
+vnoremap <leader>ru y:!<C-R>"<CR><CR>
 nnoremap <leader>ex ^yg_:<C-R>"<CR><CR>
 " nnoremap <leader>et mm:normal! H
 " mt:normal! gg
@@ -378,7 +379,6 @@ nnoremap <silent> <leader>fx viWy:!firefox -new-tab <C-R>"<CR><CR>
 nnoremap <silent> <leader>tu yiW:!tuxguitar <C-R>" &<CR><CR>
 " Open Video
 nnoremap <leader>mp yiW:!mpv <C-R>" &<CR><CR>
-nnoremap <leader>ma yiW:!mpv --no-video --term-osd-bar <C-R>"<CR>
 " nnoremap <leader>ac viWy:!audacity <C-R>" &<CR><CR>
 "" Image-program
 nnoremap <leader>ri yiW:!ristretto <C-R>" &<CR><CR>
@@ -397,6 +397,9 @@ nnoremap <leader>em yiW:!emacs <C-R>" &<CR><CR>
 "" open with timidity** (=enkel)
 " nnoremap <leader>tm yiW:!timidity -ia <C-R>"<CR><CR>
 "" open with audacious***
+" TODO: MAY WANT TO REMOVE FILE-NAME SPACES + SET AD TO GENERAL PATTERN (viWY)
+nnoremap <leader>ma yiW:!mpv --no-video --term-osd-bar <C-R>"<CR>
+nnoremap <leader>ad 0yg_:!audacity <C-R>" &<CR><CR>
 nnoremap <leader>au viWy:!audacious <C-R>" &<CR><CR>
 "" open with file-browser **
 nnoremap <leader>th yiW:!thunar <C-R>" &<CR><CR>
@@ -512,6 +515,7 @@ nnoremap zö @@nzz
 
 
 """ ==== ==== LANG-TOOLS ==== ====
+nnoremap <leader>km :set keymap=
 " Search Char/Word(s) in Wiktionary
 vnoremap <silent> <leader>wk y:!firefox -new-tab https://en.wiktionary.org/wiki/<C-R>"<CR><CR>
 "  ##    FORVO-MAP  ,fo    glaube uisce  Pronounciation Dictionary
