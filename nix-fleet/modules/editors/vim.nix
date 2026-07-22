@@ -45,7 +45,17 @@ let
         # sha256 = pkgs.lib.fakeHash; 
       };
     }
-    # Cypher syntax-support
+    {
+      name = "pack/bundle/start/janet-vim";
+      # version = "unstable";
+      path = pkgs.fetchFromGitHub {
+        owner = "janet-lang";
+        repo = "janet.vim";
+        rev = "master";           # pin to a commit hash for reproducibility
+        sha256 = "sha256-e/AUuTQgjmXzN8IKGmmurkIuW4oPHj7rYr6MmXcDW7c=";
+      };
+    }
+    # Cypher-syntax support
     {
       name = "pack/bundle/start/cypher-vim-syntax";
       path = pkgs.fetchFromGitHub {
@@ -53,6 +63,28 @@ let
         repo = "cypher-vim-syntax";
         rev = "master"; # Or use a specific commit hash
         sha256 = "sha256-iJLl5BPM5KV+WcnmYV0HSfYyBePXkPYy2nWeqy2VU+o=";
+      };
+    }
+    # SPARQL syntax-support (adds filetype detection for *.rq on top of
+    # the original vim.org sparql.vim syntax file)
+    {
+      name = "pack/bundle/start/vim-sparql";
+      path = pkgs.fetchFromGitHub {
+        owner = "Omer";
+        repo = "vim-sparql";
+        rev = "48bbf44217c1e2a977c5d4d67d57c44ff974023d"; # master, pinned 2026-07
+        sha256 = "sha256-NGIICdWL9CFyzFpRZaUJaTySlzv9w4CzB6j8fRiHK8o=";
+      };
+    }
+    # Mercury syntax-support (official ftdetect/ftplugin/syntax files,
+    # extracted verbatim from the Mercury-Language/mercury "vim/" subtree)
+    {
+      name = "pack/bundle/start/mercury-vim";
+      path = pkgs.fetchFromGitHub {
+        owner = "yzhs";
+        repo = "mercury-vim";
+        rev = "ba8592847531c723872e5268748af57f1a8c1c2e"; # vim-plugin branch, pinned 2026-07
+        sha256 = "sha256-cTTr//Izrmzu5SXkJEmNWiNMvVjLlt+e+/btiBmF8w4=";
       };
     }
   ];
