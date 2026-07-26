@@ -30,6 +30,7 @@
     sops age
     thunar pavucontrol keepassxc
     evince ristretto img2pdf
+    pandoc
     # pdftk
     vlc mpv audacious
     yt-dlp yewtube
@@ -40,6 +41,7 @@
     # soundstretch
     img2pdf  # convert images to pdf
     qpdf     # or pdfmixup
+    djvulibre  # including 'djvutxt file.djv > file.txt'
     # librsvg =convert svg to pdf (with rsvg-convert)
     # ghostscript =convert ps to pdf (with ps2pdf)
     gimp
