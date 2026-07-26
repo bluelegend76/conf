@@ -50,6 +50,7 @@
     lilypond
     # TODO: Or move Qsynth to high-end
     timidity fluidsynth qsynth
+    alsa-utils
     freesweep
     # fceux (+More/Extra emulators)
   ];
