@@ -188,6 +188,10 @@ nnoremap Ä u
 vnoremap Ä <Esc>ugv
 " vnoremap <RightMouse><RightMouse> <Esc>ugv
 
+" Change directory to Android-device base-dir:
+nnoremap cd :cd /storage/emulated/0/<CR>
+"" cd ./storage/shared/
+
 " Flip ltr/rtl:
 nnoremap <silent> RL :setlocal rightleft!<CR>
 
