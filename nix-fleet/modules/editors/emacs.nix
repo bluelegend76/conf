@@ -21,6 +21,9 @@ in {
       # evil-numbers (i.e. c-a, c-x)
         # evil-goggles
       doom-themes doom-modeline
+      paredit
+      mu4e
+      # org-msg  # Org2HTML (Step 7+)
       magit
       # slime
       # TODO: OR TEST OUT INSTEAD
@@ -48,10 +51,11 @@ in {
       # ivy swiper counsel
 
       # Literate Programming ----
+      # ORG-JUPYTER (+Callysto)
       jupyter
       zmq
       envrc
-      # ORG-JUPYTER (+Callysto)
+      # ob-latex
       # ob-restclient  # Great for API work
       # TODO IMPORTANT: INSTALL 'ORG BABEL {PACKAGE}' TO USE BABEL IN ORG(!)
       # ob-go          # If you ever touch Go
@@ -60,6 +64,7 @@ in {
       # ob-graphql
       # ob-rust
 
+      # TODO: Bash mode
       exec-path-from-shell
       lsp-mode
       # TODO: emacs-guix
@@ -78,9 +83,14 @@ in {
       kotlin-mode
       fsharp-mode apheleia
       graphql-mode verb
+      janet-mode # or janet-ts-mode
+      xonsh-mode
       # color-theme-buffer-local
       # TODO: java-mode
       tuareg
+      julia-mode julia-vterm
+      ess poly-R poly-markdown
+      # or adding 'polymode'
       d-mode
       # ----
       csound-mode
@@ -125,8 +135,8 @@ in {
       (menu-bar-mode -1)
       (blink-cursor-mode 0)
 
-      (require 'evil)
       (setq evil-want-keybinding nil)
+      (require 'evil)
       (evil-mode 1)
 
       (with-eval-after-load 'evil-org
@@ -184,6 +194,20 @@ in {
               org-roam-ui-update-on-save t
               org-roam-ui-open-on-start nil))
 
+      (with-eval-after-load 'org
+        ;; Use dvisvgm for LaTeX fragment previews (scalable, generally smaller files)
+        (setq org-preview-latex-default-process 'dvisvgm)
+
+        ;; Bump preview scale up from the default so formulas are actually legible
+        (setq org-format-latex-options
+              (plist-put org-format-latex-options :scale 2))
+        ; NOTE/TODO: Only use options below for preview-mode
+        (setq org-format-latex-options
+              (plist-put org-format-latex-options :foreground "White"))
+        (setq org-format-latex-options
+              (plist-put org-format-latex-options :background "Transparent")))
+
+
       ; TODO: ADD ORG-QL !!  ____
       ;; 4. Org Query Language Core Configuration
       (use-package org-ql
@@ -198,12 +222,83 @@ in {
          'org-babel-load-languages
          '((emacs-lisp . t) ;; usually on by default, but explicit is fine
            (python . t)
-           (jupyter . t))) ;; jupyter loaded last, per emacs-jupyter's own recommendation
+           (jupyter . t)   ;; jupyter loaded last, per emacs-jupyter's own recommendation
+           (latex . t)
+           (julia . t)
+           (R . t)))
         (setq org-confirm-babel-evaluate nil) ;; skip "Really evaluate?" — see note above
         (setq org-babel-default-header-args:jupyter-python
               '((:async . "yes")
                 (:session . "hylang-jupyter")
                 (:kernel . "hylang-jupyter"))))
+
+
+      ;; ============================================================
+      ;; MU4E — Email in Emacs
+      ;; ============================================================
+      (setq user-mail-address "trulystrange@gmail.com"
+            user-full-name    "Daniel Albertsson")
+
+      (use-package mu4e
+        :ensure nil  ;; provided by Nix (emacsPackages.mu4e)
+        :commands mu4e
+        :hook (mu4e-main-mode . (lambda ()
+                                  (evil-collection-init 'mu4e)))
+        :config
+        ;; --- Core paths ---
+        (setq mu4e-maildir "~/Maildir"
+              mu4e-get-mail-command "mbsync gmail"
+              mu4e-update-interval (* 5 60)
+              mu4e-change-filenames-when-moving t  ;; required for mbsync
+              mu4e-attachment-dir "~/Downloads")
+
+        ;; --- Gmail folder mapping ---
+        (setq mu4e-drafts-folder  "/gmail/[Gmail]/Drafts"
+              mu4e-sent-folder    "/gmail/[Gmail]/Sent Mail"
+              mu4e-trash-folder   "/gmail/[Gmail]/Trash"
+              mu4e-refile-folder  "/gmail/[Gmail]/All Mail")
+
+        ;; Gmail saves sent mail server-side already — avoid duplicates
+        (setq mu4e-sent-messages-behavior 'delete)
+
+        ;; --- Bookmarks ---
+        (setq mu4e-bookmarks
+              (list
+               (make-mu4e-bookmark
+                :name "Inbox"
+                :query "maildir:/gmail/Inbox AND NOT flag:trashed"
+                :key ?i)
+               (make-mu4e-bookmark
+                :name "Unread"
+                :query "flag:unread AND NOT flag:trashed"
+                :key ?u)
+               (make-mu4e-bookmark
+                :name "Today"
+                :query "date:today..now AND NOT flag:trashed"
+                :key ?t)
+               (make-mu4e-bookmark
+                :name "Week"
+                :query "date:7d..now AND NOT flag:trashed"
+                :key ?w)))
+
+        ;; --- Headers view columns ---
+        (setq mu4e-headers-fields
+              '((:human-date   . 12)
+                (:flags        .  6)
+                (:from         . 22)
+                (:subject      . nil))))  ;; nil = take remaining width
+
+      ;; --- General.el leader bindings (comma = your leader) ---
+      (general-define-key
+        :states '(normal visual emacs)
+        :prefix ","
+        "mm" 'mu4e
+        "mu" '(lambda () (interactive)
+                (mu4e-headers-search "flag:unread AND NOT flag:trashed"))
+        "mi" '(lambda () (interactive)
+                (mu4e-headers-search "maildir:/gmail/Inbox"))
+        "mc" 'mu4e-compose-new)
+
 
       (use-package vterm
         :commands vterm
@@ -398,6 +493,40 @@ in {
                     (when (derived-mode-p 'go-ts-mode)
                       (ignore-errors (eglot-format-buffer))))))
 
+        ;; Janet major mode + minimal REPL-integration (no reliance on
+        ;; unmaintained ijanet-mode/inf-janet packages).
+        (use-package janet-mode
+          :ensure nil                          ;; installed via Nix, not package.el
+          :mode "\\.janet\\'"
+          :hook (janet-mode . paredit-mode)
+          :config
+          (defun my/janet-repl ()
+            "Start or switch to a Janet REPL."
+            (interactive)
+            (let ((buf "*janet*"))
+              (unless (comint-check-proc buf)
+                (make-comint-in-buffer "janet" buf "janet"))
+              (pop-to-buffer buf)))
+
+          (defun my/janet-send-region (start end)
+            "Send the active region to the Janet REPL."
+            (interactive "r")
+            (let ((text (buffer-substring-no-properties start end)))
+              (my/janet-repl)
+              (comint-send-string (get-buffer-process "*janet*")
+                                    (concat text "\n"))))
+
+          (defun my/janet-send-buffer ()
+            "Send the whole buffer to the Janet REPL."
+            (interactive)
+            (my/janet-send-region (point-min) (point-max)))
+
+          :bind (:map janet-mode-map
+                      ("C-c C-p" . my/janet-repl)
+                      ("C-c C-r" . my/janet-send-region)
+                      ("C-c C-b" . my/janet-send-buffer)))
+
+
       ;; OCaml Setup
       (use-package tuareg
         :commands tuareg-mode)
@@ -524,9 +653,35 @@ in {
       ;; ============================================================
       ;; RESCRIPT - syntax highlighting and mode
       ;; ============================================================
+      ; TODO: FIX/SET COMPLETION, SYMBOL-INFO, ETC[!]
       (use-package rescript-mode
         :ensure t
         :hook (rescript-mode . eglot-ensure))
+
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '(rescript-mode . ("rescript-language-server" "--stdio"))))
+
+      ;; Add project-local node_modules/.bin to PATH for rescript-mode buffers
+      ;; so the language server can find the rescript and bsc compiler binaries
+      (add-hook 'rescript-mode-hook
+                (lambda ()
+                  (let ((local-bin (expand-file-name
+                                    "node_modules/.bin"
+                                    (or (locate-dominating-file
+                                         default-directory
+                                         "rescript.json")
+                                        default-directory))))
+                    (when (file-directory-p local-bin)
+                      (setq-local exec-path (cons local-bin exec-path))
+                      (setenv "PATH" (concat local-bin ":" (getenv "PATH")))))
+
+        (setq eglot-workspace-configuration
+              '(:rescript
+                (:settings
+                 (:askToStartBuild nil
+                  :binaryPath "rescript"))))))
+
 
       ;; ============================================================
       ;; MDX - treat as a mix of markdown and JSX
@@ -635,6 +790,77 @@ in {
                     (error "No prompt found or `comint-prompt-regexp' not set properly"))))))
 
         (add-hook 'hy-mode-hook #'eglot-ensure))
+
+      ;; ============================================================
+      ;; XONSH-MODE — syntax highlighting, reuses Pyright via Eglot
+      ;; ============================================================
+      (use-package xonsh-mode
+        :ensure t
+        :mode "\\.xsh\\'"
+        :hook (xonsh-mode . eglot-ensure)
+        :config
+        (with-eval-after-load 'eglot
+          (add-to-list 'eglot-server-programs
+                       '(xonsh-mode . ("pyright-langserver" "--stdio")))))
+
+
+      ;; ============================================================
+      ;; JULIA — LSP via Eglot + org-babel integration
+      ;; ============================================================
+      (use-package julia-mode
+        :ensure t
+        :mode "\\.jl\\'"
+        :hook (julia-mode . eglot-ensure))
+
+      (use-package julia-vterm
+        :ensure t
+        :hook (julia-mode . julia-vterm-mode)
+        :bind (:map julia-vterm-mode-map
+                    ("C-c C-c" . julia-vterm-send-region-or-current-line)
+                    ("C-c C-b" . julia-vterm-send-buffer)
+                    ("C-c C-s" . julia-vterm-switch-to-repl-buffer)))
+
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '(julia-mode . ("julia"
+                                     "--startup-file=no"
+                                     "--history-file=no"
+                                     "-e"
+                                     "using LanguageServer; server = LanguageServer.LanguageServerInstance(stdin, stdout); run(server)"))))
+
+      ;; ============================================================
+      ;; R — ESS (Emacs Speaks Statistics) + LSP via Eglot
+      ;; ============================================================
+      (use-package ess
+        :ensure t
+        :mode (("\\.R\\'"   . R-mode)
+               ("\\.Rmd\\'" . poly-markdown+R-mode))
+        :hook
+        (R-mode . eglot-ensure)
+        (R-mode . (lambda ()
+                    ;; ESS smart underscore — converts _ to <- in R code
+                    (setq ess-smart-S-assign-key "_")))
+        :config
+        (setq ess-use-eldoc t)
+        (setq ess-r-backend 'lsp)
+        (setq ess-style 'RStudio)      ;; familiar indentation style
+        (setq ess-ask-for-ess-directory nil)
+        (setq inferior-R-program-name "R"))
+
+      ;; Polymode for R Markdown files
+      (use-package poly-R
+        :ensure t
+        :after ess)
+
+      (use-package poly-markdown
+        :ensure t
+        :after ess)
+
+      ;; R LSP via Eglot
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '(R-mode . ("R" "--slave" "-e"
+                                 "languageserver::run()"))))
 
 
       ;; Kotlin Setup
