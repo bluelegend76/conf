@@ -36,6 +36,9 @@
       git_email = {
         path = "/home/bluelegend/.config/sops/git_email";
       };
+      gmail_app_password = {
+        path = "/home/bluelegend/.config/sops/gmail_app_password";
+      };
     };
   };
 
@@ -108,6 +111,61 @@
         identityFile = "~/.config/sops-nix/secrets/ssh_private_key";
       };
     };
+  };
+
+  programs.mu.enable = true;
+  programs.mbsync.enable = true;
+  programs.msmtp.enable = true;
+
+  accounts.email = {
+    maildirBasePath = "Maildir";
+
+    accounts."gmail" = {
+      primary = true;
+      address = "trulystrange@gmail.com";
+      userName = "trulystrange@gmail.com";
+      realName = "Daniel Albertsson";
+
+      passwordCommand = "cat /home/bluelegend/.config/sops/gmail_app_password";
+
+      imap = {
+        host = "imap.gmail.com";
+        port = 993;
+        tls.enable = true;
+      };
+
+      mbsync = {
+        enable = true;
+        create = "maildir";
+        expunge = "both";
+        remove = "both";
+        patterns = [
+          "*"
+          "![Gmail]*"
+          "[Gmail]/Sent Mail"
+          "[Gmail]/All Mail"
+          "[Gmail]/Trash"
+          "[Gmail]/Drafts"
+        ];
+      };
+
+      smtp = {
+        host = "smtp.gmail.com";
+        port = 587;
+        tls = {
+          enable = true;
+          useStartTls = true;
+        };
+      };
+
+      msmtp.enable = true;  # ← correct: no 'programs.' prefix inside accounts block
+    };
+  };
+
+  services.mbsync = {
+    enable = true;
+    frequency = "*:0/10";  # every 10 minutes
+    postExec = "${pkgs.mu}/bin/mu index";
   };
 
   # This part goes outside the programs.bash block, but inside your home-manager config
