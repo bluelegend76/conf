@@ -164,13 +164,15 @@
 
   # Only keep essential SYSTEM tools here
   environment.systemPackages = with pkgs; [
-    fluxbox
+    xev
     vim-full gitFull wget curl htop tree tailscale syncthing
     jq yq
     ugrep # agrep ack ag
+    android-tools
     mc
     gh # the GitHub CLI
     sqlite sqlitebrowser
+
     # lua51Packages.yuescript
     yuescript
 
