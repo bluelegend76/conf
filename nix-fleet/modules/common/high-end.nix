@@ -55,7 +55,8 @@
     # TODO may want to use 'spectacle -bnf' instead
     grim
     slurp
-    # TODO: ADD KDE-CONNECT + ANDROID-TOOLS
+    wev
+    kdePackages.kdeconnect-kde
     audacity
 
     imagemagick
@@ -113,6 +114,7 @@
     # jetbrains.pycharm -oss
     # jetbrains.webstorm
     qpwgraph
+    jack2
 
     (sbcl.withPackages (ps: with ps; [
       alexandria
