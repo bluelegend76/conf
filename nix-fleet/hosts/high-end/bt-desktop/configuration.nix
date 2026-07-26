@@ -17,6 +17,8 @@
   services.xserver.enable = true;
   services.displayManager.sddm = { enable = true; wayland.enable = true; };
   services.desktopManager.plasma6.enable = true;
+  services.xserver.windowManager.icewm.enable = true;
+  # services.xserver.windowManager.fluxbox.enable = true;
   services.xserver.xkb = { layout = "se"; variant = "dvorak"; };
   console.keyMap = "sv-latin1";
 
