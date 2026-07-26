@@ -639,9 +639,7 @@ in {
         (add-to-list 'eglot-server-programs
                      '(css-ts-mode . ("vscode-css-language-server" "--stdio")))
         (add-to-list 'eglot-server-programs
-                     '(json-ts-mode . ("vscode-json-language-server" "--stdio")))
-        (add-to-list 'eglot-server-programs
-                     '(rescript-mode . ("rescript-language-server" "--stdio"))))
+                     '(json-ts-mode . ("vscode-json-language-server" "--stdio"))))
 
       (dolist (hook '(js-ts-mode-hook
                       typescript-ts-mode-hook
