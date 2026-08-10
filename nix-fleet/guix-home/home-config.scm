@@ -132,4 +132,25 @@ eval \"$(starship init bash)\"
    (simple-service 'emacs-cluster-bridge
                    home-files-service-type
                    (list `(".config/emacs/guix-clusters.el" 
-                           ,(plain-file "guix-clusters.el" emacs-cluster-logic)))))))
+                           ,(plain-file "guix-clusters.el" emacs-cluster-logic))))
+
+   (simple-service 'supercollider-dirs
+                   home-files-service-type
+                   (list `(".local/share/SuperCollider/Extensions/.keep"
+                           ,(plain-file "sc-extensions-keep" ""))))
+   (simple-service 'nvim-lua-configs
+                   home-files-service-type
+                   (list
+                     `(".config/nvim/lua/neovide.lua"
+                       ,(plain-file "neovide.lua"
+                         "if vim.g.neovide then
+  vim.g.neovide_cursor_animation_length = 0
+  vim.g.neovide_scroll_animation_length = 0
+  vim.g.neovide_position_animation_length = 0
+  vim.g.neovide_cursor_trail_size = 0
+  vim.g.neovide_cursor_vfx_mode = \"\"
+  vim.g.neovide_opacity = 0.9
+  vim.g.neovide_normal_opacity = 0.9
+end
+"))
+   )))))
