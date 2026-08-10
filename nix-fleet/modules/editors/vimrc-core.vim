@@ -755,3 +755,7 @@ inoremap <leader>ti <Esc>:r !date +"\%Y-\%m-\%d"<CR>A
 "   = force order with parentheses)
 inoremap <leader>ca <Esc>viWyA=<C-R>=<C-R>"<CR>
 
+" if has('nvim')
+"   lua require('scnvim').setup({ ensure_installed = true })
+" endif
+
