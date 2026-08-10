@@ -33,7 +33,15 @@ let
     { name = "pack/bundle/start/vim-gitgutter"; path = pkgs.vimPlugins.vim-gitgutter; }
     { name = "pack/bundle/start/vim-nix"; path = pkgs.vimPlugins.vim-nix; }
     { name = "pack/bundle/start/vim-teal"; path = pkgs.vimPlugins.vim-teal; }
-    { name = "pack/bundle/start/scnvim"; path = pkgs.vimPlugins.scnvim; }
+    {
+      name = "pack/bundle/start/scnvim";
+      path = pkgs.fetchFromGitHub {
+        owner = "davidgranstrom";
+        repo = "scnvim";
+        rev = "master";
+        sha256 = "sha256-n4xc7NNpXKqjZwhpxrZyrB7L0bQzXfcq7NDZ5Eca1go=";
+      };
+    }
     # Add YueScript syntax-support
     {
       name = "pack/bundle/start/vim-yuescript";
@@ -139,8 +147,24 @@ in {
     # withPython3 = true;
 
     extraConfig = ''
+      set packpath^=${myVimPlugins}
+      packloadall
+      ${builtins.readFile ./vimrc-core.vim}
+      lua require('neovide')
     '';
   };
+
+  # xdg.configFile."nvim/lua/neovide.lua".text = ''
+  #   if vim.g.neovide then
+  #     vim.g.neovide_cursor_animation_length = 0
+  #     vim.g.neovide_scroll_animation_length = 0
+  #     vim.g.neovide_position_animation_length = 0
+  #     vim.g.neovide_cursor_trail_size = 0
+  #     vim.g.neovide_cursor_vfx_mode = ""
+  #     vim.g.neovide_opacity = 0.9          -- window background opacity (0.0–1.0)
+  #     vim.g.neovide_normal_opacity = 0.9   -- opacity of the Normal highlight specifically
+  #   end
+  # '';
 
   home.packages = with pkgs; [
     vim-full
