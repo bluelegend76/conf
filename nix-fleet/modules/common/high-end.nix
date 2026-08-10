@@ -59,6 +59,13 @@
     kdePackages.kdeconnect-kde
     audacity
 
+    # Music-related global installs
+    # perhaps: Ardour, 
+    # 
+    # surge-xt
+    # carla
+    # puredata
+
     imagemagick
     (tesseract.override {
       enableLanguages = [ "eng" "swe" ];
