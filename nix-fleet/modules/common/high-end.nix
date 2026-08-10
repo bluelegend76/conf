@@ -109,16 +109,21 @@
     ## ];
     logseq
     anki
+
+    vscode
+
     (discord.override {
       withVencord = true;
     })
     signal-desktop
+
     libreoffice-fresh
     jetbrains.rider
     # jetbrains.idea-oss
       # jetbrains.idea
     # jetbrains.clion
-    # jetbrains.pycharm -oss
+    # jetbrains.pycharm
+    # -oss
     # jetbrains.webstorm
     qpwgraph
     jack2
