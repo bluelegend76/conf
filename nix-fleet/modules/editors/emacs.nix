@@ -45,7 +45,8 @@ in {
       ## graphviz
       # TODO - Logseq: logseq-mode
       # logseq-mode outline-indent-mode origami
-      # gptel          # (Optional) If you want to use LLMs inside Org buffers
+      gptel          # (Optional) If you want to use LLMs inside Org buffers
+      ellama
       ## vimish folds
       # avy
       # ivy swiper counsel
@@ -113,6 +114,7 @@ in {
     force = true;
     text = ''
       (setq debug-on-error nil)
+      ; (setq debug-on-error t)
 
       ;; Disable onTypeFormatting entirely — it's what's causing the freeze
       ;; since Eglot waits for a response that vtsls can't provide
@@ -207,7 +209,6 @@ in {
         (setq org-format-latex-options
               (plist-put org-format-latex-options :background "Transparent")))
 
-
       ; TODO: ADD ORG-QL !!  ____
       ;; 4. Org Query Language Core Configuration
       (use-package org-ql
@@ -231,6 +232,41 @@ in {
               '((:async . "yes")
                 (:session . "hylang-jupyter")
                 (:kernel . "hylang-jupyter"))))
+
+      ;; ============================================================
+      ;; AI / LLM — gptel + ellama, backed by local Ollama
+      ;; ============================================================
+      (use-package gptel
+        :ensure nil  ;; provided by Nix
+        :hook (gptel-mode . (lambda () (evil-collection-init 'gptel)))
+        :config
+        (setq gptel-backend
+              (gptel-make-ollama "Ollama"
+                :host "localhost:11434"
+                :stream t
+                :models '(llama3.1:8b codellama:13b)))
+        (setq gptel-model 'llama3.1:8b)
+        (setq gptel-default-mode 'org-mode))  ;; matches your Org-heavy workflow
+
+      (use-package ellama
+        :ensure nil  ;; provided by Nix
+        :init
+        (require 'llm-ollama)
+        (setopt ellama-language "English")
+        (setopt ellama-provider
+                (make-llm-ollama
+                 :chat-model "llama3.1:8b"
+                 :embedding-model "nomic-embed-text")))
+
+      (general-define-key
+       :states '(normal visual)
+       :prefix ","
+       "as" 'gptel-send
+       "am" 'gptel-menu
+       "ac" 'gptel
+       "ar" 'ellama-code-review
+       "at" 'ellama-translate
+       "aS" 'ellama-summarize)
 
 
       ;; ============================================================
