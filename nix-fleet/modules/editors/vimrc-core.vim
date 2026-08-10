@@ -68,10 +68,7 @@ set smartindent
 "" nnoremap <C-MouseUp> :silent! let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)-1)', '')<CR>
 "" nnoremap <C-MouseDown> :silent! let &guifont = substitute(&guifont,':h\zs\d\+','\=eval(submatch(0)+1)', '')<CR>
 
-let g:init_fontsize = 14
-let g:currFontSize = g:init_fontsize
 " HOHOHO: PARSE OUT CURR.FONTSIZE FROM 'set guifont?'
-exe 'set guifont=Monospace\ Regular\ ' . expand(g:currFontSize)
 " Abe-tip Font:  https://tobiasjung.name/profont/
 " ==== MagnifiChar ====
 " TODO: ADD SETTING/SELECTING FONT ****
@@ -79,34 +76,44 @@ exe 'set guifont=Monospace\ Regular\ ' . expand(g:currFontSize)
 "       ECHO/REPORT FONT
 "          :set guifont?   (=show current guifont)
 " TODO: POSSIBLY MERGING UPSIZE/DOWNSIZE INTO 'RESIZE' W. IF
+let g:init_fontsize = 14
+let g:currFontSize = g:init_fontsize
+
+function! s:FontString(size)
+  if has('nvim')
+    return 'Monospace:h' . a:size
+  else
+    return 'Monospace\ Regular\ ' . a:size
+  endif
+endfunction
+
+exe 'set guifont=' . s:FontString(g:currFontSize)
+
 function! UpsizeFont()
-    let g:currFontSize += 1
-    exe 'set guifont=Monospace\ Regular\ ' . expand(g:currFontSize)
-    echo g:currFontSize
+  let g:currFontSize += 1
+  exe 'set guifont=' . s:FontString(g:currFontSize)
+  echo g:currFontSize
 endfunction
 
 function! DownsizeFont()
-    let g:currFontSize -= 1
-    exe 'set guifont=Monospace\ Regular\ ' . expand(g:currFontSize)
-    echo g:currFontSize
+  let g:currFontSize -= 1
+  exe 'set guifont=' . s:FontString(g:currFontSize)
+  echo g:currFontSize
 endfunction
 
 function! SetFontsize()
-    let answer = input("Fontsize: ")
-    if answer == ""
-      exe 'set guifont=Monospace\ Regular\ ' . expand(g:currFontSize)
-    else
-      let g:currFontSize = answer
-    endif
-
-    exe 'set guifont=Monospace\ Regular\ ' . expand(g:currFontSize)
-    echo g:currFontSize
+  let answer = input("Fontsize: ")
+  if answer != ""
+    let g:currFontSize = answer
+  endif
+  exe 'set guifont=' . s:FontString(g:currFontSize)
+  echo g:currFontSize
 endfunction
 
 function! DefaultFontsize()
-    let g:currFontSize = g:init_fontsize
-    exe 'set guifont=Monospace\ Regular\ ' . expand(g:currFontSize)
-    echom "Fontsize Reset to: " . g:currFontSize
+  let g:currFontSize = g:init_fontsize
+  exe 'set guifont=' . s:FontString(g:currFontSize)
+  echom "Fontsize Reset to: " . g:currFontSize
 endfunction
 
 noremap <silent> <C-ScrollWheelUp> :call UpsizeFont()<CR>
