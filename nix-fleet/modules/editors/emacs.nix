@@ -264,22 +264,26 @@ in {
         ;; --- Bookmarks ---
         (setq mu4e-bookmarks
               (list
-               (make-mu4e-bookmark
-                :name "Inbox"
-                :query "maildir:/gmail/Inbox AND NOT flag:trashed"
-                :key ?i)
-               (make-mu4e-bookmark
-                :name "Unread"
-                :query "flag:unread AND NOT flag:trashed"
-                :key ?u)
-               (make-mu4e-bookmark
-                :name "Today"
-                :query "date:today..now AND NOT flag:trashed"
-                :key ?t)
-               (make-mu4e-bookmark
-                :name "Week"
-                :query "date:7d..now AND NOT flag:trashed"
-                :key ?w)))
+               (list :name "Inbox"
+                     :query "maildir:/gmail/Inbox AND NOT flag:trashed"
+                     :key ?i)
+               (list :name "Unread"
+                     :query "flag:unread AND NOT flag:trashed"
+                     :key ?u)
+               (list :name "Today"
+                     :query "date:today..now AND NOT flag:trashed"
+                     :key ?t)
+               (list :name "Week"
+                     :query "date:7d..now AND NOT flag:trashed"
+                     :key ?w)))
+
+        ;; --- Sending mail via msmtp ---
+        (with-eval-after-load 'message
+          (setq send-mail-function 'message-send-mail-with-sendmail
+                message-send-mail-function 'message-send-mail-with-sendmail
+                sendmail-program (executable-find "msmtp")
+                message-sendmail-f-is-evil t
+                message-sendmail-extra-arguments '("--read-envelope-from")))
 
         ;; --- Headers view columns ---
         (setq mu4e-headers-fields
@@ -298,6 +302,177 @@ in {
         "mi" '(lambda () (interactive)
                 (mu4e-headers-search "maildir:/gmail/Inbox"))
         "mc" 'mu4e-compose-new)
+
+      (require 'gnus-dired)
+      (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+
+      ;;; mu4e-coldstorage.el {{{
+      ;;; --- Archive-and-delete workflow for mu4e cold storage
+
+      ;; ---------------------------------------------------------------------
+      ;; TWO WAYS TO USE THIS
+      ;; ---------------------------------------------------------------------
+      ;;
+      ;; A) Right now, on one message or a contiguous block:
+      ;;    1. Put point on a message, or select a contiguous region
+      ;;       (Evil visual state: V then j/k to extend).
+      ;;    2. Press ,ma
+      ;;    3. Prompted once for the cold-storage folder (defaults to the
+      ;;       last one you used -- just press Enter to reuse it).
+      ;;    4. Message(s) get a visible pending mark (like D), reviewable
+      ;;       and unmarkable with u. Nothing touches disk yet.
+      ;;    5. Press x (and later sync) to actually copy + delete.
+      ;;
+      ;; B) Scattered, non-contiguous messages found while browsing/searching:
+      ;;    1. Wherever you spot a message to archive, press * on it
+      ;;       (mu4e's built-in "mark for something -- decide later").
+      ;;       Repeat anywhere, any number of times, across any searches.
+      ;;    2. When done selecting, press ,ma ONE time (not on any particular
+      ;;       message -- it detects the pending batch automatically).
+      ;;       You're prompted once for the destination, applied to the
+      ;;       WHOLE accumulated batch -- no intermediate "which action?"
+      ;;       menu, it goes straight to cold-storage archiving.
+      ;;    3. Press x (and later sync) to actually copy + delete everything.
+      ;;
+      ;;    (You can still fall back to mu4e's own generic x/# resolution
+      ;;    menu instead of ,ma if you ever want a *different* action for
+      ;;    a "something"-marked batch -- e.g. delete or move instead.)
+      ;;
+      ;; In both cases, nothing is copied or deleted until the mark is
+      ;; actually executed (x) -- consistent with how every other mu4e mark
+      ;; behaves.
+
+      (defvar my/mu4e-coldstorage-last-target "~/Empire/store/messages/mail/"
+        "Default / last-used cold-storage root directory, offered as the default in the destination prompt.")
+
+      ;; Everything below touches mu4e internals (the `mu4e-marks' variable,
+      ;; `mu4e-headers-mode-map', etc.) which only exist once mu4e itself has
+      ;; actually been loaded. Since mu4e is normally loaded lazily/deferred
+      ;; (only when you first open it), wrap all of this in
+      ;; `with-eval-after-load' so it runs at the right time instead of
+      ;; erroring at Emacs startup.
+      (with-eval-after-load 'mu4e
+
+      (defun my/mu4e-coldstorage--ensure-maildir (target)
+        "Ensure TARGET is a valid Maildir (cur/new/tmp exist), return TARGET."
+        (dolist (d (list target
+                          (expand-file-name "cur" target)
+                          (expand-file-name "new" target)
+                          (expand-file-name "tmp" target)))
+          (unless (file-directory-p d) (make-directory d t)))
+        target)
+
+      (defun my/mu4e-coldstorage--ask-target ()
+        "Prompt once for the cold-storage destination, remembering the choice."
+        (let* ((chosen (read-directory-name "Cold storage folder: "
+                                             my/mu4e-coldstorage-last-target
+                                             my/mu4e-coldstorage-last-target))
+               (target (directory-file-name (expand-file-name chosen))))
+          (setq my/mu4e-coldstorage-last-target target)
+          (my/mu4e-coldstorage--ensure-maildir target)))
+
+      (defun my/mu4e-coldstorage--action (docid msg target)
+        "Copy MSG's raw file into TARGET/cur/, then defer to mu4e's own built-in delete action (looked up dynamically from `mu4e-marks', so we never have to guess at or hardcode mu4e's internal flag-setting/proc-call details -- whatever the real \"delete\" mark currently does is exactly what runs here too)."
+        (let* ((src (mu4e-message-field msg :path))
+               (curdir (expand-file-name "cur" target))
+               (dst (expand-file-name (file-name-nondirectory src) curdir)))
+          (copy-file src dst t)
+          (let ((delete-action (plist-get (cdr (assq 'delete mu4e-marks)) :action)))
+            (if delete-action
+                (funcall delete-action docid msg target)
+              (mu4e-warn "Could not find mu4e's built-in delete action to chain to")))))
+
+      ;; Register the custom mark type. This is the same extension point
+      ;; mu4e's own built-in D/d/m marks are implemented through, so it
+      ;; participates fully in mu4e's normal mark/review/execute lifecycle,
+      ;; AND becomes selectable as a resolution target for '*' (mark for
+      ;; something) + '#'/'x' (resolve deferred marks).
+      (add-to-list 'mu4e-marks
+                   '(coldstorage
+                     :char "z"
+                     :prompt "zarchive to cold storage"
+                     :ask-target my/mu4e-coldstorage--ask-target
+                     :show-target (lambda (target) (format "coldstorage:%s" target))
+                     :action my/mu4e-coldstorage--action))
+
+      (defun my/mu4e-coldstorage--has-pending-something-p ()
+        "Non-nil if the current headers buffer has any pending '*' (something) marks."
+        (and (boundp 'mu4e--mark-map) mu4e--mark-map
+             (let (found)
+               (maphash (lambda (_docid val)
+                          (when (eq (car val) 'something) (setq found t)))
+                        mu4e--mark-map)
+               found)))
+
+      (defun my/mu4e-coldstorage--resolve-something ()
+        "Resolve every pending 'something' (*) mark straight to coldstorage. Mirrors mu4e's own `mu4e-mark-resolve-deferred-marks', but skips the \"which mark type?\" prompt entirely -- goes straight to coldstorage, asking for the destination once for the whole batch."
+        (mu4e--mark-in-context
+         (let (target got-target)
+           (maphash
+            (lambda (docid val)
+              (when (eq (car val) 'something)
+                (unless got-target
+                  (setq target (my/mu4e-coldstorage--ask-target))
+                  (setq got-target t))
+                (save-excursion
+                  (when (mu4e~headers-goto-docid docid)
+                    (mu4e-mark-set 'coldstorage target)))))
+            mu4e--mark-map))))
+
+      (defun my/mu4e-archive-and-delete ()
+        "If there are pending '*' (something) marks in this buffer, resolve ALL of them straight to cold-storage archiving, prompting once for the whole batch. Otherwise, mark the message at point (or active region) directly for cold-storage archiving."
+        (interactive)
+        (if (my/mu4e-coldstorage--has-pending-something-p)
+            (my/mu4e-coldstorage--resolve-something)
+          (mu4e-mark-set 'coldstorage)))
+
+      ;; Evil/general.el-aware bindings, under the existing personal leader
+      ;; (matches the existing ,mm binding used to open mu4e) rather than a
+      ;; bare letter, since mu4e + evil-collection already claim most single
+      ;; letters (including "A", which is evil-collection's own
+      ;; mark-for-action binding -- not to be confused with this).
+      (general-define-key
+       :states '(normal visual)
+       :keymaps 'mu4e-headers-mode-map
+       :prefix ","
+       "ma" #'my/mu4e-archive-and-delete)
+
+      (defun my/mu4e-view-coldstorage-message (path)
+        "View an archived cold-storage message file at PATH using mu4e's
+      own normal message view -- the same rendering (headers, HTML/plain
+      body, attachments) you get opening a regular message -- without
+      ever adding PATH to mu4e's index/database.
+
+      Works by asking the `mu' command-line tool to parse the raw file
+      into the same s-expression/plist structure mu4e's own viewer
+      consumes internally (`mu view --format=sexp'), then handing that
+      plist straight to `mu4e-view'."
+        (interactive
+         (list (read-file-name
+                "Archived message file: "
+                (file-name-as-directory
+                 (expand-file-name "cur" my/mu4e-coldstorage-last-target)))))
+        (let* ((path (expand-file-name path))
+               (sexp-str (with-temp-buffer
+                           (let ((status (call-process "mu" nil t nil
+                                                        "view" "--format=sexp" path)))
+                             (unless (zerop status)
+                               (mu4e-error "mu view failed on %s (exit %s): %s"
+                                           path status (buffer-string))))
+                           (buffer-string)))
+               (msg (car (read-from-string sexp-str))))
+          (mu4e-view msg)))
+
+      (general-define-key
+       :states '(normal visual)
+       :keymaps 'mu4e-headers-mode-map
+       :prefix ","
+       "mv" #'my/mu4e-view-coldstorage-message)
+
+      ) ;; end of (with-eval-after-load 'mu4e ...)
+
+      (provide 'mu4e-coldstorage)
+      ;;; mu4e-coldstorage.el ends here }}}
 
 
       (use-package vterm
