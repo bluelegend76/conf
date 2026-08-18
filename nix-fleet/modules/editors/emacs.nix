@@ -75,8 +75,7 @@ in {
       web-mode
       rescript-mode
       lfe-mode
-      clojure-mode
-      cider
+      clojure-mode cider
       rustic
       hy-mode
       php-mode
