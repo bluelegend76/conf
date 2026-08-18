@@ -85,6 +85,7 @@ in {
       fsharp-mode apheleia
       graphql-mode verb
       janet-mode # or janet-ts-mode
+      # TODO: nushell-mode
       xonsh-mode
       # color-theme-buffer-local
       # TODO: java-mode
