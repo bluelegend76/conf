@@ -15,8 +15,11 @@
     ../modules/common/high-end.nix
     ../modules/editors/vim.nix
     ../modules/editors/emacs.nix
+    ../modules/editors/vscode.nix
     ../modules/desktop/wayland-wm.nix
     ../modules/services/sync.nix
+    # ../modules/audio/midish.nix
+    #   ~/SyncThing/rsc/tmpl/ngix/hask-euterp/
     inputs.sops-nix.homeManagerModules.sops
   ];
 
