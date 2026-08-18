@@ -9,6 +9,10 @@
     };
     sops-nix.url = "github:Mic92/sops-nix";
     musnix.url = "github:musnix/musnix";
+    nix-vscode-extensions = {                                # NEW
+      url = "github:nix-community/nix-vscode-extensions";    # NEW
+      inputs.nixpkgs.follows = "nixpkgs";                     # NEW
+    };                                                        # NEW
   };
 
   # outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -18,6 +22,7 @@
       specialArgs = { inherit inputs; };
       modules = [
         musnix.nixosModules.musnix
+        { nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ]; }
 
         # Point to your existing config
         ./hosts/high-end/bt-desktop/configuration.nix
