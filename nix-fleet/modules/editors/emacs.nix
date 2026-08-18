@@ -101,6 +101,12 @@ in {
       # This instructs Nix to compile and symlink the shared objects right into Emacs' store path
       treesit-grammars.with-all-grammars
       # treesit-grammars.tree-sitter-go
+    ] ++ [
+      (epkgs.trivialBuild {
+        pname = "lilypond-mode";
+        version = pkgs.lilypond.version;
+        src = "${pkgs.lilypond}/share/emacs/site-lisp";
+      })
     ];
   };
 
@@ -226,12 +232,45 @@ in {
            (jupyter . t)   ;; jupyter loaded last, per emacs-jupyter's own recommendation
            (latex . t)
            (julia . t)
+           (lilypond . t)
            (R . t)))
         (setq org-confirm-babel-evaluate nil) ;; skip "Really evaluate?" — see note above
         (setq org-babel-default-header-args:jupyter-python
               '((:async . "yes")
                 (:session . "hylang-jupyter")
                 (:kernel . "hylang-jupyter"))))
+
+      ;; Native LilyPond major-mode (from LilyPond's own bundled elisp,
+      ;; wrapped via emacsPackages.trivialBuild in emacs.nix)
+      (use-package lilypond-mode
+        :ensure nil
+        :mode (("\\.ly\\'"  . LilyPond-mode)
+               ("\\.ily\\'" . LilyPond-mode)))
+
+      (use-package ob-lilypond
+        :after org
+        :config
+        ;; --- graphics format for "basic mode" (plain src-block execution) ---
+        (setq org-babel-lilypond-gen-png t     ; produce a .png you can inline
+              org-babel-lilypond-gen-svg nil
+              org-babel-lilypond-gen-pdf nil)
+
+        ;; NOTE: First have arrange-mode activated
+        ; = a-x org-babel-lilypond-toggle-arrange-mode
+        ;
+        ;; --- what to do after arrange-mode compiles (C-c C-c on a block) ---
+        (setq org-babel-lilypond-display-pdf-post-tangle t
+              org-babel-lilypond-play-midi-post-tangle t)
+
+        ;; --- the actual midi player: fluidsynth + your soundfont ---
+        (setq org-babel-lilypond-commands
+              '("lilypond"
+                ("fluidsynth" "-i" "-a" "pulseaudio" "-g" "1.0"
+                 "/nix/store/3mvlz57acvx92d2p6y9l9z9k117g7dl0-Fluid-3/share/soundfonts/FluidR3_GM2-2.sf2" "%s"))))
+
+      (with-eval-after-load 'ob-lilypond
+        (setq org-babel-lilypond-arrange-mode t))
+
 
       ;; ============================================================
       ;; AI / LLM — gptel + ellama, backed by local Ollama
