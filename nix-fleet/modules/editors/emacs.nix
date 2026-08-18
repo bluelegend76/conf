@@ -283,8 +283,8 @@ in {
               (gptel-make-ollama "Ollama"
                 :host "localhost:11434"
                 :stream t
-                :models '(llama3.1:8b codellama:13b)))
-        (setq gptel-model 'llama3.1:8b)
+                :models '(llama3.2:3b codellama:13b)))
+        (setq gptel-model 'llama3.2:3b)
         (setq gptel-default-mode 'org-mode))  ;; matches your Org-heavy workflow
 
       (use-package ellama
@@ -294,7 +294,7 @@ in {
         (setopt ellama-language "English")
         (setopt ellama-provider
                 (make-llm-ollama
-                 :chat-model "llama3.1:8b"
+                 :chat-model "llama3.2:3b"
                  :embedding-model "nomic-embed-text")))
 
       (general-define-key
