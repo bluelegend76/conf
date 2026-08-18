@@ -50,6 +50,7 @@
     lilypond
     # TODO: Or move Qsynth to high-end
     timidity fluidsynth qsynth
+    soundfont-fluid
     alsa-utils
     freesweep
     # fceux (+More/Extra emulators)
@@ -76,7 +77,8 @@
       user.name = "Daniel Albertsson";
 
       # This is the "Safety Rail" for SSH
-      url."git@github.com:".insteadOf = "https://github.com/";
+      # TODO: CHECK IF THIS SHOULD REMAIN COMMENTED OUT
+      ##@ url."git@github.com:".insteadOf = "https://github.com/";
 
       # This locks in your preferred branch name
       init.defaultBranch = "main";
