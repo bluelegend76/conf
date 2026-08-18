@@ -33,6 +33,12 @@ let
     { name = "pack/bundle/start/vim-gitgutter"; path = pkgs.vimPlugins.vim-gitgutter; }
     { name = "pack/bundle/start/vim-nix"; path = pkgs.vimPlugins.vim-nix; }
     { name = "pack/bundle/start/vim-teal"; path = pkgs.vimPlugins.vim-teal; }
+    # Lilypond syntax-support
+    {
+      name = "pack/bundle/start/vim-lilypond";
+      path = "${pkgs.lilypond}/share/lilypond/${pkgs.lilypond.version}/vim";
+    }
+    # SuperCollider
     {
       name = "pack/bundle/start/scnvim";
       path = pkgs.fetchFromGitHub {
