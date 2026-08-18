@@ -234,6 +234,10 @@ in {
            (julia . t)
            (lilypond . t)
            (R . t)))
+
+        ;; __ auto-display generated images inline after execution
+        (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+
         (setq org-confirm-babel-evaluate nil) ;; skip "Really evaluate?" — see note above
         (setq org-babel-default-header-args:jupyter-python
               '((:async . "yes")
