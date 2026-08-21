@@ -25,8 +25,9 @@ in {
       mu4e
       # org-msg  # Org2HTML (Step 7+)
       magit
-      # slime
-      # TODO: OR TEST OUT INSTEAD
+      # TODO =TESTING: GUD/RealGUD, dap-mode
+      # https://www.youtube.com/watch?v=Rke2gGCCk70
+      #
       # sly: cl-slynk clasp-slynk ecl-slynk
       dired-subtree magit projectile
       vertico marginalia orderless consult
