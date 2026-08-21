@@ -10,6 +10,7 @@ ${EDITOR} \
     ${SYNCTHING_DIR}/rsc/scratch.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/contactsFriends.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/at.allm-a.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/todo/econ-shoplist-acquisition-inköp.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/jokeswit.soc.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/mu/dft-thedoc_playlists-index.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/cmp.en.dict.en2sv-prsm.txt \
