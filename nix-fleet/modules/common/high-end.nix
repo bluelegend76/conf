@@ -1,4 +1,19 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }:
+
+let
+  # Builds a colon-separated search path for a given plugin format (e.g.
+  # "vst3", "clap", "lv2"), pointing at the standard locations Nix-installed
+  # plugins actually land in, plus a per-user dotdir fallback for anything
+  # installed by hand or by a non-Nix installer. Needed so Carla (and any
+  # other plugin host) can actually discover surge-XT/dexed/helm below.
+  makePluginPath = format:
+    (lib.makeSearchPath format [
+      "$HOME/.nix-profile/lib"
+      "/run/current-system/sw/lib"
+      "/etc/profiles/per-user/$USER/lib"
+    ]) + ":$HOME/.${format}";
+in
+{
 
   # TODO: VIRTUALIZATION {{{
   # # Enable virtualization
@@ -40,6 +55,12 @@
     # across shells, we can use a tool called 'nix-your-shell'
   };
 
+  home.sessionVariables = {
+    VST3_PATH = makePluginPath "vst3";
+    CLAP_PATH = makePluginPath "clap";
+    LV2_PATH  = makePluginPath "lv2";
+  };
+
   # TODO: WARP-TERMINAL (AND/OR GHOSTTY) {{{
   # environment.systemPackages = [
   #   pkgs.warp-terminal
@@ -49,6 +70,14 @@
   # # We ensure those are well-linked:
   # fonts.packages = with pkgs; [ jetbrains-mono ];
   # }}}
+
+  # Carla has been known to ignore a configured path if there isn't also a
+  # literal ~/.vst3, ~/.clap, etc. directory present on disk. These are
+  # harmless empty fallbacks that also give a manual drop-in spot for any
+  # plugin installed outside Nix.
+  home.file.".vst3/.keep".text = "";
+  home.file.".clap/.keep".text = "";
+  home.file.".lv2/.keep".text = "";
 
   home.packages = with pkgs; [
     # Wayland Screenshotting
@@ -62,9 +91,24 @@
     # Music-related global installs
     # perhaps: Ardour, 
     # 
-    # surge-xt
-    # carla
-    # puredata
+    # Carla is wrapped so it can reliably find PipeWire's JACK-compatible
+    # library (pipewire.jack) even though it's not a standalone top-level
+    # nixpkgs attribute -- see the NixOS wiki's JACK page. In practice Carla
+    # may already connect to JACK fine without this (likely because
+    # services.pipewire.jack.enable already exposes it system-wide), but
+    # this makes it explicit and robust regardless of session/environment.
+    (pkgs.symlinkJoin {
+      name = "carla-wrapped";
+      paths = [ pkgs.carla ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/carla \
+          --prefix LD_LIBRARY_PATH : "${pkgs.pipewire.jack}/lib"
+      '';
+    })
+    # yoshimi - fork of zynaddsubfx
+    surge-XT dexed helm
+    puredata
 
     imagemagick
     (tesseract.override {
