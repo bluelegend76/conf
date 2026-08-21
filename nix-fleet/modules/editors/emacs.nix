@@ -1087,6 +1087,18 @@ in {
 
 
       ;; ============================================================
+      ;; Dlang
+      ;; ============================================================
+      (use-package d-mode
+        :ensure t
+        :mode "\\.d\\'")
+
+      (use-package lsp-mode
+        :hook (d-mode . lsp-deferred)
+        :commands lsp)
+
+
+      ;; ============================================================
       ;; JULIA — LSP via Eglot + org-babel integration
       ;; ============================================================
       (use-package julia-mode
