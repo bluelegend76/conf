@@ -252,29 +252,58 @@ in {
         :mode (("\\.ly\\'"  . LilyPond-mode)
                ("\\.ily\\'" . LilyPond-mode)))
 
+      ;; ob-lilypond only needs to be *loaded* now - org-babel-do-load-languages
+      ;; already triggers this, but keeping the stanza documents the dependency.
       (use-package ob-lilypond
-        :after org
-        :config
-        ;; --- graphics format for "basic mode" (plain src-block execution) ---
-        (setq org-babel-lilypond-gen-png t     ; produce a .png you can inline
-              org-babel-lilypond-gen-svg nil
-              org-babel-lilypond-gen-pdf nil)
+        :after org)
 
-        ;; NOTE: First have arrange-mode activated
-        ; = a-x org-babel-lilypond-toggle-arrange-mode
-        ;
-        ;; --- what to do after arrange-mode compiles (C-c C-c on a block) ---
-        (setq org-babel-lilypond-display-pdf-post-tangle t
-              org-babel-lilypond-play-midi-post-tangle t)
+      (with-eval-after-load 'org
+        ;; Fontify src-block contents in place, not just in the popped-out edit buffer
+        (setq org-src-fontify-natively t))
 
-        ;; --- the actual midi player: fluidsynth + your soundfont ---
-        (setq org-babel-lilypond-commands
-              '("lilypond"
-                ("fluidsynth" "-i" "-a" "pulseaudio" "-g" "1.0"
-                 "/nix/store/3mvlz57acvx92d2p6y9l9z9k117g7dl0-Fluid-3/share/soundfonts/FluidR3_GM2-2.sf2" "%s"))))
+      ;; ============================================================
+      ;; LILYPOND - custom compile+preview, replacing ob-lilypond's own
+      ;; basic/arrange-mode dispatch entirely.
+      ;;
+      ;; One C-c C-c handles all three cases: \midi-only plays audio,
+      ;; \layout-only shows a PNG inline, both does both. No :file /
+      ;; :tangle header args needed on the block, no arrange-mode toggling.
+      ;; ============================================================
+      (defvar my/lilypond-soundfont
+        "${pkgs.soundfont-fluid}/share/soundfonts/FluidR3_GM2-2.sf2"
+        "GM soundfont used to audition LilyPond MIDI previews.")
+
+      (defun my/org-babel-lilypond-execute (body params)
+        "Compile a LilyPond BODY/PARAMS block from Org.
+      Plays any MIDI produced and shows any PNG inline, regardless of
+      whether the block has \\midi, \\layout, or both."
+        (setq org-babel-default-header-args:lilypond '((:results . "raw")))
+        (let* ((ly-file   (org-babel-temp-file "ob-lilypond-" ".ly"))
+               (base      (file-name-sans-extension ly-file))
+               (png-file  (concat base ".cropped.png"))
+               (midi-file (concat base ".midi")))
+          (with-temp-file ly-file
+            (insert (org-babel-expand-body:lilypond body params)))
+          (let* ((default-directory (file-name-directory ly-file))
+                 (exit-code
+                  (call-process "lilypond" nil "*lilypond-preview*" nil
+                                "--png" "-dcrop" "-dresolution=150"
+                                (concat "--output=" base)
+                                ly-file)))
+            (unless (zerop exit-code)
+              (pop-to-buffer "*lilypond-preview*")
+              (error "LilyPond compilation failed — see *lilypond-preview*")))
+          (when (file-exists-p midi-file)
+            (start-process "lilypond-midi" nil
+                            "fluidsynth" "-ni" "-a" "pulseaudio"
+                            my/lilypond-soundfont midi-file))
+          (if (file-exists-p png-file)
+              (prog1 (format "[[file:%s]]" png-file)
+                (org-display-inline-images))
+            "")))
 
       (with-eval-after-load 'ob-lilypond
-        (setq org-babel-lilypond-arrange-mode t))
+        (advice-add 'org-babel-execute:lilypond :override #'my/org-babel-lilypond-execute))
 
 
       ;; ============================================================
