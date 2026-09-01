@@ -164,7 +164,11 @@
 
   # Only keep essential SYSTEM tools here
   environment.systemPackages = with pkgs; [
-    xev
+    xev # + wayland-solution
+    xclip wl-clipboard
+    # macOS: pbcopy/pbpaste are built-in, should just work
+    # Windows: win32yank (Neovide on Windows often needs this explicitly)
+
     vim-full gitFull wget curl htop tree tailscale syncthing
     jq yq
     ugrep # agrep ack ag
