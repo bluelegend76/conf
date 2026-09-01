@@ -31,6 +31,7 @@
     sops age
     thunar pavucontrol keepassxc
     evince ristretto img2pdf
+    qutebrowser
     pandoc
     # pdftk
     vlc mpv audacious
@@ -41,7 +42,8 @@
     ffmpeg
     # soundstretch
     img2pdf  # convert images to pdf
-    qpdf     # or pdfmixup
+    qpdf     # or pdfmixup/pikepdf(=Python + wraps qpdf)
+    # OR PYTHON-LIBRARY = pypdf [=pure Python - no system dependency]
     djvulibre  # including 'djvutxt file.djv > file.txt'
     # librsvg =convert svg to pdf (with rsvg-convert)
     # ghostscript =convert ps to pdf (with ps2pdf)
@@ -52,6 +54,7 @@
     # TODO: Or move Qsynth to high-end
     timidity fluidsynth qsynth
     soundfont-fluid
+    polyphone
     alsa-utils
     freesweep
     # fceux (+More/Extra emulators)
