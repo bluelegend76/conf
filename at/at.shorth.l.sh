@@ -3,8 +3,11 @@
 
 source "$HOME/conf/at/utils/check-env.sh"
 
-${EDITOR} \
+${EDITOR} -p \
     ${SYNCTHING_DIR}/rsc/data/lists/at/shorth.l.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/lang/shorth/rskrift.vdeck.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/lang/shorth/Rskrift.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/lang/shorth/gregg.vdeck.txt \
     # -c 'set foldmethod=marker' \
 
 # TODO: CONVERT OUT TWO NEW STENOPAPER VERSIONS: BLUE / RED / GREEN / PURPLE LINES[!!]
