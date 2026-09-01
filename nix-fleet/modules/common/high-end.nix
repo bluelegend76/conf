@@ -107,10 +107,25 @@ in
       '';
     })
     # yoshimi - fork of zynaddsubfx
-    surge-XT dexed helm
+    surge-XT dexed helm yoshimi
+    #  sooperlooper  # either here, or in sandboxed flake
+    #  calf
+    #    ladspa
+    # vital
+    # adlplug  # great bells/fm-sounds
+    # tunefish
+    # oxefmsynth
+    # spectmorph
+    ## protrekkr
+    #
+    # odin2
+    # padthv1  # 'old-school' additive synthesis
+    # synthv1
+    # geonkick
     puredata
 
-    imagemagick
+    imagemagick  # ??
+    # TODO: scribus sla2pdf
     (tesseract.override {
       enableLanguages = [ "eng" "swe" ];
     })
@@ -169,7 +184,7 @@ in
     # jetbrains.pycharm
     # -oss
     # jetbrains.webstorm
-    qpwgraph
+    qpwgraph  # May want to remove
     jack2
 
     (sbcl.withPackages (ps: with ps; [
