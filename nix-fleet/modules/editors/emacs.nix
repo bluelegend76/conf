@@ -35,6 +35,7 @@ in {
       embark embark-consult
       pdf-tools
       corfu
+      eldoc-box
       # Aesthetics ----
       org-modern  # TODO: Add hiding of start/end tag for fenced code-blocks
       org-appear
@@ -340,6 +341,12 @@ in {
        "ar" 'ellama-code-review
        "at" 'ellama-translate
        "aS" 'ellama-summarize)
+
+      ;; Mapping for Color-Themes Menu
+      (general-define-key
+       :states '(normal)
+       :keymaps 'override
+       "<f5>" 'consult-theme)
 
 
       ;; ============================================================
@@ -1091,11 +1098,52 @@ in {
       ;; ============================================================
       (use-package d-mode
         :ensure t
-        :mode "\\.d\\'")
+        :mode "\\.d\\'"
+        :hook (d-mode . eglot-ensure))
 
-      (use-package lsp-mode
-        :hook (d-mode . lsp-deferred)
-        :commands lsp)
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '(d-mode . ("serve-d"))))
+
+      ;; --- Completion UI ---
+      (use-package corfu
+        :ensure t
+        :init
+        (global-corfu-mode)
+        :custom
+        (corfu-auto t)
+        (corfu-auto-delay 0.1)
+        (corfu-auto-prefix 1)
+        (corfu-cycle t)
+        (corfu-popupinfo-delay 0.3))
+
+      (use-package corfu-popupinfo
+        :after corfu
+        :hook (corfu-mode . corfu-popupinfo-mode))
+
+      ;; --- Extra completion sources alongside Eglot's capf ---
+      (use-package cape
+        :ensure t
+        :init
+        (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+        (add-to-list 'completion-at-point-functions #'cape-file))
+
+      ;; --- Fuzzy/flexible matching for completion candidates ---
+      (use-package orderless
+        :ensure t
+        :custom
+        (completion-styles '(orderless basic))
+        (completion-category-overrides '((file (styles basic partial-completion)))))
+
+      ;; --- Eldoc: nicer floating display ---
+      (use-package eldoc-box
+        :ensure t
+        :hook (eglot-managed-mode . eldoc-box-hover-mode))
+
+      ;; --- Flymake (built-in) is Eglot's default diagnostics backend ---
+      ;; No extra package needed — just make sure it's actually on.
+      (use-package flymake
+        :hook (eglot-managed-mode . flymake-mode))
 
 
       ;; ============================================================
@@ -1259,6 +1307,47 @@ in {
       ;; Faust Mode configuration
       (use-package faust-mode
         :mode "\\.dsp\\'")
+
+
+      ;; ---- Test: Standard ML ----
+      ;; sml-mode: syntax, indentation, REPL interaction (run-sml, C-c C-l, C-c C-r)
+      ;; eglot + millet: diagnostics, hover, jump-to-def, completions
+      (use-package sml-mode
+        :ensure t
+        :mode (("\\.sml\\'" . sml-mode)
+               ("\\.sig\\'" . sml-mode)
+               ("\\.fun\\'" . sml-mode)
+               ("\\.mlb\\'" . sml-mode))
+        :config
+        ;; Default backend: Poly/ML (fast, modern REPL).
+        (setq sml-program-name "poly")
+        (setq sml-use-command "PolyML.use \"%s\"")
+
+        (defun my/sml-use-polyml ()
+          "Switch sml-mode to target Poly/ML."
+          (interactive)
+          (setq sml-program-name "poly")
+          (setq sml-use-command "PolyML.use \"%s\"")
+          (message "sml-mode: now targeting Poly/ML"))
+
+        (defun my/sml-use-smlnj ()
+          "Switch sml-mode to target SML/NJ (e.g. for older book/course examples)."
+          (interactive)
+          (setq sml-program-name "sml")
+          (setq sml-use-command "use \"%s\"")
+          (message "sml-mode: now targeting SML/NJ"))
+
+        :bind (:map sml-mode-map
+               ("C-c C-t p" . my/sml-use-polyml)
+               ("C-c C-t n" . my/sml-use-smlnj)))
+
+      (use-package eglot
+        :ensure t
+        :hook (sml-mode . eglot-ensure)
+        :config
+        (add-to-list 'eglot-server-programs
+                     '(sml-mode . ("millet-ls"))))
+
 
       ;; --- GLOBAL LANGUAGE MAPPINGS ---
       (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
