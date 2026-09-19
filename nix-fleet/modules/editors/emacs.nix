@@ -25,6 +25,7 @@ in {
       mu4e
       # org-msg  # Org2HTML (Step 7+)
       magit
+      dape  # uses Gdb; more capable RealGud, if has support for language X
       # TODO =TESTING: GUD/RealGUD, dap-mode
       # https://www.youtube.com/watch?v=Rke2gGCCk70
       #
@@ -70,6 +71,8 @@ in {
       # TODO: Bash mode
       exec-path-from-shell
       lsp-mode
+      lsp-ui
+      realgud
       # TODO: emacs-guix
       # New syntax support
       nix-mode
@@ -656,6 +659,52 @@ in {
         (setq projectile-project-search-path '("~/processdir")
               projectile-sort-order 'recentf))
 
+
+      ;; SHELL/BASH MODE - Emacs ----
+      ;; ── envrc: pick up the direnv/flake environment per-buffer ──────────────
+      (use-package envrc
+        :ensure t
+        :hook (after-init . envrc-global-mode))
+
+      ;; ── Bash: LSP via Eglot (built-in), matching the rest of this config ────
+      (use-package sh-script
+        :ensure nil  ;; built-in
+        :init
+        (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+        :hook (bash-ts-mode . eglot-ensure))
+
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '(bash-ts-mode . ("bash-language-server" "start"))))
+
+      ;; flymake is Eglot's default diagnostics backend — built-in, no extra wiring
+      (use-package flymake
+        :hook (eglot-managed-mode . flymake-mode))
+
+      ;; ── Bash: debugger via realgud + bashdb ──────────────────────────────────
+      (use-package realgud
+        :ensure nil
+        :commands (realgud:bashdb))
+
+
+      ;; ============================================================
+      ;; NIX EXPRESSION LANGUAGE — LSP via Eglot (nixd)
+      ;; ============================================================
+      (use-package nix-mode
+        :ensure nil
+        :mode "\\.nix\\'"
+        :hook (nix-mode . eglot-ensure))
+
+      (with-eval-after-load 'eglot
+        (add-to-list 'eglot-server-programs
+                     '(nix-mode . ("nixd"))))
+
+      ;; Format-on-save via alejandra (apheleia already installed for F#)
+      (with-eval-after-load 'apheleia
+        (add-to-list 'apheleia-formatters '(alejandra . ("alejandra")))
+        (add-to-list 'apheleia-mode-alist '(nix-mode . alejandra)))
+
+
       ; (use-package slime
       ;   :ensure t
       ;   :config
@@ -1102,8 +1151,11 @@ in {
         :hook (d-mode . eglot-ensure))
 
       (with-eval-after-load 'eglot
-        (add-to-list 'eglot-server-programs
-                     '(d-mode . ("serve-d"))))
+        (add-to-list 'eglot-server-programs '(d-mode . ("serve-d")))
+        (setq-default eglot-workspace-configuration
+                      (append eglot-workspace-configuration
+                              '((:d . (:dcdServerPath "dcd-server"
+                                       :dcdClientPath "dcd-client"))))))
 
       ;; --- Completion UI ---
       (use-package corfu
@@ -1127,6 +1179,20 @@ in {
         :init
         (add-to-list 'completion-at-point-functions #'cape-dabbrev)
         (add-to-list 'completion-at-point-functions #'cape-file))
+
+      (use-package dape
+        :preface
+        (setq dape-buffer-window-arrangement 'right)
+        :config
+        (add-to-list 'dape-configs
+          `(gdb-d
+            modes (d-mode)
+            command "gdb"
+            command-args ("--interpreter=dap")
+            command-cwd dape-command-cwd
+            :request "launch"
+            :program "app"
+            :stopAtBeginningOfMainSubprogram nil)))
 
       ;; --- Fuzzy/flexible matching for completion candidates ---
       (use-package orderless
