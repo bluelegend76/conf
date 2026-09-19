@@ -153,4 +153,83 @@ eval \"$(starship init bash)\"
   vim.g.neovide_normal_opacity = 0.9
 end
 "))
-   )))))
+                     `(".config/nvim/lua/lsp-config.lua"
+                       ,(plain-file "lsp-config.lua"
+                         "-- LSP + Completion configuration
+-- Managed via Guix Home - do not edit directly.
+
+-- ── Completion (nvim-cmp) ────────────────────────────────────────────────
+local cmp = require('cmp')
+
+cmp.setup({
+  completion = {
+    autocomplete = false,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>']     = cmp.mapping.abort(),
+    ['<CR>']      = cmp.mapping.confirm({ select = false }),
+    ['<Tab>']     = cmp.mapping.select_next_item(),
+    ['<S-Tab>']   = cmp.mapping.select_prev_item(),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' },
+  }),
+})
+
+-- ── LSP capabilities ─────────────────────────────────────────────────────
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- ── Shared keymaps, attached when LSP starts on a buffer ─────────────────
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local map = function(keys, func, desc)
+      vim.keymap.set('n', keys, func, { buffer = ev.buf, desc = desc })
+    end
+    map('gd',         vim.lsp.buf.definition,    'Go to definition')
+    map('gr',         vim.lsp.buf.references,    'Find references')
+    map('K',          vim.lsp.buf.hover,         'Hover documentation')
+    map('<leader>rn', vim.lsp.buf.rename,        'Rename symbol')
+    map('<leader>ca', vim.lsp.buf.code_action,   'Code action')
+    map('[d',         vim.diagnostic.goto_prev,  'Previous diagnostic')
+    map(']d',         vim.diagnostic.goto_next,  'Next diagnostic')
+    map('<leader>e',  vim.diagnostic.open_float, 'Show diagnostic')
+  end,
+})
+
+-- ── Language servers ──────────────────────────────────────────────────────
+vim.lsp.config('pyright', {
+  capabilities = capabilities,
+  cmd          = { 'pyright-langserver', '--stdio' },
+  filetypes    = { 'python' },
+  root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', '.git' },
+  settings     = {
+    python = {
+      analysis = { autoSearchPaths = true, useLibraryCodeForTypes = true },
+    },
+  },
+})
+vim.lsp.enable('pyright')
+
+vim.lsp.config('lua_ls', {
+  capabilities = capabilities,
+  cmd          = { 'lua-language-server' },
+  filetypes    = { 'lua' },
+  root_markers = { '.luarc.json', '.git' },
+  settings     = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      workspace = {
+        checkThirdParty = false,
+        library = vim.api.nvim_get_runtime_file('', true),
+      },
+      diagnostics = { globals = { 'vim' } },
+      telemetry   = { enable = false },
+    },
+  },
+})
+vim.lsp.enable('lua_ls')
+"))))
+   )))
