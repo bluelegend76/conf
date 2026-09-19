@@ -5,6 +5,11 @@ let
                then "/storage/emulated/0/SyncThing"
                else "${config.home.homeDirectory}/SyncThing";
 
+
+# TODO TODO TODO: 'three distinct pieces' + START ADDING LSP+TREESITTER-SUPPORT #
+#   https://claude.ai/chat/14c014a6-5206-414b-897e-78c7ddbe88f6
+
+
   # This creates ONE single package containing all your plugins
   # without the 'doc/tags' collision-error.
   # TODO: Add Mercury syntax-support
@@ -103,6 +108,20 @@ let
     }
   ];
 
+  buildPlugin = { owner, repo, rev, sha256 }:
+    pkgs.vimUtils.buildVimPlugin {
+      name = repo;
+      src = pkgs.fetchFromGitHub { inherit owner repo rev sha256; };
+    };
+
+  buildPluginNoCheck = { owner, repo, rev, sha256 }:
+    pkgs.vimUtils.buildVimPlugin {
+      name = repo;
+      src = pkgs.fetchFromGitHub { inherit owner repo rev sha256; };
+      # nvimRequireCheck = [];
+      doCheck = false;
+    };
+
 in {
   home.sessionVariables = {
     SYNC_BASE = syncPath;
@@ -149,17 +168,82 @@ in {
     viAlias = false;
     vimAlias = true;
 
-    # withNodeJs = true;
-    # withPython3 = true;
+    plugins = with pkgs.vimPlugins; [
+      # ── General editing ──────────────────────────────────────────
+      vim-visualstar
+      vim-sensible
+      vim-matchup
+      fzf-vim
+      vim-vinegar
+      vim-surround
+      vim-json
+      vim-commentary
+      rainbow_csv
+      tabular
+      vim-easy-align
+      vimoutliner
+      vimwiki
+
+      # ── Language syntax ──────────────────────────────────────────
+      vim-polyglot
+      vim-hy
+      vim-nix
+      vim-teal
+
+      # ── Git ──────────────────────────────────────────────────────
+      vim-fugitive
+      vim-gitgutter
+
+      # ── GitHub-fetched plugins ───────────────────────────────────
+      (buildPluginNoCheck {
+        owner = "davidgranstrom"; repo = "scnvim"; rev = "master";
+        sha256 = "sha256-n4xc7NNpXKqjZwhpxrZyrB7L0bQzXfcq7NDZ5Eca1go=";
+      })
+      (buildPluginNoCheck {
+        owner = "pigpigyyy"; repo = "yuescript-vim"; rev = "master";
+        sha256 = "sha256-+IlWg5Z0Ca5kQ8j+mQgdK9N9OqVlOYePg1TpqFUBAYk=";
+      })
+      (buildPluginNoCheck {
+        owner = "janet-lang"; repo = "janet.vim"; rev = "master";
+        sha256 = "sha256-e/AUuTQgjmXzN8IKGmmurkIuW4oPHj7rYr6MmXcDW7c=";
+      })
+      (buildPluginNoCheck {
+        owner = "neo4j-contrib"; repo = "cypher-vim-syntax"; rev = "master";
+        sha256 = "sha256-iJLl5BPM5KV+WcnmYV0HSfYyBePXkPYy2nWeqy2VU+o=";
+      })
+      (buildPluginNoCheck {
+        owner = "Omer"; repo = "vim-sparql";
+        rev = "48bbf44217c1e2a977c5d4d67d57c44ff974023d";
+        sha256 = "sha256-NGIICdWL9CFyzFpRZaUJaTySlzv9w4CzB6j8fRiHK8o=";
+      })
+      (buildPluginNoCheck {
+        owner = "yzhs"; repo = "mercury-vim";
+        rev = "ba8592847531c723872e5268748af57f1a8c1c2e";
+        sha256 = "sha256-cTTr//Izrmzu5SXkJEmNWiNMvVjLlt+e+/btiBmF8w4=";
+      })
+
+      # ── Treesitter ───────────────────────────────────────────────
+      (nvim-treesitter.withPlugins (p: with p; [
+        python
+        lua
+      ]))
+
+      # ── LSP + Completion ─────────────────────────────────────────
+      nvim-lspconfig
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+    ];
 
     extraConfig = ''
-      set packpath^=${myVimPlugins}
-      packloadall
       ${builtins.readFile ./vimrc-core.vim}
       lua require('neovide')
+      lua require('lsp-config')
     '';
   };
 
+  # DONE: Moved the setup to Guix Home (for now)
   # xdg.configFile."nvim/lua/neovide.lua".text = ''
   #   if vim.g.neovide then
   #     vim.g.neovide_cursor_animation_length = 0
