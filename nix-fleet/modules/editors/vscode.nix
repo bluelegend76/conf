@@ -12,8 +12,11 @@
 
       extensions = with pkgs.vscode-marketplace; [
         vscodevim.vim
+
         rogervila.supercollider-vscode
         chenglou92.rescript-vscode
+        lijin.yuescript
+        # mtlabs.yuescriptrunner
       ];
     };
   };
