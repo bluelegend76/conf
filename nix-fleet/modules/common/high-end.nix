@@ -86,6 +86,8 @@ in
     slurp
     wev
     kdePackages.kdeconnect-kde
+    heimdall-gui
+    ## heimdall
     audacity
 
     # Music-related global installs
