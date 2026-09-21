@@ -2,7 +2,7 @@
 # ____
 
 let
-  myEmacs = (pkgs.emacs30.override {
+  myEmacs = (pkgs.emacs.override {
     withTreeSitter = true;
     withNativeCompilation = true;
   });
@@ -104,8 +104,28 @@ in {
       faust-mode
 
       # This instructs Nix to compile and symlink the shared objects right into Emacs' store path
-      treesit-grammars.with-all-grammars
-      # treesit-grammars.tree-sitter-go
+      # Only the grammars actually used below. with-all-grammars pulls in ~150
+      # grammars and any one of them can break the whole build (as tree-sitter-cuda did).
+      (treesit-grammars.with-grammars (g: with g; [
+      # ~/Empire/rsc/data/lists/todo/install/emacs-tresitterpackages.txt
+        tree-sitter-bash
+        tree-sitter-nix
+        tree-sitter-c
+        tree-sitter-cpp
+        # tree-sitter-clojure
+        # tree-sitter-graphql
+        # tree-sitter-go
+        # tree-sitter-gomod
+        # tree-sitter-javascript
+        # tree-sitter-typescript
+        # tree-sitter-tsx
+        # tree-sitter-json
+        # tree-sitter-css
+        # tree-sitter-html
+        # tree-sitter-elixir
+        # tree-sitter-heex
+        # tree-sitter-gleam
+      ]))
     ] ++ [
       (epkgs.trivialBuild {
         pname = "lilypond-mode";
