@@ -29,7 +29,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     powerManagement.enable = false;  # Not included in original conf; = May want to take out later on
   };
 
@@ -38,6 +38,10 @@
     algorithm = "zstd";   # Best compression ratio
     memoryPercent = 50;   # Can use up to 50% of your RAM as a compressed "overflow"
   };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
 
   # 'JetBrains / Unpatched Binary Support'
   programs.nix-ld.enable = true;
