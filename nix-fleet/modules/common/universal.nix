@@ -30,7 +30,7 @@
     ed
     sops age
     thunar pavucontrol keepassxc
-    evince ristretto img2pdf
+    evince xchm ristretto img2pdf
     qutebrowser
     pandoc
     # pdftk
@@ -53,6 +53,7 @@
     lilypond
     # TODO: Or move Qsynth to high-end
     timidity fluidsynth qsynth
+    gmetronome
     soundfont-fluid
     polyphone
     alsa-utils
