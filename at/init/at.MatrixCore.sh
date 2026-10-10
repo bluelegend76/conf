@@ -13,6 +13,8 @@ ${EDITOR} \
     ${SYNCTHING_DIR}/rsc/data/lists/todo/econ-shoplist-acquisition-inköp.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/jokeswit.soc.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/mu/dft-thedoc_playlists-index.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/at/muAdmin.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/fstyle-christm.guit/fstyle-christm.mu.guit.pract.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/cmp.en.dict.en2sv-prsm.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/cmp.sv.dict.sv2en-prsm.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/ref/lang/sv.words.saol11-1991.txt \
@@ -27,17 +29,16 @@ ${EDITOR} \
     ${SYNCTHING_DIR}/rsc/data/lists/learnqna/vanki/DECK.dailies.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/learnmemo-qna.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/Jur.txt \
-    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/fstyle-christm.guit/fstyle-christm.mu.guit.pract.txt \
-    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/.black/.list \
-    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/.blue/.list \
-    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/.green/.list \
-    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/.yellow/.list \
     ${SYNCTHING_DIR}/rsc/data/lists/at/mu.genresListening2.txt \
     ${SYNCTHING_DIR}/rsc/Doks/publish/fvkun/a.vamp-necr-mag.txt \
     ${SYNCTHING_DIR}/rsc/Doks/publish/fvkun/vampireskiss-lostblog.legacy.txt \
     ${SYNCTHING_DIR}/rsc/Doks/publish/fvkun/01_TrinitySuite.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/sysadm.Lin.txt \
     ${SYNCTHING_DIR}/rsc/data/lists/at/PROGR.cm.txt \
+    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/.black/.list \
+    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/.blue/.list \
+    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/.green/.list \
+    ${SYNCTHING_DIR}/rsc/data/lists/mu/i.guitar/ac/dftproj/.yellow/.list \
     -c 'colors retrobox' \
 
 #   -c 'colors darkblue' \
