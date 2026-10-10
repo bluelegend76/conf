@@ -114,17 +114,17 @@ in {
         tree-sitter-cpp
         # tree-sitter-clojure
         # tree-sitter-graphql
-        # tree-sitter-go
-        # tree-sitter-gomod
-        # tree-sitter-javascript
-        # tree-sitter-typescript
-        # tree-sitter-tsx
-        # tree-sitter-json
-        # tree-sitter-css
-        # tree-sitter-html
-        # tree-sitter-elixir
-        # tree-sitter-heex
-        # tree-sitter-gleam
+        tree-sitter-go
+        tree-sitter-gomod
+        tree-sitter-javascript
+        tree-sitter-typescript
+        tree-sitter-tsx
+        tree-sitter-json
+        tree-sitter-css
+        tree-sitter-html
+        tree-sitter-elixir
+        tree-sitter-heex
+        tree-sitter-gleam
       ]))
     ] ++ [
       (epkgs.trivialBuild {
