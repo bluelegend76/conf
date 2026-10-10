@@ -45,7 +45,7 @@ in
   ##     fcitx5-rime            # Great for Chinese or custom tables
   ##     fcitx5-lua             # Useful for scripting your own inputs
   ##     # TODO/IDEA: USE FOR MATHEMATICAL (ETC) INPUT
-  ##     fcitx5-m17n          # Essential for many "smaller" or historical languages
+  ##     fcitx5-m17n            # Essential for many "smaller" or historical languages
   ##   ];
   ## };
 
@@ -85,10 +85,11 @@ in
     grim
     slurp
     wev
-    kdePackages.kdeconnect-kde
     heimdall-gui
     ## heimdall
-    audacity
+    # audacity
+    ##  teams-for-linux
+    whisper-cpp piper-tts
 
     # Music-related global installs
     # perhaps: Ardour, 
