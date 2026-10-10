@@ -39,6 +39,8 @@
     memoryPercent = 50;   # Can use up to 50% of your RAM as a compressed "overflow"
   };
 
+  programs.kdeconnect.enable = true;
+
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
   ];
