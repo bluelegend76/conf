@@ -85,6 +85,9 @@ in
     grim
     slurp
     wev
+    # Wayland/Plasma Screenrecording
+    gpu-screen-recorder
+
     heimdall-gui
     ## heimdall
     # audacity
@@ -174,19 +177,21 @@ in
 
     vscode
 
-    (discord.override {
-      withVencord = true;
-    })
+    discord
+    # vesktop
+    # (discord.override {
+    #   withVencord = true;
+    # })
     signal-desktop
 
     libreoffice-fresh
+    # jetbrains.clion
     jetbrains.rider
+    # jetbrains.webstorm
+    # jetbrains.pycharm
     # jetbrains.idea-oss
       # jetbrains.idea
-    # jetbrains.clion
-    # jetbrains.pycharm
     # -oss
-    # jetbrains.webstorm
     qpwgraph  # May want to remove
     jack2
 
