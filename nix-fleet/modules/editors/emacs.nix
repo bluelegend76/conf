@@ -24,7 +24,6 @@ in {
       paredit
       mu4e
       # org-msg  # Org2HTML (Step 7+)
-      magit
       dape  # uses Gdb; more capable RealGud, if has support for language X
       # TODO =TESTING: GUD/RealGUD, dap-mode
       # https://www.youtube.com/watch?v=Rke2gGCCk70
@@ -58,7 +57,6 @@ in {
       # ORG-JUPYTER (+Callysto)
       jupyter
       zmq
-      envrc
       # ob-latex
       # ob-restclient  # Great for API work
       # TODO IMPORTANT: INSTALL 'ORG BABEL {PACKAGE}' TO USE BABEL IN ORG(!)
@@ -87,6 +85,7 @@ in {
       typescript-mode
       kotlin-mode
       fsharp-mode apheleia
+      dart-mode lsp-dart flutter
       graphql-mode verb
       janet-mode # or janet-ts-mode
       # TODO: nushell-mode
@@ -94,7 +93,7 @@ in {
       # color-theme-buffer-local
       # TODO: java-mode
       tuareg
-      julia-mode julia-vterm
+      julia-mode julia-vterm ob-julia-vterm
       ess poly-R poly-markdown
       # or adding 'polymode'
       d-mode
@@ -1256,6 +1255,18 @@ in {
                                      "-e"
                                      "using LanguageServer; server = LanguageServer.LanguageServerInstance(stdin, stdout); run(server)"))))
 
+      (use-package ob-julia-vterm
+        :after org
+        :config
+        (add-to-list 'org-babel-load-languages '(julia-vterm . t))
+        (org-babel-do-load-languages 'org-babel-load-languages
+                                     org-babel-load-languages)
+        ;; lets you write "julia" instead of "julia-vterm" in src blocks
+        (defalias 'org-babel-execute:julia 'org-babel-execute:julia-vterm)
+        (defalias 'org-babel-variable-assignments:julia
+          'org-babel-variable-assignments:julia-vterm))
+
+
       ;; ============================================================
       ;; R — ESS (Emacs Speaks Statistics) + LSP via Eglot
       ;; ============================================================
@@ -1351,6 +1362,38 @@ in {
           (verb-headers-set rs "Authorization"
                              (concat "Bearer " (getenv "GITHUB_TOKEN")))
           rs))
+
+
+      ;; Flutter/Dart Setup
+      ;;
+      (use-package dart-mode
+        :mode "\\.dart\\'")
+
+      (use-package lsp-mode
+        :hook ((dart-mode . lsp-deferred)
+               (lsp-completion-mode . my/lsp-corfu-setup))
+        :custom
+        (lsp-completion-provider :none)   ; let Corfu handle the UI, not company
+        (lsp-enable-snippet nil)          ; flip to t if you add yasnippet
+        :init
+        (defun my/lsp-corfu-setup ()
+          (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+                '(orderless))))
+
+      (use-package lsp-dart
+        :after lsp-mode
+        :custom
+        (lsp-dart-closing-labels t)
+        (lsp-dart-outline t)
+        (lsp-dart-flutter-outline t))
+
+      (use-package flutter
+        :after dart-mode
+        :bind (:map dart-mode-map ("C-M-x" . flutter-run-or-hot-reload)))
+
+      ;; ;; Optional, but nice: eldoc integration comes with lsp-mode already.
+      ;; (setq lsp-eldoc-render-all nil)
+
 
       ;; Prolog Configuration (SWI-Prolog Integration)
       (use-package prolog
