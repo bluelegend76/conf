@@ -175,6 +175,7 @@
     # macOS: pbcopy/pbpaste are built-in, should just work
     # Windows: win32yank (Neovide on Windows often needs this explicitly)
 
+    parted smartmontools
     vim-full gitFull wget curl htop tree tailscale syncthing
     jq yq
     ugrep # agrep ack ag
