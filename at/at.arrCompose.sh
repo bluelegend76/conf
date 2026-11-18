@@ -11,3 +11,5 @@ ${EDITOR} \
     # -c 'norm 1gt' \
     # -c 'setlocal wrap' \
 
+gvim ~/dropbox-legacy/egnalåtar-dfs-blackandblueletsgo.txt
+
