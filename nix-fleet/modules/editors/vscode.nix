@@ -13,6 +13,9 @@
       extensions = with pkgs.vscode-marketplace; [
         vscodevim.vim
 
+        dart-code.dart-code
+        dart-code.flutter
+
         rogervila.supercollider-vscode
         chenglou92.rescript-vscode
         lijin.yuescript
