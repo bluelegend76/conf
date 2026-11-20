@@ -194,6 +194,16 @@ in {
       vim-fugitive
       vim-gitgutter
 
+      # ── Markdown rendering ───────────────────────────────────────
+      {
+        plugin = render-markdown-nvim;
+        type = "lua";
+        config = ''
+          require('render-markdown').setup({})
+        '';
+      }
+      nvim-web-devicons   # optional: icons on headings and code blocks
+
       # ── GitHub-fetched plugins ───────────────────────────────────
       (buildPluginNoCheck {
         owner = "davidgranstrom"; repo = "scnvim"; rev = "master";
@@ -225,7 +235,10 @@ in {
       # ── Treesitter ───────────────────────────────────────────────
       (nvim-treesitter.withPlugins (p: with p; [
         python
+        clojure
         lua
+        markdown
+        markdown_inline
       ]))
 
       # ── LSP + Completion ─────────────────────────────────────────
