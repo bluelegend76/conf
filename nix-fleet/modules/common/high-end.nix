@@ -187,7 +187,7 @@ in
     libreoffice-fresh
     # jetbrains.clion
     jetbrains.rider
-    # jetbrains.webstorm
+    jetbrains.webstorm
     # jetbrains.pycharm
     # jetbrains.idea-oss
       # jetbrains.idea
